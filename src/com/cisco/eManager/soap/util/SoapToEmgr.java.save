@@ -1,0 +1,46 @@
+package com.cisco.eManager.soap.common;
+
+public class SoapToEmgr
+{
+	private static SoapToEmgr _instance = null;
+	
+	private SoapToEmgr()
+	{
+	}
+
+	public static SoapToEmgr instance()
+	{
+		if (_instance == null)
+			_instance = new SoapToEmgr();
+		return _instance;
+	}
+
+	///////////////////////////////////////////////////////////////////
+	// conversion routine for ProcessManager
+	//
+	///////////////////////////////////////////////////////////////////
+	//
+	public static com.cisco.eManager.common.inventory.LogLevel getLogLevel(
+		com.cisco.eManager.soap.common.inventory.LogLevel s_obj)
+	{
+		if (s_obj == null)
+			return null; 
+
+		if (s_obj.isConfig())
+			return com.cisco.eManager.common.inventory.LogLevel.CONFIG;
+		else if (s_obj.isFine())
+			return com.cisco.eManager.common.inventory.LogLevel.FINE;
+		else if (s_obj.isFiner())
+			return com.cisco.eManager.common.inventory.LogLevel.FINER;
+		else if (s_obj.isFinest())
+			return com.cisco.eManager.common.inventory.LogLevel.FINEST;
+		else if (s_obj.isSevere())
+			return com.cisco.eManager.common.inventory.LogLevel.SEVERE;
+		else if (s_obj.isWarning())
+			return com.cisco.eManager.common.inventory.LogLevel.WARNING;
+		else // default is using INFO 
+			return com.cisco.eManager.common.inventory.LogLevel.INFO;
+
+	}
+}
+			

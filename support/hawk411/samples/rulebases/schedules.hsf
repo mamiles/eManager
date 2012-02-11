@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<scheduleList>
+	<version>4.1.0</version>
+	<name><![CDATA[schedules]]></name>
+	<author>TIBCO Hawk 4.1.0 Release</author>
+	<lastModification></lastModification>
+	<comment><![CDATA[]]></comment>
+	<class tag="schedule" javaClass="COM.TIBCO.hawk.console.schedule.SchedulesList" />
+	<schedule>
+		<name><![CDATA[BusinessHours]]></name>
+		<inclusionPeriods>
+			<period>
+				<timeOfDay>000000000000000000000000000000000000111111111111111111111111111111110000000000000000000000000000</timeOfDay>
+				<daysInWeek>0111110</daysInWeek>
+				<daysInMonth>1111111111111111111111111111111</daysInMonth>
+				<monthsInYear>111111111111</monthsInYear>
+			</period>
+		</inclusionPeriods>
+		<exclusionPeriods>
+			<period>
+				<timeOfDay>000000000000000000000000000000000000000000000000111100000000000000000000000000000000000000000000</timeOfDay>
+				<daysInWeek>0111110</daysInWeek>
+				<daysInMonth>1111111111111111111111111111111</daysInMonth>
+				<monthsInYear>111111111111</monthsInYear>
+			</period>
+		</exclusionPeriods>
+	</schedule>
+	<schedule>
+		<name><![CDATA[Weekends]]></name>
+		<inclusionPeriods>
+			<period>
+				<timeOfDay>111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</timeOfDay>
+				<daysInWeek>1000001</daysInWeek>
+				<daysInMonth>1111111111111111111111111111111</daysInMonth>
+				<monthsInYear>111111111111</monthsInYear>
+			</period>
+		</inclusionPeriods>
+	</schedule>
+</scheduleList>

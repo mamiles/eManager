@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:10:06" />
+  <title>Parameters for rvd</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Installation";
+    var ChapterTitle = "Chapter&#160;4	 VMS";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp346036"> </a><h2 class="pNewHTMLPage">
+Parameters for rvd
+</h2>
+<hr />
+<a name="wp33577995"> </a><p class="pBody">
+This section describes VMS parameters affect Rendezvous daemon operation.
+</p>
+<a name="wp33578798"> </a><h3 class="pHeading2">
+Byte Limit
+</h3>
+<a name="wp33579342"> </a><p class="pBody">
+High message rates consume significant space in non-paged storage.
+</p>
+<a name="wp33578840"> </a><p class="pBody">
+The byte limit parameter restricts the amount of non-paged storage that a VMS process can use. If <code class="cCode">rvd</code> fails during <code class="cCode">accept()</code>, exceeding its byte count quota, raise this resource limit.
+</p>
+<a name="wp33578802"> </a><p class="pBody">
+The Rendezvous daemon requires sufficient non-paged buffer space for messages. The actual requirement depends on the speed of the network, the network card, the processors, and the message data rate. We recommend a value of 6000000.
+</p>
+<a name="wp33578995"> </a><h4 class="pHeading3">
+Boot Time
+</h4>
+<a name="wp33578806"> </a><p class="pBody">
+When starting the Rendezvous daemon at boot time, the <code class="cCode">SYSTEM</code> account&#8217;s <code class="cCode">bytlm</code> parameter controls this resource limit. To set this parameter, modify these commands appropriately:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+$ set def sys$system<a name="wp33578951"> </a>
+$ run authorize<a name="wp33578952"> </a>
+UAF&gt; mod SYSTEM /bytlm=6000000<a name="wp33578953"> </a>
+</pre></div>
+<a name="wp33578813"> </a><h4 class="pHeading3">
+Automatic Start
+</h4>
+<a name="wp33579020"> </a><p class="pBody">
+When programs start the Rendezvous daemon automatically, the <code class="cCode">SYSGEN</code> parameter <code class="cCode">PQL_DBYTLM</code> specifies this resource limit. Set an appropriate value using the AUTOGEN tool.
+</p>
+<a name="wp33578571"> </a><h3 class="pHeading2">
+Total Non-Paged Storage
+</h3>
+<a name="wp33579271"> </a><p class="pBody">
+The <code class="cCode">SYSGEN</code> parameters <code class="cCode">NPAGEDYN</code> and <code class="cCode">NPAGEDYNVIR</code> specify the total pool of non-paged storage. (In contrast, the byte limit specifies the fraction of this pool that each process may use.)
+</p>
+<a name="wp33579325"> </a><p class="pBody">
+The pool begins at boot time with size <code class="cCode">NPAGEDYN</code>, and automatically expands as needed, up to a limit of <code class="cCode">NPAGEDYNVIR</code>. We recommend that you monitor the pool to ensure sufficient space. For example:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+$ show memory<a name="wp33578573"> </a>
+$ show memory /pool /full<a name="wp33578574"> </a>
+<a name="wp33578747"> </a>
+</pre></div>
+<a name="wp33578756"> </a><p class="pBody">
+If the pool is too small, use the AUTOGEN tool to set an appropriate size.
+</p>
+<a name="wp33578025"> </a><h3 class="pHeading2">
+Page File Quota
+</h3>
+<a name="wp33578027"> </a><p class="pBody">
+The Rendezvous daemon process requires sufficient virtual address buffer space for up to 60 seconds of outbound messages. To calculate the actual requirement, estimate the maximum number of bytes per minute for all Rendezvous message activity, add space for future expansion, then divide by 512 (the number of bytes per block).
+</p>
+<a name="wp33579377"> </a><h4 class="pHeading3">
+Boot Time
+</h4>
+<a name="wp33579394"> </a><p class="pBody">
+When starting the Rendezvous daemon at boot time, the <code class="cCode">SYSTEM</code> account&#8217;s <code class="cCode">pgflquo</code> parameter controls this resource limit. To set this parameter, modify these commands appropriately:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+$ set def sys$system<a name="wp33579395"> </a>
+$ run authorize<a name="wp33579396"> </a>
+UAF&gt; mod SYSTEM /pgflquo=1000000<a name="wp33579397"> </a>
+</pre></div>
+<a name="wp33578644"> </a><h4 class="pHeading3">
+Automatic Start
+</h4>
+<a name="wp33578648"> </a><p class="pBody">
+When programs start the Rendezvous daemon automatically, the <code class="cCode">SYSGEN</code> parameter <code class="cCode">PQL_DPGFLQUOTA</code> controls this resource limit. Set an appropriate value using the AUTOGEN tool.
+</p>
+<a name="wp33578831"> </a><h3 class="pHeading2">
+Channel Count
+</h3>
+<a name="wp33579599"> </a><p class="pBody">
+In addition to the usual requirements for I/O channels, <code class="cCode">rvd</code> uses I/O channels in two more ways:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp33579454"> </a><div class="pSmartList1"><li >Each client connection from a network transport object consumes one channel.</li></div>
+
+<a name="wp33579455"> </a><div class="pSmartList1"><li >Each UDP and PGM service that those clients access consumes one channel.</li></div>
+
+</ul></div>
+
+<a name="wp33579450"> </a><p class="pBody">
+The special <code class="cCode">SYSGEN</code> parameter <code class="cCode">CHANNELCNT</code> determines the maximum number of I/O devices that a process can access. Although most systems set a sufficiently high value, we recommend that you estimate the number of channels that <code class="cCode">rvd</code> requires, and verify that the limit is significantly larger than your estimate. For example:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+$ mc sysgen<a name="wp33578833"> </a>
+SYSGEN&gt; show channelcnt<a name="wp33578834"> </a>
+<a name="wp33579477"> </a>
+</pre></div>
+<a name="wp33579478"> </a><p class="pBody">
+If <code class="cCode">rvd</code> fails during <code class="cCode">accept()</code>, reporting invalid I/O channels, raise this resource limit using the AUTOGEN tool.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Installation <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

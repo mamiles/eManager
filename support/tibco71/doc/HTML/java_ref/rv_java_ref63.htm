@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvDate.setTime()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1046707"> </a><h2 class="pNewHTMLPage">
+TibrvDate.setTime()
+</h2>
+<hr />
+<a name="wp1046708"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1046718"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+void <code class="cCodeBold">setTime</code>(long milliseconds)<a name="wp1125432"> </a>
+<a name="wp1125428"> </a>
+void <code class="cCodeBold">setTime</code>(<a name="wp1125436"> </a>
+&#160;&#160;&#160;&#160;long&#160;&#160;seconds,<a name="wp1125437"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;nanoseconds)<a name="wp1125438"> </a>
+</pre></div>
+<a name="wp1046719"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1046723"> </a><p class="pBody">
+Change the value of a date object.
+</p>
+<a name="wp1046724"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1046726"> </a><p class="pBody">
+If the time value specified is out of range, this constructor throws an <code class="cCode">IllegalArgumentException</code>.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1046730"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1046732"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1046734"> </a><div class="pCellBody">
+<code class="cCode">milliseconds</code>
+</div>
+</td>
+    <td><a name="wp1046736"> </a><div class="pCellBody">
+Set the date from this value (in milliseconds, centered on 12:00am, January 1, 1970).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1046738"> </a><div class="pCellBody">
+<code class="cCode">seconds</code>
+</div>
+</td>
+    <td><a name="wp1046740"> </a><div class="pCellBody">
+Set the a date from this value (in seconds, centered on 12:00am, January 1, 1970). This argument must be in the range [<a  href="rv_java_ref59.htm#wp1068350"><code class="cCode">TibrvDate.MIN_SECONDS</code></a><code class="cCode">;</code><a  href="rv_java_ref59.htm#wp1068344"><code class="cCode">TibrvDate.MAX_SECONDS</code></a>].
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1046748"> </a><div class="pCellBody">
+<code class="cCode">nanoseconds</code>
+</div>
+</td>
+    <td><a name="wp1046750"> </a><div class="pCellBody">
+Add this value (in nanoseconds) to the time specified by the <code class="cCode">seconds</code> parameter. This argument must be non-negative, in the range [<code class="cCode">0</code>;<code class="cCode">999999999</code>].
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1046752"> </a><h4 class="pHeading3">
+Method Forms
+</h4>
+<a name="wp1046753"> </a><p class="pBody">
+With one argument, interpret it as the date in milliseconds. For example, specify the time 1/2 second before midnight of December 31, 1969 as -500 milliseconds.
+</p>
+<a name="wp1046754"> </a><p class="pBody">
+With two arguments, interpret them as seconds and (non-negative) nanoseconds. For example, specify the time 1/2 second before midnight of December 31, 1969 as -1 seconds plus 500,000,000 nanoseconds.
+</p>
+<a name="wp1046755"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1059132"> </a><p class="pBody">
+<a  href="rv_java_ref59.htm#wp1059060">Representations</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

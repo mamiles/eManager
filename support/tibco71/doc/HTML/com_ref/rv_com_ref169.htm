@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvCmListener.confirmMsg</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;9	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1145105"> </a><h2 class="pNewHTMLPage">
+TibrvCmListener.confirmMsg
+</h2>
+<hr />
+<a name="wp1145106"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1145107"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+TibrvCmListener.<code class="cCodeBold">confirmMsg</code> message<a name="wp1145108"> </a>
+</pre></div>
+<a name="wp1145109"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1145111"> </a><p class="pBody">
+Explicitly confirm delivery of a certified message.
+</p>
+<a name="wp1145112"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1145113"> </a><p class="pBody">
+Use this method only in programs that override automatic confirmation (see <a  href="rv_com_ref178.htm#wp1131485"><code class="cCode">TibrvCmListener.setExplicitConfirm</code> </a>). The default behavior of certified listeners is to automatically confirm delivery when the callback method returns.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1145126"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1145128"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1145130"> </a><div class="pCellBody">
+<code class="cCode">message</code>
+</div>
+</td>
+    <td><a name="wp1145132"> </a><div class="pCellBody">
+<a  href="rv_com_ref34.htm#wp1055151"><code class="cCode">TibrvMsg</code></a>
+</div>
+<a name="wp1157993"> </a><div class="pCellBody">
+Confirm receipt of this message.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1145134"> </a><h4 class="pHeading3">
+Unregistered Message
+</h4>
+<a name="wp1145135"> </a><p class="pBody">
+When a CM listener receives a labeled message, its behavior depends on context:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1145136"> </a><div class="pSmartList1"><li >If a CM listener is registered for certified delivery, it presents the supplementary information to the callback method. If the sequence number is present, then the receiving program can confirm delivery.</li></div>
+
+<a name="wp1145137"> </a><div class="pSmartList1"><li >If a CM listener is <em class="cEmphasis">not</em> registered for certified delivery with the sender, it presents the sender&#8217;s name to the callback method, but omits the sequence number. In this case, the receiving program cannot confirm delivery; <a  href="rv_com_ref169.htm#wp1145105"><code class="cCode">TibrvCmListener.confirmMsg</code></a> reports the error <a  href="rv_com_ref217.htm#wp1188775"><code class="cCode">TIBRVCOM_NOT_PERMITTED</code></a>.</li></div>
+
+<a name="wp1145144"> </a><p class="pBodyRelative">
+Notice that the first labeled message that a program receives on a subject may not be certified; that is, the sender has not registered a certified delivery agreement with the listener. If appropriate, the certified delivery library automatically requests that the sender register the listener for certified delivery. (See <a  href="javascript:WWHClickedPopup('a', 'rv_concepts106.htm#wp1056110');" onMouseOver="WWHShowPopup('a', 'rv_concepts106.htm#wp1056110', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Discovery and Registration for Certified Delivery</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.)
+</p>
+<a name="wp1145151"> </a><p class="pBodyRelative">
+A labeled but uncertified message can also result when the sender explicitly disallows or removes the listener.
+</p>
+</ul></div>
+
+<a name="wp1145152"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1145156"> </a><p class="pBody">
+<a  href="rv_com_ref168.htm#wp1083717"><code class="cCode">TibrvCmListener</code> </a>
+</p>
+<a name="wp1145160"> </a><p class="pBody">
+<a  href="rv_com_ref178.htm#wp1131485"><code class="cCode">TibrvCmListener.setExplicitConfirm</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

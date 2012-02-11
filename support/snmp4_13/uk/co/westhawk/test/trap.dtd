@@ -1,0 +1,53 @@
+<!-- /*
+ * NAME
+ *      $RCSfile: trap.dtd,v $
+ * DESCRIPTION
+ *      [given below]
+ * DELTA
+ *      $Revision: 1.1 $
+ *      $Author: birgit $
+ * CREATED
+ *      $Date: 2001/03/07 12:11:44 $
+ * COPYRIGHT
+ *      Westhawk Ltd
+ * TO DO
+ *
+ */ -->
+
+<!-- all traps -->
+<!ELEMENT traps (default, test*)>
+
+<!-- default -->
+<!ELEMENT default (port, socket_type)>
+
+<!-- a trap test, listen for a certain host -->
+<!ELEMENT test (version, host, port, socket_type, (community | usm))>
+
+<!-- test elements -->
+<!ELEMENT version EMPTY>
+  <!ATTLIST version no (1 | 2c | 3) "1">
+<!ELEMENT host (#PCDATA)>
+<!ELEMENT port (#PCDATA)>
+<!ELEMENT socket_type EMPTY>
+  <!ATTLIST socket_type type (STD | NET) "STD">
+
+<!ELEMENT community (#PCDATA)>
+
+
+<!-- usm elements -->
+<!ELEMENT usm (username, context, auth, priv?)>
+<!ELEMENT username (#PCDATA)>
+<!ELEMENT context (id, name)>
+<!ELEMENT id (#PCDATA)> 
+<!ELEMENT name (#PCDATA)> 
+
+<!ELEMENT auth (aproto, apassw)?>
+<!ATTLIST auth ado (yes | no) "no">
+
+<!ELEMENT aproto (#PCDATA)>
+<!ELEMENT apassw (#PCDATA)> 
+
+<!ELEMENT priv (ppassw?)>
+<!ATTLIST priv pdo (yes | no) "no">
+<!ELEMENT ppassw (#PCDATA)>
+

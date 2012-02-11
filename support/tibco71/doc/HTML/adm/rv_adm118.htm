@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Subject Statistics</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;11	 Protocol Monitor (rvtrace)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1097792"> </a><h2 class="pNewHTMLPage">
+Subject Statistics
+</h2>
+<hr />
+<a name="wp1110539"> </a><p class="pBody">
+The subject table counts multicast and broadcast <em class="cEmphasis">messages</em> (not packets) and organizes statistics by Rendezvous subject name (in addition to UDP service and destination address).
+</p>
+<a name="wp1110589"> </a><p class="pBody">
+<a  href="rv_adm118.htm#wp1120415">Figure&#160;55</a> shows a subject table (from <code class="cCode">rvtrace -addrinfo</code>). The text below introduces important concepts. <a  href="rv_adm118.htm#wp1109936">Table&#160;12</a> describes the columns in detail.
+</p>
+<a name="wp1110720"> </a><p class="pBody">
+<a  href="rv_adm118.htm#wp1120415">Figure&#160;55</a> divides the activity on UDP port 5090 into two subject names, and it divides the activity on port 7500 into 10 subjects.
+</p>
+<a name="wp1120415"> </a><div class="pFigureTitle">
+Figure&#160;55   Subject Statistics&#151;Multicast and Broadcast Data</div><div align="center"><img src="images/rv_adma20.gif" height="401" width="599" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1120417"> </a><h4 class="pHeading3">
+Network Total Row
+</h4>
+<a name="wp1109892"> </a><p class="pBody">
+The first row (immediately after the table and column headings) is a <em class="cEmphasis">network total row;</em> the word <code class="cCode">Totals</code> in the <code class="cCode">Address</code> column is a visual cue. This row shows the grand total of messages that <code class="cCode">rvtrace</code> detected on the network during the interval.
+</p>
+<a name="wp1109896"> </a><p class="pBody">
+The remaining rows display more fine-grained information about those messages&#151;grouping them by UDP service, destination address, subject name, and source address.
+</p>
+<a name="wp1109897"> </a><h4 class="pHeading3">
+Subject Subtotal Groups
+</h4>
+<a name="wp1109901"> </a><p class="pBody">
+A character string in the <a  href="rv_adm118.htm#wp1109984"><code class="cCode">Subject</code></a> column indicates the Rendezvous subject name for its row, and the group of rows that follow it. A blank in this column means that the row has the same subject as the row above, and is part of the same subtotal group. Notice how the pattern of subject names and blanks in the <a  href="rv_adm118.htm#wp1109984"><code class="cCode">Subject</code></a> column visually indicates the subtotal groups. The visual pattern of numbers in the <a  href="rv_adm118.htm#wp1109946"><code class="cCode">Port</code></a> column echoes this division.
+</p>
+<a name="wp1111008"> </a><p class="pBody">
+Each subject subtotal group begins with a subject row (which is also a destination row) followed by one or more source rows.
+</p>
+<a name="wp1110995"> </a><h4 class="pHeading3">
+Destination and Source Rows
+</h4>
+<a name="wp1110996"> </a><p class="pBody">
+<code class="cCode">*</code> flags a row as a <em class="cEmphasis">destination row</em>. A blank (space character) in this column flags a row as a <em class="cEmphasis">source</em> row.
+</p>
+<a name="wp1109907"> </a><p class="pBody">
+Each destination row is the heading and subtotal for the source rows that follow it. For example, consider the destination row with <code class="cCode">arug</code> in the <a  href="rv_adm118.htm#wp1109984"><code class="cCode">Subject</code></a> column. The <a  href="rv_adm118.htm#wp1109969"><code class="cCode">Msgs</code></a> column indicates 4 multicast messages. The two subsequent source rows indicate that those 4 messages came from two sources&#151;<code class="cCode">10.101.2.57</code> sent 2 messages, while <code class="cCode">10.101.2.72</code> sent 2 messages. The subtotal 4 in turn contributes to the grand total 25 in the network total row.
+</p>
+<a name="wp1109914"> </a><p class="pBody">
+A subject row <em class="cEmphasis">governs</em> the source rows below it (until the next subject row). That is, the subject, UDP service (port), and address in the <em class="cEmphasis">governing row</em> apply to those source rows. Similarly, the governing row address implies either multicast or broadcast protocol, and this protocol also applies to the statistics in the source rows that it governs. (Naturally, all of this information also applies to the governing row itself.)
+</p>
+<a name="wp1109920"> </a><h4 class="pHeading3">
+Statistics
+</h4>
+<a name="wp1109921"> </a><p class="pBody">
+In <em class="cEmphasis">destination rows</em> numbers in statistics columns count messages with the destination specified in the <a  href="rv_adm115.htm#wp1128380"><code class="cCode">Address</code></a> column.
+</p>
+<a name="wp1109925"> </a><p class="pBody">
+In <em class="cEmphasis">source rows</em> numbers in statistics columns count messages originating from the IP address in the <a  href="rv_adm115.htm#wp1128380"><code class="cCode">Address</code></a> column.
+</p>
+<a name="wp1109929"> </a><p class="pBody">
+In <em class="cEmphasis">network total rows</em>, numbers in statistics columns represent the message totals for the network during the interval.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1109936"> </a><div class="pTableTitle">
+Table&#160;12   Subjects Statistics&#151;Column Headings&#160;
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1109940"> </a><div class="pCellHeading">
+Column
+</div>
+</th>
+    <th><a name="wp1109942"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1109946"> </a><div class="pCellBody">
+<code class="cCode">Port</code>
+</div>
+</td>
+    <td><a name="wp1109948"> </a><div class="pCellBody">
+In <em class="cEmphasis">destination subtotal rows,</em> this column contains a UDP port number indicating the Rendezvous service for the group of rows that it begins.
+</div>
+<a name="wp1109952"> </a><div class="pCellBody">
+In <em class="cEmphasis">source rows</em> this column is blank; the service in the nearest preceding destination row also applies to the source row.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1109954"> </a><div class="pCellBody">
+*
+</div>
+</td>
+    <td><a name="wp1109956"> </a><div class="pCellBody">
+Asterisk (<code class="cCode">*</code>) in this unlabeled column indicates a destination subtotal row.
+</div>
+<a name="wp1109957"> </a><div class="pCellBody">
+Blank in this column indicates a source row.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1109961"> </a><div class="pCellBody">
+<code class="cCode">Address</code>
+</div>
+</td>
+    <td><a name="wp1109963"> </a><div class="pCellBody">
+In <em class="cEmphasis">destination rows</em> this column shows the destination address shared among a group of messages. It can be an IP address or a multicast group.
+</div>
+<a name="wp1109964"> </a><div class="pCellBody">
+In <em class="cEmphasis">source rows</em> this column shows the IP address from which group of messages originate.
+</div>
+<a name="wp1109965"> </a><div class="pCellBody">
+In <em class="cEmphasis">network total rows</em>, this column contains the word <code class="cCode">Totals</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1109969"> </a><div class="pCellBody">
+<code class="cCode">Msgs</code>
+</div>
+</td>
+    <td><a name="wp1109971"> </a><div class="pCellBody">
+Rendezvous messages.
+</div>
+<a name="wp1109972"> </a><div class="pCellBody">
+This column shows the number of messages that use multicast or broadcast protocols.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1109975"> </a><div class="pCellBody">
+<code class="cCode">Bytes</code>
+</div>
+</td>
+    <td><a name="wp1109977"> </a><div class="pCellBody">
+Data bytes.
+</div>
+<a name="wp1109978"> </a><div class="pCellBody">
+This column sums the number of payload bytes over the messages (as counted in the <a  href="rv_adm118.htm#wp1109969"><code class="cCode">Msgs</code></a> column).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1109984"> </a><div class="pCellBody">
+<code class="cCode">Subject</code>
+</div>
+</td>
+    <td><a name="wp1111190"> </a><div class="pCellBody">
+This column shows the Rendezvous subject name shared among the messages in a subtotal group.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1121080"> </a><h3 class="pHeading2">
+Subject Table Diagnoses
+</h3>
+<a name="wp1121082"> </a><p class="pBody">
+The subject table reveals interesting information about the subject name space, and its use within the network:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1121091"> </a><div class="pSmartList1"><li >Programs that send messages in violation of the subject usage guidelines for your enterprise</li></div>
+
+<a name="wp1121148"> </a><div class="pSmartList1"><li >Duplicate process instances of a sending program</li></div>
+
+<a name="wp1121104"> </a><div class="pSmartList1"><li >Subjects that consume large portions of network capacity</li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

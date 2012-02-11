@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvTransport_SendRequest()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;8	 Transport";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1067237"> </a><h2 class="pNewHTMLPage">
+tibrvTransport_SendRequest()
+</h2>
+<hr />
+<a name="wp1067241"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1067242"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvTransport_SendRequest</code>(<a name="wp1116343"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref132.htm#wp1066635"><code class="cCode">tibrvTransport</code></a>&#160;&#160;&#160;transport,<a name="wp1116344"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;message,<a name="wp1116348"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a>*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;reply,<a name="wp1116345"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128761"><code class="cCode">tibrv_f64</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;timeout);<a name="wp1075687"> </a>
+</pre></div>
+<a name="wp1087637"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1067249"> </a><p class="pBody">
+Send a request message and wait for a reply.
+</p>
+<a name="wp1088636"> </a><h4 class="pHeading3">
+Blocking can Stall Event Dispatch
+</h4>
+<a name="wp1201857"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1304115"> </a><p class="pBody">
+This call blocks all other activity on its program thread. If appropriate, programmers must ensure that other threads continue dispatching events on its queues.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1131579"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1131558"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1131560"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1131562"> </a><div class="pCellBody">
+<code class="cCode">transport</code>
+</div>
+</td>
+    <td><a name="wp1131564"> </a><div class="pCellBody">
+Send the message and receive the reply on this transport.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1131566"> </a><div class="pCellBody">
+<code class="cCode">message</code>
+</div>
+</td>
+    <td><a name="wp1131568"> </a><div class="pCellBody">
+Send this outbound message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1131570"> </a><div class="pCellBody">
+<code class="cCode">reply</code>
+</div>
+</td>
+    <td><a name="wp1131572"> </a><div class="pCellBody">
+The program supplies a location, and the function stores the inbound reply in that location.
+</div>
+<a name="wp1131573"> </a><div class="pCellBody">
+The program need not create the reply message, nor allocate space for it. However, the program <em class="cEmphasis">must destroy</em> the reply message, even though it did not create it.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1131575"> </a><div class="pCellBody">
+<code class="cCode">timeout</code>
+</div>
+</td>
+    <td><a name="wp1131577"> </a><div class="pCellBody">
+Maximum time (in seconds) that this call can block while waiting for a reply.
+</div>
+<a name="wp1148438"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_WAIT_FOREVER</code> (-1) indicates no timeout (wait without limit for a reply).
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1131614"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1131615"> </a><p class="pBody">
+The status code <a  href="rv_c_ref157.htm#wp1079394"><code class="cCode">TIBRV_TIMEOUT</code></a> indicates that the specified time expired before receiving a reply.
+</p>
+<a name="wp1163459"> </a><p class="pBody">
+Programs that receive and process the request message cannot determine that the sender has blocked until a reply arrives.
+</p>
+<a name="wp1131619"> </a><p class="pBody">
+The request message must have a valid destination subject; see <a  href="rv_c_ref63.htm#wp1005928"><code class="cCode">tibrvMsg_SetSendSubject()</code> </a>.
+</p>
+<a name="wp1131594"> </a><h4 class="pHeading3">
+Operation
+</h4>
+<a name="wp1131595"> </a><p class="pBody">
+This function operates in several synchronous steps:
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1169467"> </a><div class="pSmartList1"><li value="1">Create an inbox name, and an event that listens to it. Overwrite any existing reply subject of <code class="cCode">message</code> with the inbox name.</li></div>
+
+<a name="wp1131597"> </a><div class="pSmartList1"><li value="2">Send the outbound <code class="cCode">message</code>.</li></div>
+
+<a name="wp1131598"> </a><div class="pSmartList1"><li value="3">Block until the listener receives a reply; if the time limit expires before a reply arrives, return the status code <a  href="rv_c_ref157.htm#wp1079394"><code class="cCode">TIBRV_TIMEOUT</code></a>. (The reply circumvents the event queue mechanism, so it is not necessary to explicitly call dispatch methods in the program.)</li></div>
+
+<a name="wp1131602"> </a><div class="pSmartList1"><li value="4">Store the reply in the location specified by the <code class="cCode">reply</code> parameter.</li></div>
+
+<a name="wp1131603"> </a><div class="pSmartList1"><li value="5">Return.</li></div>
+
+</ol></div>
+
+<a name="wp1131580"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1067286"> </a><p class="pBody">
+<a  href="rv_c_ref36.htm#wp1064846"><code class="cCode">tibrvMsg_Create()</code> </a>
+</p>
+<a name="wp1067290"> </a><p class="pBody">
+<a  href="rv_c_ref132.htm#wp1066635"><code class="cCode">tibrvTransport</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

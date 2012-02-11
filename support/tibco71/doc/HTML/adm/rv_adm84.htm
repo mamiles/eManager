@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Ensure Continuous Service</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;9	 Current Value Cache";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1024530"> </a><h2 class="pNewHTMLPage">
+Ensure Continuous Service
+</h2>
+<hr />
+<a name="wp1024531"> </a><p class="pBody">
+Interruptions in <code class="cCode">rvcache</code> service can result in two undesirable consequences:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1024532"> </a><div class="pSmartList1"><li >Programs that query during the interruption do not receive the cached data.</li></div>
+
+<a name="wp1024533"> </a><div class="pSmartList1"><li >The cache does not record data from messages sent during the interruption. Gaps in the cache persist after the interruption.</li></div>
+
+</ul></div>
+
+<a name="wp1024534"> </a><p class="pBody">
+To minimize these effects, we recommend that system administrators consider these strategies:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1024535"> </a><div class="pSmartList1"><li >Avoid interruptions whenever possible. </li></div>
+
+<a name="wp1024536"> </a><p class="pBodyRelative">
+For example, shift <code class="cCode">rvcache</code> (along with its disk file) to an alternate host computer before scheduled downtime. Since <code class="cCode">rvcache</code> is independent of the computer on which it runs, switching hosts can be an effective remedy.
+</p>
+<a name="wp1024537"> </a><div class="pSmartList1"><li >Reduce the length of unavoidable interruptions.</li></div>
+
+<a name="wp1024538"> </a><p class="pBodyRelative">
+Monitor the health of the <code class="cCode">rvcache</code> process and its host computer. If any problem prevents smooth operation, promptly correct the situation or shift <code class="cCode">rvcache</code> to an alternate host computer.
+</p>
+<a name="wp1024539"> </a><div class="pSmartList1"><li >Run <code class="cCode">rvcache</code> as a fault-tolerant service.</li></div>
+
+<a name="wp1024543"> </a><p class="pBodyRelative">
+For details, see <a  href="rv_adm86.htm#wp1024692">Fault Tolerance</a>.
+</p>
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

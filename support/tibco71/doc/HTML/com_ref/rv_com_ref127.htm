@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvTransport.createInbox()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;6	 Transports";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1040342"> </a><h2 class="pNewHTMLPage">
+TibrvTransport.createInbox()
+</h2>
+<hr />
+<a name="wp1040343"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1040345"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+inboxSubject = TibrvTransport.<code class="cCodeBold">createInbox</code>()<a name="wp1040375"> </a>
+</pre></div>
+<a name="wp1040348"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1040413"> </a><p class="pBody">
+Create a unique inbox subject name.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1121655"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1121657"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1121659"> </a><div class="pCellBody">
+<code class="cCode">inboxSubject</code>
+</div>
+</td>
+    <td><a name="wp1121661"> </a><div class="pCellBody">
+<code class="cCode">String</code>
+</div>
+<a name="wp1121662"> </a><div class="pCellBody">
+Return the new inbox subject name.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1040350"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1040417"> </a><p class="pBody">
+This method creates inbox names that are unique throughout the transport scope.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1040418"> </a><div class="pSmartList1"><li >For network transports, inbox subject names are unique across all processes within the local router domain&#151;that is, anywhere that direct multicast contact is possible. The inbox name is not necessarily unique outside of the local router domain.</li></div>
+
+<a name="wp1040419"> </a><div class="pSmartList1"><li >For the intra-process transport, inbox names are unique throughout the process.</li></div>
+
+</ul></div>
+
+<a name="wp1040420"> </a><p class="pBody">
+This method creates only the unique name for an inbox; it does not begin listening for messages on that subject name. To begin listening, pass the inbox name as the <code class="cCode">subject</code> argument to <a  href="rv_com_ref82.htm#wp1033788"><code class="cCode">TibrvListener.create</code></a>. The inbox name is only valid for use with the same transport that created it. When calling <a  href="rv_com_ref82.htm#wp1033788"><code class="cCode">TibrvListener.create</code></a>, you <em class="cEmphasis">must</em> pass the same transport object that created the inbox subject name.
+</p>
+<a name="wp1040427"> </a><p class="pBody">
+Remember that other programs have no information about an inbox subject name until the listening program uses it as a reply subject in an outbound message.
+</p>
+<a name="wp1040429"> </a><p class="pBody">
+Use inbox subject names for delivery to a specific destination. In the context of a network transport, an inbox destination specifies unicast (point-to-point) delivery.
+</p>
+<a name="wp1108235"> </a><p class="pBody">
+Rendezvous routing daemons (<code class="cCode">rvrd</code>) translate inbox subject names that appear as the send subject or reply subject of a message. They do not translate inbox subject names within the data fields of a message.
+</p>
+<a name="wp1155716"> </a><p class="pBody">
+Calling this method on a valid object yields the error <a  href="rv_com_ref218.htm#wp1189013"><code class="cCode">TIBRVCOM_ALREADY_INITIALIZED</code></a>.</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1238328"> </a><p class="pBody">
+This method is the <em class="cEmphasis">only</em> legal way for programs to create inbox subject names.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1040362"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1040363"> </a><p class="pBody">
+<a  href="rv_com_ref62.htm#wp1107851"><code class="cCode">TibrvMsg.setReplySubject</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

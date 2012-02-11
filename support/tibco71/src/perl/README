@@ -1,0 +1,66 @@
+Configuring TIB/Rendezvous extensions into Perl5
+------------------------------------------------
+                        *******IMPORTANT!********
+
+If you are a user of perl on a UNIX derived operating system, you will
+obtain the best results if thread support is enabled in your perl
+interperter.  If thread support is not enabled, then you may have
+stability issues under high message rates.
+
+                        *******IMPORTANT!********
+
+1.  If you do not have a perl installation you will need to install perl
+    first.
+
+
+2.  set the environment variable TIBRV_DIR to point to the directory where
+    you installed TIB/Rendezvous into.
+
+    UNIX:
+    -----
+    (sh) $ export TIBRV_DIR=<installation_directory>
+    (csh)% setenv TIBRV_DIR <installation_directory>
+
+    Windows:
+    --------
+    set TIBRV_DIR=<installation_directory>
+
+
+    Where <installation_directory> is the directory you installed
+    TIB/Rendezvous V6 into.
+
+3.  Build and install the perl extension
+
+    If you do not have write permission to the directory where the
+    TIB/Rendezvous perl extensions are installed you can copy them to a
+    directory where you have write permission.
+
+    cd into the directory where the perl extension is located perform the
+    following:
+
+    perl Makefile.PL
+
+    When that is done you can then do:
+
+    make
+
+    and then
+
+    make install
+
+    (On Windows run nmake or GNU make should work as well.)
+
+4.  Running TIB/Rendezvous perl programs.
+
+    Once TIB/Rendezvous enabled perl is installed you can start writing
+    perl programs that use TIB/Rendezvous.  There is provided in the src
+    directory where TIB/Rendezvous was installed a perl directory that
+    contains some simple examples on how to use TIB/Rendezvous from perl.
+
+    You can use the C programming as a reference for creating perl
+    programs.
+
+    On some platforms you may need to set environment variables in order
+    for the system to find the TIB/Rendezvous shared libraries.  On most
+    UNIX based systems this is LD_LIBRARY_PATH ( or SHLIB_PATH on HP-UX ).
+

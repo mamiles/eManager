@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+ <globalConfiguration>
+  <parameter name="adminPassword" value="admin"/>
+  <parameter name="attachments.Directory" value="/opt/CSCOemgmt/tomcat/webapps/emanager/WEB-INF/attachments"/>
+  <parameter name="sendMultiRefs" value="true"/>
+  <parameter name="sendXsiTypes" value="true"/>
+  <parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <parameter name="sendXMLDeclaration" value="true"/>
+  <parameter name="axis.sendMinimizedElements" value="true"/>
+  <requestFlow>
+   <handler type="java:org.apache.axis.handlers.JWSHandler">
+    <parameter name="scope" value="session"/>
+   </handler>
+   <handler type="java:org.apache.axis.handlers.JWSHandler">
+    <parameter name="scope" value="request"/>
+    <parameter name="extension" value=".jwr"/>
+   </handler>
+  </requestFlow>
+ </globalConfiguration>
+ <handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <service name="LogManager" provider="java:RPC">
+  <parameter name="allowedMethods" value="*"/>
+  <parameter name="wsdlPortType" value="LogManager"/>
+  <parameter name="scope" value="Session"/>
+  <parameter name="className" value="com.cisco.eManager.soap.log.LogManagerSoapBindingSkeleton"/>
+  <parameter name="wsdlServicePort" value="LogManager"/>
+  <parameter name="wsdlTargetNamespace" value="http://log.soap.eManager.cisco.com"/>
+  <parameter name="wsdlServiceElement" value="LogManagerService"/>
+ </service>
+ <service name="AdminManager" provider="java:RPC">
+  <parameter name="allowedMethods" value="*"/>
+  <parameter name="wsdlPortType" value="AdminManager"/>
+  <parameter name="scope" value="Session"/>
+  <parameter name="className" value="com.cisco.eManager.soap.admin.AdminManagerSoapBindingSkeleton"/>
+  <parameter name="wsdlServicePort" value="AdminManager"/>
+  <parameter name="wsdlTargetNamespace" value="http://admin.soap.eManager.cisco.com"/>
+  <parameter name="wsdlServiceElement" value="AdminManagerService"/>
+ </service>
+ <service name="AuditLogManager" provider="java:RPC">
+  <parameter name="allowedMethods" value="*"/>
+  <parameter name="wsdlPortType" value="AuditLogManager"/>
+  <parameter name="scope" value="Session"/>
+  <parameter name="className" value="com.cisco.eManager.soap.auditlog.AuditLogManagerSoapBindingSkeleton"/>
+  <parameter name="wsdlServicePort" value="AuditLogManager"/>
+  <parameter name="wsdlTargetNamespace" value="http://auditlog.soap.eManager.cisco.com"/>
+  <parameter name="wsdlServiceElement" value="AuditLogManagerService"/>
+ </service>
+ <service name="EventManager" provider="java:RPC">
+  <parameter name="allowedMethods" value="*"/>
+  <parameter name="wsdlPortType" value="EventManager"/>
+  <parameter name="scope" value="Session"/>
+  <parameter name="className" value="com.cisco.eManager.soap.event.EventManagerSoapBindingSkeleton"/>
+  <parameter name="wsdlServicePort" value="EventManager"/>
+  <parameter name="wsdlTargetNamespace" value="http://event.soap.eManager.cisco.com"/>
+  <parameter name="wsdlServiceElement" value="EventManagerService"/>
+ </service>
+ <service name="ProcessManager" provider="java:RPC">
+  <parameter name="allowedMethods" value="*"/>
+  <parameter name="wsdlPortType" value="ProcessManager"/>
+  <parameter name="scope" value="Session"/>
+  <parameter name="className" value="com.cisco.eManager.soap.process.ProcessManagerSoapBindingSkeleton"/>
+  <parameter name="wsdlServicePort" value="ProcessManager"/>
+  <parameter name="wsdlTargetNamespace" value="http://process.soap.eManager.cisco.com"/>
+  <parameter name="wsdlServiceElement" value="ProcessManagerService"/>
+ </service>
+ <service name="AdminService" provider="java:MSG">
+  <parameter name="allowedMethods" value="AdminService"/>
+  <parameter name="enableRemoteAdmin" value="false"/>
+  <parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <namespace>http://xml.apache.org/axis/wsdd/</namespace>
+  <namespace>http://xml.apache.org/axis/wsdd/</namespace>
+  <namespace>http://xml.apache.org/axis/wsdd/</namespace>
+  <namespace>http://xml.apache.org/axis/wsdd/</namespace>
+  <namespace>http://xml.apache.org/axis/wsdd/</namespace>
+ </service>
+ <service name="Version" provider="java:RPC">
+  <parameter name="allowedMethods" value="getVersion"/>
+  <parameter name="className" value="org.apache.axis.Version"/>
+ </service>
+ <service name="InventoryManager" provider="java:RPC">
+  <parameter name="allowedMethods" value="*"/>
+  <parameter name="wsdlPortType" value="InventoryManager"/>
+  <parameter name="scope" value="Session"/>
+  <parameter name="className" value="com.cisco.eManager.soap.inventory.InventoryManagerSoapBindingSkeleton"/>
+  <parameter name="wsdlServicePort" value="InventoryManager"/>
+  <parameter name="wsdlTargetNamespace" value="http://inventory.soap.eManager.cisco.com"/>
+  <parameter name="wsdlServiceElement" value="InventoryManagerService"/>
+ </service>
+ <transport name="http">
+  <requestFlow>
+   <handler type="URLMapper"/>
+   <handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </requestFlow>
+ </transport>
+ <transport name="local">
+  <responseFlow>
+   <handler type="LocalResponder"/>
+  </responseFlow>
+ </transport>
+</deployment>

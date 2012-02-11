@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Avoid Duplicates</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;9	 Current Value Cache";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1024516"> </a><h2 class="pNewHTMLPage">
+Avoid Duplicates
+</h2>
+<hr />
+<a name="wp1024518"> </a><p class="pBody">
+Listening programs rarely profit from receiving duplicate copies of the current data. To prevent duplicates, consider one of these strategies:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1024519"> </a><div class="pSmartList1"><li >Run exactly one <code class="cCode">rvcache</code> service.</li></div>
+
+<a name="wp1024520"> </a><div class="pSmartList1"><li >Ensure that <code class="cCode">rvcache</code> services store disjoint subject sets.</li></div>
+
+<a name="wp1024521"> </a><p class="pBodyRelative">
+When two or more <code class="cCode">rvcache</code> services store the same subjects, then duplicate messages can result. It the subject sets do not overlap, then duplication cannot occur.
+</p>
+<a name="wp1024522"> </a><div class="pSmartList1"><li >Segregate <code class="cCode">rvcache</code> services by listening on different UDP or PGM services.</li></div>
+
+<a name="wp1024523"> </a><p class="pBodyRelative">
+You can use different UDP or PGM services to isolate groups of program processes so that members of each group receive Rendezvous messages exclusively from other members of the same group. In such cases, configure a separate instance of <code class="cCode">rvcache</code> for each group by setting its service parameter to match the UDP or PGM service used by group members. For more detail about this parameter, see <a  href="rv_adm15.htm#wp1019269">Service Selection</a>.
+</p>
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

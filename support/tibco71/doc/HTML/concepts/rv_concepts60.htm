@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Event System Overview</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;7	 Events";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1023437"> </a><h2 class="pNewHTMLPage">
+Event System Overview
+</h2>
+<hr />
+<a name="wp1024348"> </a><p class="pBody">
+The event system consists of several components.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1024381"> </a><div class="pTableTitle">
+Table&#160;16   Event System Components&#160;
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1024357"> </a><div class="pCellHeading">
+Component
+</div>
+</th>
+    <th><a name="wp1024359"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1024361"> </a><div class="pCellBody">
+Event Object
+</div>
+</td>
+    <td><a name="wp1024363"> </a><div class="pCellBody">
+Represents program interest in a set of events, and the occurrence of a matching event. See <a  href="rv_concepts61.htm#wp1024343">Events</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1024365"> </a><div class="pCellBody">
+Event Driver
+</div>
+</td>
+    <td><a name="wp1024367"> </a><div class="pCellBody">
+The event driver recognizes the occurrence of events, and places them in the appropriate event queues for dispatch. Rendezvous software starts the event driver as part of its process initialization sequence (the <em class="cEmphasis">open</em> call). See <a  href="rv_concepts62.htm#wp1024467">Event Driver</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1024369"> </a><div class="pCellBody">
+Event Queue
+</div>
+</td>
+    <td><a name="wp1024371"> </a><div class="pCellBody">
+A program creates event queues to hold event objects in order until the program can process them. See <a  href="rv_concepts63.htm#wp1024535">Event Queues</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1024410"> </a><div class="pCellBody">
+Event Queue Group
+</div>
+</td>
+    <td><a name="wp1024413"> </a><div class="pCellBody">
+Programs can organize event queues into groups for fine-grained control of dispatch priority.
+</div>
+<a name="wp1024568"> </a><div class="pCellBody">
+See <a  href="rv_concepts63.htm#wp1067980">Queue Groups and Priority</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1024373"> </a><div class="pCellBody">
+Event Dispatch Call
+</div>
+</td>
+    <td><a name="wp1024375"> </a><div class="pCellBody">
+A Rendezvous function call that removes an event from an event queue or queue group, and runs the appropriate callback function to process the event.
+</div>
+<a name="wp1027763"> </a><div class="pCellBody">
+See <a  href="rv_concepts63.htm#wp1025607">Dispatch</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1024377"> </a><div class="pCellBody">
+Callback Function
+</div>
+</td>
+    <td><a name="wp1024379"> </a><div class="pCellBody">
+A program defines callback functions to process events asynchronously.
+</div>
+<a name="wp1024588"> </a><p class="pBody">
+See <a  href="rv_concepts64.htm#wp1025782">Callback Functions</a>.
+</p>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1052612"> </a><div class="pCellBody">
+Dispatcher Thread
+</div>
+</td>
+    <td><a name="wp1052614"> </a><div class="pCellBody">
+Programs usually dedicate one or more threads to the task of dispatching events. Callback functions run in these threads.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

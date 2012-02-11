@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvMsg.setStringEncoding()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1117988"> </a><h2 class="pNewHTMLPage">
+TibrvMsg.setStringEncoding()
+</h2>
+<hr />
+<a name="wp1107858"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1107859"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+static void <code class="cCodeBold">setStringEncoding</code>(<a name="wp1107860"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;&#160;&#160;encoding)<a name="wp1107861"> </a>
+&#160;&#160;throws java.io.UnsupportedEncodingException<a name="wp1107862"> </a>
+</pre></div>
+<a name="wp1107863"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1107864"> </a><p class="pBody">
+Set the character encoding for converting between Java Unicode strings and wire format strings.
+</p>
+<a name="wp1107865"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1107866"> </a><p class="pBody">
+This method overrides the default string encoding for all strings in all messages.
+</p>
+<a name="wp1107868"> </a><p class="pBody">
+<code class="cCode">null</code> indicates the ISO 8859-1 (Latin-1) encoding:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1107869"> </a><div class="pSmartList1"><li >To translate Unicode strings to Latin-1 strings, disregard the <em class="cEmphasis">null</em> high byte of each character. Unicode characters with non-null high bytes are out of the Latin-1 range.</li></div>
+
+<a name="wp1107870"> </a><div class="pSmartList1"><li >To translate Latin-1 strings to Unicode strings, pad each character with a <code class="cCode">null</code> high byte.</li></div>
+
+</ul></div>
+
+<a name="wp1122737"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1286452"> </a><p class="pBody">
+Do <em class="cEmphasis">not</em> call this method while any listener events are valid. We recommend setting it at program start, before creating any listeners.
+</p>
+</td>
+</tr>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/note.gif" border="0" /></td>
+    <td><a name="wp1286441"> </a><p class="pBody">
+Encoding changes are not retroactive; that is, changing the encoding only affects future string translations. For further details, see <a  href="rv_java_ref3.htm#wp1073860">Strings and Character Encodings</a>.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1107874"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1107880"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1107882"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1107884"> </a><div class="pCellBody">
+<code class="cCode">encoding</code>
+</div>
+</td>
+    <td><a name="wp1107886"> </a><div class="pCellBody">
+Use this encoding.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1107888"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1107892"> </a><p class="pBody">
+<a  href="rv_java_ref3.htm#wp1073860">Strings and Character Encodings</a>
+</p>
+<a name="wp1108751"> </a><p class="pBody">
+<a  href="rv_java_ref45.htm#wp1107129"><code class="cCode">TibrvMsg.getStringEncoding()</code> </a>
+</p>
+<a name="wp1238951"> </a><p class="pBody">
+<a href="http://www.unicode.org" target="_blank">
+<span class="cWebJump">www.unicode.org</span></a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

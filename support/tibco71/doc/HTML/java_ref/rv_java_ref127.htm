@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvDispatcher</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1105035"> </a><h2 class="pNewHTMLPage">
+TibrvDispatcher
+</h2>
+<hr />
+<a name="wp1105385"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1105386"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+class com.tibco.tibrv.<code class="cCodeBold">TibrvDispatcher</code><a name="wp1105387"> </a>
+&#160;&#160;extends java.lang.Thread<a name="wp1281194"> </a>
+</pre></div>
+<a name="wp1105388"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1105389"> </a><p class="pBody">
+Dispatch events from a queue or queue group.
+</p>
+<a name="wp1105390"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1106724"> </a><p class="pBody">
+Upon creation, this thread class loops indefinitely, repeatedly dispatching a queue or queue group.
+</p>
+<a name="wp1107617"> </a><p class="pBody">
+This class is a programming convenience. Programs can implement specialized dispatcher threads, and use them instead of this class.
+</p>
+<a name="wp1106655"> </a><h4 class="pHeading3">
+Exceptions
+</h4>
+<a name="wp1106806"> </a><p class="pBody">
+If the thread catches a <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a>, it presents the <a  href="javascript:WWHClickedPopup('a', 'rv_concepts168.htm#wp1063810');" onMouseOver="WWHShowPopup('a', 'rv_concepts168.htm#wp1063810', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">DISPATCHER.THREAD_EXITED</code></a> advisory on the process transport, and exits. (The program destroyed the queue or queue group object, so this thread can no longer dispatch it.)
+</p>
+<a name="wp1106825"> </a><p class="pBody">
+If the thread catches an interruption (<code class="cCode">java.lang.InterruptedException</code>), it presents the <a  href="javascript:WWHClickedPopup('a', 'rv_concepts168.htm#wp1063810');" onMouseOver="WWHShowPopup('a', 'rv_concepts168.htm#wp1063810', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">DISPATCHER.THREAD_EXITED</code></a> advisory on the process transport, and exits.
+</p>
+<a name="wp1109800"> </a><h4 class="pHeading3">
+Interrupting a Dispatcher Thread
+</h4>
+<a name="wp1109857"> </a><p class="pBody">
+To interrupt a dispatcher thread in the Java implementation (see <a  href="rv_java_ref21.htm#wp1020167"><code class="cCode">Tibrv.open()</code> </a>), use either the Java method <code class="cCode">Thread.interrupt()</code> or <code class="cCode">TibrvDispatcher.destroy()</code>.
+</p>
+<a name="wp1109861"> </a><p class="pBody">
+In either the JNI (native) implementation or the Java implementation, you can interrupt a dispatcher thread by calling its <code class="cCode">TibrvDispatcher.destroy()</code> method. Destroying the thread insures prompt thread exit&#151;at the latest, after the return of a program callback method (if one is in progress).</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1105410"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1105412"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1105414"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1105419"> </a><div class="pCellBody">
+<a  href="rv_java_ref128.htm#wp1106308"><code class="cCode">TibrvDispatcher()</code></a>
+</div>
+</td>
+    <td><a name="wp1105424"> </a><div class="pCellBody">
+<a  href="rv_java_ref128.htm#wp1106320">Create a dispatcher thread.</a>
+</div>
+</td>
+    <td><a name="wp1105429"> </a><div class="pCellBody">
+<a  href="rv_java_ref128.htm#wp1106308">170</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1110442"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1236599"> </a><div class="pCellHeading">
+Constant
+</div>
+</th>
+    <th><a name="wp1236601"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1236603"> </a><div class="pCellBody">
+<code class="cCode">TibrvDispatcher.DEFAULT_NAME</code>
+</div>
+</td>
+    <td><a name="wp1236605"> </a><div class="pCellBody">
+When the constructor does not receive a thread name, it gives the new dispatcher thread this default name.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1233455"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1177358"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1177397"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.activeCount</code>
+</p>
+<a name="wp1177398"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.checkAccess</code>
+</p>
+<a name="wp1177399"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.countStackFrames</code>
+</p>
+<a name="wp1180764"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.currentThread</code>
+</p>
+<a name="wp1180765"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.destroy</code> (override)
+</p>
+<a name="wp1180766"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.dumpStack</code>
+</p>
+<a name="wp1177403"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.enumerate</code>
+</p>
+<a name="wp1177404"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.getContextClassLoader</code>
+</p>
+<a name="wp1177405"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.getName</code>
+</p>
+<a name="wp1177406"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.getPriority</code>
+</p>
+<a name="wp1177407"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.getThreadGroup</code>
+</p>
+<a name="wp1177408"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.interrupt</code>
+</p>
+<a name="wp1177409"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.interrupted</code>
+</p>
+<a name="wp1177410"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.isAlive</code>
+</p>
+<a name="wp1177411"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.isDaemon</code>
+</p>
+<a name="wp1177424"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.isInterrupted</code>
+</p>
+<a name="wp1177425"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.join</code>
+</p>
+<a name="wp1180833"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.resume</code>
+</p>
+<a name="wp1180834"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.run</code> (override)
+</p>
+<a name="wp1180835"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.setContextClassLoader</code>
+</p>
+<a name="wp1177429"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.setDaemon</code>
+</p>
+<a name="wp1177430"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.setName</code>
+</p>
+<a name="wp1177431"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.setPriority</code>
+</p>
+<a name="wp1177432"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.sleep</code>
+</p>
+<a name="wp1177433"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.start</code>
+</p>
+<a name="wp1177434"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.stop</code>
+</p>
+<a name="wp1177435"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.suspend</code>
+</p>
+<a name="wp1177436"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.toString</code>
+</p>
+<a name="wp1177420"> </a><p class="pBody">
+<code class="cCode">java.lang.Thread.yield</code>
+</p>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1177360"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.equals</code>
+</p>
+<a name="wp1177361"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.getClass</code>
+</p>
+<a name="wp1177362"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.hashCode</code>
+</p>
+<a name="wp1177363"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notify</code>
+</p>
+<a name="wp1177364"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notifyAll</code>
+</p>
+<a name="wp1177366"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.wait</code>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1109878"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1110028"> </a><p class="pBody">
+<a  href="rv_java_ref19.htm#wp1122171"><code class="cCode">Tibrv.isNativeImpl()</code> </a>
+</p>
+<a name="wp1180926"> </a><p class="pBody">
+<a  href="rv_java_ref21.htm#wp1020167"><code class="cCode">Tibrv.open()</code> </a>
+</p>
+<a name="wp1180930"> </a><p class="pBody">
+<a  href="rv_java_ref101.htm#wp1037052"><code class="cCode">TibrvQueue.dispatch()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

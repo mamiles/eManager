@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by marco matchefts (Cisco Systems, Inc.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="auditMgrMsg">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="retrieveAuditLogEntries" type="AuditLogSearchCriteriaType"/>
+				<xs:element name="deleteAuditLogEntries" type="AuditLogDeletionCriteriaType"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="auditMgrResp">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="auditLogEntries" type="AuditLogEntryType" maxOccurs="unbounded"/>
+				<xs:element name="noDataResponse" type="xs:string"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="DateSearchCriteriaType">
+		<xs:sequence>
+			<xs:element name="StartDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="EndDate" type="xs:dateTime" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NumericSearchCriteriaType">
+		<xs:sequence>
+			<xs:element name="Start" type="xs:long" minOccurs="0"/>
+			<xs:element name="End" type="xs:long" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ManagedObjectIdType">
+		<xs:sequence>
+			<xs:element name="ObjectType" type="ObjectTypeType"/>
+			<xs:element name="ObjectKey" type="ObjectKeyType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ObjectTypeType">
+		<xs:choice>
+			<xs:element name="HostAgent" type="xs:integer"/>
+			<xs:element name="ApplicationType" type="xs:integer"/>
+			<xs:element name="ApplicationInstance" type="xs:integer"/>
+			<xs:element name="PhysicalHierarchyContainer" type="xs:integer"/>
+			<xs:element name="ApplicationHierarchyContainer" type="xs:integer"/>
+			<xs:element name="MgmtPolicy" type="xs:integer"/>
+			<xs:element name="Instrumentation" type="xs:integer"/>
+			<xs:element name="UserAccount" type="xs:integer"/>
+			<xs:element name="Event" type="xs:integer"/>
+			<xs:element name="AuditLog" type="xs:integer"/>
+			<xs:element name="SecurityRole" type="xs:integer"/>
+			<xs:element name="Solution" type="xs:integer"/>
+			<xs:element name="SolutionHierarchyContainer" type="xs:integer"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:simpleType name="ObjectKeyType">
+		<xs:restriction base="xs:long"/>
+	</xs:simpleType>
+	<xs:complexType name="AuditDomainType">
+		<xs:choice>
+			<xs:element name="Inventory" type="xs:integer"/>
+			<xs:element name="Event" type="xs:integer"/>
+			<xs:element name="Process" type="xs:integer"/>
+			<xs:element name="Emanager" type="xs:integer"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="AuditActionType">
+		<xs:choice>
+			<xs:element name="Create" type="xs:integer"/>
+			<xs:element name="Read" type="xs:integer"/>
+			<xs:element name="Update" type="xs:integer"/>
+			<xs:element name="Delete" type="xs:integer"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="AuditLogEntryType">
+		<xs:sequence>
+			<xs:element name="id" type="ManagedObjectIdType"/>
+			<xs:element name="domain" type="AuditDomainType"/>
+			<xs:element name="action" type="AuditActionType"/>
+			<xs:element name="subject" type="xs:string"/>
+			<xs:element name="time" type="xs:dateTime"/>
+			<xs:element name="userId" type="xs:string"/>
+			<xs:element name="description" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AbstractSearchCriteriaType">
+		<xs:sequence>
+			<xs:element name="idSearchCriteria" type="NumericSearchCriteriaType" minOccurs="0"/>
+			<xs:element name="domains" type="AuditDomainType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="actions" type="AuditActionType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="subjectSearchCriteria" type="StringSearchCriteriaType" minOccurs="0"/>
+			<xs:element name="timeSearchCriteria" type="DateSearchCriteriaType" minOccurs="0"/>
+			<xs:element name="userIdSearchCriteria" type="StringSearchCriteriaType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StringSearchCriteriaType">
+		<xs:sequence>
+			<xs:element name="SearchString" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AuditLogSearchCriteriaType">
+		<xs:complexContent>
+			<xs:extension base="AbstractSearchCriteriaType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="AuditLogDeletionCriteriaType">
+		<xs:complexContent>
+			<xs:extension base="AbstractSearchCriteriaType"/>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

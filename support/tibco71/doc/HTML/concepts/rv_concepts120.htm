@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Scheduler Parameters</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;12	 Distributed Queue";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1056882"> </a><h2 class="pNewHTMLPage">
+Scheduler Parameters
+</h2>
+<hr />
+<a name="wp1056883"> </a><p class="pBody">
+Although any group member has the potential to become the scheduler, the software maintains exactly one scheduler at all times. Parameters guide the software to select the most suited member as scheduler.
+</p>
+<a name="wp1204912"> </a><h4 class="pHeading3">
+Scheduler Weight
+</h4>
+<a name="wp1056884"> </a><p class="pBody">
+Scheduler weight represents the ability of a member to fulfill the role of scheduler, relative to other members of the same distributed queue. The group members use relative scheduler weight values to elect one member as the scheduler; members with higher scheduler weight take precedence. For further details, see <a  href="rv_concepts134.htm#wp1057331">Rank and Weight</a>.
+</p>
+<a name="wp1204915"> </a><h4 class="pHeading3">
+Heartbeat Interval
+</h4>
+<a name="wp1056888"> </a><p class="pBody">
+The active scheduler sends heartbeat messages at the interval you specify (in seconds). Heartbeat messages inform other members that a member is acting as the scheduler. All members of a group must specify the same scheduler heartbeat interval. To determine the correct value, see <a  href="rv_concepts155.htm#wp1058304">Step 4: Choose the Intervals</a>.
+</p>
+<a name="wp1204918"> </a><h4 class="pHeading3">
+Scheduler Activation Interval
+</h4>
+<a name="wp1056892"> </a><p class="pBody">
+In addition, all members of a group must specify the same scheduler activation interval. When the heartbeat signal from the scheduler has been silent for this interval (in seconds), the worker with the greatest scheduler weight takes its place as the new scheduler. To determine the correct value, see <a  href="rv_concepts155.htm#wp1058304">Step 4: Choose the Intervals</a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

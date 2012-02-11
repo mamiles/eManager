@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>DISABLING_MEMBER</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Appendix&#160;C	 Fault Tolerance (RVFT) Advisory Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1047297"> </a><h2 class="pNewHTMLPage">
+DISABLING_MEMBER
+</h2>
+<hr />
+<a name="wp1047299"> </a><p class="pSyntaxType">
+Advisory
+</p>
+<a name="wp1049011"> </a><h4 class="pHeading3">
+Subject Name Syntax
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+_RV.ERROR.RVFT.DISABLING_MEMBER.<code class="cCodeItalic">&lt;group&gt;</code><a name="wp1039991"> </a>
+</pre></div>
+<a name="wp1059672"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1039996"> </a><p class="pBody">
+Rendezvous fault tolerance software sometimes detects problems that make a fault tolerance member unable to function. It automatically deactivates the affected member, disables it (by setting its weight to zero), and generates this error advisory message.
+</p>
+<a name="wp1059813"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1040001"> </a><p class="pBody">
+Only the disabled member presents this advisory.
+</p>
+<a name="wp1040002"> </a><p class="pBody">
+The <code class="cCode">RVADV_DESC</code> field always contains <code class="cCode">NULL</code>.
+</p>
+<a name="wp1040006"> </a><p class="pBody">
+This advisory indicates that Rendezvous fault tolerance software cannot allocate memory, publish a message or set a timer. In most cases, the primary cause is insufficient memory.
+</p>
+<a name="wp1040007"> </a><p class="pBody">
+In some cases, memory is so scarce that the disabled member is unable to process the advisory message, nor even relay the advisory message to <code class="cCode">stderr</code>.
+</p>
+<a name="wp1040011"> </a><p class="pBody">
+For a complete discussion, see <a  href="rv_concepts149.htm#wp1058061">Disabling a Member</a>.
+</p>
+<a name="wp1040012"> </a><h4 class="pHeading3">
+Remedy
+</h4>
+<a name="wp1040013"> </a><p class="pBody">
+The most reliable remedy is to arrange for the process to exit gracefully, and then restart the member. In the meantime, the disabled process is replaced by another member (presuming that other members are running). Be certain to investigate and correct the cause of the resource problem.
+</p>
+<a name="wp1040030"> </a><h4 class="pHeading3">
+Message Fields
+</h4>
+<a name="wp1098460"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1040016"> </a><div class="pCellHeading">
+Field Name
+</div>
+</th>
+    <th><a name="wp1040021"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1040023"> </a><div class="pCellBody">
+<code class="cCode">RVADV_DESC</code>
+</div>
+</td>
+    <td><a name="wp1040025"> </a><div class="pCellBody">
+A string describing the specific situation of this advisory.
+</div>
+<a name="wp1040029"> </a><div class="pCellBody">
+This field has datatype <a  href="rv_concepts54.htm#wp1084160"><code class="cCode">TIBRVMSG_STRING</code></a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1068423"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1068439"> </a><p class="pBody">
+<a  href="rv_concepts126.htm#wp1057063">Fault Tolerance Concepts</a>
+</p>
+<a name="wp1068443"> </a><p class="pBody">
+<a  href="rv_concepts149.htm#wp1058061">Disabling a Member</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,469 @@
+                    Apache Tomcat Version 4.0.2
+                    ===========================
+                            Release Notes
+                            =============
+
+$Id: RELEASE-NOTES-4.0.2-B1.txt,v 1.1.2.7 2001/12/20 14:08:49 remm Exp $
+
+
+============
+INTRODUCTION:
+============
+
+
+This document describes the changes that have been made in the current
+release candidate release of Apache Tomcat, relative to the previous release.
+The release notes for all prior releases of Tomcat 4.0 are also included, for
+your reference.
+
+Bug reports should be entered at the bug reporting system for
+Jakarta projects at:
+
+        http://nagoya.apache.org/bugzilla/
+
+Please report bugs and feature requests under product name "Tomcat 4".
+
+
+
+============
+NEW FEATURES:
+============
+
+
+--------------------
+General New Features:
+--------------------
+
+     ***** Please note the revised documentation below related to *****
+     ***** using XML parsers with Tomcat 4.0 based applications.  *****
+
+
+---------------------
+Catalina New Features:
+---------------------
+
+StandardHost: Allow disabling the error report valve by setting its classname
+  to an empty string.
+
+StandardWrapper: Add instance pooling for SingleThreadModel servlets.
+
+
+-------------------
+Jasper New Features:
+-------------------
+
+Compiling JSP servlets with class debugging information is now possible
+by adding a "classdebuginfo" init parameter set to "true" in the JspSerlvet
+configuration.  This may be done in "conf/web.xml", or in the web.xml of
+a specific web application by adding a JspServlet configuration.
+
+
+--------------------
+Webapps New Features:
+--------------------
+
+AJP: Add some documentation on AJP with Tomcat 4.
+
+
+==========================
+BUG FIXES AND IMPROVEMENTS:
+==========================
+
+
+------------------
+Generic Bug Fixes:
+------------------
+
+
+
+------------------
+Catalina Bug Fixes:
+------------------
+
+RequestFacade: The method getRemoteHost of the facade should call 
+  getRemoteHost.
+
+WebappLoader: Add back some permissions, which were incorrectly removed while
+  refactoring the loader and classloader
+
+WebappClassLoader: getResource and getResourceAsStream weren't calling 
+  the superclass (which is needed when there are external repositories).
+
+WebappClassLoader: Will attempt to load a class even if it already 
+  failed before.
+
+Build script: Exclude the binaries from the fixCRLF.
+
+NamingContext: Specify the name in the exception message for the alreadyBound 
+  error.
+
+AccessLogValve: Fixes for potential thread safety problems.
+
+StandardContext: Cross context should default to false.
+
+GenericPrincipal: Is now a public class.
+
+Bootstrap: Remove "System.exit(0)" call at the end of the main() method.
+
+WarpConnector: making WarpConnector's thread a daemon to facilitate shutting
+  down without System.exit(0).
+
+FileDirContext: Fix security manager bug when using Windows. The base should 
+  be an absolute path (instead of a relative path), otherwise a security 
+  exception would be thrown by the case sensitivity checking code when trying 
+  to access the user.dir system property.
+
+HttpResponseStream: Don't remove the transfer encoding header if chunking is 
+  disabled.
+
+HttpProcessor: If the client announced it was closing the connection, repeat 
+  the connection: close in the response.
+
+WebappLoader: Canonicalize the context root permission.
+
+AuthenticatorBase: Fix a problem with auth constraints, where roles wouldn't 
+  get processed right when the wildcard was used.
+
+StandardEngineValve: Backport the HTTP/1.1 compliance fix to send 400 
+  (bad request) instead of 500 (internal server error) on an unrecognized 
+  or missing host.
+
+ErrorDispatcherValve: Wrapper could be null when the request was incompletely 
+  mapped, which often happened when using an authenticator valve.
+
+NamingContext: Rebind references.
+
+HttpResponseBase: Return 404 when parsing invalid URLs.
+
+StandardClassLoader: Fix race condition, where defineClass could be called 
+  multiple times on the same class.
+
+Catalina: Only set the initial context factory if it has not been set.
+
+ErrorDispatcherValve: When processing an error-page triggered by an exception,
+  set the status code to 500.
+
+StandardContext: Fix incorrect Javadoc.
+
+ErrorDispatcherValve:  Fix a NPE which occured when handling the 500 that was 
+  returned when the host mapper failed to map the request to a context. 
+  The status is still 500, but the error report gives some info on the 
+  problem, and no exception is logged.
+
+AuthenticatorBase: Set the seed after computing it.
+
+HttpResponseBase: Suspend response after sendError and sendRedirect 
+  (simulates that the response has been sent from the application perspective).
+
+StandardWrapper: Fix single thread model thread safety problems under very high
+  loads.
+
+ApplicationDispatcher: Makes forward code more robust.
+
+ResponseFacade: getOutputStream(), getWriter(), and flushBuffer()
+  non-fatal even if called after response is finished.
+
+ErrorReportValve: Fix regression when printing exception reports, caused by the
+  change of behavior of sendError.
+
+Windows Installer: The Windows installer nows uses the improved NSIS 1.91, and
+  will also use the value of the JAVA_HOME environment variable if it is set.
+
+
+----------------
+Jasper Bug Fixes:
+----------------
+
+JspParseEventListener: Eliminated use of hard coded '\n' line separator.
+
+TagBeginGenerator: Call doInitBody only if doStartTag 
+  returns EVAL_BODY_BUFFERED.
+
+JspFactoryImpl: JspEngineInfo.getSpecificationVersion() should return "1.2".
+
+Parser: Issue error if reserved taglib prefixes are used in taglib directives.
+
+JspParseEventListener: Eliminated use of hard coded '\n' line separator.
+
+Jasper: Many misc fixes.
+
+
+-----------------
+Webapps Bug Fixes:
+-----------------
+
+SetCharacterEncodingFilter: Make it possible to configure character encoding 
+  *only* if not set by the browser, as well as setting it unconditionally.
+
+SSI: Bug fixes.
+
+Examples: Declare the examples webapp as cross context.
+
+
+
+----------------------
+Bugzilla Bugs Resolved:
+----------------------
+
+4085  Error when using XML syntax for JSPs
+4327  Access log not rotated
+4431  Error in Application developer docs
+4501  java.lang.ClassCastException: org.apache.jasper.JasperException when 
+      syntax error in JSP page
+4550  Page directive improperly parses multiple import statements
+4684  Distributed Sessions intermittently fail to show up in other cluster 
+      members
+4705  Jasper seeming classpath bug using JSPC
+4949  jspc cannot find bean when using jsp:getProperty or jsp:setProperty
+4956  There are two <BODY> tags found in a source code
+4969  SSO cookie malformed in AuthenticatorBase.generateSessionId()
+5004  /a/b/c/nonexistent.jsp -> a file and directory chain created
+5026  INITIAL_CONTEXT_FACTORY can not be defined in properties
+5050  Taglib prefix cannot contain '-' character
+5096  PageData.getInputStream() returns XML doc with invalid encoding
+5123  Optional value variable-class is expected
+5126  Client request using HEAD results in a response body returned to client
+5169  If jsp_precompile is evalutated to be false, the request will be 
+      processed by the target JSP
+5345  Redirection fails in embedded Tomcat in wspack1-b06
+5497  JSP include not always including
+
+
+============================
+KNOWN ISSUES IN THIS RELEASE:
+============================
+
+* Tomcat 4.0 and Apache
+* Tomcat 4.0 and AJP 1.3
+* Tomcat 4.0 and JNI Based Applications
+* Tomcat 4.0 Standard APIs Available
+* Tomcat 4.0 and XML Parsers
+* Web application reloading and static fields in shared libraries
+* JAVAC leaking memory
+* Linux and Sun JDK 1.2.x - 1.3.x
+* Jasper and Jikes
+* Tomcat 4.0 and Apache Cocoon 2.0
+* Enabling SSI and CGI Support
+
+
+---------------------
+Tomcat 4.0 and Apache:
+---------------------
+
+The binary distribution for Tomcat 4.0 includes the most recent stable version
+of the WARP connector, which is the Tomcat component that talks to mod_webapp
+inside Apache 1.3.  The current state of this support is summarized as follows:
+
+* The mod_webapp connector is configured based on the contents of the
+  web.xml file for your web application.  The only required per-webapp
+  configuration information in your Apache 1.3 httpd.conf file is
+  something like this:
+
+    WebAppDeploy examples   warpConnection   /examples/
+
+  which causes mod_webapp to automatically recognize all of your servlet
+  mappings, security constraints, and other configuration elements.
+
+* Currently, mod_webapp forwards *all* requests under the specified
+  context path to Tomcat for processing.  In a futher release,
+  it will automatically configure itself to serve static resources
+  from Apache *unless* the resource is subject to filtering, or subject
+  to a security constraint, as defined in web.xml.  No extra configuration
+  in httpd.conf will be required.
+
+* With this release, FORM-based authentication will work correctly, but
+  there is a bug that prevents BASIC authentication from operating.  This
+  will be addressed before final release.
+
+* If you restart Tomcat, you must also restart Apache to avoid receiving
+  "Error 400 - Bad Request" errors.  This will be handled transparently
+  in the final release.
+
+* The combination of Apache+Tomcat currently passes all spec validation
+  tests in the "jakarta-watchdog-4.0" suite.
+
+The WARP connector for Tomcat 4.0 does not support load balancing at this time.
+
+----------------------
+Tomcat 4.0 and AJP 1.3:
+----------------------
+
+Tomcat 4.0 now includes support for the AJP 1.3 protocol, which the 
+mod_jk collection of native webserver modules implements.
+
+The AJP connector is not enabled by default. To enable it, uncomment 
+the following section in $CATALINA_HOME/conf/server.xml:
+
+    <!--
+    <Connector className="org.apache.ajp.tomcat4.Ajp13Connector"
+               port="8009" minProcessors="5" maxProcessors="75"
+               acceptCount="10" debug="0"/>
+    -->
+
+The AJP connector for Tomcat 4.0 does not support load balancing at this time.
+
+
+-------------------------------------
+Tomcat 4.0 and JNI Based Applications:
+-------------------------------------
+
+Applications that require native libraries must ensure that the libraries have
+been loaded prior to use.  Typically, this is done with a call like:
+
+  static {
+    System.loadLibrary("path-to-library-file");
+  }
+
+in some class.  However, the application must also ensure that the library is
+not loaded more than once.  If the above code were placed in a class inside
+the web application (i.e. under /WEB-INF/classes or /WEB-INF/lib), and the
+application were reloaded, the loadLibrary() call would be attempted a second
+time.
+
+To avoid this problem, place classes that load native libraries outside of the
+web application, and ensure that the loadLibrary() call is executed only once
+during the lifetime of a particular JVM.
+
+
+----------------------------------
+Tomcat 4.0 Standard APIs Available:
+----------------------------------
+
+A standard installation of Tomcat 4 makes all of the following APIs available
+for use by web applications (by placing them in "common/lib" or "lib"):
+* activation.jar (Java Activation Framework)
+* jdbc2_0-stdext.jar (JDBC 2.0 Optional Package, javax.sql.*)
+* jndi.jar (JNDI 1.2 base API classes)
+* jta-spec1_0_1 (Java Transacation APIs)
+* mail.jar (JavaMail 1.2)
+* servlet.jar (Servlet 2.3 and JSP 1.2 APIs)
+* tyrex-0.9.7.0.jar (Tyrex XA-compatible data source from tyrex.exolab.org)
+* xerces.jar (Xerces 1.4.3)
+
+You can make additional APIs available to all of your web applications by
+putting unpacked classes into a "classes" directory (not created by default),
+or by placing them in JAR files in the "lib" directory.
+
+
+--------------------------
+Tomcat 4.0 and XML Parsers:
+--------------------------
+
+As described above, Tomcat 4.0 makes an XML parser (and many other standard
+APIs) available to web applications.  This parser is also used internally
+to parse web.xml files and the server.xml configuration file.  If you wish,
+you may replace the "xerces.jar" file in "common/lib" with another XML parser,
+as long as it is compatible with the JAXP/1.1 APIs.
+
+If you wish to *not* make any XML parser visible to all web applications,
+this can be accomplished by copying the "xerces.jar" file from "common/lib"
+to both "server/lib" and "jasper", and removing it from "common/lib".
+
+
+---------------------------------------------------------------
+Web application reloading and static fields in shared libraries:
+---------------------------------------------------------------
+
+Some shared libraries (many are part of the JDK) keep references to objects
+instantiated by the web application. To avoid class loading related problems
+(ClassCastExceptions, messages indicating that the classloader 
+is stopped, ...), the shared libraries state should be reinitialized.
+
+Something which could help is to avoid putting classes which would be 
+referenced by a shared static field in the web application classloader, 
+and put them in the shared classloader instead (the JARs should be put in the 
+"lib" folder, and classes should be put in the "classes" folder).
+
+
+--------------------
+JAVAC leaking memory:
+--------------------
+
+The Java compiler leaks memory each time a class is compiled. Web applications
+containing hundreds of JSP files may as a result trigger out of memory errors 
+once a significant number of pages have been accessed. The memory can only be 
+freed by stopping Tomcat and then restarting it.
+
+The JSP command line compiler (JSPC) can also be used to precompile the JSPs.
+
+
+-------------------------------
+Linux and Sun JDK 1.2.x - 1.3.x:
+-------------------------------
+
+Virtual machine crashes can be experienced when using certain combinations of
+kernel / glibc under Linux with Sun Hotspot 1.2 to 1.3. The crashes were 
+reported to occur mostly on startup. Sun JDK 1.4 does not exhibit the problems,
+and neither does IBM JDK for Linux.
+
+The problems can be fixed by reducing the default stack size. At bash shell, 
+do "ulimit -s 2048"; use "limit stacksize 2048" for tcsh.
+
+GLIBC 2.2 / Linux 2.4 users should also define an environment variable:
+export LD_ASSUME_KERNEL=2.2.5
+
+
+----------------
+Jasper and Jikes:
+----------------
+
+Jikes can be used with the Jasper JSP page compiler, but the runtime classes 
+JAR of the JDK or JRE (depending on what is installed on the computer) must
+be added to the system classpath.
+
+This can be achieved by editing the main catalina script, and adding the rt.jar
+file:
+
+On Windows:
+  line 71 of %CATALINA_HOME%\bin\catalina.bat, change
+set CP=%CATALINA_HOME%\bin\bootstrap.jar;%JAVA_HOME%\lib\tools.jar
+  to
+set CP=%JAVA_HOME%\jre\lib\rt.jar;%CATALINA_HOME%\bin\bootstrap.jar;%JAVA_HOME%\lib\tools.jar
+
+On Unix or Unix-like OSes:
+  line 89 of $CATALINA_HOME/bin/catalina.sh, change
+CP="$CATALINA_HOME/bin/bootstrap.jar"
+  to
+CP="$JAVA_HOME/jre/lib/rt.jar:$CATALINA_HOME/bin/bootstrap.jar"
+
+
+--------------------------------
+Tomcat 4.0 and Apache Cocoon 2.0:
+--------------------------------
+
+For optimal performance with Apache Cocoon 2.0, it is recommended to use the
+HTTP/1.0 connector.
+
+
+----------------------------
+Enabling SSI and CGI Support:
+----------------------------
+
+Having CGI and SSI available to web applications created security problems when
+using a security manager (as a malicious web application could use them to 
+sidestep the security manager access control). In Tomcat 4.0, they have been
+disabled by default, as our goal is to provide a fully secure default 
+configuration. However, CGI and SSI remain available.
+
+On Windows:
+* rename the file %CATALINA_HOME%\server\lib\servlets-cgi.renametojar to
+  %CATALINA_HOME%\server\lib\servlets-cgi.jar.
+* rename the file %CATALINA_HOME%\server\lib\servlets-ssi.renametojar to
+  %CATALINA_HOME%\server\lib\servlets-ssi.jar.
+* in %CATALINA_HOME%\conf\web.xml, uncomment the servlet declarations starting
+  line 165 and 213, as well as the associated servlet mappings 
+  line 265 and 274. Alternately, these servlet declarations and mappings can
+  be added to your web application deployment descriptor.
+
+On Unix:
+* rename the file $CATALINA_HOME/server/lib/servlets-cgi.renametojar to
+  $CATALINA_HOME/server/lib/servlets-cgi.jar.
+* rename the file $CATALINA_HOME/server/lib/servlets-ssi.renametojar to
+  $CATALINA_HOME/server/lib/servlets-ssi.jar.
+* in $CATALINA_HOME/conf/web.xml, uncomment the servlet declarations starting
+  line 165 and 213, as well as the associated servlet mappings 
+  line 265 and 274. Alternately, these servlet declarations and mappings can
+  be added to your web application deployment descriptor.
+
+
+

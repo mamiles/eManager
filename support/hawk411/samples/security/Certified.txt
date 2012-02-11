@@ -1,0 +1,56 @@
+#
+# Grant "user1" point-to-point access to all methods on all Microagents, EXCEPT
+#	- all ACTION methods on the Self microagent on all nodes.
+# 	- the specified methods on the Repository microagent on "nodeA" 
+# 	- the specified methods on the RuleBaseEngine microagent on any node.
+#
+# Grant "user2" point-to-point and network access to all methods on all 
+# Microagents, EXCEPT
+#	- all ACTION methods on the Self microagent on all nodes.
+#	- all ACTION methods on the Repository microagent on all nodes
+#	- all ACTION methods on the RuleBase microagent on all nodes
+#
+# Grant "user3" point-to-point and network access to all methods on all
+# Microagents on all nodes, EXCEPT
+#	- network access to all ACTION methods on the RuleBase microagent
+#
+# Grant "user4" full access to all methods on all microagents on nodeB
+#
+# Grant "user5" point-to-point access to all INFO methods on all microagents
+# on all nodes. 
+#
+#
+# File format:
+#
+# user     node                  microagent                    method
+#         access                   access                      access
+#           &                        &                           &
+#       restrictions            restrictions                restrictions
+#
+user1        *
+!user1       *     COM.TIBCO.hawk.microagent.Custom              +
+!user1       *     COM.TIBCO.hawk.microagent.Repository     addRuleBase
+!user1       *     COM.TIBCO.hawk.microagent.Repository     updateRuleBase
+!user1       *     COM.TIBCO.hawk.microagent.Repository     deleteRuleBase
+!user1       *     COM.TIBCO.hawk.microagent.Repository     setSchedules
+!user1       *     COM.TIBCO.hawk.microagent.Repository     setRBMap
+!user1     nodeA   COM.TIBCO.hawk.microagent.RuleBaseEngine addRuleBase
+!user1     nodeA   COM.TIBCO.hawk.microagent.RuleBaseEngine updateRuleBase
+!user1     nodeA   COM.TIBCO.hawk.microagent.RuleBaseEngine deleteRuleBase
+!user1     nodeA   COM.TIBCO.hawk.microagent.RuleBaseEngine loadRuleBase
+!user1     nodeA   COM.TIBCO.hawk.microagent.RuleBaseEngine unloadRuleBase
+!user1     nodeA   COM.TIBCO.hawk.microagent.RuleBaseEngine loadRuleBaseFromFile
+!user1     nodeA   COM.TIBCO.hawk.microagent.RuleBaseEngine setSchedules
+!user1     nodeA   COM.TIBCO.hawk.microagent.RuleBaseEngine setRBMap
+
+user2        +                        *                          +
+!user2       *     COM.TIBCO.hawk.microagent.Custom              +
+!user2       *     COM.TIBCO.hawk.microagent.Repository          +
+!user2       *     COM.TIBCO.hawk.microagent.RuleBaseEngine      +
+
+user3
+!user3       +     COM.TIBCO.hawk.microagent.RuleBaseEngine      +
+
+user4      nodeB
+
+user5        *                        *                          *

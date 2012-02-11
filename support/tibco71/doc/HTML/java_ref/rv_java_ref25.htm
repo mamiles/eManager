@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvSdContext.setDaemonCert()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;3	 Rendezvous Environment";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1256171"> </a><h2 class="pNewHTMLPage">
+TibrvSdContext.setDaemonCert()
+</h2>
+<hr />
+<a name="wp1256172"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1256175"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+static void <code class="cCodeBold">setDaemonCert</code>(<a name="wp1256179"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;&#160;&#160;daemonName,<a name="wp1256180"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;&#160;&#160;daemonCert)<a name="wp1256181"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1257849"> </a>
+</pre></div>
+<a name="wp1257850"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1256187"> </a><p class="pBody">
+Register trust in a secure daemon.
+</p>
+<a name="wp1256188"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1256189"> </a><p class="pBody">
+When any program transport connects to a secure daemon, it verifies the daemon&#8217;s identity using SSL protocols. Certificates registered using this method identify trustworthy daemons. Programs divulge user names and passwords to daemons that present registered certificates.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1256192"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1256194"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1256196"> </a><div class="pCellBody">
+<code class="cCode">daemonName</code>
+</div>
+</td>
+    <td><a name="wp1256198"> </a><div class="pCellBody">
+Register a certificate for a secure daemon with this name. For the syntax and semantics of this parameter, see <a  href="rv_java_ref25.htm#wp1256210">Daemon Name</a>, below.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1256203"> </a><div class="pCellBody">
+<code class="cCode">daemonCert</code>
+</div>
+</td>
+    <td><a name="wp1256208"> </a><div class="pCellBody">
+Register this public certificate. The text of this certificate must be in PEM encoding. See also <a  href="rv_java_ref25.htm#wp1256221">Certificate</a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1256210"> </a><h4 class="pHeading3">
+Daemon Name
+</h4>
+<a name="wp1256211"> </a><p class="pBody">
+The daemon name is a three-part string of the form:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;&#160;ssl:<code class="cCodeItalic">&lt;host&gt;</code>:<code class="cCodeItalic">&lt;port_number&gt;</code><a name="wp1256212"> </a>
+<a name="wp1256213"> </a>
+</pre></div>
+<a name="wp1256214"> </a><p class="pBody">
+Colon characters (<code class="cCode">:</code>) separate the three parts.
+</p>
+<a name="wp1256215"> </a><p class="pBody">
+<code class="cCode">ssl</code> indicates the protocol to use when attempting to connect to the daemon.
+</p>
+<a name="wp1256216"> </a><p class="pBody">
+<code class="cCodeItalic">&lt;host&gt;</code> indicates the host computer of the secure daemon. You can specify this host either as a network IP address, or a hostname. Omitting this part specifies the local host.
+</p>
+<a name="wp1256217"> </a><p class="pBody">
+<code class="cCodeItalic">&lt;port_number&gt;</code> specifies the port number where the secure daemon listens for SSL connections.
+</p>
+<a name="wp1256218"> </a><p class="pBody">
+(This syntax is similar to the syntax connecting to remote daemons, with the addition of the prefix <code class="cCode">ssl</code>.)
+</p>
+<a name="wp1256219"> </a><p class="pBody">
+In place of this three-part string, you can also supply the constant <a  href="rv_java_ref24.htm#wp1256103"><code class="cCode">TibrvSdContext</code></a><code class="cCode">.TIBRV_SECURE_DAEMON_ANY_NAME</code>. This form lets you register a catch-all certificate that applies to any secure daemon for which you have not explicitly registered another certificate. For example, you might use this form when several secure daemons share the same certificate.
+</p>
+<a name="wp1256221"> </a><h4 class="pHeading3">
+Certificate
+</h4>
+<a name="wp1256222"> </a><p class="pBody">
+In place of an actual certificate, you can also supply the constant <a  href="rv_java_ref24.htm#wp1256103"><code class="cCode">TibrvSdContext</code></a><code class="cCode">.TIBRV_SECURE_DAEMON_ANY_CERT</code>. The program accepts any certificate from the named secure daemon. For example, you might use this form when testing a secure daemon configuration, before generating any actual certificates.
+</p>
+<a name="wp1256223"> </a><h4 class="pHeading3">
+Any Name and Any Certificate
+</h4>
+<a name="wp1257811"> </a><p class="pBody">
+Notice that the constants <a  href="rv_java_ref24.htm#wp1256103"><code class="cCode">TibrvSdContext</code></a><code class="cCode">.TIBRV_SECURE_DAEMON_ANY_NAME</code> and <a  href="rv_java_ref24.htm#wp1256103"><code class="cCode">TibrvSdContext</code></a><code class="cCode">.TIBRV_SECURE_DAEMON_ANY_CERT</code> each eliminate one of the two security checks before transmitting sensitive identification data to a secure daemon. We strongly discourage using both of these constants simultaneously, because that would eliminate all security checks, leaving the program vulnerable to unauthorized daemons.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

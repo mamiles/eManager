@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Backlog Protection</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1045976"> </a><h2 class="pNewHTMLPage">
+Backlog Protection
+</h2>
+<hr />
+<a name="wp1067530"> </a><p class="pBody">
+Every WAN connection has a maximum capacity. Routing daemons cannot exceed this physical limitation. When the volume of routed data is greater than WAN capacity, <code class="cCode">rvrd</code> buffers the outbound data.
+</p>
+<a name="wp1067884"> </a><p class="pBody">
+Data backlog can occur in several scenarios; for example:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1067936"> </a><div class="pSmartList1"><li >An unexpected burst of data exceeds WAN capacity.</li></div>
+
+<a name="wp1067885"> </a><div class="pSmartList1"><li ><code class="cCode">A</code> temporary problem with the WAN sharply decreases its capacity.</li></div>
+
+<a name="wp1067886"> </a><div class="pSmartList1"><li >WAN capacity is insufficient for the required volume of data.</li></div>
+
+<a name="wp1067552"> </a><div class="pSmartList1"><li >WAN capacity is generally sufficient, but <code class="cCode">rvrd</code> is misconfigured to route more data than expected. The total data volume exceeds WAN capacity.</li></div>
+
+</ul></div>
+
+<a name="wp1311048"> </a><p class="pBody">
+The <a  href="rv_adm50.htm#wp1192016">Connected Neighbors</a> page displays the peak backlog for each neighbor; see <a  href="rv_adm50.htm#wp1192016">Connected Neighbors</a>.
+</p>
+<a name="wp1067683"> </a><h4 class="pHeading3">
+Maximum Backlog
+</h4>
+<a name="wp1067912"> </a><p class="pBody">
+An extremely large backlog can cause severe problems for <code class="cCode">rvrd</code> and its host computer. Administrators can configure <code class="cCode">rvrd</code> to protect against this possibility.
+</p>
+<a name="wp1067807"> </a><p class="pBody">
+When enabling this feature, the administrator specifies the maximum permissible backlog (in kilobytes). When an outbound backlog of this size accumulates for any neighbor connection, <code class="cCode">rvrd</code> automatically disconnects from that neighbor, clears the corresponding outbound data buffer, and attempts to reconnect to the neighbor.
+</p>
+<a name="wp1219574"> </a><p class="pBody">
+To obtain a reasonable estimate for the threshold value that triggers this action, calculate the process storage available to <code class="cCode">rvrd</code>, divided by the number of neighbor connections it serves.
+</p>
+<a name="wp1237066"> </a><p class="pBody">
+You can configure this feature separately for each routing table entry. The router applies that maximum to all of its neighbor connections.
+</p>
+<a name="wp1219583"> </a><p class="pBody">
+To configure this feature, see <a  href="rv_adm52.htm#wp1194491">Routers</a>.
+</p>
+<a name="wp1300651"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1304416"> </a><p class="pBody">
+Notice that enabling this feature represents a deliberate decision to discard data in certain extreme circumstances. When this feature is disabled (the default), the routing daemon does not protect against backlog. The decision to use this feature must be based on the business requirements of the enterprise.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

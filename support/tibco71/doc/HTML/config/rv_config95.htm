@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>Router.addPassiveInterface()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;4	 Routing Daemon&#151;rvrd";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1954315"> </a><h2 class="pNewHTMLPage">
+Router.addPassiveInterface()
+</h2>
+<hr />
+<a name="wp1954316"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1954317"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_config80.htm#wp1953195"><code class="cCode">NeighborInterface</code></a> <code class="cCodeBold">addPassiveInterface</code>(<a name="wp2031905"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;localPort<a name="wp2031906"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;neighborName,<a name="wp2031907"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;cost,<a name="wp2031928"> </a>
+&#160;&#160;&#160;&#160;boolean&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;compressed,<a name="wp2031908"> </a>
+&#160;&#160;&#160;&#160;boolean&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;encrypted,<a name="wp2031909"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;peerCertificate)<a name="wp2031910"> </a>
+&#160;&#160;throws <a  href="rv_config267.htm#wp1963961"><code class="cCode">ConfigurationException</code></a><a name="wp2031914"> </a>
+<a name="wp1954321"> </a>
+<a  href="rv_config80.htm#wp1953195"><code class="cCode">NeighborInterface</code></a> <code class="cCodeBold">addPassiveInterface</code>(<a name="wp2031917"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;localPort<a name="wp1954322"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;neighborName,<a name="wp1954323"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;cost,<a name="wp1954324"> </a>
+&#160;&#160;&#160;&#160;boolean&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;encrypted,<a name="wp1954325"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;peerCertificate)<a name="wp1954326"> </a>
+&#160;&#160;throws <a  href="rv_config267.htm#wp1963961"><code class="cCode">ConfigurationException</code></a><a name="wp1954330"> </a>
+</pre></div>
+<a name="wp2031774"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/note.gif" border="0" /></td>
+    <td><a name="wp2031772"> </a><div class="pCellBody">
+Use the first form when the router is release 7.1 or later.
+</div>
+<a name="wp2031773"> </a><div class="pCellBody">
+Use the second form when the router is release 7.0.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1954331"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1954333"> </a><p class="pBody">
+Specify a neighbor interface that passively accepts connections from its neighbor.
+</p>
+<a name="wp1954334"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1954335"> </a><p class="pBody">
+Use this method to specify a neighbor interface in which the local router does not actively attempt to connect to the remote neighbor. Instead, it passively waits for the remote neighbor to request a connection.
+</p>
+<a name="wp1954379"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1954338"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1954340"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1954342"> </a><div class="pCellBody">
+<code class="cCode">localPort</code>
+</div>
+</td>
+    <td><a name="wp1954344"> </a><div class="pCellBody">
+The local router will listen on this local TCP port for neighbor connection requests from its remote neighbor. For more information, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm35.htm#wp1044394');" onMouseOver="WWHShowPopup('c', 'rv_adm35.htm#wp1044394', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Local Connect Port</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1954352"> </a><div class="pCellBody">
+<code class="cCode">neighborName</code>
+</div>
+</td>
+    <td><a name="wp1954354"> </a><div class="pCellBody">
+The local router will passively accept neighbor connections only from this remote router.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1954356"> </a><div class="pCellBody">
+<code class="cCode">cost</code>
+</div>
+</td>
+    <td><a name="wp1954363"> </a><div class="pCellBody">
+The path cost of this neighbor link; see <a  href="javascript:WWHClickedPopup('c', 'rv_adm37.htm#wp1174944');" onMouseOver="WWHShowPopup('c', 'rv_adm37.htm#wp1174944', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Load Balancing</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.
+</div>
+<a name="wp1954368"> </a><div class="pCellBody">
+You may supply the default cost, <a  href="rv_config80.htm#wp1953239"><code class="cCode">NeighborInterface.DEFAULT_COST</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp2031693"> </a><div class="pCellBody">
+<code class="cCode">compressed</code>
+</div>
+</td>
+    <td><a name="wp2031695"> </a><div class="pCellBody">
+When <code class="cCode">true</code>, the new neighbor interface compresses outbound data and uncompresses inbound data.
+</div>
+<a name="wp2031696"> </a><div class="pCellBody">
+When <code class="cCode">false</code>, the new neighbor interface does <em class="cEmphasis">not</em> compress data.
+</div>
+<a name="wp2031697"> </a><div class="pCellBody">
+Notice that it is inconsistent for one neighbor to compress data while the other does not. Neighbors must agree concerning compression, otherwise they cannot establish a connection.
+</div>
+<a name="wp2031701"> </a><div class="pCellBody">
+Rendezvous routing daemons support data compression in release 7.1 and later; earlier releases do not. When the routing daemon does not support data compression, use the form of this method that omits this parameter.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1954370"> </a><div class="pCellBody">
+<code class="cCode">encrypted</code>
+</div>
+</td>
+    <td><a name="wp1954372"> </a><div class="pCellBody">
+When <code class="cCode">true</code>, the two neighbors must communicate using SSL protocols.
+</div>
+<a name="wp1954373"> </a><div class="pCellBody">
+When <code class="cCode">false</code>, the two neighbors must communicate using non-secure protocols.
+</div>
+<a name="wp1954374"> </a><div class="pCellBody">
+Notice that both neighbors must use the same protocols, otherwise they cannot establish a connection.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1954376"> </a><div class="pCellBody">
+<code class="cCode">peerCertificate</code>
+</div>
+</td>
+    <td><a name="wp1954378"> </a><div class="pCellBody">
+In SSL protocols, the local router expects the remote router to present this certificate as evidence of its identity. Supply the text of the public certificate (in PEM encoding).
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1954380"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp2024279"> </a><p class="pBody">
+<a  href="rv_config80.htm#wp1953195"><code class="cCode">NeighborInterface</code> </a>
+</p>
+<a name="wp1954384"> </a><p class="pBody">
+<a  href="rv_config91.htm#wp1953701"><code class="cCode">Router</code> </a>
+</p>
+<a name="wp1954388"> </a><p class="pBody">
+<a  href="rv_config101.htm#wp1954692"><code class="cCode">Router.getNeighborInterfaces()</code> </a>
+</p>
+<a name="wp1954392"> </a><p class="pBody">
+<a  href="rv_config103.htm#wp1954838"><code class="cCode">Router.removeNeighborInterface()</code> </a>
+</p>
+<a name="wp1954399"> </a><p class="pBody">
+For the corresponding browser pages, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm55.htm#wp1219594');" onMouseOver="WWHShowPopup('c', 'rv_adm55.htm#wp1219594', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Add New Neighbor Interface</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+<a name="wp1954404"> </a><p class="pBody">
+For background information, see these sections:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1954411"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('c', 'rv_adm35.htm#wp1035365');" onMouseOver="WWHShowPopup('c', 'rv_adm35.htm#wp1035365', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Neighbors</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em></li></div>
+
+<a name="wp1954418"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('c', 'rv_adm36.htm#wp1044405');" onMouseOver="WWHShowPopup('c', 'rv_adm36.htm#wp1044405', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Passive Neighbor</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em></li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

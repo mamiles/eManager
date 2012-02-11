@@ -1,0 +1,248 @@
+// NAME
+//      $RCSfile: OneInterfaceBean.java,v $
+// DESCRIPTION
+//      [given below in javadoc format]
+// DELTA
+//      $Revision: 1.11 $
+// CREATED
+//      $Date: 2002/10/10 15:13:56 $
+// COPYRIGHT
+//      Westhawk Ltd
+// TO DO
+//
+
+/*
+ * Copyright (C) 1998, 1999, 2000, 2001, 2002 by Westhawk Ltd (www.westhawk.co.uk)
+ *
+ * Permission to use, copy, modify, and distribute this software
+ * for any purpose and without fee is hereby granted, provided
+ * that the above copyright notices appear in all copies and that
+ * both the copyright notice and this permission notice appear in
+ * supporting documentation.
+ * This software is provided "as is" without express or implied
+ * warranty.
+ * author <a href="mailto:snmp@westhawk.co.uk">Tim Panton</a>
+ */
+
+package uk.co.westhawk.snmp.beans;
+
+import uk.co.westhawk.snmp.stack.*;
+import uk.co.westhawk.snmp.pdu.*;
+import java.awt.*;
+import java.util.*;
+import java.text.*;
+import java.lang.*;
+import java.io.*;
+import java.beans.*;
+
+/**
+ * <p>
+ * This bean collects information about one interface. 
+ * </p>
+ *
+ * <p>
+ * The properties in the parent classes should be set, before calling
+ * the action() method. Via a PropertyChangeEvent the application/applet
+ * will be notified.
+ * </p>
+ *
+ * @see SNMPBean#setHost
+ * @see SNMPBean#setPort
+ * @see SNMPBean#setCommunityName
+ * @see SNMPRunBean#setUpdateInterval
+ * @see #setIndex(int)
+ * @see SNMPBean#addPropertyChangeListener
+ * @see SNMPBean#action
+ * @see InterfacePdu
+ * @see InterfaceIndexesBean
+ * 
+ * @author <a href="mailto:snmp@westhawk.co.uk">Birgit Arkesteijn</a>
+ * @version $Revision: 1.11 $ $Date: 2002/10/10 15:13:56 $
+ */
+public class OneInterfaceBean extends SNMPRunBean implements Observer 
+{
+    private static final String     version_id =
+        "@(#)$Id: OneInterfaceBean.java,v 1.11 2002/10/10 15:13:56 birgit Exp $ Copyright Westhawk Ltd";
+
+    private InterfacePdu pdu, prev;
+
+    private boolean isPduInFlight;
+    private Date lastUpdateDate = null;
+
+    private int index = 1;
+    private String descr = "";
+    private String operState = "";
+    private long speed = -1;
+
+
+/**
+ * The default constructor.
+ */
+public OneInterfaceBean() 
+{
+}
+
+/**
+ * The constructor that will set the host and the port no.
+ *
+ * @param h the hostname
+ * @param p the port no
+ * @see SNMPBean#setHost
+ * @see SNMPBean#setPort
+ */
+public OneInterfaceBean(String h, int p) 
+{
+    this();
+    setHost(h);
+    setPort(p);
+}
+
+/**
+ * Sets the index of the interface that will be requested.
+ * @param i the index
+ * @see #getIndex()
+ */
+public void setIndex(int i)
+{
+    if (index != i)
+    {
+        index = i;
+    }
+}
+
+/**
+ * Returns the index of the interface.
+ * @return the index
+ * @see #setIndex(int)
+ */
+public int getIndex()
+{
+    return index;
+}
+
+/**
+ * Returns the description of the interface.
+ * @return the description
+ */
+public String getDescription()
+{
+    return descr;
+}
+
+/**
+ * Returns the operation state of the interface.
+ * @return the operation state
+ */
+public String getOperStatusString()
+{
+    return operState;
+}
+
+/**
+ * Returns the speed (bits per second) of the interface.
+ * @return the speed
+ */
+public long getSpeed()
+{
+    return speed;
+}
+
+/**
+ * Returns the date of the moment when this bean was last updated.
+ * This might be null when the first time the update was not finished.
+ *
+ * @return the last update date
+ */
+public Date getLastUpdateDate()
+{
+    return lastUpdateDate;
+}
+
+/**
+ * This method starts sending the SNMP request. All properties should be
+ * set before this method is called.
+ *
+ * The actual sending will take place in the run method.
+ * It makes a new snmp context and initialises all variables before
+ * starting.
+ */
+public void action() 
+{
+    if (isHostPortReachable())
+    {
+        lastUpdateDate = new Date();
+        isPduInFlight = false;
+        setRunning(true);
+    }
+}
+
+
+/**
+ * The run method according to the Runnable interface.
+ * This method will send the Pdu request, if the previous one is not
+ * still in flight.
+ * @see SNMPRunBean#isRunning()
+ */
+public void run()
+{
+    while (context != null && isRunning())
+    {
+        if (isPduInFlight == false)
+        {
+            isPduInFlight = true;
+            prev = pdu;
+            try
+            {
+                pdu = new InterfacePdu(context, this, index);
+            }
+            catch (PduException exc)
+            {
+                System.out.println("PduException " + exc.getMessage());
+            }
+            catch (IOException exc)
+            {
+                System.out.println("IOException " + exc.getMessage());
+            }
+
+        }
+
+        try
+        {
+            Thread.sleep(interval);
+        } 
+        catch (InterruptedException ix)
+        {
+            ;
+        }
+    }
+}
+
+/**
+ * The update method according to the Observer interface, it will be
+ * called when the Pdu response is received.
+ * The speed is calculated with the previous answer, after that the
+ * property change event is fired.
+ *
+ * @see SNMPBean#addPropertyChangeListener
+ */
+public void update(Observable obs, Object ov)
+{
+
+    if (pdu.getErrorStatus() == AsnObject.SNMP_ERR_NOERROR)
+    {
+        if (prev != null)
+        {
+            speed = pdu.getSpeed(prev);
+        }
+        
+        descr = pdu.getDescription();
+        operState = pdu.getOperStatusString();
+
+        lastUpdateDate = new Date();
+        isPduInFlight = false;
+        firePropertyChange("Interface", null, null);
+    }
+}
+
+
+}

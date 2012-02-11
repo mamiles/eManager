@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvcmTransport</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1086288"> </a><h2 class="pNewHTMLPage">
+tibrvcmTransport
+</h2>
+<hr />
+<a name="wp1086289"> </a><p class="pSyntaxType">
+Type
+</p>
+<a name="wp1087222"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+typedef tibrvId <code class="cCodeBold">tibrvcmTransport</code>;<a name="wp1086291"> </a>
+</pre></div>
+<a name="wp1087709"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1086360"> </a><p class="pBody">
+A certified delivery transport object implements the CM delivery protocol for messages.
+</p>
+<a name="wp1088124"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1086362"> </a><p class="pBody">
+Each certified delivery transport employs a <a  href="rv_c_ref132.htm#wp1066635"><code class="cCode">tibrvTransport</code></a> for network communications. The <a  href="rv_c_ref184.htm#wp1086288"><code class="cCode">tibrvcmTransport</code></a> adds the accounting mechanisms needed for delivery tracking and certified delivery.
+</p>
+<a name="wp1086393"> </a><p class="pBody">
+Several <a  href="rv_c_ref184.htm#wp1086288"><code class="cCode">tibrvcmTransport</code></a> objects can employ the <a  href="rv_c_ref132.htm#wp1066635"><code class="cCode">tibrvTransport</code></a>, which also remains available for its own ordinary listeners and for sending ordinary messages.
+</p>
+<a name="wp1160407"> </a><p class="pBody">
+Programs must explicitly destroy each certified delivery transport object. Destroying a certified delivery transport object invalidates subsequent certified send calls on that object, invalidates any certified listeners using that transport (while preserving the certified delivery agreements of those listeners), and frees the transport&#8217;s storage.
+</p>
+<a name="wp1160408"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1086310"> </a><p class="pBody">
+<a  href="rv_c_ref188.htm#wp1120127"><code class="cCode">tibrvcmTransport_Create()</code> </a>
+</p>
+<a name="wp1101750"> </a><p class="pBody">
+<a  href="rv_c_ref189.htm#wp1090827"><code class="cCode">tibrvcmTransport_Destroy()</code> </a>
+</p>
+<a name="wp1101754"> </a><p class="pBody">
+<a  href="rv_c_ref203.htm#wp1086494"><code class="cCode">tibrvcmTransport_Send()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

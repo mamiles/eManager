@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>Chapter&#160;5	Events and Queues</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1048382"> </a><h2 class="pNewHTMLPageSetChapterTitle">
+Chapter&#160;5	Events and Queues
+</h2>
+<hr />
+<a name="wp1068776"> </a><p class="pBody">
+Programs can express interest in events of two kinds&#151;inbound messages and timers. When an event occurs, it triggers a program callback method to process the event. Events wait in queues until programs dispatch them. Dispatching an event runs its callback method to process the event.
+</p>
+<a name="wp1070745"> </a><p class="pBody">
+Event queues organize events awaiting dispatch. Programs dispatch events to run callback methods.
+</p>
+<a name="wp1070754"> </a><p class="pBody">
+Queue groups add flexibility and fine-grained control to the event queue dispatch mechanism. Programs can create groups of queues and dispatch them according to their queue priorities. A special queue group automatically its queues; we recommend this mechanism, especially for GUI applications.
+</p>
+<a name="wp1068777"> </a><p class="pBody">
+This chapter presents classes, methods, interfaces and types associated with event interest and event processing.
+</p>
+<a name="wp1068773"> </a><h4 class="pHeading3">
+Topics
+</h4>
+<div class="pSmartList1"><ul>
+<a name="wp1134440"> </a><div class="pSmartList1"><li ><a  href="rv_com_ref81.htm#wp1145524"><em class="cEmphasis">TibrvListener</em></a></li></div>
+
+<a name="wp1107929"> </a><div class="pSmartList1"><li ><a  href="rv_com_ref90.htm#wp1127015"><em class="cEmphasis">TibrvTimer</em></a></li></div>
+
+<a name="wp1068814"> </a><div class="pSmartList1"><li ><a  href="rv_com_ref99.htm#wp1035245"><em class="cEmphasis">TibrvQueue</em></a></li></div>
+
+<a name="wp1145521"> </a><div class="pSmartList1"><li ><a  href="rv_com_ref115.htm#wp1037388"><em class="cEmphasis">TibrvQueueGroup</em></a></li></div>
+
+</ul></div>
+
+<a name="wp1156791"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1156792"> </a><p class="pBody">
+<a  href="rv_com_ref4.htm#wp1147634">Objects</a>
+</p>
+<a name="wp1156796"> </a><p class="pBody">
+<a  href="rv_com_ref5.htm#wp1141317">Callback Methods and Event Handlers</a>
+</p>
+<a name="wp1156800"> </a><p class="pBody">
+<a  href="rv_com_ref18.htm#wp1150213"><code class="cCode">Tibrv.getAutoDispatchQueueGroup()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

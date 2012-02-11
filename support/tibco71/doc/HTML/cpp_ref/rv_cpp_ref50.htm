@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>Get String</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1159535"> </a><h2 class="pNewHTMLPage">
+Get String
+</h2>
+<hr />
+<a name="wp1159536"> </a><p class="pSyntaxType">
+Convenience Method
+</p>
+<a name="wp1122624"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">getString</code>(<a name="wp1123388"> </a>
+&#160;&#160;&#160;&#160;const char*&#160;&#160;&#160;&#160;fieldName,<a name="wp1123389"> </a>
+&#160;&#160;&#160;&#160;char*&amp;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;value,<a name="wp1123399"> </a>
+&#160;&#160;&#160;&#160;tibrv_u16&#160;&#160;&#160;&#160;&#160;&#160;fieldId=0);<a name="wp1123400"> </a>
+</pre></div>
+<a name="wp1122625"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1122626"> </a><p class="pBody">
+Get the value of a field as a character string.
+</p>
+<a name="wp1122627"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1122628"> </a><p class="pBody">
+This convenience method retrieves a field and extracts its data, automatically converting it to a string.
+</p>
+<a name="wp1122629"> </a><p class="pBody">
+Programs can use this method to obtain a printable representation of field data. For most datatypes, this method formats the full value of the field to the output string; these types are exceptions:</p><div align="left">
+<table border="0">
+  <caption></caption>
+  <tr align="left" valign="top">    <td><a name="wp1122632"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_OPAQUE</code>
+</div>
+</td>
+    <td><a name="wp1122634"> </a><div class="pCellBody">
+This method abbreviates the value of an opaque field; for example, <code class="cCode">[472 opaque bytes]</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1165406"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref270.htm#wp1231040"><code class="cCode">TIBRVMSG_XML</code></a>
+</div>
+</td>
+    <td><a name="wp1165408"> </a><div class="pCellBody">
+This method abbreviates the value of an XML field; for example, <code class="cCode">[XML document: 472 bytes]</code>.
+</div>
+<a name="wp1165409"> </a><div class="pCellBody">
+The size measures <em class="cEmphasis">un</em>compressed data.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1183328"> </a><p class="pBody">
+Pointer data extracted from the field remain valid until the message is destroyed; that is, even removing the field or updating the field&#8217;s value does <em class="cEmphasis">not</em> invalidate pointer data.
+</p>
+<a name="wp1122638"> </a><p class="pBody">
+This method produces values that are <em class="cEmphasis">read-only snapshots</em> of the field data (see <a  href="rv_cpp_ref24.htm#wp1119669">Pointer Snapshot</a>). Programs must not modify the value string.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1122649"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1122651"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1122657"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1122659"> </a><div class="pCellBody">
+Get a field with this name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1122661"> </a><div class="pCellBody">
+<code class="cCode">value</code>
+</div>
+</td>
+    <td><a name="wp1122663"> </a><div class="pCellBody">
+The program supplies a variable in this parameter, and the method stores a <em class="cEmphasis">pointer</em> to the field value in that variable.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1122665"> </a><div class="pCellBody">
+<code class="cCode">fieldId</code>
+</div>
+</td>
+    <td><a name="wp1122667"> </a><div class="pCellBody">
+Get the field with this identifier. Zero is a special value that signifies no field identifier. All non-zero field identifiers must be unique within each message.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1122669"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1122673"> </a><p class="pBody">
+<a  href="rv_cpp_ref24.htm#wp1119654">Validity of Data Extracted From Message Fields</a>
+</p>
+<a name="wp1122677"> </a><p class="pBody">
+<a  href="rv_cpp_ref25.htm#wp1114359">Field Names and Field Identifiers</a>
+</p>
+<a name="wp1122681"> </a><p class="pBody">
+<a  href="rv_cpp_ref270.htm#wp1160890">Datatype Conversion</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

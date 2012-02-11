@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Certificates and Security</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;3	 Fundamentals";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1203018"> </a><h2 class="pNewHTMLPage">
+Certificates and Security
+</h2>
+<hr />
+<a name="wp1204161"> </a><p class="pBody">
+A <em class="cEmphasis">certificate</em> is a structured string of bytes that uniquely represents a specific identity. The structure of those bytes is determined by the X.509 identity certificate specification. A trusted certificate authority (CA) issues a certificate only to entities that meet its identification criteria (which may vary).
+</p>
+<a name="wp1204165"> </a><p class="pBody">
+Certificates also play an important role in SSL and HTTPS secure communication protocols.
+</p>
+<a name="wp1204169"> </a><p class="pBody">
+Rendezvous software uses certificates in four ways:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1204170"> </a><div class="pSmartList1"><li >Secure daemon components authenticate user programs.</li></div>
+
+<a name="wp1204560"> </a><div class="pSmartList1"><li >User programs authenticate secure daemons.</li></div>
+
+<a name="wp1204561"> </a><div class="pSmartList1"><li >Routing daemons authenticate other routing daemons (neighbors) when they communicate using SSL protocols.</li></div>
+
+<a name="wp1204562"> </a><div class="pSmartList1"><li >Web browsers authenticate Rendezvous daemon components when they communicate using HTTPS protocols.</li></div>
+
+</ul></div>
+
+<a name="wp1254770"> </a><h3 class="pHeading2">
+Certificate Encodings and Formats
+</h3>
+<a name="wp1254871"> </a><p class="pBody">
+When a certificate contains a private key, programs and file standards safeguard the key using password encryption. To use a certificate with a private key, a user must also have the private key password.
+</p>
+<a name="wp1254787"> </a><h4 class="pHeading3">
+PEM Encoding
+</h4>
+<a name="wp1203936"> </a><p class="pBody">
+Rendezvous software supports PEM encoding of X.509 certificates. PEM encoding is a text format, so you can distribute certificates easily.
+</p>
+<a name="wp1249429"> </a><h4 class="pHeading3">
+PKCS #12 Format
+</h4>
+<a name="wp1249444"> </a><p class="pBody">
+Rendezvous software supports PKCS #12 format for X.509 certificates. PKCS #12 encoding is a binary format. PKCS #12 data files usually bear the <code class="cCode">.p12</code> filename extension.
+</p>
+<a name="wp1203990"> </a><h3 class="pHeading2">
+Obtaining Certificates
+</h3>
+<a name="wp1204492"> </a><h4 class="pHeading3">
+Automatic Certificates
+</h4>
+<a name="wp1204496"> </a><p class="pBody">
+For ease of use, Rendezvous daemon components automatically generate their own self-signed certificates. You may use these certificates by copying them from the daemon&#8217;s browser administration interface, and distributing them to client programs, and to routing daemon neighbors as appropriate.
+</p>
+<a name="wp1204497"> </a><p class="pBody">
+Self-signed certificates usually trigger a warning from web browsers. When connecting to the browser administration interface of a Rendezvous daemon component, you may safely proceed beyond these warnings when you have independently verified the identity of the daemon. To avoid these warnings, replace the automatic certificate with a certificate signed by a reliable commercial CA.
+</p>
+<a name="wp1204030"> </a><h4 class="pHeading3">
+Using a Commercial CA Service
+</h4>
+<a name="wp1204031"> </a><p class="pBody">
+Each CA has its own policies and procedures for investigating identities and issuing certificates. Details are readily available through CA web sites, such as <a href="http://www.verisign.com" target="_blank">
+<span class="cWebJump">www.verisign.com</span></a>.
+</p>
+<a name="wp1204282"> </a><p class="pBody">
+When applying for a certificate, specify that you need these two files in either PKCS #12 binary format, or PEM text encoding:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1204283"> </a><div class="pSmartList1"><li >Public certificate</li></div>
+
+<a name="wp1204284"> </a><div class="pSmartList1"><li >Certificate with private key</li></div>
+
+</ul></div>
+
+<a name="wp1204285"> </a><h4 class="pHeading3">
+CA Software
+</h4>
+<a name="wp1204008"> </a><p class="pBody">
+In some situations, application administrators prefer to act as an in-house CA, issuing identity certificates to users. CA software is available from companies such as Netscape and Microsoft. Shareware is also available, including the OpenSSL package.
+</p>
+<a name="wp1249587"> </a><h4 class="pHeading3">
+Browsers
+</h4>
+<a name="wp1250527"> </a><p class="pBody">
+Many CA services and CA software programs can automatically install certificates in your browser. Many browsers can export certificates in PKCS #12 format (as <code class="cCode">.p12</code> files).
+</p>
+<a name="wp1204597"> </a><h3 class="pHeading2">
+Distributing Certificates
+</h3>
+<a name="wp1204600"> </a><p class="pBody">
+An X.509 certificate actually comprises two separate but interrelated certificate texts&#151;a <em class="cEmphasis">public certificate</em> and a <em class="cEmphasis">certificate with private key</em>. To effectively use certificates, you must securely distribute the two texts to the appropriate places.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1204606"> </a><div class="pSmartList1"><li >A certificate with a private key proves the identity of the key holder. Each Rendezvous daemon process proves its identity this way. In some deployments, end users of client programs also identify themselves this way (while in other deployments, they prove their identities with user names and passwords).</li></div>
+
+<a name="wp1204607"> </a><div class="pSmartList1"><li >Public certificates denote the identity of a trusted party. You must distribute the public certificate text to all other programs that interact with that party.</li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

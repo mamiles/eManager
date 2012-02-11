@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Multicast Retransmit Statistics</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;11	 Protocol Monitor (rvtrace)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1107281"> </a><h2 class="pNewHTMLPage">
+Multicast Retransmit Statistics
+</h2>
+<hr />
+<a name="wp1107285"> </a><p class="pBody">
+Sending Rendezvous daemon process instances retransmit missed packets upon request from receiving Rendezvous daemons. This table displays statistics related to those retransmission requests. For statistics concerning the actual retransmitted packets, see <a  href="rv_adm115.htm#wp1097600">Multicast Data Statistics</a>&#151;in particular, the <a  href="rv_adm115.htm#wp1128415"><code class="cCode">Rdata</code></a> and <a  href="rv_adm115.htm#wp1128429"><code class="cCode">Rbytes</code></a> columns.
+</p>
+<a name="wp1303160"> </a><p class="pBody">
+The packets counted in this table are <em class="cEmphasis">always</em> point-to-point packets. In contrast, the actual retransmitted data packets use the same protocol (multicast or broadcast) as the original data packets that they recapitulate.
+</p>
+<a name="wp1303167"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1303165"> </a><p class="pBody">
+In switched ethernet environments point-to-point packets remain invisible to <code class="cCode">rvtrace</code>&#151;except for packets addressed specifically to the <code class="cCode">rvtrace</code> host computer. This fact severely limits the usefulness of retransmit statistics in switched networks.
+</p>
+<a name="wp1303166"> </a><p class="pBody">
+In some switched networks, you can disable switching behavior&#151;for example, by setting one port to diagnostic mode, or by using a diagnostic utility. This tactic can yield the full stream of point-to-point packets in a limited portion of the network; run <code class="cCode">rvtrace</code> in that portion.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1303171"> </a><p class="pBody">
+<a  href="rv_adm116.htm#wp1104597">Figure&#160;50</a> shows a multicast retransmit table (from <code class="cCode">rvtrace -addrinfo</code>). The text below introduces important concepts. <a  href="rv_adm116.htm#wp1107787">Table&#160;10</a> describes the columns in detail.
+</p>
+<a name="wp1104597"> </a><div class="pFigureTitle">
+Figure&#160;50   Multicast Retransmit Statistics</div><div align="center"><img src="images/rv_adma21.gif" height="169" width="479" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1104949"> </a><h4 class="pHeading3">
+Network Total Row
+</h4>
+<a name="wp1104603"> </a><p class="pBody">
+The first row (immediately after the table and column headings) is a <em class="cEmphasis">network total row;</em> the word <code class="cCode">Totals</code> in the <code class="cCode">Address</code> column is a visual cue. This row shows the grand total of packets related to retransmission detected on the network during the interval.
+</p>
+<a name="wp1107555"> </a><p class="pBody">
+The remaining rows display more fine-grained information about those packets&#151;grouping them by UDP service, and destination or source IP address.
+</p>
+<a name="wp1104607"> </a><h4 class="pHeading3">
+Port Subtotal Row
+</h4>
+<a name="wp1107539"> </a><p class="pBody">
+The second row in <a  href="rv_adm116.htm#wp1104597">Figure&#160;50</a> is a <em class="cEmphasis">port subtotal row</em>&#151;its columns subtotal the statistics over the subsequent destination and source rows which it governs (until the next port subtotal row).
+</p>
+<a name="wp1104612"> </a><p class="pBody">
+A number in the <a  href="rv_adm115.htm#wp1128365"><code class="cCode">Port</code></a> column indicates the UDP service for its row, and the group of rows that follow it. A blank in this column means that the row has the same port as the row above, and is part of the same subtotal group. Notice how the pattern of numbers and blanks in the <a  href="rv_adm115.htm#wp1128365"><code class="cCode">Port</code></a> column visually indicates the subtotal groups.
+</p>
+<a name="wp1104616"> </a><h4 class="pHeading3">
+Destination and Source Rows
+</h4>
+<a name="wp1107777"> </a><p class="pBody">
+For each IP address with retransmission request activity, this table contains a destination row and a source row&#151;always paired in that order. An <code class="cCode">*</code> and an IP address (in the <a  href="rv_adm116.htm#wp1107811"><code class="cCode">Address</code></a> column) flags a row as a <em class="cEmphasis">destination row</em>. A blank (space characters) flags a row as a <em class="cEmphasis">source</em> row. The address in the destination row also applies to the source row that immediately follows it.
+</p>
+<a name="wp1107864"> </a><h4 class="pHeading3">
+Counting Packets
+</h4>
+<a name="wp1107867"> </a><p class="pBody">
+This table displays each packet twice&#151;once in a destination row, and once in a source row.
+</p>
+<a name="wp1107940"> </a><p class="pBody">
+In each statistical column, the number in the port subtotal row is equal to the sum of the values in the destination rows, which is also equal to the sum of the values in the source rows.
+</p>
+<a name="wp1107935"> </a><p class="pBody">
+In many networks it is possible to match the numbers in the source row for one IP address against the numbers in the destination row for another IP address. From this information you can deduce which Rendezvous daemons are missing packets and requesting retransmissions.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1107787"> </a><div class="pTableTitle">
+Table&#160;10   Multicast Retransmit Statistics&#151;Column Headings (Sheet 1 of 3)
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1107791"> </a><div class="pCellHeading">
+Column
+</div>
+</th>
+    <th><a name="wp1107793"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1107796"> </a><div class="pCellBody">
+<code class="cCode">Port</code>
+</div>
+</td>
+    <td><a name="wp1107798"> </a><div class="pCellBody">
+In <em class="cEmphasis">port subtotal rows,</em> this column contains a UDP port number indicating the Rendezvous service for the group of rows that it begins.
+</div>
+<a name="wp1107802"> </a><div class="pCellBody">
+In destination and source rows this column is blank; the service in the nearest preceding port subtotal row governs the destination and source rows below it.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1107804"> </a><div class="pCellBody">
+*
+</div>
+</td>
+    <td><a name="wp1107806"> </a><div class="pCellBody">
+Asterisk (<code class="cCode">*</code>) in this unlabeled column indicates a destination row.
+</div>
+<a name="wp1107807"> </a><div class="pCellBody">
+Blank in this column indicates a source row.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1107811"> </a><div class="pCellBody">
+<code class="cCode">Address</code>
+</div>
+</td>
+    <td><a name="wp1107813"> </a><div class="pCellBody">
+In <em class="cEmphasis">destination rows</em> this column shows the destination IP address of retransmission request packets (that is, the Rendezvous daemon that originally sent data packets).
+</div>
+<a name="wp1107817"> </a><div class="pCellBody">
+In <em class="cEmphasis">source rows</em> this column shows the IP address from which retransmission request or rejection packets originate (that is, the Rendezvous daemon that missed receiving data packets).
+</div>
+<a name="wp1107821"> </a><div class="pCellBody">
+In <em class="cEmphasis">network total rows</em>, this column contains the word <code class="cCode">Totals</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1107825"> </a><div class="pCellBody">
+<code class="cCode">Rreq</code>
+</div>
+</td>
+    <td><a name="wp1107827"> </a><div class="pCellBody">
+Retransmission requests.
+</div>
+<a name="wp1107828"> </a><div class="pCellBody">
+This column displays the number of packets that contain retransmission requests.
+</div>
+<a name="wp1107829"> </a><div class="pCellBody">
+Each request packet counts separately, even if several request packets specify the same data packet numbers for retransmission. For example, if two daemons each request retransmission of the data packets numbered 121&#8211;125, and a third daemon requests retransmission of the data packets numbered 100&#8211;144, then <code class="cCode">Rreq</code> is 3.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1107832"> </a><div class="pCellBody">
+<code class="cCode">Rseq</code>
+</div>
+</td>
+    <td><a name="wp1107834"> </a><div class="pCellBody">
+Retransmission sequence numbers.
+</div>
+<a name="wp1107835"> </a><div class="pCellBody">
+Each retransmission request packet can solicit one or more data packets for retransmission. This column sums the number of data packets for which retransmission is requested over the request packets (as counted in the <a  href="rv_adm116.htm#wp1107825"><code class="cCode">Rreq</code></a> column).
+</div>
+<a name="wp1107839"> </a><div class="pCellBody">
+If some data packets are requested several times, each data packet counts separately each time it is requested. For example, if three daemons request retransmission of data packets numbered 121&#8211;125, then the <code class="cCode">Rseq</code> sum is 15.
+</div>
+<a name="wp1107843"> </a><div class="pCellBody">
+For more information, see <a  href="rv_adm116.htm#wp1113215">Diagnoses</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1107846"> </a><div class="pCellBody">
+<code class="cCode">Rrej</code>
+</div>
+</td>
+    <td><a name="wp1107848"> </a><div class="pCellBody">
+Retransmission rejection notices.
+</div>
+<a name="wp1107852"> </a><div class="pCellBody">
+Although Rendezvous daemons comply with retransmission requests whenever possible, sometimes the requested packets are no longer available. This column displays the number of packets that contain retransmission rejections.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1107855"> </a><div class="pCellBody">
+<code class="cCode">Bad</code>
+</div>
+</td>
+    <td><a name="wp1128673"> </a><div class="pCellBody">
+Bad packets.
+</div>
+<a name="wp1128674"> </a><div class="pCellBody">
+This column shows the number of packets that lack UDP checksums, or are corrupt in some other way.
+</div>
+<img src="images/warning.gif" border="0" /><a name="wp1128676"> </a><div class="pCellBody">
+<em class="cEmphasis">Any</em> non-zero value in this column reflects a severe misconfiguration or network problem. Remedy the situation immediately.
+</div>
+<a name="wp1128680"> </a><div class="pCellBody">
+<b class="cBold">Note: </b>Checksums are crucial to correct operation of Rendezvous software; see <a  href="rv_adm6.htm#wp1059798">Enable Packet Checksums</a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1113215"> </a><h3 class="pHeading2">
+Diagnoses
+</h3>
+<a name="wp1130595"> </a><p class="pBody">
+<a  href="rv_adm114.htm#wp1117603">Scanning for Problems</a> described a quick scanning technique for locating problems in <code class="cCode">rvtrace</code> output, looking for non-zero values in the <a  href="rv_adm115.htm#wp1128455"><code class="cCode">Bad</code></a>, <a  href="rv_adm115.htm#wp1128439"><code class="cCode">Gaps</code></a>, and <a  href="rv_adm115.htm#wp1128429"><code class="cCode">Rbytes</code></a> columns of the multicast data tables. When such a scan indicates problems, look more closely at the retransmit statistics in nearby intervals.
+</p>
+<a name="wp1130947"> </a><p class="pBody">
+<a  href="rv_adm116.htm#wp1107832"><code class="cCode">Rseq</code></a> measures retransmission requests for missed multicast or broadcast packets. Non-zero <a  href="rv_adm116.htm#wp1107832"><code class="cCode">Rseq</code></a> values generally indicate a problem. The ratio <a  href="rv_adm115.htm#wp1128415"><code class="cCode">Rdata</code></a>/<a  href="rv_adm115.htm#wp1128388"><code class="cCode">Data</code></a> measures the severity of the problem. Small ratios indicate low-level problems, which you can investigate as time permits. Ratios of 2% or greater indicate potentially serious network problems; investigate further. High ratios that last for only one interval, could indicate an intermittent problem, which could become more serious in other situations.
+</p>
+<a name="wp1113240"> </a><p class="pBody">
+Notice that <a  href="rv_adm116.htm#wp1107832"><code class="cCode">Rseq</code></a> tabulates packets that serve a feedback mechanism within the protocol. A data receiver becomes a feedback sender when it detects that it has missed data packets. So the <a  href="rv_adm116.htm#wp1107832"><code class="cCode">Rseq</code></a> value in source rows indicates a data receiver <em class="cEmphasis">sending</em> retransmission requests. Conversely, the <a  href="rv_adm116.htm#wp1107832"><code class="cCode">Rseq</code></a> value in destination rows indicates a data sender <em class="cEmphasis">receiving</em> retransmission requests.
+</p>
+<a name="wp1130952"> </a><p class="pBody">
+Consider the following two examples.
+</p>
+<a name="wp1130772"> </a><h4 class="pHeading3">
+Difficulty at One Specific Receiver
+</h4>
+<a name="wp1131379"> </a><p class="pBody">
+<a  href="rv_adm116.htm#wp1131864">Figure&#160;51</a> shows <code class="cCode">rvtrace</code> output for three intervals, which indicate a difficulty at one specific receiver. The administrator must investigate that receiver, its network hardware, and its load.
+</p>
+<a name="wp1131383"> </a><p class="pBody">
+Several situations could cause this pattern in <code class="cCode">rvtrace</code> display output. For example:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1113270"> </a><div class="pSmartList1"><li >One slow computer is flooded by too much data from a network of faster senders; the receiver cannot process inbound data as fast as the rest of the network.</li></div>
+
+<a name="wp1113271"> </a><div class="pSmartList1"><li >One receiver with intermittent network interface failures or a loose network cable.</li></div>
+
+</ul></div>
+
+<a name="wp1131864"> </a><div class="pFigureTitle">
+Figure&#160;51   Rseq Reveals Difficulty at a Receiver</div><div align="center"><img src="images/rv_adma14.gif" height="573" width="598" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1131298"> </a><p class="pBody">
+In <a  href="rv_adm116.htm#wp1131864">Figure&#160;51</a>, the first interval shows 9 sequence gaps in the multicast data table&#151;that is, 9 gaps in the stream of multicast packets. The <a  href="rv_adm116.htm#wp1107832"><code class="cCode">Rseq</code></a> column of the multicast retransmit table contains further details; the host at address <code class="cCode">10.101.3.246</code> requested 2211 packets for retransmission, while the other hosts requested a total of 11 packets. Conclude that the locus of the problem is at <code class="cCode">10.101.3.246</code>, and that retransmit requests from the other receivers are side effects.
+</p>
+<a name="wp1131289"> </a><p class="pBody">
+The second interval of <a  href="rv_adm116.htm#wp1131864">Figure&#160;51</a> shows zero sequence gaps&#151;the problem has abated. Nonetheless, the <a  href="rv_adm115.htm#wp1128415"><code class="cCode">Rdata</code></a> and <a  href="rv_adm115.htm#wp1128429"><code class="cCode">Rbytes</code></a> columns indicate that retransmissions continue as Rendezvous daemons recover from the problem by resending stored data.
+</p>
+<a name="wp1131355"> </a><p class="pBody">
+By the third interval of <a  href="rv_adm116.htm#wp1131864">Figure&#160;51</a>, everything has returned to normal.
+</p>
+<a name="wp1113297"> </a><h4 class="pHeading3">
+Difficulty at One Specific Sender
+</h4>
+<a name="wp1113301"> </a><p class="pBody">
+<a  href="rv_adm116.htm#wp1113309">Figure&#160;52</a> shows output indicating a difficulty at one specific sender. The administrator must investigate that sender, its sending applications, and its network hardware.
+</p>
+<a name="wp1113302"> </a><p class="pBody">
+Several situations could cause this pattern in <code class="cCode">rvtrace</code> display output. For example:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1113303"> </a><div class="pSmartList1"><li >The sender is flooding the network&#151;that is, it is sending packets faster than most other daemons on the network can receive them.</li></div>
+
+<a name="wp1113304"> </a><div class="pSmartList1"><li >The sender has intermittent network interface failures or a loose network cable.</li></div>
+
+</ul></div>
+
+<a name="wp1131969"> </a><p class="pBody">
+In <a  href="rv_adm116.htm#wp1113309">Figure&#160;52</a>, the multicast data table shows 411 sequence gaps&#151;that is, 411 gaps in the stream of multicast packets. Moreover, all the missing packets originate at one sender, <code class="cCode">10.101.3.246</code>. The <a  href="rv_adm116.htm#wp1107832"><code class="cCode">Rseq</code></a> column of the multicast retransmit table contains further details; <em class="cEmphasis">both</em> of the receivers in the network requested those packets for retransmission&#151;that is <code class="cCode">10.101.3.74</code> and <code class="cCode">10.101.3.237</code> both sent retransmit requests to <code class="cCode">10.101.3.246</code>. Conclude that the locus of the problem is at <code class="cCode">10.101.3.246</code>.
+</p>
+<a name="wp1133005"> </a><p class="pBody">
+The <a  href="rv_adm115.htm#wp1128415"><code class="cCode">Rdata</code></a> column of the multicast data table shows that before the end of the interval, the sender had retransmitted all 411 missing packets. The problem was a brief glitch&#151;the Rendezvous reliable transport mechanisms easily smoothed over this temporary rough spot. Nonetheless, if such behavior recurs, the administrator must investigate the problem.
+</p>
+<a name="wp1113309"> </a><div class="pFigureTitle">
+Figure&#160;52   Rseq Reveals Difficulty at a Sender</div><div align="center"><img src="images/rv_adma18.gif" height="287" width="599" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

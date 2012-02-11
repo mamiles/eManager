@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>CachedSubject</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;8	 Current Value Cache&#151;rvcache";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1962088"> </a><h2 class="pNewHTMLPage">
+CachedSubject
+</h2>
+<hr />
+<a name="wp1962089"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1962090"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">class com.tibco.tibrv.config.</code><code class="cCodeBold">CachedSubject</code><a name="wp1962091"> </a>
+<code class="cCode">&#160;&#160;extends java.lang.Object</code><a name="wp1962092"> </a>
+</pre></div>
+<a name="wp1962093"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1962094"> </a><p class="pBody">
+Represent a subject in the cache.
+</p>
+<a name="wp1962095"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1962099"> </a><p class="pBody">
+The method <a  href="rv_config206.htm#wp1961548"><code class="cCode">RvcacheProxy.getCachedSubjects()</code></a> returns objects of this class.
+</p>
+<a name="wp1962124"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1962102"> </a><div class="pCellHeading">
+Constant
+</div>
+</th>
+    <th><a name="wp1962104"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1962110"> </a><div class="pCellBody">
+<a  href="rv_config217.htm#wp1962088"><code class="cCode">CachedSubject</code></a><code class="cCode">.MERGE_MODE</code>
+</div>
+</td>
+    <td colspan="1" rowspan="2"><a name="wp1962115"> </a><div class="pCellBody">
+<a  href="rv_config221.htm#wp1962317"><code class="cCode">CachedSubject.getStorageMethod()</code> </a> returns these constants.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1962121"> </a><div class="pCellBody">
+<a  href="rv_config217.htm#wp1962088"><code class="cCode">CachedSubject</code></a><code class="cCode">.REPLACE_MODE</code>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1962231"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1962130"> </a><p class="pBody">
+&#160;
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1962136"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1962138"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1962140"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1962145"> </a><div class="pCellBody">
+<a  href="rv_config218.htm#wp1962257"><code class="cCode">CachedSubject.getFields()</code></a>
+</div>
+</td>
+    <td><a name="wp1962149"> </a><div class="pCellBody">
+<a  href="rv_config218.htm#wp1962266">Get the message fields of the cached subject.</a>
+</div>
+</td>
+    <td><a name="wp1962155"> </a><div class="pCellBody">
+<a  href="rv_config218.htm#wp1962257">249</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1962160"> </a><div class="pCellBody">
+<a  href="rv_config219.htm#wp1962284"><code class="cCode">CachedSubject.getInitialValuesServed()</code></a>
+</div>
+</td>
+    <td><a name="wp1962164"> </a><div class="pCellBody">
+<a  href="rv_config219.htm#wp1962290">Get the number of times rvcache has delivered this subject.</a>
+</div>
+</td>
+    <td><a name="wp1962170"> </a><div class="pCellBody">
+<a  href="rv_config219.htm#wp1962284">250</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1962175"> </a><div class="pCellBody">
+<a  href="rv_config220.htm#wp1962297"><code class="cCode">CachedSubject.getMessageSize()</code></a>
+</div>
+</td>
+    <td><a name="wp1962179"> </a><div class="pCellBody">
+<a  href="rv_config220.htm#wp1962303">Get the size of the cached message (in bytes).</a>
+</div>
+</td>
+    <td><a name="wp1962185"> </a><div class="pCellBody">
+<a  href="rv_config220.htm#wp1962297">251</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1962190"> </a><div class="pCellBody">
+<a  href="rv_config221.htm#wp1962317"><code class="cCode">CachedSubject.getStorageMethod()</code></a>
+</div>
+</td>
+    <td><a name="wp1962194"> </a><div class="pCellBody">
+<a  href="rv_config221.htm#wp1962323">Get the mode for storing inbound messages for the subject.</a>
+</div>
+</td>
+    <td><a name="wp1962200"> </a><div class="pCellBody">
+<a  href="rv_config221.htm#wp1962317">252</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1962205"> </a><div class="pCellBody">
+<a  href="rv_config222.htm#wp1962345"><code class="cCode">CachedSubject.getSubject()</code></a>
+</div>
+</td>
+    <td><a name="wp1962210"> </a><div class="pCellBody">
+<a  href="rv_config222.htm#wp1962351">Get the subject name.</a>
+</div>
+</td>
+    <td><a name="wp1962215"> </a><div class="pCellBody">
+<a  href="rv_config222.htm#wp1962345">253</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1962220"> </a><div class="pCellBody">
+<a  href="rv_config223.htm#wp1962365"><code class="cCode">CachedSubject.getUpdatesApplied()</code></a>
+</div>
+</td>
+    <td><a name="wp1962224"> </a><div class="pCellBody">
+<a  href="rv_config223.htm#wp1962371">Get the number of times that an inbound message has updated the cached data for this subject.</a>
+</div>
+</td>
+    <td><a name="wp1962230"> </a><div class="pCellBody">
+<a  href="rv_config223.htm#wp1962365">254</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1962243"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1962234"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1962236"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.equals()</code>
+</p>
+<a name="wp1962237"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.getClass()</code>
+</p>
+<a name="wp1962238"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.hashCode()</code>
+</p>
+<a name="wp1962239"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notify()</code>
+</p>
+<a name="wp1962240"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notifyAll()</code>
+</p>
+<a name="wp1962241"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.toString() </code>override
+</p>
+<a name="wp1962242"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.wait()</code>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1962244"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1962248"> </a><p class="pBody">
+<a  href="rv_config206.htm#wp1961548"><code class="cCode">RvcacheProxy.getCachedSubjects()</code> </a>
+</p>
+<a name="wp1962252"> </a><p class="pBody">
+For background information, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm87.htm#wp1081893');" onMouseOver="WWHShowPopup('c', 'rv_adm87.htm#wp1081893', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Browser Administration Interface</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

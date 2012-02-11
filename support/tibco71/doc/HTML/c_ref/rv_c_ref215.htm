@@ -1,0 +1,400 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvcmTransport_CreateDistributedQueue()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;12	 Distributed Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1136916"> </a><h2 class="pNewHTMLPage">
+tibrvcmTransport_CreateDistributedQueue()
+</h2>
+<hr />
+<a name="wp1105666"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1105667"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvcmTransport_CreateDistributedQueue</code>(<a name="wp1105674"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref184.htm#wp1086288"><code class="cCode">tibrvcmTransport</code></a>*&#160;&#160;&#160;&#160;cmTransport,<a name="wp1105675"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref132.htm#wp1066635"><code class="cCode">tibrvTransport</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;transport,<a name="wp1105676"> </a>
+&#160;&#160;&#160;&#160;const char*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;cmName);<a name="wp1105677"> </a>
+<a name="wp1105678"> </a>
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvcmTransport_CreateDistributedQueueEx</code>(<a name="wp1105679"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref184.htm#wp1086288"><code class="cCode">tibrvcmTransport</code></a>*&#160;&#160;&#160;&#160;cmTransport,<a name="wp1105680"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref132.htm#wp1066635"><code class="cCode">tibrvTransport</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;transport,<a name="wp1105681"> </a>
+&#160;&#160;&#160;&#160;const char*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;cmName,<a name="wp1105682"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128803"><code class="cCode">tibrv_u32</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;workerWeight,<a name="wp1105683"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128803"><code class="cCode">tibrv_u32</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;workerTasks,<a name="wp1105684"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128797"><code class="cCode">tibrv_u16</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;schedulerWeight,<a name="wp1105685"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128761"><code class="cCode">tibrv_f64</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;schedulerHeartbeat,<a name="wp1105686"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128761"><code class="cCode">tibrv_f64</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;schedulerActivation);<a name="wp1105687"> </a>
+</pre></div>
+<a name="wp1105688"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1105689"> </a><p class="pBody">
+Create a distributed queue member.
+</p>
+<a name="wp1105690"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1105691"> </a><p class="pBody">
+The new distributed queue transport must employ a valid transport for network communications.
+</p>
+<a name="wp1135126"> </a><p class="pBody">
+All members of a distributed queue must listen to exactly the same set of subjects. See <a  href="javascript:WWHClickedPopup('a', 'rv_concepts119.htm#wp1056870');" onMouseOver="WWHShowPopup('a', 'rv_concepts119.htm#wp1056870', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Enforcing Identical Subscriptions</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+<a name="wp1154311"> </a><p class="pBody">
+To destroy a distributed queue transport, call <a  href="rv_c_ref189.htm#wp1090827"><code class="cCode">tibrvcmTransport_Destroy()</code></a>.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1192825"> </a><p class="pBody">
+ (Sheet 1 of 4)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1192829"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1192831"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1192833"> </a><div class="pCellBody">
+<code class="cCode">cmTransport</code>
+</div>
+</td>
+    <td><a name="wp1192835"> </a><div class="pCellBody">
+The program supplies a location, and the function stores the new distributed queue transport in that location.
+</div>
+<a name="wp1192836"> </a><div class="pCellBody">
+The distributed queue transport remains valid until the program explicitly destroys it.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1192838"> </a><div class="pCellBody">
+<code class="cCode">transport</code>
+</div>
+</td>
+    <td><a name="wp1192840"> </a><div class="pCellBody">
+The new distributed <code class="cCode">cmTransport</code> employs this transport object for network communications.
+</div>
+<a name="wp1192841"> </a><div class="pCellBody">
+Destroying the distributed <code class="cCode">cmTransport</code> does not affect this transport. The program must explicitly call <a  href="rv_c_ref136.htm#wp1066967"><code class="cCode">tibrvTransport_Destroy()</code></a> to destroy this <a  href="rv_c_ref132.htm#wp1066635"><code class="cCode">tibrvTransport</code></a> when it is no longer needed.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1192849"> </a><div class="pCellBody">
+<code class="cCode">cmName</code>
+</div>
+</td>
+    <td><a name="wp1192851"> </a><div class="pCellBody">
+Bind this reusable name to the new distributed <code class="cCode">cmTransport</code>, so the distributed queue transport becomes a member of the distributed queue with this name.
+</div>
+<a name="wp1192852"> </a><div class="pCellBody">
+The name must be non-<code class="cCode">NULL</code>, and conform to the syntax rules for Rendezvous subject names. It cannot begin with reserved tokens. It cannot be a non-reusable name generated by a call to <a  href="rv_c_ref188.htm#wp1120127"><code class="cCode">tibrvcmTransport_Create()</code></a>. It cannot be the empty string.
+</div>
+<a name="wp1192862"> </a><div class="pCellBody">
+For more information, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts114.htm#wp1056478');" onMouseOver="WWHShowPopup('a', 'rv_concepts114.htm#wp1056478', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Reusable Names</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1192867"> </a><div class="pCellBody">
+<code class="cCode">workerWeight</code>
+</div>
+</td>
+    <td><a name="wp1192869"> </a><div class="pCellBody">
+When the scheduler receives a task, it assigns the task to the available worker with the greatest worker weight.
+</div>
+<a name="wp1192870"> </a><div class="pCellBody">
+A worker is considered available unless either of these conditions are true:
+</div>
+<div class="pSmartList1"><ul>
+<a name="wp1192871"> </a><div class="pSmartList1"><li >The pending tasks assigned to the worker member exceed its task capacity.</li></div>
+
+<a name="wp1192872"> </a><div class="pSmartList1"><li >The worker is also the scheduler. (The scheduler assigns tasks to its own worker role only when no other workers are available.)</li></div>
+
+</ul></div>
+
+<a name="wp1192873"> </a><div class="pCellBody">
+Programs can set this parameter using the extended function. The brief form supplies the default value, <code class="cCode">TIBRVCM_DEFAULT_WORKER_WEIGHT</code> (<code class="cCode">1</code>).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1192875"> </a><div class="pCellBody">
+<code class="cCode">workerTasks</code>
+</div>
+</td>
+    <td><a name="wp1192877"> </a><div class="pCellBody">
+Task capacity is the maximum number of tasks that a worker can accept. When the number of accepted tasks reaches this maximum, the worker cannot accept additional tasks until it completes one or more of them.
+</div>
+<a name="wp1192878"> </a><div class="pCellBody">
+When the scheduler receives a task, it assigns the task to the worker with the greatest worker weight&#151;unless the pending tasks assigned to that worker exceed its task capacity. When the preferred worker has too many tasks, the scheduler assigns the new inbound task to the worker with the next greatest worker weight.
+</div>
+<a name="wp1208542"> </a><div class="pCellBody">
+Programs can set this parameter using the extended function. The value must be greater than zero. The brief form supplies the default value, <code class="cCode">TIBRVCM_DEFAULT_WORKER_TASKS</code> (<code class="cCode">1</code>).
+</div>
+<img src="images/warning.gif" border="0" /><a name="wp1192882"> </a><div class="pCellBody">
+Tuning task capacity to compensate for communication time lag is more complicated than it might seem. Before setting this value to anything other than 1, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts121.htm#wp1056907');" onMouseOver="WWHShowPopup('a', 'rv_concepts121.htm#wp1056907', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Task Capacity</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1192890"> </a><div class="pCellBody">
+<code class="cCode">schedulerWeight</code>
+</div>
+</td>
+    <td><a name="wp1208214"> </a><div class="pCellBody">
+Weight represents the ability of this member to fulfill the role of scheduler, relative to other members with the same name. Cooperating distributed queue transports use relative scheduler weight values to elect one transport as the scheduler; members with higher scheduler weight take precedence.
+</div>
+<a name="wp1208303"> </a><div class="pCellBody">
+Programs can set this parameter using the extended function. Acceptable values range from 0 to 65535. Zero is a special value, indicating that the member can never be the scheduler. The brief form supplies the default value, <code class="cCode">TIBRVCM_DEFAULT_SCHEDULER_WEIGHT</code> (<code class="cCode">1</code>).
+</div>
+<a name="wp1208314"> </a><div class="pCellBody">
+For more information, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts134.htm#wp1057331');" onMouseOver="WWHShowPopup('a', 'rv_concepts134.htm#wp1057331', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Rank and Weight</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1192901"> </a><div class="pCellBody">
+<code class="cCode">schedulerHeartbeat</code>
+</div>
+</td>
+    <td><a name="wp1192903"> </a><div class="pCellBody">
+The scheduler sends heartbeat messages at this interval (in seconds).
+</div>
+<a name="wp1192904"> </a><div class="pCellBody">
+All members with the same name must specify the same value for this parameter. The value must be strictly positive. To determine the correct value, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts155.htm#wp1058304');" onMouseOver="WWHShowPopup('a', 'rv_concepts155.htm#wp1058304', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Step 4: Choose the Intervals</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+<a name="wp1208584"> </a><div class="pCellBody">
+Programs can set this parameter using the extended function. The brief form supplies the default value, <code class="cCode">TIBRVCM_DEFAULT_SCHEDULER_HB</code> (<code class="cCode">1.0</code>).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1192912"> </a><div class="pCellBody">
+<code class="cCode">schedulerActivation</code>
+</div>
+</td>
+    <td><a name="wp1192914"> </a><div class="pCellBody">
+When the heartbeat signal from the scheduler has been silent for this interval (in seconds), the member with the greatest scheduler weight takes its place as the new scheduler.
+</div>
+<a name="wp1192915"> </a><div class="pCellBody">
+All members with the same name must specify the same value for this parameter. The value must be strictly positive. To determine the correct value, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts155.htm#wp1058304');" onMouseOver="WWHShowPopup('a', 'rv_concepts155.htm#wp1058304', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Step 4: Choose the Intervals</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+<a name="wp1208597"> </a><div class="pCellBody">
+Programs can set this parameter using the extended function. The brief form supplies the default value, <code class="cCode">TIBRVCM_DEFAULT_SCHEDULER_ACTIVE</code> (<code class="cCode">3.5</code>).
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1135313"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1137259"> </a><div class="pCellHeading">
+Constant
+</div>
+</th>
+    <th><a name="wp1137261"> </a><div class="pCellHeading">
+Value
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1137268"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCM_DEFAULT_COMPLETE_TIME</code>
+</div>
+</td>
+    <td><a name="wp1137271"> </a><div class="pCellBody">
+<code class="cCode">0</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1137291"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCM_DEFAULT_WORKER_WEIGHT</code>
+</div>
+</td>
+    <td><a name="wp1137297"> </a><div class="pCellBody">
+<code class="cCode">1</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1137299"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCM_DEFAULT_WORKER_TASKS</code>
+</div>
+</td>
+    <td><a name="wp1137306"> </a><div class="pCellBody">
+<code class="cCode">1</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1137314"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCM_DEFAULT_SCHEDULER_WEIGHT</code>
+</div>
+</td>
+    <td><a name="wp1137317"> </a><div class="pCellBody">
+<code class="cCode">1</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1137325"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCM_DEFAULT_SCHEDULER_HB</code>
+</div>
+</td>
+    <td><a name="wp1137328"> </a><div class="pCellBody">
+<code class="cCode">1.0</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1137336"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCM_DEFAULT_SCHEDULER_ACTIVE</code>
+</div>
+</td>
+    <td><a name="wp1137339"> </a><div class="pCellBody">
+<code class="cCode">3.5</code>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1155317"> </a><h4 class="pHeading3">
+Relationship to CM
+</h4>
+<a name="wp1155287"> </a><p class="pBody">
+Although distributed queue members are a specialized type of CM transport, their behavior is quite different. Distributed queue transports do not support any functions related to sending messages (for a complete list, see the table of disabled functions, below).
+</p>
+<a name="wp1156105"> </a><p class="pBody">
+Scheduler recovery and task rescheduling are available only when the task message is a certified message (that is, a certified delivery agreement is in effect between the task sender and the distributed queue transport scheduler).</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1192973"> </a><div class="pCellHeading">
+Disabled Functions
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1192982"> </a><p class="pBody">
+<a  href="rv_c_ref185.htm#wp1089437"><code class="cCode">tibrvcmTransport_AddListener()</code></a>
+</p>
+<a name="wp1192986"> </a><p class="pBody">
+<a  href="rv_c_ref186.htm#wp1089193"><code class="cCode">tibrvcmTransport_AllowListener()</code></a>
+</p>
+<a name="wp1192990"> </a><p class="pBody">
+<a  href="rv_c_ref187.htm#wp1090484"><code class="cCode">tibrvcmTransport_ConnectToRelayAgent()</code></a>
+</p>
+<a name="wp1192994"> </a><p class="pBody">
+<a  href="rv_c_ref190.htm#wp1190238"><code class="cCode">tibrvcmTransport_DisallowListener()</code></a>
+</p>
+<a name="wp1192998"> </a><p class="pBody">
+<a  href="rv_c_ref191.htm#wp1090646"><code class="cCode">tibrvcmTransport_DisconnectFromRelayAgent()</code></a>
+</p>
+<a name="wp1193002"> </a><p class="pBody">
+<a  href="rv_c_ref192.htm#wp1111037"><code class="cCode">tibrvcmTransport_GetDefaultCMTimeLimit()</code></a>
+</p>
+<a name="wp1193006"> </a><p class="pBody">
+<a  href="rv_c_ref193.htm#wp1111126"><code class="cCode">tibrvcmTransport_GetLedgerName()</code></a>
+</p>
+<a name="wp1193010"> </a><p class="pBody">
+<a  href="rv_c_ref195.htm#wp1090344"><code class="cCode">tibrvcmTransport_GetRelayAgent()</code></a>
+</p>
+<a name="wp1193014"> </a><p class="pBody">
+<a  href="rv_c_ref196.htm#wp1090379"><code class="cCode">tibrvcmTransport_GetRequestOld()</code></a>
+</p>
+<a name="wp1193018"> </a><p class="pBody">
+<a  href="rv_c_ref197.htm#wp1090415"><code class="cCode">tibrvcmTransport_GetSyncLedger()</code></a>
+</p>
+<a name="wp1193022"> </a><p class="pBody">
+<a  href="rv_c_ref199.htm#wp1089656"><code class="cCode">tibrvcmTransport_RemoveListener()</code></a>
+</p>
+<a name="wp1193026"> </a><p class="pBody">
+<a  href="rv_c_ref200.htm#wp1089871"><code class="cCode">tibrvcmTransport_RemoveSendState()</code></a>
+</p>
+<a name="wp1193030"> </a><p class="pBody">
+<a  href="rv_c_ref201.htm#wp1093154"><code class="cCode">tibrvcmTransport_ReviewLedger()</code></a>
+</p>
+<a name="wp1193034"> </a><p class="pBody">
+<a  href="rv_c_ref203.htm#wp1086494"><code class="cCode">tibrvcmTransport_Send()</code></a>
+</p>
+<a name="wp1193038"> </a><p class="pBody">
+<a  href="rv_c_ref204.htm#wp1086548"><code class="cCode">tibrvcmTransport_SendReply()</code></a>
+</p>
+<a name="wp1193042"> </a><p class="pBody">
+<a  href="rv_c_ref205.htm#wp1086588"><code class="cCode">tibrvcmTransport_SendRequest()</code></a>
+</p>
+<a name="wp1193046"> </a><p class="pBody">
+<a  href="rv_c_ref206.htm#wp1093092"><code class="cCode">tibrvcmTransport_SetDefaultCMTimeLimit()</code></a>
+</p>
+<a name="wp1193050"> </a><p class="pBody">
+<a  href="rv_c_ref207.htm#wp1089999"><code class="cCode">tibrvcmTransport_SyncLedger()</code></a>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1137255"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1105774"> </a><p class="pBody">
+<a  href="rv_c_ref189.htm#wp1090827"><code class="cCode">tibrvcmTransport_Destroy()</code> </a>
+</p>
+<a name="wp1105781"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts117.htm#wp1056801');" onMouseOver="WWHShowPopup('a', 'rv_concepts117.htm#wp1056801', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Distributed Queue</a>, in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

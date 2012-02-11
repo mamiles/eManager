@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Marvin Miles (Cisco Systems, Inc.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="processMgrMsg">
+		<xs:annotation>
+			<xs:documentation>Process Sequencer Msgs</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="getProcessStatus" type="ApplicationID"/>
+				<xs:element name="getProcessStatusFor" type="ProcessID"/>
+				<xs:element name="getGroupState" type="GroupID"/>
+				<xs:element name="getSolutionStatus" type="SolutionName"/>
+				<xs:element name="getAllGroupNames" type="ApplicationID"/>
+				<xs:element name="getProcesssesForGroup" type="GroupID"/>
+				<xs:element name="getHealth" type="ApplicationID"/>
+				<xs:element name="getSolutionHealth" type="SolutionName"/>
+				<xs:element name="startProcess" type="ProcessID"/>
+				<xs:element name="startGroup" type="GroupID"/>
+				<xs:element name="stopProcess" type="ProcessID"/>
+				<xs:element name="stopGroup" type="GroupID"/>
+				<xs:element name="restartProcess" type="ProcessID"/>
+				<xs:element name="restartGroup" type="GroupID"/>
+				<xs:element name="restartAll" type="ApplicationID"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="processMgrResp">
+		<xs:annotation>
+			<xs:documentation>Process Sequencer Responses</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="getProcessStatusResp">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="processInfoObj" type="ProcessInfo" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="getGroupStateResp" type="xs:string"/>
+				<xs:element name="getSolutionStatusResp">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="solutionStatusInfoObj" type="SolutionStatusInfo" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="getAllGroupNamesResp">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="groupName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="getProcessesForGroupResp">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="processName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="getHealthResp" type="xs:boolean"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="SolutionName">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:complexType name="ApplicationID">
+		<xs:sequence>
+			<xs:element name="applicationType" type="xs:string"/>
+			<xs:element name="applicationInstance" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProcessID">
+		<xs:complexContent>
+			<xs:extension base="ApplicationID">
+				<xs:sequence>
+					<xs:element name="processName" type="xs:string"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GroupID">
+		<xs:complexContent>
+			<xs:extension base="ApplicationID">
+				<xs:sequence>
+					<xs:element name="groupName" type="xs:string"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProcessInfo">
+		<xs:sequence>
+			<xs:element name="processName" type="xs:string"/>
+			<xs:element name="state" type="xs:string"/>
+			<xs:element name="startGeneration" type="xs:dateTime"/>
+			<xs:element name="execTime" type="xs:dateTime"/>
+			<xs:element name="processId" type="xs:long"/>
+			<xs:element name="successfulHeartbeats" type="xs:integer"/>
+			<xs:element name="missedHeartbeats" type="xs:integer"/>
+			<xs:element name="hostname" type="xs:string"/>
+			<xs:element name="heartbeatResult" type="xs:string"/>
+			<xs:element name="usesNativeLogging" type="xs:string"/>
+			<xs:element name="isMonitor" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SolutionStatusInfo">
+		<xs:sequence>
+			<xs:element name="solutionName" type="xs:string"/>
+			<xs:element name="appType" type="xs:string"/>
+			<xs:element name="appInstance" type="xs:string"/>
+			<xs:element name="state" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

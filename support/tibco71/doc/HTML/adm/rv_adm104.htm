@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Sufficiency and Effects</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;10	 Performance Assessment (rvperf)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1069479"> </a><h2 class="pNewHTMLPage">
+Sufficiency and Effects
+</h2>
+<hr />
+<a name="wp1069480"> </a><p class="pBody">
+Designers of distributed applications need to assess the effect of a proposed application on the network&#151;long before deployment, and often before any code exists. The performance assessment tool can help answer questions such as these:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1069484"> </a><div class="pSmartList1"><li >Can Rendezvous software <em class="cEmphasis">in this network</em> transfer data at the rate projected for this application?</li></div>
+
+<a name="wp1069485"> </a><div class="pSmartList1"><li >Increased message traffic affects the operation of network infrastructure and elements such as routers, WAN links, individual computers, and previously deployed network applications (including Rendezvous applications, as well as mounted remote file systems, <code class="cCode">telnet</code>, and others). What are the secondary effects of deploying an application that sends messages at the projected data rate?</li></div>
+
+</ul></div>
+
+<a name="wp1082613"> </a><h4 class="pHeading3">
+Limits of Performance Assessment
+</h4>
+<a name="wp1122743"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1302374"> </a><p class="pBody">
+Although the performance assessment tool can measure sufficiency of network transport, and the secondary effects of projected message traffic, its measurements are an idealized abstract. It <em class="cEmphasis">cannot</em> measure the <em class="cEmphasis">total</em> effect of a proposed, and as yet unimplemented, application.
+</p>
+<a name="wp1302375"> </a><p class="pBody">
+Generating data to send in messages, processing inbound messages, displaying data from inbound messages to the user&#151;all of these activities and their affect on the application&#8217;s host computer are beyond the scope of the performance assessment tool. For example, this tool can determine that the <em class="cEmphasis">network</em> can absorb 300 query messages per second, but this figure does not indicate whether a database application can actually process queries and return results at that rate.
+</p>
+<a name="wp1302376"> </a><p class="pBody">
+The performance assessment tool can establish an upper bound on application message transport performance, and help gauge some of the secondary effects, but it cannot prove an application as a whole will operate properly.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

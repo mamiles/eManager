@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Step 5: Program Start Sequence</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;15	 Developing Fault-Tolerant Programs";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1058412"> </a><h2 class="pNewHTMLPage">
+Step 5: Program Start Sequence
+</h2>
+<hr />
+<a name="wp1058413"> </a><p class="pBody">
+Fault-tolerant programs follow a typical start sequence:
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1058416"> </a><div class="pSmartList1"><li value="1">Begin in the program&#8217;s inactive state.</li></div>
+
+<a name="wp1058417"> </a><p class="pBodyRelative">
+For example, set flags within the program that prevent the behavior of an active member.
+</p>
+<a name="wp1058422"> </a><div class="pSmartList1"><li value="2">Do set-up tasks that do not depend on Rendezvous software.</li></div>
+
+<a name="wp1058427"> </a><div class="pSmartList1"><li value="3">Open the Rendezvous environment.</li></div>
+
+<a name="wp1058435"> </a><div class="pSmartList1"><li value="4">Do set-up tasks that depend on Rendezvous software. (Requires the Rendezvous environment to be open.)</li></div>
+
+<a name="wp1058440"> </a><div class="pSmartList1"><li value="5">Create the fault tolerance member event. (Requires the Rendezvous environment to be open.)</li></div>
+
+</ol></div>
+
+<a name="wp1069696"> </a><p class="pBody">
+
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Chapter&#160;8	Rendezvous Agent (rva)</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;8	 Rendezvous Agent (rva)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1054163"> </a><h2 class="pNewHTMLPageSetChapterTitle">
+Chapter&#160;8	Rendezvous Agent (rva)
+</h2>
+<hr />
+<a name="wp1054170"> </a><p class="pBody">
+The Rendezvous agent (<code class="cCode">rva</code>) is a background process that supports Rendezvous communications for Java applets. For security reasons, remote untrusted applets cannot connect directly to the Rendezvous daemon (<code class="cCode">rvd</code>); instead, they connect to <code class="cCode">rva</code>, which in turn connects to <code class="cCode">rvd</code>.
+</p>
+<a name="wp1054180"> </a><p class="pBody">
+The Rendezvous agent protects the Rendezvous daemon from inappropriate requests. It acts as security barrier, protecting the Rendezvous network against interference.
+</p>
+<a name="wp1054184"> </a><p class="pBody">
+Remote Java applets cannot start an <code class="cCode">rva</code> process; instead, they must connect to an agent process that is already running. Network and system administrators must ensure that an appropriate agent process is running at the web server host computer, so applets can connect back to it.
+</p>
+<a name="wp1054185"> </a><h4 class="pHeading3">
+Topics
+</h4>
+<div class="pSmartList1"><ul>
+<a name="wp1054189"> </a><div class="pSmartList1"><li ><a  href="rv_adm77.htm#wp1054197"><em class="cEmphasis">rva</em></a></li></div>
+
+<a name="wp1054193"> </a><div class="pSmartList1"><li ><a  href="rv_adm78.htm#wp1054362"><em class="cEmphasis">Web Site Considerations</em></a></li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

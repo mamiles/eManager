@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvMsgCallback.onMsg()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1098410"> </a><h2 class="pNewHTMLPage">
+TibrvMsgCallback.onMsg()
+</h2>
+<hr />
+<a name="wp1098411"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1098412"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+void <code class="cCodeBold">onMsg</code>(<a name="wp1098413"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_java_ref82.htm#wp1031628"><code style="font-weight: normal" class="cCode">TibrvListener</code></a> listener,<a name="wp1098414"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_java_ref31.htm#wp1055151"><code class="cCode">TibrvMsg</code></a> msg)<a name="wp1098415"> </a>
+</pre></div>
+<a name="wp1098416"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1098418"> </a><p class="pBody">
+Process inbound messages (listener events).
+</p>
+<a name="wp1098419"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1098420"> </a><p class="pBody">
+Implement this method to process inbound messages.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1098423"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1098425"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1098427"> </a><div class="pCellBody">
+<code class="cCode">listener</code>
+</div>
+</td>
+    <td><a name="wp1098429"> </a><div class="pCellBody">
+This parameter receives the listener event.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1098431"> </a><div class="pCellBody">
+<code class="cCode">msg</code>
+</div>
+</td>
+    <td><a name="wp1098433"> </a><div class="pCellBody">
+This parameter receives the inbound message.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1098435"> </a><h4 class="pHeading3">
+CM Label Information
+</h4>
+<a name="wp1098436"> </a><p class="pBody">
+The callback method for certified delivery messages can use certified delivery (CM) label information to discriminate these situations:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1098440"> </a><div class="pSmartList1"><li >If <a  href="rv_java_ref217.htm#wp1091155"><code class="cCode">TibrvCmMsg.getSender()</code></a> returns <code class="cCode">null</code>, then the message uses the reliable protocol (that is, it was sent from an ordinary transport).</li></div>
+
+<a name="wp1098444"> </a><div class="pSmartList1"><li >If <a  href="rv_java_ref217.htm#wp1091155"><code class="cCode">TibrvCmMsg.getSender()</code></a> returns a valid sender name, then the message uses the certified delivery protocol (that is, it is a labeled message, sent from a CM transport).</li></div>
+
+</ul></div>
+
+<a name="wp1098454"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1098458"> </a><p class="pBody">
+<a  href="rv_java_ref186.htm#wp1213777"><code class="cCode">TibrvCmListener()</code> </a>
+</p>
+<a name="wp1098462"> </a><p class="pBody">
+<a  href="rv_java_ref217.htm#wp1091155"><code class="cCode">TibrvCmMsg.getSender()</code> </a>
+</p>
+<a name="wp1098466"> </a><p class="pBody">
+<a  href="rv_java_ref218.htm#wp1085685"><code class="cCode">TibrvCmMsg.getSequence()</code> </a>
+</p>
+<a name="wp1098470"> </a><p class="pBody">
+<a  href="rv_java_ref219.htm#wp1085745"><code class="cCode">TibrvCmMsg.getTimeLimit()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

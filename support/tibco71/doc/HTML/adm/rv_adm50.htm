@@ -1,0 +1,408 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Connected Neighbors</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1192016"> </a><h2 class="pNewHTMLPage">
+Connected Neighbors
+</h2>
+<hr />
+<a name="wp1192017"> </a><p class="pBody">
+<code class="cCode">rvrd</code> displays information about its (actual) neighbor connections on this page.
+</p>
+<a name="wp1192018"> </a><p class="pBody">
+To display this page, click <b class="cBold">Connected Neighbors</b> in the left margin of any page of the <code class="cCode">rvrd</code> browser administration interface.
+</p>
+<a name="wp1300689"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/note.gif" border="0" /></td>
+    <td><a name="wp1304472"> </a><p class="pBody">
+This page is related to&#151;but not the same as&#151;the page described in <a  href="rv_adm55.htm#wp1209711">Neighbor Interfaces</a>.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1311636"> </a><div class="pFigureTitle">
+Figure&#160;21   rvrd Connected Neighbors Page</div><div align="center"><img src="images/rv_admc51.gif" height="131" width="551" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1192077"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1217364"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1217368"> </a><div class="pCellHeading">
+Item
+</div>
+</th>
+    <th><a name="wp1217370"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1239512"> </a><div class="pCellBody">
+<em class="cEmphasis">table rows</em>
+</div>
+</td>
+    <td><a name="wp1239515"> </a><div class="pCellBody">
+Each row in this table describes one neighbor connection.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1217372"> </a><div class="pCellBody">
+Router Name
+</div>
+</td>
+    <td><a name="wp1240155"> </a><div class="pCellBody">
+This page groups neighbors by local router name (routing table entry). A box in this column indicates the name of the local router that connects to the neighbors show to its right. See also <a  href="rv_adm33.htm#wp1053162">Routing Table Entry</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1217380"> </a><div class="pCellBody">
+Neighbor Name
+</div>
+</td>
+    <td><a name="wp1217382"> </a><div class="pCellBody">
+The name of a remote router with which the local router has a neighbor connection.
+</div>
+<a name="wp1217383"> </a><div class="pCellBody">
+Click here to view the browser administration interface for the neighbor routing daemon process.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1309161"> </a><div class="pCellBody">
+Link Stats
+</div>
+</td>
+    <td><a name="wp1311890"> </a><div class="pCellBody">
+The name of the (local) neighbor interface that specifies this neighbor connection. <code class="cCode">rvrd</code> generated this name automatically when you configured the neighbor interface. Click this name to view the <a  href="rv_adm50.htm#wp1311891">Neighbor Statistics</a> page.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1217385"> </a><div class="pCellBody">
+Peak Backlog
+</div>
+</td>
+    <td><a name="wp1316268"> </a><div class="pCellBody">
+Backlog is outbound data awaiting transmission to a neighbor. This column displays the peak backlog for each neighbor.
+</div>
+<a name="wp1316506"> </a><div class="pCellBody">
+The <a  href="rv_adm50.htm#wp1314306">Reset Statistics</a> button on the <a  href="rv_adm50.htm#wp1311891">Neighbor Statistics</a> page resets this figure to zero. It is also reset to zero when the neighbors become disconnected and subsequently reconnect.
+</div>
+<a name="wp1316503"> </a><div class="pCellBody">
+See also, <a  href="rv_adm42.htm#wp1045976">Backlog Protection</a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1311891"> </a><h3 class="pHeading2">
+Neighbor Statistics
+</h3>
+<a name="wp1311897"> </a><p class="pBody">
+<code class="cCode">rvrd</code> displays statistics about the performance of a neighbor connection on this page.
+</p>
+<a name="wp1314395"> </a><p class="pBody">
+To display this page, click the <b class="cBold">Link Stats</b> column of the <a  href="rv_adm50.htm#wp1192016">Connected Neighbors</a> page.
+</p>
+<a name="wp1314400"> </a><div class="pFigureTitle">
+Figure&#160;22   rvrd Neighbor Statistics Page</div><div align="center"><img src="images/rv_admb34.gif" height="439" width="551" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1311963"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1313142"> </a><p class="pBody">
+ (Sheet 1 of 3)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1313146"> </a><div class="pCellHeading">
+Item
+</div>
+</th>
+    <th><a name="wp1313148"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1313150"> </a><div class="pCellBody">
+<em class="cEmphasis">summary</em>
+</div>
+</td>
+    <td><a name="wp1313152"> </a><div class="pCellBody">
+This list presents static information about the neighbor connection.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1313154"> </a><div class="pCellBody">
+Router Name
+</div>
+</td>
+    <td><a name="wp1313159"> </a><div class="pCellBody">
+The name of the local router. (See also <a  href="rv_adm33.htm#wp1053162">Routing Table Entry</a>.)
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1313161"> </a><div class="pCellBody">
+Neighbor Name
+</div>
+</td>
+    <td><a name="wp1313163"> </a><div class="pCellBody">
+The name of the neighbor (remote router).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1313165"> </a><div class="pCellBody">
+Interface Number
+</div>
+</td>
+    <td><a name="wp1313167"> </a><div class="pCellBody">
+The name of the (local) neighbor interface that specifies the neighbor connection. <code class="cCode">rvrd</code> generated this number automatically when you configured the neighbor interface, and incorporates it into the neighbor ID.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1313169"> </a><div class="pCellBody">
+Local Port
+</div>
+</td>
+    <td><a name="wp1313172"> </a><div class="pCellBody">
+TCP port that this router uses to communicate with the neighbor.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1313174"> </a><div class="pCellBody">
+Remote Port
+</div>
+</td>
+    <td><a name="wp1313177"> </a><div class="pCellBody">
+TCP port that the neighbor (remote router) uses to communicate with the local router.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1313196"> </a><div class="pCellBody">
+Cost
+</div>
+</td>
+    <td><a name="wp1313198"> </a><div class="pCellBody">
+Path cost of the neighbor link.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1313204"> </a><div class="pCellBody">
+SSL Connection
+</div>
+</td>
+    <td><a name="wp1313206"> </a><div class="pCellBody">
+SSL security feature for the neighbor link.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1313218"> </a><div class="pCellBody">
+Data Compression
+</div>
+</td>
+    <td><a name="wp1313220"> </a><div class="pCellBody">
+Data compression feature for the neighbor link.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1322055"> </a><div class="pCellBody">
+Backlog Limit
+</div>
+</td>
+    <td><a name="wp1322090"> </a><div class="pCellBody">
+When backlog protection is enabled, this item displays the threshold for disconnect from the neighbor. See <a  href="rv_adm42.htm#wp1045976">Backlog Protection</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1314291"> </a><div class="pCellBody">
+<em class="cEmphasis">Data Flow</em>
+</div>
+</td>
+    <td><a name="wp1314294"> </a><div class="pCellBody">
+This table displays statistics about the volume of data on the neighbor connection.
+</div>
+<a name="wp1322140"> </a><div class="pCellBody">
+The <em class="cEmphasis">Inbound</em> row displays statistics about inbound data from the remote neighbor to the local router.
+</div>
+<a name="wp1322146"> </a><div class="pCellBody">
+The <em class="cEmphasis">Outbound</em> row displays statistics about outbound data from the local router to the remote neighbor.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1313266"> </a><div class="pCellBody">
+Messages
+</div>
+</td>
+    <td><a name="wp1313301"> </a><div class="pCellBody">
+Cumulative count of messages.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1313187"> </a><div class="pCellBody">
+Bytes
+</div>
+</td>
+    <td><a name="wp1313189"> </a><div class="pCellBody">
+Cumulative count of bytes (without compression).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1313345"> </a><div class="pCellBody">
+Bytes/Sec
+</div>
+</td>
+    <td><a name="wp1313347"> </a><div class="pCellBody">
+Data transmission rate during the most recent interval.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1313372"> </a><div class="pCellBody">
+Compr Bytes
+</div>
+</td>
+    <td><a name="wp1313403"> </a><div class="pCellBody">
+Cumulative count of compressed bytes.
+</div>
+<a name="wp1322184"> </a><div class="pCellBody">
+This item displays non-zero only when both of the neighbors specify data compression on the <a  href="rv_adm55.htm#wp1218325">rvrd Neighbor Interface Configuration Form</a>. 
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1314243"> </a><div class="pCellBody">
+Compr Ratio
+</div>
+</td>
+    <td><a name="wp1314245"> </a><div class="pCellBody">
+Compression ratio.
+</div>
+<a name="wp1322189"> </a><div class="pCellBody">
+This item displays non-zero only when both of the neighbors specify data compression on the <a  href="rv_adm55.htm#wp1218325">rvrd Neighbor Interface Configuration Form</a>. 
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1314269"> </a><div class="pCellBody">
+<em class="cEmphasis">Miscellaneous Statistics</em>
+</div>
+</td>
+    <td><a name="wp1314271"> </a><div class="pCellBody">
+This table displays statistics not related to either inbound or outbound data transmission.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1322166"> </a><div class="pCellBody">
+Peak Backlog
+</div>
+</td>
+    <td><a name="wp1322170"> </a><div class="pCellBody">
+Peak backlog of outbound data (in bytes) since the last reset of statistics. See also, <a  href="rv_adm42.htm#wp1045976">Backlog Protection</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1322193"> </a><div class="pCellBody">
+Curr Backlog
+</div>
+</td>
+    <td><a name="wp1322197"> </a><div class="pCellBody">
+Current backlog of outbound data (in bytes). See also, <a  href="rv_adm42.htm#wp1045976">Backlog Protection</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1316344"> </a><div class="pCellBody">
+Reconnects
+</div>
+</td>
+    <td><a name="wp1316346"> </a><div class="pCellBody">
+Cumulative count of times when the neighbor link became disconnected and subsequently reconnected. (For example, network failure or backlog protection could cause a disconnect.)
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1322457"> </a><div class="pCellBody">
+Total Inbound
+</div>
+<a name="wp1322479"> </a><div class="pCellBody">
+Total Outbound
+</div>
+</td>
+    <td><a name="wp1322459"> </a><div class="pCellBody">
+Cumulative counts of inbound and outbound bytes (without compression) since the start of the neighbor connection. The <a  href="rv_adm50.htm#wp1314306">Reset Statistics</a> button does not affect these items.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1314306"> </a><div class="pCellBody">
+Reset Statistics
+</div>
+</td>
+    <td><a name="wp1314308"> </a><div class="pCellBody">
+Click this button to reset statistical counters to zero.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

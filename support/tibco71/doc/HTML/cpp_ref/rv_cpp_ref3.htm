@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>Strings and Character Encodings</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;1	 Concepts";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1127074"> </a><h2 class="pNewHTMLPage">
+Strings and Character Encodings
+</h2>
+<hr />
+<a name="wp1077356"> </a><p class="pBody">
+Rendezvous software uses strings in several roles:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1077357"> </a><div class="pSmartList1"><li >String data inside message fields</li></div>
+
+<a name="wp1077358"> </a><div class="pSmartList1"><li >Field names</li></div>
+
+<a name="wp1077359"> </a><div class="pSmartList1"><li >Subject names (and other <em class="cEmphasis">associated</em> strings that are not strictly <em class="cEmphasis">inside</em> the message)</li></div>
+
+<a name="wp1077360"> </a><div class="pSmartList1"><li >Certified delivery correspondent names</li></div>
+
+<a name="wp1077361"> </a><div class="pSmartList1"><li >Group names (fault tolerance)</li></div>
+
+</ul></div>
+
+<a name="wp1119783"> </a><p class="pBody">
+All these strings (both in C++ and in wire format) use the character encoding appropriate to the ISO locale of the <em class="cEmphasis">sender</em>. For example, the United States is locale <code class="cCode">en_US</code>, and uses the Latin-1 character encoding (also called ISO 8859-1); Japan is locale <code class="cCode">ja_JP</code>, and uses the Shift-JIS character encoding.
+</p>
+<a name="wp1119784"> </a><p class="pBody">
+When two programs exchange messages within the same locale, strings are always correct. However, when a message sender and receiver use different character encodings, the receiving program must translate between encodings as needed. Rendezvous software does not translate automatically.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

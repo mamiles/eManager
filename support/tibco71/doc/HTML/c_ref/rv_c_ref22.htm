@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvLocalData</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;3	 Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1061432"> </a><h2 class="pNewHTMLPage">
+tibrvLocalData
+</h2>
+<hr />
+<a name="wp1061433"> </a><p class="pSyntaxType">
+Type
+</p>
+<a name="wp1086770"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+typedef union {<a name="wp1075915"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;msg;<a name="wp1075917"> </a>
+&#160;&#160;&#160;&#160;char*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;str;<a name="wp1075919"> </a>
+&#160;&#160;&#160;&#160;void*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;buf;<a name="wp1075921"> </a>
+&#160;&#160;&#160;&#160;void*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;array;<a name="wp1075923"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128749"><code class="cCode">tibrv_bool</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;boolean;<a name="wp1075925"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128767"><code class="cCode">tibrv_i8</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;i8;<a name="wp1075927"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128791"><code class="cCode">tibrv_u8</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;u8;<a name="wp1075928"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128773"><code class="cCode">tibrv_i16</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;i16;<a name="wp1075929"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128797"><code class="cCode">tibrv_u16</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;u16;<a name="wp1075930"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128779"><code class="cCode">tibrv_i32</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;i32;<a name="wp1075931"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128803"><code class="cCode">tibrv_u32</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;u32;<a name="wp1154486"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128785"><code class="cCode">tibrv_i64</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;i64;<a name="wp1154487"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128809"><code class="cCode">tibrv_u64</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;u64;<a name="wp1154488"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128755"><code class="cCode">tibrv_f32</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;f32;<a name="wp1075937"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128761"><code class="cCode">tibrv_f64</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;f64;<a name="wp1075938"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128829"><code class="cCode">tibrv_ipport16</code></a>&#160;&#160;&#160;&#160;&#160;&#160;ipport16;<a name="wp1075940"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128815"><code class="cCode">tibrv_ipaddr32</code></a>&#160;&#160;&#160;&#160;&#160;&#160;ipaddr32;<a name="wp1075941"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref24.htm#wp1119060"><code class="cCode">tibrvMsgDateTime</code></a>&#160;&#160;&#160;&#160;date;<a name="wp1075943"> </a>
+} <code class="cCodeBold">tibrvLocalData</code>;<a name="wp1075945"> </a>
+</pre></div>
+<a name="wp1087241"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1061461"> </a><p class="pBody">
+This type is the union of all the datatypes that a Rendezvous message can contain as data in a message field.
+</p>
+<a name="wp1061553"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1142741"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1061466"> </a><div class="pCellHeading">
+Accessor
+</div>
+</th>
+    <th><a name="wp1061468"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061470"> </a><div class="pCellBody">
+<code class="cCode">msg</code>
+</div>
+</td>
+    <td><a name="wp1061475"> </a><div class="pCellBody">
+Rendezvous message
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1069756"> </a><div class="pCellBody">
+<code class="cCode">str</code>
+</div>
+</td>
+    <td><a name="wp1069758"> </a><div class="pCellBody">
+character string; <code class="cCode">NULL</code>-terminated; encoding depends on ISO locale
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061481"> </a><div class="pCellBody">
+<code class="cCode">buf</code>
+</div>
+</td>
+    <td><a name="wp1061483"> </a><div class="pCellBody">
+opaque buffer, or XML data buffer (<em class="cEmphasis">un</em>compressed)
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061485"> </a><div class="pCellBody">
+<code class="cCode">array</code>
+</div>
+</td>
+    <td><a name="wp1061487"> </a><div class="pCellBody">
+array (any valid element type)
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061489"> </a><div class="pCellBody">
+<code class="cCode">boolean</code>
+</div>
+</td>
+    <td><a name="wp1061491"> </a><div class="pCellBody">
+boolean
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061493"> </a><div class="pCellBody">
+<code class="cCode">i8</code>
+</div>
+</td>
+    <td><a name="wp1061495"> </a><div class="pCellBody">
+8-bit integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061497"> </a><div class="pCellBody">
+<code class="cCode">u8</code>
+</div>
+</td>
+    <td><a name="wp1061499"> </a><div class="pCellBody">
+8-bit unsigned integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061501"> </a><div class="pCellBody">
+<code class="cCode">i16</code>
+</div>
+</td>
+    <td><a name="wp1061503"> </a><div class="pCellBody">
+16-bit integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061505"> </a><div class="pCellBody">
+<code class="cCode">u16</code>
+</div>
+</td>
+    <td><a name="wp1061507"> </a><div class="pCellBody">
+16-bit unsigned integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061509"> </a><div class="pCellBody">
+<code class="cCode">i32</code>
+</div>
+</td>
+    <td><a name="wp1061511"> </a><div class="pCellBody">
+32-bit integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061513"> </a><div class="pCellBody">
+<code class="cCode">u32</code>
+</div>
+</td>
+    <td><a name="wp1061515"> </a><div class="pCellBody">
+32-bit unsigned integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061517"> </a><div class="pCellBody">
+<code class="cCode">i64</code>
+</div>
+</td>
+    <td><a name="wp1061519"> </a><div class="pCellBody">
+64-bit integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061521"> </a><div class="pCellBody">
+<code class="cCode">u64</code>
+</div>
+</td>
+    <td><a name="wp1061523"> </a><div class="pCellBody">
+64-bit unsigned integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061525"> </a><div class="pCellBody">
+<code class="cCode">f32</code>
+</div>
+</td>
+    <td><a name="wp1061527"> </a><div class="pCellBody">
+32-bit floating point number
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061529"> </a><div class="pCellBody">
+<code class="cCode">f64</code>
+</div>
+</td>
+    <td><a name="wp1061531"> </a><div class="pCellBody">
+64-bit floating point number
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061533"> </a><div class="pCellBody">
+<code class="cCode">ipport16</code>
+</div>
+</td>
+    <td><a name="wp1061535"> </a><div class="pCellBody">
+2-byte IP port, in network byte order
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061537"> </a><div class="pCellBody">
+<code class="cCode">ipaddr32</code>
+</div>
+</td>
+    <td><a name="wp1061539"> </a><div class="pCellBody">
+4-byte IP address, in network byte order
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061546"> </a><div class="pCellBody">
+<code class="cCode">date</code>
+</div>
+</td>
+    <td><a name="wp1074078"> </a><div class="pCellBody">
+Rendezvous date-time value; see <a  href="rv_c_ref24.htm#wp1119060"><code class="cCode">tibrvMsgDateTime</code> </a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1088138"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1069466"> </a><p class="pBody">
+<a  href="rv_c_ref223.htm#wp1128526">Wire Format Datatypes</a>
+</p>
+<a name="wp1073229"> </a><p class="pBody">
+<a  href="rv_c_ref224.htm#wp1128739">C Datatypes</a>
+</p>
+<a name="wp1073233"> </a><p class="pBody">
+<a  href="rv_c_ref225.htm#wp1128933">Datatype Conversion</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

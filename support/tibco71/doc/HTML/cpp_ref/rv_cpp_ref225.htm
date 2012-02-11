@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvCmListener::setExplicitConfirm()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;9	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1084196"> </a><h2 class="pNewHTMLPage">
+TibrvCmListener::setExplicitConfirm()
+</h2>
+<hr />
+<a name="wp1084200"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1139398"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">setExplicitConfirm</code>();<a name="wp1139420"> </a>
+</pre></div>
+<a name="wp1139421"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1139423"> </a><p class="pBody">
+Override automatic confirmation of delivery for this listener.
+</p>
+<a name="wp1084207"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1084208"> </a><p class="pBody">
+The default behavior of certified listeners is to automatically confirm delivery when the callback method returns (see <a  href="rv_cpp_ref107.htm#wp1098410"><code class="cCode">TibrvMsgCallback::onMsg()</code> </a>). This call selectively overrides this behavior for this specific listener (without affecting other listeners).
+</p>
+<a name="wp1084212"> </a><p class="pBody">
+By overriding automatic confirmation, the listener assumes responsibility to explicitly confirm each inbound certified message by calling <a  href="rv_cpp_ref219.htm#wp1222836"><code class="cCode">TibrvCmListener::confirmMsg()</code></a>.
+</p>
+<a name="wp1149606"> </a><p class="pBody">
+Consider overriding automatic confirmation when the processing of inbound messages involves activity that is asynchronous with respect to the message callback method; for example, computations in other threads or additional network communications.
+</p>
+<a name="wp1149608"> </a><p class="pBody">
+No method exists to restore the default behavior&#151;that is, to reverse the effect of this method.
+</p>
+<a name="wp1084228"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1084232"> </a><p class="pBody">
+<a  href="rv_cpp_ref218.htm#wp1138427"><code class="cCode">TibrvCmListener</code> </a>
+</p>
+<a name="wp1084236"> </a><p class="pBody">
+<a  href="rv_cpp_ref107.htm#wp1098410"><code class="cCode">TibrvMsgCallback::onMsg()</code> </a>
+</p>
+<a name="wp1084240"> </a><p class="pBody">
+<a  href="rv_cpp_ref219.htm#wp1222836"><code class="cCode">TibrvCmListener::confirmMsg()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

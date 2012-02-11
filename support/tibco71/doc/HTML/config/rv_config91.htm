@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>Router</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;4	 Routing Daemon&#151;rvrd";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1953701"> </a><h2 class="pNewHTMLPage">
+Router
+</h2>
+<hr />
+<a name="wp1953702"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1953703"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">class com.tibco.tibrv.config.</code><code class="cCodeBold">Router</code><a name="wp1953704"> </a>
+<code class="cCode">&#160;&#160;extends java.lang.Object</code><a name="wp1953705"> </a>
+</pre></div>
+<a name="wp1953706"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1953707"> </a><p class="pBody">
+Represent a router interface.
+</p>
+<a name="wp1953708"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1953712"> </a><p class="pBody">
+The method <a  href="rv_config55.htm#wp1951769"><code class="cCode">RvrdProxy.getRouter()</code></a> returns an object of this class.
+</p>
+<a name="wp1953947"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1953718"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1953724"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1953726"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1953728"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953733"> </a><div class="pCellBody">
+<a  href="rv_config92.htm#wp1953972"><code class="cCode">Router.addAcceptAnyInterface()</code></a>
+</div>
+</td>
+    <td><a name="wp1953737"> </a><div class="pCellBody">
+<a  href="rv_config92.htm#wp1953987">Specify a neighbor interface that accepts any neighbor.</a>
+</div>
+</td>
+    <td><a name="wp1953743"> </a><div class="pCellBody">
+<a  href="rv_config92.htm#wp1953972">101</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953748"> </a><div class="pCellBody">
+<a  href="rv_config93.htm#wp1954062"><code class="cCode">Router.addActiveInterface()</code></a>
+</div>
+</td>
+    <td><a name="wp1953752"> </a><div class="pCellBody">
+<a  href="rv_config93.htm#wp1954082">Specify a neighbor interface that actively connects with its neighbor.</a>
+</div>
+</td>
+    <td><a name="wp1953758"> </a><div class="pCellBody">
+<a  href="rv_config93.htm#wp1954062">103</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953763"> </a><div class="pCellBody">
+<a  href="rv_config94.htm#wp1954189"><code class="cCode">Router.addLocalNetworkInterface()</code></a>
+</div>
+</td>
+    <td><a name="wp1953768"> </a><div class="pCellBody">
+<a  href="rv_config94.htm#wp1954206">Specify a local network interface.</a>
+</div>
+</td>
+    <td><a name="wp1953773"> </a><div class="pCellBody">
+<a  href="rv_config94.htm#wp1954189">106</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953778"> </a><div class="pCellBody">
+<a  href="rv_config95.htm#wp1954315"><code class="cCode">Router.addPassiveInterface()</code></a>
+</div>
+</td>
+    <td><a name="wp1953782"> </a><div class="pCellBody">
+<a  href="rv_config95.htm#wp1954333">Specify a neighbor interface that passively accepts connections from its neighbor.</a>
+</div>
+</td>
+    <td><a name="wp1953788"> </a><div class="pCellBody">
+<a  href="rv_config95.htm#wp1954315">108</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953793"> </a><div class="pCellBody">
+<a  href="rv_config96.htm#wp1954420"><code class="cCode">Router.addSeekAnyInterface()</code></a>
+</div>
+</td>
+    <td><a name="wp1953797"> </a><div class="pCellBody">
+<a  href="rv_config96.htm#wp1954436">Specify a neighbor interface that seeks any neighbor.</a>
+</div>
+</td>
+    <td><a name="wp1953803"> </a><div class="pCellBody">
+<a  href="rv_config96.htm#wp1954420">110</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953808"> </a><div class="pCellBody">
+<a  href="rv_config97.htm#wp1954515"><code class="cCode">Router.clearMaxBacklog()</code></a>
+</div>
+</td>
+    <td><a name="wp1953813"> </a><div class="pCellBody">
+<a  href="rv_config97.htm#wp1954528">Disable protection against large backlog.</a>
+</div>
+</td>
+    <td><a name="wp1953818"> </a><div class="pCellBody">
+<a  href="rv_config97.htm#wp1954515">112</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953823"> </a><div class="pCellBody">
+<a  href="rv_config98.htm#wp1954562"><code class="cCode">Router.getLocalNetworkInterfaces()</code></a>
+</div>
+</td>
+    <td><a name="wp1953827"> </a><div class="pCellBody">
+<a  href="rv_config98.htm#wp1954575">Get the local network interfaces of the router.</a>
+</div>
+</td>
+    <td><a name="wp1953833"> </a><div class="pCellBody">
+<a  href="rv_config98.htm#wp1954562">113</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953838"> </a><div class="pCellBody">
+<a  href="rv_config99.htm#wp1954616"><code class="cCode">Router.getMaxBacklog()</code></a>
+</div>
+</td>
+    <td><a name="wp1953843"> </a><div class="pCellBody">
+<a  href="rv_config99.htm#wp1954626">Get the maximum backlog (in kilobytes).</a>
+</div>
+</td>
+    <td><a name="wp1953848"> </a><div class="pCellBody">
+<a  href="rv_config99.htm#wp1954616">114</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953853"> </a><div class="pCellBody">
+<a  href="rv_config100.htm#wp1954657"><code class="cCode">Router.getName()</code></a>
+</div>
+</td>
+    <td><a name="wp1953858"> </a><div class="pCellBody">
+<a  href="rv_config100.htm#wp1954663">Get the name of the router.</a>
+</div>
+</td>
+    <td><a name="wp1953863"> </a><div class="pCellBody">
+<a  href="rv_config100.htm#wp1954657">115</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953868"> </a><div class="pCellBody">
+<a  href="rv_config101.htm#wp1954692"><code class="cCode">Router.getNeighborInterfaces()</code></a>
+</div>
+</td>
+    <td><a name="wp1953873"> </a><div class="pCellBody">
+<a  href="rv_config101.htm#wp1954705">Get the neighbor interfaces of the router.</a>
+</div>
+</td>
+    <td><a name="wp1953878"> </a><div class="pCellBody">
+<a  href="rv_config101.htm#wp1954692">116</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953883"> </a><div class="pCellBody">
+<a  href="rv_config102.htm#wp1954750"><code class="cCode">Router.removeLocalNetworkInterface()</code></a>
+</div>
+<a name="wp1953887"> </a><div class="pCellBody">
+<a  href="rv_config102.htm#wp1954754"><code class="cCode">Router.removeLocalNetworkInterfaces()</code></a>
+</div>
+</td>
+    <td><a name="wp1953891"> </a><div class="pCellBody">
+<a  href="rv_config102.htm#wp1954777">Remove local network interfaces from the router.</a>
+</div>
+</td>
+    <td><a name="wp1953897"> </a><div class="pCellBody">
+<a  href="rv_config102.htm#wp1954750">117</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953902"> </a><div class="pCellBody">
+<a  href="rv_config103.htm#wp1954838"><code class="cCode">Router.removeNeighborInterface()</code></a>
+</div>
+<a name="wp1953906"> </a><div class="pCellBody">
+<a  href="rv_config103.htm#wp1954842"><code class="cCode">Router.removeNeighborInterfaces()</code></a>
+</div>
+</td>
+    <td><a name="wp1953910"> </a><div class="pCellBody">
+<a  href="rv_config103.htm#wp1954865">Remove neighbor interfaces from the router.</a>
+</div>
+</td>
+    <td><a name="wp1953916"> </a><div class="pCellBody">
+<a  href="rv_config103.htm#wp1954838">118</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953921"> </a><div class="pCellBody">
+<a  href="rv_config104.htm#wp1954930"><code class="cCode">Router.setMaxBacklog()</code></a>
+</div>
+</td>
+    <td><a name="wp1953925"> </a><div class="pCellBody">
+<a  href="rv_config104.htm#wp1954944">Set the maximum backlog, and enable protection against large backlog.</a>
+</div>
+</td>
+    <td><a name="wp1953931"> </a><div class="pCellBody">
+<a  href="rv_config104.htm#wp1954930">119</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953936"> </a><div class="pCellBody">
+<a  href="rv_config105.htm#wp1954988"><code class="cCode">Router.toXml()</code></a>
+</div>
+</td>
+    <td><a name="wp1953940"> </a><div class="pCellBody">
+<a  href="rv_config105.htm#wp1954994">Format the router information as an XML document.</a>
+</div>
+</td>
+    <td><a name="wp1953946"> </a><div class="pCellBody">
+<a  href="rv_config105.htm#wp1954988">120</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1953948"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1953952"> </a><p class="pBody">
+<a  href="rv_config53.htm#wp1951650"><code class="cCode">RvrdProxy.addRouter()</code> </a>
+</p>
+<a name="wp1953956"> </a><p class="pBody">
+<a  href="rv_config55.htm#wp1951769"><code class="cCode">RvrdProxy.getRouter()</code> </a>
+</p>
+<a name="wp1953962"> </a><p class="pBody">
+For the corresponding browser pages, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm52.htm#wp1194491');" onMouseOver="WWHShowPopup('c', 'rv_adm52.htm#wp1194491', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Routers</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>, and the sections that follow it
+</p>
+<a name="wp1953969"> </a><p class="pBody">
+For background information, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm33.htm#wp1053162');" onMouseOver="WWHShowPopup('c', 'rv_adm33.htm#wp1053162', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Routing Table Entry</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

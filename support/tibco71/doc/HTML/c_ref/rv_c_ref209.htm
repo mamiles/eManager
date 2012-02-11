@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvMsg_GetCMSequence()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1093766"> </a><h2 class="pNewHTMLPage">
+tibrvMsg_GetCMSequence()
+</h2>
+<hr />
+<a name="wp1093770"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1093771"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvMsg_GetCMSequence</code>(<a name="wp1093772"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;message,<a name="wp1093773"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128809"><code class="cCode">tibrv_u64</code></a>*&#160;&#160;&#160;&#160;&#160;&#160;&#160;sequenceNumber);<a name="wp1093774"> </a>
+</pre></div>
+<a name="wp1093775"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1093776"> </a><p class="pBody">
+Extract the sequence number from a certified message.
+</p>
+<a name="wp1093777"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1103244"> </a><p class="pBody">
+Rendezvous certified delivery sending functions automatically generate positive sequence numbers for outbound labeled messages.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1093782"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1093784"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1093786"> </a><div class="pCellBody">
+<code class="cCode">message</code>
+</div>
+</td>
+    <td><a name="wp1093788"> </a><div class="pCellBody">
+Extract the sequence number from this message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1093790"> </a><div class="pCellBody">
+<code class="cCode">sequenceNumber</code>
+</div>
+</td>
+    <td><a name="wp1093792"> </a><div class="pCellBody">
+The program supplies a location. The function stores the sequence number in that location.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1108236"> </a><h4 class="pHeading3">
+Status
+</h4>
+<a name="wp1150691"> </a><p class="pBody">
+This function returns a status code that discriminates between certified messages (with a certified delivery agreement) and other messages.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1150787"> </a><div class="pSmartList1"><li >If the message is from a CM sender, <em class="cEmphasis">and</em> the CM listener is registered for certified delivery with that sender, then <a  href="rv_c_ref209.htm#wp1093766"><code class="cCode">tibrvMsg_GetCMSequence()</code></a> returns the status code <a  href="rv_c_ref227.htm#wp1129060"><code class="cCode">TIBRV_OK</code></a> and yields a valid sequence number.</li></div>
+
+<a name="wp1150663"> </a><div class="pSmartList1"><li >If the message is from a CM sender, but the listener is <em class="cEmphasis">not</em> registered for certified delivery, then <a  href="rv_c_ref209.htm#wp1093766"><code class="cCode">tibrvMsg_GetCMSequence()</code></a> <em class="cEmphasis">in the context of a </em><a  href="rv_c_ref176.htm#wp1159633"><code class="cCode">tibrvcmEventCallback</code></a><em class="cEmphasis"> function</em> returns the status code <a  href="rv_c_ref227.htm#wp1129168"><code class="cCode">TIBRV_NOT_FOUND</code></a>. (In any other context, it returns the actual sequence number stored on the message.)</li></div>
+
+<a name="wp1108242"> </a><p class="pBodyRelative">
+Notice that the first labeled message that a program receives on a subject may not be certified; that is, the sender has not registered a certified delivery agreement with the listener. If appropriate, the certified delivery library automatically requests that the sender register the listener for certified delivery. (See <a  href="javascript:WWHClickedPopup('a', 'rv_concepts106.htm#wp1056110');" onMouseOver="WWHShowPopup('a', 'rv_concepts106.htm#wp1056110', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Discovery and Registration for Certified Delivery</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.)
+</p>
+<a name="wp1108246"> </a><p class="pBodyRelative">
+A labeled but uncertified message can also result when the sender explicitly disallows or removes the listener.
+</p>
+<a name="wp1150704"> </a><div class="pSmartList1"><li >If the message is <em class="cEmphasis">not</em> from a CM sender, then <a  href="rv_c_ref209.htm#wp1093766"><code class="cCode">tibrvMsg_GetCMSequence()</code></a> (in any context) returns the status code <a  href="rv_c_ref227.htm#wp1129168"><code class="cCode">TIBRV_NOT_FOUND</code></a>.</li></div>
+
+</ul></div>
+
+<a name="wp1103256"> </a><h4 class="pHeading3">
+Release 5 Interaction
+</h4>
+<a name="wp1103257"> </a><p class="pBody">
+In release 6 (and later) the sequence number is a 64-bit unsigned integer, while in older releases (5 and earlier) it is a 32-bit unsigned integer.
+</p>
+<a name="wp1103260"> </a><p class="pBody">
+When 32-bit senders overflow the sequence number, behavior is undefined.
+</p>
+<a name="wp1103263"> </a><p class="pBody">
+When 64-bit senders send sequence numbers greater than 32 bits, 32-bit receivers detect malformed label information, and process the message as an ordinary reliable message (uncertified and unlabeled).
+</p>
+<a name="wp1093794"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1160567"> </a><p class="pBody">
+<a  href="rv_c_ref203.htm#wp1086494"><code class="cCode">tibrvcmTransport_Send()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

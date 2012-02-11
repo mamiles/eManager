@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>Field Objects</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1153284"> </a><h2 class="pNewHTMLPage">
+Field Objects
+</h2>
+<hr />
+<a name="wp1154468"> </a><p class="pBody">
+When a program must extract information about a message field&#151;such as its field name, field identifier, or datatype&#151;it can extract the field as a <a  href="rv_com_ref67.htm#wp1028876"><code class="cCode">TibrvMsgField</code></a> object. A <a  href="rv_com_ref67.htm#wp1028876"><code class="cCode">TibrvMsgField</code></a> object contains complete detail about the field.
+</p>
+<a name="wp1153372"> </a><p class="pBody">
+The methods <a  href="rv_com_ref47.htm#wp1144839"><code class="cCode">TibrvMsg.getField()</code></a>, <code class="cCode">TibrvMsg.getFieldByIndex()</code>, and <code class="cCode">TibrvMsg.getFieldInstance()</code> return <a  href="rv_com_ref67.htm#wp1028876"><code class="cCode">TibrvMsgField</code></a> objects.
+</p>
+<a name="wp1153343"> </a><p class="pBody">
+All <a  href="rv_com_ref67.htm#wp1028876"><code class="cCode">TibrvMsgField</code></a> objects <em class="cEmphasis">always</em> belongs to your program, so the program is always responsible for deleting the field object.
+</p>
+<a name="wp1189456"> </a><h4 class="pHeading3">
+Reference Datatypes
+</h4>
+<a name="wp1189457"> </a><p class="pBody">
+Five datatypes are called <em class="cEmphasis">reference datatypes</em>: array, message, opaque, XML, and string.
+</p>
+<a name="wp1154475"> </a><p class="pBody">
+When a message field contains a reference datatype, and a program extracts it as a field object, then the data in the field object depends on a reference to a snapshot in the parent message. For details, see <a  href="rv_com_ref32.htm#wp1135746">Snapshot Reference</a>.
+</p>
+<a name="wp1153321"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1153325"> </a><p class="pBody">
+<a  href="rv_com_ref32.htm#wp1138530">Validity of Data Extracted From Message Fields</a>
+</p>
+<a name="wp1153329"> </a><p class="pBody">
+<a  href="rv_com_ref67.htm#wp1028876"><code class="cCode">TibrvMsgField</code> </a>
+</p>
+<a name="wp1153333"> </a><p class="pBody">
+<a  href="rv_com_ref47.htm#wp1144839"><code class="cCode">TibrvMsg.getField()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

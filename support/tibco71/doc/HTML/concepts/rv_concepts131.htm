@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Active and Inactive</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;13	 Fault Tolerance Concepts";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1057248"> </a><h2 class="pNewHTMLPage">
+Active and Inactive
+</h2>
+<hr />
+<a name="wp1057249"> </a><p class="pBody">
+At any moment in time, each member of a fault tolerance group is either active or inactive. An <em class="cEmphasis">active</em> member directly fulfills the program&#8217;s mission&#151;for example, broadcasting information, responding to queries, or filling requests. An <em class="cEmphasis">inactive</em> member provides backup capacity; inactive members wait in the background, ready to become active immediately if an active member stops functioning.
+</p>
+<a name="wp1057250"> </a><p class="pBody">
+When a new member joins a group, it is initially inactive.
+</p>
+<a name="wp1057254"> </a><p class="pBody">
+Each member incorporates Rendezvous fault tolerance software, which operates behind the scenes. Rendezvous fault tolerance software maintains the correct number of active members by issuing instructions, called <em class="cEmphasis">actions</em>, to group members. Each action instructs a member to activate, deactivate, or prepare to activate. (For details, see <a  href="rv_concepts141.htm#wp1057747">Fault Tolerance Callback Actions</a>.)
+</p>
+<a name="wp1057264"> </a><p class="pBody">
+Rendezvous fault tolerance <em class="cEmphasis">monitor</em> software can passively monitor the members of a group, so other programs can determine the number of active members without actually joining the group. For a description, see <a  href="rv_concepts139.htm#wp1057631">Passive Monitor</a>.
+</p>
+<a name="wp1057269"> </a><h3 class="pHeading2">
+Alternate Terminology
+</h3>
+<a name="wp1057270"> </a><p class="pBody">
+Some approaches to fault tolerance use different terms to describe active and inactive members. In particular, an active member is called <em class="cEmphasis">primary</em>, while inactive members are called <em class="cEmphasis">secondary</em>.
+</p>
+<a name="wp1057271"> </a><p class="pBody">
+This terminology implies that only one member can be active&#151;the primary. However, Rendezvous fault tolerance software allows any number of active members. This book uses the more general terms, active and inactive.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

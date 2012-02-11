@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Step 1: Choose a Group Name</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;15	 Developing Fault-Tolerant Programs";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1058158"> </a><h2 class="pNewHTMLPage">
+Step 1: Choose a Group Name
+</h2>
+<hr />
+<a name="wp1058159"> </a><p class="pBody">
+Each fault tolerance group requires a unique group name. The group name identifies the members of a group, and separates their fault-tolerance messages from messages belonging to other groups.
+</p>
+<a name="wp1058160"> </a><h3 class="pHeading2">
+Number of Groups
+</h3>
+<a name="wp1058161"> </a><p class="pBody">
+If a program serves a single purpose, then its group name can be a single element. In many cases, that element can be a variation on the program&#8217;s name, suitably modified to obey the syntax rules for group names.
+</p>
+<a name="wp1058162"> </a><p class="pBody">
+However, if the program serves any of several non-interchangeable purposes (depending on configuration parameters), then each service requires a unique group name.
+</p>
+<a name="wp1058163"> </a><p class="pBody">
+For example, consider a general database query server program&#151;the service depends on the database it opens. In theory, the same program can service queries for airline flight information, airplane parts inventory information, airplane maintenance records, passenger ticket information, government regulations, or weather reports.
+</p>
+<a name="wp1058164"> </a><p class="pBody">
+In this situation we recommend choosing group names with two elements, in which the first element identifies the application system, and the second element identifies its database service. The current example could use these names: 
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1058165"> </a><div class="pSmartList1"><li ><code class="cCode">DBQ.FLIGHTS</code></li></div>
+
+<a name="wp1058166"> </a><div class="pSmartList1"><li ><code class="cCode">DBQ.PARTS</code></li></div>
+
+<a name="wp1058167"> </a><div class="pSmartList1"><li ><code class="cCode">DBQ.MAINTENANCE</code></li></div>
+
+<a name="wp1058168"> </a><div class="pSmartList1"><li ><code class="cCode">DBQ.TICKETS</code></li></div>
+
+<a name="wp1058169"> </a><div class="pSmartList1"><li ><code class="cCode">DBQ.REGULATIONS</code></li></div>
+
+<a name="wp1058170"> </a><div class="pSmartList1"><li ><code class="cCode">DBQ.WEATHER</code></li></div>
+
+</ul></div>
+
+<a name="wp1058173"> </a><p class="pBody">
+Some processes belong to several fault tolerance groups simultaneously (see <a  href="rv_concepts144.htm#wp1057871">Multiple Groups</a>). Once again, this situation suggests a two-element group name&#151;or more than two if necessary.
+</p>
+<a name="wp1058175"> </a><h3 class="pHeading2">
+Group Name Syntax
+</h3>
+<a name="wp1058176"> </a><p class="pBody">
+Members of a group exchange messages that embed their group name, so group names must obey the syntax for Rendezvous subject names.
+</p>
+<a name="wp1058180"> </a><p class="pBody">
+Group names must not contain wildcard characters.
+</p>
+<a name="wp1058181"> </a><p class="pBody">
+For best performance, keep group names short. We recommend no more than three or four elements, and no more than 50 characters (total).
+</p>
+<a name="wp1058188"> </a><p class="pBody">
+For an introduction to Rendezvous subject names, see <a  href="rv_concepts47.htm#wp1065576">Subject Names</a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

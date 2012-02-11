@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvQueue.create</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1120834"> </a><h2 class="pNewHTMLPage">
+TibrvQueue.create
+</h2>
+<hr />
+<a name="wp1120835"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1120837"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+TibrvQueue.<code class="cCodeBold">create</code><a name="wp1120839"> </a>
+</pre></div>
+<a name="wp1120841"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1120843"> </a><p class="pBody">
+Create an event queue.
+</p>
+<a name="wp1120844"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1142366"> </a><p class="pBody">
+Upon creation, new queues set these default values.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1120853"> </a><div class="pCellHeading">
+Property
+</div>
+</th>
+    <th><a name="wp1120855"> </a><div class="pCellHeading">
+Default Value
+</div>
+</th>
+    <th><a name="wp1120857"> </a><div class="pCellHeading">
+Set Method
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1120859"> </a><div class="pCellBody">
+<code class="cCode">limitPolicy</code>
+</div>
+</td>
+    <td><a name="wp1120861"> </a><div class="pCellBody">
+<a  href="rv_com_ref99.htm#wp1157784"><code class="cCode">TIBRVCOM_QUEUE_DISCARD_NONE</code></a>
+</div>
+</td>
+    <td colspan="1" rowspan="3"><a name="wp1120866"> </a><div class="pCellBody">
+<a  href="rv_com_ref111.htm#wp1149927"><code class="cCode">TibrvQueue.setLimitPolicy</code> </a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1120868"> </a><div class="pCellBody">
+<code class="cCode">maxEvents</code>
+</div>
+</td>
+    <td><a name="wp1120870"> </a><div class="pCellBody">
+zero (unlimited)
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1120874"> </a><div class="pCellBody">
+<code class="cCode">discardAmount</code>
+</div>
+</td>
+    <td><a name="wp1120876"> </a><div class="pCellBody">
+zero
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1120880"> </a><div class="pCellBody">
+<code class="cCode">name</code>
+</div>
+</td>
+    <td><a name="wp1120882"> </a><div class="pCellBody">
+<code class="cCode">tibrvQueue</code>
+</div>
+</td>
+    <td><a name="wp1120887"> </a><div class="pCellBody">
+<a  href="rv_com_ref112.htm#wp1118041"><code class="cCode">TibrvQueue.setName</code> </a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1120889"> </a><div class="pCellBody">
+<code class="cCode">priority</code>
+</div>
+</td>
+    <td><a name="wp1120891"> </a><div class="pCellBody">
+1
+</div>
+</td>
+    <td><a name="wp1120896"> </a><div class="pCellBody">
+<a  href="rv_com_ref113.htm#wp1036548"><code class="cCode">TibrvQueue.setPriority</code> </a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1155681"> </a><p class="pBody">
+Calling this method on a valid object yields the error <a  href="rv_com_ref218.htm#wp1189013"><code class="cCode">TIBRVCOM_ALREADY_INITIALIZED</code></a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

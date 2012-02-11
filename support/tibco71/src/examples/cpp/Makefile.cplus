@@ -1,0 +1,172 @@
+# Copyright 1994-2000 by TIBCO Software, Inc.
+# ALL RIGHTS RESERVED
+# @(#)Makefile.cplus	1.10
+
+# TIB/Rendezvous Information Bus Example code ( C++ )
+#
+# To compile the examples, please uncomment the sections that represent
+# your environment then built it!
+#
+#
+
+########################################################################
+# UNIX Specific items
+########################################################################
+#
+# for Tru64UNIX  an AIX's make you need to uncomment this:
+#.SUFFIXES: .cpp
+#
+#O=.o
+#EXE=
+#RM=rm -f
+#OUT=-o
+#TIBRV_DIR=/usr/tibco/tibrv
+#DASH_C=-c
+#
+#
+# change the following to match the C++ compiler you use and is 
+# compatable with the TIB/Rendezvous libraries provided.
+#
+#CXX=CC
+#
+#OPT_DBG_FLAGS=-g
+#LDFLAGS=-L$(TIBRV_DIR)/lib
+#INCFILES=-I$(TIBRV_DIR)/include
+#CXXFLAGS=$(INCFILES) $(OPT_DBG_FLAGS)
+#TIBRVCPP_LIB=-ltibrvcpp
+#TIBRV_LIB=-ltibrv
+#TIBRVCMFT_LIB=-ltibrvcmq -ltibrvcm -ltibrvft
+#
+# if you have a System V Release 4 system you need these libs as well
+#
+#SOCKET_LIBS=-lsocket -lgen -lnsl
+#
+# Digital UNIX needs this
+#
+#SOCKET_LIBS=-ldnet_stub
+#
+# if you have a HP-UX 11 system you'll need to add
+#
+#SOCKET_LIBS=-lxnet
+#
+# Most UNIX systems need to specify a threading library
+#
+#SYS_LIBS=-lpthread
+#
+# Solaris will want this instead of -lpthread
+#
+#SYS_LIBS=-lthread
+
+########################################################################
+# Windows 9X & NT
+#
+# IMPORTANT:  On Windows we use Microsoft VisualC++ compiler to generate
+#             the TIB/Rendezvous libraries. The C++ libraries we 
+#             provide will probably not be compatable with other
+#             vendors compilers.
+########################################################################
+#O=.obj
+#EXE=.exe
+#RM=del
+#TIBRV_DIR=c:\TIBCO\TIBRV
+#INCFILES=/I$(TIBRV_DIR)\include
+#OUT=/Fe
+#LIB=$(LIB);$(TIBRV_DIR)\lib
+#DASH_C=-c
+#
+
+#CXX=cl
+#OPT_DBG_FLGS=/MT
+#CXXFLAGS=$(OPT_DBG_FLGS) $(INCFILES)
+#TIBRVCPP_LIB=libtibrvcpp.lib
+#TIBRV_LIB=tibrv.lib
+#TIBRVCMFT_LIB=tibrvcmq.lib tibrvcm.lib tibrvft.lib
+#SOCKET_LIBS=wsock32.lib
+#SYS_LIBS=advapi32.lib
+
+
+
+########################################################################
+# Not all makes define a default target for all the various C++ file 
+# suffixes.
+#
+# Uncommend the target rules that best match the make program you are
+# using
+########################################################################
+# NMAKE users uncomment the next two lines
+#.cpp.obj:
+#        $(CXX) $(CXXFLAGS) $(DASH_C) %s
+#
+# UNIX users get to pick from one of these choices depending on which
+# system and which make they are using.
+#
+# The make that comes with with Solaris and  GNU make prefer this.
+#%.o: %.cpp
+#	$(CXX) $(CXXFLAGS) $< $(DASH_C)
+#
+# Other UNIX platforms like this form.  
+#.cpp.o:
+#	$(CXX) $(CXXFLAGS) $< $(DASH_C)
+#
+# If you are on AIX or Tru64 UNIX  make sure you uncomment .SUFFIXES 
+# line at the top of the Makefile (this may work on other unix makes as 
+# well if make cannot figure out how to turn a .cpp into a .o file.)
+#
+#
+
+OS_LIBS = $(SOCKET_LIBS) $(SYS_LIBS)
+
+BASE_LIBS= $(TIBRVCPP_LIB)
+
+LIBS= $(BASE_LIBS) $(TIBRV_LIB)
+
+CMLIBS= $(BASE_LIBS) $(TIBRVCMFT_LIB) $(TIBRV_LIB)
+
+
+
+all:	tibrvlisten$(EXE) tibrvsend$(EXE) \
+	dispatcher$(EXE) priority$(EXE) \
+	cmsender$(EXE) cmlistener$(EXE) \
+	cmqmember$(EXE)
+clean: 	
+	$(RM) *$(O)
+	$(RM) core
+	$(RM) tibrvlisten$(EXE) 
+	$(RM) tibrvsend$(EXE) 
+	$(RM) dispatcher$(EXE)
+	$(RM) priority$(EXE)
+	$(RM) cmsender$(EXE)
+	$(RM) cmlistener$(EXE)
+	$(RM) cmqmember$(EXE)
+	$(RM) usertypes$(EXE)
+
+#
+# NOTE:  Some linkers will complain about the lack space between the output
+#        parameter and the name of the output file.  You may add a space
+#        between $(OUT) and $@
+#
+
+tibrvlisten$(EXE):	tibrvlisten$(O)
+	$(CXX) $(LDFLAGS) tibrvlisten$(O) $(LIBS) $(OS_LIBS) $(OUT)$@
+
+tibrvsend$(EXE):		tibrvsend$(O)
+	$(CXX) $(LDFLAGS) tibrvsend$(O)  $(LIBS) $(OS_LIBS) $(OUT)$@
+
+priority$(EXE):		priority$(O)
+	$(CXX) $(LDFLAGS) priority$(O)  $(LIBS) $(OS_LIBS) $(OUT)$@
+
+dispatcher$(EXE):	dispatcher$(O)
+	$(CXX) $(LDFLAGS) dispatcher$(O)  $(LIBS) $(OS_LIBS) $(OUT)$@
+
+usertypes$(EXE): usertypes$(O)
+	$(CXX) $(LDFLAGS) usertypes$(O)  $(LIBS) $(OS_LIBS) $(OUT)$@
+
+cmsender$(EXE): cmsender$(O)
+	$(CXX) $(LDFLAGS) cmsender$(O)  $(CMLIBS) $(OS_LIBS) $(OUT)$@	 
+
+cmlistener$(EXE): cmlistener$(O)
+	$(CXX) $(LDFLAGS) cmlistener$(O)  $(CMLIBS) $(OS_LIBS) $(OUT)$@		 
+
+cmqmember$(EXE): cmqmember$(O)
+	$(CXX) $(LDFLAGS) cmqmember$(O)  $(CMLIBS) $(OS_LIBS) $(OUT)$@		 
+

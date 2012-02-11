@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>Tibrv.open()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;3	 Rendezvous Environment";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1020167"> </a><h2 class="pNewHTMLPage">
+Tibrv.open()
+</h2>
+<hr />
+<a name="wp1020168"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1020169"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+static void <code class="cCodeBold">open</code>() throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1020170"> </a>
+<a name="wp1020456"> </a>
+static void <code class="cCodeBold">open</code>(int implementation) throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1020453"> </a>
+</pre></div>
+<a name="wp1020171"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1020474"> </a><p class="pBody">
+Start Rendezvous internal machinery.
+</p>
+<a name="wp1020176"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1020501"> </a><p class="pBody">
+This call creates the internal machinery that Rendezvous software requires for its operation:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1020502"> </a><div class="pSmartList1"><li >Internal data structures.</li></div>
+
+<a name="wp1020503"> </a><div class="pSmartList1"><li >Default event queue.</li></div>
+
+<a name="wp1020504"> </a><div class="pSmartList1"><li >Intra-process transport.</li></div>
+
+<a name="wp1020505"> </a><div class="pSmartList1"><li >Event driver.</li></div>
+
+</ul></div>
+
+<a name="wp1020849"> </a><p class="pBody">
+Until the first call to <a  href="rv_java_ref21.htm#wp1020167"><code class="cCode">Tibrv.open()</code></a> creates the internal machinery, all events, transports, queues and queue groups are unusable. Messages and their methods do not depend on the internal machinery.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1021138"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1021140"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1021142"> </a><div class="pCellBody">
+<code class="cCode">implementation</code>
+</div>
+</td>
+    <td><a name="wp1021147"> </a><div class="pCellBody">
+Open Rendezvous using this implementation.
+</div>
+<a name="wp1021151"> </a><div class="pCellBody">
+Choose a value from among the constants <a  href="rv_java_ref21.htm#wp1021507"><code class="cCode">Tibrv.IMPL_SELECT</code></a>, <a  href="rv_java_ref21.htm#wp1021513"><code class="cCode">Tibrv.IMPL_JAVA</code></a>, and <a  href="rv_java_ref21.htm#wp1021518"><code class="cCode">Tibrv.IMPL_NATIVE</code></a>. See <a  href="rv_java_ref21.htm#wp1223041">Implementations</a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1020782"> </a><h4 class="pHeading3">
+Method Forms
+</h4>
+<a name="wp1020783"> </a><p class="pBody">
+With no argument, open using <a  href="rv_java_ref21.htm#wp1021507"><code class="cCode">Tibrv.IMPL_SELECT</code></a>. To determine the actual implementation, use <a  href="rv_java_ref19.htm#wp1122171"><code class="cCode">Tibrv.isNativeImpl()</code> </a>.
+</p>
+<a name="wp1021498"> </a><p class="pBody">
+With an <code class="cCode">implementation</code> argument, open in the specified implementation.
+</p>
+<a name="wp1223041"> </a><h4 class="pHeading3">
+Implementations
+</h4>
+<a name="wp1223046"> </a><p class="pBody">
+These constants denote the implementation choices.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1236421"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1021502"> </a><div class="pCellHeading">
+Constant
+</div>
+</th>
+    <th><a name="wp1021504"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1021507"> </a><div class="pCellBody">
+<code class="cCode">Tibrv.IMPL_SELECT</code>
+</div>
+</td>
+    <td><a name="wp1021509"> </a><div class="pCellBody">
+Load JNI library if possible; otherwise, use the Java implementation.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1021513"> </a><div class="pCellBody">
+<code class="cCode">Tibrv.IMPL_JAVA</code>
+</div>
+</td>
+    <td><a name="wp1021515"> </a><div class="pCellBody">
+Use the Java implementation.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1021518"> </a><div class="pCellBody">
+<code class="cCode">Tibrv.IMPL_NATIVE</code>
+</div>
+</td>
+    <td><a name="wp1021520"> </a><div class="pCellBody">
+Load JNI library if possible; otherwise, throw a <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a> with one of these status codes: <a  href="rv_java_ref234.htm#wp1238158"><code class="cCode">TibrvStatus.VERSION_MISMATCH</code></a>, <a  href="rv_java_ref234.htm#wp1238339"><code class="cCode">TibrvStatus.WRONG_JAVA_ARCHIVE</code></a>, <a  href="rv_java_ref234.htm#wp1238329"><code class="cCode">TibrvStatus.LIBRARY_NOT_FOUND</code></a>, <a  href="rv_java_ref234.htm#wp1238334"><code class="cCode">TibrvStatus.LIBRARY_NOT_LOADED</code></a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1021523"> </a><h4 class="pHeading3">
+Reference Count
+</h4>
+<a name="wp1021524"> </a><p class="pBody">
+A reference count protects against interactions between programs and third-party packages that call <a  href="rv_java_ref21.htm#wp1020167"><code class="cCode">Tibrv.open()</code></a> and <a  href="rv_java_ref15.htm#wp1051787"><code class="cCode">Tibrv.close()</code></a>. Each call to <a  href="rv_java_ref21.htm#wp1020167"><code class="cCode">Tibrv.open()</code></a> increments an internal counter; each call to <a  href="rv_java_ref15.htm#wp1051787"><code class="cCode">Tibrv.close()</code></a> decrements that counter. A call to <a  href="rv_java_ref21.htm#wp1020167"><code class="cCode">Tibrv.open()</code></a> actually creates internal machinery only when the reference counter is zero; subsequent calls merely increment the counter, but do not duplicate the machinery. A call to <a  href="rv_java_ref15.htm#wp1051787"><code class="cCode">Tibrv.close()</code></a> actually destroys the internal machinery only when the call decrements the counter to zero; other calls merely decrement the counter. In each program, the number of calls to <a  href="rv_java_ref21.htm#wp1020167"><code class="cCode">Tibrv.open()</code></a> and <a  href="rv_java_ref15.htm#wp1051787"><code class="cCode">Tibrv.close()</code></a> must match.
+</p>
+<a name="wp1020286"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1053407"> </a><p class="pBody">
+<a  href="rv_java_ref2.htm#wp1053389">Implementations</a>
+</p>
+<a name="wp1109866"> </a><p class="pBody">
+<a  href="rv_java_ref15.htm#wp1051787"><code class="cCode">Tibrv.close()</code> </a>
+</p>
+<a name="wp1053425"> </a><p class="pBody">
+<a  href="rv_java_ref19.htm#wp1122171"><code class="cCode">Tibrv.isNativeImpl()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

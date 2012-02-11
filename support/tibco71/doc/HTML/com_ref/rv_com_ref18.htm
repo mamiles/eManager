@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>Tibrv.getAutoDispatchQueueGroup()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;3	 Rendezvous Environment";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1150213"> </a><h2 class="pNewHTMLPage">
+Tibrv.getAutoDispatchQueueGroup()
+</h2>
+<hr />
+<a name="wp1150214"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1150215"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+set autoDispatchGroup = Tibrv.<code class="cCodeBold">getAutoDispatchQueueGroup</code>()<a name="wp1150216"> </a>
+</pre></div>
+<a name="wp1150217"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1150219"> </a><p class="pBody">
+Return a reference to the automatic dispatch queue group object.
+</p>
+<a name="wp1150220"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1150357"> </a><p class="pBody">
+This method returns a special queue group, which detects the presence of an event in any of its queues, and automatically dispatches the queues (according to their priority) until no more events are waiting.
+</p>
+<a name="wp1150426"> </a><p class="pBody">
+To automatically dispatch a queue, add it to this queue group. 
+</p>
+<a name="wp1150452"> </a><p class="pBody">
+To disable automatic dispatch of queue, remove it from this group, and arrange explicit dispatch calls instead. (It is crucial to dispatch all queues promptly&#151;otherwise queues can overflow or discard events. A queue without a discard limit can cause the program to exceed available process storage.)
+</p>
+<a name="wp1150469"> </a><p class="pBody">
+The automatic dispatch queue group is a convenience for programmers developing GUI applications. GUI programs operate best with automatic event dispatch. We do not recommend using explicit dispatch in GUI application programs; see also <a  href="rv_com_ref10.htm#wp1211561">Multi-Threading</a>.
+</p>
+<a name="wp1150231"> </a><p class="pBody">
+Each process can have at most one automatic dispatch queue group. A program can use this queue group in at most one (STA) thread. Programs cannot destroy this queue group.
+</p>
+<a name="wp1225510"> </a><p class="pBody">
+If Rendezvous is not open, this method throws the error <a  href="rv_com_ref218.htm#wp1188970"><code class="cCode">TIBRVCOM_TIBRV_NOT_OPEN</code></a>.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1150241"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1150243"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1150245"> </a><div class="pCellBody">
+<code class="cCode">autoDispatchGroup</code>
+</div>
+</td>
+    <td><a name="wp1150250"> </a><div class="pCellBody">
+<a  href="rv_com_ref115.htm#wp1037388"><code class="cCode">TibrvQueueGroup</code></a>
+</div>
+<a name="wp1150251"> </a><div class="pCellBody">
+Return the automatic dispatch queue group.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody"></p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1231841"> </a><p class="pBody">
+Automatic dispatch continues until all the queues in this group are empty. During that time, COM does not service GUI events.
+</p>
+<a name="wp1231842"> </a><p class="pBody">
+VB GUI programs can ameliorate that difficulty by including <code class="cCode">DoEvents</code> statements in callback methods&#151;but this solution requires attention to reentrance issues.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1157677"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1150257"> </a><p class="pBody">
+<a  href="rv_com_ref99.htm#wp1035245"><code class="cCode">TibrvQueue</code> </a>
+</p>
+<a name="wp1150408"> </a><p class="pBody">
+<a  href="rv_com_ref115.htm#wp1037388"><code class="cCode">TibrvQueueGroup</code> </a>
+</p>
+<a name="wp1150441"> </a><p class="pBody">
+<a  href="rv_com_ref116.htm#wp1145069"><code class="cCode">TibrvQueueGroup.add</code> </a>
+</p>
+<a name="wp1150445"> </a><p class="pBody">
+<a  href="rv_com_ref122.htm#wp1037972"><code class="cCode">TibrvQueueGroup.remove</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Local Network</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1047084"> </a><h2 class="pNewHTMLPage">
+Local Network
+</h2>
+<hr />
+<a name="wp1044442"> </a><p class="pBody">
+Each routing daemon can serve zero or more local networks.
+</p>
+<a name="wp1061805"> </a><h3 class="pHeading2">
+Network and Service
+</h3>
+<a name="wp1061806"> </a><p class="pBody">
+Two parameters together define the local network:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1061807"> </a><div class="pSmartList1"><li >UDP or PGM Service</li></div>
+
+<a name="wp1061811"> </a><p class="pBodyRelative">
+For details, see <a  href="rv_adm15.htm#wp1288869">Specifying the UDP or PGM Service</a>.
+</p>
+<a name="wp1061812"> </a><div class="pSmartList1"><li >Network Specification</li></div>
+
+<a name="wp1061816"> </a><p class="pBodyRelative">
+For details, see <a  href="rv_adm16.htm#wp1034613">Constructing the Network Parameter</a>.
+</p>
+</ul></div>
+
+<a name="wp1055727"> </a><h3 class="pHeading2">
+Local Network Name
+</h3>
+<a name="wp1055728"> </a><p class="pBody">
+Each local network must have a <em class="cEmphasis">globally unique </em>network name.
+</p>
+<a name="wp1067221"> </a><p class="pBody">
+One convenient way to generate globally unique network names is to concatenate the UDP or PGM service, the network specification, and the DNS domain name. For example, <code class="cCode">7500.fooNet.baz.com</code> could refer to a local network using service 7500; in contrast, the name <code class="cCode">7522.fooNet.baz.com</code> would refer to the local network using service 7522 on the same physical network.
+</p>
+<a name="wp1067209"> </a><p class="pBody">
+Although that naming scheme is convenient, it can sometimes adversely affect network bandwidth use. Consider using shorter unique names in these situations:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1067210"> </a><div class="pSmartList1"><li >When WAN bandwidth is severely limited.</li></div>
+
+<a name="wp1067214"> </a><div class="pSmartList1"><li >When the average message is very small (smaller than 50 bytes).</li></div>
+
+</ul></div>
+
+<a name="wp1068542"> </a><p class="pBody">
+Like router names, each local network name is a string of alphanumeric, dot, and dash characters. The maximum total length of the string is 64 characters (including the dot separators).
+</p>
+<a name="wp1300190"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1303647"> </a><p class="pBody">
+When several routing daemons serve one network, each routing daemon <em class="cEmphasis">must</em> specify the same name for that network.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1044190"> </a><h3 class="pHeading2">
+Subject Gating
+</h3>
+<a name="wp1044571"> </a><p class="pBody">
+The router configuration determines the set of public subjects that can <em class="cEmphasis">potentially</em> pass between the routing daemon and the local network:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1044584"> </a><div class="pSmartList1"><li ><em class="cEmphasis">Export</em> subjects can flow out from the local network to the routing daemon, and from there to other networks.</li></div>
+
+<a name="wp1044562"> </a><div class="pSmartList1"><li ><em class="cEmphasis">Import</em> subjects can flow into the local network from the routing daemon.</li></div>
+
+</ul></div>
+
+<a name="wp1068280"> </a><h4 class="pHeading3">
+Point-to-Point Gating
+</h4>
+<a name="wp1068419"> </a><p class="pBody">
+Routing daemons <em class="cEmphasis">automatically</em> transmit point-to-point messages as appropriate:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1068420"> </a><div class="pSmartList1"><li >When a routing daemon receives a point-to-point message whose destination is elsewhere in the global routing table, it forwards that message to the routing daemon that serves the destination network.</li></div>
+
+<a name="wp1068390"> </a><div class="pSmartList1"><li >When a routing daemon receives a point-to-point message whose destination is in one of its local networks, it forwards that message directly to <code class="cCode">rvd</code> on the destination computer.</li></div>
+
+<a name="wp1068393"> </a><div class="pSmartList1"><li >Administrators do not need to explicitly import or export inbox subject names.</li></div>
+
+</ul></div>
+
+<a name="wp1046221"> </a><h3 class="pHeading2">
+Subject Filtering with Wildcards
+</h3>
+<a name="wp1046224"> </a><p class="pBody">
+The wildcard characters, <code class="cCode">*</code> and <code class="cCode">&gt;</code>, have the same semantics in import, export and exchange parameters as they do in listening calls:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1046225"> </a><div class="pSmartList1"><li ><code class="cCode">*</code> matches any single element.</li></div>
+
+<a name="wp1046226"> </a><div class="pSmartList1"><li ><code class="cCode">&gt;</code> in the last (rightmost) position matches one or more trailing elements.</li></div>
+
+</ul></div>
+
+<a name="wp1046227"> </a><p class="pBody">
+Recall that these rules of import parameter behavior apply to routing daemons, and also to the Rendezvous agent (<code class="cCode">rva</code>).</p><div align="left">
+<table border="1">
+  <caption><a name="wp1078817"> </a><div class="pTableTitle">
+Table&#160;6   Importing Wildcard Subjects (Sheet 1 of 2)
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1078766"> </a><div class="pCellHeading">
+Importing this wildcard name
+</div>
+</th>
+    <th><a name="wp1078768"> </a><div class="pCellHeading">
+Matches messages with names like these
+</div>
+</th>
+    <th><a name="wp1078794"> </a><div class="pCellHeading">
+But not names like these (reason)
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1078831"> </a><div class="pCellBody">
+<code class="cCode">FOO.*</code>
+</div>
+</td>
+    <td><a name="wp1078833"> </a><div class="pCellBody">
+<code class="cCode">FOO.BAR</code>
+</div>
+</td>
+    <td><a name="wp1078835"> </a><div class="pCellBody">
+<code class="cCode">FOO.BAR.BAZ</code> (extra element)
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1078837"> </a><div class="pCellBody">
+<code class="cCode">FOO.&gt;</code>
+</div>
+</td>
+    <td><a name="wp1078839"> </a><div class="pCellBody">
+<code class="cCode">FOO.BAR</code>
+</div>
+<a name="wp1078840"> </a><div class="pCellBody">
+<code class="cCode">FOO.BAR.BAZ</code>
+</div>
+<a name="wp1078841"> </a><div class="pCellBody">
+<code class="cCode">FOO.BAR.BAZ.BOX</code>
+</div>
+</td>
+    <td><a name="wp1078843"> </a><div class="pCellBody">
+<code style="font-weight: normal" class="cCode">FOO</code><span style="font-weight: bold"> </span>(missing element)
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1078845"> </a><div class="pCellBody">
+<code class="cCode">FOO.*.&gt;</code>
+</div>
+</td>
+    <td><a name="wp1078847"> </a><div class="pCellBody">
+<code class="cCode">FOO.BAR.BAZ</code>
+</div>
+<a name="wp1078848"> </a><div class="pCellBody">
+<code class="cCode">FOO.BAR.BAZ.BOX</code>
+</div>
+</td>
+    <td><a name="wp1078850"> </a><div class="pCellBody">
+<code class="cCode">FOO.BAR </code>(missing element)
+</div>
+<a name="wp1078851"> </a><div class="pCellBody">
+<code class="cCode">FOO </code>(missing elements)
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1078853"> </a><div class="pCellBody">
+<code class="cCode">FOO.*.STOP</code>
+</div>
+</td>
+    <td><a name="wp1078855"> </a><div class="pCellBody">
+<code class="cCode">FOO.BAR.STOP</code>
+</div>
+<a name="wp1078856"> </a><div class="pCellBody">
+<code class="cCode">FOO.FOZ.STOP</code>
+</div>
+</td>
+    <td><a name="wp1078858"> </a><div class="pCellBody">
+<code class="cCode">FOO.STOP </code>(missing element)
+</div>
+<a name="wp1078859"> </a><div class="pCellBody">
+<code class="cCode">FOO.BAR.BAZ </code>(unmatched 3rd element)
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1046275"> </a><h4 class="pHeading3">
+Routing Daemons Filter Interest to Permitted Subjects
+</h4>
+<a name="wp1046796"> </a><p class="pBody">
+Routing daemons filter local listening interest according to the subjects that the local networks can import and export. The general rule is that routing daemons disregard listening interest that would include subjects in either of these categories:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1046797"> </a><div class="pSmartList1"><li >Subjects that the listener&#8217;s local network cannot import.</li></div>
+
+<a name="wp1046798"> </a><div class="pSmartList1"><li >Subjects that the sender&#8217;s local network cannot export.</li></div>
+
+</ul></div>
+
+<a name="wp1046711"> </a><p class="pBody">
+For example, consider a situation in which the local network imports <code class="cCode">FOO.&gt;</code> (that is, it does not permit any other subjects to enter from the WAN). When a process, <code class="cCode">L1</code>, within the local network listens to the subject <code class="cCode">&gt;</code> (that is, the wildcard that matches any subject), the routing daemon first compares it to the permitted import subjects; since <code class="cCode">&gt;</code> is not a subset of <code class="cCode">FOO.&gt;</code>, the routing daemon does not forward any messages into the local network, so <code class="cCode">L1</code> does not receive any messages.
+</p>
+<a name="wp1046716"> </a><p class="pBody">
+When a second process, <code class="cCode">L2</code>, in the same local network, listens to the subject <code class="cCode">FOO.BAR</code>, the routing daemon begins importing messages (because the subject matches a subject for which import is permitted); both <code class="cCode">L1</code> and <code class="cCode">L2</code> receive the imported messages.
+</p>
+<a name="wp1046803"> </a><p class="pBody">
+When a third process, <code class="cCode">L3</code>, listens to the subject <code class="cCode">FOO.&gt;</code>, the routing daemon widens the set of messages it imports; both <code class="cCode">L1</code> and <code class="cCode">L3</code> receive the additional message subjects.
+</p>
+<a name="wp1046805"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1046812"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts50.htm#wp1065692');" onMouseOver="WWHShowPopup('a', 'rv_concepts50.htm#wp1065692', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Using Wildcards to Receive Related Subjects</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+<a name="wp1044565"> </a><h3 class="pHeading2">
+Fixed Subject Interest
+</h3>
+<a name="wp1122693"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/obsolete.gif" border="0" /></td>
+    <td><a name="wp1304102"> </a><p class="pBody">
+The concept of fixed subject interest is obsolete in release 6 (and later). Instead, subject interest dynamically determines the set of subjects that <em class="cEmphasis">actually</em> flow to and from a network.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

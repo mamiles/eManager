@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvMsg::markReferences()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1120141"> </a><h2 class="pNewHTMLPage">
+TibrvMsg::markReferences()
+</h2>
+<hr />
+<a name="wp1120142"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1120143"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">markReferences</code>();<a name="wp1120144"> </a>
+</pre></div>
+<a name="wp1120146"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1120148"> </a><p class="pBody">
+Mark references in this message.
+</p>
+<a name="wp1120166"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1120167"> </a><p class="pBody">
+Extracting pointer data from a message field creates a snapshot of that data. The snapshot remains associated with the message until the program destroys the message. However, in <em class="cEmphasis">rare</em> situations snapshots can accumulate within a program, causing unbounded memory growth. This method gives programs explicit control over snapshot references; by clearing references, the program declares that it no longer needs the references that arise as side effects of calls that <em class="cEmphasis">get</em> a message field.
+</p>
+<a name="wp1120168"> </a><p class="pBody">
+For example, consider a program fragment that repeatedly sends a message, modifying fields within a nested submessage before each send call. Each call to extract the nested message produces a snapshot reference. By surrounding the <em class="cEmphasis">get</em> operation with a <em class="cEmphasis">mark</em> and <em class="cEmphasis">clear</em> pair (with the <em class="cEmphasis">clear</em> call occurring at any time after the <em class="cEmphasis">get</em> call), the program releases the reference, which helps control memory usage.
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+void TimerCallback::onTimer(<a  href="rv_cpp_ref108.htm#wp1031969"><code style="font-style: normal" class="cCode">TibrvTimer</code></a>* timer)<a name="wp1159227"> </a>
+{<a name="wp1159228"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_cpp_ref26.htm#wp1055151"><code class="cCode">TibrvMsg</code></a>* msg = (<a  href="rv_cpp_ref26.htm#wp1055151"><code class="cCode">TibrvMsg</code></a>*)timer-&gt;getClosure();<a name="wp1159229"> </a>
+<a name="wp1159230"> </a>
+&#160;&#160;&#160;&#160;msg-&gt;markReferences();<a name="wp1159231"> </a>
+<a name="wp1159232"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_cpp_ref26.htm#wp1055151"><code class="cCode">TibrvMsg</code></a> submsg;<a name="wp1159233"> </a>
+&#160;&#160;&#160;&#160;msg-&gt;getMsg(&quot;foo&quot;,submsg);<a name="wp1159234"> </a>
+&#160;&#160;&#160;&#160;...<a name="wp1159236"> </a>
+&#160;&#160;&#160;&#160;msg-&gt;clearReferences();<a name="wp1159238"> </a>
+<a name="wp1159239"> </a>
+&#160;&#160;&#160;&#160;msg-&gt;setSendSubject(some_subject);<a name="wp1159240"> </a>
+<a name="wp1159241"> </a>
+&#160;&#160;&#160;&#160;/* send a message */<a name="wp1159242"> </a>
+&#160;&#160;&#160;&#160;transport.send(*msg);<a name="wp1159243"> </a>
+}<a name="wp1159244"> </a>
+<a name="wp1159256"> </a>
+</pre></div>
+<a name="wp1120190"> </a><p class="pBody">
+Every call to <a  href="rv_cpp_ref62.htm#wp1120141"><code class="cCode">TibrvMsg::markReferences()</code></a> must be paired with a call to <a  href="rv_cpp_ref37.htm#wp1120239"><code class="cCode">TibrvMsg::clearReferences()</code></a>. It is legal to mark references several times, as long as the program eventually clears all the marks. To understand this idea, it is helpful to think of get and mark as <em class="cEmphasis">pushdown</em> operations, and clear as a <em class="cEmphasis">pop</em> operation. <a  href="rv_cpp_ref62.htm#wp1120201">Figure&#160;5</a> illustrates that each clear call deletes snapshots back to the most recent mark.
+</p>
+<a name="wp1120201"> </a><div class="pFigureTitle">
+Figure&#160;5   Mark and Clear References</div><div align="center"><img src="images/rv_cpp_refa9.gif" height="285" width="528" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1162196"> </a><p class="pBody">
+Unless a program explicitly marks and clears references, references persist until the message is destroyed or reset.
+</p>
+<a name="wp1120203"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1120207"> </a><p class="pBody">
+<a  href="rv_cpp_ref24.htm#wp1119654">Validity of Data Extracted From Message Fields</a>
+</p>
+<a name="wp1120211"> </a><p class="pBody">
+<a  href="rv_cpp_ref24.htm#wp1119730">Deleting Snapshot References</a>
+</p>
+<a name="wp1120215"> </a><p class="pBody">
+<a  href="rv_cpp_ref37.htm#wp1120239"><code class="cCode">TibrvMsg::clearReferences()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

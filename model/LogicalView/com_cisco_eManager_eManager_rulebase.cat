@@ -1,0 +1,393 @@
+
+(object Petal
+    version    	47
+    _written   	"Rose 8.0.0303.1400"
+    charSet    	0)
+
+(object Class_Category "rulebase"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"3F1C05B902EA"
+    exportControl 	"Public"
+    logical_models 	(list unit_reference_list
+	(object Class "ManagementPolicy"
+	    quid       	"3F2541AA0113"
+	    operations 	(list Operations
+		(object Operation "equal"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"GenerateFullyQualifiedThrows"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"OpFormerName"
+			    value      	"equal")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	FALSE)
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	FALSE)
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	FALSE)
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Native"
+			    value      	FALSE)
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Synchronized"
+			    value      	FALSE)
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Strictfp"
+			    value      	FALSE)
+			(object Attribute
+			    tool       	"Java"
+			    name       	"GenerateFullyQualifiedArgument"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"GenerateFullyQualifiedReturn"
+			    value      	FALSE))
+		    quid       	"3F259AB300C0"
+		    parameters 	(list Parameters
+			(object Parameter "rulebase"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"IsFinal"
+				    value      	"false"))
+			    quid       	"3F259AE3030F"
+			    type       	"ManagementPolicy"
+			    quidu      	"3F2541AA0113"))
+		    result     	"Boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "name"
+		    quid       	"3F37A2EA008F")
+		(object ClassAttribute "version"
+		    quid       	"3F37A2FC030C")
+		(object ClassAttribute "author"
+		    quid       	"3F37A32701AF")
+		(object ClassAttribute "lastModification"
+		    quid       	"3F37A3300176")
+		(object ClassAttribute "comment"
+		    quid       	"3F37A33F0023")
+		(object ClassAttribute "schedule"
+		    quid       	"3F37A35A037F")
+		(object ClassAttribute "dataSources"
+		    quid       	"3F37A3640315"))
+	    language   	"Java")
+	(object Class "DataSource"
+	    quid       	"3F37A3890156"
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "microagent"
+		    quid       	"3F37A3920145")
+		(object ClassAttribute "method"
+		    quid       	"3F37A3AA0294")
+		(object ClassAttribute "interval"
+		    quid       	"3F37A3CF0048")
+		(object ClassAttribute "schedule"
+		    quid       	"3F37A3DA0275")
+		(object ClassAttribute "tests"
+		    quid       	"3F37A3E700C5"))
+	    language   	"Java")
+	(object Class "Test"
+	    quid       	"3F37A40503D5"
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "name"
+		    quid       	"3F37A41501C5")
+		(object ClassAttribute "schedule"
+		    quid       	"3F37A42101D6")
+		(object ClassAttribute "postActions"
+		    quid       	"3F37A428032B")
+		(object ClassAttribute "clearCondition"
+		    quid       	"3F37A45D0100")
+		(object ClassAttribute "clearActions"
+		    quid       	"3F37A7930351"))
+	    language   	"Java")
+	(object Class "PostAction"
+	    quid       	"3F37A49B01A0"
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "name"
+		    quid       	"3F37A4A401C1")
+		(object ClassAttribute "schedule"
+		    quid       	"3F37A4AD014C")
+		(object ClassAttribute "performAlways"
+		    quid       	"3F37A4B4020A")
+		(object ClassAttribute "escalationTime"
+		    quid       	"3F37A4C601A2")
+		(object ClassAttribute "trueCountThreshold"
+		    quid       	"3F37A4FE0170"))
+	    language   	"Java")
+	(object Class "ClearAction"
+	    quid       	"3F37A4D10360"
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "name"
+		    quid       	"3F37A51F0268")
+		(object ClassAttribute "schedule"
+		    quid       	"3F37A5280365")
+		(object ClassAttribute "clearTimer"
+		    quid       	"3F37A52F02B1"))
+	    language   	"Java")
+	(object Class "AbstractClearCondition"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"DisableAutoSync"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Static"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Strictfp"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	TRUE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateCode"
+		    value      	TRUE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"ReadOnly"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFullyQualifiedExtends"
+		    value      	"")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFullyQualifiedImplements"
+		    value      	"")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"ConstructorIs"
+		    value      	("Ctor_Set" 62)))
+	    quid       	"3F37A6E0019B"
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "schedule"
+		    quid       	"3F37A72D03B9"))
+	    language   	"Java"
+	    abstract   	TRUE)
+	(object Class "FirstFalseClearCondition"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"DisableAutoSync"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Static"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Strictfp"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	TRUE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateCode"
+		    value      	TRUE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"ReadOnly"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFullyQualifiedExtends"
+		    value      	"")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFullyQualifiedImplements"
+		    value      	"")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"ConstructorIs"
+		    value      	("Ctor_Set" 62)))
+	    quid       	"3F37A7D4016A"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"3F37A7FC02E4"
+		    supplier   	"Logical View::com::cisco::eManager::eManager::rulebase::AbstractClearCondition"
+		    quidu      	"3F37A6E0019B"))
+	    language   	"Java")
+	(object Class "TimerClearCondition"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"DisableAutoSync"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Static"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Strictfp"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	TRUE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateCode"
+		    value      	TRUE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"ReadOnly"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFullyQualifiedExtends"
+		    value      	"")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFullyQualifiedImplements"
+		    value      	"")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"ConstructorIs"
+		    value      	("Ctor_Set" 62)))
+	    quid       	"3F37A83800BA"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"3F37A85B01FA"
+		    supplier   	"Logical View::com::cisco::eManager::eManager::rulebase::AbstractClearCondition"
+		    quidu      	"3F37A6E0019B"))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "time"
+		    quid       	"3F37A84601C8"))
+	    language   	"Java")
+	(object Class "TestClearCondition"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"DisableAutoSync"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Static"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Strictfp"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	TRUE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateCode"
+		    value      	TRUE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"ReadOnly"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFullyQualifiedExtends"
+		    value      	"")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFullyQualifiedImplements"
+		    value      	"")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"ConstructorIs"
+		    value      	("Ctor_Set" 62)))
+	    quid       	"3F37A86701DA"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"3F37A8C10002"
+		    supplier   	"Logical View::com::cisco::eManager::eManager::rulebase::AbstractClearCondition"
+		    quidu      	"3F37A6E0019B"))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "name"
+		    quid       	"3F37A8AF031E"))
+	    language   	"Java"))
+    logical_presentations 	(list unit_reference_list))

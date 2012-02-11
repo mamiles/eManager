@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>Tibrv</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;3	 Rendezvous Environment";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1019706"> </a><h2 class="pNewHTMLPage">
+Tibrv
+</h2>
+<hr />
+<a name="wp1019868"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1019872"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1019873"> </a><p class="pBody">
+The Rendezvous environment.
+</p>
+<a name="wp1019874"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1019875"> </a><p class="pBody">
+Each program creates only one instance of <a  href="rv_com_ref16.htm#wp1019706"><code class="cCode">Tibrv</code></a>, and uses its methods to open and close the Rendezvous environment, refer to Rendezvous resources, and extract version information.
+</p>
+<a name="wp1146722"> </a><p class="pBody">
+All other objects require an open <a  href="rv_com_ref16.htm#wp1019706"><code class="cCode">Tibrv</code></a> environment, and are inoperative when the environment is not open. The only exceptions to this rule are the objects defined in <a  href="rv_com_ref29.htm#wp1055148">Chapter&#160;4, Data</a> (namely, <a  href="rv_com_ref34.htm#wp1055151"><code class="cCode">TibrvMsg</code></a>, <a  href="rv_com_ref67.htm#wp1028876"><code class="cCode">TibrvMsgField</code></a>, and <a  href="rv_com_ref73.htm#wp1126548"><code class="cCode">TibrvInt64</code></a>).</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1165512"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1165514"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1165516"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1165518"> </a><div class="pMinorHead">
+Open and Close
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1165527"> </a><div class="pCellBody">
+<a  href="rv_com_ref23.htm#wp1129476"><code class="cCode">Tibrv.open</code></a>
+</div>
+</td>
+    <td><a name="wp1165531"> </a><div class="pCellBody">
+<a  href="rv_com_ref23.htm#wp1129485">Start Rendezvous internal machinery.</a>
+</div>
+</td>
+    <td><a name="wp1165537"> </a><div class="pCellBody">
+<a  href="rv_com_ref23.htm#wp1129476">25</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1165542"> </a><div class="pCellBody">
+<a  href="rv_com_ref17.htm#wp1051787"><code class="cCode">Tibrv.close</code></a>
+</div>
+</td>
+    <td><a name="wp1165546"> </a><div class="pCellBody">
+<a  href="rv_com_ref17.htm#wp1020891">Stop and destroy Rendezvous internal machinery.</a>
+</div>
+</td>
+    <td><a name="wp1165552"> </a><div class="pCellBody">
+<a  href="rv_com_ref17.htm#wp1051787">19</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1165557"> </a><div class="pCellBody">
+<a  href="rv_com_ref22.htm#wp1129216"><code class="cCode">Tibrv.isOpen()</code></a>
+</div>
+</td>
+    <td><a name="wp1165561"> </a><div class="pCellBody">
+<a  href="rv_com_ref22.htm#wp1129225">Determine whether the Rendezvous machinery is open.</a>
+</div>
+</td>
+    <td><a name="wp1165567"> </a><div class="pCellBody">
+<a  href="rv_com_ref22.htm#wp1129216">24</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1165569"> </a><div class="pMinorHead">
+Accessors
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1165578"> </a><div class="pCellBody">
+<a  href="rv_com_ref18.htm#wp1150213"><code class="cCode">Tibrv.getAutoDispatchQueueGroup()</code></a>
+</div>
+</td>
+    <td><a name="wp1165582"> </a><div class="pCellBody">
+<a  href="rv_com_ref18.htm#wp1150219">Return a reference to the automatic dispatch queue group object.</a>
+</div>
+</td>
+    <td><a name="wp1165588"> </a><div class="pCellBody">
+<a  href="rv_com_ref18.htm#wp1150213">20</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1165593"> </a><div class="pCellBody">
+<a  href="rv_com_ref19.htm#wp1129000"><code class="cCode">Tibrv.getDefaultQueue()</code></a>
+</div>
+</td>
+    <td><a name="wp1165598"> </a><div class="pCellBody">
+<a  href="rv_com_ref19.htm#wp1129009">Return a reference to the default queue object.</a>
+</div>
+</td>
+    <td><a name="wp1165603"> </a><div class="pCellBody">
+<a  href="rv_com_ref19.htm#wp1129000">21</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1165608"> </a><div class="pCellBody">
+<a  href="rv_com_ref20.htm#wp1129116"><code class="cCode">Tibrv.getProcessTransport()</code></a>
+</div>
+</td>
+    <td><a name="wp1165612"> </a><div class="pCellBody">
+<a  href="rv_com_ref20.htm#wp1129125">Return a reference to the intra-process transport object.</a>
+</div>
+</td>
+    <td><a name="wp1165618"> </a><div class="pCellBody">
+<a  href="rv_com_ref20.htm#wp1129116">22</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1165623"> </a><div class="pCellBody">
+<a  href="rv_com_ref21.htm#wp1128934"><code class="cCode">Tibrv.getVersion()</code></a>
+</div>
+<a name="wp1165624"> </a><div class="pCellBody">
+<code class="cCode">Tibrv.getCmVersion()</code>
+</div>
+<a name="wp1165625"> </a><div class="pCellBody">
+<code class="cCode">Tibrv.getFtVersion()</code>
+</div>
+</td>
+    <td><a name="wp1165630"> </a><div class="pCellBody">
+<a  href="rv_com_ref21.htm#wp1128948">Return the version string.</a>
+</div>
+</td>
+    <td><a name="wp1165635"> </a><div class="pCellBody">
+<a  href="rv_com_ref21.htm#wp1128934">23</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

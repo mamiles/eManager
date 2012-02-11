@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvTimer_onTimer</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1127058"> </a><h2 class="pNewHTMLPage">
+TibrvTimer_onTimer
+</h2>
+<hr />
+<a name="wp1127059"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1127101"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+Private Sub <code class="cCodeItalic">&lt;myTimer&gt;</code>_<code class="cCodeBold">onTimer</code> (<a name="wp1157403"> </a>
+&#160;&#160;&#160;&#160;ByVal timer As TIBRVCOMLib.I<a  href="rv_com_ref90.htm#wp1127015"><code class="cCode">TibrvTimer</code></a>)<a name="wp1157407"> </a>
+</pre></div>
+<a name="wp1127065"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1127067"> </a><p class="pBody">
+Process timer events.
+</p>
+<a name="wp1127068"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1149244"> </a><p class="pBody">
+Declaring a variable of class <a  href="rv_com_ref90.htm#wp1127015"><code class="cCode">TibrvTimer</code></a> with events triggers VB to automatically define a COM event callback, and a private subroutine callback stub named <code class="cCodeItalic">&lt;var&gt;</code><code class="cCode">_OnTimer</code>. The program must complete this method for each timer object.
+</p>
+<a name="wp1140062"> </a><p class="pBody">
+This method receives its parameters by value, so it cannot delete them.
+</p>
+<a name="wp1140063"> </a><p class="pBody">
+To stop the timer, destroy the <em class="cEmphasis">original</em> timer object associated with this callback method.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1140039"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1140041"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1140043"> </a><div class="pCellBody">
+<code class="cCode">timer</code>
+</div>
+</td>
+    <td><a name="wp1140048"> </a><div class="pCellBody">
+<a  href="rv_com_ref90.htm#wp1127015"><code class="cCode">TibrvTimer</code></a>
+</div>
+<a name="wp1140049"> </a><div class="pCellBody">
+This parameter receives the timer object.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

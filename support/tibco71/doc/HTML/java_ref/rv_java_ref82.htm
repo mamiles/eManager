@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvListener</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1031628"> </a><h2 class="pNewHTMLPage">
+TibrvListener
+</h2>
+<hr />
+<a name="wp1031919"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1031920"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+class com.tibco.tibrv.<code class="cCodeBold">TibrvListener</code><a name="wp1033691"> </a>
+&#160;&#160;extends <a  href="rv_java_ref77.htm#wp1047420"><code class="cCode">TibrvEvent</code></a><a name="wp1281171"> </a>
+</pre></div>
+<a name="wp1031922"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1031923"> </a><p class="pBody">
+Listen for inbound messages.
+</p>
+<a name="wp1031924"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1077783"> </a><p class="pBody">
+A listener object continues listening for messages until the program destroys it.
+</p>
+<a name="wp1112027"> </a><p class="pBody">
+Programs must destroy instances of this class. Rendezvous software keeps internal references to these objects, so the Java garbage collector does not delete them automatically.
+</p>
+<a name="wp1081845"> </a><p class="pBody">
+Destroying the queue or transport of an event automatically destroys the listener as well.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1169216"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1169218"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1169220"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1169225"> </a><div class="pCellBody">
+<a  href="rv_java_ref83.htm#wp1033788"><code class="cCode">TibrvListener()</code></a>
+</div>
+</td>
+    <td><a name="wp1169229"> </a><div class="pCellBody">
+<a  href="rv_java_ref83.htm#wp1033794">Create a listener object to listen for inbound messages.</a>
+</div>
+</td>
+    <td><a name="wp1169235"> </a><div class="pCellBody">
+<a  href="rv_java_ref83.htm#wp1033788">119</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1169240"> </a><div class="pCellBody">
+<a  href="rv_java_ref84.htm#wp1034287"><code class="cCode">TibrvListener.getSubject()</code></a>
+</div>
+</td>
+    <td><a name="wp1169244"> </a><div class="pCellBody">
+<a  href="rv_java_ref84.htm#wp1034324">Extract the subject from a listener event object.</a>
+</div>
+</td>
+    <td><a name="wp1169250"> </a><div class="pCellBody">
+<a  href="rv_java_ref84.htm#wp1034287">120</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1169255"> </a><div class="pCellBody">
+<a  href="rv_java_ref85.htm#wp1034332"><code class="cCode">TibrvListener.getTransport()</code></a>
+</div>
+</td>
+    <td><a name="wp1169259"> </a><div class="pCellBody">
+<a  href="rv_java_ref85.htm#wp1034353">Extract the transport from a listener event object.</a>
+</div>
+</td>
+    <td><a name="wp1169265"> </a><div class="pCellBody">
+<a  href="rv_java_ref85.htm#wp1034332">121</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1169278"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1169269"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1169290"> </a><p class="pBody">
+<a  href="rv_java_ref78.htm#wp1068928"><code class="cCode">TibrvEvent.destroy()</code></a>
+</p>
+<a name="wp1169294"> </a><p class="pBody">
+<a  href="rv_java_ref79.htm#wp1033576"><code class="cCode">TibrvEvent.getClosure()</code></a>
+</p>
+<a name="wp1169298"> </a><p class="pBody">
+<a  href="rv_java_ref80.htm#wp1033600"><code class="cCode">TibrvEvent.getQueue()</code></a>
+</p>
+<a name="wp1169302"> </a><p class="pBody">
+<a  href="rv_java_ref81.htm#wp1033426"><code class="cCode">TibrvEvent.isValid()</code></a>
+</p>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1169271"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.equals</code>
+</p>
+<a name="wp1169272"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.getClass</code>
+</p>
+<a name="wp1169273"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.hashCode</code>
+</p>
+<a name="wp1169274"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notify</code>
+</p>
+<a name="wp1169275"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notifyAll</code>
+</p>
+<a name="wp1169276"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.toString</code> (override)
+</p>
+<a name="wp1169277"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.wait</code>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1087731"> </a><h4 class="pHeading3">
+Activation and Dispatch
+</h4>
+<a name="wp1087732"> </a><p class="pBody">
+Inbound messages on the transport that match the subject trigger the event.
+</p>
+<a name="wp1087733"> </a><p class="pBody">
+This constructor creates a listener event object, and <em class="cEmphasis">activates</em> the event&#151;that is, it begins listening for all inbound messages with matching subjects. When a message arrives, Rendezvous software places the event object and message on its event queue. Dispatch removes the event object from the queue, and runs the callback method to process the message. (To stop receiving inbound messages on the subject, destroy the event object; this action cancels all messages already queued for the listener event; see also <a  href="rv_java_ref78.htm#wp1068928"><code class="cCode">TibrvEvent.destroy()</code> </a>.)
+</p>
+<a name="wp1087746"> </a><p class="pBody">
+<a  href="rv_java_ref82.htm#wp1087751">Figure&#160;7</a> illustrates that messages can continue to accumulate in the queue, even while the callback method is processing.
+</p>
+<a name="wp1087751"> </a><div class="pFigureTitle">
+Figure&#160;7   Listener Activation and Dispatch</div><div align="center"><img src="images/rv_java_refa4.gif" height="438" width="538" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1087752"> </a><p class="pBody">
+When the callback method is I/O-bound, messages can arrive faster than the callback method can process them, and the queue can grow unacceptably long. In programs where a delay in processing messages is unacceptable, consider dispatching from several threads to process messages concurrently.
+</p>
+<a name="wp1169174"> </a><h4 class="pHeading3">
+Descendants
+</h4>
+<a name="wp1169178"> </a><p class="pBody">
+<a  href="rv_java_ref77.htm#wp1047420"><code class="cCode">TibrvEvent</code> </a>
+</p>
+<a name="wp1169182"> </a><p class="pBody">
+<a  href="rv_java_ref185.htm#wp1083717"><code class="cCode">TibrvCmListener</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

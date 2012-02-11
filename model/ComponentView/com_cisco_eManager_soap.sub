@@ -1,0 +1,105 @@
+
+(object Petal
+    version    	47
+    _written   	"Rose 8.0.0303.1400"
+    charSet    	0)
+
+(object SubSystem "soap"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"3F68E6F10337"
+    visible_modules 	(list dependency_list
+	(object Module_Visibility_Relationship
+	    quid       	"3F68EBDF01ED"
+	    supplier   	"Component View::java::util"
+	    quidu      	"3F68EBC90281"
+	    supplier_is_subsystem 	TRUE)
+	(object Module_Visibility_Relationship
+	    quid       	"3F68EBE1009B"
+	    supplier   	"Component View::com::cisco::eManager::common::inventory"
+	    quidu      	"3F561DF5011A"
+	    supplier_is_subsystem 	TRUE))
+    physical_models 	(list unit_reference_list
+	(object module "InventoryManager" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"$SRC\\com\\cisco\\eManager\\soap\\InventoryManager.java")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"RootPath"
+		    value      	"$SRC")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CmIdentification"
+		    value      	(value Text ""))
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CopyrightNotice"
+		    value      	(value Text "")))
+	    quid       	"3F68E6F20022"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F68EBE0022A"
+		    supplier   	"Component View::java::util"
+		    quidu      	"3F68EBC90281"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F68EBE103D0"
+		    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+		    quidu      	"3F561E310172"
+		    supplier_is_spec 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F68EBE202CD"
+		    supplier   	"Component View::com::cisco::eManager::common::inventory::Agent"
+		    quidu      	"3F561E30017A"
+		    supplier_is_spec 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F68EBE302BB"
+		    supplier   	"Component View::com::cisco::eManager::common::inventory::AppInstance"
+		    quidu      	"3F561E300333"
+		    supplier_is_spec 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F68EBE4028A"
+		    supplier   	"Component View::com::cisco::eManager::common::inventory::ViewContainer"
+		    quidu      	"3F561E310230"
+		    supplier_is_spec 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F68EBE50296"
+		    supplier   	"Component View::com::cisco::eManager::common::inventory::AppType"
+		    quidu      	"3F561E3003C9"
+		    supplier_is_spec 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F68EBE601D9"
+		    supplier   	"Component View::com::cisco::eManager::common::inventory::Instrumentation"
+		    quidu      	"3F561E310009"
+		    supplier_is_spec 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F68EBE7013A"
+		    supplier   	"Component View::com::cisco::eManager::common::inventory::MgmtPolicy"
+		    quidu      	"3F561E3101D6"
+		    supplier_is_spec 	TRUE))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"3F68E6F30087"
+		    supplier   	"Logical View::com::cisco::eManager::soap::InventoryManager"
+		    quidu      	"3F54C0E00395"))
+	    language   	"Java")
+	(object SubSystem "skels"
+	    is_unit    	TRUE
+	    is_loaded  	FALSE
+	    file_name  	"$CURDIR\\com_cisco_eManager_soap_skels.sub"
+	    quid       	"3F68E73C012E")
+	(object SubSystem "stubs"
+	    is_unit    	TRUE
+	    is_loaded  	FALSE
+	    file_name  	"$CURDIR\\com_cisco_eManager_soap_stubs.sub"
+	    quid       	"3F68E74F0262")
+	(object SubSystem "wsdl"
+	    is_unit    	TRUE
+	    is_loaded  	FALSE
+	    file_name  	"$CURDIR\\com_cisco_eManager_soap_wsdl.sub"
+	    quid       	"3F68E75C018F"))
+    physical_presentations 	(list unit_reference_list))

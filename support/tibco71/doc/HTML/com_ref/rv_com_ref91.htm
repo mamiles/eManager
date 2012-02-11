@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvTimer.create</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1034867"> </a><h2 class="pNewHTMLPage">
+TibrvTimer.create
+</h2>
+<hr />
+<a name="wp1034868"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1034920"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+TibrvTimer.<code class="cCodeBold">create</code> queue, interval, closure<a name="wp1122329"> </a>
+</pre></div>
+<a name="wp1034872"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1035027"> </a><p class="pBody">
+Start a timer.
+</p>
+<a name="wp1034874"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1139326"> </a><p class="pBody">
+All timers are repeating timers. To simulate a once-only timer, code the callback method to destroy the timer. To stop a timer, destroy or delete it.
+</p>
+<a name="wp1171337"> </a><p class="pBody">
+Starting a timer requires three steps:
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1171338"> </a><div class="pSmartList1"><li value="1">Declare a variable for the timer.</li></div>
+
+<a name="wp1171342"> </a><p class="pBodyRelative">
+<code class="cCode">Dim WithEvents myTimer as </code><a  href="rv_com_ref90.htm#wp1127015"><code class="cCode">TibrvTimer</code></a>
+</p>
+<a name="wp1139399"> </a><p class="pBodyRelative">
+This declaration triggers VB to automatically define a private subroutine callback stub named <code class="cCode">myTimer_OnTimer</code>. The program must complete this method for each timer object.
+</p>
+<a name="wp1139374"> </a><div class="pSmartList1"><li value="2">Create the VB object, and assign it to that variable.</li></div>
+
+<a name="wp1139378"> </a><p class="pBodyRelative">
+<code class="cCode">Set myTimer = New </code><a  href="rv_com_ref90.htm#wp1127015"><code class="cCode">TibrvTimer</code></a>
+</p>
+<a name="wp1139379"> </a><div class="pSmartList1"><li value="3">Create the internal implementation object to begin counting.</li></div>
+
+<a name="wp1139380"> </a><p class="pBodyRelative">
+<code class="cCode">myTimer.create myQueue, myInterval, 0</code>
+</p>
+</ol></div>
+
+<a name="wp1155666"> </a><p class="pBody">
+Calling this method on a valid object yields the error <a  href="rv_com_ref218.htm#wp1189013"><code class="cCode">TIBRVCOM_ALREADY_INITIALIZED</code></a>.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1139336"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1139338"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1139340"> </a><div class="pCellBody">
+<code class="cCode">queue</code>
+</div>
+</td>
+    <td><a name="wp1139345"> </a><div class="pCellBody">
+<a  href="rv_com_ref99.htm#wp1035245"><code class="cCode">TibrvQueue</code></a>
+</div>
+<a name="wp1139346"> </a><div class="pCellBody">
+At each time interval, place the timer object on this queue.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1139348"> </a><div class="pCellBody">
+<code class="cCode">interval</code>
+</div>
+</td>
+    <td><a name="wp1139350"> </a><div class="pCellBody">
+<code class="cCode">Double</code>
+</div>
+<a name="wp1139351"> </a><div class="pCellBody">
+The timer triggers its callback method at this repeating interval (in seconds).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1139353"> </a><div class="pCellBody">
+<code class="cCode">closure</code>
+</div>
+</td>
+    <td><a name="wp1139355"> </a><div class="pCellBody">
+<code class="cCode">Variant</code>
+</div>
+<a name="wp1139356"> </a><div class="pCellBody">
+Store this closure data in the timer object.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1127039"> </a><h4 class="pHeading3">
+Timer Granularity
+</h4>
+<a name="wp1035073"> </a><p class="pBody">
+Express the timer interval (in seconds) as a double (64-bit floating point number). This representation allows microsecond granularity for intervals for over 100 years. The actual granularity of intervals depends on VB, hardware and operating system constraints.
+</p>
+<a name="wp1059330"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1059334"> </a><p class="pBody">
+<a  href="rv_com_ref92.htm#wp1122361"><code class="cCode">TibrvTimer.destroy</code> </a>
+</p>
+<a name="wp1059350"> </a><p class="pBody">
+<a  href="rv_com_ref97.htm#wp1127058"><code class="cCode">TibrvTimer_onTimer</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

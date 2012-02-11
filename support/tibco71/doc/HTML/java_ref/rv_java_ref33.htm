@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvMsg.add()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1026879"> </a><h2 class="pNewHTMLPage">
+TibrvMsg.add()
+</h2>
+<hr />
+<a name="wp1026880"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1026914"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+void <code class="cCodeBold">add</code>(<a name="wp1124981"> </a>
+&#160;&#160;&#160;&#160;java.lang.String fieldName,<a name="wp1124982"> </a>
+&#160;&#160;&#160;&#160;java.lang.Object data)<a name="wp1124983"> </a>
+&#160;&#160; throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1124987"> </a>
+<a name="wp1124978"> </a>
+void <code class="cCodeBold">add</code>(<a name="wp1124992"> </a>
+&#160;&#160;&#160;&#160;java.lang.String fieldName,<a name="wp1124993"> </a>
+&#160;&#160;&#160;&#160;java.lang.Object data,<a name="wp1124994"> </a>
+&#160;&#160;&#160;&#160;short type)<a name="wp1124995"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1124999"> </a>
+<a name="wp1124990"> </a>
+void <code class="cCodeBold">add</code>(<a name="wp1125004"> </a>
+&#160;&#160;&#160;&#160;java.lang.String fieldName,<a name="wp1125005"> </a>
+&#160;&#160;&#160;&#160;java.lang.Object data,<a name="wp1125006"> </a>
+&#160;&#160;&#160;&#160;short type,<a name="wp1125007"> </a>
+&#160;&#160;&#160;&#160;int fieldId)<a name="wp1125008"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125012"> </a>
+</pre></div>
+<a name="wp1027203"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1026885"> </a><p class="pBody">
+Add a field to a message.
+</p>
+<a name="wp1026886"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1026887"> </a><p class="pBody">
+This method copies the information into the new message field. All related convenience methods behave similarly.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1138638"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1138642"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1138644"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1138646"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1138648"> </a><div class="pCellBody">
+Add a field with this name.
+</div>
+<a name="wp1138649"> </a><div class="pCellBody">
+<code class="cCode">null</code> is a legal name. However, if <code class="cCode">fieldId</code> is non-zero, then <code class="cCode">fieldName</code> must be non-<code class="cCode">null</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1138651"> </a><div class="pCellBody">
+<code class="cCode">data</code>
+</div>
+</td>
+    <td><a name="wp1138653"> </a><div class="pCellBody">
+Add a field with this data value.
+</div>
+<a name="wp1138654"> </a><div class="pCellBody">
+<code class="cCode">null</code> is illegal.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1138656"> </a><div class="pCellBody">
+<code class="cCode">type</code>
+</div>
+</td>
+    <td><a name="wp1138658"> </a><div class="pCellBody">
+Add a field with this explicit type. For a list of types, see <a  href="rv_java_ref31.htm#wp1056249">Datatype Constants</a>.
+</div>
+<a name="wp1138665"> </a><div class="pCellBody">
+When absent or <a  href="rv_java_ref31.htm#wp1124092"><code class="cCode">TibrvMsg.DEFAULT</code></a>, determine the field&#8217;s type from the type of the data. In <a  href="rv_java_ref33.htm#wp1054848">Figure&#160;5</a>, filled dots indicate default encodings between homologous types.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1138670"> </a><div class="pCellBody">
+<code class="cCode">fieldId</code>
+</div>
+</td>
+    <td><a name="wp1138672"> </a><div class="pCellBody">
+Add a field with this identifier. All field identifiers must be unique within each message.
+</div>
+<a name="wp1138673"> </a><div class="pCellBody">
+When absent, add a field without an identifier.
+</div>
+<a name="wp1138674"> </a><div class="pCellBody">
+Integers in the range [<code class="cCode">0</code>, <code class="cCode">65535</code>] are valid identifiers.
+</div>
+<a name="wp1138675"> </a><div class="pCellBody">
+Zero is a special value, indicating no identifier. It is illegal to add a field that has both a <code class="cCode">null</code> field name <em class="cEmphasis">and</em> a non-zero field identifier.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1113714"> </a><h4 class="pHeading3">
+Encoding and Type Conversion
+</h4>
+<a name="wp1113718"> </a><p class="pBody">
+This method automatically tags Java data with a corresponding Rendezvous wire format type; sending the message actually triggers the encoding into wire format. <a  href="rv_java_ref33.htm#wp1054848">Figure&#160;5</a> specifies default encodings with filled circles; you can override the default encoding by supplying an explicit <code class="cCode">type</code> argument (numeric and supported conversions).
+</p>
+<a name="wp1269193"> </a><h4 class="pHeading3">
+Encoding XML
+</h4>
+<a name="wp1269194"> </a><p class="pBody">
+We recommend converting the XML document string to a byte sequence, using the encoding that corresponds to your locale (file encoding system property). Then create a <a  href="rv_java_ref73.htm#wp1124261"><code class="cCode">TibrvXml</code></a> object containing the bytes, and add that object to the message. This practice ensures that all receivers can easily parse the resulting XML document. For more information, see <a  href="rv_java_ref36.htm#wp1269229">Decoding XML</a>.
+</p>
+<a name="wp1113722"> </a><h4 class="pHeading3">
+Nested Message
+</h4>
+<a name="wp1113723"> </a><p class="pBody">
+When the <code class="cCode">data</code> argument is a message object, this method adds only the data portion of the nested message; it does not include any address information or certified delivery information.
+</p>
+<a name="wp1054848"> </a><div class="pFigureTitle">
+Figure&#160;5   Java to Wire Format Datatype Conversion Matrix</div><div align="center"><img src="images/rv_java_refa3.gif" height="646" width="525" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1026899"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1026900"> </a><p class="pBody">
+<a  href="rv_java_ref35.htm#wp1028247"><code class="cCode">TibrvMsg.addField()</code> </a>
+</p>
+<a name="wp1067530"> </a><p class="pBody">
+<a  href="rv_java_ref34.htm#wp1027558">Add Scalar</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

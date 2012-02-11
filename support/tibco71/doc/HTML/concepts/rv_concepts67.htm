@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Timer Event Semantics</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;7	 Events";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1024765"> </a><h2 class="pNewHTMLPage">
+Timer Event Semantics
+</h2>
+<hr />
+<a name="wp1023921"> </a><p class="pBody">
+Timer events are perhaps the most well-known type of asynchronous event. To do an operation after a specific time interval has elapsed, a program creates a timer event, and defines a callback function to do the desired operation.
+</p>
+<a name="wp1099871"> </a><p class="pBody">
+When a program creates a timer event object, the creation call <em class="cEmphasis">activates</em> the timer event&#151;that is, it requests notification from the operating system when the timer&#8217;s interval elapses. When the interval elapses, Rendezvous software places the event object on its event queue. Dispatch removes the event object from the queue, and runs the callback function to process the timer event. On dispatch Rendezvous software also determines whether the next interval has already elapsed, and requeues the timer event if appropriate.
+</p>
+<a name="wp1099881"> </a><p class="pBody">
+Notice that time waiting in the event queue until dispatch can increase the effective interval of the timer. It is the programmer&#8217;s responsibility to ensure timely dispatch of events.
+</p>
+<a name="wp1099885"> </a><p class="pBody">
+<a  href="rv_concepts67.htm#wp1052314">Figure&#160;12</a> illustrates a sequence of timer intervals. The number of elapsed timer intervals directly determines the number of event callbacks.
+</p>
+<a name="wp1099946"> </a><p class="pBody">
+At any moment the timer object appears on the event queue at most once&#151;not several times as multiple copies. Nonetheless, Rendezvous software arranges for the appropriate number of timer event callbacks based the number of intervals that have elapsed since the timer became active or reset its interval.
+</p>
+<a name="wp1099950"> </a><p class="pBody">
+Destroying or invalidating the timer object <em class="cEmphasis">immediately</em> halts the sequence of timer events. The timer object ceases to queue new events, and an event already in the queue does not result in a callback. (However, callback functions that are already running in other threads continue to completion.)
+</p>
+<a name="wp1099956"> </a><p class="pBody">
+A timer repeats indefinitely&#151;until the program destroys the timer event object.
+</p>
+<a name="wp1099891"> </a><p class="pBody">
+Resetting the timer interval <em class="cEmphasis">immediately</em> interrupts the sequence of timer events and begins a new sequence, counting the new interval from that moment. The reset operation is equivalent to destroying the timer and creating a new object in its place.
+</p>
+<a name="wp1052314"> </a><div class="pFigureTitle">
+Figure&#160;12   Timer Activation and Dispatch</div><div align="center"><img src="images/rv_conceptsa10.gif" height="290" width="528" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1049557"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1049527"> </a><div class="pTableTitle">
+Table&#160;21   Timer Creation&#160;
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1049531"> </a><div class="pCellBody">
+C
+</div>
+</td>
+    <td><a name="wp1049536"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref80.htm#wp1030234');" onMouseOver="WWHShowPopup('e', 'rv_c_ref80.htm#wp1030234', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvEvent_CreateTimer()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1049538"> </a><div class="pCellBody">
+C++
+</div>
+</td>
+    <td><a name="wp1049540"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref109.htm#wp1128172');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref109.htm#wp1128172', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvTimer::create()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1049542"> </a><div class="pCellBody">
+Java
+</div>
+</td>
+    <td><a name="wp1049547"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref89.htm#wp1171593');" onMouseOver="WWHShowPopup('g', 'rv_java_ref89.htm#wp1171593', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvTimer()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1049551"> </a><div class="pCellBody">
+COM
+</div>
+</td>
+    <td><a name="wp1049556"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref91.htm#wp1034867');" onMouseOver="WWHShowPopup('h', 'rv_com_ref91.htm#wp1034867', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvTimer.create</code></a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

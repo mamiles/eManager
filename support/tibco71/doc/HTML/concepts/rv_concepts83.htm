@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Programming Paradigm</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;9	 Virtual Circuits";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1123799"> </a><h2 class="pNewHTMLPage">
+Programming Paradigm
+</h2>
+<hr />
+<a name="wp1123807"> </a><p class="pBody">
+These steps illustrate the programming paradigm for Rendezvous virtual circuits.
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1123812"> </a><div class="pSmartList1"><li value="1">Program code in process A sends a series of application-level messages to process B requesting a virtual circuit.</li></div>
+
+<a name="wp1123813"> </a><div class="pSmartList1"><li value="2">Program code in process B responds to one of those requests by creating a virtual circuit transport <em class="cEmphasis">accept</em> object. Creating the accept object also produces a <em class="cEmphasis">connect subject</em>&#151;an inbox where the accept object listens for protocol messages.</li></div>
+
+<a name="wp1127861"> </a><div class="pSmartList1"><li value="3">Program code in B sends an application-level reply message to A, inviting A to connect to the accept object. The reply subject of the invitation message is the connect subject of the accept object.</li></div>
+
+<a name="wp1124037"> </a><div class="pSmartList1"><li value="4">Program code in process A creates a virtual circuit transport <em class="cEmphasis">connect</em> object&#151;supplying the connect subject from the invitation as an argument to the create call.</li></div>
+
+<a name="wp1124056"> </a><div class="pSmartList1"><li value="5">The connect object in A automatically initiates a protocol to establish the virtual circuit connection between the two terminal objects.</li></div>
+
+<a name="wp1127825"> </a><div class="pSmartList1"><li value="6">When the connection is <em class="cEmphasis">complete</em> (that is, ready to use) both terminals present <a  href="rv_concepts169.htm#wp1112941"><code class="cCode">VC.CONNECTED</code></a> advisories. From this time forward, either process can send messages on the virtual circuit.</li></div>
+
+</ol></div>
+
+<a name="wp1127875"> </a><h4 class="pHeading3">
+Connect Subject
+</h4>
+<a name="wp1127876"> </a><p class="pBody">
+B must send the connect subject as the <em class="cEmphasis">reply subject</em> of the invitation message&#151;not as an application-level field of the message. This detail is especially important when routing hardware or software intervenes between the two processes.
+</p>
+<a name="wp1148297"> </a><h4 class="pHeading3">
+Request and Invitation
+</h4>
+<a name="wp1148298"> </a><p class="pBody">
+Notice that programs must send the request and invitation messages on transports that are already operational. They cannot send them on the virtual circuit transport, because the circuit is not yet complete.
+</p>
+<a name="wp1133401"> </a><h4 class="pHeading3">
+Listening and Sending
+</h4>
+<a name="wp1127935"> </a><p class="pBody">
+Programs may create listener objects on virtual circuit transports at any time after the create call returns.
+</p>
+<a name="wp1129546"> </a><p class="pBody">
+Attempting to send messages before the connection is complete produces error status.
+</p>
+<a name="wp1187618"> </a><h3 class="pHeading2">
+Testing the New Connection
+</h3>
+<a name="wp1187620"> </a><p class="pBody">
+Code in both processes (A and B) must test the new connection before using it. We recommend a two-part test. Immediately after creating a virtual circuit terminal object, do these two steps, in this order:
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1187727"> </a><div class="pSmartList1"><li value="1">Listen for the <a  href="rv_concepts169.htm#wp1112941"><code class="cCode">VC.CONNECTED</code></a> advisory on the terminal transport object. If the terminal presents this advisory, it is ready to use.</li></div>
+
+<a name="wp1187749"> </a><p class="pBodyRelative">
+It is possible to miss this advisory. That is, the terminal might present it before the program creates the listener to intercept it. In this situation, the program could wait indefinitely for the advisory, which has already come and gone. To avoid this situation, do the following step as well.
+</p>
+<a name="wp1187735"> </a><div class="pSmartList1"><li value="2">Poll the connection to test whether it is operational, supplying zero as the timeout parameter to the wait-for-connection call. If this call returns without error, the terminal is ready to use.</li></div>
+
+</ol></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

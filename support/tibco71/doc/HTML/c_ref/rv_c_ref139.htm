@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvTransport_GetNetwork()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;8	 Transport";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1116067"> </a><h2 class="pNewHTMLPage">
+tibrvTransport_GetNetwork()
+</h2>
+<hr />
+<a name="wp1067058"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1087142"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvTransport_GetNetwork</code>(<a name="wp1077975"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref132.htm#wp1066635"><code class="cCode">tibrvTransport</code></a>&#160;&#160;&#160;&#160;&#160;&#160;transport,<a name="wp1077977"> </a>
+&#160;&#160;&#160;&#160;const char**&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;networkString);<a name="wp1077978"> </a>
+</pre></div>
+<a name="wp1087621"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1067066"> </a><p class="pBody">
+Extract the network parameter from a transport.
+</p>
+<a name="wp1088068"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1067068"> </a><p class="pBody">
+This function returns the network parameter as a <code class="cCode">NULL</code>-terminated string.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1067071"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1067073"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1067075"> </a><div class="pCellBody">
+<code class="cCode">transport</code>
+</div>
+</td>
+    <td><a name="wp1235037"> </a><div class="pCellBody">
+Extract the network parameter from this transport.
+</div>
+<a name="wp1067077"> </a><div class="pCellBody">
+It is an error to supply the intra-process transport or virtual circuit transport to this function.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1067079"> </a><div class="pCellBody">
+<code class="cCode">networkString</code>
+</div>
+</td>
+    <td><a name="wp1071175"> </a><div class="pCellBody">
+The program supplies a location, and the function places in that location a string pointer to the network parameter.
+</div>
+<a name="wp1071176"> </a><div class="pCellBody">
+The program <em class="cEmphasis">must not</em> modify the string.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1088466"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1067093"> </a><p class="pBody">
+<a  href="rv_c_ref132.htm#wp1066635"><code class="cCode">tibrvTransport</code> </a>
+</p>
+<a name="wp1067097"> </a><p class="pBody">
+<a  href="rv_c_ref134.htm#wp1066667"><code class="cCode">tibrvTransport_Create()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

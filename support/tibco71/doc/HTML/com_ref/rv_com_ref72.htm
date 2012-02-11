@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvMsgField.initialize</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1144910"> </a><h2 class="pNewHTMLPage">
+TibrvMsgField.initialize
+</h2>
+<hr />
+<a name="wp1144911"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1144912"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+TibrvMsgField.<code class="cCodeBold">initialize</code> fieldName, data, tibrvType, fieldId<a name="wp1144913"> </a>
+</pre></div>
+<a name="wp1144914"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1144916"> </a><p class="pBody">
+Set the contents of a message field object.
+</p>
+<a name="wp1144921"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1144922"> </a><p class="pBody">
+This method does not verify that the data and type of the field are consistent. Methods that add the field object into a message verify consistency (for example <a  href="rv_com_ref36.htm#wp1028247"><code class="cCode">TibrvMsg.addField</code></a> and <a  href="rv_com_ref66.htm#wp1028523"><code class="cCode">TibrvMsg.updateField</code></a>).
+</p>
+<a name="wp1153809"> </a><p class="pBody">
+When a program creates a field object (using the <code class="cCode">New</code> operator), the program owns the object, and can initialize it using this method&#151;even repeatedly. This method discards any old field content, and replaces it with the new content from the method&#8217;s arguments.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1178899"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1178903"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1178905"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1178907"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1178909"> </a><div class="pCellBody">
+<code class="cCode">String</code>
+</div>
+<a name="wp1178910"> </a><div class="pCellBody">
+Store this name in the field object.
+</div>
+<a name="wp1178911"> </a><div class="pCellBody">
+<code class="cCode">vbNullString</code> is a legal name. However, if <code class="cCode">fieldId</code> is non-zero, then <code class="cCode">fieldName</code> must be non-null.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1178913"> </a><div class="pCellBody">
+<code class="cCode">data</code>
+</div>
+</td>
+    <td><a name="wp1178915"> </a><div class="pCellBody">
+<code class="cCode">Variant</code>
+</div>
+<a name="wp1178916"> </a><div class="pCellBody">
+Store this data value in the field object.
+</div>
+<a name="wp1178920"> </a><div class="pCellBody">
+Pass the data as any VB type or Rendezvous object type (except for <a  href="rv_com_ref67.htm#wp1028876"><code class="cCode">TibrvMsgField</code></a>).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1178925"> </a><div class="pCellBody">
+<code class="cCode">tibrvType</code>
+</div>
+</td>
+    <td><a name="wp1178927"> </a><div class="pCellBody">
+<code class="cCode">Byte</code> optional
+</div>
+<a name="wp1178928"> </a><div class="pCellBody">
+Store this explicit type in the field object, and convert the <code class="cCode">data</code> to this type. For a list of types, see <a  href="rv_com_ref34.htm#wp1056249">Datatype Constants</a>.
+</div>
+<a name="wp1178932"> </a><div class="pCellBody">
+When absent or zero, determine the field&#8217;s type from the type of the variant <code class="cCode">data</code>. In <a  href="rv_com_ref35.htm#wp1119232">Figure&#160;1</a>, filled dots indicate default encodings between homologous types.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1178937"> </a><div class="pCellBody">
+<code class="cCode">fieldId</code>
+</div>
+</td>
+    <td><a name="wp1178939"> </a><div class="pCellBody">
+<code class="cCode">Long</code> optional
+</div>
+<a name="wp1178940"> </a><div class="pCellBody">
+Store this identifier in the field object. All field identifiers must be unique within each message.
+</div>
+<a name="wp1178941"> </a><div class="pCellBody">
+An identifier has the range of a 16-bit unsigned integer, [0,&#160;65535].
+</div>
+<a name="wp1178942"> </a><div class="pCellBody">
+When absent or zero, add a field without an identifier.
+</div>
+<a name="wp1178943"> </a><div class="pCellBody">
+Zero is a special value, indicating no identifier. It is illegal to add a field that has both a null field name <em class="cEmphasis">and</em> a non-zero field identifier.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1144980"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1144984"> </a><p class="pBody">
+<a  href="rv_com_ref36.htm#wp1028247"><code class="cCode">TibrvMsg.addField</code> </a>
+</p>
+<a name="wp1144988"> </a><p class="pBody">
+<a  href="rv_com_ref66.htm#wp1028523"><code class="cCode">TibrvMsg.updateField</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

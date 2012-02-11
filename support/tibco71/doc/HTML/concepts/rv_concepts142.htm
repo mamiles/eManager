@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Program Callback Functions</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;14	 Fault Tolerance Programming";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1057801"> </a><h2 class="pNewHTMLPage">
+Program Callback Functions
+</h2>
+<hr />
+<a name="wp1057802"> </a><p class="pBody">
+Fault tolerance callback functions must do the required action, as specified by the action token.
+</p>
+<a name="wp1057803"> </a><p class="pBody">
+The basic structure of a fault tolerance callback function is a C <code class="cCode">switch</code> statement that branches on the action token. The specific actions of the callback function within the <code class="cCode">case</code> clauses of that <code class="cCode">switch</code> statement depend on application semantics. (In other programming languages, use analogous constructs.)
+</p>
+<a name="wp1057841"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1073335"> </a><div class="pTableTitle">
+Table&#160;38   Fault Tolerance Callback Function&#160;
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1073339"> </a><div class="pCellBody">
+C
+</div>
+</td>
+    <td><a name="wp1073344"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref154.htm#wp1078084');" onMouseOver="WWHShowPopup('e', 'rv_c_ref154.htm#wp1078084', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvftMemberCallback</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1073346"> </a><div class="pCellBody">
+C++
+</div>
+</td>
+    <td><a name="wp1073351"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref201.htm#wp1064128');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref201.htm#wp1064128', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvFtMemberCallback::onFtAction()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1073353"> </a><div class="pCellBody">
+Java
+</div>
+</td>
+    <td><a name="wp1073358"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref176.htm#wp1064128');" onMouseOver="WWHShowPopup('g', 'rv_java_ref176.htm#wp1064128', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvFtMemberCallback.onFtAction()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1073360"> </a><div class="pCellBody">
+COM
+</div>
+</td>
+    <td><a name="wp1073362"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref156.htm#wp1064128');" onMouseOver="WWHShowPopup('h', 'rv_com_ref156.htm#wp1064128', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvFtMember_onFtAction</code></a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1057842"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1057846"> </a><p class="pBody">
+<a  href="rv_concepts141.htm#wp1057747">Fault Tolerance Callback Actions</a>
+</p>
+<a name="wp1057850"> </a><p class="pBody">
+<a  href="rv_concepts143.htm#wp1057852">Ensure Timely Event Processing</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Batch Modes for Transports</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;8	 Transport";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1135132"> </a><h2 class="pNewHTMLPage">
+Batch Modes for Transports
+</h2>
+<hr />
+<a name="wp1135133"> </a><p class="pBody">
+Release 7 introduces a timer batch mode for network transport objects. In a narrowly limited set of situations, this feature can improve application performance. Most customers can ignore this feature.
+</p>
+<a name="wp1135134"> </a><h4 class="pHeading3">
+Overview
+</h4>
+<a name="wp1135135"> </a><p class="pBody">
+With default batch behavior, a transport object transmits outbound messages to the Rendezvous communications daemon as soon as possible.
+</p>
+<a name="wp1135139"> </a><p class="pBody">
+With timer batch behavior, the transport can delay transmitting small outbound messages to the daemon. For programs that send many small messages, this behavior can improve efficiency. The cost of that improvement is data latency.
+</p>
+<a name="wp1135140"> </a><h4 class="pHeading3">
+Advantages
+</h4>
+<a name="wp1135141"> </a><p class="pBody">
+When used appropriately, it is possible that timer batching can promote one or both of these advantages:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1135142"> </a><div class="pSmartList1"><li >In some situations, it can reduce context switching on the sending computer, improving CPU utilization.</li></div>
+
+<a name="wp1135143"> </a><div class="pSmartList1"><li >In some situations, it can reduce the number of packets on the network, improving bandwidth utilization.</li></div>
+
+</ul></div>
+
+<a name="wp1135144"> </a><h4 class="pHeading3">
+Indications
+</h4>
+<a name="wp1135145"> </a><p class="pBody">
+These conditions characterize situations where timer batch mode might be advantageous:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1135146"> </a><div class="pSmartList1"><li >Maximum data latency of approximately 25 milliseconds is acceptable.</li></div>
+
+<a name="wp1135147"> </a><div class="pSmartList1"><li >The program sends very small messages&#151;generally 100 bytes or fewer.</li></div>
+
+<a name="wp1151618"> </a><div class="pSmartList1"><li >A correct program performs poorly with default batch behavior.</li></div>
+
+</ul></div>
+
+<a name="wp1151627"> </a><h4 class="pHeading3">
+Contraindications
+</h4>
+<a name="wp1151628"> </a><p class="pBody">
+These conditions characterize situations in which we do <em class="cEmphasis">not</em> recommend timer batch mode:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1135156"> </a><div class="pSmartList1"><li >Data latency is <em class="cEmphasis">not</em> acceptable.</li></div>
+
+<a name="wp1149082"> </a><div class="pSmartList1"><li >Timer batch behavior does not produce measurable improvements in the performance of your application.</li></div>
+
+</ul></div>
+
+<a name="wp1135161"> </a><h4 class="pHeading3">
+Usage
+</h4>
+<a name="wp1135162"> </a><p class="pBody">
+Programs control batch mode by setting a property of the transport object.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvMsg.getFieldInstance()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1156132"> </a><h2 class="pNewHTMLPage">
+TibrvMsg.getFieldInstance()
+</h2>
+<hr />
+<a name="wp1156133"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1156134"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+set field = TibrvMsg.<code class="cCodeBold">getFieldInstance</code>(fieldName, instance)<a name="wp1156137"> </a>
+</pre></div>
+<a name="wp1156138"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1156140"> </a><p class="pBody">
+Get a specific instance of a field from a message.
+</p>
+<a name="wp1156141"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1156142"> </a><p class="pBody">
+When a message contains several field instances with the same field name, retrieve a specific instance by number (for example, get the <code style="font-style: normal; vertical-align: baseline" class="cCode">i</code><em style="font-style: oblique; vertical-align: super" class="cEmphasis">th</em> field named <code class="cCode">foo</code>). Programs can use this method in a loop that examines every field with a specified name.
+</p>
+<a name="wp1156349"> </a><p class="pBody">
+The first instance of the named field is instance <code class="cCode">1</code>.
+</p>
+<a name="wp1156216"> </a><p class="pBody">
+When a program must extract information about a message field&#151;such as its field name, field identifier, or datatype&#151;it can extract the field as a <a  href="rv_com_ref67.htm#wp1028876"><code class="cCode">TibrvMsgField</code></a> object. A <a  href="rv_com_ref67.htm#wp1028876"><code class="cCode">TibrvMsgField</code></a> object contains complete detail about the field.
+</p>
+<a name="wp1156226"> </a><p class="pBody">
+All <a  href="rv_com_ref67.htm#wp1028876"><code class="cCode">TibrvMsgField</code></a> objects <em class="cEmphasis">always</em> belongs to your program, so the program is always responsible for deleting the field object.
+</p>
+<a name="wp1156148"> </a><p class="pBody">
+When the <code class="cCode">instance</code> argument is greater than the actual number of instances of the field in the message, this method reports the error <a  href="rv_com_ref217.htm#wp1188804"><code class="cCode">TIBRVCOM_NOT_FOUND</code></a>.
+</p>
+<a name="wp1156153"> </a><h4 class="pHeading3">
+Release 5 Interaction
+</h4>
+<a name="wp1156157"> </a><p class="pBody">
+Rendezvous 5 (and earlier) did not support array datatypes. Some older programs circumvented this limitation by using several fields with the same name to simulate arrays. This work-around is no longer necessary, since release 6 (and later) supports one-dimensional array datatypes within message fields. The method <a  href="rv_com_ref50.htm#wp1151354"><code class="cCode">TibrvMsg.getInstance()</code></a> ensures backward compatibility, so new programs can still receive and manipulate messages sent from older programs. Nonetheless, we encourage programmers to use array types as appropriate, and we discourage storing several fields with the same name in a message.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1156166"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1156170"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1156172"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1156174"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1156176"> </a><div class="pCellBody">
+<code class="cCode">String</code>
+</div>
+<a name="wp1156177"> </a><div class="pCellBody">
+Get an instance of a field with this name.
+</div>
+<a name="wp1156178"> </a><div class="pCellBody">
+<code class="cCode">vbNullString</code> is a legal field name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1156180"> </a><div class="pCellBody">
+<code class="cCode">instance</code>
+</div>
+</td>
+    <td><a name="wp1156182"> </a><div class="pCellBody">
+<code class="cCode">Long</code>
+</div>
+<a name="wp1156183"> </a><div class="pCellBody">
+Get this instance of the specified field name. The argument <code class="cCode">1</code> denotes the first instance of the named field.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1156190"> </a><div class="pCellBody">
+<code class="cCode">field</code>
+</div>
+</td>
+    <td><a name="wp1156195"> </a><div class="pCellBody">
+<a  href="rv_com_ref67.htm#wp1028876"><code class="cCode">TibrvMsgField</code></a>
+</div>
+<a name="wp1156196"> </a><div class="pCellBody">
+Return the field object.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1192850"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1237275"> </a><p class="pBody">
+When a field object contains a reference datatype (array, message, opaque, XML, or string), the data in the field object depends on a reference into the parent message. If the parent message is deleted, the program can no longer extract these datatypes from the field object; attempting to extract them references freed storage, which is illegal, and can cause serious consequences.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1156198"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1156202"> </a><p class="pBody">
+<a  href="rv_com_ref50.htm#wp1151354"><code class="cCode">TibrvMsg.getInstance()</code> </a>
+</p>
+<a name="wp1156235"> </a><p class="pBody">
+<a  href="rv_com_ref67.htm#wp1028876"><code class="cCode">TibrvMsgField</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

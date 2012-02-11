@@ -1,0 +1,131 @@
+#! /bin/ksh -p
+#####################################################
+# eManager stop script
+# Items that the installer need to configure
+#
+export EM_HOME=EMANAGER_HOME
+#####################################################
+. $EM_HOME/bin/emenv.ksh
+. $EM_HOME/bin/wdscript.lib
+
+#####################################################
+# Find out what appType (application name) and
+# application instance we are starting watchdog for
+export appType=$1
+export appInst=$2
+
+if [ x"$appType" = x"" ]; then
+	  print "The first paramater of appType is required"
+	  print "exiting ..."
+	  exit 1
+fi
+if [ x"$appInst" = x"" ]; then
+	print "The second parameter of appInst is required."
+	print "exiting ..."
+	exit 1
+fi
+
+tmpdir=$EM_TMP
+
+watchdog_pid=`getPIDOf WD.$appType.$appInst`
+########### REVISIT ###########################  Maybe need to clean up RVD processes????????
+# rvd_pid=$(get_rvd_pid)
+# rva_pid=$(get_rva_pid)
+
+if [ "$watchdog_pid" = "" ]; then
+  print "Applicaton: WD.$appType.$appInst is not running"
+
+  ###########################################################################
+  # Check for any left over processes from previous watchdog
+  if [ -f $tmpdir/WD.$appType.$appInst.gid ]; then
+    if [ -O $tmpdir/WD.$appType.$appInst.gid ]; then
+      watchdog_group=$(cat $tmpdir/WD.$appType.$appInst.gid)
+      left_over_processes=$(ps -g $watchdog_group -o pid | egrep '[0-9]')
+      if [ "$left_over_processes" != "" ]; then
+        print "Found left over processes from watchdog that died"
+        print /usr/bin/kill -s KILL $left_over_processes
+        /usr/bin/kill -s KILL $left_over_processes
+      fi
+    fi
+
+    /usr/bin/rm -f $tmpdir/WD.$appType.$appInst.gid
+  fi
+  #cleanUpFiles
+
+  if [ "$rvd_pid" != "" ]; then
+    /usr/bin/kill -s KILL $rvd_pid
+  fi
+
+  if [ "$rva_pid" != "" ]; then
+    /usr/bin/kill -s KILL $rva_pid
+  fi
+
+  exit 2
+
+else
+
+  # getUserConfirmation "$warning"
+
+  # get the process group id
+  watchdog_pgid=$(get_process_group $watchdog_pid)
+  /usr/bin/rm -f $tmpdir/WD.$appType.$appInst.gid
+
+  /usr/bin/kill -s QUIT $watchdog_pid
+
+  if [ "$allOption" = "1" ]; then
+	print "Will send shutdown all"
+  	/usr/bin/kill -s TERM $watchdog_pid
+  else
+	/usr/bin/kill -s USR1 $watchdog_pid
+	/usr/bin/kill -s USR1 $watchdog_pid >/dev/null 2>&1
+  fi
+
+  print "Waiting for watchdog to stop"
+
+  count=0
+  while (( count < 60 )); do
+    /usr/bin/ps -p $watchdog_pid >/dev/null 2>&1
+    if [ $? = 1 ]; then
+      print "Application is now stopped"
+
+      for pid in $(get_processes_in_group $watchdog_pgid); do
+        /usr/bin/ps -p $pid >/dev/null 2>&1
+		if [ $? = 0 ]; then
+	  		print "Process $pid didn't die; killing it now"
+			print "Details : " `ps -aef | grep $pid`
+  			/usr/bin/kill -s QUIT $pid
+	  		/usr/bin/kill -s KILL $pid >/dev/null 2>&1
+		fi
+      done
+      #cleanUpFiles
+
+      if [ "$rvd_pid" != "" ]; then
+		#print "Killing the rvd process : " $rvd_pid
+        /usr/bin/kill -s KILL $rvd_pid
+      fi
+
+      if [ "$rva_pid" != "" ]; then
+		#print "Killing the rva process : " $rva_pid
+        /usr/bin/kill -s KILL $rva_pid
+      fi
+
+      exit 0
+    fi
+    /usr/bin/sleep 1
+    ((count = count + 1))
+  done
+
+  print "Application isn't responding to kill;" \
+        "killing all its processes manually"
+  /usr/bin/kill -s QUIT $watchdog_pid
+  cp $EM_HOME/logs/WD.$appType.$appInst.log $EM_HOME/logs/WD.$appType.$appInst.log.$$
+  /usr/bin/kill -s KILL $(get_processes_in_group $watchdog_pgid)
+
+  if [ "$rvd_pid" != "" ]; then
+    /usr/bin/kill -s KILL $rvd_pid
+  fi
+
+  if [ "$rva_pid" != "" ]; then
+    /usr/bin/kill -s KILL $rva_pid
+  fi
+fi

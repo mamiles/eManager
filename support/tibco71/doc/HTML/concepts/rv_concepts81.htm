@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Virtual Circuits Overview</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;9	 Virtual Circuits";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1128688"> </a><h2 class="pNewHTMLPage">
+Virtual Circuits Overview
+</h2>
+<hr />
+<a name="wp1128689"> </a><h4 class="pHeading3">
+Conceptual Definition
+</h4>
+<a name="wp1189073"> </a><p class="pBody">
+In his classic textbook, <em class="cEmphasis">Computer Networks</em>, Andrew Tanenbaum describes virtual circuits by analogy with a public telephone network:
+</p>
+<a name="wp1189130"> </a><p class="pBodyRelative">
+The telephone customer must first set up the virtual circuit (dial the call), then transmit the data (talk), and finally close down the circuit (hang up). Although what happens inside the telephone system or subnet is undoubtedly very complicated, the two users are provided with the illusion of a dedicated point-to-point channel between themselves. In particular, information is delivered to the receiver in the same order in which it is transmitted by the sender.
+</p>
+<a name="wp1189066"> </a><h4 class="pHeading3">
+Quality of Service
+</h4>
+<a name="wp1128690"> </a><p class="pBody">
+Rendezvous virtual circuits provide a similar quality of service. A virtual circuit is an exclusive, monitored connection between two <em class="cEmphasis">terminals</em>&#151;each of which is a virtual circuit transport object.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1128023"> </a><div class="pSmartList1"><li >The two terminals communicate <em class="cEmphasis">exclusively</em> with each other. They do not communicate with any other transport object.</li></div>
+
+<a name="wp1189172"> </a><div class="pSmartList1"><li >Each terminal can send messages to the other terminal. Messages arrive in the same order as the opposite terminal sent them.</li></div>
+
+<a name="wp1127138"> </a><div class="pSmartList1"><li >Each terminal <em class="cEmphasis">monitors</em> the connection to ascertain continuous correct operation.</li></div>
+
+<a name="wp1128002"> </a><div class="pSmartList1"><li >A failure anywhere along the circuit causes the entire circuit to cease functioning.</li></div>
+
+<div class="pSmartList2"><ul>
+<a name="wp1128056"> </a><div class="pSmartList2"><li >Each terminal presents a <a  href="rv_concepts170.htm#wp1114062"><code class="cCode">VC.DISCONNECTED</code></a> advisory message.</li></div>
+<a name="wp1128058"> </a><div class="pSmartList2"><li >The terminals can no longer deliver inbound messages to listener objects.</li></div>
+<a name="wp1128060"> </a><div class="pSmartList2"><li >Attempting to send outbound messages produces error status.</li></div>
+<a name="wp1128062"> </a><div class="pSmartList2"><li >The terminals <em class="cEmphasis">cannot</em> reconnect. Programs must destroy them, and all listener objects that use them. To establish a new virtual circuit, programs may create new terminal objects.</li></div>
+</ul></div>
+
+</ul></div>
+
+<a name="wp1128696"> </a><h4 class="pHeading3">
+Scope
+</h4>
+<a name="wp1128709"> </a><p class="pBody">
+The scope of a virtual circuit transport is limited to exactly one other transport&#151;the terminal at the opposite end of the connection. No other transports receive messages sent on the virtual circuit&#151;not even transports that communicate on the same network and UDP or PGM service as the virtual circuit terminals. Conversely, terminals of a virtual circuit do not receive messages sent by any other transports.
+</p>
+<a name="wp1128745"> </a><p class="pBody">
+A program can create any number of listener objects that use a virtual circuit transport object. They can listen on inbox names or on public subject names. In either case, they can receive only those messages sent by the opposite terminal.
+</p>
+<a name="wp1148201"> </a><p class="pBody">
+Similarly, a program can specify the destination of an outbound message using either an inbox name or a public subject name. In either case, the message travels point-to-point to the opposite terminal.
+</p>
+<a name="wp1128750"> </a><h4 class="pHeading3">
+Mechanism
+</h4>
+<a name="wp1129063"> </a><p class="pBody">
+Every virtual circuit terminal employs an ordinary transport object as an underlying communication mechanism. The transport can be an (<code class="cCode">rvd</code>) network transport or the intra-process transport. (Several virtual circuits can employ the same transport. The transport can carry other messages as well.)
+</p>
+<a name="wp1177914"> </a><p class="pBody">
+The transport carries both data and protocol communications for the virtual circuit. All such communication travels point-to-point between the two terminals. The terminals multiplex inbound messages to appropriate listener objects.
+</p>
+<a name="wp1177916"> </a><h4 class="pHeading3">
+Protocol
+</h4>
+<a name="wp1177917"> </a><p class="pBody">
+A hidden protocol establishes and monitors the connection between terminals.
+</p>
+<a name="wp1129399"> </a><p class="pBody">
+Terminals present advisory messages to programs to report changes in the connection&#8217;s status.
+</p>
+<a name="wp1148206"> </a><h4 class="pHeading3">
+Direct Communication
+</h4>
+<a name="wp1148211"> </a><p class="pBody">
+Because virtual circuits rely on point-to-point communication between the two terminals, they can use direct communication to good advantage. To do so, both terminals must employ network transports that enable direct communication. For an overview, see <a  href="rv_concepts78.htm#wp1144571">Direct Communication</a>.
+</p>
+<a name="wp1169532"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1169566"> </a><p class="pBody">
+Andrew S. Tanenbaum, <em class="cEmphasis">Computer Networks</em>, 1981, Prentice-Hall, Englewood Cliffs, New Jersey.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

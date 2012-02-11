@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvDate()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1045251"> </a><h2 class="pNewHTMLPage">
+TibrvDate()
+</h2>
+<hr />
+<a name="wp1045290"> </a><p class="pSyntaxType">
+Constructor
+</p>
+<a name="wp1045291"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCodeBold">TibrvDate</code>()<a name="wp1125408"> </a>
+<a name="wp1125402"> </a>
+<code class="cCodeBold">TibrvDate</code>(java.util.Date date)<a name="wp1125412"> </a>
+<a name="wp1125403"> </a>
+<code class="cCodeBold">TibrvDate</code>(long milliseconds)<a name="wp1125416"> </a>
+<a name="wp1125404"> </a>
+<code class="cCodeBold">TibrvDate</code>(<a name="wp1125420"> </a>
+&#160;&#160;&#160;&#160;long&#160;&#160;seconds,<a name="wp1125421"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;nanoseconds)<a name="wp1125422"> </a>
+</pre></div>
+<a name="wp1045293"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1045294"> </a><p class="pBody">
+Create a Rendezvous date object.
+</p>
+<a name="wp1045258"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1045436"> </a><p class="pBody">
+If the time value specified is out of range, this constructor throws an <code class="cCode">IllegalArgumentException</code>.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1045478"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1045480"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1045494"> </a><div class="pCellBody">
+<code class="cCode">date</code>
+</div>
+</td>
+    <td><a name="wp1045499"> </a><div class="pCellBody">
+Copy the value of this Java date or Rendezvous date object into an independent copy object.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1045482"> </a><div class="pCellBody">
+<code class="cCode">milliseconds</code>
+</div>
+</td>
+    <td><a name="wp1045484"> </a><div class="pCellBody">
+Create a date from this value (in milliseconds, centered on 12:00am, January 1, 1970).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1045486"> </a><div class="pCellBody">
+<code class="cCode">seconds</code>
+</div>
+</td>
+    <td><a name="wp1045488"> </a><div class="pCellBody">
+Create a date from this value (in seconds, centered on 12:00am, January 1, 1970).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1045490"> </a><div class="pCellBody">
+<code class="cCode">nanoseconds</code>
+</div>
+</td>
+    <td><a name="wp1045492"> </a><div class="pCellBody">
+Add this value (in nanoseconds) to the time specified by the <code class="cCode">seconds</code> parameter. This argument must be non-negative.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1045270"> </a><h4 class="pHeading3">
+Method Forms
+</h4>
+<a name="wp1045468"> </a><p class="pBody">
+With no arguments, create a date object representing the current time.
+</p>
+<a name="wp1045469"> </a><p class="pBody">
+With an argument of class <code class="cCode">java.util.Date</code> (or a subclass), create a <a  href="rv_java_ref59.htm#wp1044828"><code class="cCode">TibrvDate</code></a> object representing the same date value.
+</p>
+<a name="wp1045513"> </a><p class="pBody">
+With one argument, interpret that <code class="cCode">long</code> as the date in milliseconds. For example, specify the time 1/2 second before midnight of December 31, 1969 as -500 milliseconds.
+</p>
+<a name="wp1045516"> </a><p class="pBody">
+With two arguments, interpret them as seconds and (non-negative) nanoseconds. For example, specify the time 1/2 second before midnight of December 31, 1969 as -1 seconds plus 500,000,000 nanoseconds.
+</p>
+<a name="wp1151041"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1151045"> </a><p class="pBody">
+<a  href="rv_java_ref59.htm#wp1044828"><code class="cCode">TibrvDate</code> </a>
+</p>
+<a name="wp1151049"> </a><p class="pBody">
+<a  href="rv_java_ref59.htm#wp1059060">Representations</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Inbox Names</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;8	 Transport";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1117158"> </a><h2 class="pNewHTMLPage">
+Inbox Names
+</h2>
+<hr />
+<a name="wp1029813"> </a><p class="pBody">
+Transport objects can create inbox names, designating a destination that is unique to that transport object and its process. Rendezvous software uses point-to-point techniques to deliver messages with inbox subject names.
+</p>
+<a name="wp1029836"> </a><p class="pBody">
+One common use of inbox names is as reply subject names in request/reply interactions (see <a  href="rv_concepts39.htm#wp1021731">Request/Reply Interactions</a>).
+</p>
+<a name="wp1075206"> </a><p class="pBody">
+Request reply interactions that cross network boundaries depend on Rendezvous routing daemons (<code class="cCode">rvrd</code>) in both directions. Routing daemons annotate inbox name reply subjects during the request phase, and interpret those annotations during the reply phase&#151;ensuring correct delivery across network boundaries. (Programs that send reply inbox names within message data fields circumvent this mechanism, and cannot receive replies across network boundaries.)
+</p>
+<a name="wp1029912"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1029849"> </a><div class="pTableTitle">
+Table&#160;23   Inbox Calls&#160;
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1029853"> </a><div class="pCellBody">
+C
+</div>
+</td>
+    <td><a name="wp1029858"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref135.htm#wp1066914');" onMouseOver="WWHShowPopup('e', 'rv_c_ref135.htm#wp1066914', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvTransport_CreateInbox()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1029868"> </a><div class="pCellBody">
+C++
+</div>
+</td>
+    <td><a name="wp1029881"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref164.htm#wp1040342');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref164.htm#wp1040342', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvTransport::createInbox()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1029883"> </a><div class="pCellBody">
+Java
+</div>
+</td>
+    <td><a name="wp1029896"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref131.htm#wp1040342');" onMouseOver="WWHShowPopup('g', 'rv_java_ref131.htm#wp1040342', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvTransport.createInbox()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1029898"> </a><div class="pCellBody">
+COM
+</div>
+</td>
+    <td><a name="wp1029911"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref127.htm#wp1040342');" onMouseOver="WWHShowPopup('h', 'rv_com_ref127.htm#wp1040342', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvTransport.createInbox()</code></a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1029760"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1120737"> </a><p class="pBody">
+<a  href="rv_concepts37.htm#wp1029645">Subject-Based Addressing and Message Destinations</a>.
+</p>
+<a name="wp1120741"> </a><p class="pBody">
+<a  href="rv_concepts38.htm#wp1020739">Multicast and Point-to-Point Messages</a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

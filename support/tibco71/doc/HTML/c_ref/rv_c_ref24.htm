@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvMsgDateTime</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;3	 Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1119060"> </a><h2 class="pNewHTMLPage">
+tibrvMsgDateTime
+</h2>
+<hr />
+<a name="wp1119061"> </a><p class="pSyntaxType">
+Type
+</p>
+<a name="wp1119062"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+typedef struct<a name="wp1119078"> </a>
+{<a name="wp1119079"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128785"><code class="cCode">tibrv_i64</code></a>&#160;&#160;&#160;&#160;&#160;sec;<a name="wp1119105"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128803"><code class="cCode">tibrv_u32</code></a>&#160;&#160;&#160;&#160;&#160;nsec;<a name="wp1119106"> </a>
+} <code class="cCodeBold">tibrvMsgDateTime</code>;<a name="wp1119107"> </a>
+</pre></div>
+<a name="wp1119064"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1119069"> </a><p class="pBody">
+Represents dates and times.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1119127"> </a><div class="pCellHeading">
+Accessor
+</div>
+</th>
+    <th><a name="wp1119129"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1119131"> </a><div class="pCellBody">
+<code class="cCode">sec</code>
+</div>
+</td>
+    <td><a name="wp1119133"> </a><div class="pCellBody">
+Signed 64-bit integer representing seconds.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1119135"> </a><div class="pCellBody">
+<code class="cCode">nsec</code>
+</div>
+</td>
+    <td><a name="wp1119137"> </a><div class="pCellBody">
+Unsigned 32-bit integer representing nanoseconds <em class="cEmphasis">after the seconds value. T</em>his value is always non-negative, between zero and 999999999.
+</div>
+<a name="wp1119265"> </a><p class="pBody">
+It modifies the date in whole seconds by specifying the number of nanoseconds <em class="cEmphasis">after </em>that date. For example, the time 1/2 second before midnight of December 31, 1969 is -1 seconds plus 500,000,000 nanoseconds.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1170538"> </a><h4 class="pHeading3">
+Converting Dates to Strings
+</h4>
+<a name="wp1170542"> </a><p class="pBody">
+<a  href="rv_c_ref35.htm#wp1064802"><code class="cCode">tibrvMsg_ConvertToString()</code></a> prints times in UTC format (also known as Zulu time or GMT). The ISO-8601 standard requires appending a <code class="cCode">Z</code> character in this notation.
+</p>
+<a name="wp1170546"> </a><p class="pBody">
+<a  href="rv_c_ref35.htm#wp1064802"><code class="cCode">tibrvMsg_ConvertToString()</code></a> uses Common Era numbering for years. This system does not include a year zero. So for example, the time 1 second before <code class="cCode">0001-01-01 00:00:00Z</code> would print as <code class="cCode">-0001-12-31 23:59:59Z</code>.
+</p>
+<a name="wp1170550"> </a><p class="pBody">
+<a  href="rv_c_ref35.htm#wp1064802"><code class="cCode">tibrvMsg_ConvertToString()</code></a> uses a proleptic Gregorian calendar. That is, when formatting dates earlier than the adoption of the Gregorian calendar, it projects the Gregorian calendar backward beyond its actual invention and adoption.
+</p>
+<a name="wp1119153"> </a><h4 class="pHeading3">
+Representations
+</h4>
+<a name="wp1200498"> </a><p class="pBody">
+Rendezvous software represents time values in two ways&#151;one within C programs, and a more compact wire format within messages. <a  href="rv_c_ref24.htm#wp1200509">Table&#160;6</a> compares these two representations. In both representations, zero denotes the epoch, 12:00 midnight, January 1st, 1970. Range limits denote the extreme value on either side of that center. Bold type indicates the primary unit of measurement for each representation.
+</p>
+<a name="wp1200583"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1200509"> </a><div class="pTableTitle">
+Table&#160;6   Date and Time Representations&#160;
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1200515"> </a><div class="pCellHeading">
+Representation
+</div>
+</th>
+    <th colspan="2" rowspan="1"><a name="wp1200517"> </a><div class="pCellHeading">
+Details
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td colspan="1" rowspan="5"><a name="wp1200521"> </a><div class="pCellBody">
+Within C programs
+</div>
+</td>
+    <td colspan="2" rowspan="1"><a name="wp1200523"> </a><div class="pCellBody">
+Seconds as a 64-bit signed integer, plus nanoseconds as a 32-bit unsigned integer.
+</div>
+<a name="wp1200524"> </a><div class="pCellBody">
+However, values are restricted to the range and granularity supported by Rendezvous wire format. Forcing larger or finer values into this representation produces an error.
+</div>
+<a name="wp1200528"> </a><div class="pCellBody">
+Two constants bracket the available (restricted) range of values within programs&#151; <code class="cCode">TIBRVMSG_DATETIME_SEC_MAX</code> and <code class="cCode">TIBRVMSG_DATETIME_SEC_MIN</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1200534"> </a><div class="pCellBody">
+range in years
+</div>
+</td>
+    <td><a name="wp1200536"> </a><div class="pCellBody">
+<code class="cCode">292,471,208,677</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1200540"> </a><div class="pCellBody">
+<b class="cBold">range in seconds</b>
+</div>
+</td>
+    <td><a name="wp1200542"> </a><div class="pCellBody">
+<code class="cCodeBold">9,223,372,036,854,775,807</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1200546"> </a><div class="pCellBody">
+restricted range in seconds
+</div>
+</td>
+    <td><a name="wp1200548"> </a><div class="pCellBody">
+<code class="cCode">549,755,813,887</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1200552"> </a><div class="pCellBody">
+restricted range in millisecs
+</div>
+</td>
+    <td><a name="wp1200554"> </a><div class="pCellBody">
+<code class="cCode">549,755,813,887,000</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td colspan="1" rowspan="4"><a name="wp1200559"> </a><div class="pCellBody">
+Rendezvous wire format
+</div>
+</td>
+    <td colspan="2" rowspan="1"><a name="wp1200562"> </a><div class="pCellBody">
+Seconds as a 40-bit signed integer, plus microseconds as a 24-bit unsigned integer.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1200568"> </a><div class="pCellBody">
+range in years
+</div>
+</td>
+    <td><a name="wp1200570"> </a><div class="pCellBody">
+<code class="cCode">17,432</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1200574"> </a><div class="pCellBody">
+<b class="cBold">range in seconds</b>
+</div>
+</td>
+    <td><a name="wp1200576"> </a><div class="pCellBody">
+<code class="cCodeBold">549,755,813,887</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1200580"> </a><div class="pCellBody">
+range in milliseconds
+</div>
+</td>
+    <td><a name="wp1200582"> </a><div class="pCellBody">
+<code class="cCode">549,755,813,887,000 </code>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1119364"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1119343"> </a><p class="pBody">
+<a  href="rv_c_ref33.htm#wp1074223">Add DateTime</a>
+</p>
+<a name="wp1119429"> </a><p class="pBody">
+<a  href="rv_c_ref35.htm#wp1064802"><code class="cCode">tibrvMsg_ConvertToString()</code> </a>
+</p>
+<a name="wp1119347"> </a><p class="pBody">
+<a  href="rv_c_ref52.htm#wp1074372">Get DateTime</a>
+</p>
+<a name="wp1119351"> </a><p class="pBody">
+<a  href="rv_c_ref71.htm#wp1074793">Update DateTime</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

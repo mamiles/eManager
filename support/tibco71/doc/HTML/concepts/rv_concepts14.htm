@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>PGM and TRDP</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;2	 Architecture";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1109537"> </a><h2 class="pNewHTMLPage">
+PGM and TRDP
+</h2>
+<hr />
+<a name="wp1109546"> </a><p class="pBody">
+Rendezvous release 7 introduces support for PGM and RPTP protocols, so sites with PGM networks can now use Rendezvous software. (Previous Rendezvous releases supported only TRDP protocols.)
+</p>
+<a name="wp1109558"> </a><p class="pBody">
+When installing Rendezvous software, you can choose either of two variants&#151;TRDP or PGM. To determine which variant to deploy, consult your site administrator and network administrator.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1109587"> </a><div class="pSmartList1"><li >Both variants support the same API.</li></div>
+
+<a name="wp1109589"> </a><div class="pSmartList1"><li >Programs developed using one variant transfer instantly to the other variant. It is not necessary to relink nor recompile. No programming changes are required. (See also, <a  href="rv_concepts94.htm#wp1059053">Make Transport Parameters Flexible</a>.)</li></div>
+
+<a name="wp1109610"> </a><div class="pSmartList1"><li >The two variants differ only in the daemon executables and the protocols they use to communicate with one another.</li></div>
+
+<a name="wp1110558"> </a><div class="pSmartList1"><li >To bridge between a PGM network and a TRDP network, use two process instances of the Rendezvous routing daemon (<code class="cCode">rvrd</code>)&#151;one from each variant. For details, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm41.htm#wp1170453');" onMouseOver="WWHShowPopup('c', 'rv_adm41.htm#wp1170453', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Connecting PGM and TRDP Networks with Routing Daemons</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.</li></div>
+
+<a name="wp1188352"> </a><div class="pSmartList1"><li >Some hardware and operating system platforms do not support PGM; for availability, see <em class="cEmphasis">TIBCO Rendezvous Installation</em>.</li></div>
+
+</ul></div>
+
+<a name="wp1167949"> </a><h3 class="pHeading2">
+Protocols and Services
+</h3>
+<a name="wp1206788"> </a><h4 class="pHeading3">
+RPTP
+</h4>
+<a name="wp1207837"> </a><p class="pBody">
+Rendezvous release 7 adds a new reliable point-to-point protocol, which we call RPTP. RPTP is similar to TCP, but operates over a UDP channel.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1169046"> </a><div class="pTableTitle">
+Table&#160;5   PGM and TRDP Communications&#160;
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1169050"> </a><div class="pCellHeading">
+Aspect
+</div>
+</th>
+    <th><a name="wp1169052"> </a><div class="pCellHeading">
+TRDP
+</div>
+</th>
+    <th><a name="wp1169076"> </a><div class="pCellHeading">
+PGM
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1169062"> </a><div class="pCellBody">
+Multicast Communication
+</div>
+</td>
+    <td><a name="wp1169064"> </a><div class="pCellBody">
+TRDP broadcast or multicast protocol over UDP channel
+</div>
+</td>
+    <td><a name="wp1169082"> </a><div class="pCellBody">
+PGM multicast protocol over PGM channel
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1169066"> </a><div class="pCellBody">
+Point-to-Point Communication
+</div>
+</td>
+    <td><a name="wp1169068"> </a><div class="pCellBody">
+TRDP unicast protocol over UDP channel
+</div>
+</td>
+    <td><a name="wp1169084"> </a><div class="pCellBody">
+RPTP over UDP channel
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1169108"> </a><div class="pCellBody">
+Direct Communication
+</div>
+</td>
+    <td><a name="wp1169118"> </a><div class="pCellBody">
+RPTP over UDP channel
+</div>
+</td>
+    <td><a name="wp1169127"> </a><div class="pCellBody">
+RPTP over UDP channel
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1188431"> </a><h3 class="pHeading2">
+Identifying the Daemon Variant
+</h3>
+<a name="wp1188482"> </a><p class="pBody">
+Daemon executables and processes have the same name in either variant. For example, the Rendezvous daemon is named <code class="cCode">rvd</code>. You can use the start banner, the log file, or the browser administration interface to distinguish between the variants:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1188491"> </a><div class="pSmartList1"><li >TRDP daemons do <em class="cEmphasis">not</em> indicate their variant in banners or browser interfaces. This absence implies a TRDP variant.</li></div>
+
+<a name="wp1188486"> </a><div class="pSmartList1"><li >PGM daemons explicitly indicate PGM in their banners and browser interfaces.</li></div>
+
+</ul></div>
+
+<a name="wp1188487"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1109625"> </a><p class="pBody">
+<a  href="rv_concepts72.htm#wp1177702">Specifying Direct Communication</a>
+</p>
+<a name="wp1187850"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('c', 'rv_adm41.htm#wp1170453');" onMouseOver="WWHShowPopup('c', 'rv_adm41.htm#wp1170453', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Connecting PGM and TRDP Networks with Routing Daemons</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

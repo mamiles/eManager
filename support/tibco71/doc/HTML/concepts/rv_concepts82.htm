@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Properties of Virtual Circuits</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;9	 Virtual Circuits";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1127139"> </a><h2 class="pNewHTMLPage">
+Properties of Virtual Circuits
+</h2>
+<hr />
+<a name="wp1169934"> </a><h4 class="pHeading3">
+Properties
+</h4>
+<a name="wp1169935"> </a><p class="pBody">
+Virtual circuits guarantee these properties:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1169995"> </a><div class="pSmartList1"><li >All inbound messages come only from the opposite terminal. Senders outside of a virtual circuit cannot insert data into its message stream.</li></div>
+
+<a name="wp1169717"> </a><div class="pSmartList1"><li >All outbound messages go only to the opposite terminal. Listeners outside of a virtual circuit cannot receive its message stream.</li></div>
+
+<a name="wp1169718"> </a><div class="pSmartList1"><li >Terminals receive explicit feedback if the connection is interrupted. Programs can promptly detect failure of mission-critical components or communications, and act to restore or replace them.</li></div>
+
+</ul></div>
+
+<a name="wp1177957"> </a><h4 class="pHeading3">
+Application Ideas
+</h4>
+<a name="wp1178006"> </a><p class="pBody">
+The first and second properties suggest virtual circuits for applications that must insulate its message streams against subject name interference.
+</p>
+<a name="wp1178007"> </a><p class="pBody">
+The third property suggests virtual circuits for applications that require continuous communication, such as monitoring and control of manufacturing processes, no-loss data transmission, or data replication.
+</p>
+<a name="wp1169439"> </a><h4 class="pHeading3">
+Migration Path
+</h4>
+<a name="wp1169959"> </a><p class="pBody">
+Rendezvous implements virtual circuit terminals as transport objects. When appropriate, you can easily convert most existing programs to use virtual circuits (instead of ordinary network transports) with only minor code changes.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

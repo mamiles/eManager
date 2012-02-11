@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>LocalNetworkInterface.addImportSubject()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;4	 Routing Daemon&#151;rvrd";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1952485"> </a><h2 class="pNewHTMLPage">
+LocalNetworkInterface.addImportSubject()
+</h2>
+<hr />
+<a name="wp1952486"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1952487"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+void <code class="cCodeBold">addImportSubject</code>(<a name="wp1952488"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;subject)<a name="wp1952489"> </a>
+&#160;&#160;throws <a  href="rv_config267.htm#wp1963961"><code class="cCode">ConfigurationException</code></a><a name="wp1952493"> </a>
+<a name="wp1952494"> </a>
+void <code class="cCodeBold">addImportSubject</code>(<a name="wp1952495"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;subject,<a name="wp1952496"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;weight)<a name="wp1952497"> </a>
+&#160;&#160;throws <a  href="rv_config267.htm#wp1963961"><code class="cCode">ConfigurationException</code></a><a name="wp1952501"> </a>
+</pre></div>
+<a name="wp1952502"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1952504"> </a><p class="pBody">
+Permit the router to import a subject into this local network.
+</p>
+<a name="wp1952526"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1952507"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1952509"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1952511"> </a><div class="pCellBody">
+<code class="cCode">subject</code>
+</div>
+</td>
+    <td><a name="wp1952513"> </a><div class="pCellBody">
+Add this subject for import.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1952515"> </a><div class="pCellBody">
+<code class="cCode">weight</code>
+</div>
+</td>
+    <td><a name="wp1952517"> </a><div class="pCellBody">
+When present, add the subject with this weight.
+</div>
+<a name="wp1952518"> </a><div class="pCellBody">
+When absent, add the subject with the default import weight (10).
+</div>
+<a name="wp1952524"> </a><div class="pCellBody">
+For background information, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm37.htm#wp1174944');" onMouseOver="WWHShowPopup('c', 'rv_adm37.htm#wp1174944', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Load Balancing</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1952527"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1952531"> </a><p class="pBody">
+<a  href="rv_config61.htm#wp1952132"><code class="cCode">LocalNetworkInterface</code> </a>
+</p>
+<a name="wp1952535"> </a><p class="pBody">
+<a  href="rv_config67.htm#wp1952699"><code class="cCode">LocalNetworkInterface.getImportSubjects()</code> </a>
+</p>
+<a name="wp1952539"> </a><p class="pBody">
+<a  href="rv_config72.htm#wp1952905"><code class="cCode">LocalNetworkInterface.removeImportSubject()</code> </a>
+</p>
+<a name="wp1952545"> </a><p class="pBody">
+For the corresponding browser page, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm54.htm#wp1211323');" onMouseOver="WWHShowPopup('c', 'rv_adm54.htm#wp1211323', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Subject Gating</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+<a name="wp1952552"> </a><p class="pBody">
+For background information, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm34.htm#wp1044190');" onMouseOver="WWHShowPopup('c', 'rv_adm34.htm#wp1044190', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Subject Gating</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

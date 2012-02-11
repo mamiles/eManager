@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvEvent</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1047420"> </a><h2 class="pNewHTMLPage">
+TibrvEvent
+</h2>
+<hr />
+<a name="wp1149569"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1149570"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+class <code class="cCodeBold">TibrvEvent</code><a name="wp1149571"> </a>
+</pre></div>
+<a name="wp1031015"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1033267"> </a><p class="pBody">
+Event objects represent program interest in events, and event occurrences.
+</p>
+<a name="wp1031017"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1031592"> </a><p class="pBody">
+Programs create instances of event subclasses of <a  href="rv_cpp_ref88.htm#wp1047420"><code class="cCode">TibrvEvent</code></a>, but not of this superclass.
+</p>
+<a name="wp1033280"> </a><p class="pBody">
+Each call to a Rendezvous event create method results in a new event object, which represents your program&#8217;s interest in a set of events. Rendezvous software uses the same event object to signal each occurrence of such an event.
+</p>
+<a name="wp1081840"> </a><p class="pBody">
+Destroying an event object cancels the program&#8217;s interest in that event. Destroying the queue or transport of an event automatically destroys the event as well.
+</p>
+<a name="wp1068791"> </a><p class="pBody">
+Although the fault tolerance classes are technically events, they are sufficiently different from listeners and timers that they require separate description. See <a  href="rv_cpp_ref186.htm#wp1060883">Chapter&#160;8, Fault Tolerance</a>.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1031595"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1031597"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1031599"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1068864"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref89.htm#wp1068928"><code class="cCode">TibrvEvent::destroy()</code></a>
+</div>
+</td>
+    <td><a name="wp1068869"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref89.htm#wp1033386">Destroy an event, canceling interest.</a>
+</div>
+</td>
+    <td><a name="wp1068874"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref89.htm#wp1068928">122</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1068879"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref90.htm#wp1033576"><code class="cCode">TibrvEvent::getClosure()</code></a>
+</div>
+</td>
+    <td><a name="wp1068884"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref90.htm#wp1033582">Extract the closure data of an event object.</a>
+</div>
+</td>
+    <td><a name="wp1068889"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref90.htm#wp1033576">123</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1161969"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref91.htm#wp1161898"><code class="cCode">TibrvEvent::getHandle()</code></a>
+</div>
+</td>
+    <td><a name="wp1161973"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref91.htm#wp1161907">Return the C event handle of this C++ event object.</a>
+</div>
+</td>
+    <td><a name="wp1161979"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref91.htm#wp1161898">124</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1161984"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref92.htm#wp1161920"><code class="cCode">TibrvEvent::getType()</code></a>
+</div>
+</td>
+    <td><a name="wp1161988"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref92.htm#wp1161933">Return the C event type token of an event object.</a>
+</div>
+</td>
+    <td><a name="wp1161994"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref92.htm#wp1161920">125</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1068894"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref93.htm#wp1033600"><code class="cCode">TibrvEvent::getQueue()</code></a>
+</div>
+</td>
+    <td><a name="wp1068899"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref93.htm#wp1033654">Extract the queue of an event object.</a>
+</div>
+</td>
+    <td><a name="wp1068904"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref93.htm#wp1033600">126</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1162003"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref94.htm#wp1158043"><code class="cCode">TibrvEvent::isIOEvent()</code></a>
+</div>
+</td>
+    <td><a name="wp1162008"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref94.htm#wp1158049">Test whether this event object is an I/O event.</a>
+</div>
+</td>
+    <td><a name="wp1162013"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref94.htm#wp1158043">127</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1155638"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref95.htm#wp1154430"><code class="cCode">TibrvEvent::isListener()</code></a>
+</div>
+</td>
+    <td><a name="wp1155643"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref95.htm#wp1143975">Test whether this event object is a listener.</a>
+</div>
+</td>
+    <td><a name="wp1155648"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref95.htm#wp1154430">128</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1155653"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref96.htm#wp1144031"><code class="cCode">TibrvEvent::isTimer()</code></a>
+</div>
+</td>
+    <td><a name="wp1155658"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref96.htm#wp1144040">Test whether this event object is a timer.</a>
+</div>
+</td>
+    <td><a name="wp1155663"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref96.htm#wp1144031">129</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1162022"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref97.htm#wp1158019"><code class="cCode">TibrvEvent::isValid()</code></a>
+</div>
+</td>
+    <td><a name="wp1162027"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref97.htm#wp1158025">Test whether an event has been destroyed.</a>
+</div>
+</td>
+    <td><a name="wp1162032"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref97.htm#wp1158019">130</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1188274"> </a><h4 class="pHeading3">
+Descendants
+</h4>
+<a name="wp1188545"> </a><p class="pBody">
+<a  href="rv_cpp_ref102.htm#wp1031628"><code class="cCode">TibrvListener</code> </a>
+</p>
+<a name="wp1188554"> </a><p class="pBody">
+<a  href="rv_cpp_ref218.htm#wp1138427"><code class="cCode">TibrvCmListener</code> </a>
+</p>
+<a name="wp1188562"> </a><p class="pBody">
+<a  href="rv_cpp_ref108.htm#wp1031969"><code class="cCode">TibrvTimer</code> </a>
+</p>
+<a name="wp1188570"> </a><p class="pBody">
+<a  href="rv_cpp_ref114.htm#wp1128602"><code class="cCode">TibrvIOEvent</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

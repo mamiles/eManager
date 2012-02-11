@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvQueueGroup</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1037388"> </a><h2 class="pNewHTMLPage">
+TibrvQueueGroup
+</h2>
+<hr />
+<a name="wp1037550"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1037554"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1037555"> </a><p class="pBody">
+Prioritized dispatch of several queues with one call.
+</p>
+<a name="wp1037556"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1037616"> </a><p class="pBody">
+Queue groups add flexibility and fine-grained control to the event queue dispatch mechanism. Programs can create groups of queues and dispatch them according to their queue priorities.
+</p>
+<a name="wp1150395"> </a><h4 class="pHeading3">
+Priority
+</h4>
+<a name="wp1150396"> </a><p class="pBody">
+Each queue has a single priority value, which controls its dispatch precedence within queue groups. Higher values dispatch before lower values; queues with equal priority values dispatch in round-robin fashion.
+</p>
+<a name="wp1141087"> </a><h4 class="pHeading3">
+Automatic Dispatch Queue Group
+</h4>
+<a name="wp1150500"> </a><p class="pBody">
+A special queue group, called the automatic dispatch queue group, detects the presence of an event in any of its queues, and automatically dispatches the queues (according to their priority) until no more events are waiting. To automatically dispatch a queue, add it to that queue group. To stop automatic dispatch, remove all queues from that group. To retrieve that queue group, see <a  href="rv_com_ref18.htm#wp1150213"><code class="cCode">Tibrv.getAutoDispatchQueueGroup()</code> </a>.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1115545"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1079084"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1079086"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1079088"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1079090"> </a><div class="pMinorHead">
+Life Cycle
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1079099"> </a><div class="pCellBody">
+<a  href="rv_com_ref117.htm#wp1079320"><code class="cCode">TibrvQueueGroup.create</code></a>
+</div>
+</td>
+    <td><a name="wp1079104"> </a><div class="pCellBody">
+<a  href="rv_com_ref117.htm#wp1037717">Create an event queue group.</a>
+</div>
+</td>
+    <td><a name="wp1079109"> </a><div class="pCellBody">
+<a  href="rv_com_ref117.htm#wp1079320">148</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1079114"> </a><div class="pCellBody">
+<a  href="rv_com_ref118.htm#wp1037813"><code class="cCode">TibrvQueueGroup.destroy</code></a>
+</div>
+</td>
+    <td><a name="wp1079119"> </a><div class="pCellBody">
+<a  href="rv_com_ref118.htm#wp1037846">Destroy an event queue group.</a>
+</div>
+</td>
+    <td><a name="wp1079124"> </a><div class="pCellBody">
+<a  href="rv_com_ref118.htm#wp1037813">149</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1133771"> </a><div class="pCellBody">
+<a  href="rv_com_ref120.htm#wp1133724"><code class="cCode">TibrvQueueGroup.isValid()</code></a>
+</div>
+</td>
+    <td><a name="wp1133776"> </a><div class="pCellBody">
+<a  href="rv_com_ref120.htm#wp1133730">Test the validity of a queue group.</a>
+</div>
+</td>
+    <td><a name="wp1133781"> </a><div class="pCellBody">
+<a  href="rv_com_ref120.htm#wp1133724">151</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1079198"> </a><div class="pMinorHead">
+Queues
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1079207"> </a><div class="pCellBody">
+<a  href="rv_com_ref116.htm#wp1145069"><code class="cCode">TibrvQueueGroup.add</code></a>
+</div>
+</td>
+    <td><a name="wp1079212"> </a><div class="pCellBody">
+<a  href="rv_com_ref116.htm#wp1145075">Add an event queue to a queue group.</a>
+</div>
+</td>
+    <td><a name="wp1079217"> </a><div class="pCellBody">
+<a  href="rv_com_ref116.htm#wp1145069">147</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1079273"> </a><div class="pCellBody">
+<a  href="rv_com_ref122.htm#wp1037972"><code class="cCode">TibrvQueueGroup.remove</code></a>
+</div>
+</td>
+    <td><a name="wp1079277"> </a><div class="pCellBody">
+<a  href="rv_com_ref122.htm#wp1038016">Remove an event queue from a queue group.</a>
+</div>
+</td>
+    <td><a name="wp1079283"> </a><div class="pCellBody">
+<a  href="rv_com_ref122.htm#wp1037972">153</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1133844"> </a><div class="pMinorHead">
+Dispatch
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1133832"> </a><div class="pCellBody">
+<a  href="rv_com_ref119.htm#wp1038292"><code class="cCode">TibrvQueueGroup.dispatch</code></a>
+</div>
+</td>
+    <td><a name="wp1133836"> </a><div class="pCellBody">
+<a  href="rv_com_ref119.htm#wp1038299">Dispatch an event from a queue group; if no event is ready, block.</a>
+</div>
+</td>
+    <td><a name="wp1133842"> </a><div class="pCellBody">
+<a  href="rv_com_ref119.htm#wp1038292">150</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1133817"> </a><div class="pCellBody">
+<a  href="rv_com_ref121.htm#wp1038489"><code class="cCode">TibrvQueueGroup.poll</code></a>
+</div>
+</td>
+    <td><a name="wp1133821"> </a><div class="pCellBody">
+<a  href="rv_com_ref121.htm#wp1038495">Dispatch an event, but if no event is ready to dispatch, return immediately (without blocking).</a>
+</div>
+</td>
+    <td><a name="wp1133827"> </a><div class="pCellBody">
+<a  href="rv_com_ref121.htm#wp1038489">152</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1133805"> </a><div class="pCellBody">
+<a  href="rv_com_ref123.htm#wp1038451"><code class="cCode">TibrvQueueGroup.timedDispatch</code></a>
+</div>
+</td>
+    <td><a name="wp1133807"> </a><div class="pCellBody">
+<a  href="rv_com_ref123.htm#wp1038458">Dispatch an event, but if no event is ready to dispatch, limit the time that this call blocks while waiting for an event.</a>
+</div>
+</td>
+    <td><a name="wp1133812"> </a><div class="pCellBody">
+<a  href="rv_com_ref123.htm#wp1038451">154</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1150415"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1150518"> </a><p class="pBody">
+<a  href="rv_com_ref18.htm#wp1150213"><code class="cCode">Tibrv.getAutoDispatchQueueGroup()</code> </a>
+</p>
+<a name="wp1150419"> </a><p class="pBody">
+<a  href="rv_com_ref99.htm#wp1035245"><code class="cCode">TibrvQueue</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

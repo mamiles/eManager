@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvcmEvent_Destroy()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1092103"> </a><h2 class="pNewHTMLPage">
+tibrvcmEvent_Destroy()
+</h2>
+<hr />
+<a name="wp1092104"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1092106"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvcmEvent_Destroy</code>(<a name="wp1092651"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref175.htm#wp1101352"><code class="cCode">tibrvcmEvent</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;cmListener,<a name="wp1092652"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128749"><code class="cCode">tibrv_bool</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;cancelAgreements);<a name="wp1092671"> </a>
+<a name="wp1092673"> </a>
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvcmEvent_DestroyEx</code>(<a name="wp1092674"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref175.htm#wp1101352"><code class="cCode">tibrvcmEvent</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;cmListener,<a name="wp1092660"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128749"><code class="cCode">tibrv_bool</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;cancelAgreements,<a name="wp1092661"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref77.htm#wp1177081"><code class="cCode">tibrvEventOnComplete</code></a>&#160;&#160;completionFunction);<a name="wp1092662"> </a>
+</pre></div>
+<a name="wp1092108"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1092109"> </a><p class="pBody">
+Destroy a certified delivery listener.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1102951"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1102956"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1102958"> </a><div class="pCellBody">
+<code class="cCode">cmListener</code>
+</div>
+</td>
+    <td><a name="wp1102960"> </a><div class="pCellBody">
+Destroy this listener.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1102962"> </a><div class="pCellBody">
+<code class="cCode">cancelAgreements</code>
+</div>
+</td>
+    <td><a name="wp1102964"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCM_CANCEL</code> cancels all certified delivery agreements of this listener; certified senders delete from their ledgers all messages sent to this listener.
+</div>
+<a name="wp1102965"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCM_PERSIST</code> leaves all certified delivery agreements in effect, so certified senders continue to store messages.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1102967"> </a><div class="pCellBody">
+<code class="cCode">completionFunction</code>
+</div>
+</td>
+    <td><a name="wp1102972"> </a><div class="pCellBody">
+Rendezvous software runs this function immediately after all instances of the event&#8217;s callback function have completed. If the event&#8217;s callback function is not running when the event is destroyed, the destroy call runs it before returning.
+</div>
+<a name="wp1102973"> </a><div class="pCellBody">
+If this parameter is <code class="cCode">NULL</code>, <code class="cCode">tibrvcmEvent_DestroyEx()</code> does not run a completion function; instead, its behavior is the same as <a  href="rv_c_ref179.htm#wp1092103"><code class="cCode">tibrvcmEvent_Destroy()</code></a>.
+</div>
+<a name="wp1102980"> </a><div class="pCellBody">
+See <a  href="rv_c_ref77.htm#wp1177081"><code class="cCode">tibrvEventOnComplete</code> </a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1102982"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1092691"> </a><p class="pBody">
+Destroying event interest invalidates the event object; passing the event object as an argument to subsequent API calls produces an error.
+</p>
+<a name="wp1092110"> </a><h4 class="pHeading3">
+Canceling Agreements
+</h4>
+<a name="wp1092324"> </a><p class="pBody">
+When destroying a listener, a program can either cancel its certified delivery agreements with senders, or let those agreements persist (so a successor listener can receive the messages covered by those agreements).
+</p>
+<a name="wp1092376"> </a><p class="pBody">
+When canceling agreements, each (previously) certified sender transport receives a <a  href="javascript:WWHClickedPopup('a', 'rv_concepts183.htm#wp1039506');" onMouseOver="WWHShowPopup('a', 'rv_concepts183.htm#wp1039506', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">REGISTRATION.CLOSED</code></a> advisory. Successor listeners cannot receive old messages.
+</p>
+<a name="wp1092125"> </a><h4 class="pHeading3">
+Extended Function
+</h4>
+<a name="wp1092610"> </a><p class="pBody">
+Although <a  href="rv_c_ref179.htm#wp1092103"><code class="cCode">tibrvcmEvent_Destroy()</code></a> and <code class="cCode">tibrvcmEvent_DestroyEx()</code> prevent future dispatch calls from running the destroyed event&#8217;s callback function, that callback function might be already running in one or more threads that dispatch events from the same queue. In each thread where the callback function is already in progress, that callback function does continue to run until complete.
+</p>
+<a name="wp1092694"> </a><p class="pBody">
+<code class="cCode">tibrvcmEvent_DestroyEx()</code> ensures that its <code class="cCode">completionFunction</code> runs when the last callback-in-progress has completed; for important details, see <a  href="rv_c_ref77.htm#wp1177081"><code class="cCode">tibrvEventOnComplete</code> </a>.
+</p>
+<a name="wp1101708"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1101714"> </a><p class="pBody">
+<a  href="rv_c_ref175.htm#wp1101352"><code class="cCode">tibrvcmEvent</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

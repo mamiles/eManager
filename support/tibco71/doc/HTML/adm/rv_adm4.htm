@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Enable Access to Executable Binary Files</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;1	 Do This First&#151;Administrator&#8217;s Checklist";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1018768"> </a><h2 class="pNewHTMLPage">
+Enable Access to Executable Binary Files
+</h2>
+<hr />
+<a name="wp1018770"> </a><h3 class="pHeading2">
+Microsoft Windows Platforms
+</h3>
+<a name="wp1028761"> </a><p class="pBody">
+Skip this step&#151;it is done automatically during the installation procedure.
+</p>
+<a name="wp1018774"> </a><h3 class="pHeading2">
+UNIX Platforms
+</h3>
+<a name="wp1030115"> </a><p class="pBody">
+Add the Rendezvous binary directory to the execution path of each programmer and end user of Rendezvous programs. The exact directory name varies depending on where you installed Rendezvous; the installation procedure prints the correct location for your convenience (usually a name constructed like <code class="cCodeItalic">&lt;installation_point&gt;</code><code class="cCode">/tibco/tibrv/bin</code>).
+</p>
+<a name="wp1030123"> </a><h3 class="pHeading2">
+VMS Platforms
+</h3>
+<a name="wp1028765"> </a><p class="pBody">
+Place this definition in the startup file:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;@SYS$STARTUP:TIBRV_STARTUP.COM<a name="wp1046620"> </a>
+<a name="wp1046622"> </a>
+</pre></div>
+<a name="wp1018784"> </a><p class="pBody">
+The startup file is <code class="cCode">SYS$STARTUP:SYSTARTUP_VMS.COM</code>.
+</p>
+<a name="wp1018786"> </a><p class="pBody">
+Then ensure that the following line appears in the <code class="cCode">login.com</code> file of each VMS programmer and end user of Rendezvous programs:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;@TIBRV:[COM]TIBRV_SETUP.COM<a name="wp1018790"> </a>
+</pre></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

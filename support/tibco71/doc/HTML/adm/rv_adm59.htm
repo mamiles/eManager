@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Motivation</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;6	 Secure Daemons (rvsd and rvsrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1139972"> </a><h2 class="pNewHTMLPage">
+Motivation
+</h2>
+<hr />
+<a name="wp1143117"> </a><p class="pBody">
+Deploy secure daemons when clients must connect securely over a non-secure network. This section illustrates example situations involving remote clients.
+</p>
+<a name="wp1143270"> </a><h3 class="pHeading2">
+rvsd
+</h3>
+<a name="wp1161918"> </a><p class="pBody">
+<a  href="rv_adm59.htm#wp1143283">Figure&#160;31</a> depicts a hub and spoke architecture. An <code class="cCode">rvsd</code> hub runs on a firewall computer, and remote programs access the hub through secure SSL connections. This arrangement lets trusted remote programs communicate with servers and other programs inside the secure inner network. <code class="cCode">rvsd</code> bars untrusted programs from connecting to it.
+</p>
+<a name="wp1143283"> </a><div class="pFigureTitle">
+Figure&#160;31   rvsd&#151;Secure Connections across Single Firewall</div><div align="center"><img src="images/rv_adma22.gif" height="158" width="428" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1143424"> </a><p class="pBody">
+
+</p>
+<a name="wp1143427"> </a><h3 class="pHeading2">
+rvsrd
+</h3>
+<a name="wp1143433"> </a><div class="pFigureTitle">
+Figure&#160;32   rvsrd&#151;Secure Connections across Double Firewall</div><div align="center"><img src="images/rv_adma23.gif" height="138" width="592" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1143621"> </a><p class="pBody">
+
+</p>
+<a name="wp1143425"> </a><p class="pBody">
+
+</p>
+<a name="wp1143869"> </a><p class="pBody">
+<a  href="rv_adm59.htm#wp1143433">Figure&#160;32</a> depicts a situation with two Rendezvous routing daemons configured to cross a double firewall. Remote programs initiate secure SSL connections to a secure routing daemon hub (<code class="cCode">rvsrd</code>) within the outer firewall (DMZ network). A secure SSL neighbor link connects that secure routing daemon with an ordinary routing daemon (<code class="cCode">rvrd</code>) in the secure inner network.
+</p>
+<a name="wp1143870"> </a><p class="pBody">
+To configure secure neighbor links, see <a  href="rv_adm55.htm#wp1229080">SSL Connection Required</a>.
+</p>
+<a name="wp1167922"> </a><p class="pBody">
+To prevent <code class="cCode">rvsrd</code> from multicasting client messages within the DMZ network, configure <code class="cCode">rvsrd</code> to meet these specifications:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1241732"> </a><div class="pSmartList1"><li >Configure the routing daemon so that in <em class="cEmphasis">all</em> of its local networks, the network specification is the loopback address (IP address <code class="cCode">127.0.0.1</code>). To configure, see <a  href="rv_adm53.htm#wp1213002">Local Networks Configuration</a>.</li></div>
+
+<a name="wp1241679"> </a><div class="pSmartList1"><li >Similarly limit the access of client transports to network and service pairs in which the network is the loopback address (IP address <code class="cCode">127.0.0.1</code>). To configure, see <a  href="rv_adm71.htm#wp1159720">Authorize Network and Service Pairs</a>.</li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvTransport_SendReply()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;8	 Transport";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1067189"> </a><h2 class="pNewHTMLPage">
+tibrvTransport_SendReply()
+</h2>
+<hr />
+<a name="wp1067193"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1087154"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvTransport_SendReply</code>(<a name="wp1078003"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref132.htm#wp1066635"><code class="cCode">tibrvTransport</code></a>&#160;&#160;&#160;&#160;&#160;&#160;transport,<a name="wp1078005"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;replyMessage,<a name="wp1078006"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;requestMessage);<a name="wp1078007"> </a>
+</pre></div>
+<a name="wp1087633"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1067201"> </a><p class="pBody">
+Send a reply message.
+</p>
+<a name="wp1088080"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1067203"> </a><p class="pBody">
+This function extracts the reply subject of an inbound request message, and sends an outbound reply message to that subject. In addition to the convenience, this call is marginally faster than using separate calls to extract the subject and send the reply.
+</p>
+<a name="wp1129788"> </a><p class="pBody">
+This function overwrites any existing send subject of the reply message with the reply subject of the request message.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1067206"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1067208"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1067210"> </a><div class="pCellBody">
+<code class="cCode">transport</code>
+</div>
+</td>
+    <td><a name="wp1067212"> </a><div class="pCellBody">
+Send the reply on this transport.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1067214"> </a><div class="pCellBody">
+<code class="cCode">replyMessage</code>
+</div>
+</td>
+    <td><a name="wp1110966"> </a><div class="pCellBody">
+Send this <em class="cEmphasis">outbound</em> reply message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1067218"> </a><div class="pCellBody">
+<code class="cCode">requestMessage</code>
+</div>
+</td>
+    <td><a name="wp1110968"> </a><div class="pCellBody">
+Send a reply to this <em class="cEmphasis">inbound</em> request message; extract its reply subject to use as the subject of the outbound reply message.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1110972"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1304095"> </a><p class="pBody">
+Give special attention to the <em class="cEmphasis">order</em> of the arguments to this function. Reversing the inbound and outbound messages can cause an infinite loop, in which the program repeatedly resends the inbound message to itself (and all other recipients).
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1088478"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1067230"> </a><p class="pBody">
+<a  href="rv_c_ref36.htm#wp1064846"><code class="cCode">tibrvMsg_Create()</code> </a>
+</p>
+<a name="wp1067234"> </a><p class="pBody">
+<a  href="rv_c_ref132.htm#wp1066635"><code class="cCode">tibrvTransport</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

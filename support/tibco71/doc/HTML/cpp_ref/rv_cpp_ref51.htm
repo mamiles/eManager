@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>Get Opaque Byte Sequence</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1122684"> </a><h2 class="pNewHTMLPage">
+Get Opaque Byte Sequence
+</h2>
+<hr />
+<a name="wp1122685"> </a><p class="pSyntaxType">
+Convenience Method
+</p>
+<a name="wp1122700"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">getOpaque</code>(<a name="wp1123430"> </a>
+&#160;&#160;&#160;&#160;const char*&#160;&#160;&#160;&#160;fieldName,<a name="wp1123431"> </a>
+&#160;&#160;&#160;&#160;void*&amp;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;value,<a name="wp1123432"> </a>
+&#160;&#160;&#160;&#160;tibrv_u32&amp;&#160;&#160;&#160;&#160;&#160;length,<a name="wp1123433"> </a>
+&#160;&#160;&#160;&#160;tibrv_u16&#160;&#160;&#160;&#160;&#160;&#160;fieldId=0);<a name="wp1123434"> </a>
+</pre></div>
+<a name="wp1122701"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1122702"> </a><p class="pBody">
+Get the value of a field as an opaque byte sequence.
+</p>
+<a name="wp1122703"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1122704"> </a><p class="pBody">
+This convenience method retrieves a field and extracts its data.
+</p>
+<a name="wp1122705"> </a><p class="pBody">
+Since it is not possible to convert any other datatype to an opaque byte sequence, the field must already contain an opaque byte sequence. Otherwise, the method returns <a  href="rv_cpp_ref272.htm#wp1231448"><code class="cCode">TIBRV_CONVERSION_FAILED</code></a>.
+</p>
+<a name="wp1122709"> </a><p class="pBody">
+Pointer data extracted from the field remain valid until the message is destroyed; that is, even removing the field or updating the field&#8217;s value does <em class="cEmphasis">not</em> invalidate pointer data.
+</p>
+<a name="wp1122712"> </a><p class="pBody">
+This method produces values that are <em class="cEmphasis">read-only snapshots</em> of the field data (see <a  href="rv_cpp_ref24.htm#wp1119669">Pointer Snapshot</a>). Programs must not modify the value sequence.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1122723"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1122725"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1122731"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1122733"> </a><div class="pCellBody">
+Get a field with this name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1122735"> </a><div class="pCellBody">
+<code class="cCode">length</code>
+</div>
+</td>
+    <td><a name="wp1122737"> </a><div class="pCellBody">
+The program supplies a variable in this parameter, and the method stores the length of the opaque byte sequence in that variable.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1122739"> </a><div class="pCellBody">
+<code class="cCode">value</code>
+</div>
+</td>
+    <td><a name="wp1122741"> </a><div class="pCellBody">
+The program supplies a variable in this parameter, and the method stores a <em class="cEmphasis">pointer</em> to the field value in that variable.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1122743"> </a><div class="pCellBody">
+<code class="cCode">fieldId</code>
+</div>
+</td>
+    <td><a name="wp1122745"> </a><div class="pCellBody">
+Get the field with this identifier. Zero is a special value that signifies no field identifier. All non-zero field identifiers must be unique within each message.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1122747"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1122751"> </a><p class="pBody">
+<a  href="rv_cpp_ref24.htm#wp1119654">Validity of Data Extracted From Message Fields</a>
+</p>
+<a name="wp1122755"> </a><p class="pBody">
+<a  href="rv_cpp_ref25.htm#wp1114359">Field Names and Field Identifiers</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

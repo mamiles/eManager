@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Disallowing Certified Delivery</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1056417"> </a><h2 class="pNewHTMLPage">
+Disallowing Certified Delivery
+</h2>
+<hr />
+<a name="wp1056421"> </a><p class="pBody">
+As described in <a  href="rv_concepts106.htm#wp1056124">Registration</a>, CM transports automatically accept all registration requests. This is true <em class="cEmphasis">except</em> when a CM sender transport explicitly <em class="cEmphasis">disallows</em> certified delivery to a listening correspondent.
+</p>
+<a name="wp1056425"> </a><p class="pBody">
+Calls in <a  href="rv_concepts112.htm#wp1056437">Table&#160;34</a> disallow a listening correspondent; these calls cancel existing certified delivery agreements with the listening correspondent (on all subjects), and cause the CM transport to automatically deny subsequent registration requests from the listening correspondent.
+</p>
+<a name="wp1056426"> </a><p class="pBody">
+When a CM sender transport has disallowed a listening correspondent, the events connected with registration do not occur. Instead, the CM sender transport notifies the listener transport that the request is disallowed. When the listening transport receives the rejection notice, it presents a <a  href="rv_concepts181.htm#wp1039415"><code class="cCode">REGISTRATION.NOT_CERTIFIED</code></a> advisory.
+</p>
+<a name="wp1056430"> </a><p class="pBody">
+Allow listener calls supersede the effect of a previous disallow listener call, allowing subsequent registration requests from the listener transport to succeed.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1056437"> </a><div class="pTableTitle">
+Table&#160;34   Disallow Listener Calls&#160;
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1056441"> </a><div class="pCellBody">
+C
+</div>
+</td>
+    <td><a name="wp1056446"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref190.htm#wp1190238');" onMouseOver="WWHShowPopup('e', 'rv_c_ref190.htm#wp1190238', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvcmTransport_DisallowListener()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056448"> </a><div class="pCellBody">
+C++
+</div>
+</td>
+    <td><a name="wp1056453"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref233.htm#wp1084693');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref233.htm#wp1084693', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport::disallowListener()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056456"> </a><div class="pCellBody">
+Java
+</div>
+</td>
+    <td><a name="wp1056461"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref197.htm#wp1084693');" onMouseOver="WWHShowPopup('g', 'rv_java_ref197.htm#wp1084693', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport.disallowListener()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056463"> </a><div class="pCellBody">
+COM
+</div>
+</td>
+    <td><a name="wp1056468"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref185.htm#wp1084693');" onMouseOver="WWHShowPopup('h', 'rv_com_ref185.htm#wp1084693', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport.disallowListener</code></a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

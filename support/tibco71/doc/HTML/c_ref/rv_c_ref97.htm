@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvQueueHook</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;5	 Event Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1125757"> </a><h2 class="pNewHTMLPage">
+tibrvQueueHook
+</h2>
+<hr />
+<a name="wp1125758"> </a><p class="pSyntaxType">
+Function Type
+</p>
+<a name="wp1125759"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+typedef void (*<code class="cCodeBold">tibrvQueueHook</code>) (<a name="wp1125760"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref96.htm#wp1065939"><code class="cCode">tibrvQueue</code></a>&#160;&#160;&#160;&#160;eventQueue,<a name="wp1125761"> </a>
+&#160;&#160;&#160;&#160;void*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;closure);<a name="wp1125762"> </a>
+</pre></div>
+<a name="wp1125763"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1125768"> </a><p class="pBody">
+Asynchronously notify an external event manager when a Rendezvous event is ready for dispatch.
+</p>
+<a name="wp1125769"> </a><h4 class="pHeading3">
+Motivation
+</h4>
+<a name="wp1125773"> </a><p class="pBody">
+Some programs need to use existing event managers to dispatch Rendezvous events. Some event managers repeatedly poll queues for events; others require notification that an event is ready (for example, the Microsoft Windows event manager operates this way). This hook function can inform an event manager when an event enters a queue and is ready for dispatch.
+</p>
+<a name="wp1125774"> </a><p class="pBody">
+You can think of this function as a wake-up call to the event manager. Once awakened, the event manager dispatches Rendezvous events in its usual way, by calling <a  href="rv_c_ref102.htm#wp1066117"><code class="cCode">tibrvQueue_Dispatch()</code></a> or <a  href="rv_c_ref114.htm#wp1124788"><code class="cCode">tibrvQueue_TimedDispatch()</code></a>.
+</p>
+<a name="wp1125775"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1125776"> </a><p class="pBody">
+When coding hook functions, remember that hook functions can be called from any thread. In general, hook functions run in the thread that enqueues the event; that thread can be a program thread, or a Rendezvous internal thread.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1125782"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1125784"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1125786"> </a><div class="pCellBody">
+<code class="cCode">eventQueue</code>
+</div>
+</td>
+    <td><a name="wp1125788"> </a><div class="pCellBody">
+This parameter receives the queue on which an event has arrived.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1125790"> </a><div class="pCellBody">
+<code class="cCode">closure</code>
+</div>
+</td>
+    <td><a name="wp1125792"> </a><div class="pCellBody">
+This parameter receives closure data supplied by the program when it registered this hook function.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1125794"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1125798"> </a><p class="pBody">
+<a  href="rv_c_ref102.htm#wp1066117"><code class="cCode">tibrvQueue_Dispatch()</code> </a>
+</p>
+<a name="wp1125924"> </a><p class="pBody">
+<a  href="rv_c_ref104.htm#wp1125714"><code class="cCode">tibrvQueue_GetHook()</code> </a>
+</p>
+<a name="wp1125802"> </a><p class="pBody">
+<a  href="rv_c_ref109.htm#wp1125624"><code class="cCode">tibrvQueue_RemoveHook()</code> </a>
+</p>
+<a name="wp1125806"> </a><p class="pBody">
+<a  href="rv_c_ref110.htm#wp1125576"><code class="cCode">tibrvQueue_SetHook()</code> </a>
+</p>
+<a name="wp1125917"> </a><p class="pBody">
+<a  href="rv_c_ref114.htm#wp1124788"><code class="cCode">tibrvQueue_TimedDispatch()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

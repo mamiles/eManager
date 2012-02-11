@@ -1,0 +1,104 @@
+#*******************************************************************************
+# File:    Makefile.sample
+#
+# Purpose: This is a sample makefile to build the TIBCO Hawk AMI C++ API
+#          libraries. We provide the source for the AMI C++ API in the event
+#          a customer has specific compiler requirements. This is only a sample
+#          makefile and may require modifications to build correctly with your
+#          platform/environment.
+#
+#          Check TIBCO Rendezvous documentation for platform specific
+#          requirements to build TIBCO Rendezvous applications in C++.
+#
+#*******************************************************************************
+
+#*******************************************************************************
+#
+#                               UNIX Platforms
+#
+#            Uncomment the following section for UNIX platform builds.
+#
+#*******************************************************************************
+# O=.o
+# LIB=.a
+# RM=rm -f
+# OUT=-o
+# RV_DIR=/usr/tibco/tibrv
+# HAWK_DIR=/usr/tibco/hawk
+# DASH_C=-c
+#
+# Change the following to suit the C++ compiler in use.
+#
+# CXX=CC
+#
+# OPT_DBG_FLAGS=-g
+# AR=ar
+# ARFLAGS=cruv
+# INCFILES=-I$(HAWK_DIR)/include -I$(RV_DIR)/include
+# CXXFLAGS=$(INCFILES) $(OPT_DBG_FLAGS)
+
+#*******************************************************************************
+#
+#                             Windows Platforms
+#
+#          Uncomment the following section for Windows platform builds.
+#
+#*******************************************************************************
+# O=.obj
+# LIB=.lib
+# RM=del
+# RV_DIR=c:\tibco\Tibrv
+# HAWK_DIR=c:\tibco\hawk
+# AR=lib
+# INCFILES=/I$(RV_DIR)\include /I$(HAWK_DIR)\include
+# OUT=/Fe
+# DASH_C=-c
+# CXX=cl
+# OPT_DBG_FLGS=/nologo /MT
+# CXXFLAGS=$(OPT_DBG_FLGS) $(INCFILES)
+# ARFLAGS=/NOLOGO /OUT:
+
+#*******************************************************************************
+#
+#                                Common Section
+#
+#*******************************************************************************
+
+# NMAKE users uncomment the next two lines.
+#.cpp.obj:
+#        $(CXX) $(CXXFLAGS) $(DASH_C) %s
+#
+# Solaris and GNU users uncomment the next two lines.
+#%.o: %.cpp
+#	$(CXX) $(CXXFLAGS) $< $(DASH_C)
+#
+# HP-UX / AIX users uncomment the next two lines.
+#.cpp.o:
+#	$(CXX) $(CXXFLAGS) $< $(DASH_C)
+#
+
+LIBS=
+
+all:	libamicpp$(LIB)
+
+clean: 	
+	$(RM) *$(O)
+	$(RM) *$(LIB)
+
+BASE_MODULES  = \
+                AmiList$(O) \
+                AmiStatus$(O) \
+                AmiSubscription$(O) \
+                AmiSession$(O) \
+                AmiMethod$(O) \
+                AmiSyncMethod$(O) \
+                AmiAsyncMethod$(O) \
+                AmiParameter$(O) \
+                AmiParameterIn$(O) \
+                AmiParameterOut$(O) \
+                AmiParameterList$(O) \
+                AmiParameterListIn$(O) \
+                AmiParameterListOut$(O)
+
+libamicpp$(LIB): $(BASE_MODULES)
+	$(AR) $(ARFLAGS)$@ $(BASE_MODULES)

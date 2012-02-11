@@ -1,0 +1,348 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>Get Scalar</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;3	 Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1176268"> </a><h2 class="pNewHTMLPage">
+Get Scalar
+</h2>
+<hr />
+<a name="wp1019470"> </a><p class="pSyntaxType">
+Convenience Functions
+</p>
+<a name="wp1086862"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a><a name="wp1162580"> </a>
+<code class="cCodeBold">tibrvMsg_Get</code><code class="cCodeItalic">&lt;scalar_type&gt;</code>(<a name="wp1162581"> </a>
+&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a> &#160;&#160;&#160;&#160;&#160;&#160;message,<a name="wp1162585"> </a>
+&#160;&#160;&#160;const char* &#160;&#160;&#160;fieldName,<a name="wp1162586"> </a>
+&#160;&#160;&#160;<code class="cCodeItalic">&lt;scalar_type&gt;</code>* &#160;&#160;&#160;value);<a name="wp1162587"> </a>
+<a name="wp1162592"> </a>
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a><a name="wp1162598"> </a>
+<code class="cCodeBold">tibrvMsg_Get</code><code class="cCodeItalic">&lt;scalar_type&gt;</code><code class="cCodeBold">Ex</code>(<a name="wp1162599"> </a>
+&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a> &#160;&#160;&#160;&#160;&#160;&#160;message,<a name="wp1162603"> </a>
+&#160;&#160;&#160;const char* &#160;&#160;&#160;fieldName,<a name="wp1162604"> </a>
+&#160;&#160;&#160;<code class="cCodeItalic">&lt;scalar_type&gt;</code>* &#160;&#160;&#160;value,<a name="wp1162605"> </a>
+&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128797"><code class="cCode">tibrv_u16</code></a>&#160;&#160;&#160;&#160;&#160;&#160;fieldId);<a name="wp1162609"> </a>
+</pre></div>
+<a name="wp1087333"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1044100"> </a><p class="pBody">
+Get the value of a field as a scalar value.
+</p>
+<a name="wp1087808"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1038772"> </a><p class="pBody">
+Each convenience function in this family retrieves a field and extracts its data. If the field&#8217;s type (as it exists) does not match the type of the convenience function, then the function attempts to convert the data (see <a  href="rv_c_ref225.htm#wp1128933">Datatype Conversion</a>). If conversion is not possible, the function returns <a  href="rv_c_ref227.htm#wp1129183"><code class="cCode">TIBRV_CONVERSION_FAILED</code></a>.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1176285"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1176291"> </a><div class="pCellHeading">
+Function Name
+</div>
+</th>
+    <th><a name="wp1176293"> </a><div class="pCellHeading">
+Type
+</div>
+</th>
+    <th><a name="wp1176295"> </a><div class="pCellHeading">
+Type Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176297"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Get</code><code class="cCodeBold">Bool</code>
+</div>
+</td>
+    <td><a name="wp1176299"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">bool</code>
+</div>
+</td>
+    <td><a name="wp1176301"> </a><div class="pCellBody">
+boolean
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176303"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Get</code><code class="cCodeBold">F32</code>
+</div>
+</td>
+    <td><a name="wp1176305"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">f32</code>
+</div>
+</td>
+    <td><a name="wp1176307"> </a><div class="pCellBody">
+32-bit floating point
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176309"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Get</code><code class="cCodeBold">F64</code>
+</div>
+</td>
+    <td><a name="wp1176311"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">f64</code>
+</div>
+</td>
+    <td><a name="wp1176313"> </a><div class="pCellBody">
+64-bit floating point
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176315"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Get</code><code class="cCodeBold">I8</code>
+</div>
+</td>
+    <td><a name="wp1176317"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">i8</code>
+</div>
+</td>
+    <td><a name="wp1176319"> </a><div class="pCellBody">
+8-bit integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176321"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Get</code><code class="cCodeBold">I16</code>
+</div>
+</td>
+    <td><a name="wp1176323"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">i16</code>
+</div>
+</td>
+    <td><a name="wp1176325"> </a><div class="pCellBody">
+16-bit integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176327"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Get</code><code class="cCodeBold">I32</code>
+</div>
+</td>
+    <td><a name="wp1176329"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">i32</code>
+</div>
+</td>
+    <td><a name="wp1176331"> </a><div class="pCellBody">
+32-bit integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176333"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Get</code><code class="cCodeBold">I64</code>
+</div>
+</td>
+    <td><a name="wp1176335"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">i64</code>
+</div>
+</td>
+    <td><a name="wp1176337"> </a><div class="pCellBody">
+64-bit integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176339"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Get</code><code class="cCodeBold">U8</code>
+</div>
+</td>
+    <td><a name="wp1176341"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">u8</code>
+</div>
+</td>
+    <td><a name="wp1176343"> </a><div class="pCellBody">
+8-bit unsigned integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176345"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Get</code><code class="cCodeBold">U16</code>
+</div>
+</td>
+    <td><a name="wp1176347"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">u16</code>
+</div>
+</td>
+    <td><a name="wp1176349"> </a><div class="pCellBody">
+16-bit unsigned integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176351"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Get</code><code class="cCodeBold">U32</code>
+</div>
+</td>
+    <td><a name="wp1176353"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">u32</code>
+</div>
+</td>
+    <td><a name="wp1176355"> </a><div class="pCellBody">
+32-bit unsigned integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176357"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Get</code><code class="cCodeBold">U64</code>
+</div>
+</td>
+    <td><a name="wp1176359"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">u64</code>
+</div>
+</td>
+    <td><a name="wp1176361"> </a><div class="pCellBody">
+64-bit unsigned integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176363"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Get</code><code class="cCodeBold">IPAddr32</code>
+</div>
+</td>
+    <td><a name="wp1176365"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">ipaddr32</code>
+</div>
+</td>
+    <td><a name="wp1176367"> </a><div class="pCellBody">
+4-byte IP address
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176375"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Get</code><code class="cCodeBold">IPPort16</code>
+</div>
+</td>
+    <td><a name="wp1176377"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">ipport16</code>
+</div>
+</td>
+    <td><a name="wp1176379"> </a><div class="pCellBody">
+2-byte IP port
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1025755"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1025731"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1025733"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1025735"> </a><div class="pCellBody">
+<code class="cCode">message</code>
+</div>
+</td>
+    <td><a name="wp1025737"> </a><div class="pCellBody">
+Get the specified field of this message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1025739"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1025741"> </a><div class="pCellBody">
+Get a field with this name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1025743"> </a><div class="pCellBody">
+<code class="cCode">value</code>
+</div>
+</td>
+    <td><a name="wp1025745"> </a><div class="pCellBody">
+When extracting a scalar type, the program supplies a location in this parameter, and the function <em class="cEmphasis">copies</em> the scalar value of the field to that location.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1109035"> </a><div class="pCellBody">
+<code class="cCode">fieldId</code>
+</div>
+</td>
+    <td><a name="wp1109037"> </a><div class="pCellBody">
+Get the field with this identifier. Zero is a special value that signifies no field identifier. All non-zero field identifiers must be unique within each message.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1088198"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1083278"> </a><p class="pBody">
+<a  href="rv_c_ref19.htm#wp1041091">Validity of Data Extracted From Message Fields</a>
+</p>
+<a name="wp1083289"> </a><p class="pBody">
+<a  href="rv_c_ref20.htm#wp1062225">Field Names and Field Identifiers</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

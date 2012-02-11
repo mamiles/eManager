@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Frameset//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/frameset.dtd">
+<html>
+ <!-- Copyright (c) 2000-2001 Quadralay Corporation.  All rights reserved. -->
+
+ <head>
+  <meta http-equiv="content-type" content="text/html">
+  <meta http-equiv="charset"      content="UTF-8">
+
+  <script type="text/javascript" language="JavaScript1.2" src="../../common/private/title.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2" src="../../common/private/popupf.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="../../common/private/options.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="../../common/private/locale.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="../../common/scripts/browseri.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="../../common/scripts/popup.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="../../common/scripts/filelist.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="../../common/scripts/pophash.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="../../common/scripts/booklist.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="../../common/scripts/bookgrps.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="../../common/scripts/help.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="../../common/scripts/controls.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="../../common/scripts/related.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="../../common/scripts/strutils.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="../../common/scripts/highlt.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2" src="../private/options.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="../private/locale.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="../scripts/handler.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="../scripts/java.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+    var  WWHFrame = eval("window.self");
+    window.name = "WWHFrame";
+
+    // Create browser info object
+    //
+    var  WWHBrowserInfo = new WWHBrowserInfo_Object();
+
+    // Create new help object
+    //
+    var  WWHHelp = new WWHHelp_Object(location.href);
+
+    // Create controls object
+    //
+    var  WWHControls = new WWHControls_Object();
+
+    // Create related topics object
+    //
+    var  WWHRelatedTopics = new WWHRelatedTopics_Object();
+
+    // Create highlight words object
+    //
+    var  WWHHighlightWords = new WWHHighlightWords_Object();
+
+    // Create new handler object
+    //
+    var  WWHHandler = new WWHHandler_Object();
+
+    // Create new Java Help object
+    //
+    var  WWHJava = new WWHJava_Object();
+
+
+    // Netscape Resize Fix
+    //
+    function  WWHFrame_HandleResize(ParamEvent)
+    {
+      if (WWHFrame.WWHBrowserInfo.mBrowser == 1)  // Shorthand for Netscape
+      {
+        WWHFrame.WWHContentFrame.WWHContentFrame_HandleResize(ParamEvent);
+      }
+      else if (WWHFrame.WWHBrowserInfo.mBrowser == 2)  // Shorthand for Internet Explorer
+      {
+        WWHFrame.WWHNavigationFrame.WWHNavigationFrame_HandleResize(ParamEvent);
+      }
+    }
+   // -->
+  </script>
+ </head>
+
+ <frameset cols="300,*" onLoad="WWHJava.fInit();" onResize="WWHFrame_HandleResize(event);">
+  <frame id="WWHNavigationFrame" name="WWHNavigationFrame" src="../../common/html/blank.htm" scrolling="no" marginwidth="0" marginheight="0">
+  <frame id="WWHContentFrame" name="WWHContentFrame" src="../../common/html/content.htm" scrolling="auto">
+
+  <noframes>
+   <body>
+    <p>This page uses frames, but your browser doesn't support them.</p>
+   </body>
+  </noframes>
+ </frameset>
+</html>

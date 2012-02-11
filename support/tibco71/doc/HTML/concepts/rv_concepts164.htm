@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>DATALOSS</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Appendix&#160;A	 System Advisory Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1038437"> </a><h2 class="pNewHTMLPage">
+DATALOSS
+</h2>
+<hr />
+<a name="wp1047133"> </a><p class="pSyntaxType">
+Advisory
+</p>
+<a name="wp1048891"> </a><h4 class="pHeading3">
+Subject Name Syntax
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+_RV.ERROR.SYSTEM.DATALOSS.OUTBOUND.PTP<a name="wp1038439"> </a>
+_RV.ERROR.SYSTEM.DATALOSS.OUTBOUND.BCAST<a name="wp1038440"> </a>
+_RV.ERROR.SYSTEM.DATALOSS.INBOUND.PTP<a name="wp1038441"> </a>
+_RV.ERROR.SYSTEM.DATALOSS.INBOUND.BCAST<a name="wp1038442"> </a>
+</pre></div>
+<a name="wp1059572"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1038444"> </a><p class="pBody">
+Client programs receive this advisory when a sending daemon denies a retransmission request.
+</p>
+<a name="wp1059718"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1038449"> </a><p class="pBody">
+<code class="cCode">DATALOSS</code> advisories indicate network transmission problems.
+</p>
+<a name="wp1038453"> </a><p class="pBody">
+Rendezvous daemons use a reliable delivery protocol, in which sending daemons retain outbound messages for 60 seconds. If a receiving daemon detects that it missed an inbound message, it requests retransmission from the sending daemon. If 60 seconds have already elapsed, the sending daemon has already discarded the message, so it cannot retransmit. Under normal operating conditions, both daemons notify all their client transports that data has been lost; in some situations, not all of the daemons report the loss.
+</p>
+<a name="wp1038454"> </a><p class="pBody">
+Clients of the sending daemon present <code class="cCode">DATALOSS.OUTBOUND</code> advisories. Clients of the receiving daemon present <code class="cCode">DATALOSS.INBOUND</code> advisories.
+</p>
+<a name="wp1038455"> </a><p class="pBody">
+<code class="cCode">PTP</code> indicates that the lost data was a point-to-point message. <code class="cCode">BCAST</code> indicates that the lost data was a multicast message.
+</p>
+<a name="wp1038456"> </a><p class="pBody">
+Since the daemons cannot determine which clients are affected by the loss, they present these advisories to all of their clients (even though not every client has actually lost data).
+</p>
+<a name="wp1038469"> </a><h4 class="pHeading3">
+Message Fields
+</h4>
+<a name="wp1095774"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1038459"> </a><div class="pCellHeading">
+Field Name
+</div>
+</th>
+    <th><a name="wp1038464"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1038466"> </a><div class="pCellBody">
+<code class="cCode">host</code>
+</div>
+</td>
+    <td><a name="wp1038468"> </a><div class="pCellBody">
+The IP address of the <em class="cEmphasis">other</em> computer.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1038470"> </a><h4 class="pHeading3">
+Diagnosis
+</h4>
+<a name="wp1038474"> </a><p class="pBody">
+These advisories indicate situations that defeat the Rendezvous reliable delivery protocols:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1038475"> </a><div class="pSmartList1"><li >Some hardware component is experiencing intermittent failures; the component could be a faulty network card, a loose connection, or a frayed wire.</li></div>
+
+<a name="wp1038476"> </a><div class="pSmartList1"><li >The network is overloaded.</li></div>
+
+<a name="wp1038480"> </a><div class="pSmartList1"><li >A Rendezvous daemon process is starved for CPU cycles; either its host computer is too heavily loaded, or the priority of the daemon process is too low.</li></div>
+
+<a name="wp1038484"> </a><div class="pSmartList1"><li >The Rendezvous daemon is running with a <code class="cCode">-reliability</code> parameter lower than 60 seconds. (See also, <a  href="javascript:WWHClickedPopup('c', 'rv_adm21.htm#wp1146262');" onMouseOver="WWHShowPopup('c', 'rv_adm21.htm#wp1146262', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Reliability and Message Retention Time</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.)</li></div>
+
+</ul></div>
+
+<a name="wp1038488"> </a><h4 class="pHeading3">
+Limitations
+</h4>
+<a name="wp1038492"> </a><p class="pBody">
+Rendezvous reliable delivery protocols implement fast and efficient delivery of messages under normal operating conditions. For diagnostic convenience, the Rendezvous daemon reports <code class="cCode">DATALOSS</code> advisories when detection would not incur the cost of additional network traffic. However, <code class="cCode">DATALOSS</code> advisories are not guaranteed in every situation.
+</p>
+<a name="wp1038499"> </a><p class="pBody">
+Rendezvous software does not report <code class="cCode">DATALOSS</code> advisories across routing daemon neighbor links&#151;only to transports directly connected to the daemon that detects the loss.
+</p>
+<a name="wp1038500"> </a><p class="pBody">
+If your program requires stronger confirmation of delivery, consider using the certified delivery feature (see <a  href="rv_concepts97.htm#wp1055521">Certified Message Delivery</a>).
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

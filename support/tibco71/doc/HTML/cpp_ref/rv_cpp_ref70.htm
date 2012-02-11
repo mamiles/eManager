@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>Update Array</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1124217"> </a><h2 class="pNewHTMLPage">
+Update Array
+</h2>
+<hr />
+<a name="wp1124218"> </a><p class="pSyntaxType">
+Convenience Methods
+</p>
+<a name="wp1124234"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">update</code><code class="cCodeItalic">&lt;element_type&gt;</code><code class="cCodeBold">Array</code>(<a name="wp1124642"> </a>
+&#160;&#160;&#160;&#160;const char*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;fieldName,<a name="wp1124643"> </a>
+&#160;&#160;&#160;&#160;const tibrv_<code class="cCodeItalic">&lt;scalar_type&gt;</code>&#160;&#160;&#160;&#160;value,<a name="wp1124653"> </a>
+&#160;&#160;&#160;&#160;tibrv_u32 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;numElements,<a name="wp1124644"> </a>
+&#160;&#160;&#160;&#160;tibrv_u16&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;fieldId=0);<a name="wp1124645"> </a>
+</pre></div>
+<a name="wp1124235"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1124236"> </a><p class="pBody">
+Update a field containing an array value.
+</p>
+<a name="wp1124237"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1124238"> </a><p class="pBody">
+Each convenience method in this family locates a field (by name or identifier) and updates its data.
+</p>
+<a name="wp1124239"> </a><p class="pBody">
+The type of the existing field (within the message) and the type of the updating <code class="cCode">value</code> must match. The number of elements can change.
+</p>
+<a name="wp1124240"> </a><p class="pBody">
+Pointer data previously extracted from the field remain valid and unchanged until the message is destroyed; that is, even updating the field&#8217;s value does <em class="cEmphasis">not</em> invalidate pointer data. (See <a  href="rv_cpp_ref24.htm#wp1119669">Pointer Snapshot</a>.)</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1124255"> </a><div class="pCellHeading">
+Method Name
+</div>
+</th>
+    <th><a name="wp1124257"> </a><div class="pCellHeading">
+Element Type
+</div>
+</th>
+    <th><a name="wp1124259"> </a><div class="pCellHeading">
+Type Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124261"> </a><div class="pCellBody">
+<code class="cCode">update</code><code class="cCodeBold">I8Array</code>
+</div>
+</td>
+    <td><a name="wp1124263"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">i8</code>
+</div>
+</td>
+    <td><a name="wp1124265"> </a><div class="pCellBody">
+8-bit integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124267"> </a><div class="pCellBody">
+<code class="cCode">update</code><code class="cCodeBold">U8Array</code>
+</div>
+</td>
+    <td><a name="wp1124269"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">u8</code>
+</div>
+</td>
+    <td><a name="wp1124271"> </a><div class="pCellBody">
+8-bit unsigned integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124273"> </a><div class="pCellBody">
+<code class="cCode">update</code><code class="cCodeBold">I16Array</code>
+</div>
+</td>
+    <td><a name="wp1124275"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">i16</code>
+</div>
+</td>
+    <td><a name="wp1124277"> </a><div class="pCellBody">
+16-bit integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124279"> </a><div class="pCellBody">
+<code class="cCode">update</code><code class="cCodeBold">U16Array</code>
+</div>
+</td>
+    <td><a name="wp1124281"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">u16</code>
+</div>
+</td>
+    <td><a name="wp1124283"> </a><div class="pCellBody">
+16-bit unsigned integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124285"> </a><div class="pCellBody">
+<code class="cCode">update</code><code class="cCodeBold">I32Array</code>
+</div>
+</td>
+    <td><a name="wp1124287"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">i32</code>
+</div>
+</td>
+    <td><a name="wp1124289"> </a><div class="pCellBody">
+32-bit integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124291"> </a><div class="pCellBody">
+<code class="cCode">update</code><code class="cCodeBold">U32Array</code>
+</div>
+</td>
+    <td><a name="wp1124293"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">u32</code>
+</div>
+</td>
+    <td><a name="wp1124295"> </a><div class="pCellBody">
+32-bit unsigned integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1143891"> </a><div class="pCellBody">
+<code class="cCode">update</code><code class="cCodeBold">I64Array</code>
+</div>
+</td>
+    <td><a name="wp1143893"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">i64</code>
+</div>
+</td>
+    <td><a name="wp1143895"> </a><div class="pCellBody">
+64-bit integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1143885"> </a><div class="pCellBody">
+<code class="cCode">update</code><code class="cCodeBold">U64Array</code>
+</div>
+</td>
+    <td><a name="wp1143887"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">u64</code>
+</div>
+</td>
+    <td><a name="wp1143889"> </a><div class="pCellBody">
+64-bit unsigned integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124297"> </a><div class="pCellBody">
+<code class="cCode">update</code><code class="cCodeBold">F32Array</code>
+</div>
+</td>
+    <td><a name="wp1124299"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">f32</code>
+</div>
+</td>
+    <td><a name="wp1124301"> </a><div class="pCellBody">
+32-bit floating point array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124303"> </a><div class="pCellBody">
+<code class="cCode">update</code><code class="cCodeBold">F64Array</code>
+</div>
+</td>
+    <td><a name="wp1124305"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">f64</code>
+</div>
+</td>
+    <td><a name="wp1124307"> </a><div class="pCellBody">
+64-bit floating point array
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1237485"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1124318"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1124320"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124326"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1124328"> </a><div class="pCellBody">
+Update a field with this name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124330"> </a><div class="pCellBody">
+<code class="cCode">value</code>
+</div>
+</td>
+    <td><a name="wp1124332"> </a><div class="pCellBody">
+Update the message field to this array value.
+</div>
+<a name="wp1124333"> </a><div class="pCellBody">
+The method <em class="cEmphasis">copies</em> the new array into the existing field.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124335"> </a><div class="pCellBody">
+<code class="cCode">numElements</code>
+</div>
+</td>
+    <td><a name="wp1124337"> </a><div class="pCellBody">
+When updating an array type, the program supplies the count of array elements in this parameter.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124339"> </a><div class="pCellBody">
+<code class="cCode">fieldId</code>
+</div>
+</td>
+    <td><a name="wp1124341"> </a><div class="pCellBody">
+Update the field with this identifier. Zero is a special value that signifies no field identifier. It is illegal to add a field that has both a <code class="cCode">NULL</code> field name, and a non-zero field identifier.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1124343"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1124347"> </a><p class="pBody">
+<a  href="rv_cpp_ref25.htm#wp1114359">Field Names and Field Identifiers</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

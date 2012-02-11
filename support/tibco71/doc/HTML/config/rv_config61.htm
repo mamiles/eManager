@@ -1,0 +1,338 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>LocalNetworkInterface</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;4	 Routing Daemon&#151;rvrd";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1952132"> </a><h2 class="pNewHTMLPage">
+LocalNetworkInterface
+</h2>
+<hr />
+<a name="wp1952133"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1952134"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">class com.tibco.tibrv.config.</code><code class="cCodeBold">LocalNetworkInterface</code><a name="wp1952135"> </a>
+<code class="cCode">&#160;&#160;extends java.lang.Object</code><a name="wp1952136"> </a>
+</pre></div>
+<a name="wp1952137"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1952138"> </a><p class="pBody">
+Represent a local network interface of a router.
+</p>
+<a name="wp1952139"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1952143"> </a><p class="pBody">
+The method <a  href="rv_config98.htm#wp1954562"><code class="cCode">Router.getLocalNetworkInterfaces()</code></a> returns an array of objects of this class.
+</p>
+<a name="wp1952186"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1952146"> </a><div class="pCellHeading">
+Constant
+</div>
+</th>
+    <th><a name="wp1952148"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1952154"> </a><div class="pCellBody">
+<a  href="rv_config61.htm#wp1952132"><code class="cCode">LocalNetworkInterface</code></a><code class="cCode">.DEFAULT_COST</code>
+</div>
+</td>
+    <td><a name="wp1952156"> </a><div class="pCellBody">
+Default path cost (1) between a local network and a router. To use the default cost, supply this constant to <a  href="rv_config94.htm#wp1954189"><code class="cCode">Router.addLocalNetworkInterface()</code> </a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1952180"> </a><div class="pCellBody">
+<a  href="rv_config61.htm#wp1952132"><code class="cCode">LocalNetworkInterface</code></a><code class="cCode">.UNSPECIFIED</code>
+</div>
+</td>
+    <td><a name="wp1952182"> </a><div class="pCellBody">
+To use default values for the service and network parameters of a local network interface, supply this constant to <a  href="rv_config94.htm#wp1954189"><code class="cCode">Router.addLocalNetworkInterface()</code> </a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1952410"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1952192"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1952198"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1952200"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1952202"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1952207"> </a><div class="pCellBody">
+<a  href="rv_config62.htm#wp1952435"><code class="cCode">LocalNetworkInterface.addExportSubject()</code></a>
+</div>
+</td>
+    <td><a name="wp1952211"> </a><div class="pCellBody">
+<a  href="rv_config62.htm#wp1952446">Permit the router to export a subject from this local network.</a>
+</div>
+</td>
+    <td><a name="wp1952217"> </a><div class="pCellBody">
+<a  href="rv_config62.htm#wp1952435">69</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1952222"> </a><div class="pCellBody">
+<a  href="rv_config63.htm#wp1952485"><code class="cCode">LocalNetworkInterface.addImportSubject()</code></a>
+</div>
+</td>
+    <td><a name="wp1952226"> </a><div class="pCellBody">
+<a  href="rv_config63.htm#wp1952504">Permit the router to import a subject into this local network.</a>
+</div>
+</td>
+    <td><a name="wp1952232"> </a><div class="pCellBody">
+<a  href="rv_config63.htm#wp1952485">70</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1952237"> </a><div class="pCellBody">
+<a  href="rv_config64.htm#wp1952555"><code class="cCode">LocalNetworkInterface.addSubject()</code></a>
+</div>
+</td>
+    <td><a name="wp1952241"> </a><div class="pCellBody">
+<a  href="rv_config64.htm#wp1952574">Permit the router to import and export a subject.</a>
+</div>
+</td>
+    <td><a name="wp1952247"> </a><div class="pCellBody">
+<a  href="rv_config64.htm#wp1952555">71</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1952252"> </a><div class="pCellBody">
+<a  href="rv_config65.htm#wp1952629"><code class="cCode">LocalNetworkInterface.getCost()</code></a>
+</div>
+</td>
+    <td><a name="wp1952256"> </a><div class="pCellBody">
+<a  href="rv_config65.htm#wp1952635">Get the path cost for routing between the local network and its router.</a>
+</div>
+</td>
+    <td><a name="wp1952262"> </a><div class="pCellBody">
+<a  href="rv_config65.htm#wp1952629">72</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1952267"> </a><div class="pCellBody">
+<a  href="rv_config66.htm#wp1952660"><code class="cCode">LocalNetworkInterface.getExportSubjects()</code></a>
+</div>
+</td>
+    <td><a name="wp1952271"> </a><div class="pCellBody">
+<a  href="rv_config66.htm#wp1952670">Get the subjects that the router may export from this local network.</a>
+</div>
+</td>
+    <td><a name="wp1952277"> </a><div class="pCellBody">
+<a  href="rv_config66.htm#wp1952660">73</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1952282"> </a><div class="pCellBody">
+<a  href="rv_config67.htm#wp1952699"><code class="cCode">LocalNetworkInterface.getImportSubjects()</code></a>
+</div>
+</td>
+    <td><a name="wp1952286"> </a><div class="pCellBody">
+<a  href="rv_config67.htm#wp1952712">Get the subjects that the router may import into this local network.</a>
+</div>
+</td>
+    <td><a name="wp1952292"> </a><div class="pCellBody">
+<a  href="rv_config67.htm#wp1952699">74</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1952297"> </a><div class="pCellBody">
+<a  href="rv_config68.htm#wp1952745"><code class="cCode">LocalNetworkInterface.getName()</code></a>
+</div>
+</td>
+    <td><a name="wp1952301"> </a><div class="pCellBody">
+<a  href="rv_config68.htm#wp1952751">Get the unique name of the local network.</a>
+</div>
+</td>
+    <td><a name="wp1952307"> </a><div class="pCellBody">
+<a  href="rv_config68.htm#wp1952745">75</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1952312"> </a><div class="pCellBody">
+<a  href="rv_config69.htm#wp1952776"><code class="cCode">LocalNetworkInterface.getNetwork()</code></a>
+</div>
+</td>
+    <td><a name="wp1952316"> </a><div class="pCellBody">
+<a  href="rv_config69.htm#wp1952782">Get the network specification of the local network.</a>
+</div>
+</td>
+    <td><a name="wp1952322"> </a><div class="pCellBody">
+<a  href="rv_config69.htm#wp1952776">76</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1952327"> </a><div class="pCellBody">
+<a  href="rv_config70.htm#wp1952807"><code class="cCode">LocalNetworkInterface.getService()</code></a>
+</div>
+</td>
+    <td><a name="wp1952331"> </a><div class="pCellBody">
+<a  href="rv_config70.htm#wp1952816">Get the UDP or PGM service of the local network.</a>
+</div>
+</td>
+    <td><a name="wp1952337"> </a><div class="pCellBody">
+<a  href="rv_config70.htm#wp1952807">77</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1952342"> </a><div class="pCellBody">
+<a  href="rv_config71.htm#wp1952841"><code class="cCode">LocalNetworkInterface.removeExportSubject()</code></a>
+</div>
+<a name="wp1952346"> </a><div class="pCellBody">
+<a  href="rv_config71.htm#wp1952845"><code class="cCode">LocalNetworkInterface.removeExportSubjects()</code></a>
+</div>
+</td>
+    <td><a name="wp1952350"> </a><div class="pCellBody">
+<a  href="rv_config71.htm#wp1952862">Stop exporting a subject from this local network.</a>
+</div>
+</td>
+    <td><a name="wp1952356"> </a><div class="pCellBody">
+<a  href="rv_config71.htm#wp1952841">78</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1952361"> </a><div class="pCellBody">
+<a  href="rv_config72.htm#wp1952905"><code class="cCode">LocalNetworkInterface.removeImportSubject()</code></a>
+</div>
+<a name="wp1952365"> </a><div class="pCellBody">
+<a  href="rv_config72.htm#wp1952909"><code class="cCode">LocalNetworkInterface.removeImportSubjects()</code></a>
+</div>
+</td>
+    <td><a name="wp1952369"> </a><div class="pCellBody">
+<a  href="rv_config72.htm#wp1952926">Stop importing a subject from this local network.</a>
+</div>
+</td>
+    <td><a name="wp1952375"> </a><div class="pCellBody">
+<a  href="rv_config72.htm#wp1952905">79</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1952380"> </a><div class="pCellBody">
+<a  href="rv_config73.htm#wp1952971"><code class="cCode">LocalNetworkInterface.removeSubject()</code></a>
+</div>
+<a name="wp1952384"> </a><div class="pCellBody">
+<a  href="rv_config73.htm#wp1952975"><code class="cCode">LocalNetworkInterface.removeSubjects()</code></a>
+</div>
+</td>
+    <td><a name="wp1952388"> </a><div class="pCellBody">
+<a  href="rv_config73.htm#wp1952992">Stop importing and exporting a subject.</a>
+</div>
+</td>
+    <td><a name="wp1952394"> </a><div class="pCellBody">
+<a  href="rv_config73.htm#wp1952971">80</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1952399"> </a><div class="pCellBody">
+<a  href="rv_config74.htm#wp1953039"><code class="cCode">LocalNetworkInterface.toXml()</code></a>
+</div>
+</td>
+    <td><a name="wp1952403"> </a><div class="pCellBody">
+<a  href="rv_config74.htm#wp1953045">Format the local network information as an XML document.</a>
+</div>
+</td>
+    <td><a name="wp1952409"> </a><div class="pCellBody">
+<a  href="rv_config74.htm#wp1953039">81</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1952411"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1952415"> </a><p class="pBody">
+<a  href="rv_config94.htm#wp1954189"><code class="cCode">Router.addLocalNetworkInterface()</code> </a>
+</p>
+<a name="wp1952419"> </a><p class="pBody">
+<a  href="rv_config98.htm#wp1954562"><code class="cCode">Router.getLocalNetworkInterfaces()</code> </a>
+</p>
+<a name="wp1952422"> </a><p class="pBody">
+For the corresponding browser pages, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm53.htm#wp1213002');" onMouseOver="WWHShowPopup('c', 'rv_adm53.htm#wp1213002', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Local Networks Configuration</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>, and the sections that follow it
+</p>
+<a name="wp1952432"> </a><p class="pBody">
+For background information, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm34.htm#wp1047084');" onMouseOver="WWHShowPopup('c', 'rv_adm34.htm#wp1047084', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Local Network</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvTransport_CreateInbox()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;8	 Transport";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1066914"> </a><h2 class="pNewHTMLPage">
+tibrvTransport_CreateInbox()
+</h2>
+<hr />
+<a name="wp1066918"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1087130"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvTransport_CreateInbox</code>(<a name="wp1077926"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref132.htm#wp1066635"><code class="cCode">tibrvTransport</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;transport,<a name="wp1077928"> </a>
+&#160;&#160;&#160;&#160;char*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;subjectString,<a name="wp1077929"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128803"><code class="cCode">tibrv_u32</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;subjectLimit);<a name="wp1077930"> </a>
+</pre></div>
+<a name="wp1087609"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1066926"> </a><p class="pBody">
+Create a unique inbox subject name.</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1304078"> </a><p class="pBody">
+This function is the <em class="cEmphasis">only</em> legal way for programs to create inbox subject names.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1178788"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1178789"> </a><p class="pBody">
+This function creates inbox names that are unique throughout the transport scope.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1082308"> </a><div class="pSmartList1"><li >For network transports, inbox subject names are unique across all processes within the local router domain&#151;that is, anywhere that direct multicast contact is possible. The inbox name is not necessarily unique outside of the local router domain.</li></div>
+
+<a name="wp1082281"> </a><div class="pSmartList1"><li >For the intra-process transport, inbox names are unique across all threads of the process.</li></div>
+
+</ul></div>
+
+<a name="wp1066930"> </a><p class="pBody">
+This function creates only the unique name for an inbox; it does not begin listening for messages on that subject name. To begin listening, pass the inbox name as the <code class="cCode">subject</code> argument to <a  href="rv_c_ref79.htm#wp1030177"><code class="cCode">tibrvEvent_CreateListener()</code></a>. The inbox name is only valid for use with the same transport that created it. When calling <a  href="rv_c_ref79.htm#wp1030177"><code class="cCode">tibrvEvent_CreateListener()</code></a>, you <em class="cEmphasis">must</em> pass the same transport object that created the inbox subject name.
+</p>
+<a name="wp1066937"> </a><p class="pBody">
+Remember that other programs have no information about an inbox subject name until the listening program uses it as a reply subject in an outbound message.
+</p>
+<a name="wp1066938"> </a><p class="pBody">
+Programs can overwrite or free the <code class="cCode">subjectString</code> storage at any time.
+</p>
+<a name="wp1082295"> </a><p class="pBody">
+Use inbox subject names for delivery to a specific destination. In the context of a network transport, an inbox destination specifies unicast (point-to-point) delivery.
+</p>
+<a name="wp1123786"> </a><p class="pBody">
+Rendezvous routing daemons (<code class="cCode">rvrd</code>) translate inbox subject names that appear as the send subject or reply subject of a message. They do not translate inbox subject names within the data fields of a message.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1143083"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1082228"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1082230"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1082232"> </a><div class="pCellBody">
+<code class="cCode">transport</code>
+</div>
+</td>
+    <td><a name="wp1082234"> </a><div class="pCellBody">
+Create an inbox on this transport.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1082236"> </a><div class="pCellBody">
+<code class="cCode">subjectString</code>
+</div>
+</td>
+    <td><a name="wp1082238"> </a><div class="pCellBody">
+The program supplies a string buffer, and the function stores the new inbox subject string in that buffer.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1082240"> </a><div class="pCellBody">
+<code class="cCode">subjectLimit</code>
+</div>
+</td>
+    <td><a name="wp1082242"> </a><div class="pCellBody">
+The number of bytes that the program has allocated to receive the new inbox subject string.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1088454"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1066964"> </a><p class="pBody">
+<a  href="rv_c_ref79.htm#wp1030177"><code class="cCode">tibrvEvent_CreateListener()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

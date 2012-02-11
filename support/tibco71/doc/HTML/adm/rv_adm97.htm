@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>rvperfs</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;10	 Performance Assessment (rvperf)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1069148"> </a><h2 class="pNewHTMLPage">
+rvperfs
+</h2>
+<hr />
+<a name="wp1070568"> </a><p class="pSyntaxType">
+Command
+</p>
+<a name="wp1069149"> </a><h4 class="pHeading3">
+Syntax
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">rvperfs&#160;&#160;[-service </code><code class="cCodeItalic">&lt;service&gt; </code>]<a name="wp1069150"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-</code>network<code class="cCode"> </code><code class="cCodeItalic">&lt;network&gt; </code><code class="cCode">]</code><a name="wp1069151"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-daemon </code><code class="cCodeItalic">&lt;daemon&gt; </code><code class="cCode">]</code><a name="wp1069152"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-subject </code><code class="cCodeItalic">&lt;subject&gt; </code><code class="cCode">]</code><a name="wp1069153"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-cm]</code><a name="wp1069154"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-cm-name </code><code class="cCodeItalic">&lt;name&gt; </code><code class="cCode">]</code><a name="wp1069155"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-cm-ledger </code><code class="cCodeItalic">&lt;filename&gt; </code><code class="cCode">]</code><a name="wp1069156"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-cm-sync]</code><a name="wp1071620"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</code>[-h]<a name="wp1069157"> </a>
+</pre></div>
+<a name="wp1069158"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1069159"> </a><p class="pBody">
+<code class="cCode">rvperfs</code> listens for messages from <code class="cCode">rvperfm</code>, gathers and reports statistics to <code class="cCode">rvperfm</code> at the end of each run.
+</p>
+<a name="wp1069160"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1069161"> </a><p class="pBody">
+<code class="cCode">rvperfs</code> operates passively; it sends messages only in response to requests from <code class="cCode">rvperfm</code>.
+</p>
+<a name="wp1069162"> </a><p class="pBody">
+You can leave process instances of <code class="cCode">rvperfs</code> running idle. Each instance of <code class="cCode">rvperfs</code> can report statistics from several consecutive process instances of <code class="cCode">rvperfm</code>&#151;as long as only one <code class="cCode">rvperfm</code> executes at a time. You can relocate the <code class="cCode">rvperfm</code> process from one host computer to another without restarting the <code class="cCode">rvperfs</code> processes.
+</p>
+<a name="wp1069163"> </a><p class="pBody">
+Unlike <code class="cCode">rvperfm</code>, an <code class="cCode">rvperfs</code> process never exits by itself. You must explicitly terminate each <code class="cCode">rvperfs</code> process.
+</p>
+<a name="wp1123621"> </a><p class="pBody">
+In addition to sending its statistics to <code class="cCode">rvperfm</code>, <code class="cCode">rvperfs</code> also prints its report to <code class="cCode">stdout</code>.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1123627"> </a><p class="pBody">
+ (Sheet 1 of 3)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1123631"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1123633"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1123636"> </a><div class="pCellBody">
+<code class="cCode">-service </code><code class="cCodeItalic">&lt;service&gt;</code>
+</div>
+</td>
+    <td><a name="wp1123638"> </a><div class="pCellBody">
+<code class="cCodeItalic">&lt;service&gt;</code> is the service name or UDP or PGM port number that defines the service group.
+</div>
+<a name="wp1123642"> </a><div class="pCellBody">
+See <a  href="rv_adm15.htm#wp1019269">Service Selection</a>.
+</div>
+<a name="wp1123643"> </a><div class="pCellBody">
+If you do not specify the <code class="cCode">-service</code> parameter, the default value is <code class="cCode">7599</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1123646"> </a><div class="pCellBody">
+<code class="cCode">-network </code><code class="cCodeItalic">&lt;network&gt;</code>
+</div>
+</td>
+    <td><a name="wp1123648"> </a><div class="pCellBody">
+<code class="cCodeItalic">&lt;network&gt;</code> narrows the service group by selecting a local network by network name or IP network number (when the host computer has multiple network interfaces). It can also specify multicast addresses.
+</div>
+<a name="wp1123652"> </a><div class="pCellBody">
+See <a  href="rv_adm16.htm#wp1019316">Network Selection</a>.
+</div>
+<a name="wp1123653"> </a><div class="pCellBody">
+If you do not specify the <code class="cCode">-network</code> parameter, the default value is the multicast address<code class="cCode"> &quot;;225.9.9.9&quot;</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1123656"> </a><div class="pCellBody">
+<code class="cCode">-daemon </code><code class="cCodeItalic">&lt;daemon&gt;</code>
+</div>
+</td>
+    <td><a name="wp1123658"> </a><div class="pCellBody">
+The <code class="cCode">-daemon</code> parameter instructs the program about how and where to find <code class="cCode">rvd</code> and establish communication.
+</div>
+<a name="wp1123662"> </a><div class="pCellBody">
+See <a  href="rv_adm17.htm#wp1019451">Daemon Client Socket&#151;Establishing Connections</a>.
+</div>
+<a name="wp1123665"> </a><div class="pCellBody">
+You can specify a daemon on a remote computer. For details, see <a  href="rv_adm17.htm#wp1019505">Remote Daemon</a>. However, the program cannot start a remote daemon automatically&#151;you must start it manually on the remote computer.
+</div>
+<a name="wp1123667"> </a><div class="pCellBody">
+If you do not specify the <code class="cCode">-daemon</code> parameter, the program finds the local daemon on TCP socket <code class="cCode">7500</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1123670"> </a><div class="pCellBody">
+<code class="cCode">-subject </code><code class="cCodeItalic">&lt;subject&gt;</code>
+</div>
+</td>
+    <td><a name="wp1123672"> </a><div class="pCellBody">
+<code class="cCode">rvperfs</code> listens for messages with this subject name.
+</div>
+<a name="wp1123673"> </a><div class="pCellBody">
+If this parameter is absent, then <code class="cCode">rvperfs</code> uses <code class="cCode">_perf</code> as a prefix to construct broadcast subjects.
+</div>
+<a name="wp1123674"> </a><div class="pCellBody">
+(When you specify the <code class="cCode">-inbox</code> flag to <code class="cCode">rvperfm</code>, you need not specify this <code class="cCode">rvperfs</code> parameter.)
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1123677"> </a><div class="pCellBody">
+<code class="cCode">-cm</code>
+</div>
+</td>
+    <td><a name="wp1123679"> </a><div class="pCellBody">
+When present, <code class="cCode">rvperfs</code> listens for messages using certified delivery features. If <code class="cCode">rvperfm</code> also specifies <code class="cCode">-cm</code>, then the programs establish a certified delivery agreement.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1123685"> </a><div class="pCellBody">
+<code class="cCode">-cm-name </code><code class="cCodeItalic">&lt;name&gt;</code>
+</div>
+</td>
+    <td><a name="wp1123687"> </a><div class="pCellBody">
+When present, <code class="cCode">rvperfs</code> specifies this reusable correspondent name when it enables certified delivery.
+</div>
+<a name="wp1123688"> </a><div class="pCellBody">
+When <code class="cCode">-cm</code> is present, but <code class="cCode">-cm-name</code> is not, <code class="cCode">rvperfs</code> operates with a non-reusable correspondent name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1123691"> </a><div class="pCellBody">
+<code class="cCode">-cm-ledger </code><code class="cCodeItalic">&lt;filename&gt;</code>
+</div>
+</td>
+    <td><a name="wp1123693"> </a><div class="pCellBody">
+When present, <code class="cCode">rvperfs</code> uses this ledger file. You must also supply <code class="cCode">-cm-name</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1123697"> </a><div class="pCellBody">
+<code class="cCode">-cm-sync</code>
+</div>
+</td>
+    <td><a name="wp1123699"> </a><div class="pCellBody">
+When present, then operations that update the ledger file do not return until the changes are written to the storage medium. You must also supply <code class="cCode">-cm-ledger</code> and <code class="cCode">-cm-name</code>.
+</div>
+<a name="wp1123700"> </a><div class="pCellBody">
+When absent, the operating system writes ledger file changes to the storage medium asynchronously.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1123703"> </a><div class="pCellBody">
+<code class="cCode">-h</code>
+</div>
+</td>
+    <td><a name="wp1123705"> </a><div class="pCellBody">
+When present, output a parameter usage list to <code class="cCode">stdout</code>, and exit immediately.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

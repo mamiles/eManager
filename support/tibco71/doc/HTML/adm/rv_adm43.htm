@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Idle</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1219586"> </a><h2 class="pNewHTMLPage">
+Idle
+</h2>
+<hr />
+<a name="wp1068616"> </a><p class="pBody">
+<code class="cCode">rvrd</code> can run in either of two states&#151;running or idle. 
+</p>
+<a name="wp1068617"> </a><p class="pBody">
+When <em class="cEmphasis">running</em>, <code class="cCode">rvrd</code> establishes neighbor connections and routes messages.
+</p>
+<a name="wp1068618"> </a><p class="pBody">
+When <em class="cEmphasis">idle</em>, <code class="cCode">rvrd</code> does no routing operations. However, the browser administration interface is available for configuring parameters. The process still behaves as a Rendezvous daemon (<code class="cCode">rvd</code>).
+</p>
+<a name="wp1264683"> </a><p class="pBody">
+While <code class="cCode">rvrd</code> is in idle state, you can configure the routing table and other parameters without affecting the network in any way, without binding local resources (such as UDP or PGM services or TCP ports), and without resolving any names in the routing table. After saving the configuration in a store file (and terminating the <code class="cCode">rvrd</code> process), you can restart <code class="cCode">rvrd</code> using the stored configuration. Alternatively, you can move the store file to another host computer, and start <code class="cCode">rvrd</code> there.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>Program Structure</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;1	 Overview";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1949552"> </a><h2 class="pNewHTMLPage">
+Program Structure
+</h2>
+<hr />
+<a name="wp1949553"> </a><h4 class="pHeading3">
+Examples
+</h4>
+<a name="wp1949554"> </a><p class="pBody">
+Programming examples are included on the installation media. When you install Rendezvous software, these examples appear in the directory <code class="cCode">src/examples/configapi</code>.
+</p>
+<a name="wp1949558"> </a><p class="pBody">
+We encourage you to examine these programs before writing your own programs.
+</p>
+<a name="wp1949559"> </a><h4 class="pHeading3">
+Structure
+</h4>
+<a name="wp1949560"> </a><p class="pBody">
+The basic structure of programs follows these steps:
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1949562"> </a><div class="pSmartList1"><li value="1">Define subclasses of <code class="cCode">javax.net.ssl.HostnameVerifier</code> and <code class="cCode">javax.net.ssl.X509TrustManager</code> to specify the security behavior of your program.</li></div>
+
+<a name="wp1949566"> </a><div class="pSmartList1"><li value="2">Create an instance of <a  href="rv_config8.htm#wp1949616"><code class="cCode">DaemonManager</code></a>.</li></div>
+
+<a name="wp1949570"> </a><p class="pBodyRelative">
+The constructor automatically creates an instance of <a  href="rv_config12.htm#wp1949843"><code class="cCode">DaemonProxy</code></a>, and stores it in the new manager instance.
+</p>
+<a name="wp1949571"> </a><div class="pSmartList1"><li value="3">Get the daemon proxy instance from the daemon manager.</li></div>
+
+<a name="wp1949572"> </a><div class="pSmartList1"><li value="4">Cast the daemon proxy instance to one of the specific aspect proxy interfaces, and call methods of that aspect to access and configure the daemon.</li></div>
+
+<a name="wp1949573"> </a><p class="pBodyRelative">
+You may subsequently cast the daemon proxy to different aspect proxy interfaces, and call their methods.
+</p>
+</ol></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

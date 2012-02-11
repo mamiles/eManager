@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>RvrdProxy.setLoggingParams()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;4	 Routing Daemon&#151;rvrd";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1951909"> </a><h2 class="pNewHTMLPage">
+RvrdProxy.setLoggingParams()
+</h2>
+<hr />
+<a name="wp1951910"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1951912"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_config52.htm#wp1951492"><code class="cCode">RvrdProxy</code></a> <code class="cCodeBold">setLoggingParams</code>(<a name="wp1951916"> </a>
+&#160;&#160;&#160;&#160;boolean connections,<a name="wp1951917"> </a>
+&#160;&#160;&#160;&#160;boolean subjectInterest,<a name="wp1951918"> </a>
+&#160;&#160;&#160;&#160;boolean subjectData) <a name="wp1951919"> </a>
+&#160;&#160;throws <a  href="rv_config267.htm#wp1963961"><code class="cCode">ConfigurationException</code></a><a name="wp1951923"> </a>
+</pre></div>
+<a name="wp1951924"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1951926"> </a><p class="pBody">
+Set the flags that guide the routing daemon&#8217;s log output.
+</p>
+<a name="wp1951927"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1951928"> </a><p class="pBody">
+This method sets three boolean flags in the routing daemon. The program must supply all three values.
+</p>
+<a name="wp1951932"> </a><p class="pBody">
+This method returns the <a  href="rv_config52.htm#wp1951492"><code class="cCode">RvrdProxy</code></a> object, so programs can conveniently chain additional method calls to the return value.
+</p>
+<a name="wp1951950"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1951935"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1951937"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1951939"> </a><div class="pCellBody">
+<code class="cCode">connections</code>
+</div>
+</td>
+    <td><a name="wp1951941"> </a><div class="pCellBody">
+When <code class="cCode">true</code>, log connection activity whenever this routing daemon establishes or closes a connection to a neighbor.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1951943"> </a><div class="pCellBody">
+<code class="cCode">subjectInterest</code>
+</div>
+</td>
+    <td><a name="wp1951945"> </a><div class="pCellBody">
+When <code class="cCode">true</code>, log all subscription requests (notification of listening) that this routing daemon sends to its neighbors or receives from its neighbors.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1951947"> </a><div class="pCellBody">
+<code class="cCode">subjectData</code>
+</div>
+</td>
+    <td><a name="wp1951949"> </a><div class="pCellBody">
+When <code class="cCode">true</code>, log all messages that this routing daemon forwards to its neighbors or receives from its neighbors.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1951951"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1951955"> </a><p class="pBody">
+<a  href="rv_config52.htm#wp1951492"><code class="cCode">RvrdProxy</code> </a>
+</p>
+<a name="wp1951959"> </a><p class="pBody">
+<a  href="rv_config54.htm#wp1951722"><code class="cCode">RvrdProxy.getLoggingParams()</code> </a>
+</p>
+<a name="wp1951965"> </a><p class="pBody">
+For background information, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm44.htm#wp1046022');" onMouseOver="WWHShowPopup('c', 'rv_adm44.htm#wp1046022', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Interpreting Log Output</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+<a name="wp1951970"> </a><p class="pBody">
+For the corresponding browser page, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm51.htm#wp1192989');" onMouseOver="WWHShowPopup('c', 'rv_adm51.htm#wp1192989', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Daemon Parameters</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>, and <a  href="javascript:WWHClickedPopup('c', 'rv_adm51.htm#wp1193041');" onMouseOver="WWHShowPopup('c', 'rv_adm51.htm#wp1193041', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Logging</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

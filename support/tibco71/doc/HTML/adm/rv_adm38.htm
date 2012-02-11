@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Independent Routing Table Entries in One Process</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1175151"> </a><h2 class="pNewHTMLPage">
+Independent Routing Table Entries in One Process
+</h2>
+<hr />
+<a name="wp1055439"> </a><p class="pBody">
+In most situations, each routing daemon process embodies a single routing table entry. Nonetheless, in rare situations one routing daemon process can embody several routing table entries. Each entry defines a separate and independent software router, but without the cost associated with process switching.
+</p>
+<a name="wp1055441"> </a><p class="pBody">
+This section explores two situations in which multiple routing table entries are appropriate:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1051992"> </a><div class="pSmartList1"><li ><a  href="rv_adm38.htm#wp1047668">Overlapping Subject Space</a></li></div>
+
+<a name="wp1051993"> </a><div class="pSmartList1"><li ><a  href="rv_adm38.htm#wp1059978">Bandwidth Contention</a></li></div>
+
+</ul></div>
+
+<a name="wp1047668"> </a><h3 class="pHeading2">
+Overlapping Subject Space
+</h3>
+<a name="wp1052023"> </a><p class="pBody">
+Consider two distinct distributed programs that use overlapping subject spaces&#151;that is, they use some of the same subjects for their messages. When the two programs are deployed on the same physical network, each one receives messages from the other, which is inappropriate. To eliminate interference within the network, isolate each program to a separate UDP or PGM service.
+</p>
+<a name="wp1052044"> </a><p class="pBody">
+Yet this solution within one network does not ordinarily keep the subject spaces separate when routing daemons connect two or more networks, because the routing daemon merges the subject spaces of its local networks.
+</p>
+<a name="wp1052115"> </a><div class="pFigureTitle">
+Figure&#160;11   Routing Daemons Merge Subject Spaces</div><div align="center"><img src="images/rv_adma.gif" height="318" width="600" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1052067"> </a><p class="pBody">
+For example, on the left side of <a  href="rv_adm38.htm#wp1052115">Figure&#160;11</a>, the two UDP or PGM services <code class="cCode">7500</code> and <code class="cCode">7502</code> effectively separate one physical network (<code class="cCode">K.foo.com</code>) into two disjoint subject spaces; that is, program <code class="cCode">L2</code> <em class="cEmphasis">cannot</em> receive messages from program <code class="cCode">S1</code>. Similarly, on the right side of <a  href="rv_adm38.htm#wp1085468">Figure&#160;13</a>, two UDP or PGM services <code class="cCode">7577</code> and <code class="cCode">7588</code> effectively separate one physical network (<code class="cCode">J.foo.com</code>) into two disjoint subject spaces. However, the routing daemons in this configuration merge the subject spaces of their local networks&#151;effectively canceling the separation; that is, program <code class="cCode">L2</code> <em class="cEmphasis">does</em> receive messages from program <code class="cCode">S1</code>.
+</p>
+<a name="wp1052125"> </a><p class="pBody">
+To restore the separation, configure an independent routing table entry for each local network, as in <a  href="rv_adm38.htm#wp1059951">Figure&#160;12</a>.
+</p>
+<a name="wp1059951"> </a><div class="pFigureTitle">
+Figure&#160;12   Independent Routing Table Entries Keep Subject Spaces Separate</div><div align="center"><img src="images/rv_adma3.gif" height="454" width="599" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1055462"> </a><p class="pBody">
+In <a  href="rv_adm38.htm#wp1059951">Figure&#160;12</a>, each <code class="cCode">rvrd</code> process contains two independent routers, which act as parts of two disjoint routes&#151;keeping the data and subject spaces separate:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1060752"> </a><div class="pSmartList1"><li >Routing table entries <code class="cCode">A</code> and <code class="cCode">F</code> form a route connecting network <code class="cCode">2</code> with network&#160;<code class="cCode">3</code>.</li></div>
+
+<a name="wp1052214"> </a><div class="pSmartList1"><li >Routing table entries <code class="cCode">B</code> and <code class="cCode">G</code> form a route connecting network <code class="cCode">1</code> with network&#160;<code class="cCode">4</code>.</li></div>
+
+</ul></div>
+
+<a name="wp1059976"> </a><p class="pBody">
+Notice that once again, program <code class="cCode">L2</code> <em class="cEmphasis">cannot</em> receive messages from <code class="cCode">S1</code>.
+</p>
+<a name="wp1059978"> </a><h3 class="pHeading2">
+Bandwidth Contention
+</h3>
+<a name="wp1052261"> </a><p class="pBody">
+Bandwidth contention is the second reason to separate programs using disjoint routes.
+</p>
+<a name="wp1052276"> </a><p class="pBody">
+Consider two programs that are deployed on the same physical network&#151;a program <code class="cCode">S2</code> that sends messages at a moderate data rate, and a program <code class="cCode">S1</code> that sends messages at a relatively high data rate. However, messages from <code class="cCode">S2</code> are much more important to the enterprise as a whole than messages from <code class="cCode">S1</code>.
+</p>
+<a name="wp1052283"> </a><p class="pBody">
+When forwarding these messages across a WAN, routing daemons would ordinarily send them across the same TCP connection. The many unimportant messages from <code class="cCode">S1</code> could delay the more important messages from <code class="cCode">S2</code>.
+</p>
+<a name="wp1052348"> </a><p class="pBody">
+To solve this throughput problem, configure an independent route for each set of messages, as in <a  href="rv_adm38.htm#wp1059951">Figure&#160;12</a>. On the left side of <a  href="rv_adm38.htm#wp1059951">Figure&#160;12</a>, <code class="cCode">S1</code> and <code class="cCode">S2</code> use distinct UDP or PGM services within the same physical network, effectively separating their messages into two logical network spaces. Disjoint routes carry the two sets of messages:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1055483"> </a><div class="pSmartList1"><li >Important messages from <code class="cCode">S2</code> travel through routing entries <code class="cCode">A</code> and <code class="cCode">F</code>.</li></div>
+
+<a name="wp1055484"> </a><div class="pSmartList1"><li >Messages from <code class="cCode">S1</code> travel through routing entries <code class="cCode">B</code> and <code class="cCode">G</code>.</li></div>
+
+<a name="wp1055485"> </a><p class="pBodyRelative">
+The heavy volume on this route does not interfere with crucial message throughput on the <code class="cCode">S2</code> route, because a separate TCP connection carries each route.
+</p>
+</ul></div>
+
+<a name="wp1055318"> </a><h3 class="pHeading2">
+Defeating Independence
+</h3>
+<a name="wp1055319"> </a><p class="pBody">
+The routing table entries within an <code class="cCode">rvrd</code> process operate as independent pathways; that is, data does not flow directly between routing table entries within a routing daemon process instance.
+</p>
+<a name="wp1085462"> </a><p class="pBody">
+Nonetheless, data can flow indirectly by way of a mutual neighbor. In <a  href="rv_adm38.htm#wp1085468">Figure&#160;13</a>, notice that adding a neighbor link between <code class="cCode">M</code> and <code class="cCode">T</code> would merge the route connecting networks <code class="cCode">A</code>, <code class="cCode">B</code> and <code class="cCode">C</code>, with the otherwise disjoint route connecting <code class="cCode">X</code> and <code class="cCode">Y</code> (defeating their independence). Use caution when altering a network of routing daemons.
+</p>
+<a name="wp1085468"> </a><div class="pFigureTitle">
+Figure&#160;13   Mutual Neighbors Merge Routes</div><div align="center"><img src="images/rv_adma6.gif" height="466" width="531" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1085480"> </a><p class="pBody">
+
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

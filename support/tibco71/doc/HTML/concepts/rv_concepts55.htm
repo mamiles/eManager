@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Messages</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;6	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1066123"> </a><h2 class="pNewHTMLPage">
+Messages
+</h2>
+<hr />
+<a name="wp1066127"> </a><p class="pBody">
+A Rendezvous self-describing message is a composite containing zero or more fields. All messages have type <a  href="rv_concepts54.htm#wp1084133"><code class="cCode">TIBRVMSG_MSG</code></a> (including nested submessages).
+</p>
+<a name="wp1066131"> </a><p class="pBody">
+Each field in turn contains self-describing data. That is, each field consists of several parts&#151;name, identifier (optional), data, type, size and count (number of array elements). Fields can be of any type (see <a  href="rv_concepts54.htm#wp1084114">Table&#160;15</a>). Wire format permits arbitrarily deep nesting of submessages.
+</p>
+<a name="wp1066135"> </a><p class="pBody">
+Messages are flexible. Unlike C <code class="cCode">structs</code>, the actual fields present in a message need not be fixed at compile time.
+</p>
+<a name="wp1066211"> </a><p class="pBody">
+Consider this schematic illustration of the fields in a message.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1066139"> </a><div class="pCellHeading">
+Field Name
+</div>
+</th>
+    <th><a name="wp1066141"> </a><div class="pCellHeading">
+Id
+</div>
+</th>
+    <th><a name="wp1066143"> </a><div class="pCellHeading">
+Type
+</div>
+</th>
+    <th><a name="wp1066145"> </a><div class="pCellHeading">
+Size
+</div>
+</th>
+    <th><a name="wp1066147"> </a><div class="pCellHeading">
+Count
+</div>
+</th>
+    <th><a name="wp1066149"> </a><div class="pCellHeading">
+Data
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1066151"> </a><div class="pCellBody">
+<code class="cCode">Name</code>
+</div>
+</td>
+    <td><a name="wp1066153"> </a><div class="pCellBody">
+<code class="cCode">1</code>
+</div>
+</td>
+    <td><a name="wp1066155"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_STRING</code>
+</div>
+</td>
+    <td><a name="wp1066157"> </a><div class="pCellBody">
+<code class="cCode">11</code>
+</div>
+</td>
+    <td><a name="wp1066159"> </a><div class="pCellBody">
+<code class="cCode">1</code>
+</div>
+</td>
+    <td><a name="wp1066161"> </a><div class="pCellBody">
+<code class="cCode">Jane Smith</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1066163"> </a><div class="pCellBody">
+<code class="cCode">Address</code>
+</div>
+</td>
+    <td><a name="wp1066165"> </a><div class="pCellBody">
+<code class="cCode">2</code>
+</div>
+</td>
+    <td><a name="wp1066167"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_STRING</code>
+</div>
+</td>
+    <td><a name="wp1066169"> </a><div class="pCellBody">
+<code class="cCode">30</code>
+</div>
+</td>
+    <td><a name="wp1066171"> </a><div class="pCellBody">
+<code class="cCode">1</code>
+</div>
+</td>
+    <td><a name="wp1066173"> </a><div class="pCellBody">
+<code class="cCode">1234 Home Street</code>
+</div>
+<a name="wp1066174"> </a><div class="pCellBody">
+<code class="cCode">Anytown, USA</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1066176"> </a><div class="pCellBody">
+<code class="cCode">Phone</code>
+</div>
+</td>
+    <td><a name="wp1066178"> </a><div class="pCellBody">
+<code class="cCode">3</code>
+</div>
+</td>
+    <td><a name="wp1066180"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_STRING</code>
+</div>
+</td>
+    <td><a name="wp1066182"> </a><div class="pCellBody">
+<code class="cCode">13</code>
+</div>
+</td>
+    <td><a name="wp1066184"> </a><div class="pCellBody">
+<code class="cCode">1</code>
+</div>
+</td>
+    <td><a name="wp1066186"> </a><div class="pCellBody">
+<code class="cCode">415-123-4567</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1066188"> </a><div class="pCellBody">
+<code class="cCode">Age</code>
+</div>
+</td>
+    <td><a name="wp1066190"> </a><div class="pCellBody">
+<code class="cCode">4</code>
+</div>
+</td>
+    <td><a name="wp1066192"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_U8</code>
+</div>
+</td>
+    <td><a name="wp1066194"> </a><div class="pCellBody">
+<code class="cCode">1</code>
+</div>
+</td>
+    <td><a name="wp1066196"> </a><div class="pCellBody">
+<code class="cCode">1</code>
+</div>
+</td>
+    <td><a name="wp1066198"> </a><div class="pCellBody">
+<code class="cCode">46</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1066200"> </a><div class="pCellBody">
+<code class="cCode">Scores</code>
+</div>
+</td>
+    <td><a name="wp1066202"> </a><div class="pCellBody">
+<code class="cCode">5</code>
+</div>
+</td>
+    <td><a name="wp1066204"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_U8ARRAY</code>
+</div>
+</td>
+    <td><a name="wp1066206"> </a><div class="pCellBody">
+<code class="cCode">1</code>
+</div>
+</td>
+    <td><a name="wp1066208"> </a><div class="pCellBody">
+<code class="cCode">5</code>
+</div>
+</td>
+    <td><a name="wp1066210"> </a><div class="pCellBody">
+<code class="cCode">91, 99, 97, 99, 92</code>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1084345"> </a><p class="pBody">
+Sending programs build self-describing messages by creating an empty message, and then adding fields&#151;one by one. You can add fields in any order.
+</p>
+<a name="wp1066213"> </a><p class="pBody">
+Receiving programs can access individual fields by name or by identifier, or iterate through all the fields in a single-pass loop.
+</p>
+<a name="wp1066215"> </a><h3 class="pHeading2">
+Message Structure
+</h3>
+<a name="wp1066219"> </a><p class="pBody">
+Rendezvous 5 and earlier releases supported two kinds of messages&#151;unitary and composite. Rendezvous 6 and later releases support only composite messages.
+</p>
+<a name="wp1066223"> </a><p class="pBody">
+That is, all messages contain data within fields. It is no longer possible to send a message consisting of a pure numeric value; instead use a message with a single field that contains a numeric value.
+</p>
+<a name="wp1066227"> </a><p class="pBody">
+When a legacy program sends a unitary message to a new program, Rendezvous 6 automatically converts it to a (composite) message, with the unitary value stored in a field named <code class="cCode">_data_</code>.
+</p>
+<a name="wp1066230"> </a><p class="pBody">
+The field name <code class="cCode">_data_</code> is reserved. More generally, all fields that begin with the underscore character are reserved.
+</p>
+<a name="wp1066232"> </a><h3 class="pHeading2">
+Message Representation in Programs
+</h3>
+<a name="wp1066236"> </a><p class="pBody">
+Rendezvous software uses a proprietary wire format for transmitting data across networks, but programs must represent and manipulate data at either end of the transmission. Programming languages offer different approaches to internal data representation and manipulation. Within programs, Rendezvous software represents data in a way that makes sense for each supported language.
+</p>
+<a name="wp1066240"> </a><h3 class="pHeading2">
+Messages are not Thread-Safe
+</h3>
+<a name="wp1101434"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1245740"> </a><p class="pBody">
+Messages are not thread-safe objects; a program that accesses the same message simultaneously in separate threads must protect the message with an explicit locking mechanism. We expect this situation to occur only rarely.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

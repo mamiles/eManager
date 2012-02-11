@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvCmTransport.addListener()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;9	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1084281"> </a><h2 class="pNewHTMLPage">
+TibrvCmTransport.addListener()
+</h2>
+<hr />
+<a name="wp1084282"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1084283"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+void <code class="cCodeBold">addListener</code>(<a name="wp1089139"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;&#160;&#160;cmName,<a name="wp1089184"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;&#160;&#160;subject)<a name="wp1089140"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1084284"> </a>
+</pre></div>
+<a name="wp1084288"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1084290"> </a><p class="pBody">
+Pre-register an anticipated listener.
+</p>
+<a name="wp1084291"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1084292"> </a><p class="pBody">
+Some sending programs can anticipate requests for certified delivery&#151;even before the listening programs actually register. In such situations, the sending transport can pre-register listeners, so Rendezvous software begins storing outbound messages in the sender&#8217;s ledger; when the listener requests certified delivery, it receives the backlogged messages.
+</p>
+<a name="wp1084296"> </a><p class="pBody">
+If the correspondent with this <code class="cCode">cmName</code> already receives certified delivery of this <code class="cCode">subject</code> from this sender transport, then <a  href="rv_java_ref193.htm#wp1084281"><code class="cCode">TibrvCmTransport.addListener()</code></a> has no effect.
+</p>
+<a name="wp1084303"> </a><p class="pBody">
+If the correspondent with this <code class="cCode">cmName</code> is disallowed, <a  href="rv_java_ref193.htm#wp1084281"><code class="cCode">TibrvCmTransport.addListener()</code></a> returns an exception with status code <a  href="rv_java_ref234.htm#wp1238170"><code class="cCode">TibrvStatus.NOT_PERMITTED</code></a>. You can call <a  href="rv_java_ref194.htm#wp1084365"><code class="cCode">TibrvCmTransport.allowListener()</code></a> to supersede the effect of a prior call to <a  href="rv_java_ref197.htm#wp1084693"><code class="cCode">TibrvCmTransport.disallowListener()</code></a>; then call <a  href="rv_java_ref193.htm#wp1084281"><code class="cCode">TibrvCmTransport.addListener()</code></a> again.
+</p>
+<a name="wp1084313"> </a><p class="pBody">
+It is not sufficient for a sender to use this method to anticipate listeners; the anticipated listening programs must also require old messages when creating certified delivery transports.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1084316"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1084321"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1084327"> </a><div class="pCellBody">
+<code class="cCode">cmName</code>
+</div>
+</td>
+    <td><a name="wp1084329"> </a><div class="pCellBody">
+Anticipate a listener from a correspondent with this reusable name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1084331"> </a><div class="pCellBody">
+<code class="cCode">subject</code>
+</div>
+</td>
+    <td><a name="wp1084333"> </a><div class="pCellBody">
+Anticipate a listener for this subject. Wildcard subjects are illegal.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1084335"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1084339"> </a><p class="pBody">
+<a  href="rv_java_ref192.htm#wp1097881">Name</a>
+</p>
+<a name="wp1084343"> </a><p class="pBody">
+<a  href="rv_java_ref194.htm#wp1084365"><code class="cCode">TibrvCmTransport.allowListener()</code> </a>
+</p>
+<a name="wp1084347"> </a><p class="pBody">
+<a  href="rv_java_ref197.htm#wp1084693"><code class="cCode">TibrvCmTransport.disallowListener()</code> </a>
+</p>
+<a name="wp1084355"> </a><p class="pBody">
+<a  href="rv_java_ref206.htm#wp1085087"><code class="cCode">TibrvCmTransport.removeListener()</code> </a>
+</p>
+<a name="wp1084362"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts110.htm#wp1056268');" onMouseOver="WWHShowPopup('a', 'rv_concepts110.htm#wp1056268', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Anticipating a Listener</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

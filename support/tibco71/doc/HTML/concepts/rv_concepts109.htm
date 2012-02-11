@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Persistent Correspondents</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1056251"> </a><h2 class="pNewHTMLPage">
+Persistent Correspondents
+</h2>
+<hr />
+<a name="wp1056255"> </a><p class="pBody">
+We introduced the concept of persistent correspondents in the section <a  href="rv_concepts104.htm#wp1055992">CM Correspondent Name</a>. A reusable name and a file-based ledger allow a persistent correspondent to continue certified delivery beyond the invalidation of a CM transport or the restart of a process. 
+</p>
+<a name="wp1056257"> </a><h3 class="pHeading2">
+Example
+</h3>
+<a name="wp1056258"> </a><p class="pBody">
+Consider an example application system, in which program <code class="cCode">JOE</code> generates important information, and sends it to program <code class="cCode">SUE</code> in certified messages on the subject <code class="cCode">REMEMBER.THIS</code>. Upon receipt, <code class="cCode">SUE</code> stores the information in a database.
+</p>
+<a name="wp1056259"> </a><p class="pBody">
+If either <code class="cCode">JOE</code> or <code class="cCode">SUE</code> terminate unexpectedly, it is crucial that certified messages still arrive for entry into the database. To ensure this result, both programs must represent persistent correspondents&#151;that is, both programs create CM transports with reusable names (<code class="cCode">JOE_PER</code> and <code class="cCode">SUE_PER</code>), and each of these CM transports keeps a file-based ledger. In addition, <code class="cCode">SUE</code> requires old messages by setting a parameter when creating the CM transport <code class="cCode">SUE_PER</code>.
+</p>
+<a name="wp1056260"> </a><p class="pBody">
+During operation, <code class="cCode">JOE</code> has sent message number <code class="cCode">57</code> on the subject <code class="cCode">REMEMBER.THIS</code>, but has not yet received delivery confirmation for messages <code class="cCode">53&#8211;56</code>. <code class="cCode">SUE</code> is processing message <code class="cCode">53</code>, when a sudden hardware failure causes <code class="cCode">SUE</code> to terminate. Meanwhile, <code class="cCode">JOE</code> continues to send messages <code class="cCode">58&#8211;77</code>.
+</p>
+<a name="wp1056261"> </a><p class="pBody">
+When the computer restarts, <code class="cCode">SUE</code> restarts and recreates <code class="cCode">SUE_PER</code>. The ledger file for <code class="cCode">SUE_PER</code> indicates that message <code class="cCode">52</code> was received and confirmed for the subject <code class="cCode">REMEMBER.THIS</code>. As soon as <code class="cCode">SUE_PER</code> discovers that <code class="cCode">JOE_PER</code> sends labeled messages on the required subject, <code class="cCode">SUE_PER</code> requests a certified delivery agreement for the subject <code class="cCode">REMEMBER.THIS</code>. When <code class="cCode">JOE_PER</code> accepts, <code class="cCode">JOE_PER</code> retransmits the stored messages <code class="cCode">53&#8211;77</code> on that subject.
+</p>
+<a name="wp1056262"> </a><p class="pBody">
+Notice these details:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1056263"> </a><div class="pSmartList1"><li ><code class="cCode">SUE</code> does not miss any <code class="cCode">REMEMBER.THIS</code> messages. However, the new <code class="cCode">SUE_PER</code> must gracefully fix any difficulties caused by partial processing of message <code class="cCode">53</code> by the old <code class="cCode">SUE_PER</code>.</li></div>
+
+<a name="wp1056264"> </a><div class="pSmartList1"><li ><code class="cCode">JOE</code> and <code class="cCode">SUE</code> communicate using a public subject name&#151;not an inbox. Inbox names are unique, so they cannot continue beyond transport invalidation.</li></div>
+
+<a name="wp1056265"> </a><div class="pSmartList1"><li ><code class="cCode">SUE</code> explicitly requires old messages by setting a parameter when creating the persistent correspondent named <code class="cCode">SUE_PER</code>; this parameter ensures that <code class="cCode">JOE_PER</code> retransmits certified messages that the previous instance of <code class="cCode">SUE_PER</code> had not confirmed. If the value of the <code class="cCode">requireOldMsgs</code> argument were false, <code class="cCode">JOE_PER</code> would delete stored outbound messages for <code class="cCode">SUE_PER</code> from its ledger, instead of retransmitting them.</li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

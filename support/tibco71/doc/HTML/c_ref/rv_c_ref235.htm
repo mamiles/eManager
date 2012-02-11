@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvMsg_SetHandlers()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Appendix&#160;A	 Custom Datatypes";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1150065"> </a><h2 class="pNewHTMLPage">
+tibrvMsg_SetHandlers()
+</h2>
+<hr />
+<a name="wp1149486"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1149487"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvMsg_SetHandlers</code>(<a name="wp1149488"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128791"><code class="cCode">tibrv_u8</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;type,<a name="wp1151514"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref241.htm#wp1148962"><code class="cCode">tibrvMsgData_Encoder</code></a>&#160;&#160;&#160;&#160;&#160;encoder, <a name="wp1151515"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref240.htm#wp1150007"><code class="cCode">tibrvMsgData_Decoder</code></a>&#160;&#160;&#160;&#160;&#160;decoder,<a name="wp1151516"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref238.htm#wp1148872"><code class="cCode">tibrvMsgData_Converter</code></a>&#160;&#160;&#160;converter);<a name="wp1149492"> </a>
+</pre></div>
+<a name="wp1149493"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1149495"> </a><p class="pBody">
+Define a program-specific datatype, by registering functions to transfer it between local format and wire format, and convert it to other datatypes.
+</p>
+<a name="wp1149496"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1149665"> </a><p class="pBody">
+Programs that define custom data handler functions must register them before any message operations involving the custom datatype.
+</p>
+<a name="wp1149498"> </a><p class="pBody">
+The program&#8217;s data handler functions must properly address byte order and <em class="cEmphasis">endian</em> issues.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1149505"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1149507"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1149509"> </a><div class="pCellBody">
+<code class="cCode">type</code>
+</div>
+</td>
+    <td><a name="wp1149511"> </a><div class="pCellBody">
+Use this number as a unique identifier for the new datatype.
+</div>
+<a name="wp1149512"> </a><div class="pCellBody">
+The type identifier must be in the range [<a  href="rv_c_ref223.htm#wp1193547"><code class="cCode">TIBRVMSG_USER_FIRST</code></a><code class="cCode">, </code><a  href="rv_c_ref223.htm#wp1193557"><code class="cCode">TIBRVMSG_USER_LAST</code></a>]; all other identifiers are reserved.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1149514"> </a><div class="pCellBody">
+<code class="cCode">encoder</code>
+</div>
+</td>
+    <td><a name="wp1149516"> </a><div class="pCellBody">
+This function translates a local format instance of the datatype into wire format. See <a  href="rv_c_ref241.htm#wp1148962"><code class="cCode">tibrvMsgData_Encoder</code> </a>.
+</div>
+<a name="wp1149716"> </a><div class="pCellBody">
+<code class="cCode">NULL</code> indicates that the program cannot add or update fields of this datatype.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1149520"> </a><div class="pCellBody">
+<code class="cCode">decoder</code>
+</div>
+</td>
+    <td><a name="wp1149522"> </a><div class="pCellBody">
+This function translates wire format to a local format instance of the datatype. See <a  href="rv_c_ref240.htm#wp1150007"><code class="cCode">tibrvMsgData_Decoder</code> </a>.
+</div>
+<a name="wp1149720"> </a><div class="pCellBody">
+<code class="cCode">NULL</code> indicates that the program cannot get fields of this datatype.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1149525"> </a><div class="pCellBody">
+<code class="cCode">converter</code>
+</div>
+</td>
+    <td><a name="wp1149527"> </a><div class="pCellBody">
+This function translates a field of this datatype to other datatypes. See <a  href="rv_c_ref238.htm#wp1148872"><code class="cCode">tibrvMsgData_Converter</code> </a>.
+</div>
+<a name="wp1149725"> </a><div class="pCellBody">
+<code class="cCode">NULL</code> indicates that the program cannot force conversion to another datatype during get and update calls.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1149530"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1152410"> </a><p class="pBody">
+<a  href="rv_c_ref238.htm#wp1148872"><code class="cCode">tibrvMsgData_Converter</code> </a>
+</p>
+<a name="wp1152414"> </a><p class="pBody">
+<a  href="rv_c_ref240.htm#wp1150007"><code class="cCode">tibrvMsgData_Decoder</code> </a>
+</p>
+<a name="wp1152418"> </a><p class="pBody">
+<a  href="rv_c_ref241.htm#wp1148962"><code class="cCode">tibrvMsgData_Encoder</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

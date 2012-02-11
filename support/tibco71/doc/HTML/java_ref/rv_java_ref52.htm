@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvMsg.toString()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1024541"> </a><h2 class="pNewHTMLPage">
+TibrvMsg.toString()
+</h2>
+<hr />
+<a name="wp1024542"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1024544"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+java.lang.String <code class="cCodeBold">toString</code>()<a name="wp1024545"> </a>
+</pre></div>
+<a name="wp1024546"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1024622"> </a><p class="pBody">
+Format a message as a string.
+</p>
+<a name="wp1024548"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1126472"> </a><p class="pBody">
+Programs can use this method to obtain a string representation of the message for printing.
+</p>
+<a name="wp1126473"> </a><p class="pBody">
+For most datatypes, this method formats the full value of the field to the output string; these types are exceptions:</p><div align="left">
+<table border="0">
+  <caption></caption>
+  <tr align="left" valign="top">    <td><a name="wp1126476"> </a><div class="pCellBody">
+<a  href="rv_java_ref31.htm#wp1124101"><code class="cCode">TibrvMsg.OPAQUE</code></a>
+</div>
+</td>
+    <td><a name="wp1126478"> </a><div class="pCellBody">
+This method abbreviates the value of an opaque field; for example, <code class="cCode">[472 opaque bytes]</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1126483"> </a><div class="pCellBody">
+<a  href="rv_java_ref31.htm#wp1124167"><code class="cCode">TibrvMsg.XML</code></a>
+</div>
+</td>
+    <td><a name="wp1126485"> </a><div class="pCellBody">
+This method abbreviates the value of an XML field; for example, <code class="cCode">[XML document: 472 bytes]</code>.
+</div>
+<a name="wp1126486"> </a><div class="pCellBody">
+The size measures <em class="cEmphasis">un</em>compressed data.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1126502"> </a><p class="pBody">
+This method formats <a  href="rv_java_ref31.htm#wp1124136"><code class="cCode">TibrvMsg.IPADDR32</code></a> fields as four dot-separated decimal integers.
+</p>
+<a name="wp1126506"> </a><p class="pBody">
+This method formats <a  href="rv_java_ref31.htm#wp1124133"><code class="cCode">TibrvMsg.IPPORT16</code></a> fields as one decimal integer.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

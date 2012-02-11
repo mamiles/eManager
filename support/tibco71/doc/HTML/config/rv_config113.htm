@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>SecurityProxy.useCredentials()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;5	 Security";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1955532"> </a><h2 class="pNewHTMLPage">
+SecurityProxy.useCredentials()
+</h2>
+<hr />
+<a name="wp1955533"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1955534"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+void <code class="cCodeBold">useCredentials</code>(<a name="wp1955535"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;name,<a name="wp1955536"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;password)<a name="wp1955537"> </a>
+&#160;&#160;throws <a  href="rv_config267.htm#wp1963961"><code class="cCode">ConfigurationException</code></a><a name="wp1955541"> </a>
+</pre></div>
+<a name="wp1955542"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1955544"> </a><p class="pBody">
+Record administrator identification for the configuration program.
+</p>
+<a name="wp1955545"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1955546"> </a><p class="pBody">
+This method records administrator identification credentials within your Java program. When the daemon component requests identification, the program automatically transmits these credentials to the daemon.
+</p>
+<a name="wp1955547"> </a><p class="pBody">
+Of course, these credentials must match the credentials stored at the daemon, otherwise the daemon rejects them and closes the connection.
+</p>
+<a name="wp1955561"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1955550"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1955552"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1955554"> </a><div class="pCellBody">
+<code class="cCode">name</code>
+</div>
+</td>
+    <td><a name="wp1955556"> </a><div class="pCellBody">
+Set the program to offer this administrator name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1955558"> </a><div class="pCellBody">
+<code class="cCode">password</code>
+</div>
+</td>
+    <td><a name="wp1955560"> </a><div class="pCellBody">
+Set the program to offer this administrator password.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1955562"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1955566"> </a><p class="pBody">
+<a  href="rv_config107.htm#wp1955023"><code class="cCode">SecurityProxy</code> </a>
+</p>
+<a name="wp1955570"> </a><p class="pBody">
+<a  href="rv_config108.htm#wp1955253"><code class="cCode">SecurityProxy.getAdministratorName()</code> </a>
+</p>
+<a name="wp1955574"> </a><p class="pBody">
+<a  href="rv_config112.htm#wp1955476"><code class="cCode">SecurityProxy.setCredentials()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

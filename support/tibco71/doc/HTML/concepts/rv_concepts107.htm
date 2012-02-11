@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Delivering a Certified Message</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1105170"> </a><h2 class="pNewHTMLPage">
+Delivering a Certified Message
+</h2>
+<hr />
+<a name="wp1056162"> </a><p class="pBody">
+Once a delivery agreement is in place, all subsequent messages on the subject (from the certified sender to the certified listener) are <em class="cEmphasis">certified messages</em>. Each certified message generates a series of protocol actions:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1056163"> </a><div class="pSmartList1"><li >When a certified listening transport queues a certified message for the listener&#8217;s callback function, it includes the sender&#8217;s correspondent name and the message sequence number.</li></div>
+
+<a name="wp1056164"> </a><div class="pSmartList1"><li >When the callback function returns, the certified listening transport automatically confirms delivery to the sender. (Programs can override this behavior and confirm delivery explicitly.)</li></div>
+
+<a name="wp1056165"> </a><div class="pSmartList1"><li >When confirmation reaches the certified sender, the sending transport records delivery in its ledger, and presents a <a  href="rv_concepts174.htm#wp1039086"><code class="cCode">DELIVERY.CONFIRM</code></a> advisory.</li></div>
+
+<a name="wp1056169"> </a><div class="pSmartList1"><li >When confirmation has arrived from every certified listener for this message, the sending transport deletes the message from its ledger, and presents a <a  href="rv_concepts175.htm#wp1039134"><code class="cCode">DELIVERY.COMPLETE</code></a> advisory (to the transport it employs for network communication).</li></div>
+
+</ul></div>
+
+<a name="wp1056174"> </a><h3 class="pHeading2">
+Automatic Confirmation of Delivery
+</h3>
+<a name="wp1056175"> </a><p class="pBody">
+The default behavior of certified listener transports is to automatically confirm message delivery upon return from the callback function. Programs can selectively override this behavior for specific CM listener event objects (without affecting other listener event objects).
+</p>
+<a name="wp1056176"> </a><p class="pBody">
+By overriding automatic confirmation, the listening program assumes responsibility for explicitly confirming each inbound certified message.
+</p>
+<a name="wp1056177"> </a><p class="pBody">
+Consider overriding automatic confirmation when processing inbound messages involves activity that is asynchronous with respect to the message callback function, such as computations in other threads or additional network communications.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1056183"> </a><div class="pTableTitle">
+Table&#160;30   Confirmation of Delivery Calls (Sheet 1 of 2)
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1056187"> </a><div class="pCellBody">
+C
+</div>
+</td>
+    <td><a name="wp1056192"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref183.htm#wp1092742');" onMouseOver="WWHShowPopup('e', 'rv_c_ref183.htm#wp1092742', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvcmEvent_SetExplicitConfirm()</code></a>
+</div>
+<a name="wp1056196"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref177.htm#wp1091973');" onMouseOver="WWHShowPopup('e', 'rv_c_ref177.htm#wp1091973', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvcmEvent_ConfirmMsg()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056198"> </a><div class="pCellBody">
+C++
+</div>
+</td>
+    <td><a name="wp1072223"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref219.htm#wp1222836');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref219.htm#wp1222836', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmListener::confirmMsg()</code></a>
+</div>
+<a name="wp1056207"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref225.htm#wp1084196');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref225.htm#wp1084196', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmListener::setExplicitConfirm()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056210"> </a><div class="pCellBody">
+Java
+</div>
+</td>
+    <td><a name="wp1056215"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref188.htm#wp1083852');" onMouseOver="WWHShowPopup('g', 'rv_java_ref188.htm#wp1083852', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmListener.confirmMsg()</code></a>
+</div>
+<a name="wp1064682"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref190.htm#wp1084196');" onMouseOver="WWHShowPopup('g', 'rv_java_ref190.htm#wp1084196', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmListener.setExplicitConfirm()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056221"> </a><div class="pCellBody">
+COM
+</div>
+</td>
+    <td><a name="wp1056230"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref169.htm#wp1145105');" onMouseOver="WWHShowPopup('h', 'rv_com_ref169.htm#wp1145105', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmListener.confirmMsg</code></a>
+</div>
+<a name="wp1073240"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref178.htm#wp1131485');" onMouseOver="WWHShowPopup('h', 'rv_com_ref178.htm#wp1131485', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmListener.setExplicitConfirm</code></a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1056232"> </a><h3 class="pHeading2">
+Requesting Confirmation
+</h3>
+<a name="wp1056233"> </a><p class="pBody">
+If a certified sender transport does not receive prompt confirmation of delivery from a certified listener transport (for example, because of network glitches), it automatically requests confirmation. After each request, it presents a <a  href="rv_concepts176.htm#wp1039175"><code class="cCode">DELIVERY.NO_RESPONSE</code></a> advisory.
+</p>
+<a name="wp1056237"> </a><p class="pBody">
+When a certified listening transport receives a request for confirmation, it checks its ledger, and reconfirms receipt of the messages that it has already confirmed. (This behavior is identical, whether the program uses automatic confirmation, or overrides it.)
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

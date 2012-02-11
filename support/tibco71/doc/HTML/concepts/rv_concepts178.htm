@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>DELIVERY.UNAVAILABLE</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Appendix&#160;B	 Certified Message Delivery (RVCM) Advisory Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1039269"> </a><h2 class="pNewHTMLPage">
+DELIVERY.UNAVAILABLE
+</h2>
+<hr />
+<a name="wp1047206"> </a><p class="pSyntaxType">
+Advisory
+</p>
+<a name="wp1048941"> </a><h4 class="pHeading3">
+Subject Name Syntax
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+_RV.ERROR.RVCM.DELIVERY.UNAVAILABLE.<code class="cCodeItalic">&lt;subject&gt;</code><a name="wp1039271"> </a>
+</pre></div>
+<a name="wp1059602"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1039273"> </a><p class="pBody">
+A listener presents this advisory when one or more messages are no longer available for retransmission.
+</p>
+<a name="wp1059748"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1039275"> </a><p class="pBody">
+Consider this example situation. Message number <code class="cCode">49</code> arrives at the listener out of sequence&#151;it has not yet received messages number <code class="cCode">46</code>, <code class="cCode">47</code> and <code class="cCode">48</code>. Rendezvous software automatically requests that the sender retransmit messages <code class="cCode">46</code>&#8211;<code class="cCode">48</code>. However, the time-out has expired for those messages, and they are no longer available in the sender&#8217;s ledger. The listening transport first presents a <code class="cCode">DELIVERY.UNAVAILABLE</code> advisory, indicating that messages <code class="cCode">46&#8211;48</code> are lost; then it queues message <code class="cCode">49</code>.
+</p>
+<a name="wp1039282"> </a><p class="pBody">
+In this example a range of messages are unavailable. The advisory indicates this range by noting the sequence numbers of the first unavailable message (<code class="cCode">seqno_begin</code> is <code class="cCode">46</code>) and the last unavailable message (<code class="cCode">seqno_end</code> is <code class="cCode">48</code>). In a situation where only one message is unavailable, the fields <code class="cCode">seqno_begin</code> and <code class="cCode">seqno_end</code> both contain the same value.
+</p>
+<a name="wp1039283"> </a><p class="pBody">
+The <code class="cCodeItalic">&lt;subject&gt;</code> element is the subject name of the unavailable certified messages. The subject often consists of several elements, so the wildcard character <code class="cCode">&quot;&gt;&quot;</code> (rather than <code class="cCode">&quot;*&quot;</code>) is the correct way to match all subjects in this position.
+</p>
+<a name="wp1097307"> </a><h4 class="pHeading3">
+Message Fields
+</h4>
+<a name="wp1097349"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1097310"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1097314"> </a><div class="pCellHeading">
+Field Name
+</div>
+</th>
+    <th><a name="wp1097316"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1097318"> </a><div class="pCellBody">
+<code class="cCode">subject</code>
+</div>
+</td>
+    <td><a name="wp1097320"> </a><div class="pCellBody">
+The subject name of the unavailable certified messages. It is identical to the <code class="cCodeItalic">&lt;subject&gt;</code> element.
+</div>
+<a name="wp1097324"> </a><div class="pCellBody">
+This field has datatype <a  href="rv_concepts54.htm#wp1084160"><code class="cCode">TIBRVMSG_STRING</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1097326"> </a><div class="pCellBody">
+<code class="cCode">seqno_begin</code>
+</div>
+</td>
+    <td><a name="wp1097328"> </a><div class="pCellBody">
+The sequence number of the first unavailable message in the range.
+</div>
+<a name="wp1097332"> </a><div class="pCellBody">
+This field has datatype <a  href="rv_concepts54.htm#wp1084235"><code class="cCode">TIBRVMSG_U64</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1097334"> </a><div class="pCellBody">
+<code class="cCode">seqno_end</code>
+</div>
+</td>
+    <td><a name="wp1097336"> </a><div class="pCellBody">
+The sequence number of the last unavailable message in the range.
+</div>
+<a name="wp1097340"> </a><div class="pCellBody">
+This field has datatype <a  href="rv_concepts54.htm#wp1084235"><code class="cCode">TIBRVMSG_U64</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1097342"> </a><div class="pCellBody">
+<code class="cCode">sender</code>
+</div>
+</td>
+    <td><a name="wp1097344"> </a><div class="pCellBody">
+The name of the sender that cannot retransmit the message.
+</div>
+<a name="wp1097348"> </a><div class="pCellBody">
+This field has datatype <a  href="rv_concepts54.htm#wp1084160"><code class="cCode">TIBRVMSG_STRING</code></a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1097350"> </a><h4 class="pHeading3">
+Diagnosis
+</h4>
+<a name="wp1039314"> </a><p class="pBody">
+This advisory indicates an error, and reports unexpected and usually undesirable behavior.
+</p>
+<a name="wp1039315"> </a><p class="pBody">
+<code class="cCode">DELIVERY.UNAVAILABLE</code> advisories can indicate either of these difficulties:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1039316"> </a><div class="pSmartList1"><li >The physical network is unreliable.</li></div>
+
+<a name="wp1039317"> </a><div class="pSmartList1"><li >The sending program is using a time-out value that is too low.</li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

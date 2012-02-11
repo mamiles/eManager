@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Neighbors</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1035365"> </a><h2 class="pNewHTMLPage">
+Neighbors
+</h2>
+<hr />
+<a name="wp1044652"> </a><p class="pBody">
+Neighbor links connect routing daemons. A routing daemon declares its <em class="cEmphasis">potential</em> neighbors in its routing table entry. Two routing daemons become <em class="cEmphasis">actual</em> neighbors when they establish a TCP connection.
+</p>
+<a name="wp1242897"> </a><p class="pBody">
+To declare potential neighbors, see <a  href="rv_adm55.htm#wp1209711">Neighbor Interfaces</a>. To examine actual neighbors, see <a  href="rv_adm50.htm#wp1192016">Connected Neighbors</a>.
+</p>
+<a name="wp1061882"> </a><h3 class="pHeading2">
+Neighbor Pairs
+</h3>
+<a name="wp1061883"> </a><p class="pBody">
+Neighbors operate in pairs&#151;one router at each end of a neighbor connection. Administrators can specify the pairs in four ways; see <a  href="rv_adm36.htm#wp1066666">Adding Neighbor Interfaces</a>.
+</p>
+<a name="wp1044394"> </a><h3 class="pHeading2">
+Local Connect Port
+</h3>
+<a name="wp1044395"> </a><p class="pBody">
+In each neighbor declaration, a routing daemon designates a TCP port number where the routing daemon accepts connection requests from that neighbor.
+</p>
+<a name="wp1044697"> </a><p class="pBody">
+When a routing daemon declares several neighbors, it can designate a unique local connect port for each neighbor, or some of its neighbors can share a local connect port.
+</p>
+<a name="wp1044396"> </a><p class="pBody">
+However, when a routing daemon process operates several routing table entries, the routing entries may <em class="cEmphasis">not</em> share any local connect ports.
+</p>
+<a name="wp1229423"> </a><h3 class="pHeading2">
+Remote Connection Information
+</h3>
+<a name="wp1229424"> </a><p class="pBody">
+These parameters specify the connection to a neighbor.
+</p>
+<a name="wp1229590"> </a><h4 class="pHeading3">
+Remote Router Name
+</h4>
+<a name="wp1229591"> </a><p class="pBody">
+In most situations, a routing daemon identifies a neighbor using its unique router name (see <a  href="rv_adm33.htm#wp1047911">Router Name</a>).
+</p>
+<a name="wp1229598"> </a><p class="pBody">
+(For a counterexample, see <a  href="rv_adm36.htm#wp1066854">Seek Neighbor with Any Name</a>.)
+</p>
+<a name="wp1229427"> </a><h4 class="pHeading3">
+Remote Host
+</h4>
+<a name="wp1229428"> </a><p class="pBody">
+Specify the location of a neighbor either as a resolvable hostname, or as the IP address of the computer in a remote network where the neighboring daemon is running.
+</p>
+<a name="wp1229430"> </a><h4 class="pHeading3">
+Remote Connect Port
+</h4>
+<a name="wp1229431"> </a><p class="pBody">
+The remote port is the TCP port number where the remote neighbor listens for a connection request from this routing daemon.
+</p>
+<a name="wp1229432"> </a><p class="pBody">
+This parameter must match the local connect port of a routing table entry within the <code class="cCode">rvrd</code> process on the neighboring host computer.
+</p>
+<a name="wp1242933"> </a><h4 class="pHeading3">
+Remote Public Certificate
+</h4>
+<a name="wp1242936"> </a><p class="pBody">
+When neighbors communicate using SSL, you must enter the public certificate of the authorized neighbor. For background information, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts41.htm#wp1203018');" onMouseOver="WWHShowPopup('a', 'rv_concepts41.htm#wp1203018', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Certificates and Security</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+<a name="wp1066697"> </a><h3 class="pHeading2">
+Network Administration
+</h3>
+<a name="wp1066698"> </a><p class="pBody">
+Neighboring routing daemon processes must be able to establish a TCP connection. The network administrator (at each site) must configure the hardware (or software) routers and firewalls to permit this TCP connection between the two routing daemon host computers.
+</p>
+<a name="wp1306782"> </a><h3 class="pHeading2">
+Data Compression
+</h3>
+<a name="wp1306784"> </a><p class="pBody">
+Routing daemons can compress data to reduce the network volume that travels between neighbors.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1306797"> </a><div class="pSmartList1"><li >Compression is most useful when you pay for WAN transmission by volume.</li></div>
+
+<a name="wp1306799"> </a><div class="pSmartList1"><li >Compression reduces volume at the cost of speed. Compression and decompression slows <code class="cCode">rvrd</code> processing at both ends of a neighbor link.</li></div>
+
+<a name="wp1306804"> </a><div class="pSmartList1"><li >It is illegal to combine data compression with SSL encryption on the same neighbor link.</li></div>
+
+</ul></div>
+
+<a name="wp1306831"> </a><p class="pBody">
+To enable data compression, check the appropriate box on the neighbor interface forms of <em class="cEmphasis">both</em> neighbors; see <a  href="rv_adm55.htm#wp1219594">Add New Neighbor Interface</a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

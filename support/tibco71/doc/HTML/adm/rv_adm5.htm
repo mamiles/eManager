@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Add Service Entries</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;1	 Do This First&#151;Administrator&#8217;s Checklist";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1018793"> </a><h2 class="pNewHTMLPage">
+Add Service Entries
+</h2>
+<hr />
+<a name="wp1018798"> </a><p class="pBody">
+Rendezvous transports use the service <code class="cCode">rendezvous</code> as a default (when programmers do not explicitly specify a service). If <code class="cCode">rendezvous</code> is not defined as a service, the secondary default is UDP port 7500, or PGM port 7550.
+</p>
+<a name="wp1018799"> </a><p class="pBody">
+We recommend that you define <code class="cCode">rendezvous</code> as a service name in your network database. If port 7500 is already in use on your network, you <em class="cEmphasis">must</em> define <code class="cCode">rendezvous</code> as a service (designating an available port number). The examples below define <code class="cCode">rendezvous</code> as port 7500, but you may use any UDP port number.
+</p>
+<a name="wp1018803"> </a><p class="pBody">
+Some organizations may want to define additional services to segregate Rendezvous communications. For example, by convention, fault tolerance messages between Rendezvous components use service 7504. You may also define those services at this time. For more information, see <a  href="rv_adm15.htm#wp1019269">Service Selection</a>.
+</p>
+<a name="wp1018813"> </a><p class="pBody">
+On all platforms, Rendezvous software obtains service names by calling the function <code class="cCode">getservbyname()</code>. Ensure that this function returns the correct port numbers.
+</p>
+<a name="wp1028793"> </a><h3 class="pHeading2">
+UNIX Platforms
+</h3>
+<a name="wp1028794"> </a><p class="pBody">
+Add these definitions to the services database:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;rendezvous&#160;&#160;&#160;&#160;&#160;&#160;7500/udp<a name="wp1028795"> </a>
+&#160;&#160;&#160;rendezvous-ft&#160;&#160;&#160;7504/udp<a name="wp1028796"> </a>
+<a name="wp1018912"> </a>
+</pre></div>
+<a name="wp1028807"> </a><h3 class="pHeading2">
+Microsoft Windows Platforms
+</h3>
+<a name="wp1028809"> </a><p class="pBody">
+On all supported Windows platforms, add these definitions to the services database:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;rendezvous&#160;&#160;&#160;&#160;&#160;&#160;7500/udp<a name="wp1028824"> </a>
+&#160;&#160;&#160;rendezvous-ft&#160;&#160;&#160;7504/udp<a name="wp1028825"> </a>
+</pre></div>
+<a name="wp1028835"> </a><h3 class="pHeading2">
+VMS Platforms
+</h3>
+<a name="wp1018823"> </a><p class="pBody">
+On VMS platforms define a service by entering these commands:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;$ UCX SET SERVICE RENDEZVOUS/PORT=7500/PROTOCOL=UDP -<a name="wp1018824"> </a>
+&#160;&#160;&#160;/USER=SYSTEM/FILE=SYS$STARTUP:TIBRV_STARTUP.COM/PROCESS=TIBRV<a name="wp1018825"> </a>
+&#160;&#160;&#160;$ UCX SET SERVICE RENDEZVOUS-FT/PORT=7504/PROTOCOL=UDP -<a name="wp1018826"> </a>
+&#160;&#160;&#160;/USER=SYSTEM/FILE=SYS$STARTUP:TIBRV_STARTUP.COM/PROCESS=TIBRV<a name="wp1059795"> </a>
+</pre></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

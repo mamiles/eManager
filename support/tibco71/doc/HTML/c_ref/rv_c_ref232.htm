@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>Architecture Overview</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Appendix&#160;A	 Custom Datatypes";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1149485"> </a><h2 class="pNewHTMLPage">
+Architecture Overview
+</h2>
+<hr />
+<a name="wp1152927"> </a><p class="pBody">
+<a  href="rv_c_ref232.htm#wp1194528">Table&#160;7</a> explains the stratification of data, field and message operations into four layers.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1194528"> </a><div class="pTableTitle">
+Table&#160;7   Architecture of Message and Data Manipulation&#160;
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1194532"> </a><div class="pCellHeading">
+Layer
+</div>
+</th>
+    <th><a name="wp1194534"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1194536"> </a><div class="pCellBody">
+4. Convenience Functions
+</div>
+</td>
+    <td><a name="wp1194539"> </a><div class="pCellBody">
+Type-specific functions manipulate message field data. This layer contains three functions per datatype&#151;add, get and update. For example, see <a  href="rv_c_ref30.htm#wp1043578">Add String</a>. All convenience functions call the corresponding generic functions of layer 3 for their main functionality.
+</div>
+<a name="wp1194543"> </a><div class="pCellBody">
+When defining a custom datatype, a program can implement these three functions (optional).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1194545"> </a><div class="pCellBody">
+3. Generic Field Functions
+</div>
+</td>
+    <td><a name="wp1194548"> </a><div class="pCellBody">
+Field functions add, get or update a message field. This layer consists of only three functions: <a  href="rv_c_ref26.htm#wp1026733"><code class="cCode">tibrvMsg_AddField()</code></a>, <a  href="rv_c_ref45.htm#wp1019366"><code class="cCode">tibrvMsg_GetField()</code></a>, <a  href="rv_c_ref64.htm#wp1019909"><code class="cCode">tibrvMsg_UpdateField()</code></a>. Field functions call the datatype handler functions of layer 2 whenever data enters or leaves a message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1194559"> </a><div class="pCellBody">
+2. Datatype Handler Functions
+</div>
+</td>
+    <td><a name="wp1194562"> </a><div class="pCellBody">
+Type-specific handler functions translate data between C format and Rendezvous wire format, and convert it to other datatypes. This layer contains three functions per datatype:
+</div>
+<div class="pSmartList1"><ul>
+<a name="wp1194569"> </a><div class="pSmartList1"><li >encoder, of type <a  href="rv_c_ref241.htm#wp1148962"><code class="cCode">tibrvMsgData_Encoder</code></a></li></div>
+
+<a name="wp1194573"> </a><div class="pSmartList1"><li >decoder, of type <a  href="rv_c_ref240.htm#wp1150007"><code class="cCode">tibrvMsgData_Decoder</code></a></li></div>
+
+<a name="wp1194577"> </a><div class="pSmartList1"><li >converter, of type <a  href="rv_c_ref238.htm#wp1148872"><code class="cCode">tibrvMsgData_Converter</code></a></li></div>
+
+</ul></div>
+
+<a name="wp1194578"> </a><div class="pCellBody">
+To define a custom datatype, a program <em class="cEmphasis">must</em> implement these functions.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1194580"> </a><div class="pCellBody">
+1. Utility Functions
+</div>
+</td>
+    <td><a name="wp1194583"> </a><div class="pCellBody">
+Utility functions ease and standardize the implementation of datatype handler functions in layer 2. For example, <a  href="rv_c_ref239.htm#wp1149570"><code class="cCode">tibrvMsgData_CopyBytes()</code></a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1194516"> </a><p class="pBody">
+At the top of the table, programs call functions in layer 4 (and sometimes layer 3) to move data in and out of messages. The remaining lower layers are generally invisible to most programs. That is, most programs do not call functions below layers 3.
+</p>
+<a name="wp1153467"> </a><p class="pBody">
+However, a program that defines custom datatypes <em class="cEmphasis">must</em> implement the three functions in layer 2. Nevertheless, the program never calls layer 2 functions directly. Instead the program can define optional convenience functions at layer 4, and call them to move the custom datatype in and out of messages.
+</p>
+<a name="wp1153496"> </a><h3 class="pHeading2">
+Adding Data
+</h3>
+<a name="wp1153505"> </a><p class="pBody">
+This narrative illustrates the interaction of functions at all four layers as they cooperate to add data to a message. The narrative for updating data within a message is parallel.
+</p>
+<a name="wp1153521"> </a><p class="pBody">
+A program begins by calling a layer 4 convenience function to add data. The convenience function creates a field object (<a  href="rv_c_ref25.htm#wp1129956"><code class="cCode">tibrvMsgField</code></a>) that contains the data, the field name and identifier, a datatype token, and the element count (for arrays only). Then the convenience function calls the layer 3 field function <a  href="rv_c_ref26.htm#wp1026733"><code class="cCode">tibrvMsg_AddField()</code></a> to add that field to the message.
+</p>
+<a name="wp1153547"> </a><p class="pBody">
+Among its other tasks, <a  href="rv_c_ref26.htm#wp1026733"><code class="cCode">tibrvMsg_AddField()</code></a> must write the field into wire buffer storage within the message object; to accomplish this step, it calls the layer 2 encoder function specific to the datatype.
+</p>
+<a name="wp1153568"> </a><p class="pBody">
+The encoder transforms the data into its wire format, using layer 1 utility functions to copy that data into the message&#8217;s wire buffer.
+</p>
+<a name="wp1160123"> </a><p class="pBody">
+Each write operation updates the message&#8217;s wire buffer pointer to the location where the next write will begin.
+</p>
+<a name="wp1160117"> </a><div class="pFigureTitle">
+Figure&#160;12   Writing Fields into a Message&#8217;s Wire Buffer</div><div align="center"><img src="images/rv_c_refa16.gif" height="178" width="528" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1153571"> </a><h3 class="pHeading2">
+Extracting Data
+</h3>
+<a name="wp1153572"> </a><p class="pBody">
+This narrative illustrates the interaction of functions at all four layers as they cooperate to get data from a message.
+</p>
+<a name="wp1153593"> </a><p class="pBody">
+A program begins by calling a layer 4 convenience function to get data. The convenience function calls the layer 3 field function <a  href="rv_c_ref45.htm#wp1019366"><code class="cCode">tibrvMsg_GetField()</code></a> to find the field in the message.
+</p>
+<a name="wp1153688"> </a><p class="pBody">
+Among its other tasks, <a  href="rv_c_ref45.htm#wp1019366"><code class="cCode">tibrvMsg_GetField()</code></a> must read the data from the message&#8217;s wire buffer; to accomplish this step, it calls the layer 2 decoder function for the datatype (as specified in the message field).
+</p>
+<a name="wp1153604"> </a><p class="pBody">
+The decoder uses layer 1 utility functions to extract that data from the message&#8217;s wire buffer, and transforms the data into its C format.
+</p>
+<a name="wp1153709"> </a><p class="pBody">
+Returning to layer 3, <a  href="rv_c_ref45.htm#wp1019366"><code class="cCode">tibrvMsg_GetField()</code></a> receives the data from the decoder, packaged in the <a  href="rv_c_ref25.htm#wp1129999"><code class="cCode">data</code></a> part of a field object (<a  href="rv_c_ref25.htm#wp1129956"><code class="cCode">tibrvMsgField</code></a>).
+</p>
+<a name="wp1153752"> </a><p class="pBody">
+Returning to layer 4, the convenience function receives the field object from <a  href="rv_c_ref45.htm#wp1019366"><code class="cCode">tibrvMsg_GetField()</code></a>. The next task is to convert the data from its actual datatype to the target datatype (notice that the program, in effect, explicitly requested a target datatype by calling a particular type-specific convenience function). When the actual data does not already match the target datatype, the convenience function calls down into layer 2, to the converter function associated with the actual datatype.
+</p>
+<a name="wp1153805"> </a><p class="pBody">
+If legal, the converter transforms the actual data to the target type, and modifies the field object accordingly.
+</p>
+<a name="wp1153810"> </a><p class="pBody">
+Returning once again to layer 4, the convenience function extracts the modified data from the field object, and passes it back to the calling program.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

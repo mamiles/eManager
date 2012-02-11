@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Fault Tolerance Callback Function</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;13	 Fault Tolerance Concepts";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1057277"> </a><h2 class="pNewHTMLPage">
+Fault Tolerance Callback Function
+</h2>
+<hr />
+<a name="wp1070514"> </a><p class="pBody">
+When a process joins a fault tolerance group, it must specify a <em class="cEmphasis">fault tolerance callback function</em> as a parameter. The callback function must be defined by the program. When Rendezvous fault tolerance software detects any change that requires action by the program, it queues the callback function. It is not necessary that all members of a group have the same fault tolerance callback function.
+</p>
+<a name="wp1057282"> </a><p class="pBody">
+Among its arguments, the callback function receives a token denoting an action&#151;in this way Rendezvous fault tolerance software instructs the program how to behave in order to assure fault-tolerant operation. The callback function <em class="cEmphasis">must</em> comply with the action instruction by taking whatever steps are needed.
+</p>
+<a name="wp1057286"> </a><p class="pBody">
+The action token may instruct an inactive member to activate; or it may instruct an active member to deactivate; or it may instruct an inactive member to prepare to activate (hinting that an instruction to activate <em class="cEmphasis">might</em> soon arrive).
+</p>
+<a name="wp1070512"> </a><p class="pBody">
+For more information, see <a  href="rv_concepts141.htm#wp1057747">Fault Tolerance Callback Actions</a>, and <a  href="rv_concepts142.htm#wp1057801">Program Callback Functions</a>.
+</p>
+<a name="wp1057297"> </a><p class="pBody">
+For information about callback closure arguments, see <a  href="rv_concepts64.htm#wp1050548">Closure Data</a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

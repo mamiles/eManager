@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Establish Subject Naming Conventions</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;10	 Guidelines for Programming";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1058962"> </a><h2 class="pNewHTMLPage">
+Establish Subject Naming Conventions
+</h2>
+<hr />
+<a name="wp1058963"> </a><p class="pBody">
+We recommend that you carefully plan the subject naming conventions for programs, and document them clearly for reference. Follow these guidelines:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1058964"> </a><div class="pSmartList1"><li >Plan naming conventions to reflect the logical structure of the data in the application domain. </li></div>
+
+<a name="wp1058965"> </a><div class="pSmartList1"><li >Study the programming examples in the <code class="cCode">src/examples/</code> subdirectory.</li></div>
+
+<a name="wp1058966"> </a><div class="pSmartList1"><li >As you design naming conventions, think about the kinds of information that your programs will receive. Also think about the kinds of information that your program will ignore.</li></div>
+
+<a name="wp1058967"> </a><div class="pSmartList1"><li >Use a reasonably small number of levels in subject names&#151;four or five is usually sufficient. (Rendezvous software permits many levels in subject names, but we recommend limiting the number of levels you actually use.)</li></div>
+
+<a name="wp1058971"> </a><div class="pSmartList1"><li >Avoid the use of spaces and special characters even where permitted by the Rendezvous API. They could cause trouble later with various editors, browsers and other tools.</li></div>
+
+<a name="wp1058976"> </a><div class="pSmartList1"><li >Keep subject names manageable and readable.</li></div>
+
+<a name="wp1058977"> </a><div class="pSmartList1"><li >Keep subject names short for maximum speed and message throughput.</li></div>
+
+<a name="wp1058978"> </a><div class="pSmartList1"><li >Allocate the maximum storage for subject names. Subject name length is artificially limited to 255 bytes so that programs can allocate name buffers with a reasonable size. To maximize code reusability, allocate 255 bytes for buffers that receive subject names, even if your program does not use such long names. </li></div>
+
+<a name="wp1058988"> </a><p class="pBodyRelative">
+In C and C++, the 255 byte limit is defined by the constant <code class="cCode">TIBRV_SUBJECT_MAX</code> in the Rendezvous header files.
+</p>
+<a name="wp1058993"> </a><div class="pSmartList1"><li >Structure subject names so that subscribing programs can use wildcards effectively. Using wildcards is a powerful technique to filter inbound messages. Wildcards also offer a convenient way to subscribe to groups of subjects with a single listening call.</li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

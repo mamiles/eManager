@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Ensure Timely Event Processing</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;14	 Fault Tolerance Programming";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1057852"> </a><h2 class="pNewHTMLPage">
+Ensure Timely Event Processing
+</h2>
+<hr />
+<a name="wp1057853"> </a><p class="pBody">
+The fault tolerance callback function is the only channel of information from Rendezvous fault tolerance software to your program. Rendezvous fault tolerance software can call the callback function at virtually any time&#151;whether active or inactive, a member program must be ready for a callback event.
+</p>
+<a name="wp1057860"> </a><p class="pBody">
+To ensure timely processing of fault tolerance events, follow these guidelines:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1057861"> </a><div class="pSmartList1"><li >Associate fault tolerance member events with a high priority queue, so events on other queues do not delay fault tolerance callback processing.</li></div>
+
+<a name="wp1057862"> </a><div class="pSmartList1"><li >Ensure that callback functions return promptly. This rule applies to <em class="cEmphasis">all</em> callback functions that dispatch in the same thread as the fault tolerance callback function.</li></div>
+
+</ul></div>
+
+<a name="wp1057864"> </a><p class="pBody">
+If a callback function monopolizes the dispatch thread (for example, by blocking, or with a lengthy computation), then the fault tolerance callback function might remain in its queue waiting for dispatch. Such backlog could cause problems such as these:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1057865"> </a><div class="pSmartList1"><li >Delay a program from activating, resulting in interrupted service.</li></div>
+
+<a name="wp1057866"> </a><div class="pSmartList1"><li >Delay a program from deactivating, resulting in redundant service.</li></div>
+
+<a name="wp1057867"> </a><div class="pSmartList1"><li >Delay a timer, or the arrival of a fault tolerance control message, interfering with fault tolerance software.</li></div>
+
+<a name="wp1057868"> </a><div class="pSmartList1"><li >Delay the arrival of regular messages, interfering with the program performance.</li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

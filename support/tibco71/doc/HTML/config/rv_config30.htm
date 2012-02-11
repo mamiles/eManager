@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>Host</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;3	 Communications Daemon&#151;rvd";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1950563"> </a><h2 class="pNewHTMLPage">
+Host
+</h2>
+<hr />
+<a name="wp1950564"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1950565"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">class com.tibco.tibrv.config.</code><code class="cCodeBold">Host</code><a name="wp1950566"> </a>
+<code class="cCode">&#160;&#160;extends java.lang.Object</code><a name="wp1950567"> </a>
+</pre></div>
+<a name="wp1950568"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1950573"> </a><p class="pBody">
+Represent the host computer of a Rendezvous communications daemon.
+</p>
+<a name="wp1950574"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1950575"> </a><p class="pBody">
+Objects of this class always represent a host computer <em class="cEmphasis">other</em> than the host computer of the daemon. That is, they represent computers with which this daemon communicates.
+</p>
+<a name="wp1950579"> </a><p class="pBody">
+The method <a  href="rv_config42.htm#wp1951203"><code class="cCode">Service.getHosts()</code></a> return objects of this class.
+</p>
+<a name="wp1950686"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1950585"> </a><p class="pBody">
+&#160;
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1950591"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1950593"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1950595"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1950600"> </a><div class="pCellBody">
+<a  href="rv_config31.htm#wp1950700"><code class="cCode">Host.getHostname()</code></a>
+</div>
+</td>
+    <td><a name="wp1950605"> </a><div class="pCellBody">
+<a  href="rv_config31.htm#wp1950706">Get the hostname of the computer that this object represents.</a>
+</div>
+</td>
+    <td><a name="wp1950610"> </a><div class="pCellBody">
+<a  href="rv_config31.htm#wp1950700">34</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1950615"> </a><div class="pCellBody">
+<a  href="rv_config32.htm#wp1950720"><code class="cCode">Host.getIpAddress()</code></a>
+</div>
+</td>
+    <td><a name="wp1950620"> </a><div class="pCellBody">
+<a  href="rv_config32.htm#wp1950725">Get the IP address of the computer.</a>
+</div>
+</td>
+    <td><a name="wp1950625"> </a><div class="pCellBody">
+<a  href="rv_config32.htm#wp1950720">35</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1950630"> </a><div class="pCellBody">
+<a  href="rv_config33.htm#wp1950739"><code class="cCode">Host.getSerial()</code></a>
+</div>
+</td>
+    <td><a name="wp1950634"> </a><div class="pCellBody">
+<a  href="rv_config33.htm#wp1950748">Get the serial number of the Rendezvous license ticket.</a>
+</div>
+</td>
+    <td><a name="wp1950640"> </a><div class="pCellBody">
+<a  href="rv_config33.htm#wp1950739">36</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1950645"> </a><div class="pCellBody">
+<a  href="rv_config34.htm#wp1950767"><code class="cCode">Host.getUptime()</code></a>
+</div>
+</td>
+    <td><a name="wp1950649"> </a><div class="pCellBody">
+<a  href="rv_config34.htm#wp1950776">Get the elapsed time that the daemon has been using the UDP or PGM service.</a>
+</div>
+</td>
+    <td><a name="wp1950655"> </a><div class="pCellBody">
+<a  href="rv_config34.htm#wp1950767">37</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1950660"> </a><div class="pCellBody">
+<a  href="rv_config35.htm#wp1950795"><code class="cCode">Host.getVersion()</code></a>
+</div>
+</td>
+    <td><a name="wp1950664"> </a><div class="pCellBody">
+<a  href="rv_config35.htm#wp1950801">Get the version of the Rendezvous daemon running on a host.</a>
+</div>
+</td>
+    <td><a name="wp1950670"> </a><div class="pCellBody">
+<a  href="rv_config35.htm#wp1950795">38</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1950675"> </a><div class="pCellBody">
+<a  href="rv_config36.htm#wp1950815"><code class="cCode">Host.toXml()</code></a>
+</div>
+</td>
+    <td><a name="wp1950679"> </a><div class="pCellBody">
+<a  href="rv_config36.htm#wp1950821">Format the host computer information as an XML document.</a>
+</div>
+</td>
+    <td><a name="wp1950685"> </a><div class="pCellBody">
+<a  href="rv_config36.htm#wp1950815">39</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1950687"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1950691"> </a><p class="pBody">
+<a  href="rv_config42.htm#wp1951203"><code class="cCode">Service.getHosts()</code> </a>
+</p>
+<a name="wp1950697"> </a><p class="pBody">
+For the corresponding browser page, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm26.htm#wp1261863');" onMouseOver="WWHShowPopup('c', 'rv_adm26.htm#wp1261863', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Hosts</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

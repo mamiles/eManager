@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvListener.create</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1033788"> </a><h2 class="pNewHTMLPage">
+TibrvListener.create
+</h2>
+<hr />
+<a name="wp1033789"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1033791"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+TibrvListener.<code class="cCodeBold">create</code> queue, transport, subject, closure<a name="wp1122126"> </a>
+</pre></div>
+<a name="wp1033793"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1033794"> </a><p class="pBody">
+Create a listener object to listen for inbound messages.
+</p>
+<a name="wp1033795"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1116471"> </a><p class="pBody">
+For each inbound message, place this object on the event queue.
+</p>
+<a name="wp1139248"> </a><p class="pBody">
+Starting a listener requires three steps:
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1139254"> </a><div class="pSmartList1"><li value="1">Declare a variable for the listener.</li></div>
+
+<a name="wp1139260"> </a><p class="pBodyRelative">
+<code class="cCode">Dim WithEvents myListener as </code><a  href="rv_com_ref81.htm#wp1145524"><code class="cCode">TibrvListener</code></a>
+</p>
+<a name="wp1139298"> </a><p class="pBodyRelative">
+This declaration triggers VB to automatically define a private subroutine callback stub named <code class="cCode">myListener_OnMsg</code>. The program must complete this method stub for each listener object.
+</p>
+<a name="wp1139299"> </a><div class="pSmartList1"><li value="2">Create the VB object, and assign it to that variable.</li></div>
+
+<a name="wp1139269"> </a><p class="pBodyRelative">
+<code class="cCode">Set myListener = New </code><a  href="rv_com_ref81.htm#wp1145524"><code class="cCode">TibrvListener</code></a>
+</p>
+<a name="wp1139278"> </a><div class="pSmartList1"><li value="3">Create the internal implementation object to begin listening.</li></div>
+
+<a name="wp1139279"> </a><p class="pBodyRelative">
+<code class="cCode">myListener.create myQueue, myTransport, mySubject, 0</code>
+</p>
+</ol></div>
+
+<a name="wp1155654"> </a><p class="pBody">
+Calling this method on a valid object yields the error <a  href="rv_com_ref218.htm#wp1189013"><code class="cCode">TIBRVCOM_ALREADY_INITIALIZED</code></a>.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1178982"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1178984"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1178986"> </a><div class="pCellBody">
+<code class="cCode">queue</code>
+</div>
+</td>
+    <td><a name="wp1178991"> </a><div class="pCellBody">
+<a  href="rv_com_ref99.htm#wp1035245"><code class="cCode">TibrvQueue</code></a>
+</div>
+<a name="wp1178992"> </a><div class="pCellBody">
+For each inbound message, place the listener object on this queue.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1178994"> </a><div class="pCellBody">
+<code class="cCode">transport</code>
+</div>
+</td>
+    <td><a name="wp1178999"> </a><div class="pCellBody">
+<a  href="rv_com_ref125.htm#wp1123272"><code class="cCode">TibrvTransport</code></a>
+</div>
+<a name="wp1179000"> </a><div class="pCellBody">
+Listen for inbound messages on this transport.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1179002"> </a><div class="pCellBody">
+<code class="cCode">subject</code>
+</div>
+</td>
+    <td><a name="wp1179004"> </a><div class="pCellBody">
+<code class="cCode">String</code>
+</div>
+<a name="wp1179005"> </a><div class="pCellBody">
+Listen for inbound messages with subjects that match this specification. Wildcard subjects are permitted. The empty string and <code class="cCode">vbNullString</code> are <em class="cEmphasis">not</em> legal subject names.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1179007"> </a><div class="pCellBody">
+<code class="cCode">closure</code>
+</div>
+</td>
+    <td><a name="wp1179009"> </a><div class="pCellBody">
+<code class="cCode">Variant</code>
+</div>
+<a name="wp1179010"> </a><div class="pCellBody">
+Store this closure data in the listener object.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1116505"> </a><h4 class="pHeading3">
+Inbox Listener
+</h4>
+<a name="wp1087711"> </a><p class="pBody">
+To receive unicast (point-to-point) messages, listen to a unique inbox subject name. First call <a  href="rv_com_ref127.htm#wp1040342"><code class="cCode">TibrvTransport.createInbox()</code></a> to create the unique inbox name; then call <a  href="rv_com_ref82.htm#wp1033788"><code class="cCode">TibrvListener.create</code></a> to begin listening. Remember that other programs have no information about an inbox until the listening program uses it as a reply subject in an outbound message.
+</p>
+<a name="wp1034213"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1033808"> </a><p class="pBody">
+<a  href="rv_com_ref83.htm#wp1122253"><code class="cCode">TibrvListener.destroy</code> </a>
+</p>
+<a name="wp1059262"> </a><p class="pBody">
+<a  href="rv_com_ref89.htm#wp1126926"><code class="cCode">TibrvListener_onMsg</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

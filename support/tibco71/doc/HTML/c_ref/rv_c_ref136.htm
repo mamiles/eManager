@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvTransport_Destroy()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;8	 Transport";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1066967"> </a><h2 class="pNewHTMLPage">
+tibrvTransport_Destroy()
+</h2>
+<hr />
+<a name="wp1066971"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1087134"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvTransport_Destroy</code>(<a name="wp1077941"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref132.htm#wp1066635"><code class="cCode">tibrvTransport</code></a>&#160;&#160;&#160;&#160;transport);<a name="wp1077943"> </a>
+</pre></div>
+<a name="wp1087613"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1066977"> </a><p class="pBody">
+Destroy a transport.
+</p>
+<a name="wp1088060"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1066979"> </a><p class="pBody">
+Programs must explicitly destroy each transport object.
+</p>
+<a name="wp1066980"> </a><p class="pBody">
+Destroying a transport achieves these effects:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1066984"> </a><div class="pSmartList1"><li >The transport flushes all outbound data to the Rendezvous daemon.</li></div>
+
+<a name="wp1066985"> </a><p class="pBodyRelative">
+This effect is especially important, and neither exiting the program nor calling <a  href="rv_c_ref7.htm#wp1057420"><code class="cCode">tibrv_Close()</code></a> is sufficient to flush outbound data.
+</p>
+<a name="wp1066989"> </a><div class="pSmartList1"><li >The transport invalidates all its listeners.</li></div>
+
+<a name="wp1066990"> </a><div class="pSmartList1"><li >Subsequent calls that use the destroyed transport return an error status.</li></div>
+
+<a name="wp1073745"> </a><div class="pSmartList1"><li >Storage for the transport object is freed.</li></div>
+
+</ul></div>
+
+<a name="wp1073746"> </a><p class="pBody">
+It is illegal to destroy the intra-process transport (<code class="cCode">TIBRV_PROCESS_TRANSPORT</code>); attempting to destroy it produces the status code <a  href="rv_c_ref227.htm#wp1129142"><code class="cCode">TIBRV_NOT_PERMITTED</code></a>.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1066994"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1066996"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1066998"> </a><div class="pCellBody">
+<code class="cCode">transport</code>
+</div>
+</td>
+    <td><a name="wp1067000"> </a><div class="pCellBody">
+Destroy this transport.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1088458"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1067005"> </a><p class="pBody">
+<a  href="rv_c_ref132.htm#wp1066635"><code class="cCode">tibrvTransport</code> </a>
+</p>
+<a name="wp1116006"> </a><p class="pBody">
+<a  href="rv_c_ref134.htm#wp1066667"><code class="cCode">tibrvTransport_Create()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

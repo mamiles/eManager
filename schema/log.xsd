@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Marvin Miles (Cisco Systems, Inc.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="logMgrMsg">
+		<xs:annotation>
+			<xs:documentation>Log file managment messages</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="getLogFilesFromDirectories">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:choice>
+								<xs:element name="appTypeAppInstName">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="appTypeName" type="xs:string"/>
+											<xs:element name="appInstanceName" type="xs:string"/>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="appInstanceId" type="appInstManagedObjectId"/>
+								<xs:element name="appViewAppInstanceFDN" type="fullyDistinguishedName"/>
+								<xs:element name="physicalViewAppInstanceFDN" type="fullyDistinguishedName"/>
+							</xs:choice>
+							<xs:element name="searchFilter" type="xs:string" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="getLogURL" type="LogFile"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="logMgrResp">
+		<xs:annotation>
+			<xs:documentation>Response to Log Management request</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="getLogFilesFromDirectoriesResp">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="LogFiles" type="LogFile" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="getLogURLResp" type="logFileURL"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="MyManagedObjectId">
+		<xs:annotation>
+			<xs:documentation>ManagedObjectId - LogMgr supports only AppInstanceType</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="objectKey" type="xs:long"/>
+			<xs:element name="objectType" type="MyObjectType"/>
+			<xs:element name="searchFilter" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MyObjectType">
+		<xs:choice>
+			<xs:element name="AppInstanceType" type="xs:integer"/>
+			<xs:element name="ApplicationHierarchyContainerType" type="xs:integer"/>
+			<xs:element name="AppTypeType" type="xs:integer"/>
+			<xs:element name="AuditLogType" type="xs:integer"/>
+			<xs:element name="EventType" type="xs:integer"/>
+			<xs:element name="HostAgentType" type="xs:integer"/>
+			<xs:element name="InstrumentationType" type="xs:integer"/>
+			<xs:element name="MgmtPolicyType" type="xs:integer"/>
+			<xs:element name="PhysicalHierarchyContainerType" type="xs:integer"/>
+			<xs:element name="UserAccountType" type="xs:integer"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="LogFile">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="appTypeAppInstName">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="appTypeName" type="xs:string"/>
+							<xs:element name="appInstanceName" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="appInstanceId" type="appInstManagedObjectId"/>
+				<xs:element name="appViewAppInstanceFDN" type="fullyDistinguishedName"/>
+				<xs:element name="physicalViewAppInstanceFDN" type="fullyDistinguishedName"/>
+			</xs:choice>
+			<xs:element name="hostName" type="xs:string" minOccurs="0"/>
+			<xs:element name="logPath" type="xs:string"/>
+			<xs:element name="logName" type="xs:string"/>
+			<xs:element name="logSize" type="xs:string" minOccurs="0"/>
+			<xs:element name="dateTime" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="appInstManagedObjectId">
+		<xs:sequence>
+			<xs:element name="objectKey" type="xs:long"/>
+			<xs:element name="objectType" type="MyObjectType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="fullyDistinguishedName">
+		<xs:sequence>
+			<xs:element name="elementName" type="xs:string" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="logFileURL">
+		<xs:sequence>
+			<xs:element name="logFileURL" type="xs:string"/>
+			<xs:element name="splitLogFileURL" type="xs:string" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

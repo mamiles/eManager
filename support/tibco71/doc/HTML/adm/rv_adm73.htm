@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Certificates</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;6	 Secure Daemons (rvsd and rvsrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1189145"> </a><h2 class="pNewHTMLPage">
+Certificates
+</h2>
+<hr />
+<a name="wp1248955"> </a><p class="pBody">
+This page lets you configure the X.509 certificates that a secure daemon uses to identify itself.
+</p>
+<a name="wp1248956"> </a><p class="pBody">
+To display this page, click <b class="cBold">Certificates</b> in the left margin of any page of the <code class="cCode">rvrd</code> browser administration interface.
+</p>
+<a name="wp1248293"> </a><p class="pBody">
+For background information, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts41.htm#wp1203018');" onMouseOver="WWHShowPopup('a', 'rv_concepts41.htm#wp1203018', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Certificates and Security</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+<a name="wp1248295"> </a><p class="pBody">
+Each daemon process keeps a list of certificates it can use to identify itself. These certificates are numbered for easy reference. The first panel on this page determines which of these certificates the daemon uses for particular tasks. The remainder of the page lets you enter the certificates.
+</p>
+<a name="wp1248297"> </a><h3 class="pHeading2">
+Certificate Uses
+</h3>
+<a name="wp1248301"> </a><div class="pFigureTitle">
+Figure&#160;40   rvsrd Certificate Uses Form</div><div align="center"><img src="images/rv_adma51.gif" height="253" width="554" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1248324"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1248307"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1248311"> </a><div class="pCellHeading">
+Item
+</div>
+</th>
+    <th><a name="wp1248313"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1248315"> </a><div class="pCellBody">
+HTTPS
+</div>
+</td>
+    <td><a name="wp1248317"> </a><div class="pCellBody">
+Set the certificate for the secure browser administration interface.
+</div>
+<a name="wp1248318"> </a><div class="pCellBody">
+To avoid security warnings from the web browser, distribute the public portion of this certificate to authorized administrators.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1248320"> </a><div class="pCellBody">
+Routers to Routers
+</div>
+</td>
+    <td><a name="wp1248322"> </a><div class="pCellBody">
+Set the certificate for secure SSL neighbor connections.
+</div>
+<a name="wp1248323"> </a><div class="pCellBody">
+Distribute the public portion of this certificate to each applicable neighbor.
+</div>
+<a name="wp1249089"> </a><div class="pCellBody">
+(This item is included in routing daemons only; it is absent from <code class="cCode">rvsd</code>.)
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1248999"> </a><div class="pCellBody">
+Daemon to Clients
+</div>
+</td>
+    <td><a name="wp1249001"> </a><div class="pCellBody">
+Set the certificate for secure SSL client transport connections.
+</div>
+<a name="wp1249021"> </a><div class="pCellBody">
+Distribute the public portion of this certificate to each client program; see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts46.htm#wp1189191');" onMouseOver="WWHShowPopup('a', 'rv_concepts46.htm#wp1189191', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Secure Daemon</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1249100"> </a><p class="pBody">
+
+</p>
+<a name="wp1249136"> </a><h3 class="pHeading2">
+Certificate List
+</h3>
+<a name="wp1249141"> </a><div class="pFigureTitle">
+Figure&#160;41   rvsrd Certificate List</div><div align="center"><img src="images/rv_adma49.gif" height="636" width="554" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1249177"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1249147"> </a><p class="pBody">
+&#160;
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1249151"> </a><div class="pCellHeading">
+Item
+</div>
+</th>
+    <th><a name="wp1249153"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1249155"> </a><div class="pCellBody">
+<em class="cEmphasis">certificate number</em>
+</div>
+</td>
+    <td><a name="wp1249160"> </a><div class="pCellBody">
+Use this number to refer to the certificate in the <a  href="rv_adm56.htm#wp1247097">Certificate Uses</a> panel.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1249162"> </a><div class="pCellBody">
+Add from File
+</div>
+</td>
+    <td><a name="wp1249164"> </a><div class="pCellBody">
+Enter a file name and a private key password. When you click Add from File, the daemon reads the certificate with private key from the file. The file may be in either PEM encoding, or PKCS #12 format.
+</div>
+<a name="wp1249168"> </a><div class="pCellBody">
+See also <a  href="rv_adm62.htm#wp1304588">Security Factors</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1249170"> </a><div class="pCellBody">
+Add from Text
+</div>
+</td>
+    <td><a name="wp1249172"> </a><div class="pCellBody">
+Paste the text of a certificate with private key. Enter a private key password.
+</div>
+<a name="wp1322957"> </a><div class="pCellBody">
+The certificate <em class="cEmphasis">must</em> be in PEM encoding.
+</div>
+<a name="wp1249176"> </a><div class="pCellBody">
+See also <a  href="rv_adm62.htm#wp1304588">Security Factors</a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1248367"> </a><p class="pBody">
+
+</p>
+<a name="wp1248368"> </a><h4 class="pHeading3">
+Self-Signed Certificate
+</h4>
+<a name="wp1248369"> </a><p class="pBody">
+When the daemon creates its store file (the first time it starts), it also creates a self-signed certificate, and registers it in the list as certificate #1. You may use that certificate as is, add other certificates to the list, or delete it and enter other certificates.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

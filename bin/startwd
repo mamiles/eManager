@@ -1,0 +1,262 @@
+#!/bin/ksh -p
+#####################################################
+# Items that the installer need to configure
+#
+export EM_HOME=EMANAGER_HOME
+#####################################################
+. $EM_HOME/bin/emenv.ksh
+. $EM_HOME/bin/wdscript.lib
+
+#####################################################
+# Find out what appType (application name) and
+# application instance we are starting watchdog for
+export appType=$1
+export appInst=$2
+
+if [ x"$appType" = x"" ]; then
+	  print "The first paramater of appType is required"
+	  print "exiting ..."
+	  exit 1
+fi
+if [ x"$appInst" = x"" ]; then
+	print "The second parameter of appInst is required."
+	print "exiting ..."
+	exit 1
+fi
+
+# check for application registration
+if [ ! -f $EM_HOME/bin/solaris/WD.$appType.$appInst ]; then
+	print "The watchdog binary $EM_HOME/bin/solaris/WD.$appType.$appInst"
+	print "Does not exist.  Application has not been registered."
+	print "exiting ..."
+	exit 1
+fi
+if [ ! -f $EM_HOME/config/processSequencer/$appType.$appInst.properties ]; then
+	print "The application properties file does not exits."
+	print "Application has not been registered."
+	print "exiting ..."
+	exit 1
+else
+	properties=$EM_HOME/config/processSequencer/$appType.$appInst.properties
+	propFileDef="-Dapp.properties.file=$properties"
+fi
+if [ ! -f $EM_HOME/config/em.properties ]; then
+	print "The eManager boot properties could not be found."
+	print "exiting ..."
+	exit 1
+else
+	boot_properties=$EM_HOME/config/em.properties
+	bootPropFileDef="-Dem.boot.properties=$boot_properties"
+fi
+
+## If you want to debug the watchdog environment.
+WATCHDOG_DEBUG=True
+
+watchdog_pid=`getPIDOf WD.$appType.$appInst`
+if [ "$watchdog_pid" != "" ]; then
+  print "The application watchdog is already running (WD.$appType.$appInst = $watchdog_pid)"
+  exit 2
+fi
+
+tmpdir=$EM_TMP
+
+############################################################################
+## Figure out where the tmp directory is
+DIR="-dir $tmpdir"
+wdlog=$EM_HOME/logs/WD.$appType.$appInst.log
+rm -f $wdlog
+WDLOG="-wdlog $wdlog"
+
+############################################################################
+## Check for any left over processes from previous watchdog
+if [ -f $tmpdir/WD.$appType.$appInst.gid ]; then
+  if [ -O $tmpdir/WD.$appType.$appInst.gid ]; then
+    watchdog_group=$(cat $tmpdir/WD.$appType.$appInst.gid)
+    left_over_processes=$(ps -g $watchdog_group -o pid | egrep '[0-9]')
+    if [ "$left_over_processes" != "" ]; then
+       print "Found left over processes from previous application watchdog that died"
+       print /usr/bin/kill -s KILL $left_over_processes
+       /usr/bin/kill -s KILL $left_over_processes
+    fi
+  fi
+fi
+ 
+#########################*** REVISIT ***##################################################
+
+if [ "$NO_USE_RVA" != "y" ]; then
+	#launch the TIBCO RVA daemon
+	TIBCO_HOME=$EM_HOME/thirdparty/rv/bin
+
+
+	if [ ! -d $EM_HOME/etc/vpnsc.rva ]; then
+  		/usr/bin/touch $EM_HOME/etc/vpnsc.rva
+	fi
+	/usr/bin/sh -c "$TIBCO_HOME/rva -http-only -store $EM_HOME/etc/vpnsc.rva -http $RVA_HTTP_PORT < /dev/null >/dev/null"
+fi
+###################################################################################
+# launch the watchdog
+/usr/bin/rm -f $tmpdir/WD.$appType.$appInst.gid
+
+javaLib1=$JRE_ROOT/lib
+javaLib2=$JRE_ROOT/lib/sparc
+javaLib3=$JRE_ROOT/lib/sparc/native_threads
+
+#export LD_LIBRARY_PATH=$javaLib1:$javaLib2:$javaLib3:$LD_LIBRARY_PATH
+
+if [ "$OPTIT_HOME" = "" ]; then
+	export LD_LIBRARY_PATH=$javaLib1:$javaLib2:$javaLib3:$LD_LIBRARY_PATH
+else
+	LD_LIBRARY_PATH=$OPTIT_HOME/lib:$OPTIT_HOME/lib/native:$LD_LIBRARY_PATH
+	export LD_LIBRARY_PATH=$javaLib1:$javaLib2:$javaLib3:$LD_LIBRARY_PATH
+fi
+
+appClassPath=`getProperty watchdog.java.class.path`
+if [ -n $appClassPath ]; then
+	print "Adding Application class path: $appClassPath"
+	USE_CLASSPATH="-cp $CLASSPATH:$appClassPath"
+else 
+	print "Using CLASSPATH from the environment"
+	USE_CLASSPATH="-cp $CLASSPATH"
+fi
+
+TMP_CLASSPATH=$CLASSPATH
+unset CLASSPATH
+
+if [ "$NO_BOOT_CLASSPATH" != "y" ]; then
+	if [ "$BOOT_CLASSPATH" != "" ]; then
+		BOOT_CLASSPATH="-Xbootclasspath"$BOOT_CLASSPATH
+	else
+		BOOT_CLASSPATH=""
+	fi 
+else
+	BOOT_CLASSPATH=""
+fi
+
+otherParams=""
+if [ ! -z "$WD_ADDITIONAL_PARAMS" ]; then
+	otherParams=$WD_ADDITIONAL_PARAMS
+fi
+
+homeDirDef=
+if [ -d "$EM_HOME" ]; then
+	homeDirDef="-Dem.home=$EM_HOME -DEMANAGER_ROOT=$EM_HOME"
+fi
+
+debugFlags=
+if [ "$3" = "-g" ]; then
+	debugFlags="-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=13999,server=y,suspend=n"
+fi
+
+#echo ${homeDirDef}
+#echo ${otherParams}
+
+print "Launching the Application..."
+
+
+$EM_HOME/bin/solaris/WD.$appType.$appInst -ea ${debugFlags} -DappType=$appType -DappInst=$appInst $USE_CLASSPATH $BOOT_CLASSPATH ${homeDirDef} ${propFileDef} ${bootPropFileDef} ${otherParams} -Dprocess.name=watchdog $DIR $WDLOG com.cisco.eManager.eManager.processSequencer.watchdog.Main
+
+rc=$?
+
+export CLASSPATH=${TMP_CLASSPATH}
+
+# Give it time to create the log
+/usr/bin/sleep 2
+
+/usr/bin/tail -50f $wdlog 2> /dev/null &
+tailpid=$!
+trap "/usr/bin/kill -s KILL $tailpid >/dev/null 2>&1" EXIT
+
+mygroup=$(/usr/bin/ps -o pgid -p $$ | /usr/bin/egrep '[0-9]')
+WDBIN=WD.$appType.$appInst
+while [ 1 ]; do
+  watchdog_group=$(
+  /usr/bin/ps -e -o pgid,comm,user \
+    | /usr/bin/grep -v "grep " \
+    | /usr/bin/sed 's% [^ ]*/% %' \
+    | /usr/bin/nawk '$2 == wdbin && $3 == user { print $1 }' wdbin=$WDBIN user=$user
+  )
+#echo "watchdog_group=$watchdog_group"
+#echo "$tailpid"
+#ps -ef |grep $tailpid
+#echo "user=$user"
+#/usr/bin/ps -e -o pgid,comm,user \
+#    | /usr/bin/grep -v "grep " \
+#    | /usr/bin/sed 's% [^ ]*/% %'
+    
+  if [ "$watchdog_group" = "" ]; then
+    /usr/bin/kill -s KILL $tailpid >/dev/null 2>&1
+    print "
+
+The application watchdog died unexpectedly during startup. The
+watchdog's log:
+
+    $wdlog
+
+may contain information on why."
+    exit 1
+  fi
+
+  # there might be more than one process, so just look for
+  # any watchdog process with a different group
+  for gid in $watchdog_group; do
+    if [ $gid != $mygroup ]; then
+      print $gid >$tmpdir/WD.$appType.$appInst.gid
+      # break out of the while [ 1 ]
+      break 2
+    fi
+  done
+done
+
+print "Waiting for the application to initialize..."
+delay=0
+while [ 1 ]; do
+  if (( delay >= 60 )); then
+    /usr/bin/kill -s KILL $tailpid >/dev/null 2>&1
+    print "
+
+The application has not yet registered itself.
+There may have been a problem during startup.  The application
+log:
+
+    $wdlog
+
+may contain information on why."
+    exit 1
+  fi
+  /usr/bin/sleep 5
+  (( delay = delay + 5 ))
+  /usr/bin/egrep -s Exception $wdlog
+  if [ $? = 0 ]; then
+    /usr/bin/kill -s KILL $tailpid >/dev/null 2>&1
+    print "
+
+There has been an unexpected exception while the application was
+starting up.  The application log:
+
+    $wdlog
+
+may contain information on why."
+    exit 1
+
+  else 
+  	#  ****** REVISIT  ****  Need to check to make sure the watchdog is up and running - this may not be possible 
+  	#			 if whatdog has not started eManager and the NBAPI - Look at later.
+  	#$EM_HOME/bin/wdclient status >/dev/null 2>&1
+  	#if [ $? = 0 ]; then
+    		break
+  	#fi 
+  fi
+done
+
+/usr/bin/kill -s KILL $tailpid >/dev/null 2>&1
+print "
+
+The applicaton has now been started.  To check its status, use the
+(emgmt status) command.  To stop the applicaton, use (emgmt stop).  
+There is also a log file located at
+
+    $wdlog
+
+that may contain useful diagnostic information."
+
+exit 0

@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvFtMember::setWeight()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;8	 Fault Tolerance";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1061770"> </a><h2 class="pNewHTMLPage">
+TibrvFtMember::setWeight()
+</h2>
+<hr />
+<a name="wp1061771"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1061773"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">setWeight</code>(<a name="wp1136590"> </a>
+&#160;&#160;&#160;&#160;tibrv_u16  weight);<a name="wp1136597"> </a>
+</pre></div>
+<a name="wp1061777"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1061779"> </a><p class="pBody">
+Change the weight of a fault tolerance member within its group.
+</p>
+<a name="wp1061780"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1061781"> </a><p class="pBody">
+Weight summarizes the relative suitability of a member for its task, relative to other members of the same fault tolerance group. That suitability is a combination of computer speed and load factors, network bandwidth, computer and network reliability, and other factors. Programs may reset their weight when any of these factors change, overriding the previous assigned weight.
+</p>
+<a name="wp1061782"> </a><p class="pBody">
+You can use relative weights to indicate priority among group members.
+</p>
+<a name="wp1061786"> </a><p class="pBody">
+Zero is a special value; Rendezvous fault tolerance software assigns zero weight to processes with resource errors, so they only activate when no other members are available. Programs must always assign weights greater than zero.
+</p>
+<a name="wp1061790"> </a><p class="pBody">
+When Rendezvous fault tolerance software requests a resource but receives an error (for example, the member process cannot allocate memory, or start a timer), it attempts to send the member process a <a  href="javascript:WWHClickedPopup('a', 'rv_concepts195.htm#wp1047297');" onMouseOver="WWHShowPopup('a', 'rv_concepts195.htm#wp1047297', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">DISABLING_MEMBER</code></a> advisory message, and sets the member&#8217;s weight to zero, effectively disabling the member. Weight zero implies that this member is active only as a last resort&#151;when no other members outrank it. (However, if the disabled member process does become active, it might not operate correctly.)</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1061796"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1061801"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061807"> </a><div class="pCellBody">
+<code class="cCode">weight</code>
+</div>
+</td>
+    <td><a name="wp1061812"> </a><div class="pCellBody">
+The new weight value. See <a  href="rv_cpp_ref190.htm#wp1063022"><code class="cCode">weight</code> </a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1061816"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1061820"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts150.htm#wp1058079');" onMouseOver="WWHShowPopup('a', 'rv_concepts150.htm#wp1058079', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Adjusting Member Weights</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

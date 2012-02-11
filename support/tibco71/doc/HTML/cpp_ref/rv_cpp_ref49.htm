@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>Get Nested Message</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1122536"> </a><h2 class="pNewHTMLPage">
+Get Nested Message
+</h2>
+<hr />
+<a name="wp1123327"> </a><p class="pSyntaxType">
+Convenience Method
+</p>
+<a name="wp1123340"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">getMsg</code>(<a name="wp1123349"> </a>
+&#160;&#160;&#160;&#160;const char*&#160;&#160;&#160;&#160;fieldName,<a name="wp1123350"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_cpp_ref26.htm#wp1055151"><code class="cCode">TibrvMsg</code></a>&amp;&#160;&#160;&#160;&#160;&#160;&#160;subMessage,<a name="wp1123351"> </a>
+&#160;&#160;&#160;&#160;tibrv_u16&#160;&#160;&#160;&#160;&#160;&#160;fieldId=0);<a name="wp1123353"> </a>
+</pre></div>
+<a name="wp1123341"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1122555"> </a><p class="pBody">
+Get the value of a field as a Rendezvous message.
+</p>
+<a name="wp1122556"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1122557"> </a><p class="pBody">
+Since it is not possible to convert any other datatype to a message, the field must already contain a message. Otherwise, the method returns <a  href="rv_cpp_ref272.htm#wp1231448"><code class="cCode">TIBRV_CONVERSION_FAILED</code></a>.
+</p>
+<a name="wp1122561"> </a><p class="pBody">
+Pointer data extracted from the field remain valid until the message is destroyed; that is, even removing the field or updating the field&#8217;s value does <em class="cEmphasis">not</em> invalidate pointer data.
+</p>
+<a name="wp1122562"> </a><p class="pBody">
+After extracting a submessage, a program can detach it. A detached submessage remains valid and unchanged even after the parent message is destroyed. The program <em class="cEmphasis">must</em> explicitly destroy the detached submessage.
+</p>
+<a name="wp1122563"> </a><p class="pBody">
+This method produces values that are <em class="cEmphasis">modifiable snapshots</em> of the field data. Programs may modify the resulting submessage by adding, removing or updating fields. However, these modifications do not change the field in the original parent message; instead, they force Rendezvous software to make a copy of the field (see <a  href="rv_cpp_ref24.htm#wp1119717">Rendezvous Protects the Message from Changes to Submessage Snapshots</a>).</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1122579"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1122581"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1122587"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1122589"> </a><div class="pCellBody">
+Get a field with this name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1122591"> </a><div class="pCellBody">
+<code class="cCode">subMessage</code>
+</div>
+</td>
+    <td><a name="wp1122593"> </a><div class="pCellBody">
+The program supplies a variable in this parameter, and the method stores the submessage in that variable.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1122595"> </a><div class="pCellBody">
+<code class="cCode">fieldId</code>
+</div>
+</td>
+    <td><a name="wp1122597"> </a><div class="pCellBody">
+Get the field with this identifier. Zero is a special value that signifies no field identifier. All non-zero field identifiers must be unique within each message.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1122599"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1122603"> </a><p class="pBody">
+<a  href="rv_cpp_ref24.htm#wp1119654">Validity of Data Extracted From Message Fields</a>
+</p>
+<a name="wp1159532"> </a><p class="pBody">
+<a  href="rv_cpp_ref25.htm#wp1114359">Field Names and Field Identifiers</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

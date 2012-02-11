@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>Strings and Character Encodings</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;1	 Concepts";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1148683"> </a><h2 class="pNewHTMLPage">
+Strings and Character Encodings
+</h2>
+<hr />
+<a name="wp1151514"> </a><p class="pBody">
+Rendezvous software uses strings in several roles:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1151515"> </a><div class="pSmartList1"><li >String data inside message fields</li></div>
+
+<a name="wp1151516"> </a><div class="pSmartList1"><li >Field names</li></div>
+
+<a name="wp1128860"> </a><div class="pSmartList1"><li >Subject names (and other <em class="cEmphasis">associated</em> strings that are not strictly <em class="cEmphasis">inside</em> the message)</li></div>
+
+<a name="wp1128861"> </a><div class="pSmartList1"><li >Certified delivery (CM) correspondent names</li></div>
+
+<a name="wp1128862"> </a><div class="pSmartList1"><li >Group names (fault tolerance)</li></div>
+
+</ul></div>
+
+<a name="wp1123368"> </a><p class="pBody">
+These strings exist in two representations:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1147703"> </a><div class="pSmartList1"><li >VB and COM <code class="cCode">BSTR</code>s (binary strings) use the Unicode 2-byte character set (also called <em class="cEmphasis">wide characters)</em>.</li></div>
+
+<a name="wp1147701"> </a><div class="pSmartList1"><li >Rendezvous wire format (internal implementation) uses the character encoding appropriate to the locale (that is, the system default ANSI code page associated with the default language installed on the computer).</li></div>
+
+<a name="wp1147727"> </a><p class="pBodyRelative">
+For example, the United States is locale <code class="cCode">English_USA.1252</code>, and uses the Latin-1 character encoding (also called ISO 8859-1); Japan is locale <code class="cCode">Japanese_Japan.932</code>, and uses the Shift-JIS character encoding. 
+</p>
+<a name="wp1147705"> </a><p class="pBodyRelative">
+These strings can use either 1-byte or 2-byte character sets.
+</p>
+<a name="wp1147720"> </a><p class="pBodyRelative">
+Rendezvous strings must not contain any null characters. (Rendezvous software could truncate strings with embedded null characters. COM software stops processing <code class="cCode">BSTR</code>s at the first null character.)
+</p>
+</ul></div>
+
+<a name="wp1159316"> </a><p class="pBody">
+When two programs exchange messages within the same locale, the automatic translation between these two representations is correct. However, when a message sender and receiver use different locales, the receiving program must retranslate between code pages as needed.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

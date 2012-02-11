@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>Update XML Byte Sequence</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1165532"> </a><h2 class="pNewHTMLPage">
+Update XML Byte Sequence
+</h2>
+<hr />
+<a name="wp1165533"> </a><p class="pSyntaxType">
+Convenience Method
+</p>
+<a name="wp1165534"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">updateXml</code>(<a name="wp1165538"> </a>
+&#160;&#160;&#160;&#160;const char*&#160;&#160;&#160;&#160;fieldName,<a name="wp1165539"> </a>
+&#160;&#160;&#160;&#160;const void*&#160;&#160;&#160;&#160;value,<a name="wp1165540"> </a>
+&#160;&#160;&#160;&#160;tibrv_u32&#160;&#160;&#160;&#160;&#160;&#160;size,<a name="wp1165541"> </a>
+&#160;&#160;&#160;&#160;tibrv_u16&#160;&#160;&#160;&#160;&#160;&#160;fieldId=0);<a name="wp1165542"> </a>
+</pre></div>
+<a name="wp1165543"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1165544"> </a><p class="pBody">
+Update a field containing an XML byte sequence.
+</p>
+<a name="wp1165545"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1165546"> </a><p class="pBody">
+This convenience method locates a field (by name or identifier) and updates its data.
+</p>
+<a name="wp1165547"> </a><p class="pBody">
+The type of the existing field (within the message) and the type of the updating <code class="cCode">value</code> must match. The size can change.
+</p>
+<a name="wp1165548"> </a><p class="pBody">
+Pointer data previously extracted from the field remain valid and unchanged until the message is destroyed; that is, even updating the field&#8217;s value does <em class="cEmphasis">not</em> invalidate pointer data. (See <a  href="rv_cpp_ref24.htm#wp1119669">Pointer Snapshot</a>.)
+</p>
+<a name="wp1165603"> </a><p class="pBody">
+XML data is a byte sequence. Adding (or updating) a field of type <a  href="rv_cpp_ref270.htm#wp1231040"><code class="cCode">TIBRVMSG_XML</code></a> compresses the bytes. Extracting data from the field uncompresses it to obtain the original byte sequence.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1165561"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1165563"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1165565"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1165567"> </a><div class="pCellBody">
+Update a field with this name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1165569"> </a><div class="pCellBody">
+<code class="cCode">value</code>
+</div>
+</td>
+    <td><a name="wp1165571"> </a><div class="pCellBody">
+Update the message field to this value.
+</div>
+<a name="wp1165572"> </a><div class="pCellBody">
+The method <em class="cEmphasis">copies</em> the new value into the existing field.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1165574"> </a><div class="pCellBody">
+<code class="cCode">size</code>
+</div>
+</td>
+    <td><a name="wp1165576"> </a><div class="pCellBody">
+The program supplies the size of the new data in this parameter.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1165578"> </a><div class="pCellBody">
+<code class="cCode">fieldId</code>
+</div>
+</td>
+    <td><a name="wp1165580"> </a><div class="pCellBody">
+Update the field with this identifier. Zero is a special value that signifies no field identifier. It is illegal to add a field that has both a <code class="cCode">NULL</code> field name, and a non-zero field identifier.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1165582"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1165586"> </a><p class="pBody">
+<a  href="rv_cpp_ref25.htm#wp1114359">Field Names and Field Identifiers</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

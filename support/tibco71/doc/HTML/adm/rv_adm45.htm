@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>rvrd</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1066458"> </a><h2 class="pNewHTMLPage">
+rvrd
+</h2>
+<hr />
+<a name="wp1080402"> </a><p class="pSyntaxType">
+Command
+</p>
+<a name="wp1022258"> </a><h4 class="pHeading3">
+Syntax
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">rvrd&#160;</code>&#160;<code class="cCode">&#160;-store </code><code class="cCodeItalic">&lt;filename&gt;</code><a name="wp1058304"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;[-http [<code class="cCodeItalic">&lt;ip_address&gt;</code><code class="cCode">:]</code><code class="cCodeItalic">&lt;http_port&gt;</code>]<a name="wp1060077"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;[-https [<code class="cCodeItalic">&lt;ip_address&gt;</code><code class="cCode">:]</code><code class="cCodeItalic">&lt;https_port&gt;</code>]<a name="wp1277902"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;[-http-only]<a name="wp1277903"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;[-no-http]<a name="wp1277904"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;[-idle]</code><a name="wp1068551"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;[-listen [</code><code class="cCodeItalic">&lt;ip_address&gt;</code><code class="cCode">:]</code><code class="cCodeItalic">&lt;tcp_port&gt;</code><code class="cCode">]</code><a name="wp1054889"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;[-reliability </code><code class="cCodeItalic">&lt;time&gt;</code><code class="cCode">]</code><a name="wp1059618"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;[-logfile </code><code class="cCodeItalic">&lt;log_filename&gt;</code><code class="cCode">]</code><a name="wp1060087"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;</code>[-foreground]<a name="wp1060088"> </a>
+</pre></div>
+<a name="wp1060089"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1022301"> </a><p class="pBody">
+The routing daemon efficiently connects Rendezvous programs on distant IP networks, so that messages flow between them as if within a single network. Nonetheless, communicating programs remain decoupled from internetwork addresses and other details.
+</p>
+<a name="wp1022302"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1022303"> </a><p class="pBody">
+The <code class="cCode">rvrd</code> process subsumes the behavior of <code class="cCode">rvd</code>, so it is not necessary to run a separate <code class="cCode">rvd</code> process on computers that run <code class="cCode">rvrd</code>. We recommend <em class="cEmphasis">against</em> running both components on the same computer.
+</p>
+<a name="wp1022304"> </a><p class="pBody">
+<code class="cCode">rvrd</code> must run on a host computer with a <em class="cEmphasis">permanent</em> IP address. For example, a temporary address assigned by DHCP is invalid.
+</p>
+<a name="wp1080874"> </a><h4 class="pHeading3">
+Command Line Parameters
+</h4>
+<a name="wp1059296"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1059003"> </a><p class="pBody">
+ (Sheet 1 of 4)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1059007"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1059012"> </a><div class="pCellHeading">
+Description	
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1060099"> </a><div class="pCellBody">
+<code class="cCode">-store </code><code class="cCodeItalic">&lt;filename&gt;</code>
+</div>
+</td>
+    <td><a name="wp1060101"> </a><div class="pCellBody">
+This file contains the routing table entry and parameters that configure <code class="cCode">rvrd</code>.
+</div>
+<a name="wp1060102"> </a><div class="pCellBody">
+<code class="cCode">rvrd</code> reads this file when the process starts, and writes this file each time you change the configuration using the browser administration interface.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277952"> </a><div class="pCellBody">
+<code class="cCode">-http </code><code class="cCodeItalic">&lt;ip_address&gt;</code><code class="cCode">:</code><code class="cCodeItalic">&lt;http_port&gt;</code>
+</div>
+<a name="wp1277953"> </a><div class="pCellBody">
+<code class="cCode">-http </code><code class="cCodeItalic">&lt;http_port&gt;</code>
+</div>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;<a name="wp1277954"> </a>
+</pre></div>
+<a name="wp1277955"> </a><div class="pCellBody">
+<code class="cCode">-https </code><code class="cCodeItalic">&lt;ip_address&gt;</code><code class="cCode">:</code><code class="cCodeItalic">&lt;https_port&gt;</code>
+</div>
+<a name="wp1277956"> </a><div class="pCellBody">
+<code class="cCode">-https </code><code class="cCodeItalic">&lt;https_port&gt;</code>
+</div>
+</td>
+    <td><a name="wp1277958"> </a><div class="pCellBody">
+The browser administration interface accepts connections on this HTTP or HTTPS port. Permit administration access only through the network interface specified by this IP address.
+</div>
+<a name="wp1277959"> </a><div class="pCellBody">
+To limit access to a browser on the <code class="cCode">rvrd</code> host computer, specify <code class="cCode">127.0.0.1</code> (the local host address).
+</div>
+<a name="wp1277960"> </a><div class="pCellBody">
+When the IP address is absent, the daemon accepts connections through any network interface on the specified HTTP or HTTPS port.
+</div>
+<a name="wp1277961"> </a><div class="pCellBody">
+If the explicitly specified port is already occupied, the program exits.
+</div>
+<a name="wp1277962"> </a><div class="pCellBody">
+When the <code class="cCode">-http</code> parameter is entirely absent, the default behavior is to accept connections from any computer on HTTP port <code class="cCode">7580</code>; If this default port is unavailable, the operating system assigns an ephemeral port number.
+</div>
+<a name="wp1277963"> </a><div class="pCellBody">
+When the <code class="cCode">-https</code> parameter is entirely absent, the default behavior is to accept secure connections from any computer on an ephemeral HTTPS port.
+</div>
+<a name="wp1277964"> </a><div class="pCellBody">
+In all cases, the program prints (in its start banner) the actual HTTP and HTTPS ports where it accepts browser administration interface connections.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277966"> </a><div class="pCellBody">
+<code class="cCode">-http-only</code>
+</div>
+</td>
+    <td><a name="wp1277968"> </a><div class="pCellBody">
+Disable HTTPS (secure) connections, leaving only an HTTP (non-secure) connection.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277970"> </a><div class="pCellBody">
+<code class="cCode">-no-http</code>
+</div>
+</td>
+    <td><a name="wp1277972"> </a><div class="pCellBody">
+Disable <em class="cEmphasis">all</em> HTTP and HTTPS connections, overriding <code class="cCode">-http</code> and <code class="cCode">-https</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1068558"> </a><div class="pCellBody">
+<code class="cCode">-idle</code>
+</div>
+</td>
+    <td><a name="wp1068560"> </a><div class="pCellBody">
+When present, start <code class="cCode">rvrd</code> in its <em class="cEmphasis">idle</em> state.
+</div>
+<a name="wp1068561"> </a><div class="pCellBody">
+When absent, start <code class="cCode">rvrd</code> in its <em class="cEmphasis">running</em> state&#151;routing messages.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1059239"> </a><div class="pCellBody">
+<code class="cCode">-listen </code><code class="cCodeItalic">&lt;ip_address&gt;</code><code class="cCode">:</code><code class="cCodeItalic">&lt;tcp_port&gt;</code>
+</div>
+<a name="wp1059240"> </a><div class="pCellBody">
+<code class="cCode">-listen </code><code class="cCodeItalic">&lt;tcp_port&gt;</code>
+</div>
+</td>
+    <td><a name="wp1059242"> </a><div class="pCellBody">
+<code class="cCode">rvd</code> (and by extension, <code class="cCode">rvrd</code> operating within the local network) opens a TCP client socket to establish communication between itself and its client programs. The <code class="cCode">-listen</code> parameter specifies the TCP port where the Rendezvous daemon listens for connection requests from client programs. This <code class="cCode">-listen</code> parameter of <code class="cCode">rvd</code> corresponds to the <code class="cCode">daemon</code> parameter of the transport creation call (they must specify the same TCP port number).
+</div>
+<a name="wp1059246"> </a><div class="pCellBody">
+The IP address specifies the network interface through which this daemon accepts TCP connections.
+</div>
+<a name="wp1059247"> </a><div class="pCellBody">
+To bar connections from remote programs, specify IP address <code class="cCode">127.0.0.1</code> (the loopback interface).
+</div>
+<a name="wp1059248"> </a><div class="pCellBody">
+When the IP address is absent, the daemon accepts connections from any computer on the specified TCP port.
+</div>
+<a name="wp1059249"> </a><div class="pCellBody">
+When this parameter is entirely absent, the default behavior is to accept connections from any computer on TCP port 7500.
+</div>
+<a name="wp1059250"> </a><div class="pCellBody">
+For more detail about the choreography that establishes conduits, see <a  href="rv_adm17.htm#wp1019451">Daemon Client Socket&#151;Establishing Connections</a>.
+</div>
+<img src="images/warning.gif" border="0" /><a name="wp1059256"> </a><p class="pBody">
+This parameter does <em class="cEmphasis">not</em> correspond to the <code class="cCode">service</code> parameter of the transport creation call&#151;but rather to the <code class="cCode">daemon</code> parameter.
+</p>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1059258"> </a><div class="pCellBody">
+<code class="cCode">-reliability </code><code class="cCodeItalic">&lt;time&gt;</code>
+</div>
+</td>
+    <td><a name="wp1059263"> </a><div class="pCellBody">
+Rendezvous daemons compensate for brief network failures by retaining outbound messages, and retransmitting them upon request. 
+</div>
+<a name="wp1059264"> </a><div class="pCellBody">
+If this parameter is <em class="cEmphasis">absent</em>, the default retention time is 60 seconds. In some situations, shorter times are appropriate. We strongly discourage <em class="cEmphasis">increasing</em> the retention time beyond 60 seconds (see <a  href="rv_adm21.htm#wp1146262">Reliability and Message Retention Time</a>).
+</div>
+<a name="wp1059268"> </a><div class="pCellBody">
+If this parameter is present, <code class="cCode">rvd</code> (and by extension, <code class="cCode">rvrd</code> operating within the local network) retains messages for <code class="cCodeItalic">&lt;time&gt;</code> (in seconds).
+</div>
+<a name="wp1059271"> </a><div class="pCellBody">
+For more information see <a  href="rv_adm21.htm#wp1146262">Reliability and Message Retention Time</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1059691"> </a><div class="pCellBody">
+<code class="cCode">-logfile </code><code class="cCodeItalic">&lt;log_filename&gt;</code>
+</div>
+</td>
+    <td><a name="wp1059687"> </a><div class="pCellBody">
+Send log output to this file.
+</div>
+<a name="wp1059705"> </a><div class="pCellBody">
+When absent, the default is <code class="cCode">stderr</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1059274"> </a><div class="pCellBody">
+<code class="cCode">-foreground</code>
+</div>
+</td>
+    <td><a name="wp1059276"> </a><div class="pCellBody">
+Available only on UNIX platforms.
+</div>
+<a name="wp1059277"> </a><div class="pCellBody">
+When present, <code class="cCode">rvrd</code> runs as a foreground process.
+</div>
+<a name="wp1059278"> </a><div class="pCellBody">
+When absent, <code class="cCode">rvrd</code> runs as a background process.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

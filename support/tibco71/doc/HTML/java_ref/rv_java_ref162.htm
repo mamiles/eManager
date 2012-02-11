@@ -1,0 +1,380 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvFtMember</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;8	 Fault Tolerance";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1062294"> </a><h2 class="pNewHTMLPage">
+TibrvFtMember
+</h2>
+<hr />
+<a name="wp1062591"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1062592"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+class com.tibco.tibrv.<code class="cCodeBold">TibrvFtMember</code><a name="wp1062593"> </a>
+&#160;&#160;extends <a  href="rv_java_ref77.htm#wp1047420"><code class="cCode">TibrvEvent</code></a><a name="wp1280420"> </a>
+</pre></div>
+<a name="wp1062594"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1062595"> </a><p class="pBody">
+Represent membership in a fault tolerance group.
+</p>
+<a name="wp1062596"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1062769"> </a><p class="pBody">
+Upon creating this object, the program joins a fault tolerance group.
+</p>
+<a name="wp1062609"> </a><p class="pBody">
+By destroying a member object, the program withdraws its membership in the fault tolerance group.
+</p>
+<a name="wp1112054"> </a><p class="pBody">
+Programs must destroy instances of this class. Rendezvous software keeps internal references to these objects, so the Java garbage collector does not delete them automatically.
+</p>
+<a name="wp1081870"> </a><p class="pBody">
+Destroying the queue or transport of a member object automatically destroys the member object as well.
+</p>
+<a name="wp1062832"> </a><h4 class="pHeading3">
+Constants
+</h4>
+<a name="wp1062833"> </a><p class="pBody">
+Each of these constant fields is a token designating a command to a fault tolerance callback method. The program&#8217;s callback method receives one of these tokens in a parameter, and interprets it as an instruction from the Rendezvous fault tolerance software as described in this table (see also, <a  href="javascript:WWHClickedPopup('a', 'rv_concepts141.htm#wp1057747');" onMouseOver="WWHShowPopup('a', 'rv_concepts141.htm#wp1057747', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Fault Tolerance Callback Actions</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>).</p><div align="left">
+<table border="1">
+  <caption><a name="wp1115761"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1062842"> </a><div class="pCellHeading">
+Constant
+</div>
+</th>
+    <th><a name="wp1062844"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1062848"> </a><div class="pCellBody">
+<code class="cCode">TibrvFtMember.PREPARE_TO_ACTIVATE</code>
+</div>
+</td>
+    <td><a name="wp1062850"> </a><div class="pCellBody">
+Prepare to activate (hint).
+</div>
+<a name="wp1062906"> </a><div class="pCellBody">
+Rendezvous fault tolerance software passes this token to the callback method to instruct the program to make itself ready to activate on short notice&#151;so that if the callback method subsequently receives the instruction to activate, it can do so without delay.
+</div>
+<a name="wp1062855"> </a><div class="pCellBody">
+This token is a hint, indicating that the program might soon receive an instruction to activate. It does not guarantee that an activate instruction will follow, nor that any minimum time will elapse before an activate instruction follows.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1062859"> </a><div class="pCellBody">
+<code class="cCode">TibrvFtMember.ACTIVATE</code>
+</div>
+</td>
+    <td><a name="wp1062861"> </a><div class="pCellBody">
+Activate immediately.
+</div>
+<a name="wp1062865"> </a><div class="pCellBody">
+Rendezvous fault tolerance software passes this token to the callback method to instruct the program to activate.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1062869"> </a><div class="pCellBody">
+<code class="cCode">TibrvFtMember.DEACTIVATE</code>
+</div>
+</td>
+    <td><a name="wp1062871"> </a><div class="pCellBody">
+Deactivate immediately.
+</div>
+<a name="wp1062875"> </a><div class="pCellBody">
+Rendezvous fault tolerance software passes this token to the callback method to instruct the program to deactivate.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1062639"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1072295"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1072297"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1072299"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1072304"> </a><div class="pCellBody">
+<a  href="rv_java_ref163.htm#wp1062937"><code class="cCode">TibrvFtMember()</code></a>
+</div>
+</td>
+    <td><a name="wp1072308"> </a><div class="pCellBody">
+<a  href="rv_java_ref163.htm#wp1062954">Create a member of a fault tolerance group.</a>
+</div>
+</td>
+    <td><a name="wp1072314"> </a><div class="pCellBody">
+<a  href="rv_java_ref163.htm#wp1062937">220</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1072319"> </a><div class="pCellBody">
+<a  href="rv_java_ref164.htm#wp1062646"><code class="cCode">TibrvFtMember.destroy()</code></a>
+</div>
+</td>
+    <td><a name="wp1072323"> </a><div class="pCellBody">
+<a  href="rv_java_ref164.htm#wp1062802">Destroy a member of a fault tolerance group.</a>
+</div>
+</td>
+    <td><a name="wp1072329"> </a><div class="pCellBody">
+<a  href="rv_java_ref164.htm#wp1062646">223</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1072334"> </a><div class="pCellBody">
+<a  href="rv_java_ref165.htm#wp1063922"><code class="cCode">TibrvFtMember.getActivationInterval()</code></a>
+</div>
+</td>
+    <td><a name="wp1072336"> </a><div class="pCellBody">
+<a  href="rv_java_ref165.htm#wp1063929">Extract the activation interval of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1072341"> </a><div class="pCellBody">
+<a  href="rv_java_ref165.htm#wp1063922">224</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1072355"> </a><div class="pCellBody">
+<a  href="rv_java_ref166.htm#wp1063996"><code class="cCode">TibrvFtMember.getActiveGoal()</code></a>
+</div>
+</td>
+    <td><a name="wp1072359"> </a><div class="pCellBody">
+<a  href="rv_java_ref166.htm#wp1064001">Extract the active goal of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1072365"> </a><div class="pCellBody">
+<a  href="rv_java_ref166.htm#wp1063996">225</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1072370"> </a><div class="pCellBody">
+<a  href="rv_java_ref167.htm#wp1061649"><code class="cCode">TibrvFtMember.getGroupName()</code></a>
+</div>
+</td>
+    <td><a name="wp1072374"> </a><div class="pCellBody">
+<a  href="rv_java_ref167.htm#wp1061657">Extract the group name of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1072380"> </a><div class="pCellBody">
+<a  href="rv_java_ref167.htm#wp1061649">226</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1072385"> </a><div class="pCellBody">
+<a  href="rv_java_ref168.htm#wp1064058"><code class="cCode">TibrvFtMember.getHeartbeatInterval()</code></a>
+</div>
+</td>
+    <td><a name="wp1072387"> </a><div class="pCellBody">
+<a  href="rv_java_ref168.htm#wp1064063">Extract the heartbeat interval of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1072392"> </a><div class="pCellBody">
+<a  href="rv_java_ref168.htm#wp1064058">227</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1072406"> </a><div class="pCellBody">
+<a  href="rv_java_ref169.htm#wp1064020"><code class="cCode">TibrvFtMember.getPreparationInterval()</code></a>
+</div>
+</td>
+    <td><a name="wp1072408"> </a><div class="pCellBody">
+<a  href="rv_java_ref169.htm#wp1064026">Extract the preparation interval of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1072413"> </a><div class="pCellBody">
+<a  href="rv_java_ref169.htm#wp1064020">228</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1072427"> </a><div class="pCellBody">
+<a  href="rv_java_ref170.htm#wp1123605"><code class="cCode">TibrvFtMember.getQueue()</code></a>
+</div>
+</td>
+    <td><a name="wp1072431"> </a><div class="pCellBody">
+<a  href="rv_java_ref170.htm#wp1061688">Extract the event queue of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1072437"> </a><div class="pCellBody">
+<a  href="rv_java_ref170.htm#wp1123605">229</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1072442"> </a><div class="pCellBody">
+<a  href="rv_java_ref171.htm#wp1061710"><code class="cCode">TibrvFtMember.getTransport()</code></a>
+</div>
+</td>
+    <td><a name="wp1072446"> </a><div class="pCellBody">
+<a  href="rv_java_ref171.htm#wp1061718">Extract the transport of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1072452"> </a><div class="pCellBody">
+<a  href="rv_java_ref171.htm#wp1061710">230</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1072457"> </a><div class="pCellBody">
+<a  href="rv_java_ref172.htm#wp1061740"><code class="cCode">TibrvFtMember.getWeight()</code></a>
+</div>
+</td>
+    <td><a name="wp1072461"> </a><div class="pCellBody">
+<a  href="rv_java_ref172.htm#wp1061748">Extract the weight of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1072467"> </a><div class="pCellBody">
+<a  href="rv_java_ref172.htm#wp1061740">231</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1072472"> </a><div class="pCellBody">
+<a  href="rv_java_ref174.htm#wp1061770"><code class="cCode">TibrvFtMember.setWeight()</code></a>
+</div>
+</td>
+    <td><a name="wp1072476"> </a><div class="pCellBody">
+<a  href="rv_java_ref174.htm#wp1061779">Change the weight of a fault tolerance member within its group.</a>
+</div>
+</td>
+    <td><a name="wp1072482"> </a><div class="pCellBody">
+<a  href="rv_java_ref174.htm#wp1061770">233</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1211858"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1211824"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1211931"> </a><p class="pBody">
+<a  href="rv_java_ref79.htm#wp1033576"><code class="cCode">TibrvEvent.getClosure()</code></a>
+</p>
+<a name="wp1211849"> </a><p class="pBody">
+<a  href="rv_java_ref81.htm#wp1033426"><code class="cCode">TibrvEvent.isValid()</code></a>
+</p>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1211851"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.equals</code>
+</p>
+<a name="wp1211852"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.getClass</code>
+</p>
+<a name="wp1211853"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.hashCode</code>
+</p>
+<a name="wp1211854"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notify</code>
+</p>
+<a name="wp1211855"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notifyAll</code>
+</p>
+<a name="wp1211856"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.toString</code> (override)
+</p>
+<a name="wp1211857"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.wait</code>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1273714"> </a><h4 class="pHeading3">
+Related Classes
+</h4>
+<a name="wp1207603"> </a><p class="pBody">
+<a  href="rv_java_ref77.htm#wp1047420"><code class="cCode">TibrvEvent</code> </a>
+</p>
+<a name="wp1207607"> </a><p class="pBody">
+<a  href="rv_java_ref177.htm#wp1212716"><code class="cCode">TibrvFtMonitor</code> </a>
+</p>
+<a name="wp1207608"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1062644"> </a><p class="pBody">
+<a  href="rv_java_ref175.htm#wp1063525"><code class="cCode">TibrvFtMemberCallback</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>rvntscfg</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Appendix&#160;A	 Windows Services";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1071188"> </a><h2 class="pNewHTMLPage">
+rvntscfg
+</h2>
+<hr />
+<a name="wp1071189"> </a><p class="pSyntaxType">
+Utility
+</p>
+<a name="wp1071190"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1071194"> </a><p class="pBody">
+Graphical user interface to configure Rendezvous components as Windows services.
+</p>
+<a name="wp1071195"> </a><h4 class="pHeading3">
+Restrictions
+</h4>
+<a name="wp1071196"> </a><p class="pBody">
+You must have administrator privileges to change the Windows registry.
+</p>
+<a name="wp1071197"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1071201"> </a><p class="pBody">
+Locate this utility program as an executable file in the Rendezvous <code class="cCode">bin\</code> directory.
+</p>
+<a name="wp1071205"> </a><p class="pBody">
+Rendezvous components belong to one of two categories:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1071206"> </a><div class="pSmartList1"><li >Base communications components. This category consists of <code class="cCode">rvd</code> and <code class="cCode">rvrd</code>&#151;the two components that enable network communications.</li></div>
+
+<a name="wp1071207"> </a><div class="pSmartList1"><li >Dependent components. All other components are in this category&#151;they depend on the presence of a base communications component.</li></div>
+
+<a name="wp1071208"> </a><p class="pBodyRelative">
+Before you can start one of these programs as a service, one of the base communications components must already be running <em class="cEmphasis">as a service</em>.
+</p>
+</ul></div>
+
+<a name="wp1071209"> </a><h4 class="pHeading3">
+Register
+</h4>
+<a name="wp1071210"> </a><p class="pBody">
+To register a component as a Windows service:
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1071212"> </a><div class="pSmartList1"><li value="1">Start <code class="cCode">rvntscfg.exe</code>.</li></div>
+
+<a name="wp1071216"> </a><div class="pSmartList1"><li value="2">Select the Rendezvous component.</li></div>
+
+<a name="wp1071217"> </a><div class="pSmartList1"><li value="3">Specify <em class="cEmphasis">manual</em> or <em class="cEmphasis">automatic</em> start. In most cases, the appropriate choice is <em class="cEmphasis">automatic</em>&#151;that is, start the component automatically when starting Windows.</li></div>
+
+<a name="wp1071221"> </a><div class="pSmartList1"><li value="4">Check the path to the Rendezvous <code class="cCode">bin\</code> directory (or the correct location of the component).</li></div>
+
+<a name="wp1071222"> </a><div class="pSmartList1"><li value="5">Check the arguments to the program.</li></div>
+
+<a name="wp1071223"> </a><p class="pBodyRelative">
+In particular, ensure that this field correctly specifies the store file and HTTP access.
+</p>
+<a name="wp1071224"> </a><div class="pSmartList1"><li value="6">Click the <b class="cBold">Install</b> button to register, or the <b class="cBold">Update</b> button to change an existing registration.</li></div>
+
+<a name="wp1071225"> </a><div class="pSmartList1"><li value="7">When prompted to start the new service, click <b class="cBold">Yes</b>.</li></div>
+
+</ol></div>
+
+<a name="wp1071226"> </a><h4 class="pHeading3">
+Remove
+</h4>
+<a name="wp1071227"> </a><p class="pBody">
+To unregister a service:
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1071229"> </a><div class="pSmartList1"><li value="1">Start <code class="cCode">rvntscfg.exe</code>.</li></div>
+
+<a name="wp1071233"> </a><div class="pSmartList1"><li value="2">Select the Rendezvous component.</li></div>
+
+<a name="wp1071234"> </a><div class="pSmartList1"><li value="3">Click the <b class="cBold">Remove</b> button to unregister the service.</li></div>
+
+</ol></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

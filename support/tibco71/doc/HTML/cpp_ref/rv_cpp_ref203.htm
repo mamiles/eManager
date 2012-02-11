@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvFtMemberOnComplete::onComplete</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;8	 Fault Tolerance";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1136385"> </a><h2 class="pNewHTMLPage">
+TibrvFtMemberOnComplete::onComplete
+</h2>
+<hr />
+<a name="wp1136382"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1136253"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+virtual void <code class="cCodeBold">onComplete</code>(<a name="wp1137209"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_cpp_ref189.htm#wp1062294"><code class="cCode">TibrvFtMember</code></a>* ftMember) = 0;<a name="wp1137213"> </a>
+</pre></div>
+<a name="wp1137131"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1137133"> </a><p class="pBody">
+A program can destroy a member object even when its callback method is running in one or more threads. Multi-threaded programs can define methods of this type to discover when all callback methods in progress have completed.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1136269"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1136271"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1136273"> </a><div class="pCellBody">
+<code class="cCode">ftMember</code>
+</div>
+</td>
+    <td><a name="wp1136275"> </a><div class="pCellBody">
+This parameter receives the member event object. This object is identical to the object that the program created to join the fault tolerance group.
+</div>
+<a name="wp1136276"> </a><div class="pCellBody">
+However, by the time this method runs, the member is already destroyed; this method cannot use the member object in Rendezvous calls.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1136285"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1136286"> </a><p class="pBody">
+This type of method is important in two situations:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1136287"> </a><div class="pSmartList1"><li >Internal fault tolerance callback methods run in several threads (because several threads dispatch the member&#8217;s event queue), and the program must do additional processing after these callback methods have completed <em class="cEmphasis">in all threads</em>.</li></div>
+
+<a name="wp1137244"> </a><div class="pSmartList1"><li >A member callback method calls <a  href="rv_cpp_ref191.htm#wp1062646"><code class="cCode">TibrvFtMember::destroy()</code></a> to withdraw from a fault tolerance group, and the program must do additional processing <em class="cEmphasis">after</em> the rest of the callback method has completed.</li></div>
+
+</ul></div>
+
+<a name="wp1137280"> </a><p class="pBody">
+Upon return from <a  href="rv_cpp_ref191.htm#wp1062646"><code class="cCode">TibrvFtMember::destroy()</code></a>, the destroyed member&#8217;s callback method can no longer begin to run (this is also true of internal callback methods). However, in each thread where a callback method is already in progress, that callback method does continue to run until complete.
+</p>
+<a name="wp1137284"> </a><p class="pBody">
+<a  href="rv_cpp_ref191.htm#wp1062646"><code class="cCode">TibrvFtMember::destroy()</code></a> accepts a <em class="cEmphasis">completion argument</em> of type <a  href="rv_cpp_ref202.htm#wp1221996"><code class="cCode">TibrvFtMemberOnComplete</code></a>. Rendezvous software ensures that the completion method runs when the last callback-in-progress has completed.
+</p>
+<a name="wp1136297"> </a><h4 class="pHeading3">
+Timing and Context
+</h4>
+<a name="wp1136301"> </a><p class="pBody">
+This information in completely analogous to <a  href="rv_cpp_ref101.htm#wp1126041"><code class="cCode">TibrvEventOnComplete::onComplete()</code> </a>. See that section for important details.
+</p>
+<a name="wp1136302"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1136306"> </a><p class="pBody">
+<a  href="rv_cpp_ref190.htm#wp1062937"><code class="cCode">TibrvFtMember::create()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

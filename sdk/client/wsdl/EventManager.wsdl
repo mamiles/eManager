@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://event.soap.eManager.cisco.com" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://event.soap.eManager.cisco.com" xmlns:intf="http://event.soap.eManager.cisco.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns2="http://inventory.common.eManager.cisco.com" xmlns:tns3="http://event.common.eManager.cisco.com" xmlns:tns4="http://common.eManager.cisco.com" xmlns:tns5="http://database.common.eManager.cisco.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ <wsdl:types>
+  <schema targetNamespace="http://inventory.common.eManager.cisco.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ManagedObjectIdType">
+    <sequence/>
+   </complexType>
+   <complexType name="ManagedObjectId">
+    <sequence>
+     <element name="managedObjectKey" type="xsd:long"/>
+     <element name="managedObjectType" nillable="true" type="tns2:ManagedObjectIdType"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://event.common.eManager.cisco.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="EventAcknowledgement">
+    <sequence>
+     <element name="comment" nillable="true" type="soapenc:string"/>
+     <element name="date" nillable="true" type="xsd:dateTime"/>
+     <element name="userId" nillable="true" type="tns2:ManagedObjectId"/>
+    </sequence>
+   </complexType>
+   <complexType name="EmanagerEventException">
+    <complexContent>
+     <extension base="tns4:EmanagerException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="EventSeverity">
+    <sequence/>
+   </complexType>
+   <complexType name="EmanagerEventDetails">
+    <sequence>
+     <element name="acknowledgement" nillable="true" type="tns3:EventAcknowledgement"/>
+     <element name="clearTime" nillable="true" type="xsd:dateTime"/>
+     <element name="displayText" nillable="true" type="soapenc:string"/>
+     <element name="managedObjectId" nillable="true" type="tns2:ManagedObjectId"/>
+     <element name="objectId" nillable="true" type="tns2:ManagedObjectId"/>
+     <element name="postTime" nillable="true" type="xsd:dateTime"/>
+     <element name="severity" nillable="true" type="tns3:EventSeverity"/>
+     <element name="tibcoEventFieldName" nillable="true" type="soapenc:string"/>
+     <element name="tibcoEventMessageSubject" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="DateSearchCriteria">
+    <sequence>
+     <element name="endDate" nillable="true" type="xsd:dateTime"/>
+     <element name="startDate" nillable="true" type="xsd:dateTime"/>
+    </sequence>
+   </complexType>
+   <complexType name="AcknowledgementSearchCriteria">
+    <sequence>
+     <element name="acknowledgementTime" nillable="true" type="tns3:DateSearchCriteria"/>
+     <element name="userId" nillable="true" type="soapenc:Array"/>
+     <element name="userIds" nillable="true" type="soapenc:Array"/>
+    </sequence>
+   </complexType>
+   <complexType name="NumericSearchCriteria">
+    <sequence>
+     <element name="end" nillable="true" type="soapenc:long"/>
+     <element name="start" nillable="true" type="soapenc:long"/>
+    </sequence>
+   </complexType>
+   <complexType abstract="true" name="AbstractSearchCriteria">
+    <sequence>
+     <element name="acknowledgement" nillable="true" type="tns3:AcknowledgementSearchCriteria"/>
+     <element name="clearDate" nillable="true" type="tns3:DateSearchCriteria"/>
+     <element name="emanagerEventId" nillable="true" type="tns3:NumericSearchCriteria"/>
+     <element name="managedObjectIds" nillable="true" type="soapenc:Array"/>
+     <element name="postDate" nillable="true" type="tns3:DateSearchCriteria"/>
+     <element name="severity" nillable="true" type="soapenc:Array"/>
+    </sequence>
+   </complexType>
+   <complexType name="AbstractProcessSequencerEventSearchCriteria">
+    <sequence>
+     <element name="processSequencerEventId" nillable="true" type="tns3:NumericSearchCriteria"/>
+     <element name="processSequencerId" nillable="true" type="soapenc:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="ProcessSequencerEventSearchCriteria">
+    <complexContent>
+     <extension base="tns3:AbstractProcessSequencerEventSearchCriteria">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="StringSearchCriteria">
+    <sequence>
+     <element name="string" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="AbstractTibcoEventSearchCriteria">
+    <sequence>
+     <element name="managementPolicyIds" nillable="true" type="soapenc:Array"/>
+     <element name="rule" nillable="true" type="tns3:StringSearchCriteria"/>
+     <element name="test" nillable="true" type="tns3:StringSearchCriteria"/>
+     <element name="tibcoEventId" nillable="true" type="tns3:NumericSearchCriteria"/>
+    </sequence>
+   </complexType>
+   <complexType name="TibcoEventSearchCriteria">
+    <complexContent>
+     <extension base="tns3:AbstractTibcoEventSearchCriteria">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="EventSearchCriteria">
+    <complexContent>
+     <extension base="tns3:AbstractSearchCriteria">
+      <sequence>
+       <element name="processSequencerSearchCriteria" nillable="true" type="tns3:ProcessSequencerEventSearchCriteria"/>
+       <element name="tibcoSearchCriteria" nillable="true" type="tns3:TibcoEventSearchCriteria"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ProcessSequencerEventDeletionCriteria">
+    <complexContent>
+     <extension base="tns3:AbstractProcessSequencerEventSearchCriteria">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="TibcoEventDeletionCriteria">
+    <complexContent>
+     <extension base="tns3:AbstractTibcoEventSearchCriteria">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="EventDeletionCriteria">
+    <complexContent>
+     <extension base="tns3:AbstractSearchCriteria">
+      <sequence>
+       <element name="processSequencerDelectionCriteria" nillable="true" type="tns3:ProcessSequencerEventDeletionCriteria"/>
+       <element name="processSequencerDeletionCriteria" nillable="true" type="tns3:ProcessSequencerEventDeletionCriteria"/>
+       <element name="tibcoDeletionCriteria" nillable="true" type="tns3:TibcoEventDeletionCriteria"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="AbstractEventEvent">
+    <sequence>
+     <element name="emanagerEventId" nillable="true" type="tns2:ManagedObjectId"/>
+    </sequence>
+   </complexType>
+   <complexType name="AcknowledgementEvent">
+    <complexContent>
+     <extension base="tns3:AbstractEventEvent">
+      <sequence>
+       <element name="acknowledgement" nillable="true" type="tns3:EventAcknowledgement"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="UnacknowledgementEvent">
+    <complexContent>
+     <extension base="tns3:AbstractEventEvent">
+      <sequence>
+       <element name="userId" nillable="true" type="tns2:ManagedObjectId"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://common.eManager.cisco.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType abstract="true" name="EmanagerStatusCode">
+    <sequence>
+     <element name="statusCodeDescription" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType abstract="true" name="EmanagerException">
+    <sequence>
+     <element name="statusCode" nillable="true" type="tns4:EmanagerStatusCode"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://database.common.eManager.cisco.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="EmanagerDatabaseException">
+    <complexContent>
+     <extension base="tns4:EmanagerException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="retrieveEventsRequest">
+
+      <wsdl:part name="in0" type="tns3:EventSearchCriteria"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="xmlMessageRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="acknowledgeEventRequest">
+
+      <wsdl:part name="in0" type="tns2:ManagedObjectId"/>
+
+      <wsdl:part name="in1" type="tns3:EventAcknowledgement"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="registerSNMPClientRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+      <wsdl:part name="in2" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="unregisterSNMPClientResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteEventsRequest">
+
+      <wsdl:part name="in0" type="tns3:EventDeletionCriteria"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="unacknowledgeEventRequest">
+
+      <wsdl:part name="in0" type="tns2:ManagedObjectId"/>
+
+      <wsdl:part name="in1" type="tns2:ManagedObjectId"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="xmlMessageResponse">
+
+      <wsdl:part name="xmlMessageReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getEventDetailsResponse">
+
+      <wsdl:part name="getEventDetailsReturn" type="tns3:EmanagerEventDetails"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getEventDetailsRequest">
+
+      <wsdl:part name="in0" type="tns2:ManagedObjectId"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="eventAcknowledgementNotificationRequest">
+
+      <wsdl:part name="in0" type="tns3:AcknowledgementEvent"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="retrieveEventsResponse">
+
+      <wsdl:part name="retrieveEventsReturn" type="soapenc:Array"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="unregisterSNMPClientRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+      <wsdl:part name="in2" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="eventUnacknowledgementNotificationRequest">
+
+      <wsdl:part name="in0" type="tns3:UnacknowledgementEvent"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="acknowledgeEventResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="eventAcknowledgementNotificationResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteEventsResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="eventUnacknowledgementNotificationResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="registerSNMPClientResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="EmanagerEventException">
+
+      <wsdl:part name="fault" type="tns3:EmanagerEventException"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="EmanagerDatabaseException">
+
+      <wsdl:part name="fault" type="tns5:EmanagerDatabaseException"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="unacknowledgeEventResponse">
+
+   </wsdl:message>
+
+   <wsdl:portType name="EventManager">
+
+      <wsdl:operation name="xmlMessage" parameterOrder="in0">
+
+         <wsdl:input message="impl:xmlMessageRequest" name="xmlMessageRequest"/>
+
+         <wsdl:output message="impl:xmlMessageResponse" name="xmlMessageResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="acknowledgeEvent" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:acknowledgeEventRequest" name="acknowledgeEventRequest"/>
+
+         <wsdl:output message="impl:acknowledgeEventResponse" name="acknowledgeEventResponse"/>
+
+         <wsdl:fault message="impl:EmanagerEventException" name="EmanagerEventException"/>
+
+         <wsdl:fault message="impl:EmanagerDatabaseException" name="EmanagerDatabaseException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="unacknowledgeEvent" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:unacknowledgeEventRequest" name="unacknowledgeEventRequest"/>
+
+         <wsdl:output message="impl:unacknowledgeEventResponse" name="unacknowledgeEventResponse"/>
+
+         <wsdl:fault message="impl:EmanagerEventException" name="EmanagerEventException"/>
+
+         <wsdl:fault message="impl:EmanagerDatabaseException" name="EmanagerDatabaseException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getEventDetails" parameterOrder="in0">
+
+         <wsdl:input message="impl:getEventDetailsRequest" name="getEventDetailsRequest"/>
+
+         <wsdl:output message="impl:getEventDetailsResponse" name="getEventDetailsResponse"/>
+
+         <wsdl:fault message="impl:EmanagerEventException" name="EmanagerEventException"/>
+
+         <wsdl:fault message="impl:EmanagerDatabaseException" name="EmanagerDatabaseException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="retrieveEvents" parameterOrder="in0">
+
+         <wsdl:input message="impl:retrieveEventsRequest" name="retrieveEventsRequest"/>
+
+         <wsdl:output message="impl:retrieveEventsResponse" name="retrieveEventsResponse"/>
+
+         <wsdl:fault message="impl:EmanagerEventException" name="EmanagerEventException"/>
+
+         <wsdl:fault message="impl:EmanagerDatabaseException" name="EmanagerDatabaseException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteEvents" parameterOrder="in0">
+
+         <wsdl:input message="impl:deleteEventsRequest" name="deleteEventsRequest"/>
+
+         <wsdl:output message="impl:deleteEventsResponse" name="deleteEventsResponse"/>
+
+         <wsdl:fault message="impl:EmanagerEventException" name="EmanagerEventException"/>
+
+         <wsdl:fault message="impl:EmanagerDatabaseException" name="EmanagerDatabaseException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="registerSNMPClient" parameterOrder="in0 in1 in2">
+
+         <wsdl:input message="impl:registerSNMPClientRequest" name="registerSNMPClientRequest"/>
+
+         <wsdl:output message="impl:registerSNMPClientResponse" name="registerSNMPClientResponse"/>
+
+         <wsdl:fault message="impl:EmanagerEventException" name="EmanagerEventException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="unregisterSNMPClient" parameterOrder="in0 in1 in2">
+
+         <wsdl:input message="impl:unregisterSNMPClientRequest" name="unregisterSNMPClientRequest"/>
+
+         <wsdl:output message="impl:unregisterSNMPClientResponse" name="unregisterSNMPClientResponse"/>
+
+         <wsdl:fault message="impl:EmanagerEventException" name="EmanagerEventException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="eventAcknowledgementNotification" parameterOrder="in0">
+
+         <wsdl:input message="impl:eventAcknowledgementNotificationRequest" name="eventAcknowledgementNotificationRequest"/>
+
+         <wsdl:output message="impl:eventAcknowledgementNotificationResponse" name="eventAcknowledgementNotificationResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="eventUnacknowledgementNotification" parameterOrder="in0">
+
+         <wsdl:input message="impl:eventUnacknowledgementNotificationRequest" name="eventUnacknowledgementNotificationRequest"/>
+
+         <wsdl:output message="impl:eventUnacknowledgementNotificationResponse" name="eventUnacknowledgementNotificationResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="EventManagerSoapBinding" type="impl:EventManager">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="xmlMessage">
+
+         <wsdlsoap:operation soapAction="xmlMessage"/>
+
+         <wsdl:input name="xmlMessageRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="xmlMessageResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="acknowledgeEvent">
+
+         <wsdlsoap:operation soapAction="acknowledgeEvent"/>
+
+         <wsdl:input name="acknowledgeEventRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="acknowledgeEventResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerEventException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="EmanagerDatabaseException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="unacknowledgeEvent">
+
+         <wsdlsoap:operation soapAction="unacknowledgeEvent"/>
+
+         <wsdl:input name="unacknowledgeEventRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="unacknowledgeEventResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerEventException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="EmanagerDatabaseException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getEventDetails">
+
+         <wsdlsoap:operation soapAction="getEventDetails"/>
+
+         <wsdl:input name="getEventDetailsRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getEventDetailsResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerEventException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="EmanagerDatabaseException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="retrieveEvents">
+
+         <wsdlsoap:operation soapAction="retrieveEvents"/>
+
+         <wsdl:input name="retrieveEventsRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="retrieveEventsResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerEventException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="EmanagerDatabaseException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteEvents">
+
+         <wsdlsoap:operation soapAction="deleteEvents"/>
+
+         <wsdl:input name="deleteEventsRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteEventsResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerEventException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="EmanagerDatabaseException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="registerSNMPClient">
+
+         <wsdlsoap:operation soapAction="registerSNMPClient"/>
+
+         <wsdl:input name="registerSNMPClientRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="registerSNMPClientResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerEventException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="unregisterSNMPClient">
+
+         <wsdlsoap:operation soapAction="unregisterSNMPClient"/>
+
+         <wsdl:input name="unregisterSNMPClientRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="unregisterSNMPClientResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerEventException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="eventAcknowledgementNotification">
+
+         <wsdlsoap:operation soapAction="eventAcknowledgementNotification"/>
+
+         <wsdl:input name="eventAcknowledgementNotificationRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="eventAcknowledgementNotificationResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="eventUnacknowledgementNotification">
+
+         <wsdlsoap:operation soapAction="eventUnacknowledgementNotification"/>
+
+         <wsdl:input name="eventUnacknowledgementNotificationRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="eventUnacknowledgementNotificationResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://event.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="EventManagerService">
+
+      <wsdl:port binding="impl:EventManagerSoapBinding" name="EventManager">
+
+         <wsdlsoap:address location="http://localhost:8080/axis/services/EventManager"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

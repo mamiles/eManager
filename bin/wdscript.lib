@@ -1,0 +1,118 @@
+##
+## Global vars and some functions to be used in other scripts
+##
+
+export user=`/usr/ucb/whoami`
+export host=`/usr/bin/hostname`
+
+# read a property from the flattened property file
+# takes the name of the property as an argument
+_getProperty()
+{
+	if [  -r $properties ]; then 
+		prop="^"$1
+		/usr/bin/grep  $prop $properties | 
+    	/usr/bin/sed -e "s/$prop[    ]*=//" | 
+    	/usr/bin/nawk '{ print $1 }'
+	else
+		print ""
+	fi
+}
+
+getProperty()
+{
+	prop="^"$1
+	if [ -r $boot_properties ]; then
+		value=`/usr/bin/grep  $prop $boot_properties | sed -e "s/$prop[    ]*=//" | /usr/bin/nawk '{ print $1 }'`
+		if [ -z $value ]; then 
+			print `_getProperty $1`
+		else 
+			print $value
+		fi
+	else 
+		print `_getProperty $1`
+	fi
+}
+
+getPIDOf() {
+  /usr/bin/ps -e -o pid,comm,user \
+	| /usr/bin/grep -v "grep " \
+    | /usr/bin/sed 's% [^ ]*/% %' \
+    | /usr/bin/nawk '$2 == cmd && $3 == user { print $1 }' cmd=$1 user=$user
+}
+
+getpid() {
+  /usr/bin/ps -e |
+    /usr/bin/grep $1 |
+    /usr/bin/grep -v "grep " |
+    /usr/bin/sed 's%^  *%%; s% .*%%'
+}
+
+getPIDOfScript_g() {
+  print "MY PID : " $$
+  /usr/bin/ps -e -o pid,pgid,fname,user,args,ppid,pgid \
+    | /usr/bin/grep -v "grep " \
+    | /usr/bin/sed 's% [^ ]*/% %' \
+    | /usr/bin/nawk '$3 == cmd && $2 != excl_gid && $4 == user { print $0 }' cmd=$1  excl_gid=$2 user=$user
+}
+
+getPIDOfScript() {
+  /usr/bin/ps -e -o pid,pgid,fname,user \
+	| /usr/bin/grep -v "grep " \
+    | /usr/bin/sed 's% [^ ]*/% %' \
+    | /usr/bin/nawk '$3 == cmd && $2 != excl_gid && $4 == user { print $1 }' cmd=$1  excl_gid=$2 user=$user
+}
+
+getCPIDOf() {
+  /usr/bin/ps -e -o pid,ppid \
+    | /usr/bin/nawk '$2 == parid { print $1 }' parid=$1
+}
+
+getUserConfirmation() {
+  if [ $yesOption = 0 ]; then
+    print $1
+    done=0
+    while [ $done = 0 ]; do
+      print -n "Are you sure? "
+      read response
+      case "$response" in
+        n|no)
+          exit 1
+    ;;
+        y|yes)
+          done=1
+    ;;
+        *)
+          print "Invalid response; type yes or no."
+    ;;
+      esac
+    done
+  fi
+}
+
+
+
+# get rvd process id
+get_rvd_pid() {
+  /usr/bin/ps -e -o pid,comm \
+    | /usr/bin/nawk '$2 == "rvd" { print $1 }'
+}
+
+# get rva process id
+get_rva_pid() {
+  /usr/bin/ps -e -o pid,comm \
+    | /usr/bin/nawk '$2 ~ "rva" { print $1 }'
+}
+
+# get a process' process group
+get_process_group() {
+  /usr/bin/ps -p $1 -o pgid \
+    | /usr/bin/egrep '[0-9]'
+}
+
+
+# get all the processes in a process' process group
+get_processes_in_group() {
+  /usr/bin/ps -g $1 -o pid \
+    | /usr/bin/egrep '[0-9]'
+}

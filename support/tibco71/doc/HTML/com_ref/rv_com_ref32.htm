@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>Validity of Data Extracted From Message Fields</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1138530"> </a><h2 class="pNewHTMLPage">
+Validity of Data Extracted From Message Fields
+</h2>
+<hr />
+<a name="wp1138532"> </a><p class="pBody">
+To extract data values from the fields of a message, programs use the <em class="cEmphasis">get</em> methods. All of these methods extract a <em class="cEmphasis">snapshot</em> of the message data&#151;that is, the data value as it exists at a particular time. If the program later modifies the message by removing or updating the field, the snapshot remains unchanged.
+</p>
+<a name="wp1135736"> </a><p class="pBody">
+Rendezvous messages implement snapshot semantics using two separate strategies&#151;snapshot copy and snapshot reference.
+</p>
+<a name="wp1135737"> </a><h3 class="pHeading2">
+Snapshot Copy
+</h3>
+<a name="wp1153098"> </a><p class="pBody">
+A snapshot <em class="cEmphasis">copy</em> is independent of the original message. The program can modify this snapshot at any time without affecting the original message. The program can update or delete the original field form the message at any time without affecting the snapshot copy.
+</p>
+<a name="wp1138513"> </a><p class="pBody">
+These methods always return an independent snapshot copy of the data:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1154512"> </a><div class="pSmartList1"><li ><a  href="rv_com_ref43.htm#wp1024668"><code class="cCode">TibrvMsg.get()</code></a></li></div>
+
+<a name="wp1154513"> </a><div class="pSmartList1"><li ><a  href="rv_com_ref45.htm#wp1123999"><code class="cCode">TibrvMsg.getByIndex()</code></a></li></div>
+
+<a name="wp1154517"> </a><div class="pSmartList1"><li ><a  href="rv_com_ref50.htm#wp1151354"><code class="cCode">TibrvMsg.getInstance()</code></a></li></div>
+
+<a name="wp1154519"> </a><div class="pSmartList1"><li ><a  href="rv_com_ref68.htm#wp1030793"><code class="cCode">TibrvMsgField.getData()</code></a></li></div>
+
+</ul></div>
+
+<a name="wp1135746"> </a><h3 class="pHeading2">
+Snapshot Reference
+</h3>
+<a name="wp1153117"> </a><p class="pBody">
+A snapshot <em class="cEmphasis">reference</em> is a reference to data that still resides within the original message. The validity of the reference depends on the continued validity of the original message.
+</p>
+<a name="wp1154644"> </a><p class="pBody">
+These are the only methods that can produce a snapshot reference; moreover, these methods only produce a snapshot reference when the datatype of the field is array, message, opaque, XML, or string:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1154523"> </a><div class="pSmartList1"><li ><a  href="rv_com_ref47.htm#wp1144839"><code class="cCode">TibrvMsg.getField()</code></a></li></div>
+
+<a name="wp1154538"> </a><div class="pSmartList1"><li ><code class="cCode">TibrvMsg.getFieldByIndex()&#160;&#160;</code>(see <a  href="rv_com_ref45.htm#wp1123999"><code class="cCode">TibrvMsg.getByIndex()</code> </a>)</li></div>
+
+<a name="wp1154542"> </a><div class="pSmartList1"><li ><code class="cCode">TibrvMsg.getFieldInstance()&#160;&#160;</code>(see <a  href="rv_com_ref50.htm#wp1151354"><code class="cCode">TibrvMsg.getInstance()</code> </a>)</li></div>
+
+</ul></div>
+
+<a name="wp1154573"> </a><p class="pBody">
+Extracting the data from the resulting field object with <a  href="rv_com_ref68.htm#wp1030793"><code class="cCode">TibrvMsgField.getData()</code></a> <em class="cEmphasis">uses</em> the reference to yield an independent snapshot copy of the data.
+</p>
+<a name="wp1192845"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1237210"> </a><p class="pBody">
+When a field object contains a reference datatype (array, message, opaque, XML, or string), the data in the field object depends on a reference into the parent message. If the parent message is deleted, the program can no longer extract these datatypes from the field object; attempting to extract them references freed storage, which is illegal, and can cause serious consequences.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1154586"> </a><p class="pBody">
+
+</p>
+<a name="wp1139080"> </a><h4 class="pHeading3">
+Deleting Snapshot References
+</h4>
+<a name="wp1135808"> </a><p class="pBody">
+Ordinarily, snapshot references remain part of the message until the program destroys the message. However, repeated <code class="cCode">getField</code> calls can cause snapshots to accumulate within a message, causing unbounded memory growth. A pair of methods give programs explicit control over snapshot references:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1135812"> </a><div class="pSmartList1"><li ><a  href="rv_com_ref57.htm#wp1135864"><code class="cCode">TibrvMsg.markReferences</code></a></li></div>
+
+<a name="wp1135816"> </a><div class="pSmartList1"><li ><a  href="rv_com_ref37.htm#wp1135977"><code class="cCode">TibrvMsg.clearReferences</code></a></li></div>
+
+</ul></div>
+
+<a name="wp1154664"> </a><p class="pBody">
+When a program repeatedly extracts snapshot references data <em class="cEmphasis">and</em> does not destroy the parent messages, consider using these methods to control the proliferation of references.
+</p>
+<a name="wp1135817"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1135821"> </a><p class="pBody">
+<a  href="rv_com_ref57.htm#wp1135864"><code class="cCode">TibrvMsg.markReferences</code> </a>
+</p>
+<a name="wp1135822"> </a><h3 class="pHeading2">
+Multiple Subscription Snapshots
+</h3>
+<a name="wp1135826"> </a><p class="pBody">
+Rendezvous software also protects the integrity of messages distributed to multiple subscriptions. When a callback method modifies an inbound message (whether detached or not), Rendezvous software still presents the original message content to subsequent callback methods.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>CLIENT.SLOWCONSUMER</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Appendix&#160;A	 System Advisory Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1047085"> </a><h2 class="pNewHTMLPage">
+CLIENT.SLOWCONSUMER
+</h2>
+<hr />
+<a name="wp1047086"> </a><p class="pSyntaxType">
+Advisory
+</p>
+<a name="wp1049026"> </a><h4 class="pHeading3">
+Subject Name Syntax
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+_RV.ERROR.SYSTEM.CLIENT.SLOWCONSUMER<a name="wp1038266"> </a>
+</pre></div>
+<a name="wp1038267"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1038271"> </a><p class="pBody">
+A listening client of the Rendezvous daemon receives this advisory when data is arriving faster than the client is consuming it.
+</p>
+<a name="wp1059688"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1038273"> </a><p class="pBody">
+Only the specific client transport receives this advisory.
+</p>
+<a name="wp1038277"> </a><p class="pBody">
+This message indicates an error&#151;the Rendezvous daemon has discarded the oldest inbound messages to make room for new ones. (Clients cannot determine which messages are discarded.)
+</p>
+<a name="wp1063660"> </a><p class="pBody">
+When many messages arrive in rapid succession, <code class="cCode">rvd</code> buffers the messages until clients can consume them (that is, accept them from <code class="cCode">rvd</code>). When unconsumed inbound messages wait for more than 60 seconds, <code class="cCode">rvd</code> discards them, and presents this advisory to the affected client transport to indicate that data has been lost. This advisory is the next message that the transport receives&#151;ahead of all other inbound messages.
+</p>
+<a name="wp1095704"> </a><h4 class="pHeading3">
+Message Fields
+</h4>
+<a name="wp1095722"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1095733"> </a><div class="pCellHeading">
+Field Name
+</div>
+</th>
+    <th><a name="wp1095735"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1095737"> </a><div class="pCellBody">
+<code class="cCode">waiting</code>
+</div>
+</td>
+    <td><a name="wp1095739"> </a><div class="pCellBody">
+The number of messages waiting in <code class="cCode">rvd</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1095741"> </a><div class="pCellBody">
+<code class="cCode">dropped</code>
+</div>
+</td>
+    <td><a name="wp1095743"> </a><div class="pCellBody">
+The number of messages that <code class="cCode">rvd</code> has discarded.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1095745"> </a><div class="pCellBody">
+<code class="cCode">bytes_dropped</code>
+</div>
+</td>
+    <td><a name="wp1095747"> </a><div class="pCellBody">
+The total number of bytes in the messages that <code class="cCode">rvd</code> has discarded.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1095723"> </a><h4 class="pHeading3">
+Diagnosis
+</h4>
+<a name="wp1038281"> </a><p class="pBody">
+Several situations can cause a slow consumer:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1038282"> </a><div class="pSmartList1"><li >The client program is oversubscribed&#151;it cannot process the volume of data for which it is listening.</li></div>
+
+<a name="wp1063672"> </a><div class="pSmartList1"><li >The client program is starved for CPU cycles&#151;its host computer is too heavily loaded.</li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

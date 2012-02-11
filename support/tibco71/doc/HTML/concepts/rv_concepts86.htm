@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Avoid Sending Binary Data Buffers or Internal Structs</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;10	 Guidelines for Programming";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1058913"> </a><h2 class="pNewHTMLPage">
+Avoid Sending Binary Data Buffers or Internal Structs
+</h2>
+<hr />
+<a name="wp1058917"> </a><p class="pBody">
+Rendezvous programs can exchange binary data buffers using datatype <a  href="rv_concepts54.htm#wp1084153"><code class="cCode">TIBRVMSG_OPAQUE</code></a>. The program is free to use any format and content within opaque data. However, we recommend against extensive use of opaque data.
+</p>
+<a name="wp1058921"> </a><p class="pBody">
+For example, opaque buffers can contain data structures mapped by C language structs&#151;but <em class="cEmphasis">beware,</em> this technique couples your programs rather tightly to the data structure. If you change the struct definition in the sender, you must also change it in the listener, and vice versa. Exchanging structs also makes it more difficult to introduce new, interoperating programs in the future. Furthermore, exchanging internal structs makes it difficult to for your program to interoperate with programs developed in other languages.
+</p>
+<a name="wp1058922"> </a><p class="pBody">
+Binary data and internal structs are also <em class="cEmphasis">platform dependent</em>&#151;you cannot exchange raw, binary data between programs running on machines that represent numbers or character strings with different formats.
+</p>
+<a name="wp1058926"> </a><p class="pBody">
+Instead of binary buffers or structs, we recommend using Rendezvous self-describing data to ease data exchange. Rendezvous datatypes span the most common atomic and array datatypes of most programming languages, and Rendezvous messages can emulate any struct or composite datatype.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

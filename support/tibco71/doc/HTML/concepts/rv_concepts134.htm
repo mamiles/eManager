@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Rank and Weight</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;13	 Fault Tolerance Concepts";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1057331"> </a><h2 class="pNewHTMLPage">
+Rank and Weight
+</h2>
+<hr />
+<a name="wp1057335"> </a><p class="pBody">
+Rendezvous fault tolerance software sorts the members of a group, assigning each member a unique <em class="cEmphasis">rank</em>. Rank determines which members are active.
+</p>
+<a name="wp1057336"> </a><p class="pBody">
+A member with rank <em class="cEmphasis">n</em> takes precedence over a member with rank <em class="cEmphasis">n+1</em>. In this sense, <em class="cEmphasis">n</em> represents a <em class="cEmphasis">higher</em> rank than <em class="cEmphasis">n+1</em>.
+</p>
+<a name="wp1057337"> </a><p class="pBody">
+If the active goal of a group is <em class="cEmphasis">n</em>, then the members with rank <em class="cEmphasis">1</em> through <em class="cEmphasis">n</em> are active. The member with rank <em class="cEmphasis">n+1</em> is known as the <em class="cEmphasis">ranking inactive member</em>. If one of those active members fails, then Rendezvous fault tolerance software instructs the ranking inactive member to activate.
+</p>
+<a name="wp1057341"> </a><p class="pBody">
+The most important factor in assigning rank is <em class="cEmphasis">weight</em>. When a process joins a fault tolerance group, it specifies its weight as a parameter. Weight represents the ability of a member to fulfill its function&#151;relative to other members of the same group.
+</p>
+<a name="wp1057345"> </a><p class="pBody">
+To rank the members of a group, Rendezvous fault tolerance software sorts the members by weight. The member with the highest weight receives rank 1 (so it outranks all other members); the member with the next highest weight receives rank 2; and so on. When two or more members have the same weight, Rendezvous fault tolerance software ranks them in way that is opaque to programs.
+</p>
+<a name="wp1057350"> </a><h3 class="pHeading2">
+Weight Values
+</h3>
+<a name="wp1057351"> </a><p class="pBody">
+Each member specifies its weight as a positive integer.
+</p>
+<a name="wp1057355"> </a><p class="pBody">
+Zero is a special, reserved value; Rendezvous fault tolerance software assigns zero weight to processes with resource errors, so they activate only as a last resort when no other members are available. Programs must always assign weights greater than zero.
+</p>
+<a name="wp1057361"> </a><p class="pBody">
+(For further details, see <a  href="rv_concepts149.htm#wp1058061">Disabling a Member</a>, and <a  href="rv_concepts195.htm#wp1047297"><code class="cCode">DISABLING_MEMBER</code> </a>.)
+</p>
+<a name="wp1057363"> </a><h3 class="pHeading2">
+Assigning Weight
+</h3>
+<a name="wp1057364"> </a><p class="pBody">
+Weight lets you influence the ranking of member processes based on external knowledge of the operating environment. Assign weight after considering properties such as hardware speed, hardware reliability, and load factors.
+</p>
+<a name="wp1057365"> </a><p class="pBody">
+For example, if member A runs on a computer that is much faster than member B, then assign higher weight to A than B. Greater weight expresses your opinion that A fulfills its task more effectively than B. As a result, A is ranked before B, and takes precedence.
+</p>
+<a name="wp1057366"> </a><p class="pBody">
+If members C, D and E all run on equally fast computers with approximately equal load factors, then assign them equal weight. Equal weight expresses no preference for any process over the others. Rendezvous fault tolerance software ranks them in a way that is opaque to programs.
+</p>
+<a name="wp1057370"> </a><h3 class="pHeading2">
+Rank among Members with Different Weight
+</h3>
+<a name="wp1057371"> </a><p class="pBody">
+Members of greater weight always outrank members of lower weight. For example, if member A has weight 200, and member B has weight 100, then A always outranks B.
+</p>
+<a name="wp1057372"> </a><p class="pBody">
+Inactive members of greater weight preempt active members of lower weight. For example, if B (weight 100) is already active when A (weight 200) starts, then Rendezvous fault tolerance software instructs B to deactivate, and instructs A to activate in its place.
+</p>
+<a name="wp1057376"> </a><h3 class="pHeading2">
+Ranking Members with Equal Weight
+</h3>
+<a name="wp1057377"> </a><p class="pBody">
+If members C and D have equal weight, their relative rank is opaque to programmers. That is, their relative rank does <em class="cEmphasis">not necessarily </em>depend on the order in which two processes start. Consider these (possibly surprising) consequences:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1057378"> </a><div class="pSmartList1"><li >If member process C starts before member D, you cannot deduce from this order that C outranks D. Nor can you deduce the reverse, that D outranks C.</li></div>
+
+<a name="wp1057379"> </a><div class="pSmartList1"><li >If the active goal for the group is 1, and C starts first, and D starts immediately after C&#151;then you cannot assume that either process will be the first to become the active member.</li></div>
+
+</ul></div>
+
+<a name="wp1057380"> </a><h3 class="pHeading2">
+Status Quo among Members with Equal Weight
+</h3>
+<a name="wp1057381"> </a><p class="pBody">
+A ranking inactive member never preempts an active member with the same weight&#151;despite its precedence in rank.
+</p>
+<a name="wp1057382"> </a><p class="pBody">
+For example, if members E and F have equal weight, with E outranking F, and F already active, then E does not preempt F to become active in its place. 
+</p>
+<a name="wp1057383"> </a><p class="pBody">
+Contrast that example with a situation in which neither E nor F is active, and a new active member is needed to complete the active goal&#151;in this case E activates (rather than F) because E outranks F.
+</p>
+<a name="wp1057384"> </a><h3 class="pHeading2">
+Adjusting Weight
+</h3>
+<a name="wp1057385"> </a><p class="pBody">
+In addition to specifying weight when a process joins a fault tolerance group, sophisticated programs can adjust their weight at any time to reflect changing conditions.
+</p>
+<a name="wp1057386"> </a><p class="pBody">
+For example, a member might track the changing load factor of its host computer, and adjust its weight accordingly. Rendezvous fault tolerance software automatically recomputes the ranking of members whenever a member changes its weight.
+</p>
+<a name="wp1071805"> </a><p class="pBody">
+Adjusting weights causes each member to recompute their relative weights of all the members of the group. For large groups this recomputation can affect performance.
+</p>
+<a name="wp1057393"> </a><p class="pBody">
+For examples, see <a  href="rv_concepts150.htm#wp1058079">Adjusting Member Weights</a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

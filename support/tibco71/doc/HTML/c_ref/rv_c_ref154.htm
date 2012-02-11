@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvftMemberCallback</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;10	 Fault Tolerance";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1078084"> </a><h2 class="pNewHTMLPage">
+tibrvftMemberCallback
+</h2>
+<hr />
+<a name="wp1078315"> </a><p class="pSyntaxType">
+Function Type
+</p>
+<a name="wp1087162"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+typedef void (*<code class="cCodeBold">tibrvftMemberCallback</code>) (<a name="wp1116607"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref153.htm#wp1133619"><code class="cCode">tibrvftMember</code></a>&#160;&#160;&#160;&#160;member,<a name="wp1116608"> </a>
+&#160;&#160;&#160;&#160;const char*&#160;&#160;&#160;&#160;&#160;&#160;groupName,<a name="wp1116609"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref152.htm#wp1082025"><code class="cCode">tibrvftAction</code></a>&#160;&#160;&#160;&#160;action,<a name="wp1078323"> </a>
+&#160;&#160;&#160;&#160;void*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;closure);<a name="wp1078324"> </a>
+</pre></div>
+<a name="wp1087657"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1078336"> </a><p class="pBody">
+Process fault tolerance events for a group member.
+</p>
+<a name="wp1088104"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1078341"> </a><p class="pBody">
+Each member program of a fault tolerance group must define a function of this type. Programs register a member callback function with each call to <a  href="rv_c_ref156.htm#wp1078720"><code class="cCode">tibrvftMember_Create()</code></a>.
+</p>
+<a name="wp1078345"> </a><p class="pBody">
+Rendezvous fault tolerance software queues a member action event in three situations. In each case, it passes a different <code class="cCode">action</code> argument, instructing the callback function to activate, deactivate, or prepare to activate the program.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1078394"> </a><div class="pSmartList1"><li >When the number of active members drops below the active goal, the fault tolerance callback function (in the ranking inactive member process) receives the token <a  href="rv_c_ref152.htm#wp1078242"><code class="cCode">TIBRVFT_ACTIVATE</code></a>; the callback function must respond by assuming the duties of an active member.</li></div>
+
+<a name="wp1078356"> </a><div class="pSmartList1"><li >When the number of active members exceeds the active goal, the fault tolerance callback function (in any active member that is outranked by another active member) receives the action token <a  href="rv_c_ref152.htm#wp1078252"><code class="cCode">TIBRVFT_DEACTIVATE</code></a>; the callback function must respond by switching the program to its inactive state.</li></div>
+
+<a name="wp1078363"> </a><div class="pSmartList1"><li >When the number of active members equals the active goal, and Rendezvous fault tolerance software detects that it might soon decrease below the active goal, the fault tolerance callback function (in the ranking inactive member) receives the action token <a  href="rv_c_ref152.htm#wp1078231"><code class="cCode">TIBRVFT_PREPARE_TO_ACTIVATE</code></a>; the callback function must respond by making the program ready to activate immediately. For example, preparatory steps might include time-consuming tasks such as connecting to a database. If the callback function subsequently receives the <a  href="rv_c_ref152.htm#wp1078242"><code class="cCode">TIBRVFT_ACTIVATE</code></a> token, it will be ready to activate without delay.</li></div>
+
+</ul></div>
+
+<a name="wp1078372"> </a><p class="pBody">
+For additional information see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts141.htm#wp1057747');" onMouseOver="WWHShowPopup('a', 'rv_concepts141.htm#wp1057747', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Fault Tolerance Callback Actions</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1144817"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1078528"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1078533"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1078535"> </a><div class="pCellBody">
+<code class="cCode">member</code>
+</div>
+</td>
+    <td><a name="wp1078537"> </a><div class="pCellBody">
+This parameter receives the member object.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1078539"> </a><div class="pCellBody">
+<code class="cCode">groupName</code>
+</div>
+</td>
+    <td><a name="wp1078541"> </a><div class="pCellBody">
+This parameter receives a string denoting the name of the fault tolerance group.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1078543"> </a><div class="pCellBody">
+<code class="cCode">action</code>
+</div>
+</td>
+    <td><a name="wp1078545"> </a><div class="pCellBody">
+This parameter receives a value of the enumerated type <a  href="rv_c_ref152.htm#wp1082025"><code class="cCode">tibrvftAction</code></a>, which instructs the callback function to activate, deactivate or prepare to activate.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1078557"> </a><div class="pCellBody">
+<code class="cCode">closure</code>
+</div>
+</td>
+    <td><a name="wp1078559"> </a><div class="pCellBody">
+This parameter receives the closure data, which the program supplied in the call that created the member object.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1088494"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1082064"> </a><p class="pBody">
+<a  href="rv_c_ref152.htm#wp1082025"><code class="cCode">tibrvftAction</code> </a>
+</p>
+<a name="wp1078503"> </a><p class="pBody">
+<a  href="rv_c_ref156.htm#wp1078720"><code class="cCode">tibrvftMember_Create()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

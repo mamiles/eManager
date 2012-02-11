@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrv_SetCodePages()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;2	 Environment";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1306298"> </a><h2 class="pNewHTMLPage">
+tibrv_SetCodePages()
+</h2>
+<hr />
+<a name="wp1306299"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1306300"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrv_SetCodePages</code>(<a name="wp1306304"> </a>
+&#160;&#160;&#160;&#160;char* host_codepage,<a name="wp1307846"> </a>
+&#160;&#160;&#160;&#160;char* net_codepage);<a name="wp1307850"> </a>
+</pre></div>
+<a name="wp1308041"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1308042"> </a><p class="pBody">
+Set code pages for automatic string conversion on EBCDIC platforms (namely, OS/400 and OS/390).
+</p>
+<a name="wp1324639"> </a><h4 class="pHeading3">
+String Conversion
+</h4>
+<a name="wp1325094"> </a><p class="pBody">
+Rendezvous software uses the operating system&#8217;s <code class="cCode">iconv()</code> call to automatically convert strings. This automatic conversion applies to strings within message fields, field names, subject names, and other strings associated with messages (even when they are not strictly inside a message). Conversion occurs only as needed:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1325095"> </a><div class="pSmartList1"><li >Programs running in EBCDIC environments represent all strings using an EBCDIC code page (called the <em class="cEmphasis">host code page</em>). Before inserting strings into a message object, Rendezvous software converts those strings to an ASCII character set (the <em class="cEmphasis">network code page</em>).</li></div>
+
+<a name="wp1323199"> </a><div class="pSmartList1"><li >Conversely, when extracting strings from a message object, Rendezvous software converts those strings to the EBCDIC host code page before presenting the strings to the program.</li></div>
+
+</ul></div>
+
+<a name="wp1325112"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1323508"> </a><p class="pBody">
+This call sets the host and network code pages for string conversions in EBCDIC environments. On other operating system platforms, this call has no effect, and returns without error.
+</p>
+<a name="wp1327247"> </a><p class="pBody">
+Call this function when the system code pages differ from the Rendezvous default code pages (see the table of <a  href="rv_c_ref9.htm#wp1324720">Default Code Pages</a>). Throughout an enterprise, all sending and receiving programs must use the same code pages.
+</p>
+<a name="wp1322951"> </a><p class="pBody">
+Both arguments are string names of code pages. To determine valid code page names for your operating system, see documentation from the operating system vendor.
+</p>
+<a name="wp1324889"> </a><p class="pBody">
+Programs may call this function at most once. The call <em class="cEmphasis">must</em> precede the first call to <a  href="rv_c_ref8.htm#wp1057434"><code class="cCode">tibrv_Open()</code></a>.
+</p>
+<a name="wp1325127"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1324901"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1323817"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1323819"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1323821"> </a><div class="pCellBody">
+<code class="cCode">host_codepage</code>
+</div>
+</td>
+    <td><a name="wp1323823"> </a><div class="pCellBody">
+Set this code page as the native (EBCDIC) character encoding for the host computer.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1323825"> </a><div class="pCellBody">
+<code class="cCode">net_codepage</code>
+</div>
+</td>
+    <td><a name="wp1323827"> </a><div class="pCellBody">
+Set this code page as the ASCII character set for the network.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1324720"> </a><h4 class="pHeading3">
+Default Code Pages
+</h4>
+<a name="wp1324744"> </a><p class="pBody">
+To use a default code page, programs may supply <code class="cCode">NULL</code> for either parameter. Using the default code pages in both parameter positions has the same effect as not calling this function at all.
+</p>
+<a name="wp1324769"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1323884"> </a><div class="pCellHeading">
+OS Platform
+</div>
+</th>
+    <th><a name="wp1323911"> </a><div class="pCellHeading">
+Default Host Code Page
+</div>
+</th>
+    <th><a name="wp1323886"> </a><div class="pCellHeading">
+Default Network Code Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1323888"> </a><div class="pCellBody">
+OS/400
+</div>
+</td>
+    <td><a name="wp1323913"> </a><div class="pCellBody">
+<code class="cCode">&quot;00000&quot;</code>
+</div>
+<a name="wp1324524"> </a><div class="pCellBody">
+This value instructs OS/400 routines to use the system-defined default code page.
+</div>
+</td>
+    <td><a name="wp1323890"> </a><div class="pCellBody">
+<code class="cCode">&quot;00819&quot;</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1324496"> </a><div class="pCellBody">
+OS/390
+</div>
+</td>
+    <td><a name="wp1323915"> </a><div class="pCellBody">
+<code class="cCode">&quot;IBM-1047&quot;</code>
+</div>
+</td>
+    <td><a name="wp1323894"> </a><div class="pCellBody">
+<code class="cCode">&quot;ISO8859-1&quot;</code>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1322816"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1322636"> </a><p class="pBody">
+<a  href="rv_c_ref21.htm#wp1107823">Strings and Character Encodings</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

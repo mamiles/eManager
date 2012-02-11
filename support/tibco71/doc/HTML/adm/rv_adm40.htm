@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Security and Firewalls</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1021559"> </a><h2 class="pNewHTMLPage">
+Security and Firewalls
+</h2>
+<hr />
+<a name="wp1053263"> </a><p class="pBody">
+Routing daemons offer security controls based on UDP or PGM service groups and subject names (see <a  href="rv_adm31.htm#wp1054980">Restricting Message Flow</a>). In addition, the routing daemon works in concert with firewalls to constrain information flow.
+</p>
+<a name="wp1054945"> </a><p class="pBody">
+The WAN in <a  href="rv_adm40.htm#wp1053272">Figure&#160;16</a> connects two enterprises across the Internet. Each enterprise protects its networks with firewalls. Notice that the routing daemon within the DMZ does not serve any local network; instead that routing daemon operates as a <em class="cEmphasis">way station</em>, forwarding messages across the firewalls on either side of it.
+</p>
+<a name="wp1053272"> </a><div class="pFigureTitle">
+Figure&#160;16   Routing Daemon WAN with Firewalls</div><div align="center"><img src="images/rv_adma4.gif" height="418" width="523" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1053273"> </a><h3 class="pHeading2">
+Neighbors Across a Firewall
+</h3>
+<a name="wp1053283"> </a><p class="pBody">
+Firewalls restrict the flow of information across organizational boundaries. For Rendezvous messages to flow between routing daemons, the daemons must establish TCP connections between neighbors. Security administrators can permit this connection using any technique they prefer; for example:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1287153"> </a><div class="pSmartList1"><li >Configure the firewall to permit SSL connections on the routing daemon&#8217;s local port. Configure the routing daemons to connect with one another using SSL neighbor connections.</li></div>
+
+<a name="wp1287159"> </a><div class="pSmartList1"><li >Configure VPN connectivity between neighbor host computers.</li></div>
+
+<a name="wp1053256"> </a><div class="pSmartList1"><li >Configure the firewall to permit TCP connections on the routing daemon&#8217;s local port.</li></div>
+
+<a name="wp1053257"> </a><div class="pSmartList1"><li >Configure the neighbors to connect using an SSH tunnel through the firewall.</li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvMsg_RemoveFieldInstance()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;3	 Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1123852"> </a><h2 class="pNewHTMLPage">
+tibrvMsg_RemoveFieldInstance()
+</h2>
+<hr />
+<a name="wp1123856"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1123857"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvMsg_RemoveFieldInstance</code>(<a name="wp1123858"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;message,<a name="wp1123859"> </a>
+&#160;&#160;&#160;&#160;const char*&#160;&#160;&#160;&#160;&#160;&#160;fieldName,<a name="wp1123860"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128803"><code class="cCode">tibrv_u32</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;instance);<a name="wp1123861"> </a>
+</pre></div>
+<a name="wp1123862"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1123864"> </a><p class="pBody">
+Remove a specified instance of a field from a message.
+</p>
+<a name="wp1123865"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1123866"> </a><p class="pBody">
+When a message contains several field instances with the same field name, remove a specific instance by number (for example, remove the <code style="font-style: normal; vertical-align: baseline" class="cCode">i</code><em style="font-style: oblique; vertical-align: super" class="cEmphasis">th</em> field named <code class="cCode">foo</code>). Programs can use this function in a loop that examines every field with a specified name.
+</p>
+<a name="wp1138509"> </a><p class="pBody">
+The argument <code class="cCode">1</code> denotes the first instance of the named field.
+</p>
+<a name="wp1161874"> </a><p class="pBody">
+If the specified instance does not exist, the function returns <a  href="rv_c_ref227.htm#wp1129168"><code class="cCode">TIBRV_NOT_FOUND</code></a>.
+</p>
+<a name="wp1161875"> </a><p class="pBody">
+Pointer data (such as strings, arrays, submessages, opaque byte sequences or XML data) previously extracted from the field remains valid even after removing the field from the message.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1123874"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1123876"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1123878"> </a><div class="pCellBody">
+<code class="cCode">message</code>
+</div>
+</td>
+    <td><a name="wp1123880"> </a><div class="pCellBody">
+Remove the specified field from this message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1123882"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1123884"> </a><div class="pCellBody">
+Remove the field with this name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1123886"> </a><div class="pCellBody">
+<code class="cCode">instance</code>
+</div>
+</td>
+    <td><a name="wp1123888"> </a><div class="pCellBody">
+Remove this instance of the field. The argument <code class="cCode">1</code> specifies the first instance of the named field.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1123890"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1123894"> </a><p class="pBody">
+<a  href="rv_c_ref59.htm#wp1062629"><code class="cCode">tibrvMsg_RemoveField()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

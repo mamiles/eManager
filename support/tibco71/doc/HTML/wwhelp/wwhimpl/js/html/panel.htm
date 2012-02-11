@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html>
+ <!-- Copyright (c) 2000-2001 Quadralay Corporation.  All rights reserved. -->
+
+ <head>
+  <meta http-equiv="content-type" content="text/html">
+  <meta http-equiv="charset"      content="UTF-8">
+
+  <title>panel.htm</title>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+    var  WWHFrame = eval("parent.parent");
+
+
+    function  WWHPanelFrame_OnLoad()
+    {
+      if (WWHFrame.WWHHelp.mInitStage > 0)
+      {
+        WWHFrame.WWHJavaScript.mPanels.fPanelLoaded();
+      }
+    }
+
+    // Write Head HTML
+    //
+    if (WWHFrame.WWHHelp.mInitStage > 0)
+    {
+      document.writeln(WWHFrame.WWHJavaScript.mPanels.fGetCurrentPanelObject().fHeadHTML());
+    }
+   // -->
+  </script>
+ </head>
+
+ <body onLoad="WWHPanelFrame_OnLoad();" bgcolor="#FFFFFF">
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    if (WWHFrame.WWHHelp.mInitStage > 0)
+    {
+      var  PanelObject = WWHFrame.WWHJavaScript.mPanels.fGetCurrentPanelObject();
+
+
+      // Write Body HTML
+      //
+      document.writeln(PanelObject.fStartHTMLSegments());
+      while (PanelObject.fAdvanceHTMLSegment())
+      {
+        document.writeln(PanelObject.fGetHTMLSegment());
+      }
+      document.writeln(PanelObject.fEndHTMLSegments());
+
+      document.writeln(WWHFrame.WWHJavaScript.mPanels.mPopup.fDivTagText());
+    }
+   // -->
+  </script>
+ </body>
+</html>

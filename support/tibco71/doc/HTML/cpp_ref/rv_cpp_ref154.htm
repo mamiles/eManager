@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvDispatcher</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1216769"> </a><h2 class="pNewHTMLPage">
+TibrvDispatcher
+</h2>
+<hr />
+<a name="wp1133524"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1133525"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+class <code class="cCodeBold">TibrvDispatcher</code><a name="wp1146311"> </a>
+&#160;&#160;&#160;&#160;TibrvDispatcher();&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;// Create empty.<a name="wp1162087"> </a>
+&#160;&#160;&#160;&#160;virtual ~TibrvDispatcher();&#160;&#160;&#160;&#160;// Halt, destroy &amp; reclaim 
+storage.<a name="wp1146321"> </a>
+</pre></div>
+<a name="wp1146322"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1133438"> </a><p class="pBody">
+Dispatch events from a queue or queue group.
+</p>
+<a name="wp1133447"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1162099"> </a><p class="pBody">
+A dispatcher thread repeatedly dispatches a queue or queue group by calling <a  href="rv_cpp_ref126.htm#wp1059825"><code class="cCode">TibrvDispatchable::timedDispatch()</code></a> in a loop.
+</p>
+<a name="wp1146338"> </a><p class="pBody">
+The constructor produces a hollow object; <a  href="rv_cpp_ref155.htm#wp1133934"><code class="cCode">TibrvDispatcher::create()</code></a> fills in the C handle, which makes the dispatcher thread operational.
+</p>
+<a name="wp1146369"> </a><p class="pBody">
+The destructor calls the <code class="cCode">destroy</code> method, unless the C handle is already destroyed.
+</p>
+<a name="wp1133587"> </a><p class="pBody">
+This class is a programming convenience. Programs can implement specialized dispatcher threads, and use them instead of this class.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1157087"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1157089"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1157091"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1157111"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref155.htm#wp1133934"><code class="cCode">TibrvDispatcher::create()</code></a>
+</div>
+</td>
+    <td><a name="wp1157116"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref155.htm#wp1133659">Start a dispatcher thread.</a>
+</div>
+</td>
+    <td><a name="wp1157121"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref155.htm#wp1133934">199</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1157126"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref156.htm#wp1134071"><code class="cCode">TibrvDispatcher::destroy()</code></a>
+</div>
+</td>
+    <td><a name="wp1157131"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref156.htm#wp1134108">Destroy a dispatcher thread.</a>
+</div>
+</td>
+    <td><a name="wp1157136"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref156.htm#wp1134071">200</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1157215"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref157.htm#wp1159775"><code class="cCode">TibrvDispatcher::getDispatchable()</code></a>
+</div>
+</td>
+    <td><a name="wp1157220"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref157.htm#wp1134312">Extract the queue or queue group that this thread dispatches.</a>
+</div>
+</td>
+    <td><a name="wp1218265"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref157.htm#wp1159775">201</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1157156"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref158.htm#wp1134313"><code class="cCode">TibrvDispatcher::getHandle()</code></a>
+</div>
+</td>
+    <td><a name="wp1157160"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref158.htm#wp1134381">Extract the C handle of this dispatcher thread.</a>
+</div>
+</td>
+    <td><a name="wp1157166"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref158.htm#wp1134313">202</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1157171"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref159.htm#wp1134384"><code class="cCode">TibrvDispatcher::getName()</code></a>
+</div>
+</td>
+    <td><a name="wp1157176"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref159.htm#wp1133774">Extract the name of a dispatcher thread.</a>
+</div>
+</td>
+    <td><a name="wp1157181"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref159.htm#wp1134384">203</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1157186"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref160.htm#wp1134412"><code class="cCode">TibrvDispatcher::isValid()</code></a>
+</div>
+</td>
+    <td><a name="wp1157190"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref160.htm#wp1134418">Test whether a dispatcher object has been destroyed.</a>
+</div>
+</td>
+    <td><a name="wp1157196"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref160.htm#wp1134412">204</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1157201"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref161.htm#wp1134204"><code class="cCode">TibrvDispatcher::setName()</code></a>
+</div>
+</td>
+    <td><a name="wp1157206"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref161.htm#wp1133806">Set the name of a dispatcher thread.</a>
+</div>
+</td>
+    <td><a name="wp1157211"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref161.htm#wp1134204">205</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1109878"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1110028"> </a><p class="pBody">
+<a  href="rv_cpp_ref126.htm#wp1059825"><code class="cCode">TibrvDispatchable::timedDispatch()</code> </a>
+</p>
+<a name="wp1133931"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts168.htm#wp1063810');" onMouseOver="WWHShowPopup('a', 'rv_concepts168.htm#wp1063810', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">DISPATCHER.THREAD_EXITED</code> </a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+<a name="wp1162109"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref126.htm#wp1133140');" onMouseOver="WWHShowPopup('e', 'rv_c_ref126.htm#wp1133140', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvDispatcher</code> </a> in <em class="cEmphasis">TIBCO Rendezvous C Reference</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

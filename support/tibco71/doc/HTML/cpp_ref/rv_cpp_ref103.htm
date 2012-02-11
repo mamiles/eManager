@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvListener::create()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1149259"> </a><h2 class="pNewHTMLPage">
+TibrvListener::create()
+</h2>
+<hr />
+<a name="wp1126711"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1126712"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">create</code> (<a name="wp1126832"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_cpp_ref127.htm#wp1035245"><code class="cCode">TibrvQueue</code></a>* queue,<a name="wp1144476"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_cpp_ref98.htm#wp1158877"><code class="cCode">TibrvCallback</code></a>* callback,<a name="wp1144477"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_cpp_ref163.htm#wp1146502"><code class="cCode">TibrvTransport</code></a>* transport,<a name="wp1126834"> </a>
+&#160;&#160;&#160;&#160;const char* subject,<a name="wp1126835"> </a>
+&#160;&#160;&#160;&#160;const void* closure = NULL);<a name="wp1126836"> </a>
+</pre></div>
+<a name="wp1126720"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1126722"> </a><p class="pBody">
+Listen for inbound messages.
+</p>
+<a name="wp1127058"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1195234"> </a><p class="pBody">
+This method creates a C listener and stores its handle in the C++ object.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1195204"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1195206"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1195208"> </a><div class="pCellBody">
+<code class="cCode">queue</code>
+</div>
+</td>
+    <td><a name="wp1195210"> </a><div class="pCellBody">
+For each inbound message, place the event on this event queue.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1195212"> </a><div class="pCellBody">
+<code class="cCode">callback</code>
+</div>
+</td>
+    <td><a name="wp1195214"> </a><div class="pCellBody">
+On dispatch, process the event with this callback object.
+</div>
+<a name="wp1195218"> </a><div class="pCellBody">
+This object can be an instance of class <a  href="rv_cpp_ref106.htm#wp1145089"><code class="cCode">TibrvMsgCallback</code></a>, or its superclass <a  href="rv_cpp_ref98.htm#wp1158877"><code class="cCode">TibrvCallback</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1195223"> </a><div class="pCellBody">
+<code class="cCode">transport</code>
+</div>
+</td>
+    <td><a name="wp1195225"> </a><div class="pCellBody">
+Listen for inbound messages on this transport.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1195227"> </a><div class="pCellBody">
+<code class="cCode">subject</code>
+</div>
+</td>
+    <td><a name="wp1195229"> </a><div class="pCellBody">
+Listen for inbound messages with subjects that match this specification. Wildcard subjects are permitted. The empty string is <em class="cEmphasis">not</em> a legal subject name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1195231"> </a><div class="pCellBody">
+<code class="cCode">closure</code>
+</div>
+</td>
+    <td><a name="wp1195233"> </a><div class="pCellBody">
+Store this closure data in the event object.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1195236"> </a><h4 class="pHeading3">
+Listening for Advisory Messages
+</h4>
+<a name="wp1126787"> </a><p class="pBody">
+Use this method to listen for advisory subjects. We recommend sending advisory message events to the default queue.
+</p>
+<a name="wp1126788"> </a><h4 class="pHeading3">
+Inbox Listener
+</h4>
+<a name="wp1126789"> </a><p class="pBody">
+To receive unicast (point-to-point) messages, listen to an inbox subject name. First call <a  href="rv_cpp_ref164.htm#wp1040342"><code class="cCode">TibrvTransport::createInbox()</code></a> to create the unique inbox name; then call <a  href="rv_cpp_ref103.htm#wp1149259"><code class="cCode">TibrvListener::create()</code></a> to begin listening. Remember that other programs have no information about an inbox until the listening program uses it as a reply subject in an outbound message. See also, <a  href="javascript:WWHClickedPopup('a', 'rv_concepts77.htm#wp1117158');" onMouseOver="WWHShowPopup('a', 'rv_concepts77.htm#wp1117158', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Inbox Names</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+<a name="wp1126802"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1126806"> </a><p class="pBody">
+<a  href="rv_cpp_ref104.htm#wp1127343"><code class="cCode">TibrvListener::getSubject()</code> </a>
+</p>
+<a name="wp1127340"> </a><p class="pBody">
+<a  href="rv_cpp_ref164.htm#wp1040342"><code class="cCode">TibrvTransport::createInbox()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

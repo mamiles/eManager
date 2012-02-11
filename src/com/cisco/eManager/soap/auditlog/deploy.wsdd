@@ -1,0 +1,25 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from AuditLogManagerService WSDL service -->
+
+  <service name="AuditLogManager" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="http://auditlog.soap.eManager.cisco.com"/>
+      <parameter name="wsdlServiceElement" value="AuditLogManagerService"/>
+      <parameter name="wsdlServicePort" value="AuditLogManager"/>
+      <parameter name="className" value="com.cisco.eManager.soap.auditlog.AuditLogManagerSoapBindingSkeleton"/>
+      <parameter name="wsdlPortType" value="AuditLogManager"/>
+      <parameter name="allowedMethods" value="*"/>
+      <parameter name="scope" value="Session"/>
+
+  </service>
+</deployment>

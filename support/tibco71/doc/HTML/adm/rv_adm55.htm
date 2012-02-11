@@ -1,0 +1,418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Neighbor Interfaces</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1209711"> </a><h2 class="pNewHTMLPage">
+Neighbor Interfaces
+</h2>
+<hr />
+<a name="wp1209712"> </a><p class="pBody">
+This page lets you configure the potential neighbor connections of a routing table entry.
+</p>
+<a name="wp1209716"> </a><p class="pBody">
+To display this page, click the number of neighbors in a row of the <a  href="rv_adm52.htm#wp1194491"><b class="cBold">Routers</b></a> page.
+</p>
+<a name="wp1217111"> </a><p class="pBody">
+For background information, see <a  href="rv_adm35.htm#wp1035365">Neighbors</a>.
+</p>
+<a name="wp1300729"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/note.gif" border="0" /></td>
+    <td><a name="wp1304506"> </a><p class="pBody">
+This page is related to&#151;but not the same as&#151;the page described in <a  href="rv_adm50.htm#wp1192016">Connected Neighbors</a>.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1217343"> </a><h3 class="pHeading2">
+Existing Neighbor Interfaces
+</h3>
+<a name="wp1217437"> </a><p class="pBody">
+The first part of this page is a table of existing neighbor interfaces&#151;that is, interface specifications for potential neighbor connections to other routers.
+</p>
+<a name="wp1217287"> </a><div class="pFigureTitle">
+Figure&#160;27   rvrd Neighbor Interfaces Page&#151;Existing</div><div align="center"><img src="images/rv_adma44.gif" height="228" width="549" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1217278"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1217117"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1217121"> </a><div class="pCellHeading">
+Item
+</div>
+</th>
+    <th><a name="wp1217123"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1217125"> </a><div class="pCellBody">
+<em class="cEmphasis">existing neighbor interfaces</em>
+</div>
+</td>
+    <td><a name="wp1217128"> </a><div class="pCellBody">
+The upper table lists configured neighbor interfaces. Each row represents one potential neighbor.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1217130"> </a><div class="pCellBody">
+Interface ID
+</div>
+</td>
+    <td><a name="wp1217132"> </a><div class="pCellBody">
+The name of this neighbor interface. <code class="cCode">rvrd</code> generates this name automatically, incorporating the router name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1217135"> </a><div class="pCellBody">
+Local Endpoint
+</div>
+</td>
+    <td><a name="wp1225567"> </a><div class="pCellBody">
+This three-part string denotes the local end of the potential neighbor link. It has the form:
+</div>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;&#160;<code class="cCodeItalic">&lt;router_name&gt;</code>@<code class="cCodeItalic">&lt;host&gt;</code>:<code class="cCodeItalic">&lt;TCP_connect_port&gt;</code><a name="wp1225568"> </a>
+&#160;<a name="wp1225569"> </a>
+</pre></div>
+<div class="pSmartList1"><ul>
+<a name="wp1217468"> </a><div class="pSmartList1"><li ><code class="cCodeItalic">&lt;router_name</code>&gt; is the name of the local routing table entry.</li></div>
+
+<a name="wp1217476"> </a><div class="pSmartList1"><li ><code class="cCodeItalic">&lt;host&gt;</code> is a fixed token, <code class="cCode">Local_Host</code>, which denotes the local <code class="cCode">rvrd</code> host computer. (Note that this token does <em class="cEmphasis">not</em> denote the <code class="cCode">LOCALHOST</code> loopback network address.)</li></div>
+
+<a name="wp1218220"> </a><div class="pSmartList1"><li ><code class="cCodeItalic">&lt;TCP_connect_port&gt;</code> is the TCP port where the local router accepts neighbor connection requests from remote routers.</li></div>
+
+</ul></div>
+
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1217140"> </a><div class="pCellBody">
+Remote Endpoint
+</div>
+</td>
+    <td><a name="wp1218228"> </a><div class="pCellBody">
+This three-part string denotes the remote end of the potential neighbor link. It has the form:
+</div>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;&#160;<code class="cCodeItalic">&lt;router_name&gt;</code>@<code class="cCodeItalic">&lt;host&gt;</code>:<code class="cCodeItalic">&lt;TCP_connect_port&gt;</code><a name="wp1218229"> </a>
+&#160;<a name="wp1218230"> </a>
+</pre></div>
+<div class="pSmartList1"><ul>
+<a name="wp1218231"> </a><div class="pSmartList1"><li ><code class="cCodeItalic">&lt;router_name</code>&gt; is the name of the remote routing table entry.</li></div>
+
+<a name="wp1218232"> </a><div class="pSmartList1"><li ><code class="cCodeItalic">&lt;host&gt;</code> is the hostname or IP address of the remote <code class="cCode">rvrd</code> host computer.</li></div>
+
+<a name="wp1218233"> </a><div class="pSmartList1"><li ><code class="cCodeItalic">&lt;TCP_connect_port&gt;</code> is the TCP port where the local router attempts to connect to remote routers.</li></div>
+
+</ul></div>
+
+<a name="wp1218299"> </a><div class="pCellBody">
+The token <code class="cCode">Any</code> can appear in these three parts. For the semantics of this notation see <a  href="rv_adm36.htm#wp1066007">Accept Any as Neighbor</a>, and <a  href="rv_adm36.htm#wp1066854">Seek Neighbor with Any Name</a>. See also, <a  href="rv_adm55.htm#wp1219842">Four Variations of the Form</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1217145"> </a><div class="pCellBody">
+Features
+</div>
+</td>
+    <td><a name="wp1217147"> </a><div class="pCellBody">
+This column lists features and options of this neighbor specification:
+</div>
+<div class="pSmartList1"><ul>
+<a name="wp1218313"> </a><div class="pSmartList1"><li >Cost: the path cost of this neighbor link (see <a  href="rv_adm37.htm#wp1174944">Load Balancing</a>)</li></div>
+
+<a name="wp1316296"> </a><div class="pSmartList1"><li >Compression: this flag indicates whether this interface specifies data compression (see <a  href="rv_adm35.htm#wp1306782">Data Compression</a>)</li></div>
+
+<a name="wp1241313"> </a><div class="pSmartList1"><li >SSL: this flag indicates whether this interface requires an SSL connection (see <a  href="rv_adm55.htm#wp1229080">SSL Connection Required</a>)</li></div>
+
+</ul></div>
+
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1217282"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1218423"> </a><p class="pBody">
+<a  href="rv_adm33.htm#wp1047911">Router Name</a>
+</p>
+<a name="wp1219594"> </a><h3 class="pHeading2">
+Add New Neighbor Interface
+</h3>
+<a name="wp1219602"> </a><p class="pBody">
+The remainder of this page lets you complete a form to specify a new neighbor interface.
+</p>
+<a name="wp1218325"> </a><div class="pFigureTitle">
+Figure&#160;28   rvrd Neighbor Interface Configuration Form</div><div align="center"><img src="images/rv_adma55.gif" height="700" width="552" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1219842"> </a><h4 class="pHeading3">
+Four Variations of the Form
+</h4>
+<a name="wp1228996"> </a><p class="pBody">
+Four buttons rearrange the form into four variations, each with a different meaning (see <a  href="rv_adm55.htm#wp1229006">Table&#160;7</a>). In each variation, <code class="cCode">rvrd</code> automatically fills in some fields, and leaves others empty for you to fill.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1229006"> </a><div class="pTableTitle">
+Table&#160;7   Four Neighbor Interface Configuration Forms&#160;
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1229010"> </a><div class="pCellHeading">
+Item
+</div>
+</th>
+    <th><a name="wp1229012"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1229014"> </a><div class="pCellBody">
+Accept Any
+</div>
+</td>
+    <td><a name="wp1229016"> </a><div class="pCellBody">
+Use this variation of the form to specify a neighbor interface in which this routing daemon accepts neighbor connections from any other routing daemon.
+</div>
+<a name="wp1249866"> </a><div class="pCellBody">
+It is not possible to configure more than one <em class="cEmphasis">accept any</em> neighbor interface. This variation cannot use SSL neighbor connections.
+</div>
+<a name="wp1250329"> </a><div class="pCellBody">
+A distinguishing characteristic of <em class="cEmphasis">accept any</em> neighbors is a remote endpoint string in which the router name, the host and the port are all Any.
+</div>
+<a name="wp1229020"> </a><div class="pCellBody">
+For more information, see <a  href="rv_adm36.htm#wp1066007">Accept Any as Neighbor</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1229022"> </a><div class="pCellBody">
+Passive
+</div>
+</td>
+    <td><a name="wp1229024"> </a><div class="pCellBody">
+Use this variation of the form to specify a neighbor interface in which the local router does not actively attempt to connect to the remote neighbor. Instead, it passively waits for the remote neighbor to request a connection.
+</div>
+<a name="wp1250253"> </a><div class="pCellBody">
+A distinguishing characteristic of passive neighbors is a remote endpoint string in which the router name is specified, but the host and port are Any.
+</div>
+<a name="wp1229028"> </a><div class="pCellBody">
+For more information, see <a  href="rv_adm36.htm#wp1044405">Passive Neighbor</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1229030"> </a><div class="pCellBody">
+Active
+</div>
+</td>
+    <td><a name="wp1229032"> </a><div class="pCellBody">
+Use this variation of the form to specify a neighbor interface in which the local router actively attempts to connect to the remote neighbor.
+</div>
+<a name="wp1250229"> </a><div class="pCellBody">
+A distinguishing characteristic of active neighbors is a remote endpoint string in which the router name, the host and the port are all specified.
+</div>
+<a name="wp1229036"> </a><div class="pCellBody">
+For an example, see <a  href="rv_adm36.htm#wp1066900">Active Neighbor</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1229038"> </a><div class="pCellBody">
+Seek Any
+</div>
+</td>
+    <td><a name="wp1229040"> </a><div class="pCellBody">
+Use this variation of the form to specify a neighbor interface in which this routing daemon attempts to connect to any remote routing daemon that matches the specification.
+</div>
+<a name="wp1249805"> </a><div class="pCellBody">
+It is illegal to configure two or more <em class="cEmphasis">seek any</em> neighbor interfaces with the same host. This variation cannot use SSL neighbor connections.
+</div>
+<a name="wp1250384"> </a><div class="pCellBody">
+A distinguishing characteristic of <em class="cEmphasis">seek any</em> neighbors is a remote endpoint string in which the router name is Any, but the host and the port are specified. In addition, the local endpoint port is Any.
+</div>
+<a name="wp1229044"> </a><div class="pCellBody">
+For more information, see <a  href="rv_adm36.htm#wp1066854">Seek Neighbor with Any Name</a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1229106"> </a><h4 class="pHeading3">
+Items in the Neighbor Interface Configuration Form
+</h4>
+<a name="wp1229125"> </a><p class="pBody">
+This table describes the items in <a  href="rv_adm55.htm#wp1218325">Figure&#160;28</a>.
+</p>
+<a name="wp1229168"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1229050"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1229054"> </a><div class="pCellHeading">
+Item
+</div>
+</th>
+    <th><a name="wp1229056"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1229058"> </a><div class="pCellBody">
+Local Endpoint
+</div>
+</td>
+    <td><a name="wp1229177"> </a><div class="pCellBody">
+This three-part specification denotes the local end of the potential neighbor link:
+</div>
+<div class="pSmartList1"><ul>
+<a name="wp1229179"> </a><div class="pSmartList1"><li ><em class="cEmphasis">Router Name</em> is the name of the local routing table entry. <code class="cCode">rvrd</code> always automatically fills in this name.</li></div>
+
+<a name="wp1229063"> </a><div class="pSmartList1"><li ><em class="cEmphasis">Host</em> denotes the local <code class="cCode">rvrd</code> host computer. <code class="cCode">rvrd</code> always automatically fills in this field with the fixed token, <code class="cCode">Local_Host</code>. (Note that this token does <em class="cEmphasis">not</em> denote the <code class="cCode">LOCALHOST</code> loopback network address.)</li></div>
+
+<a name="wp1229194"> </a><div class="pSmartList1"><li ><em class="cEmphasis">TCP Connect Port</em> is the local TCP port where the local router accepts neighbor connection requests from remote routers. For more information, see <a  href="rv_adm35.htm#wp1044394">Local Connect Port</a>.</li></div>
+
+</ul></div>
+
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1229066"> </a><div class="pCellBody">
+Remote Endpoint
+</div>
+</td>
+    <td><a name="wp1229068"> </a><div class="pCellBody">
+This three-part specification denotes the remote end of the potential neighbor link:
+</div>
+<div class="pSmartList1"><ul>
+<a name="wp1229069"> </a><div class="pSmartList1"><li ><em class="cEmphasis">Router Name</em> is the name of the remote routing table entry.</li></div>
+
+<a name="wp1229070"> </a><div class="pSmartList1"><li ><em class="cEmphasis">Host</em> is the hostname or IP address of the remote <code class="cCode">rvrd</code> host computer.</li></div>
+
+<a name="wp1229672"> </a><div class="pSmartList1"><li ><em class="cEmphasis">TCP Connect Port</em> is the remote TCP port where the local router attempts to connect to remote routers.</li></div>
+
+</ul></div>
+
+<a name="wp1231204"> </a><div class="pCellBody">
+For more information, see <a  href="rv_adm35.htm#wp1229423">Remote Connection Information</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1229073"> </a><div class="pCellBody">
+Cost
+</div>
+</td>
+    <td><a name="wp1229078"> </a><div class="pCellBody">
+The path cost of this neighbor link (see <a  href="rv_adm37.htm#wp1174944">Load Balancing</a>).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1308509"> </a><div class="pCellBody">
+Data Compression
+</div>
+</td>
+    <td><a name="wp1308513"> </a><div class="pCellBody">
+When this box is filled, the two neighbors compress data on the link between them. To enable compression, you must check this box on both neighbors. For more information, see <a  href="rv_adm35.htm#wp1306782">Data Compression</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1229080"> </a><div class="pCellBody">
+SSL Connection Required
+</div>
+</td>
+    <td><a name="wp1229082"> </a><div class="pCellBody">
+When this box is filled, the two neighbors must communicate using SSL protocols.
+</div>
+<a name="wp1229083"> </a><div class="pCellBody">
+When this box is empty, the two neighbors must communicate using non-secure protocols.
+</div>
+<a name="wp1246833"> </a><div class="pCellBody">
+Notice that both neighbors must use the same protocols, otherwise they cannot establish a connection.
+</div>
+<a name="wp1229085"> </a><div class="pCellBody">
+This field appears only in the Passive and Active variations of the configuration form.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1306847"> </a><div class="pCellBody">
+Certificate of Expected Peer
+</div>
+</td>
+    <td><a name="wp1306849"> </a><div class="pCellBody">
+In SSL protocols, the local router expects the remote router to present this certificate as evidence of its identity. Paste the text of the public certificate (in PEM encoding) in this field.
+</div>
+<a name="wp1306850"> </a><div class="pCellBody">
+This field appears only in the Passive and Active variations of the configuration form.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

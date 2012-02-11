@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>Update Array</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;3	 Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1028415"> </a><h2 class="pNewHTMLPage">
+Update Array
+</h2>
+<hr />
+<a name="wp1028416"> </a><p class="pSyntaxType">
+Convenience Functions
+</p>
+<a name="wp1086938"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvMsg_Update</code><code class="cCodeItalic">&lt;element_type&gt;</code><code class="cCodeBold">Array</code>(<a name="wp1162965"> </a>
+&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;message,<a name="wp1162969"> </a>
+&#160;&#160;&#160;const char* &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;fieldName,<a name="wp1162970"> </a>
+&#160;&#160;&#160;const&#160;<code class="cCodeItalic">&lt;element_type&gt;</code>*&#160;&#160;value,<a name="wp1162971"> </a>
+&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128803"><code class="cCode">tibrv_u32</code></a> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;numElements);<a name="wp1162975"> </a>
+<a name="wp1162978"> </a>
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvMsg_Update</code><code class="cCodeItalic">&lt;element_type&gt;</code><code class="cCodeBold">ArrayEx</code>(<a name="wp1162984"> </a>
+&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;message,<a name="wp1162988"> </a>
+&#160;&#160;&#160;const char* &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;fieldName,<a name="wp1162989"> </a>
+&#160;&#160;&#160;const&#160;<code class="cCodeItalic">&lt;element_type&gt;</code>*&#160;&#160;value,<a name="wp1162990"> </a>
+&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128803"><code class="cCode">tibrv_u32</code></a> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;numElements,<a name="wp1162994"> </a>
+&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128797"><code class="cCode">tibrv_u16</code></a><a name="wp1162979"> </a>
+</pre></div>
+<a name="wp1087409"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1044898"> </a><p class="pBody">
+Update a field containing an array value.
+</p>
+<a name="wp1087884"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1044900"> </a><p class="pBody">
+Each convenience function in this family locates a field (by name or identifier) and updates its data.
+</p>
+<a name="wp1044924"> </a><p class="pBody">
+The type of the existing field (within the message) and the type of the updating <code class="cCode">value</code> must match. The number of elements can change.
+</p>
+<a name="wp1059517"> </a><p class="pBody">
+Pointer data previously extracted from the field remain valid and unchanged until the message is destroyed; that is, even updating the field&#8217;s value does <em class="cEmphasis">not</em> invalidate pointer data. (See <a  href="rv_c_ref19.htm#wp1092306">Pointer Snapshot</a>.)</p><div align="left">
+<table border="1">
+  <caption><a name="wp1176682"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1176688"> </a><div class="pCellHeading">
+Function Name
+</div>
+</th>
+    <th><a name="wp1176690"> </a><div class="pCellHeading">
+Element Type
+</div>
+</th>
+    <th><a name="wp1176692"> </a><div class="pCellHeading">
+Type Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176694"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Update</code><code class="cCodeBold">I8Array</code>
+</div>
+</td>
+    <td><a name="wp1176696"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">i8</code>
+</div>
+</td>
+    <td><a name="wp1176698"> </a><div class="pCellBody">
+8-bit integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176700"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Update</code><code class="cCodeBold">U8Array</code>
+</div>
+</td>
+    <td><a name="wp1176702"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">u8</code>
+</div>
+</td>
+    <td><a name="wp1176704"> </a><div class="pCellBody">
+8-bit unsigned integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176706"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Update</code><code class="cCodeBold">I16Array</code>
+</div>
+</td>
+    <td><a name="wp1176708"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">i16</code>
+</div>
+</td>
+    <td><a name="wp1176710"> </a><div class="pCellBody">
+16-bit integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176712"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Update</code><code class="cCodeBold">U16Array</code>
+</div>
+</td>
+    <td><a name="wp1176714"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">u16</code>
+</div>
+</td>
+    <td><a name="wp1176716"> </a><div class="pCellBody">
+16-bit unsigned integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176718"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Update</code><code class="cCodeBold">I32Array</code>
+</div>
+</td>
+    <td><a name="wp1176720"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">i32</code>
+</div>
+</td>
+    <td><a name="wp1176722"> </a><div class="pCellBody">
+32-bit integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176724"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Update</code><code class="cCodeBold">U32Array</code>
+</div>
+</td>
+    <td><a name="wp1176726"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">u32</code>
+</div>
+</td>
+    <td><a name="wp1176728"> </a><div class="pCellBody">
+32-bit unsigned integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176730"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Update</code><code class="cCodeBold">I64Array</code>
+</div>
+</td>
+    <td><a name="wp1176732"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">i64</code>
+</div>
+</td>
+    <td><a name="wp1176734"> </a><div class="pCellBody">
+64-bit integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176736"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Update</code><code class="cCodeBold">U64Array</code>
+</div>
+</td>
+    <td><a name="wp1176738"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">u64</code>
+</div>
+</td>
+    <td><a name="wp1176740"> </a><div class="pCellBody">
+64-bit unsigned integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176742"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Update</code><code class="cCodeBold">F32Array</code>
+</div>
+</td>
+    <td><a name="wp1176744"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">f32</code>
+</div>
+</td>
+    <td><a name="wp1176746"> </a><div class="pCellBody">
+32-bit floating point array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1176748"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsg_Update</code><code class="cCodeBold">F64Array</code>
+</div>
+</td>
+    <td><a name="wp1176750"> </a><div class="pCellBody">
+<code class="cCode">tibrv_</code><code class="cCodeBold">f64</code>
+</div>
+</td>
+    <td><a name="wp1176752"> </a><div class="pCellBody">
+64-bit floating point array
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1028526"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1028502"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1028504"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1028506"> </a><div class="pCellBody">
+<code class="cCode">message</code>
+</div>
+</td>
+    <td><a name="wp1028508"> </a><div class="pCellBody">
+Update the specified field of this message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1028510"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1028512"> </a><div class="pCellBody">
+Update a field with this name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1028514"> </a><div class="pCellBody">
+<code class="cCode">value</code>
+</div>
+</td>
+    <td><a name="wp1028849"> </a><div class="pCellBody">
+Update the message field to this array value.
+</div>
+<a name="wp1028830"> </a><div class="pCellBody">
+The function <em class="cEmphasis">copies</em> the new array into the existing field.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1084946"> </a><div class="pCellBody">
+<code class="cCode">numElements</code>
+</div>
+</td>
+    <td><a name="wp1084948"> </a><div class="pCellBody">
+When updating an array type, the program supplies the count of array elements in this parameter.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1109402"> </a><div class="pCellBody">
+<code class="cCode">fieldId</code>
+</div>
+</td>
+    <td><a name="wp1109404"> </a><div class="pCellBody">
+Update the field with this identifier. Zero is a special value that signifies no field identifier. It is illegal to add a field that has both a <code class="cCode">NULL</code> field name, and a non-zero field identifier.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1088266"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1083443"> </a><p class="pBody">
+<a  href="rv_c_ref20.htm#wp1062225">Field Names and Field Identifiers</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

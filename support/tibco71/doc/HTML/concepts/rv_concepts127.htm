@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Fault Tolerance</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;13	 Fault Tolerance Concepts";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1057136"> </a><h2 class="pNewHTMLPage">
+Fault Tolerance
+</h2>
+<hr />
+<a name="wp1057137"> </a><p class="pBody">
+In nearly every enterprise, mission-critical programs must continue to function properly despite sudden difficulties such as process termination, hardware failure and network disconnect. <em class="cEmphasis">Fault tolerance</em> in a network environment is characterized by rapid recovery from such failures.
+</p>
+<a name="wp1057138"> </a><p class="pBody">
+Some fault-tolerant distributed programs keep service interruptions to a minimum by using redundant processes that cooperate across the network. Rendezvous fault tolerance software facilitates the development of distributed programs that use redundant processes for fault tolerance.
+</p>
+<a name="wp1057145"> </a><p class="pBody">
+Rendezvous fault tolerance software helps your program achieve fault tolerance by coordinating a group of redundant processes. Some processes actively fulfill the tasks of the program, while other processes wait in readiness. When one of the active processes fails, another process rapidly assumes active duty.
+</p>
+<a name="wp1057149"> </a><p class="pBody">
+Rendezvous fault tolerance software supports any number of cooperating processes connected by a local or wide-area network. Rendezvous fault tolerance software monitors the health of cooperating processes, determines when a key process is no longer in service, and instructs another process to take its place.
+</p>
+<a name="wp1057156"> </a><p class="pBody">
+Rendezvous fault tolerance software is fast, compact, and adds little overhead to programs.
+</p>
+<a name="wp1057160"> </a><p class="pBody">
+You can use Rendezvous fault tolerance software to design fault-tolerant behavior into programs from the start, or to retrofit existing programs for fault tolerance.
+</p>
+<a name="wp1057161"> </a><p class="pBody">
+Programs can passively monitor the number of active members in a fault-tolerance group (whether or not the monitoring program is itself fault-tolerant).
+</p>
+<a name="wp1072836"> </a><h3 class="pHeading2">
+Fault Tolerance versus Distributed Queues
+</h3>
+<a name="wp1072838"> </a><p class="pBody">
+Fault tolerance usually requires that every member of a fault tolerance group receive each message. In contrast, each message to a distributed queue group is received by exactly one worker in the group. These mutually exclusive semantics cannot co-exist in the same distributed application program. That is, a program cannot simultaneously be a member of a fault tolerance group and a member of a distributed queue.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

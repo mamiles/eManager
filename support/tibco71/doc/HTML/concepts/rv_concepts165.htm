@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>RVD</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Appendix&#160;A	 System Advisory Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1047150"> </a><h2 class="pNewHTMLPage">
+RVD
+</h2>
+<hr />
+<a name="wp1047151"> </a><p class="pSyntaxType">
+Advisory
+</p>
+<a name="wp1048896"> </a><h4 class="pHeading3">
+Subject Name Syntax
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+_RV.WARN.SYSTEM.RVD.DISCONNECTED<a name="wp1038508"> </a>
+_RV.INFO.SYSTEM.RVD.CONNECTED<a name="wp1038509"> </a>
+</pre></div>
+<a name="wp1059577"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1038514"> </a><p class="pBody">
+The Rendezvous daemon has disconnected, or reconnected.
+</p>
+<a name="wp1059723"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1038519"> </a><p class="pBody">
+Every affected transport presents this advisory.
+</p>
+<a name="wp1038520"> </a><p class="pBody">
+The warning advisory, <code class="cCode">_RV.WARN.SYSTEM.RVD.DISCONNECTED</code>, indicates that the transport is no longer connected to a Rendezvous daemon process. While the daemon is disconnected, no data flows to or from the transport object. If the daemon process was running on the local host computer, the transport object will automatically attempt to restart it and reconnect. In the interim, the daemon is not receiving inbound messages on behalf of the transport.
+</p>
+<a name="wp1038524"> </a><p class="pBody">
+The informational advisory, <code class="cCode">_RV.INFO.SYSTEM.RVD.CONNECTED</code>, indicates that the transport is again connected to a Rendezvous daemon.
+</p>
+<a name="wp1038528"> </a><h4 class="pHeading3">
+Diagnosis
+</h4>
+<a name="wp1038529"> </a><p class="pBody">
+Several external situations can result in <code class="cCode">RVD.DISCONNECTED</code>; for example:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1038530"> </a><div class="pSmartList1"><li >The <code class="cCode">rvd</code> process was removed.</li></div>
+
+<a name="wp1038531"> </a><div class="pSmartList1"><li >The wire connecting the remote program host to the <code class="cCode">rvd</code> host is broken.</li></div>
+
+<a name="wp1038532"> </a><div class="pSmartList1"><li >The remote <code class="cCode">rvd</code> host experienced a power failure.</li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,824 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvMsg</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1055151"> </a><h2 class="pNewHTMLPage">
+TibrvMsg
+</h2>
+<hr />
+<a name="wp1021389"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1021391"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+class com.tibco.tibrv.<code class="cCodeBold">TibrvMsg</code><a name="wp1021392"> </a>
+&#160;&#160;extends java.lang.Object<a name="wp1281128"> </a>
+</pre></div>
+<a name="wp1021393"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1021394"> </a><p class="pBody">
+Represent Rendezvous messages.
+</p>
+<a name="wp1111623"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1111628"> </a><p class="pBody">
+This class has no <code class="cCode">destroy()</code> method. Instead, the Java garbage collector reclaims storage automatically.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1115407"> </a><p class="pBody">
+ (Sheet 1 of 3)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1052401"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1052403"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1052405"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1052407"> </a><div class="pMinorHead">
+Message Life Cycle and Properties
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1052416"> </a><div class="pCellBody">
+<a  href="rv_java_ref32.htm#wp1023389"><code class="cCode">TibrvMsg()</code></a>
+</div>
+</td>
+    <td><a name="wp1052421"> </a><div class="pCellBody">
+<a  href="rv_java_ref32.htm#wp1023395">Create a message object.</a>
+</div>
+</td>
+    <td><a name="wp1052426"> </a><div class="pCellBody">
+<a  href="rv_java_ref32.htm#wp1023389">50</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1053014"> </a><div class="pCellBody">
+<a  href="rv_java_ref42.htm#wp1232108"><code class="cCode">TibrvMsg.getNumFields()</code></a>
+</div>
+</td>
+    <td><a name="wp1053019"> </a><div class="pCellBody">
+<a  href="rv_java_ref42.htm#wp1232114">Extract the number of fields in a message.</a>
+</div>
+</td>
+    <td><a name="wp1053024"> </a><div class="pCellBody">
+<a  href="rv_java_ref42.htm#wp1232108">67</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1052894"> </a><div class="pMinorHead">
+Fields
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1052587"> </a><div class="pCellBody">
+<a  href="rv_java_ref33.htm#wp1026879"><code class="cCode">TibrvMsg.add()</code></a>
+</div>
+</td>
+    <td><a name="wp1052592"> </a><div class="pCellBody">
+<a  href="rv_java_ref33.htm#wp1026885">Add a field to a message.</a>
+</div>
+</td>
+    <td><a name="wp1052597"> </a><div class="pCellBody">
+<a  href="rv_java_ref33.htm#wp1026879">51</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1125898"> </a><div class="pCellBody">
+<a  href="rv_java_ref34.htm#wp1027558">Add Scalar</a> (convenience methods)
+</div>
+</td>
+    <td><a name="wp1125903"> </a><div class="pCellBody">
+<a  href="rv_java_ref34.htm#wp1028294">Add a field containing a scalar value.</a>
+</div>
+</td>
+    <td><a name="wp1125908"> </a><div class="pCellBody">
+<a  href="rv_java_ref34.htm#wp1027558">54</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1052553"> </a><div class="pCellBody">
+<a  href="rv_java_ref35.htm#wp1028247"><code class="cCode">TibrvMsg.addField()</code></a>
+</div>
+</td>
+    <td><a name="wp1052558"> </a><div class="pCellBody">
+<a  href="rv_java_ref35.htm#wp1054321">Add a field object to a message.</a>
+</div>
+</td>
+    <td><a name="wp1052563"> </a><div class="pCellBody">
+<a  href="rv_java_ref35.htm#wp1028247">56</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1125914"> </a><div class="pCellBody">
+<a  href="rv_java_ref36.htm#wp1024668"><code class="cCode">TibrvMsg.get()</code></a>
+</div>
+</td>
+    <td><a name="wp1125918"> </a><div class="pCellBody">
+<a  href="rv_java_ref36.htm#wp1024753">Get the value of a specified field from a message.</a>
+</div>
+</td>
+    <td><a name="wp1125924"> </a><div class="pCellBody">
+<a  href="rv_java_ref36.htm#wp1024668">57</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1052603"> </a><div class="pCellBody">
+<a  href="rv_java_ref37.htm#wp1026074">Get Scalar</a> (convenience methods)
+</div>
+</td>
+    <td><a name="wp1052607"> </a><div class="pCellBody">
+<a  href="rv_java_ref37.htm#wp1113643">Get the value of a field as a scalar value.</a>
+</div>
+</td>
+    <td><a name="wp1052613"> </a><div class="pCellBody">
+<a  href="rv_java_ref37.htm#wp1026074">61</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1052618"> </a><div class="pCellBody">
+<a  href="rv_java_ref38.htm#wp1023508"><code class="cCode">TibrvMsg.getAsBytes()</code></a>
+</div>
+</td>
+    <td><a name="wp1052623"> </a><div class="pCellBody">
+<a  href="rv_java_ref38.htm#wp1024422">Extract the data from a message as a byte sequence.</a>
+</div>
+</td>
+    <td><a name="wp1052628"> </a><div class="pCellBody">
+<a  href="rv_java_ref38.htm#wp1023508">63</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1052649"> </a><div class="pCellBody">
+<a  href="rv_java_ref39.htm#wp1025655"><code class="cCode">TibrvMsg.getField()</code></a>
+</div>
+</td>
+    <td><a name="wp1052654"> </a><div class="pCellBody">
+<a  href="rv_java_ref39.htm#wp1025737">Get a specified field from a message.</a>
+</div>
+</td>
+    <td><a name="wp1052659"> </a><div class="pCellBody">
+<a  href="rv_java_ref39.htm#wp1025655">64</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1052665"> </a><div class="pCellBody">
+<a  href="rv_java_ref40.htm#wp1025852"><code class="cCode">TibrvMsg.getFieldByIndex()</code></a>
+</div>
+</td>
+    <td><a name="wp1052670"> </a><div class="pCellBody">
+<a  href="rv_java_ref40.htm#wp1066771">Get a field from a message by an index.</a>
+</div>
+</td>
+    <td><a name="wp1052675"> </a><div class="pCellBody">
+<a  href="rv_java_ref40.htm#wp1025852">65</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1052681"> </a><div class="pCellBody">
+<a  href="rv_java_ref41.htm#wp1025938"><code class="cCode">TibrvMsg.getFieldInstance()</code></a>
+</div>
+</td>
+    <td><a name="wp1052686"> </a><div class="pCellBody">
+<a  href="rv_java_ref41.htm#wp1026011">Get a specific instance of a field from a message.</a>
+</div>
+</td>
+    <td><a name="wp1052691"> </a><div class="pCellBody">
+<a  href="rv_java_ref41.htm#wp1025938">66</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1052921"> </a><div class="pCellBody">
+<a  href="rv_java_ref47.htm#wp1111370"><code class="cCode">TibrvMsg.removeField()</code></a>
+</div>
+</td>
+    <td><a name="wp1052926"> </a><div class="pCellBody">
+<a  href="rv_java_ref47.htm#wp1116179">Remove a field from a message.</a>
+</div>
+</td>
+    <td><a name="wp1052931"> </a><div class="pCellBody">
+<a  href="rv_java_ref47.htm#wp1111370">72</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1052906"> </a><div class="pCellBody">
+<a  href="rv_java_ref48.htm#wp1026709"><code class="cCode">TibrvMsg.removeFieldInstance()</code></a>
+</div>
+</td>
+    <td><a name="wp1052910"> </a><div class="pCellBody">
+<a  href="rv_java_ref48.htm#wp1026766">Remove a specified instance of a field from a message.</a>
+</div>
+</td>
+    <td><a name="wp1052916"> </a><div class="pCellBody">
+<a  href="rv_java_ref48.htm#wp1026709">74</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1125929"> </a><div class="pCellBody">
+<a  href="rv_java_ref53.htm#wp1028315"><code class="cCode">TibrvMsg.update()</code></a>
+</div>
+</td>
+    <td><a name="wp1125934"> </a><div class="pCellBody">
+<a  href="rv_java_ref53.htm#wp1028651">Update a field within a message.</a>
+</div>
+</td>
+    <td><a name="wp1125939"> </a><div class="pCellBody">
+<a  href="rv_java_ref53.htm#wp1028315">79</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1052997"> </a><div class="pCellBody">
+<a  href="rv_java_ref54.htm#wp1028381">Update Scalar</a> (convenience methods)
+</div>
+</td>
+    <td><a name="wp1053002"> </a><div class="pCellBody">
+<a  href="rv_java_ref54.htm#wp1028402">Update a field containing a scalar value.</a>
+</div>
+</td>
+    <td><a name="wp1053007"> </a><div class="pCellBody">
+<a  href="rv_java_ref54.htm#wp1028381">82</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1052982"> </a><div class="pCellBody">
+<a  href="rv_java_ref55.htm#wp1028523"><code class="cCode">TibrvMsg.updateField()</code></a>
+</div>
+</td>
+    <td><a name="wp1052987"> </a><div class="pCellBody">
+<a  href="rv_java_ref55.htm#wp1028568">Update a field within a message.</a>
+</div>
+</td>
+    <td><a name="wp1052992"> </a><div class="pCellBody">
+<a  href="rv_java_ref55.htm#wp1028523">84</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1052933"> </a><div class="pMinorHead">
+Address Information
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1052696"> </a><div class="pCellBody">
+<a  href="rv_java_ref43.htm#wp1024213"><code class="cCode">TibrvMsg.getReplySubject()</code></a>
+</div>
+</td>
+    <td><a name="wp1052700"> </a><div class="pCellBody">
+<a  href="rv_java_ref43.htm#wp1024307">Extract the reply subject from a message.</a>
+</div>
+</td>
+    <td><a name="wp1052706"> </a><div class="pCellBody">
+<a  href="rv_java_ref43.htm#wp1024213">68</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1052712"> </a><div class="pCellBody">
+<a  href="rv_java_ref44.htm#wp1024242"><code class="cCode">TibrvMsg.getSendSubject()</code></a>
+</div>
+</td>
+    <td><a name="wp1052717"> </a><div class="pCellBody">
+<a  href="rv_java_ref44.htm#wp1024284">Extract the subject from a message.</a>
+</div>
+</td>
+    <td><a name="wp1052722"> </a><div class="pCellBody">
+<a  href="rv_java_ref44.htm#wp1024242">69</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1052967"> </a><div class="pCellBody">
+<a  href="rv_java_ref49.htm#wp1107851"><code class="cCode">TibrvMsg.setReplySubject()</code></a>
+</div>
+</td>
+    <td><a name="wp1052972"> </a><div class="pCellBody">
+<a  href="rv_java_ref49.htm#wp1024119">Set the reply subject for a message.</a>
+</div>
+</td>
+    <td><a name="wp1052977"> </a><div class="pCellBody">
+<a  href="rv_java_ref49.htm#wp1107851">75</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1052952"> </a><div class="pCellBody">
+<a  href="rv_java_ref50.htm#wp1024145"><code class="cCode">TibrvMsg.setSendSubject()</code></a>
+</div>
+</td>
+    <td><a name="wp1052957"> </a><div class="pCellBody">
+<a  href="rv_java_ref50.htm#wp1024151">Set the subject for a message.</a>
+</div>
+</td>
+    <td><a name="wp1052962"> </a><div class="pCellBody">
+<a  href="rv_java_ref50.htm#wp1024145">76</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1076405"> </a><div class="pMinorHead">
+String and Character Conversion
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1076414"> </a><div class="pCellBody">
+<a  href="rv_java_ref46.htm#wp1028794"><code class="cCode">TibrvMsg.getTypeName()</code></a>
+</div>
+</td>
+    <td><a name="wp1076418"> </a><div class="pCellBody">
+<a  href="rv_java_ref46.htm#wp1028800">Convert a type designator to its corresponding string name.</a>
+</div>
+</td>
+    <td><a name="wp1076424"> </a><div class="pCellBody">
+<a  href="rv_java_ref46.htm#wp1028794">71</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1076429"> </a><div class="pCellBody">
+<a  href="rv_java_ref52.htm#wp1024541"><code class="cCode">TibrvMsg.toString()</code></a>
+</div>
+</td>
+    <td><a name="wp1076434"> </a><div class="pCellBody">
+<a  href="rv_java_ref52.htm#wp1024622">Format a message as a string.</a>
+</div>
+</td>
+    <td><a name="wp1076439"> </a><div class="pCellBody">
+<a  href="rv_java_ref52.htm#wp1024541">78</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1107278"> </a><div class="pCellBody">
+<a  href="rv_java_ref45.htm#wp1107129"><code class="cCode">TibrvMsg.getStringEncoding()</code></a>
+</div>
+</td>
+    <td><a name="wp1107283"> </a><div class="pCellBody">
+<a  href="rv_java_ref45.htm#wp1107134">Return the character encoding for converting between Java Strings and wire format strings.</a>
+</div>
+</td>
+    <td><a name="wp1107288"> </a><div class="pCellBody">
+<a  href="rv_java_ref45.htm#wp1107129">70</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1107906"> </a><div class="pCellBody">
+<a  href="rv_java_ref51.htm#wp1117988"><code class="cCode">TibrvMsg.setStringEncoding()</code></a>
+</div>
+</td>
+    <td><a name="wp1107910"> </a><div class="pCellBody">
+<a  href="rv_java_ref51.htm#wp1107864">Set the character encoding for converting between Java Unicode strings and wire format strings.</a>
+</div>
+</td>
+    <td><a name="wp1107916"> </a><div class="pCellBody">
+<a  href="rv_java_ref51.htm#wp1117988">77</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1113109"> </a><div class="pMinorHead">
+Custom Datatypes
+</div>
+<a name="wp1113336"> </a><div class="pCellBody">
+See <a  href="rv_java_ref237.htm#wp1074778">Appendix&#160;A, Custom Datatypes</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1076447"> </a><div class="pCellBody">
+<a  href="rv_java_ref238.htm#wp1076121"><code class="cCode">TibrvMsg.getDecoder()</code></a>
+</div>
+</td>
+    <td><a name="wp1076451"> </a><div class="pCellBody">
+<a  href="rv_java_ref238.htm#wp1076129">Extract the decoder interface for a custom datatype.</a>
+</div>
+</td>
+    <td><a name="wp1076457"> </a><div class="pCellBody">
+<a  href="rv_java_ref238.htm#wp1076121">322</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1076462"> </a><div class="pCellBody">
+<a  href="rv_java_ref239.htm#wp1076247"><code class="cCode">TibrvMsg.getEncoder()</code></a>
+</div>
+</td>
+    <td><a name="wp1076466"> </a><div class="pCellBody">
+<a  href="rv_java_ref239.htm#wp1076253">Extract the encoder interface for a custom datatype.</a>
+</div>
+</td>
+    <td><a name="wp1076472"> </a><div class="pCellBody">
+<a  href="rv_java_ref239.htm#wp1076247">323</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1052728"> </a><div class="pCellBody">
+<a  href="rv_java_ref240.htm#wp1106884"><code class="cCode">TibrvMsg.setHandlers()</code></a>
+</div>
+</td>
+    <td><a name="wp1052733"> </a><div class="pCellBody">
+<a  href="rv_java_ref240.htm#wp1075832">Define a custom datatype by registering its encoder and decoder interfaces.</a>
+</div>
+</td>
+    <td><a name="wp1052738"> </a><div class="pCellBody">
+<a  href="rv_java_ref240.htm#wp1106884">324</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1133959"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1133950"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1133952"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.equals</code>
+</p>
+<a name="wp1133953"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.getClass</code>
+</p>
+<a name="wp1133954"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.hashCode</code>
+</p>
+<a name="wp1133955"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notify</code>
+</p>
+<a name="wp1133956"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notifyAll</code>
+</p>
+<a name="wp1133958"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.wait</code>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1056249"> </a><h4 class="pHeading3">
+Datatype Constants
+</h4>
+<a name="wp1074694"> </a><p class="pBody">
+These constants are all defined with short values. To extract a human-readable name from a short value, see <a  href="rv_java_ref46.htm#wp1028794"><code class="cCode">TibrvMsg.getTypeName()</code> </a></p><div align="left">
+<table border="1">
+  <caption><a name="wp1124087"> </a><div class="pTableTitle">
+Table&#160;4   Datatype Constants (Sheet 1 of 2)
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1124089"> </a><div class="pCellHeading">
+Constant
+</div>
+</th>
+    <th><a name="wp1124174"> </a><div class="pCellHeading">
+Comment
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124092"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.DEFAULT</code>
+</div>
+</td>
+    <td><a name="wp1124176"> </a><div class="pCellBody">
+Used only as a <code class="cCode">type</code> argument to <a  href="rv_java_ref33.htm#wp1026879"><code class="cCode">TibrvMsg.add()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124095"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.MSG</code>
+</div>
+</td>
+    <td><a name="wp1124178"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124098"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.DATETIME</code>
+</div>
+</td>
+    <td><a name="wp1124180"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124101"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.OPAQUE</code>
+</div>
+</td>
+    <td><a name="wp1124182"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124104"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.STRING</code>
+</div>
+</td>
+    <td><a name="wp1124184"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124167"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.XML</code>
+</div>
+</td>
+    <td><a name="wp1124186"> </a><div class="pCellBody">
+Byte-array, compressed for network transmission.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124106"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.BOOL</code>
+</div>
+</td>
+    <td><a name="wp1124188"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124108"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.I8</code>
+</div>
+</td>
+    <td><a name="wp1124190"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124110"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.U8</code>
+</div>
+</td>
+    <td><a name="wp1124192"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124112"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.I16</code>
+</div>
+</td>
+    <td><a name="wp1124194"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124114"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.U16</code>
+</div>
+</td>
+    <td><a name="wp1124196"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124116"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.I32</code>
+</div>
+</td>
+    <td><a name="wp1124198"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124119"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.U32</code>
+</div>
+</td>
+    <td><a name="wp1124200"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124121"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.I64</code>
+</div>
+</td>
+    <td><a name="wp1124202"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124124"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.U64</code>
+</div>
+</td>
+    <td><a name="wp1124204"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124126"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.F32</code>
+</div>
+</td>
+    <td><a name="wp1124206"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124128"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.F64</code>
+</div>
+</td>
+    <td><a name="wp1124208"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124133"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.IPPORT16</code>
+</div>
+</td>
+    <td><a name="wp1124212"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124136"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.IPADDR32</code>
+</div>
+</td>
+    <td><a name="wp1124214"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124138"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.U8ARRAY</code>
+</div>
+</td>
+    <td><a name="wp1124216"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124140"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.I16ARRAY</code>
+</div>
+</td>
+    <td><a name="wp1124218"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124142"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.U16ARRAY</code>
+</div>
+</td>
+    <td><a name="wp1124220"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124144"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.I32ARRAY</code>
+</div>
+</td>
+    <td><a name="wp1124222"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124146"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.U32ARRAY</code>
+</div>
+</td>
+    <td><a name="wp1124224"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124148"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.I64ARRAY</code>
+</div>
+</td>
+    <td><a name="wp1124226"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124150"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.U64ARRAY</code>
+</div>
+</td>
+    <td><a name="wp1124228"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124152"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.F32ARRAY</code>
+</div>
+</td>
+    <td><a name="wp1124230"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124154"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.F64ARRAY</code>
+</div>
+</td>
+    <td><a name="wp1124232"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124161"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.USER_FIRST</code>
+</div>
+</td>
+    <td><a name="wp1124238"> </a><div class="pCellBody">
+Custom datatypes begin with this number.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124164"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.USER_LAST</code>
+</div>
+</td>
+    <td><a name="wp1124240"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1056250"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1067488"> </a><p class="pBody">
+<a  href="rv_java_ref3.htm#wp1073860">Strings and Character Encodings</a>
+</p>
+<a name="wp1112124"> </a><p class="pBody">
+<a  href="rv_java_ref56.htm#wp1028876"><code class="cCode">TibrvMsgField</code> </a>
+</p>
+<a name="wp1076400"> </a><p class="pBody">
+<a  href="rv_java_ref237.htm#wp1074778">Appendix&#160;A, Custom Datatypes</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

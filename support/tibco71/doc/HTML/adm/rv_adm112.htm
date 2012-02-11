@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>rvtrace</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;11	 Protocol Monitor (rvtrace)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1091125"> </a><h2 class="pNewHTMLPage">
+rvtrace
+</h2>
+<hr />
+<a name="wp1091126"> </a><p class="pSyntaxType">
+Command
+</p>
+<a name="wp1091127"> </a><h4 class="pHeading3">
+Syntax
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+rvtrace&#160;&#160;[-i <code class="cCodeItalic">&lt;interface&gt;</code> ]<a name="wp1127749"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-addr <code class="cCodeItalic">&lt;expr&gt;</code> ]<a name="wp1127750"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-src <code class="cCodeItalic">&lt;expr&gt;</code> ]<a name="wp1127751"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-dst <code class="cCodeItalic">&lt;expr&gt;</code> ]<a name="wp1127752"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-port <code class="cCodeItalic">&lt;expr&gt;</code> ]<a name="wp1127753"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-filter <code class="cCodeItalic">&lt;expr&gt;</code> ]<a name="wp1127754"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-u <code class="cCodeItalic">&lt;update_interval&gt;</code> ]<a name="wp1127755"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-r <code class="cCodeItalic">&lt;input_file&gt;</code> ]<a name="wp1127756"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-w <code class="cCodeItalic">&lt;output_file&gt;</code> ]<a name="wp1127707"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-addrinfo]<a name="wp1091138"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-no-mcast]<a name="wp1120204"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-ptp]<a name="wp1127699"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-no-subjects]<a name="wp1120208"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-hostmsgs]<a name="wp1127762"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-rate]<a name="wp1094128"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-h]<a name="wp1136181"> </a>
+</pre></div>
+<a name="wp1094131"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1091149"> </a><p class="pBody">
+<code class="cCode">rvtrace</code> is a network protocol monitor that specializes in Rendezvous protocols. It collects and prints statistics about network packets.
+</p>
+<a name="wp1091150"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1091151"> </a><p class="pBody">
+<code class="cCode">rvtrace</code> runs in a loop&#151;capturing packets, analyzing them, categorizing them, and periodically printing a summary to standard output.
+</p>
+<a name="wp1091152"> </a><p class="pBody">
+An <code class="cCode">rvtrace</code> process never exits by itself (except as a consequence of a command syntax error); you must explicitly terminate each process.
+</p>
+<a name="wp1091335"> </a><p class="pBody">
+Delimit all parameters and arguments with a space character.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1091159"> </a><p class="pBody">
+ (Sheet 1 of 4)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1091163"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1091165"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1129490"> </a><div class="pCellBody">
+<code class="cCode">-i </code><code class="cCodeItalic">&lt;interface&gt;</code>
+</div>
+</td>
+    <td><a name="wp1129492"> </a><div class="pCellBody">
+The program monitors packets on the network interface with this name. If absent, the default value varies, depending on operating system and network hardware.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1129544"> </a><div class="pCellBody">
+<code class="cCode">-addr </code><code class="cCodeItalic">&lt;expr&gt;</code>
+</div>
+</td>
+    <td><a name="wp1129546"> </a><div class="pCellBody">
+Filter the set of packets to process only those with source or destination in the set of hosts or networks specified in <code class="cCodeItalic">&lt;expr&gt;</code>. For filter expression syntax and semantics, see <a  href="rv_adm113.htm#wp1091345">Filtering</a>.
+</div>
+<a name="wp1129550"> </a><div class="pCellBody">
+Enclose filter expressions in quotation marks (<code class="cCodeBold">&quot;</code>).
+</div>
+<a name="wp1129551"> </a><div class="pCellBody">
+The parameter <code class="cCode">-addr </code><code class="cCodeItalic">&lt;filter&gt;</code> is equivalent to:
+</div>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;-filter udp and (src <code class="cCodeItalic">&lt;filter&gt;</code> or dst <code class="cCodeItalic">&lt;filter&gt;</code>)<a name="wp1129552"> </a>
+</pre></div>
+<a name="wp1129554"> </a><div class="pCellBody">
+When any of the parameters <code class="cCode">-src</code>, <code class="cCode">-dst</code>, <code class="cCode">-addr</code>, or <code class="cCode">-port</code> are present, <code class="cCode">rvtrace</code> concatenates them into a single effective filter. However, when the <code class="cCode">-filter</code> parameter is present, <code class="cCode">rvtrace</code> ignores all four of these parameters, and <code class="cCode">-filter</code> overrides them.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091214"> </a><div class="pCellBody">
+<code class="cCode">-src </code><code class="cCodeItalic">&lt;expr&gt;</code>
+</div>
+</td>
+    <td><a name="wp1091216"> </a><div class="pCellBody">
+Filter the set of packets to process only those that originate from the set of hosts or networks specified in <code class="cCodeItalic">&lt;expr&gt;</code>. For filter expression syntax and semantics, see <a  href="rv_adm113.htm#wp1091345">Filtering</a>.
+</div>
+<a name="wp1091220"> </a><div class="pCellBody">
+Enclose filter expressions in quotation marks (<code class="cCodeBold">&quot;</code>).
+</div>
+<a name="wp1091221"> </a><div class="pCellBody">
+The parameter <code class="cCode">-src </code><code class="cCodeItalic">&lt;expr&gt;</code> is equivalent to:
+</div>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;-filter udp and src <code class="cCodeItalic">&lt;expr&gt;</code><a name="wp1091222"> </a>
+</pre></div>
+<a name="wp1091224"> </a><div class="pCellBody">
+When any of the parameters <code class="cCode">-src</code>, <code class="cCode">-dst</code>, <code class="cCode">-addr</code>, or <code class="cCode">-port</code> are present, <code class="cCode">rvtrace</code> concatenates them into a single effective filter. However, when the <code class="cCode">-filter</code> parameter is present, <code class="cCode">rvtrace</code> ignores all four of these parameters, and <code class="cCode">-filter</code> overrides them.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091227"> </a><div class="pCellBody">
+<code class="cCode">-dst </code><code class="cCodeItalic">&lt;expr&gt;</code>
+</div>
+</td>
+    <td><a name="wp1091229"> </a><div class="pCellBody">
+Filter the set of packets to process only those with destination in the set of hosts or networks specified in <code class="cCodeItalic">&lt;expr&gt;</code>. For filter expression syntax and semantics, see <a  href="rv_adm113.htm#wp1091345">Filtering</a>.
+</div>
+<a name="wp1091233"> </a><div class="pCellBody">
+Enclose filter expressions in quotation marks (<code class="cCodeBold">&quot;</code>).
+</div>
+<a name="wp1091234"> </a><div class="pCellBody">
+The parameter <code class="cCode">-dst </code><code class="cCodeItalic">&lt;filter&gt;</code> is equivalent to:
+</div>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;-filter udp and dst <code class="cCodeItalic">&lt;filter&gt;</code><a name="wp1091235"> </a>
+</pre></div>
+<a name="wp1091237"> </a><div class="pCellBody">
+When any of the parameters <code class="cCode">-src</code>, <code class="cCode">-dst</code>, <code class="cCode">-addr</code>, or <code class="cCode">-port</code> are present, <code class="cCode">rvtrace</code> concatenates them into a single effective filter. However, when the <code class="cCode">-filter</code> parameter is present, <code class="cCode">rvtrace</code> ignores all four of these parameters, and <code class="cCode">-filter</code> overrides them.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091253"> </a><div class="pCellBody">
+<code class="cCode">-port </code><code class="cCodeItalic">&lt;expr&gt;</code>
+</div>
+</td>
+    <td><a name="wp1091255"> </a><div class="pCellBody">
+Filter the set of packets to process only those with destination port in the set of ports specified in <code class="cCodeItalic">&lt;expr&gt;</code>. For filter expression syntax and semantics, see <a  href="rv_adm113.htm#wp1091345">Filtering</a>.
+</div>
+<a name="wp1091259"> </a><div class="pCellBody">
+Enclose filter expressions in quotation marks (<code class="cCodeBold">&quot;</code>).
+</div>
+<a name="wp1091260"> </a><div class="pCellBody">
+The parameter <code class="cCode">-port </code><code class="cCodeItalic">&lt;port&gt;</code> is equivalent to:
+</div>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;-filter udp and dst port <code class="cCodeItalic">&lt;port&gt;</code><a name="wp1091261"> </a>
+</pre></div>
+<a name="wp1091263"> </a><div class="pCellBody">
+When any of the parameters <code class="cCode">-src</code>, <code class="cCode">-dst</code>, <code class="cCode">-addr</code>, or <code class="cCode">-port</code> are present, <code class="cCode">rvtrace</code> concatenates them into a single effective filter. However, when the <code class="cCode">-filter</code> parameter is present, <code class="cCode">rvtrace</code> ignores all four of these parameters, and <code class="cCode">-filter</code> overrides them.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1129559"> </a><div class="pCellBody">
+<code class="cCode">-filter </code><code class="cCodeItalic">&lt;expr&gt;</code>
+</div>
+</td>
+    <td><a name="wp1129561"> </a><div class="pCellBody">
+Filter the set of packets to process only those that match <code class="cCodeItalic">&lt;expr&gt;</code>. For filter expression syntax and semantics, see <a  href="rv_adm113.htm#wp1091345">Filtering</a>.
+</div>
+<a name="wp1129565"> </a><div class="pCellBody">
+Enclose filter expressions in quotation marks (<code class="cCodeBold">&quot;</code>).
+</div>
+<a name="wp1129566"> </a><div class="pCellBody">
+When present, this parameter overrides the <code class="cCode">-src</code>, <code class="cCode">-dst</code>, <code class="cCode">-addr</code>, and <code class="cCode">-port</code> parameters.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1129500"> </a><div class="pCellBody">
+<code class="cCode">-u </code><code class="cCodeItalic">&lt;update_interval&gt;</code>
+</div>
+</td>
+    <td><a name="wp1129502"> </a><div class="pCellBody">
+Summarize network packet at this time interval (in seconds). If absent, the default value is 10 seconds.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1129505"> </a><div class="pCellBody">
+<code class="cCode">-r </code><code class="cCodeItalic">&lt;input_file&gt;</code>
+</div>
+</td>
+    <td><a name="wp1129507"> </a><div class="pCellBody">
+When present, read recorded packets from <code class="cCodeItalic">&lt;input_file&gt;</code> instead of a network interface.
+</div>
+<a name="wp1129508"> </a><div class="pCellBody">
+This option overrides the <code class="cCode">-i</code> parameter.
+</div>
+<a name="wp1129513"> </a><div class="pCellBody">
+For more information, see <a  href="rv_adm111.htm#wp1091103">Data Capture Files</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1129516"> </a><div class="pCellBody">
+<code class="cCode">-w </code><code class="cCodeItalic">&lt;output_file&gt;</code>
+</div>
+</td>
+    <td><a name="wp1129518"> </a><div class="pCellBody">
+When present, write packet information to <code class="cCodeItalic">&lt;output_file&gt;</code> for later replay or analysis.
+</div>
+<a name="wp1129519"> </a><div class="pCellBody">
+When absent, do not record packet information to a file.
+</div>
+<a name="wp1129523"> </a><div class="pCellBody">
+For more information, see <a  href="rv_adm111.htm#wp1091103">Data Capture Files</a>.
+</div>
+<a name="wp1129524"> </a><div class="pCellBody">
+When <code class="cCode">-w</code> is present, <code class="cCode">rvtrace</code> does not display statistics. To see statistics, use <code class="cCode">-r</code> to read the packet capture file.
+</div>
+<a name="wp1129525"> </a><div class="pCellBody">
+When both <code class="cCode">-r</code> and <code class="cCode">-w</code> are present, <code class="cCode">rvtrace</code> reads packets from <code class="cCodeItalic">&lt;input_file&gt;</code>, filters them, and then recaptures the filtered packets to <code class="cCodeItalic">&lt;output_file&gt;</code>. You can use this technique to prune an existing capture file by reducing information or filtering extraneous traffic.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091277"> </a><div class="pCellBody">
+<code class="cCode">-addrinfo</code>
+</div>
+</td>
+    <td><a name="wp1111288"> </a><div class="pCellBody">
+When present, display network totals, subtotals, and detail rows.
+</div>
+<a name="wp1111266"> </a><div class="pCellBody">
+When absent, display only network totals and subtotal rows.
+</div>
+<a name="wp1091284"> </a><div class="pCellBody">
+For example output, see <a  href="rv_adm114.htm#wp1096231">Figure&#160;47, rvtrace Output with -addrinfo</a>, and <a  href="rv_adm114.htm#wp1115583">Figure&#160;48, rvtrace Output without -addrinfo</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1120217"> </a><div class="pCellBody">
+<code class="cCode">-no-mcast</code>
+</div>
+</td>
+    <td><a name="wp1120219"> </a><div class="pCellBody">
+When present, <em class="cEmphasis">omit</em> the multicast table.
+</div>
+<a name="wp1120220"> </a><div class="pCellBody">
+When absent, display the multicast table; see <a  href="rv_adm115.htm#wp1097600">Multicast Data Statistics</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1129569"> </a><div class="pCellBody">
+<code class="cCode">-ptp</code>
+</div>
+</td>
+    <td><a name="wp1129573"> </a><div class="pCellBody">
+When present, display the point-to-point table; see <a  href="rv_adm117.htm#wp1107861">Point-to-Point Statistics</a>; see also <a  href="rv_adm108.htm#wp1090880">Range Limitations</a>.
+</div>
+<a name="wp1129578"> </a><div class="pCellBody">
+When absent, <em class="cEmphasis">omit</em> the point-to-point table.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1120223"> </a><div class="pCellBody">
+<code class="cCode">-no-subjects</code>
+</div>
+</td>
+    <td><a name="wp1120225"> </a><div class="pCellBody">
+When present, <em class="cEmphasis">omit</em> the subject table.
+</div>
+<a name="wp1120226"> </a><div class="pCellBody">
+When absent, display the subject table; see <a  href="rv_adm118.htm#wp1097792">Subject Statistics</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1129581"> </a><div class="pCellBody">
+<code class="cCode">-hostmsgs</code>
+</div>
+</td>
+    <td><a name="wp1129586"> </a><div class="pCellBody">
+When present, display Rendezvous <code class="cCode">HOST</code> messages at the conclusion of each interval. TIBCO personnel might request that you supply <code class="cCode">rvtrace</code> output transcript that includes these messages. These messages useful <em class="cEmphasis">only </em>to TIBCO personnel.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1121430"> </a><div class="pCellBody">
+<code class="cCode">-rate</code>
+</div>
+</td>
+    <td><a name="wp1121432"> </a><div class="pCellBody">
+When present, display packet counts as <em class="cEmphasis">per-second</em> rates.
+</div>
+<a name="wp1121433"> </a><div class="pCellBody">
+When absent, display the actual number of packets in the update interval.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091332"> </a><div class="pCellBody">
+<code class="cCode">-h</code>
+</div>
+</td>
+    <td><a name="wp1091334"> </a><div class="pCellBody">
+When present, output a parameter usage list to standard output, and exit immediately.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1091338"> </a><h4 class="pHeading3">
+Errors
+</h4>
+<div class="pSmartList1"><ul>
+<a name="wp1091339"> </a><div class="pSmartList1"><li ><code class="cCode">rvtrace</code> uses the <code class="cCode">pcap</code> facility, which requires root privileges (because it must open the raw ethernet device in <em class="cEmphasis">promiscuous mode</em>). Without appropriate privileges, <code class="cCode">pcap</code> denies permission to initialize, and <code class="cCode">rvtrace</code> exits immediately.</li></div>
+
+<a name="wp1091340"> </a><div class="pSmartList1"><li >The <code class="cCode">pcap</code> library calls reject improperly formed filter expressions. It reports them with messages such as this:</li></div>
+
+<a name="wp1091341"> </a><p class="pBodyRelative">
+<code class="cCode">&#160;&#160;&#160;&#160;pcap_compile: syntax error</code>
+</p>
+<a name="wp1091342"> </a><p class="pBodyRelative">
+This error causes <code class="cCode">rvtrace</code> to exit.
+</p>
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

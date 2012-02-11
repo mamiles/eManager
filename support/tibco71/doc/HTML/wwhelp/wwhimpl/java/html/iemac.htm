@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+ <!-- Copyright (c) 2000-2001 Quadralay Corporation.  All rights reserved. -->
+
+ <head>
+  <meta http-equiv="content-type" content="text/html">
+  <meta http-equiv="charset"      content="UTF-8">
+
+  <title>iemac.htm</title>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+    var  WWHFrame = eval("parent");
+
+
+    function  WWHNavigationFrame_AppletLoading()
+    {
+      WWHFrame.WWHJava.fAppletLoading();
+    }
+
+    function  WWHNavigationFrame_SetDocumentHREF(ParamURL)
+    {
+      var  HREF = "";
+
+
+      HREF += ParamURL;
+      WWHFrame.WWHHelp.fSetDocumentHREF(HREF);
+    }
+
+    function  WWHNormalizeSearchWords(ParamSearchWords)
+    {
+      var  SearchWords = "";
+
+
+      SearchWords += ParamSearchWords;
+
+      return WWHFrame.WWHJava.fNormalizeSearchWords(SearchWords);
+    }
+
+    function  WWHSetSearchWords(ParamSearchWords)
+    {
+      WWHFrame.WWHHighlightWords.fSetWordList(ParamSearchWords);
+    }
+   // -->
+  </script>
+ </head>
+
+ <body onLoad="WWHFrame.WWHJava.fAppletLoaded();" onUnload="WWHFrame.WWHJava.fAppletUnloaded();">
+  <div id="WWHPleaseWaitDIV" style="position: absolute ; z-index: 1 ; top: 4px ; left: 4px">
+   <script type="text/javascript" language="JavaScript1.2">
+    <!--
+     document.writeln("<h3>" + WWHFrame.WWHJava.mMessages.mPleaseWait + "<" + "/h3>");
+    // -->
+   </script>
+  </div>
+
+  <div id="WWHAppletDIV" style="visibility:hidden">
+   <applet codebase="../../../.." code="com.webworks.help3.WWHelp" width="100%" height="100%" name="WWHelp" archive="wwhelp3.jar" mayscript>
+   </applet>
+  </div>
+ </body>
+</html>

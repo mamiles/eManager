@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvMsg::removeField()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1111370"> </a><h2 class="pNewHTMLPage">
+TibrvMsg::removeField()
+</h2>
+<hr />
+<a name="wp1026523"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1123597"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">removeField</code>(<a name="wp1123661"> </a>
+&#160;&#160;&#160;&#160;const char*&#160;&#160;&#160;&#160;fieldName,<a name="wp1123679"> </a>
+&#160;&#160;&#160;&#160;tibrv_u16&#160;&#160;&#160;&#160;&#160;&#160;fieldId=0);<a name="wp1123680"> </a>
+</pre></div>
+<a name="wp1123598"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1123600"> </a><p class="pBody">
+Remove a field from a message.
+</p>
+<a name="wp1123601"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1123602"> </a><p class="pBody">
+Pointer data (such as strings, arrays, submessages, XML data, or opaque byte sequences) previously extracted from the field remains valid even after removing the field from the message.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1123612"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1123614"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1123620"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1123622"> </a><div class="pCellBody">
+Remove the field with this name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1123624"> </a><div class="pCellBody">
+<code class="cCode">fieldId</code>
+</div>
+</td>
+    <td><a name="wp1123626"> </a><div class="pCellBody">
+Remove the field with this identifier. Zero is a special value that signifies no field identifier.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1123628"> </a><h4 class="pHeading3">
+Field Search Algorithm
+</h4>
+<a name="wp1123629"> </a><p class="pBody">
+This method uses this algorithm to find and remove a field within a message, as specified by a field identifier and a field name.
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1123630"> </a><div class="pSmartList1"><li value="1">If the identifier is zero, skip to step 3.</li></div>
+
+<a name="wp1123631"> </a><p class="pBodyRelative">
+If the program supplied a <em class="cEmphasis">non-zero</em> field identifier, then search for the field with that identifier. If the search succeeds, remove the field.
+</p>
+<a name="wp1123632"> </a><p class="pBodyRelative">
+On failure, continue to step 2.
+</p>
+<a name="wp1123633"> </a><div class="pSmartList1"><li value="2">If the identifier search (in step 1) fails, and the program supplied a non-<code class="cCode">NULL</code> field name, then search for a field with that name. </li></div>
+
+<a name="wp1123634"> </a><p class="pBodyRelative">
+If the program supplied <code class="cCode">NULL</code> as the field name, return the status code <a  href="rv_cpp_ref272.htm#wp1231433"><code class="cCode">TIBRV_NOT_FOUND</code></a>.
+</p>
+<a name="wp1123641"> </a><p class="pBodyRelative">
+If the name search fails, return the status code <a  href="rv_cpp_ref272.htm#wp1231433"><code class="cCode">TIBRV_NOT_FOUND</code></a>.
+</p>
+<a name="wp1123642"> </a><p class="pBodyRelative">
+If the name search succeeds, but the actual identifier in the field is non-<code class="cCode">NULL</code> (so it does not match the identifier supplied) then return the status code <a  href="rv_cpp_ref272.htm#wp1231443"><code class="cCode">TIBRV_ID_CONFLICT</code></a>.
+</p>
+<a name="wp1123646"> </a><p class="pBodyRelative">
+If the search succeeds, remove the field.
+</p>
+<a name="wp1123647"> </a><div class="pSmartList1"><li value="3">When the program supplied <em class="cEmphasis">zero</em> as the identifier, search for a field with the specified name&#151;even if that name is <code class="cCode">NULL</code>.</li></div>
+
+<a name="wp1123649"> </a><p class="pBodyRelative">
+If the search succeeds, remove the field.
+</p>
+<a name="wp1123653"> </a><p class="pBodyRelative">
+If the search fails, return the status code <a  href="rv_cpp_ref272.htm#wp1231433"><code class="cCode">TIBRV_NOT_FOUND</code></a>.
+</p>
+</ol></div>
+
+<a name="wp1123657"> </a><p class="pBody">
+If a message contains several fields with the same name, searching by name removes the first instance of the field with that name.
+</p>
+<a name="wp1123789"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1123793"> </a><p class="pBody">
+<a  href="rv_cpp_ref64.htm#wp1026709"><code class="cCode">TibrvMsg::removeFieldInstance()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

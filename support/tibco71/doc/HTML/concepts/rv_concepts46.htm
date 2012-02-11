@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Secure Daemon</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;4	 The Rendezvous Daemon";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1189191"> </a><h2 class="pNewHTMLPage">
+Secure Daemon
+</h2>
+<hr />
+<a name="wp1212839"> </a><p class="pBody">
+Before connecting to secure Rendezvous daemons, programs must register user information (such as a name and password, or a certificate), and the identities of one or more trusted secure daemons (such as names or certificates).</p><div align="left">
+<table border="1">
+  <caption><a name="wp1212845"> </a><div class="pTableTitle">
+Table&#160;8   Secure Daemon Calls&#160;
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1212849"> </a><div class="pCellBody">
+C
+</div>
+</td>
+    <td><a name="wp1212854"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref11.htm#wp1231647');" onMouseOver="WWHShowPopup('e', 'rv_c_ref11.htm#wp1231647', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvSecureDaemon_SetDaemonCert()</code></a>
+</div>
+<a name="wp1212858"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref12.htm#wp1233203');" onMouseOver="WWHShowPopup('e', 'rv_c_ref12.htm#wp1233203', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvSecureDaemon_SetUserCertWithKey()</code></a>
+</div>
+<a name="wp1212862"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref14.htm#wp1234779');" onMouseOver="WWHShowPopup('e', 'rv_c_ref14.htm#wp1234779', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvSecureDaemon_SetUserNameWithPassword()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1212864"> </a><div class="pCellBody">
+C++
+</div>
+</td>
+    <td><a name="wp1212869"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref19.htm#wp1258929');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref19.htm#wp1258929', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvSdContext:setDaemonCert()</code></a>
+</div>
+<a name="wp1212873"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref20.htm#wp1258984');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref20.htm#wp1258984', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvSdContext:setUserCertWithKey()</code></a>
+</div>
+<a name="wp1212877"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref22.htm#wp1259025');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref22.htm#wp1259025', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvSdContext:setUserNameWithPassword()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1212879"> </a><div class="pCellBody">
+Java
+</div>
+</td>
+    <td><a name="wp1212884"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref25.htm#wp1256171');" onMouseOver="WWHShowPopup('g', 'rv_java_ref25.htm#wp1256171', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvSdContext.setDaemonCert()</code></a>
+</div>
+<a name="wp1212888"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref26.htm#wp1256227');" onMouseOver="WWHShowPopup('g', 'rv_java_ref26.htm#wp1256227', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvSdContext.setUserCertWithKey()</code></a>
+</div>
+<a name="wp1212892"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref28.htm#wp1256268');" onMouseOver="WWHShowPopup('g', 'rv_java_ref28.htm#wp1256268', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvSdContext.setUserNameWithPassword()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1212894"> </a><div class="pCellBody">
+COM
+</div>
+</td>
+    <td><a name="wp1212899"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref25.htm#wp1201238');" onMouseOver="WWHShowPopup('h', 'rv_com_ref25.htm#wp1201238', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvSdContext.setDaemonCert()</code></a>
+</div>
+<a name="wp1212903"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref26.htm#wp1201292');" onMouseOver="WWHShowPopup('h', 'rv_com_ref26.htm#wp1201292', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvSdContext.setUserCertWithKey()</code></a>
+</div>
+<a name="wp1212907"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref28.htm#wp1241653');" onMouseOver="WWHShowPopup('h', 'rv_com_ref28.htm#wp1241653', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvSdContext.setUserNameWithPassword()</code></a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1216480"> </a><p class="pBody">
+
+</p>
+<a name="wp1216448"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1216466"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('c', 'rv_adm57.htm#wp1139429');" onMouseOver="WWHShowPopup('c', 'rv_adm57.htm#wp1139429', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Secure Daemons (rvsd and rvsrd)</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

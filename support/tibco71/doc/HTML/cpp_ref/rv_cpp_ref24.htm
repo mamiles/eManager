@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>Validity of Data Extracted From Message Fields</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1119654"> </a><h2 class="pNewHTMLPage">
+Validity of Data Extracted From Message Fields
+</h2>
+<hr />
+<a name="wp1119655"> </a><p class="pBody">
+To extract data values from the fields of a message, programs use a set of <em class="cEmphasis">get</em> convenience methods. All of these methods extract a <em class="cEmphasis">snapshot</em> of the message data&#151;that is, the data value as it exists at a particular time. If the program later modifies the message by removing or updating the field, the snapshot remains unchanged.
+</p>
+<a name="wp1119659"> </a><p class="pBody">
+Rendezvous messages implement snapshot semantics using two separate strategies for scalar data and pointer data.
+</p>
+<a name="wp1119660"> </a><h3 class="pHeading2">
+Scalar Snapshot
+</h3>
+<a name="wp1119661"> </a><p class="pBody">
+To extract the value of a <em class="cEmphasis">scalar</em> field, a program declares a scalar in program-owned storage, and passes its address to the <em class="cEmphasis">get</em> method; the <em class="cEmphasis">get</em> method copies a snapshot of the scalar field value from the message into program storage.
+</p>
+<a name="wp1119662"> </a><p class="pBody">
+The program can modify its snapshot at any time without affecting the original message. The program can update or delete the message field at any time without affecting the snapshot copy.
+</p>
+<a name="wp1119667"> </a><div class="pFigureTitle">
+Figure&#160;1   Extracting a Scalar Field</div><div align="center"><img src="images/rv_cpp_refa3.gif" height="322" width="528" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1119669"> </a><h3 class="pHeading2">
+Pointer Snapshot
+</h3>
+<a name="wp1165266"> </a><p class="pBody">
+Pointer data is a broad category, which includes arrays, strings, opaque byte sequences, XML data, and submessages.
+</p>
+<a name="wp1119671"> </a><p class="pBody">
+To extract the value of an array, string, XML, or opaque field, a program declares a typed pointer variable in program-owned storage, and passes its reference to the <em class="cEmphasis">get</em> method; the <em class="cEmphasis">get</em> method copies a pointer to the field value into the program&#8217;s variable. The method does <em class="cEmphasis">not</em> copy data into program-owned storage; the data still resides in storage associated with the message. Nonetheless, Rendezvous software protects the integrity of snapshot pointer data from subsequent changes to the message field.
+</p>
+<a name="wp1119678"> </a><div class="pFigureTitle">
+Figure&#160;2   Extracting a Pointer Field</div><div align="center"><img src="images/rv_cpp_refa4.gif" height="170" width="528" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1119679"> </a><p class="pBody">
+(Schematic diagrams in this section illustrate the general principles of <em class="cEmphasis">snapshot</em> semantics as they apply to pointer data of message fields. However, these diagrams do <em class="cEmphasis">not</em> accurately reflect the storage allocation and geometry of messages, nor do they reflect the underlying implementation of snapshots.)
+</p>
+<a name="wp1119683"> </a><h4 class="pHeading3">
+Rendezvous Protects Pointer Snapshots from Changes to the Message
+</h4>
+<a name="wp1119687"> </a><p class="pBody">
+If the program <em class="cEmphasis">removes</em> the field from the message, then Rendezvous software protects the integrity of the snapshot data by retaining it in storage associated with the message; the program&#8217;s pointer to the snapshot data remains valid until the message is destroyed, even though the data is no longer accessible through the message.
+</p>
+<a name="wp1119694"> </a><p class="pBody">
+If the program <em class="cEmphasis">updates</em> the message field (see <a  href="rv_cpp_ref24.htm#wp1119700">Figure&#160;3</a>), then Rendezvous software protects the integrity of the snapshot data by retaining it in storage associated with the message; the program&#8217;s pointer to the snapshot data remains valid until the message is destroyed, and the program&#8217;s view of the snapshot data remains unchanged&#151;even though the <em class="cEmphasis">get</em> method would extract updated data from the message.
+</p>
+<a name="wp1165274"> </a><p class="pBody">
+These semantics apply to all pointer data&#151;arrays, strings, opaque byte sequences, XML data, and submessages.
+</p>
+<a name="wp1119700"> </a><div class="pFigureTitle">
+Figure&#160;3   Updating a Pointer Field</div><div align="center"><img src="images/rv_cpp_refa5.gif" height="278" width="528" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1119702"> </a><h4 class="pHeading3">
+Do Not Modify Pointer Snapshots
+</h4>
+<a name="wp1119703"> </a><p class="pBody">
+Programs must treat array, string, XML data and opaque pointer data as <em class="cEmphasis">read-only snapshots</em>, and must not modify the data to which those pointers refer. For example, it is <em class="cEmphasis">illegal</em> for programs to change any element in a snapshot array; it is <em class="cEmphasis">illegal</em> for programs to change any byte in snapshot strings, XML data or opaque byte sequences.
+</p>
+<a name="wp1119707"> </a><p class="pBody">
+Although Rendezvous software does not enforce this restriction, violating this rule is dangerous, and can result in erroneous program behavior. Do not attempt to modify the elements of an array snapshot, nor the bytes of a string, XML data or opaque snapshot.
+</p>
+<a name="wp1119711"> </a><p class="pBody">
+<a  href="rv_cpp_ref24.htm#wp1119700">Figure&#160;3</a> illustrates the correct way to modify the value of pointer data within a message field. Instead of directly modifying storage associated with the message, supply the new value through an <em class="cEmphasis">update</em> call, which replaces the whole value of the field. (Even after updating or removing the field, it is still illegal to modify the snapshot.)
+</p>
+<a name="wp1119712"> </a><p class="pBody">
+Although superseded snapshot data remains in storage associated with the message, it is not included when sending the message, nor when accessing message fields.
+</p>
+<a name="wp1119717"> </a><h4 class="pHeading3">
+Rendezvous Protects the Message from Changes to Submessage Snapshots
+</h4>
+<a name="wp1119718"> </a><p class="pBody">
+In contrast to other pointer data, programs may legally modify snapshot submessages (since a submessage is also a message in its own right). Field modification methods apply equally to ordinary messages and to submessage snapshots extracted using <em class="cEmphasis">get</em> calls.
+</p>
+<a name="wp1119719"> </a><p class="pBody">
+Moreover, modifying a snapshot submessage does not affect the original field in the parent message. Field modification<em class="cEmphasis"> </em>methods protect the integrity of the parent message when updating or removing a field in a submessage snapshot, or when adding a new field to the submessage snapshot.
+</p>
+<a name="wp1119723"> </a><p class="pBody">
+<a  href="rv_cpp_ref24.htm#wp1119728">Figure&#160;4</a> illustrates this protection for parent messages. After updating a field in a snapshot submessage, subsequent <em class="cEmphasis">get</em> calls extract a pristine copy of the submessage from the field of the parent message, creating a second snapshot. Meanwhile, the modified snapshot submessage remains in storage owned by the parent message; it remains valid until the parent message is destroyed. (However, if the program detaches the snapshot submessage, it remains valid until the program explicitly destroys the submessage.)
+</p>
+<a name="wp1119728"> </a><div class="pFigureTitle">
+Figure&#160;4   Updating a Submessage Field</div><div align="center"><img src="images/rv_cpp_refa6.gif" height="346" width="528" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1119730"> </a><h3 class="pHeading2">
+Deleting Snapshot References
+</h3>
+<a name="wp1119731"> </a><p class="pBody">
+Ordinarily, snapshot references remain part of the message until the program destroys the message. However, in <em class="cEmphasis">rare</em> situations snapshots can accumulate within a program, causing unbounded memory growth. A pair of methods give programs explicit control over snapshot references:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1119735"> </a><div class="pSmartList1"><li ><a  href="rv_cpp_ref62.htm#wp1120141"><code class="cCode">TibrvMsg::markReferences()</code></a></li></div>
+
+<a name="wp1119739"> </a><div class="pSmartList1"><li ><a  href="rv_cpp_ref37.htm#wp1120239"><code class="cCode">TibrvMsg::clearReferences()</code></a></li></div>
+
+</ul></div>
+
+<a name="wp1119740"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1119744"> </a><p class="pBody">
+<a  href="rv_cpp_ref62.htm#wp1120141"><code class="cCode">TibrvMsg::markReferences()</code> </a>
+</p>
+<a name="wp1119745"> </a><h3 class="pHeading2">
+Multiple Subscription Snapshots
+</h3>
+<a name="wp1119749"> </a><p class="pBody">
+Rendezvous software also protects the integrity of messages distributed to multiple subscriptions. When a callback method modifies an inbound message (whether detached or not), Rendezvous software still presents the original message content to subsequent callback methods.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Local Networks</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1191055"> </a><h2 class="pNewHTMLPage">
+Local Networks
+</h2>
+<hr />
+<a name="wp1191864"> </a><p class="pBody">
+<code class="cCode">rvrd</code> displays information about its local networks on this page.
+</p>
+<a name="wp1191060"> </a><p class="pBody">
+To display this page, click <b class="cBold">Local Networks</b> in the left margin of any page of the <code class="cCode">rvrd</code> browser administration interface.
+</p>
+<a name="wp1191064"> </a><div class="pFigureTitle">
+Figure&#160;20   rvrd Local Networks Page</div><div align="center"><img src="images/rv_adma38.gif" height="273" width="552" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1191127"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1191070"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1191074"> </a><div class="pCellHeading">
+Item
+</div>
+</th>
+    <th><a name="wp1191076"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1191078"> </a><div class="pCellBody">
+Router Name
+</div>
+</td>
+    <td><a name="wp1192001"> </a><div class="pCellBody">
+This page groups local networks by router name (routing table entry). A box in this column indicates the name of the routing table entry that serves the local networks shown to its right. See also <a  href="rv_adm33.htm#wp1053162">Routing Table Entry</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1191904"> </a><div class="pCellBody">
+Local Network Name
+</div>
+</td>
+    <td><a name="wp1191906"> </a><div class="pCellBody">
+The name of a local network.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1191908"> </a><div class="pCellBody">
+Service
+</div>
+</td>
+    <td><a name="wp1191910"> </a><div class="pCellBody">
+The UDP or PGM service for communication on the local network.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1191915"> </a><div class="pCellBody">
+Network Specification
+</div>
+</td>
+    <td><a name="wp1191917"> </a><div class="pCellBody">
+The network specification (as specified by the routing table entry).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1191959"> </a><div class="pCellBody">
+Local Routers
+</div>
+</td>
+    <td><a name="wp1235582"> </a><div class="pCellBody">
+This subtable lists other routers that serve this local network.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1191083"> </a><div class="pCellBody">
+Hostname
+</div>
+</td>
+    <td><a name="wp1191085"> </a><div class="pCellBody">
+The name of the host computer where the other routing daemon runs.
+</div>
+<a name="wp1192854"> </a><div class="pCellBody">
+Click here to view the browser administration interface for the other routing daemon process.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1191973"> </a><div class="pCellBody">
+IP Address
+</div>
+</td>
+    <td><a name="wp1191975"> </a><div class="pCellBody">
+The IP address of the host computer where the other routing daemon runs.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1191983"> </a><div class="pCellBody">
+Version
+</div>
+</td>
+    <td><a name="wp1191985"> </a><div class="pCellBody">
+The version of the other routing daemon executable.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1191990"> </a><div class="pCellBody">
+Subscriptions
+</div>
+</td>
+    <td><a name="wp1192014"> </a><div class="pCellBody">
+A list of subscription interest registered by all transports within the local network.
+</div>
+<a name="wp1243505"> </a><div class="pCellBody">
+Limited to 50 subscriptions; if greater than 50, it displays only the approximate number of subscriptions.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

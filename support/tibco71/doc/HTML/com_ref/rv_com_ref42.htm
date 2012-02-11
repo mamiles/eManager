@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvMsg.detach</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1135090"> </a><h2 class="pNewHTMLPage">
+TibrvMsg.detach
+</h2>
+<hr />
+<a name="wp1135091"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1135092"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+TibrvMsg.<code class="cCodeBold">detach</code><a name="wp1135096"> </a>
+</pre></div>
+<a name="wp1135101"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1135106"> </a><p class="pBody">
+Detach an inbound message from Rendezvous storage; the program assumes responsibility for destroying the message.
+</p>
+<a name="wp1135107"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1135111"> </a><p class="pBody">
+When Rendezvous software creates a message, it owns that message. This situation occurs only in the case of inbound messages presented to a data callback method; Rendezvous software destroys such messages when the callback method returns, unless the program explicitly detaches the message. After a detach operation, the program owns the message, and must explicitly destroy it to reclaim the storage.
+</p>
+<a name="wp1135118"> </a><h4 class="pHeading3">
+Example
+</h4>
+<a name="wp1146926"> </a><p class="pBody">
+In this example, <code class="cCode">msgref</code> is accessible after the callback method returns.
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+Dim msgref as <a  href="rv_com_ref34.htm#wp1055151"><code class="cCode">TibrvMsg</code></a><a name="wp1146910"> </a>
+<a name="wp1146922"> </a>
+Private Sub mylis_OnMsg( _<a name="wp1146923"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;ByVal lisn as TIBRVCOMLib.ITibrvListener, _<a name="wp1155303"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;ByVal message as TIBRVCOMLib.ITibrvMsg)<a name="wp1155301"> </a>
+&#160;&#160;set msgref = message<a name="wp1146915"> </a>
+&#160;&#160;msgref.detach<a name="wp1146924"> </a>
+End Sub<a name="wp1146925"> </a>
+</pre></div>
+<a name="wp1135142"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1135146"> </a><p class="pBody">
+<a  href="rv_com_ref30.htm#wp1152676">Message Ownership and Control</a>
+</p>
+<a name="wp1146909"> </a><p class="pBody">
+<a  href="rv_com_ref41.htm#wp1134928"><code class="cCode">TibrvMsg.destroy</code> </a>
+</p>
+<a name="wp1135175"> </a><p class="pBody">
+<a  href="rv_com_ref55.htm#wp1138885"><code class="cCode">TibrvMsg.isDetached()</code> </a>
+</p>
+<a name="wp1146916"> </a><p class="pBody">
+<a  href="rv_com_ref89.htm#wp1126926"><code class="cCode">TibrvListener_onMsg</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

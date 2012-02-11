@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvRvaTransport()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;6	 Transports";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1071270"> </a><h2 class="pNewHTMLPage">
+TibrvRvaTransport()
+</h2>
+<hr />
+<a name="wp1043566"> </a><p class="pSyntaxType">
+Constructor
+</p>
+<a name="wp1043568"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCodeBold">TibrvRvaTransport</code>()<a name="wp1125650"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125654"> </a>
+<a name="wp1125643"> </a>
+<code class="cCodeBold">TibrvRvaTransport</code>(<a name="wp1125658"> </a>
+&#160;&#160;&#160;&#160;java.lang.String hostName)<a name="wp1125659"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125663"> </a>
+<a name="wp1125644"> </a>
+<code class="cCodeBold">TibrvRvaTransport</code>()<a name="wp1125667"> </a>
+&#160;&#160;&#160;&#160;java.lang.String hostName,<a name="wp1125668"> </a>
+&#160;&#160;&#160;&#160;int port)<a name="wp1125669"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125673"> </a>
+<a name="wp1125646"> </a>
+<code class="cCodeBold">TibrvRvaTransport</code>(<a name="wp1125678"> </a>
+&#160;&#160;&#160;&#160;java.lang.String hostName,<a name="wp1125679"> </a>
+&#160;&#160;&#160;&#160;int port,<a name="wp1125680"> </a>
+&#160;&#160;&#160;&#160;int tunnelMode)<a name="wp1125681"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125685"> </a>
+<a name="wp1125676"> </a>
+<code class="cCodeBold">TibrvRvaTransport</code>(&#160;&#160;&#160;&#160;&#160;// This method is deprecated //<a name="wp1125689"> </a>
+&#160;&#160;&#160;&#160;java.lang.String hostName,<a name="wp1125690"> </a>
+&#160;&#160;&#160;&#160;int port,<a name="wp1125691"> </a>
+&#160;&#160;&#160;&#160;boolean enableHttp)<a name="wp1125692"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125696"> </a>
+</pre></div>
+<a name="wp1043570"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1043571"> </a><p class="pBody">
+Create a transport that connects through the Rendezvous agent.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1043576"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1043578"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1043580"> </a><div class="pCellBody">
+<code class="cCode">hostName</code>
+</div>
+</td>
+    <td><a name="wp1043582"> </a><div class="pCellBody">
+Connect to <code class="cCode">rva</code> on this computer.
+</div>
+<a name="wp1043827"> </a><div class="pCellBody">
+To connect to <code class="cCode">rva</code> on the local computer, supply <code class="cCode">null</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1043802"> </a><div class="pCellBody">
+<code class="cCode">port</code>
+</div>
+</td>
+    <td><a name="wp1043804"> </a><div class="pCellBody">
+Connect to <code class="cCode">rva</code> through this port.
+</div>
+<a name="wp1043830"> </a><div class="pCellBody">
+To use the default <code class="cCode">rva</code> port, supply zero. (<a  href="rv_java_ref141.htm#wp1038873"><code class="cCode">TibrvRvaTransport</code></a> defines the constant <code class="cCode">DEFAULT_RVA_PORT</code> as <code class="cCode">7600</code>.)
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1043798"> </a><div class="pCellBody">
+<code class="cCode">tunnelMode</code>
+</div>
+</td>
+    <td><a name="wp1123110"> </a><div class="pCellBody">
+The method interprets this parameter as a bit vector. For a list of bit constants, see <a  href="rv_java_ref142.htm#wp1123129">Constant</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1122437"> </a><div class="pCellBody">
+<code class="cCode">enableHttp</code>
+</div>
+</td>
+    <td><a name="wp1122439"> </a><div class="pCellBody">
+The method that uses this parameter is deprecated, starting in release 6.2. Instead, use the parameter <a  href="rv_java_ref142.htm#wp1043798"><code class="cCode">tunnelMode</code></a>.
+</div>
+<a name="wp1122440"> </a><div class="pCellBody">
+When <code class="cCode">true</code>, first try to connect to <code class="cCode">rva</code> through the specified <code class="cCode">port</code>; if that attempt fails, then try tunneling through the HTTP port.
+</div>
+<a name="wp1122441"> </a><div class="pCellBody">
+When <code class="cCode">false</code> (the default if absent), do not try HTTP tunneling.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1233461"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1123129"> </a><div class="pCellHeading">
+Constant
+</div>
+</th>
+    <th><a name="wp1123131"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1123133"> </a><div class="pCellBody">
+<code class="cCode">TibrvRvaTransport.HTTP_TUNNEL_ENABLE</code>
+</div>
+</td>
+    <td><a name="wp1123190"> </a><div class="pCellBody">
+When the flag <code class="cCode">HTTP_TUNNEL_ENABLE</code> is set, first try to connect directly to <code class="cCode">rva</code> through the specified <code class="cCode">port</code>; if that attempt fails, then try tunneling through the HTTP port.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1123147"> </a><div class="pCellBody">
+<code class="cCode">TibrvRvaTransport.HTTP_TUNNEL_ENFORCE</code>
+</div>
+</td>
+    <td><a name="wp1123152"> </a><div class="pCellBody">
+When the flag <code class="cCode">HTTP_TUNNEL_ENFORCE</code> is set, only try tunneling through the HTTP port; do not attempt to connect directly to <code class="cCode">rva</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1123268"> </a><div class="pCellBody">
+<code class="cCode">TibrvRvaTransport.HTTP_TUNNEL_DISABLE</code>
+</div>
+</td>
+    <td><a name="wp1123271"> </a><div class="pCellBody">
+When the flag <code class="cCode">HTTP_TUNNEL_DISABLE</code> is set (the default if the parameter is entirely absent), do not try HTTP tunneling.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1123154"> </a><div class="pCellBody">
+<code class="cCode">TibrvRvaTransport.USE_NETSCAPE_SECURITY</code>
+</div>
+</td>
+    <td><a name="wp1123247"> </a><div class="pCellBody">
+The flag <code class="cCode">USE_NETSCAPE_SECURITY</code> affects the behavior of the <a  href="rv_java_ref141.htm#wp1038873"><code class="cCode">TibrvRvaTransport</code></a> when it attempts to connect to <code class="cCode">rva</code> using HTTP tunneling. When this flag is set, the <a  href="rv_java_ref141.htm#wp1038873"><code class="cCode">TibrvRvaTransport</code></a> requests the <code class="cCode">UniversalConnect</code> privilege from the object <code class="cCode">netscape.security.PrivilegeManager</code>.
+</div>
+<a name="wp1123425"> </a><div class="pCellBody">
+An applet that obtains this privilege, <em class="cEmphasis">and</em> uses a signed Rendezvous <code class="cCode">jar</code> file, can connect to <code class="cCode">rva</code> on any computer.
+</div>
+<a name="wp1123253"> </a><div class="pCellBody">
+Programs can set this bit in conjunction with either <a  href="rv_java_ref142.htm#wp1123133"><code class="cCode">TibrvRvaTransport.HTTP_TUNNEL_ENABLE</code></a> or <a  href="rv_java_ref142.htm#wp1123147"><code class="cCode">TibrvRvaTransport.HTTP_TUNNEL_ENFORCE</code></a> (using <em class="cEmphasis">addition</em> or the <em class="cEmphasis">bitwise or</em> operator).
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1043584"> </a><h4 class="pHeading3">
+Method Forms
+</h4>
+<a name="wp1043822"> </a><p class="pBody">
+With no arguments, connect to <code class="cCode">rva</code> on the local computer (where the program is running).
+</p>
+<a name="wp1043823"> </a><p class="pBody">
+All arguments specify options for connecting to <code class="cCode">rva</code>.
+</p>
+<a name="wp1124944"> </a><h4 class="pHeading3">
+Description String
+</h4>
+<a name="wp1124945"> </a><p class="pBody">
+As a debugging aid, we recommend setting a unique description string for each transport. Use a string that distinguishes both the application and the role of the transport within it. See <a  href="rv_java_ref138.htm#wp1118418"><code class="cCode">TibrvTransport.setDescription()</code> </a>.
+</p>
+<a name="wp1123341"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1123345"> </a><p class="pBody">
+<a  href="rv_java_ref8.htm#wp1110851">Signed Applets</a>
+</p>
+<a name="wp1123477"> </a><p class="pBody">
+<a  href="rv_java_ref11.htm#wp1112750">Archive Files</a>
+</p>
+<a name="wp1123483"> </a><p class="pBody">
+Netscape Java Security Introduction, and Java Capabilities API, <a href="http://developer.netscape.com/docs/manuals/signedobj/capsapi.html " target="_blank">
+<span class="cWebJump">http://developer.netscape.com/docs/manuals/signedobj/capsapi.html </span></a>(URLs can change without notice)
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvMsgData_ByteSize()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Appendix&#160;A	 Custom Datatypes";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1149538"> </a><h2 class="pNewHTMLPage">
+tibrvMsgData_ByteSize()
+</h2>
+<hr />
+<a name="wp1149539"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1149540"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref224.htm#wp1128803"><code class="cCode">tibrv_u32</code></a> <code class="cCodeBold">tibrvMsgData_ByteSize</code>(<a name="wp1149541"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128803"><code class="cCode">tibrv_u32</code></a>&#160;&#160;&#160;&#160;content_size);<a name="wp1149542"> </a>
+</pre></div>
+<a name="wp1149543"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1149544"> </a><p class="pBody">
+Calculate the wire buffer size of data from its C size.
+</p>
+<a name="wp1149546"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1151459"> </a><p class="pBody">
+Encoders call this layer 1 function to preview the wire size of the data as <a  href="rv_c_ref239.htm#wp1149570"><code class="cCode">tibrvMsgData_CopyBytes()</code></a> would write it into the message (that is, including extra bytes for size information). Encoders test this wire size against the available space in the message.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1149554"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1149556"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1149558"> </a><div class="pCellBody">
+<code class="cCode">content_size</code>
+</div>
+</td>
+    <td><a name="wp1149560"> </a><div class="pCellBody">
+The encoder supplies the C size (in bytes) of data.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1149562"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1151483"> </a><p class="pBody">
+<a  href="rv_c_ref241.htm#wp1148962"><code class="cCode">tibrvMsgData_Encoder</code> </a>
+</p>
+<a name="wp1151479"> </a><p class="pBody">
+<a  href="rv_c_ref245.htm#wp1149186"><code class="cCode">tibrvMsgData_SetSize()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

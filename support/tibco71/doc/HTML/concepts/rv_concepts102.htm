@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Decentralization</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1055806"> </a><h2 class="pNewHTMLPage">
+Decentralization
+</h2>
+<hr />
+<a name="wp1055810"> </a><p class="pBody">
+Rendezvous certified message delivery has a decentralized, stream-oriented, peer-to-peer architecture. <a  href="rv_concepts102.htm#wp1055823">Table&#160;27</a> outlines the differences between centralized, server-based architectures (such as message queuing products), and decentralized architectures (such as Rendezvous certified message delivery).</p><div align="left">
+<table border="1">
+  <caption><a name="wp1055823"> </a><div class="pTableTitle">
+Table&#160;27   Centralized versus Decentralized Architecture (Sheet 1 of 3)
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1055829"> </a><div class="pCellHeading">
+Aspect
+</div>
+</th>
+    <th><a name="wp1055831"> </a><div class="pCellHeading">
+Centralized
+</div>
+</th>
+    <th><a name="wp1055833"> </a><div class="pCellHeading">
+Decentralized	
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1055835"> </a><div class="pCellBody">
+Example
+</div>
+</td>
+    <td><a name="wp1055837"> </a><div class="pCellBody">
+Rendezvous TX&#8482;
+</div>
+<a name="wp1226001"> </a><div class="pCellBody">
+Message queuing products.
+</div>
+</td>
+    <td><a name="wp1055842"> </a><div class="pCellBody">
+Rendezvous Certified Message Delivery
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1055844"> </a><div class="pCellBody">
+Components
+</div>
+</td>
+    <td><a name="wp1055846"> </a><div class="pCellBody">
+Message producers.
+</div>
+<a name="wp1055847"> </a><div class="pCellBody">
+Message consumers.
+</div>
+<a name="wp1055848"> </a><div class="pCellBody">
+Centralized server as intermediary.
+</div>
+</td>
+    <td><a name="wp1055850"> </a><div class="pCellBody">
+Message producers.
+</div>
+<a name="wp1055851"> </a><div class="pCellBody">
+Message consumers.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1055853"> </a><div class="pCellBody">
+Basic Operating Principle
+</div>
+</td>
+    <td><a name="wp1055855"> </a><div class="pCellBody">
+A producer sends a message to the central server. The server stores the message until it has delivered it to each consumer.
+</div>
+</td>
+    <td><a name="wp1055857"> </a><div class="pCellBody">
+A producer sends a message to consumers. The producer stores the message until each consumer has acknowledged receipt.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1055859"> </a><div class="pCellBody">
+Communication Pattern
+</div>
+</td>
+    <td><a name="wp1055861"> </a><div class="pCellBody">
+Producer to server; server to consumers.
+</div>
+</td>
+    <td><a name="wp1055863"> </a><div class="pCellBody">
+Peer-to-peer.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1055865"> </a><div class="pCellBody">
+Protocol
+</div>
+</td>
+    <td><a name="wp1055867"> </a><div class="pCellBody">
+Store and forward queue protocol.
+</div>
+</td>
+    <td><a name="wp1055869"> </a><div class="pCellBody">
+Stream-oriented protocol.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1055871"> </a><div class="pCellBody">
+Administration
+</div>
+</td>
+    <td><a name="wp1055873"> </a><div class="pCellBody">
+An intermediary server is required between producers and consumers.
+</div>
+</td>
+    <td><a name="wp1055875"> </a><div class="pCellBody">
+No intermediary is required. Producers communicate directly with consumers.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1055877"> </a><div class="pMinorHead">
+Resources
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1055883"> </a><div class="pCellBody">
+Network Bandwidth
+</div>
+</td>
+    <td><a name="wp1055885"> </a><div class="pCellBody">
+Each message traverses the network at least twice&#151;once from the producer to the server, and again from the server to the consumers. Some servers multicast to all consumers simultaneously; others send to each consumer individually.
+</div>
+<a name="wp1055886"> </a><div class="pCellBody">
+Control and protocol messages use additional bandwidth.
+</div>
+</td>
+    <td><a name="wp1055888"> </a><div class="pCellBody">
+Each message traverses the network once from producer to all consumers.
+</div>
+<a name="wp1055889"> </a><div class="pCellBody">
+Control and protocol messages use additional bandwidth.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1055891"> </a><div class="pCellBody">
+Storage Resources
+</div>
+</td>
+    <td><a name="wp1055893"> </a><div class="pCellBody">
+The central server stores all messages and delivery state for all its clients; it requires disk resources in proportion to total throughput volume.
+</div>
+</td>
+    <td><a name="wp1055895"> </a><div class="pCellBody">
+Each producer stores its outbound messages and some delivery state; it requires disk resources in proportion to its outbound volume.
+</div>
+<a name="wp1055896"> </a><div class="pCellBody">
+Each consumer stores its inbound delivery state; it requires minimal disk resources.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1055898"> </a><div class="pCellBody">
+Storage Integrity
+</div>
+</td>
+    <td><a name="wp1055900"> </a><div class="pCellBody">
+Disk failure on a server host computer can be catastrophic, affecting all messages from every client. Many installations protect against disk failure using safeguards such as disk mirroring.
+</div>
+</td>
+    <td><a name="wp1055902"> </a><div class="pCellBody">
+Disk failure on a peer host computer affects only the messages that its programs produce or consume. However, disk mirroring for each individual peer is often impractical.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1055904"> </a><div class="pMinorHead">
+State
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1055910"> </a><div class="pCellBody">
+State Information
+</div>
+</td>
+    <td><a name="wp1055912"> </a><div class="pCellBody">
+All information about message delivery state resides with the central server.
+</div>
+</td>
+    <td><a name="wp1055914"> </a><div class="pCellBody">
+Information about message delivery state is distributed, residing in part with each individual producer, and in part with each individual consumer.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1055916"> </a><div class="pCellBody">
+State Master
+</div>
+</td>
+    <td><a name="wp1055918"> </a><div class="pCellBody">
+The central server is the master of overall delivery state.
+</div>
+</td>
+    <td><a name="wp1055920"> </a><div class="pCellBody">
+Since delivery state information is distributed, no entity can be the single master of the overall state. Rather, individual peers are masters of their own parts of the state. Relay agents are not masters of any state.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1055922"> </a><div class="pCellBody">
+Monitoring Delivery State
+</div>
+</td>
+    <td><a name="wp1055924"> </a><div class="pCellBody">
+Programs can query the state master (server) about delivery state.
+</div>
+</td>
+    <td><a name="wp1055926"> </a><div class="pCellBody">
+Delivery state monitoring requires application-level code in each producer and consumer.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1055928"> </a><div class="pCellBody">
+Changing Delivery State
+</div>
+</td>
+    <td><a name="wp1055930"> </a><div class="pCellBody">
+In some centralized architectures, the state master (server) can make administrative changes to delivery state&#151;for example, it might delete, reorder, or replay messages.
+</div>
+</td>
+    <td><a name="wp1055932"> </a><div class="pCellBody">
+No central component can make administrative changes to overall delivery state.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

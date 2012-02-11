@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Using Wildcards to Receive Related Subjects</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;5	 Subject Names";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1065692"> </a><h2 class="pNewHTMLPage">
+Using Wildcards to Receive Related Subjects
+</h2>
+<hr />
+<a name="wp1065693"> </a><p class="pBody">
+Programs can listen for wildcard subject names to access a collection of related data through a single subscription.
+</p>
+<a name="wp1065694"> </a><p class="pBody">
+The asterisk (<code class="cCode">*</code>) is a wildcard character that matches any one element. The asterisk substitutes for whole elements only, not for partial substrings of characters within an element.
+</p>
+<a name="wp1065695"> </a><p class="pBody">
+Greater-than (<code class="cCode">&gt;</code>) is a wildcard character that matches all the elements remaining to the right.
+</p>
+<a name="wp1065696"> </a><p class="pBody">
+A listener for a wildcard subject name receives any message whose subject name matches the wildcard.
+</p>
+<a name="wp1065750"> </a><p class="pBody">
+The following examples illustrate wildcard syntax and matching semantics.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1078835"> </a><div class="pTableTitle">
+Table&#160;12   Semantics of Listening to Wildcard Subjects&#160;
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1078841"> </a><div class="pCellHeading">
+Listening to this wildcard name
+</div>
+</th>
+    <th><a name="wp1078843"> </a><div class="pCellHeading">
+Matches messages with names like these:
+</div>
+</th>
+    <th><a name="wp1078845"> </a><div class="pCellHeading">
+But does not match messages with names like these (reason):
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1078847"> </a><div class="pCellBody">
+<code class="cCode">RUN.*</code>
+</div>
+</td>
+    <td><a name="wp1078849"> </a><div class="pCellBody">
+<code class="cCode">RUN.AWAY</code>
+</div>
+<a name="wp1078850"> </a><div class="pCellBody">
+<code class="cCode">RUN.away</code>
+</div>
+</td>
+    <td><a name="wp1078852"> </a><div class="pCellBody">
+<code class="cCode">RUN.Run.run</code><code class="cCode"> </code>(extra element)
+</div>
+<a name="wp1078853"> </a><div class="pCellBody">
+<code class="cCode">Run.away</code> (case)
+</div>
+<a name="wp1078854"> </a><div class="pCellBody">
+<code class="cCode">RUN</code> (missing element)
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1078856"> </a><div class="pCellBody">
+<code class="cCode">Yankees.vs.*</code>
+</div>
+</td>
+    <td><a name="wp1078858"> </a><div class="pCellBody">
+<code class="cCode">Yankees.vs.Red_Sox</code>
+</div>
+<a name="wp1078859"> </a><div class="pCellBody">
+<code class="cCode">Yankees.vs.Orioles</code>
+</div>
+</td>
+    <td><a name="wp1078861"> </a><div class="pCellBody">
+<code class="cCode">Giants.vs.Yankees</code> (position)
+</div>
+<a name="wp1078862"> </a><div class="pCellBody">
+<code class="cCode">Yankees.beat.Sox</code> (vs<span style="font-family: Symbol"><img src="images/notequal.gif" border="0" /></span>beat)
+</div>
+<a name="wp1078863"> </a><div class="pCellBody">
+<code class="cCode">Yankees.vs</code> (missing element)
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1078865"> </a><div class="pCellBody">
+<code class="cCode">*.your.*</code>
+</div>
+</td>
+    <td><a name="wp1078867"> </a><div class="pCellBody">
+<code class="cCode">Amaze.your.friends</code>
+</div>
+<a name="wp1078868"> </a><div class="pCellBody">
+<code class="cCode">Raise.your.salary</code>
+</div>
+<a name="wp1078869"> </a><div class="pCellBody">
+<code class="cCode">Darn.your.socks</code>
+</div>
+</td>
+    <td><a name="wp1078871"> </a><div class="pCellBody">
+<code class="cCode">your</code> (missing elements)
+</div>
+<a name="wp1078872"> </a><div class="pCellBody">
+<code class="cCode">Pick.up.your.foot</code> (position)
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1078874"> </a><div class="pCellBody">
+<code class="cCode">RUN.&gt;</code>
+</div>
+</td>
+    <td><a name="wp1078876"> </a><div class="pCellBody">
+<code class="cCode">RUN.DMC</code>
+</div>
+<a name="wp1078877"> </a><div class="pCellBody">
+<code class="cCode">RUN.RUN.RUN</code>
+</div>
+<a name="wp1078878"> </a><div class="pCellBody">
+<code class="cCode">RUN.SWIM.BIKE.SKATE</code>
+</div>
+</td>
+    <td><a name="wp1078880"> </a><div class="pCellBody">
+<code class="cCode">HOME.RUN</code> (position)
+</div>
+<a name="wp1078881"> </a><div class="pCellBody">
+<code class="cCode">Run.away</code> (case)
+</div>
+<a name="wp1078882"> </a><div class="pCellBody">
+<code class="cCode">RUN</code> (missing element)
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1065771"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1065753"> </a><div class="pTableTitle">
+Table&#160;13   Invalid Wildcard Subject Examples
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1065757"> </a><div class="pCellHeading">
+Invalid Wildcards
+</div>
+</th>
+    <th><a name="wp1065759"> </a><div class="pCellHeading">
+Reason
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065761"> </a><div class="pCellBody">
+<code class="cCode">abc*xyz</code>
+</div>
+</td>
+    <td><a name="wp1065763"> </a><div class="pCellBody">
+Asterisk (<code class="cCode">*</code>) must take the place of one whole element, not a substring within a element.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065765"> </a><div class="pCellBody">
+<code class="cCode">Foo.&gt;.baz</code>
+</div>
+</td>
+    <td><a name="wp1065767"> </a><div class="pCellBody">
+Greater-than (<code class="cCode">&gt;</code>) can only appear as the right-most character. Rendezvous software interprets this as a specific subject name.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1065774"> </a><h4 class="pHeading3">
+Wildcard Sending
+</h4>
+<a name="wp1103823"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1245724"> </a><p class="pBody">
+We do not recommend sending messages to wildcard subject names. Although transports do not prevent you from sending to wildcard subjects, doing so can trigger unexpected behavior in other programs that share the network.
+</p>
+<a name="wp1245720"> </a><div class="pCellBody">
+It is illegal for certified delivery transports to send to wildcard subjects.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

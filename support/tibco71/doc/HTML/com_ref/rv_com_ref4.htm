@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>Objects</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;1	 Concepts";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1147634"> </a><h2 class="pNewHTMLPage">
+Objects
+</h2>
+<hr />
+<a name="wp1147638"> </a><p class="pBody">
+This COM component implements Rendezvous objects in two layers. Each COM object is an outer shell, with a corresponding internal implementation object.
+</p>
+<a name="wp1147639"> </a><p class="pBody">
+Programs create the outer object using the techniques of the programming environment, such as the <code class="cCode">New</code> or <code class="cCode">CreateObject</code> methods. Programs initialize the internal implementation using the <code class="cCode">Create</code> method of the object class.
+</p>
+<a name="wp1148551"> </a><p class="pBody">
+Once an object&#8217;s internal structure is initialized, we say that the outer COM object is <em class="cEmphasis">valid</em>.
+</p>
+<a name="wp1148552"> </a><p class="pBody">
+Programs can delete the internal implementation (which stops its activity) by using the <code class="cCode">Destroy</code> method of an outer COM object. However, destroying the object in this way affects only the inner structure (in this situation we say that the remaining outer object is <em class="cEmphasis">invalid</em>). In contrast, VB programs delete an outer object by severing <em class="cEmphasis">all</em> references to it; to sever a variable reference, either set the object variable to <code class="cCode">Nothing</code>, or exit the scope of the variable. (Other programming languages use similar constructs.) As a side effect of deleting the outer object, the inner object is also tacitly destroyed.
+</p>
+<a name="wp1147642"> </a><h3 class="pHeading2">
+Creation
+</h3>
+<a name="wp1148952"> </a><p class="pBody">
+Object creation involves three steps&#151;declare a variable, create the outer COM object, create the inner structure. To illustrate, these examples create message objects (the sequence is analogous for other objects).
+</p>
+<a name="wp1147643"> </a><p class="pBody">
+To create an empty message object in a <b class="cBold">VB </b>program, use this sequence:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;&#160;Dim myMsg as <a  href="rv_com_ref34.htm#wp1055151"><code class="cCode">TibrvMsg</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#8217;Declare the variable<a name="wp1147647"> </a>
+&#160;&#160;&#160;&#160;set myMsg = new <a  href="rv_com_ref34.htm#wp1055151"><code class="cCode">TibrvMsg</code></a>&#160;&#160;&#160;&#160;&#8217;Create the COM shell object<a name="wp1147651"> </a>
+&#160;&#160;&#160;&#160;myMsg.create&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#8217;Init the internal message 
+structure<a name="wp1147652"> </a>
+<a name="wp1147653"> </a>
+</pre></div>
+<a name="wp1147654"> </a><p class="pBody">
+To create an empty message object in <b class="cBold">VBScript</b>, use this sequence:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;&#160;Dim myMsg as Object&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#8217;Declare the variable<a name="wp1147656"> </a>
+&#160;&#160;&#160;&#160;set myMsg = CreateObject(&quot;TIBRVCOM.TibrvMsg&quot;)&#160;&#160;&#160;&#8217;Create the 
+COM obj<a name="wp1147657"> </a>
+&#160;&#160;&#160;&#160;myMsg.create&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#8217;Init the internal message 
+structure<a name="wp1147658"> </a>
+<a name="wp1149569"> </a>
+</pre></div>
+<a name="wp1149564"> </a><p class="pBody">
+To create an empty message object in <b class="cBold">JavaScript</b>, use this sequence:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;&#160;var msg&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//Declare the variable<a name="wp1149557"> </a>
+&#160;&#160;&#160;&#160;msg = new ActiveXObject(&quot;TIBRVCOM.TibRvMsg&quot;); //Create the 
+JS/COM obj<a name="wp1149558"> </a>
+&#160;&#160;&#160;&#160;msg.create();&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//Init the internal message 
+structure<a name="wp1149552"> </a>
+</pre></div>
+<a name="wp1149553"> </a><h3 class="pHeading2">
+Deletion
+</h3>
+<a name="wp1147660"> </a><p class="pBody">
+VB program code can delete an object by severing <em class="cEmphasis">all</em> variable references to it. Sever each variable reference in one of two ways:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1147661"> </a><div class="pSmartList1"><li >Explicit&#151;set the variable to <code class="cCode">Nothing</code>.</li></div>
+
+<a name="wp1147662"> </a><div class="pSmartList1"><li >Implicit&#151;exit the scope of the variable.</li></div>
+
+</ul></div>
+
+<a name="wp1151956"> </a><p class="pBody">
+Calling methods of a variable that is set to <code class="cCode">Nothing</code> can yield error <a  href="rv_com_ref219.htm#wp1150718"><code class="cCode">91</code></a>.
+</p>
+<a name="wp1151908"> </a><h3 class="pHeading2">
+Destroy Method
+</h3>
+<a name="wp1151909"> </a><p class="pBody">
+The <code class="cCode">destroy</code> method invalidates the internal implementation of an object. The outer object remains as an empty shell.
+</p>
+<a name="wp1151914"> </a><p class="pBody">
+A program may call the <code class="cCode">destroy</code> method of an object more than once without error.
+</p>
+<a name="wp1151916"> </a><h3 class="pHeading2">
+Validity
+</h3>
+<a name="wp1151920"> </a><p class="pBody">
+The <code class="cCode">isValid</code> method tests the validity of an object. If its internal implementation is intact, then it is valid. (In contrast, checking that the value of a variable is not <code class="cCode">Nothing</code> merely tests that the variable refers to an outer object.)
+</p>
+<a name="wp1155499"> </a><p class="pBody">
+Calling any <em class="cEmphasis">other</em> methods of an object that is invalid yields the error <a  href="rv_com_ref217.htm#wp1188709"><code class="cCode">TIBRVCOM_NOT_INITIALIZED</code></a>. Conversely, calling the create method on a valid object yields the error <a  href="rv_com_ref218.htm#wp1189013"><code class="cCode">TIBRVCOM_ALREADY_INITIALIZED</code></a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

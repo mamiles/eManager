@@ -1,0 +1,15 @@
+sol8gcc/Properties.o sol8gcc/Properties.d: /auto/ntgtoolsdist/localsol/java/j2sdk1.4.0/include/jni.h
+sol8gcc/Properties.o sol8gcc/Properties.d: /auto/ntgtoolsdist/localsol/java/j2sdk1.4.0/include/solaris/jni_md.h
+sol8gcc/Properties.o sol8gcc/Properties.d: /sw/packages/gcc/c2.95.3/sparc-sun-solaris2.8/lib/gcc-lib/sparc-sun-solaris2.8/2.95.3/include/stdarg.h
+sol8gcc/Properties.o sol8gcc/Properties.d: /sw/packages/gcc/c2.95.3/sparc-sun-solaris2.8/lib/gcc-lib/sparc-sun-solaris2.8/2.95.3/include/va-sparc.h
+sol8gcc/Properties.o sol8gcc/Properties.d: /usr/include/iso/stdio_iso.h
+sol8gcc/Properties.o sol8gcc/Properties.d: /usr/include/iso/string_iso.h
+sol8gcc/Properties.o sol8gcc/Properties.d: /usr/include/stdio.h
+sol8gcc/Properties.o sol8gcc/Properties.d: /usr/include/stdio_impl.h
+sol8gcc/Properties.o sol8gcc/Properties.d: /usr/include/stdio_tag.h
+sol8gcc/Properties.o sol8gcc/Properties.d: /usr/include/string.h
+sol8gcc/Properties.o sol8gcc/Properties.d: /usr/include/sys/feature_tests.h
+sol8gcc/Properties.o sol8gcc/Properties.d: /usr/include/sys/isa_defs.h
+sol8gcc/Properties.o sol8gcc/Properties.d: /usr/include/sys/va_list.h
+sol8gcc/Properties.o sol8gcc/Properties.d: Properties.cpp
+sol8gcc/Properties.o sol8gcc/Properties.d: watchdog.h

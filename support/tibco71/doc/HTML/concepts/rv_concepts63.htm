@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Event Queues</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;7	 Events";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1024535"> </a><h2 class="pNewHTMLPage">
+Event Queues
+</h2>
+<hr />
+<a name="wp1025602"> </a><p class="pBody">
+When an event occurs, the <em class="cEmphasis">event driver</em> places the event object on an <em class="cEmphasis">event queue</em>, where it awaits dispatch to its callback function.
+</p>
+<a name="wp1025481"> </a><p class="pBody">
+Programs create event queues to influence the dispatch order, and to distribute events among several program threads. For example, a program could assign messages to a set of queues based on subjects. Program threads can dispatch events from separate queues.
+</p>
+<a name="wp1025498"> </a><h3 class="pHeading2">
+Maximum Events and Limit Policy
+</h3>
+<a name="wp1025497"> </a><p class="pBody">
+A creation parameter limits the maximum number of events that a queue can contain. Another creation parameter selects the queue&#8217;s policy for situations in which a new event would overflow the queue&#8217;s maximum event limit.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1025540"> </a><div class="pCellHeading">
+Limit Policy
+</div>
+</th>
+    <th><a name="wp1025542"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1027248"> </a><div class="pCellBody">
+Discard None
+</div>
+</td>
+    <td><a name="wp1027250"> </a><div class="pCellBody">
+Never discard events; use this policy when a queue has no limit on the number of events it can contain.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1025544"> </a><div class="pCellBody">
+Discard First
+</div>
+</td>
+    <td><a name="wp1025546"> </a><div class="pCellBody">
+Discard the first event in the queue (which would otherwise be the next event to dispatch).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1025548"> </a><div class="pCellBody">
+Discard Last
+</div>
+</td>
+    <td><a name="wp1025550"> </a><div class="pCellBody">
+Discard the last event in the queue.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1025552"> </a><div class="pCellBody">
+Discard New
+</div>
+</td>
+    <td><a name="wp1025554"> </a><div class="pCellBody">
+Discard the new event (which would otherwise cause the queue to overflow its maximum event limit).
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1025607"> </a><h3 class="pHeading2">
+Dispatch
+</h3>
+<a name="wp1025608"> </a><p class="pBody">
+Queue dispatch calls remove the event at the head of a queue, and run its callback function.
+</p>
+<a name="wp1025640"> </a><p class="pBody">
+Three types of dispatch calls behave differently in situations where the queue is empty:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1067793"> </a><div class="pSmartList1"><li ><em class="cEmphasis">Timed dispatch</em> blocks waiting for an event, but returns without dispatching anything if a waiting time limit is exceeded.</li></div>
+
+<a name="wp1067799"> </a><div class="pSmartList1"><li >Ordinary <em class="cEmphasis">dispatch</em> blocks indefinitely, until the queue contains an event.</li></div>
+
+<a name="wp1025611"> </a><div class="pSmartList1"><li ><em class="cEmphasis">Polling dispatch</em> does not block; if the queue is empty, it returns immediately.</li></div>
+
+</ul></div>
+
+<a name="wp1067785"> </a><h3 class="pHeading2">
+Dispatcher Threads
+</h3>
+<a name="wp1067944"> </a><p class="pBody">
+Most programs dispatch events in a loop that includes one of the dispatch calls. For convenience, the Rendezvous API includes a call that creates a separate dispatcher thread. The dispatcher thread runs a loop to repeatedly dispatch events. Programs can use this convenience feature, or dispatch events in any other appropriate way. However, every program <em class="cEmphasis">must</em> dispatch its events.
+</p>
+<a name="wp1067978"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1067953"> </a><div class="pTableTitle">
+Table&#160;18   Dispatcher Threads&#160;
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1067957"> </a><div class="pCellBody">
+C
+</div>
+</td>
+    <td><a name="wp1067962"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref126.htm#wp1133140');" onMouseOver="WWHShowPopup('e', 'rv_c_ref126.htm#wp1133140', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvDispatcher</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1067964"> </a><div class="pCellBody">
+C++
+</div>
+</td>
+    <td><a name="wp1067966"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref154.htm#wp1216769');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref154.htm#wp1216769', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvDispatcher</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1067968"> </a><div class="pCellBody">
+Java
+</div>
+</td>
+    <td><a name="wp1067973"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref127.htm#wp1105035');" onMouseOver="WWHShowPopup('g', 'rv_java_ref127.htm#wp1105035', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvDispatcher</code></a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1073133"> </a><h4 class="pHeading3">
+COM Automatic Dispatch
+</h4>
+<a name="wp1073134"> </a><p class="pBody">
+COM programs dispatch events in a different way. A special queue group automatically dispatches whenever an event is ready in any of its queues. Programs can add queues to this queue group to automatically dispatch them. For details, see the COM method <a  href="javascript:WWHClickedPopup('h', 'rv_com_ref18.htm#wp1150213');" onMouseOver="WWHShowPopup('h', 'rv_com_ref18.htm#wp1150213', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">Tibrv.getAutoDispatchQueueGroup()</code></a>.
+</p>
+<a name="wp1067980"> </a><h3 class="pHeading2">
+Queue Groups and Priority
+</h3>
+<a name="wp1027750"> </a><p class="pBody">
+<em class="cEmphasis">Queue groups</em> allow fine-grained control over dispatch order from a single blocking point. A group can contain any number of event queues; the relative priorities of the queues determine the order in which dispatch calls dispatch their events. A queue can belong to any number of groups, or none at all.
+</p>
+<a name="wp1025639"> </a><p class="pBody">
+Queue group dispatch calls search the group&#8217;s queues in order of priority, and dispatch the head event from the first non-empty queue. If two or more queues have identical priorities, subsequent dispatch calls rotate through them in round-robin fashion.
+</p>
+<a name="wp1025650"> </a><p class="pBody">
+Parallel to queue dispatch calls, two types of queue group dispatch calls behave differently in situations where the queue is empty:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1025651"> </a><div class="pSmartList1"><li >Ordinary <em class="cEmphasis">group dispatch</em> blocks indefinitely, until any queue in the group contains an event.</li></div>
+
+<a name="wp1025652"> </a><div class="pSmartList1"><li ><em class="cEmphasis">Timed group dispatch</em> blocks waiting for an event, but returns without dispatching anything if a waiting time limit is exceeded.</li></div>
+
+<a name="wp1069187"> </a><div class="pSmartList1"><li ><em class="cEmphasis">Polling group dispatch</em> does not block; if all the queues in the group are empty, it returns immediately.</li></div>
+
+</ul></div>
+
+<a name="wp1025667"> </a><h3 class="pHeading2">
+Default Queue
+</h3>
+<a name="wp1025690"> </a><p class="pBody">
+The Rendezvous open call automatically creates a default queue. Programs can use this queue for simplicity, or create their own queues, or do both.
+</p>
+<a name="wp1027274"> </a><p class="pBody">
+The default queue can contain an unlimited number of events (and never discards an event). It has priority <code class="cCode">1</code> (last priority), so in any queue group, it is always among the last queues to dispatch.
+</p>
+<a name="wp1027287"> </a><p class="pBody">
+When any queue discards an event (which would otherwise have caused the queue to exceed its event limit), Rendezvous software presents a <a  href="rv_concepts167.htm#wp1064290"><code class="cCode">QUEUE.LIMIT_EXCEEDED</code></a> advisory message.
+</p>
+<a name="wp1027771"> </a><h3 class="pHeading2">
+Strategies for Using Queues and Groups
+</h3>
+<a name="wp1028009"> </a><p class="pBody">
+This section presents examples of several common uses of event queues and groups.
+</p>
+<a name="wp1027860"> </a><h4 class="pHeading3">
+Default Queue Only
+</h4>
+<a name="wp1027878"> </a><p class="pBody">
+Use the default queue as the only event queue.
+</p>
+<a name="wp1027901"> </a><p class="pBody">
+Programs migrating from Rendezvous 5 (and earlier) to release 6 (and later) can use this technique to emulate the event dispatch system of earlier releases.
+</p>
+<a name="wp1028015"> </a><div class="pFigureTitle">
+Figure&#160;7   Default Event Queue</div><div align="center"><img src="images/rv_conceptsa11.gif" height="78" width="479" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1027879"> </a><h4 class="pHeading3">
+Prioritize Queues within a Group
+</h4>
+<a name="wp1071675"> </a><p class="pBody">
+Dispatch the group, rather than individual queues. Assign queue priorities to reflect the relative priorities of their events (1 indicates the lowest, or last, priority; larger integers indicate higher priority).
+</p>
+<a name="wp1028055"> </a><p class="pBody">
+This technique ensures that important events dispatch before less important events. For example, you can always dispatch a timer queue before inbound message queues, or give priority to messages with specific subjects.
+</p>
+<a name="wp1028059"> </a><div class="pFigureTitle">
+Figure&#160;8   Prioritize Event Queues in a Group</div><div align="center"><img src="images/rv_conceptsa12.gif" height="629" width="479" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1028060"> </a><h4 class="pHeading3">
+Selectively Suspend Dispatch
+</h4>
+<a name="wp1027934"> </a><p class="pBody">
+Remove selected queues from a group to suspend dispatch of their events. Even when a queue has been removed from its group, events continue to accumulate. Normal dispatch resumes when you add the queue back into the group.
+</p>
+<a name="wp1028069"> </a><div class="pFigureTitle">
+Figure&#160;9   Remove Event Queues from a Group to Suspend Dispatch</div><div align="center"><img src="images/rv_conceptsa13.gif" height="458" width="528" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

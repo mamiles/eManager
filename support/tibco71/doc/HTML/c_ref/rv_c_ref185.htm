@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvcmTransport_AddListener()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1089437"> </a><h2 class="pNewHTMLPage">
+tibrvcmTransport_AddListener()
+</h2>
+<hr />
+<a name="wp1089438"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1089439"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvcmTransport_AddListener</code>(<a name="wp1089486"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref184.htm#wp1086288"><code class="cCode">tibrvcmTransport</code></a>&#160;&#160;&#160;&#160;cmTransport,<a name="wp1089497"> </a>
+&#160;&#160;&#160;&#160;const char*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;cmName,<a name="wp1089489"> </a>
+&#160;&#160;&#160;&#160;const char*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;subject);<a name="wp1089440"> </a>
+</pre></div>
+<a name="wp1089443"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1089517"> </a><p class="pBody">
+Pre-register an anticipated listener.
+</p>
+<a name="wp1089449"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1089523"> </a><p class="pBody">
+Some sending programs can anticipate requests for certified delivery&#151;even before the listening programs actually register. In such situations, the sender can pre-register listeners, so Rendezvous software begins storing outbound messages in the sender&#8217;s ledger; when the listener requests certified delivery, it receives the backlogged messages.
+</p>
+<a name="wp1089573"> </a><p class="pBody">
+If the correspondent with this <code class="cCode">cmName</code> already receives certified delivery of this <code class="cCode">subject</code> from this sender transport, then <a  href="rv_c_ref185.htm#wp1089437"><code class="cCode">tibrvcmTransport_AddListener()</code></a> has no effect.
+</p>
+<a name="wp1089577"> </a><p class="pBody">
+If the correspondent with this <code class="cCode">cmName</code> is disallowed, <a  href="rv_c_ref185.htm#wp1089437"><code class="cCode">tibrvcmTransport_AddListener()</code></a> returns the status code <a  href="rv_c_ref227.htm#wp1129142"><code class="cCode">TIBRV_NOT_PERMITTED</code></a>. You can call <a  href="rv_c_ref186.htm#wp1089193"><code class="cCode">tibrvcmTransport_AllowListener()</code></a> to supersede the effect of a prior call to <a  href="rv_c_ref190.htm#wp1190238"><code class="cCode">tibrvcmTransport_DisallowListener()</code></a>; then call <a  href="rv_c_ref185.htm#wp1089437"><code class="cCode">tibrvcmTransport_AddListener()</code></a> again.
+</p>
+<a name="wp1089535"> </a><p class="pBody">
+It is not sufficient for a sender to use this function to anticipate listeners; the anticipated listening programs must also require old messages when creating certified delivery transports.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1089456"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1089461"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1089463"> </a><div class="pCellBody">
+<code class="cCode">cmTransport</code>
+</div>
+</td>
+    <td><a name="wp1089465"> </a><div class="pCellBody">
+Instruct this transport to pre-register the named listeners.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1089467"> </a><div class="pCellBody">
+<code class="cCode">cmName</code>
+</div>
+</td>
+    <td><a name="wp1089635"> </a><div class="pCellBody">
+Anticipate a listener from a correspondent with this reusable name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1089629"> </a><div class="pCellBody">
+<code class="cCode">subject</code>
+</div>
+</td>
+    <td><a name="wp1089637"> </a><div class="pCellBody">
+Anticipate a listener for this subject. Wildcard subjects are illegal.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1089471"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1089475"> </a><p class="pBody">
+<a  href="rv_c_ref188.htm#wp1086226">Name</a>
+</p>
+<a name="wp1089643"> </a><p class="pBody">
+<a  href="rv_c_ref186.htm#wp1089193"><code class="cCode">tibrvcmTransport_AllowListener()</code> </a>
+</p>
+<a name="wp1089650"> </a><p class="pBody">
+<a  href="rv_c_ref190.htm#wp1190238"><code class="cCode">tibrvcmTransport_DisallowListener()</code> </a>
+</p>
+<a name="wp1101763"> </a><p class="pBody">
+<a  href="rv_c_ref199.htm#wp1089656"><code class="cCode">tibrvcmTransport_RemoveListener()</code> </a>
+</p>
+<a name="wp1120042"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts110.htm#wp1056268');" onMouseOver="WWHShowPopup('a', 'rv_concepts110.htm#wp1056268', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Anticipating a Listener</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

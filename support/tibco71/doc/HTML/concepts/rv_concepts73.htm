@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Network Parameter</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;8	 Transport";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1029059"> </a><h2 class="pNewHTMLPage">
+Network Parameter
+</h2>
+<hr />
+<a name="wp1029060"> </a><p class="pBody">
+Every network transport object communicates with other transport objects over a network. On computers with only one network interface, the Rendezvous daemon communicates on that network without further instruction from the program.
+</p>
+<a name="wp1029078"> </a><p class="pBody">
+On computers with more than one network interface, the <code class="cCode">network</code> parameter instructs the Rendezvous daemon to use a particular network for all communications involving this transport. To communicate over more than one network, a program must create a separate transport object for each network.
+</p>
+<a name="wp1061586"> </a><p class="pBody">
+The network parameter also specifies multicast addressing details (for a brief introduction, see <a  href="rv_concepts73.htm#wp1071302">Multicast Addressing</a>).
+</p>
+<a name="wp1028637"> </a><p class="pBody">
+To connect to a remote daemon, the <code class="cCode">network</code> parameter must refer to the network from the perspective of the remote computer that hosts the daemon process.
+</p>
+<a name="wp1061549"> </a><h3 class="pHeading2">
+Constructing the Network Parameter
+</h3>
+<a name="wp1061563"> </a><p class="pBody">
+The network parameter consists of up to three parts, separated by semicolons&#151;network, multicast groups, send address&#151;as in these examples:</p><div align="left">
+<table border="0">
+  <caption></caption>
+  <tr align="left" valign="top">    <td><a name="wp1084674"> </a><div class="pCellBody">
+<code class="cCode">lan0</code>
+</div>
+</td>
+    <td><a name="wp1084676"> </a><div class="pCellBody">
+network only
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1084678"> </a><div class="pCellBody">
+<code class="cCode">lan0;224.1.1.1</code>
+</div>
+</td>
+    <td><a name="wp1084680"> </a><div class="pCellBody">
+one multicast group
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1084682"> </a><div class="pCellBody">
+<code class="cCode">lan0;224.1.1.1,224.1.1.5;224.1.1.6</code>
+</div>
+</td>
+    <td><a name="wp1084684"> </a><div class="pCellBody">
+two multicast groups, send address
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1084686"> </a><div class="pCellBody">
+<code class="cCode">lan0;;224.1.1.6</code>
+</div>
+</td>
+    <td><a name="wp1084688"> </a><div class="pCellBody">
+no multicast group, send address
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1061570"> </a><h4 class="pHeading3">
+Part One&#151;Network
+</h4>
+<a name="wp1061682"> </a><p class="pBody">
+Part one identifies the network, which you can specify in several ways:</p><div align="left">
+<table border="1">
+  <caption><a name="wp1084701"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1061897"> </a><div class="pCellBody">
+Host name
+</div>
+</td>
+    <td><a name="wp1061899"> </a><div class="pCellBody">
+When a program specifies a host name, the transport creation function calls <code class="cCode">gethostbyname()</code>, which searches a network database to obtain the IP address.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061901"> </a><div class="pCellBody">
+Host IP address
+</div>
+</td>
+    <td><a name="wp1061903"> </a><div class="pCellBody">
+When a program specifies an IP address, it must be a string representing a multi-part address. For example:
+</div>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;&quot;101.120.115.111&quot;<a name="wp1061904"> </a>
+</pre></div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061906"> </a><div class="pCellBody">
+Network name (where supported)
+</div>
+</td>
+    <td><a name="wp1061908"> </a><div class="pCellBody">
+When an application specifies a network name, the transport creation function calls <code class="cCode">getnetbyname()</code>, which searches a network database such as Network Information Services (NIS) or a flat file (such as <code class="cCode">networks</code>) in the system directory.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061910"> </a><div class="pCellBody">
+Network IP number
+</div>
+</td>
+    <td><a name="wp1061912"> </a><div class="pCellBody">
+If a program specifies a host IP address or a network IP number it must be in dotted-decimal notation. For example, <code class="cCode">101.55.31</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061914"> </a><div class="pCellBody">
+Interface name (where supported)
+</div>
+</td>
+    <td><a name="wp1061916"> </a><div class="pCellBody">
+When an application specifies an interface name, the transport creation function searches the interface table for the specified interface name. For example, <code class="cCode">lan0</code>.
+</div>
+<a name="wp1061917"> </a><div class="pCellBody">
+The interface name must be one that is known to <code class="cCode">ifconfig</code> or <code class="cCode">netstat</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061919"> </a><div class="pCellBody">
+Default
+</div>
+</td>
+    <td><a name="wp1061921"> </a><div class="pCellBody">
+If a program does not specify a network, the transport creation function uses the default network interface:
+</div>
+<div class="pSmartList1"><ul>
+<a name="wp1205167"> </a><div class="pSmartList1"><li >TRDP daemons use the network interface which corresponds to the host name of the system as determined by the C function <code class="cCode">gethostname()</code>.</li></div>
+
+<a name="wp1205160"> </a><div class="pSmartList1"><li >PGM daemons use the default PGM multicast interface, <code class="cCode">224.0.1.78</code>.</li></div>
+
+</ul></div>
+
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1061751"> </a><p class="pBody">
+The use of the UDP broadcast protocol has generally been superseded by IP multicast protocol. To use broadcast protocols without multicast addressing, specify only part one of the network parameter, and omit the remaining parts.
+</p>
+<a name="wp1061684"> </a><h4 class="pHeading3">
+Part Two&#151;Multicast Groups
+</h4>
+<a name="wp1061572"> </a><p class="pBody">
+Part two is a list of zero or more multicast groups to join, specified as IP addresses, separated by commas. Each address in part two must denote a valid multicast address. Joining a multicast group enables listeners on the resulting transport to receive data sent to that multicast group.
+</p>
+<a name="wp1061769"> </a><p class="pBody">
+For a brief introduction to multicasting, see <a  href="rv_concepts73.htm#wp1071302">Multicast Addressing</a>.
+</p>
+<a name="wp1061688"> </a><h4 class="pHeading3">
+Part Three&#151;Send Address
+</h4>
+<a name="wp1061573"> </a><p class="pBody">
+Part three is a single send address. When a program sends multicast data on the resulting transport, it is sent to this address. (Point-to-point data is not affected.) If present, this item must be an IP address&#151;not a host name or network name. The send address <em class="cEmphasis">need not</em> be among the list of multicast groups joined in part two.
+</p>
+<a name="wp1061574"> </a><p class="pBody">
+If you join one or more multicast groups in part two, but do not specify a send address in part three, the send address defaults to the first multicast group listed in part two.
+</p>
+<a name="wp1071302"> </a><h3 class="pHeading2">
+Multicast Addressing
+</h3>
+<a name="wp1071303"> </a><p class="pBody">
+Multicast addressing is a focused broadcast capability implemented at the hardware and operating system level. In the same way that the Rendezvous daemon filters out unwanted messages based on service groups, multicast hardware and operating system features filter out unwanted messages based on multicast addresses.
+</p>
+<a name="wp1061661"> </a><p class="pBody">
+When no broadcast messages are present on the service, multicast filtering (implemented in network interface hardware) can be more efficient than service group filtering (implemented in software). However, transports that specify multicast addressing still receive broadcast messages, so combining broadcast and multicast traffic on the same service can defeat the efficiency gain of multicast addressing.
+</p>
+<a name="wp1061665"> </a><p class="pBody">
+Rendezvous software supports multicast addressing only when the operating system supports it. If the operating system does not support it, and you specify a multicast address in the network argument, then transport creation calls produce an error status (<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref227.htm#wp1129098');" onMouseOver="WWHShowPopup('e', 'rv_c_ref227.htm#wp1129098', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TIBRV_NETWORK_NOT_FOUND</code></a>).
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvEvent_ResetTimerInterval()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;4	 Events";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1075442"> </a><h2 class="pNewHTMLPage">
+tibrvEvent_ResetTimerInterval()
+</h2>
+<hr />
+<a name="wp1075446"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1087026"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvEvent_ResetTimerInterval</code>(<a name="wp1077617"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref75.htm#wp1157970"><code class="cCode">tibrvEvent</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;event,<a name="wp1077619"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128761"><code class="cCode">tibrv_f64</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;newInterval);<a name="wp1077620"> </a>
+</pre></div>
+<a name="wp1087497"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1075453"> </a><p class="pBody">
+Reset the interval of a timer event object.
+</p>
+<a name="wp1087960"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1075455"> </a><p class="pBody">
+The timer begins counting the new interval immediately.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1144381"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1144383"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1144385"> </a><div class="pCellBody">
+<code class="cCode">event</code>
+</div>
+</td>
+    <td><a name="wp1144387"> </a><div class="pCellBody">
+Reset the interval of this timer.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1144389"> </a><div class="pCellBody">
+<code class="cCode">newInterval</code>
+</div>
+</td>
+    <td><a name="wp1144391"> </a><div class="pCellBody">
+The timer triggers its callback function at this new repeating interval (in seconds).
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1144394"> </a><h4 class="pHeading3">
+Timer Granularity
+</h4>
+<a name="wp1083921"> </a><p class="pBody">
+Express the timer interval (in seconds) as a 64-bit floating point number. This representation allows microsecond granularity for intervals up to approximately 146 years. The actual granularity of intervals depends on hardware and operating system constraints.
+</p>
+<a name="wp1138531"> </a><h4 class="pHeading3">
+Limit of Effectiveness
+</h4>
+<a name="wp1138532"> </a><p class="pBody">
+This function can affect a timer only before or during its interval&#151;but not after its interval has elapsed.
+</p>
+<a name="wp1138533"> </a><p class="pBody">
+This function neither examines, changes nor removes an event that is already waiting in a queue for dispatch. If the next event for the timer object is already in the queue, then that event remains in the queue, representing the old interval. The change takes effect with the subsequent interval. (To circumvent this limitation, a program can destroy the old timer object and replace it with a new one.)
+</p>
+<a name="wp1088350"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1075473"> </a><p class="pBody">
+<a  href="rv_c_ref80.htm#wp1030234"><code class="cCode">tibrvEvent_CreateTimer()</code> </a>
+</p>
+<a name="wp1114660"> </a><p class="pBody">
+<a  href="rv_c_ref87.htm#wp1063574"><code class="cCode">tibrvEvent_GetTimerInterval()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

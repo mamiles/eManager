@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://log.soap.eManager.cisco.com" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://log.soap.eManager.cisco.com" xmlns:intf="http://log.soap.eManager.cisco.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+   <wsdl:message name="xmlMessageResponse">
+
+      <wsdl:part name="xmlMessageReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="xmlMessageRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="LogManager">
+
+      <wsdl:operation name="xmlMessage" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:xmlMessageRequest" name="xmlMessageRequest"/>
+
+         <wsdl:output message="impl:xmlMessageResponse" name="xmlMessageResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="LogManagerSoapBinding" type="impl:LogManager">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="xmlMessage">
+
+         <wsdlsoap:operation soapAction="xmlMessage"/>
+
+         <wsdl:input name="xmlMessageRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://log.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="xmlMessageResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://log.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="LogManagerService">
+
+      <wsdl:port binding="impl:LogManagerSoapBinding" name="LogManager">
+
+         <wsdlsoap:address location="http://localhost:9080/emanager/services/LogManager"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

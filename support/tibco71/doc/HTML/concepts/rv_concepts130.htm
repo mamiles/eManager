@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Groups and Membership</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;13	 Fault Tolerance Concepts";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1057231"> </a><h2 class="pNewHTMLPage">
+Groups and Membership
+</h2>
+<hr />
+<a name="wp1070503"> </a><p class="pBody">
+A <em class="cEmphasis">fault tolerance group</em> is a set of program processes that cooperate for fault-tolerant service. Each <em class="cEmphasis">member</em> of a fault tolerance group is an event object instance, in a process running on a computer attached to a network; by extension, we also say that the process is a <em class="cEmphasis">member</em> of the fault tolerance group. A fault tolerance group can have any number of members.
+</p>
+<a name="wp1057233"> </a><p class="pBody">
+New processes can <em class="cEmphasis">join</em> the group (become members) at any time by creating a fault tolerance member object. Each process that joins a group remains a member until it either withdraws or terminates. Member processes can <em class="cEmphasis">withdraw</em> from the group (cease to be members) at any time by destroying their fault tolerance member object.
+</p>
+<a name="wp1070495"> </a><p class="pBody">
+Many fault tolerance groups can coexist on the same network. Distinct group names prevent interference. A process can be a member of more than one fault tolerance group (by creating several fault tolerance member objects, one for each group).
+</p>
+<a name="wp1069585"> </a><h3 class="pHeading2">
+Group Name
+</h3>
+<a name="wp1069586"> </a><p class="pBody">
+Each fault tolerance group requires a unique group name. All members of a group must share the same group name. The group name identifies the members of the group, and labels the messages they exchange with one another.
+</p>
+<a name="wp1057242"> </a><p class="pBody">
+For information about the syntax of group names, and practical advice on selecting a group name, see <a  href="rv_concepts152.htm#wp1058158">Step 1: Choose a Group Name</a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

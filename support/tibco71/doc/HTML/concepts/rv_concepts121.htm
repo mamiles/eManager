@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Assigning Tasks to Workers</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;12	 Distributed Queue";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1056897"> </a><h2 class="pNewHTMLPage">
+Assigning Tasks to Workers
+</h2>
+<hr />
+<a name="wp1056898"> </a><p class="pBody">
+The scheduler assigns each inbound task to a worker. That worker alone processes the task message in a data callback function.
+</p>
+<a name="wp1056899"> </a><h3 class="pHeading2">
+Worker Weight
+</h3>
+<a name="wp1056900"> </a><p class="pBody">
+Relative worker weights assist the scheduler in assigning tasks. When the scheduler receives a task, it assigns the task to the available worker with the greatest worker weight. The default worker weight is 1.
+</p>
+<a name="wp1109345"> </a><p class="pBody">
+The scheduler applies a round-robin ordering to distribute tasks among several workers equivalent with equal weight.
+</p>
+<a name="wp1056901"> </a><h3 class="pHeading2">
+Availability
+</h3>
+<a name="wp1056902"> </a><p class="pBody">
+When the scheduler receives a task, it assigns the task to an <em class="cEmphasis">available</em> worker with the greatest worker weight.
+</p>
+<a name="wp1056903"> </a><p class="pBody">
+A worker is considered available unless either of these conditions are true:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1056904"> </a><div class="pSmartList1"><li >The pending tasks assigned to the worker exceed its task capacity.</li></div>
+
+<a name="wp1056905"> </a><div class="pSmartList1"><li >The worker is also the scheduler. (The scheduler assigns tasks to its own worker only when all other workers are busy.)</li></div>
+
+</ul></div>
+
+<a name="wp1056907"> </a><h3 class="pHeading2">
+Task Capacity
+</h3>
+<a name="wp1056908"> </a><p class="pBody">
+Task capacity is the maximum number of tasks that a worker can accept. When the number of accepted tasks reaches this maximum, the worker cannot accept additional tasks until it completes one or more of them.
+</p>
+<a name="wp1056909"> </a><p class="pBody">
+When the scheduler receives a task, it assigns the task to the worker with the greatest worker weight&#151;unless the pending tasks assigned to that worker exceed its task capacity. When the preferred worker has too many tasks, the scheduler assigns the new inbound task to the worker with the next greatest worker weight.
+</p>
+<a name="wp1056910"> </a><p class="pBody">
+The default worker task capacity is 1. Programmers can tune task capacity based on two factors:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1056911"> </a><div class="pSmartList1"><li >Multi-tasking program on multiprocessing hardware.</li></div>
+
+<a name="wp1056912"> </a><div class="pSmartList1"><li >Communication time lag.</li></div>
+
+</ul></div>
+
+<a name="wp1056913"> </a><h4 class="pHeading3">
+Tuning for Multiprocessing Hardware
+</h4>
+<a name="wp1056914"> </a><p class="pBody">
+On a multi-processing computer, a multi-threaded program that devotes <em class="cEmphasis">n</em> threads on <em class="cEmphasis">n</em> processors to inbound tasks has task capacity <em class="cEmphasis">n</em>.
+</p>
+<a name="wp1056915"> </a><h4 class="pHeading3">
+Tuning for Communication Time Lag
+</h4>
+<a name="wp1056916"> </a><p class="pBody">
+In most distributed queue applications, the communication time is an insignificant fraction of the task turnaround time. That is, the time required to <em class="cEmphasis">assign</em> a task and signal its completion is very small compared to the time required to <em class="cEmphasis">process</em> the task. For example, when average task turnaround time is 2 seconds, of which communication time contributes only 10 milliseconds to the total, then task capacity is the same as the number of processors or threads.
+</p>
+<a name="wp1056917"> </a><p class="pBody">
+However, in some situations communication time can be significant&#151;for example, when the group members are distributed at distant sites connected by a WAN. When communication time is significant, the meaning of task capacity changes; instead of signifying the number of tasks that a worker can process concurrently, it signifies the number of tasks that can fill the worker&#8217;s capacity despite the communication time lag.
+</p>
+<a name="wp1056918"> </a><p class="pBody">
+In most situations, a simple procedure computes a reasonable task capacity. For each worker, do these steps:
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1056919"> </a><div class="pSmartList1"><li value="1">Measure the average round-trip communication time between scheduler and worker&#151;that is, the time to send an assignment message and return a result message, without any task processing time intervening.</li></div>
+
+<a name="wp1056920"> </a><div class="pSmartList1"><li value="2">Measure the average task processing time, without any communication time.</li></div>
+
+<a name="wp1056921"> </a><div class="pSmartList1"><li value="3">Divide the average round-trip communication time by the average task processing time; round up to the nearest integer; add 1. The result is the theoretical task capacity that minimizes idle time for the worker.</li></div>
+
+</ol></div>
+
+<a name="wp1056922"> </a><p class="pBody">
+For example, when the average round-trip time is 500 milliseconds, and the average task processing time is 1 second, then setting the task capacity to 2 minimizes the worker&#8217;s idle time between tasks.
+</p>
+<a name="wp1056923"> </a><p class="pBody">
+When tuning task capacity to compensate for communication time lag, balance is critical. Underloading a worker (by setting its tasks capacity too low) can cause the worker to remain idle while it waits for the scheduler to assign its next task. Conversely, overloading a worker (by setting its task capacity too high) can cause some assigned tasks to wait, while other workers that might have accepted those tasks remain idle. Tune performance by empirical testing.
+</p>
+<a name="wp1109294"> </a><h4 class="pHeading3">
+Task Capacity</h4><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1245888"> </a><p class="pBody">
+Tuning task capacity to compensate for communication time lag is more complicated than it might seem. Use task capacities greater than 1 only with caution. Task capacities greater than 3 are rarely correct. Instead of enhancing performance, incorrect settings can significantly degrade performance, and can even cause reassignment of tasks and duplicated work.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<h4 class="pHeading3">
+</h4>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

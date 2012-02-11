@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Overview</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;10	 Performance Assessment (rvperf)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1069656"> </a><h2 class="pNewHTMLPage">
+Overview
+</h2>
+<hr />
+<a name="wp1069828"> </a><p class="pBody">
+Rendezvous performance assessment software is a tool for evaluators, reviewers, and network administrators. It measures the potential performance of Rendezvous software in an actual network situation, and outputs a detailed report.
+</p>
+<a name="wp1069832"> </a><p class="pBody">
+This performance assessment software helps you compare various equipment options and network configurations, using the performance of Rendezvous software as a gauge.
+</p>
+<a name="wp1068830"> </a><p class="pBody">
+Remember that speed benchmarks are relevant only in the context of a specific network with specific computers. Networks can differ widely in their performance. Adding or removing a problematic computer can dramatically alter performance.
+</p>
+<a name="wp1068834"> </a><p class="pBody">
+Rendezvous benchmark data is not a guarantee of application performance. It demonstrates the potential maximum performance that your network can achieve. Although it can model common application behaviors regarding message sending and receiving, it cannot exactly mimic the actual performance of your Rendezvous applications. The performance assessment tool stresses message transport capabilities, but does not engage in other common application behaviors, such as calculations or managing a graphics display.
+</p>
+<a name="wp1068838"> </a><p class="pBody">
+The performance assessment tool can establish an upper bound on application message transport performance, and help gauge some of the secondary effects of network usage patterns, but it cannot prove that an application as a whole will operate properly.
+</p>
+<a name="wp1068840"> </a><h3 class="pHeading2">
+Components
+</h3>
+<a name="wp1068841"> </a><p class="pBody">
+Performance assessment software consists of two executable programs:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1068842"> </a><div class="pSmartList1"><li ><code class="cCode">rvperfm</code> (master) sends messages, gathers performance data, and outputs the report.</li></div>
+
+<a name="wp1070877"> </a><p class="pBodyRelative">
+See <a  href="rv_adm96.htm#wp1068989"><code class="cCode">rvperfm</code> </a>.
+</p>
+<a name="wp1070894"> </a><div class="pSmartList1"><li ><code class="cCode">rvperfs</code> (slave) subscribes to messages from <code class="cCode">rvperfm</code>, and sends back data about its own speed and effectiveness.</li></div>
+
+<a name="wp1070898"> </a><p class="pBodyRelative">
+See <a  href="rv_adm97.htm#wp1069148"><code class="cCode">rvperfs</code> </a>.
+</p>
+</ul></div>
+
+<a name="wp1070899"> </a><p class="pBody">
+You can run <code class="cCode">rvperfm</code> alone, or with any number of <code class="cCode">rvperfs</code> processes in the network.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,107 @@
+//**************************************************
+ // Copyright (c) 2001, 2002 Cisco Systems, Inc.
+ // All rights reserved.
+ //**************************************************
+package com.cisco.eManager.common.log;
+
+import java.io.Serializable;
+import java.util.Enumeration;
+import java.util.Hashtable;
+
+/**
+ * <p>Title: eManager</p>
+ * <p>Description: Cisco's "Systems Management" Application</p>
+ * <p>Copyright: Copyright (c) 2003</p>
+ * <p>Company: Cisco Systems, Inc.</p>
+ * @author not attributable
+ * @version 1.0
+ */
+
+public class LogFile
+{
+    /**********************************
+     * Data Members
+     **********************************/
+    private String appTypeName = null;
+    private String appInstanceName = null;
+    private String hostName = null;
+    private String logPath = null;
+    private String logName = null;
+    private String logSize = null;
+    private String dateTime = null;
+
+    public LogFile(String strAppTypeName, String strAppInstanceName, String strHostName, String strLogPath, String strLogName,
+                   String strLogSize, String strDateTime)
+    {
+        appTypeName = strAppTypeName;
+        appInstanceName = strAppInstanceName;
+        hostName = strHostName;
+        logPath = strLogPath;
+        logName = strLogName;
+        logSize = strLogSize;
+        dateTime = strDateTime;
+    }
+
+    public String toString()
+    {
+        return (appTypeName + appInstanceName + hostName + logPath + logName + logSize + dateTime);
+    }
+    public String getAppInstanceName()
+    {
+        return appInstanceName;
+    }
+    public String getAppTypeName()
+    {
+        return appTypeName;
+    }
+    public String getDateTime()
+    {
+        return dateTime;
+    }
+    public String getHostName()
+    {
+        return hostName;
+    }
+    public String getLogName()
+    {
+        return logName;
+    }
+    public String getLogPath()
+    {
+        return logPath;
+    }
+    public String getLogSize()
+    {
+        return logSize;
+    }
+    public void setAppInstanceName(String appInstanceName)
+    {
+        this.appInstanceName = appInstanceName;
+    }
+    public void setAppTypeName(String appTypeName)
+    {
+        this.appTypeName = appTypeName;
+    }
+    public void setDateTime(String dateTime)
+    {
+        this.dateTime = dateTime;
+    }
+    public void setHostName(String hostName)
+    {
+        this.hostName = hostName;
+    }
+    public void setLogName(String logName)
+    {
+        this.logName = logName;
+    }
+    public void setLogPath(String logPath)
+    {
+        this.logPath = logPath;
+    }
+    public void setLogSize(String logSize)
+    {
+        this.logSize = logSize;
+    }
+
+
+}

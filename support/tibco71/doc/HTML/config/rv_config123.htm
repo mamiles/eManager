@@ -1,0 +1,383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>SecureDaemonProxy</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;6	 Secure Daemons&#151;rvsd &amp; rvsrd";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1956040"> </a><h2 class="pNewHTMLPage">
+SecureDaemonProxy
+</h2>
+<hr />
+<a name="wp1956041"> </a><p class="pSyntaxType">
+Interface
+</p>
+<a name="wp1956042"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">interface com.tibco.tibrv.config.</code><code class="cCodeBold">SecureDaemonProxy</code><a name="wp1956043"> </a>
+<code class="cCode">&#160;&#160;extends </code><a  href="rv_config12.htm#wp1949843"><code class="cCode">DaemonProxy</code></a><code class="cCode"></code><a name="wp1956047"> </a>
+</pre></div>
+<a name="wp1956048"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1956052"> </a><p class="pBody">
+Define methods for Rendezvous secure daemons.
+</p>
+<a name="wp1956353"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1956058"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1956064"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1956066"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1956068"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1956073"> </a><div class="pCellBody">
+<a  href="rv_config124.htm#wp1956409"><code class="cCode">SecureDaemonProxy.addUser()</code></a>
+</div>
+<a name="wp1956077"> </a><div class="pCellBody">
+<a  href="rv_config124.htm#wp1956413"><code class="cCode">SecureDaemonProxy.addUsers()</code></a>
+</div>
+</td>
+    <td><a name="wp1956081"> </a><div class="pCellBody">
+<a  href="rv_config124.htm#wp1956436">Authorize a user to connect to the secure daemon.</a>
+</div>
+</td>
+    <td><a name="wp1956087"> </a><div class="pCellBody">
+<a  href="rv_config124.htm#wp1956409">143</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1956092"> </a><div class="pCellBody">
+<a  href="rv_config125.htm#wp1956489"><code class="cCode">SecureDaemonProxy.authorizeListen()</code></a>
+</div>
+</td>
+    <td><a name="wp1956100"> </a><div class="pCellBody">
+<a  href="rv_config125.htm#wp1956517">Authorize all users to listen to a subject.</a>
+</div>
+</td>
+    <td><a name="wp1956106"> </a><div class="pCellBody">
+<a  href="rv_config125.htm#wp1956489">144</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1976348"> </a><div class="pCellBody">
+<a  href="rv_config126.htm#wp1975538"><code class="cCode">SecureDaemonProxy.authorizeListenAndSend()</code></a>
+</div>
+</td>
+    <td><a name="wp1976356"> </a><div class="pCellBody">
+<a  href="rv_config126.htm#wp1975563">Authorize all users to listen and to send to a subject.</a>
+</div>
+</td>
+    <td><a name="wp1976362"> </a><div class="pCellBody">
+<a  href="rv_config126.htm#wp1975538">145</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1956111"> </a><div class="pCellBody">
+<a  href="rv_config127.htm#wp1956577"><code class="cCode">SecureDaemonProxy.authorizeNetworkAndService()</code></a>
+</div>
+<a name="wp1956115"> </a><div class="pCellBody">
+<a  href="rv_config127.htm#wp1956581"><code class="cCode">SecureDaemonProxy.authorizeNetworksAndServices()</code></a>
+</div>
+</td>
+    <td><a name="wp1956119"> </a><div class="pCellBody">
+<a  href="rv_config127.htm#wp1956615">Authorize all users to communicate on a network and service pair.</a>
+</div>
+</td>
+    <td><a name="wp1956125"> </a><div class="pCellBody">
+<a  href="rv_config127.htm#wp1956577">146</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1956130"> </a><div class="pCellBody">
+<a  href="rv_config128.htm#wp1956700"><code class="cCode">SecureDaemonProxy.authorizeSend()</code></a>
+</div>
+</td>
+    <td><a name="wp1956138"> </a><div class="pCellBody">
+<a  href="rv_config128.htm#wp1956728">Authorize all users to send to a subject.</a>
+</div>
+</td>
+    <td><a name="wp1956144"> </a><div class="pCellBody">
+<a  href="rv_config128.htm#wp1956700">148</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1956168"> </a><div class="pCellBody">
+<a  href="rv_config129.htm#wp1956876"><code class="cCode">SecureDaemonProxy.getDefaultNetworkAndService()</code></a>
+</div>
+</td>
+    <td><a name="wp1956172"> </a><div class="pCellBody">
+<a  href="rv_config129.htm#wp1956889">Get the default network and service pair of the secure daemon.</a>
+</div>
+</td>
+    <td><a name="wp1956178"> </a><div class="pCellBody">
+<a  href="rv_config129.htm#wp1956876">149</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1956183"> </a><div class="pCellBody">
+<a  href="rv_config130.htm#wp1956920"><code class="cCode">SecureDaemonProxy.getListen()</code></a>
+</div>
+</td>
+    <td><a name="wp1956187"> </a><div class="pCellBody">
+<a  href="rv_config130.htm#wp1956931">Get the subjects authorized for listening.</a>
+</div>
+</td>
+    <td><a name="wp1956193"> </a><div class="pCellBody">
+<a  href="rv_config130.htm#wp1956920">150</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1956198"> </a><div class="pCellBody">
+<a  href="rv_config131.htm#wp2021968"><code class="cCode">SecureDaemonProxy.getNetworksAndServices()</code></a>
+</div>
+</td>
+    <td><a name="wp1956202"> </a><div class="pCellBody">
+<a  href="rv_config131.htm#wp1956979">Get the authorized network and service pairs of the secure daemon.</a>
+</div>
+</td>
+    <td><a name="wp1956208"> </a><div class="pCellBody">
+<a  href="rv_config131.htm#wp2021968">151</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1956213"> </a><div class="pCellBody">
+<a  href="rv_config132.htm#wp1957027"><code class="cCode">SecureDaemonProxy.getSend()</code></a>
+</div>
+</td>
+    <td><a name="wp1956217"> </a><div class="pCellBody">
+<a  href="rv_config132.htm#wp1957038">Get the subjects authorized for sending.</a>
+</div>
+</td>
+    <td><a name="wp1956223"> </a><div class="pCellBody">
+<a  href="rv_config132.htm#wp1957027">152</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1956228"> </a><div class="pCellBody">
+<a  href="rv_config133.htm#wp1957073"><code class="cCode">SecureDaemonProxy.getUser()</code></a>
+</div>
+<a name="wp1956232"> </a><div class="pCellBody">
+<a  href="rv_config133.htm#wp1957077"><code class="cCode">SecureDaemonProxy.getUsers()</code></a>
+</div>
+</td>
+    <td><a name="wp1956236"> </a><div class="pCellBody">
+<a  href="rv_config133.htm#wp1957099">Get the authorized users of the secure daemon.</a>
+</div>
+</td>
+    <td><a name="wp1956242"> </a><div class="pCellBody">
+<a  href="rv_config133.htm#wp1957073">153</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1956247"> </a><div class="pCellBody">
+<a  href="rv_config134.htm#wp1957134"><code class="cCode">SecureDaemonProxy.removeListen()</code></a>
+</div>
+</td>
+    <td><a name="wp1956255"> </a><div class="pCellBody">
+<a  href="rv_config134.htm#wp1957162">Remove authorization to listen to a subject.</a>
+</div>
+</td>
+    <td><a name="wp1956261"> </a><div class="pCellBody">
+<a  href="rv_config134.htm#wp1957134">154</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1984341"> </a><div class="pCellBody">
+<a  href="rv_config135.htm#wp1988205"><code class="cCode">SecureDaemonProxy.removeListenAndSend()</code></a>
+</div>
+</td>
+    <td><a name="wp1984345"> </a><div class="pCellBody">
+<a  href="rv_config135.htm#wp1988230">Remove authorization to listen and send to a subject.</a>
+</div>
+</td>
+    <td><a name="wp1984351"> </a><div class="pCellBody">
+<a  href="rv_config135.htm#wp1988205">155</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1956266"> </a><div class="pCellBody">
+<a  href="rv_config136.htm#wp1957222"><code class="cCode">SecureDaemonProxy.removeNetworkAndService()</code></a>
+</div>
+<a name="wp1956270"> </a><div class="pCellBody">
+<a  href="rv_config136.htm#wp1957227"><code class="cCode">SecureDaemonProxy.removeNetworksAndServices()</code></a>
+</div>
+</td>
+    <td><a name="wp1956274"> </a><div class="pCellBody">
+<a  href="rv_config136.htm#wp1957274">Remove authorization to communicate on a network and service pair.</a>
+</div>
+</td>
+    <td><a name="wp1956280"> </a><div class="pCellBody">
+<a  href="rv_config136.htm#wp1957222">156</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1956285"> </a><div class="pCellBody">
+<a  href="rv_config137.htm#wp1957359"><code class="cCode">SecureDaemonProxy.removeSend()</code></a>
+</div>
+</td>
+    <td><a name="wp1956293"> </a><div class="pCellBody">
+<a  href="rv_config137.htm#wp1957387">Remove authorization to send to a subject.</a>
+</div>
+</td>
+    <td><a name="wp1956299"> </a><div class="pCellBody">
+<a  href="rv_config137.htm#wp1957359">158</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1956323"> </a><div class="pCellBody">
+<a  href="rv_config138.htm#wp1957535"><code class="cCode">SecureDaemonProxy.removeUser()</code></a>
+</div>
+<a name="wp1956327"> </a><div class="pCellBody">
+<a  href="rv_config138.htm#wp1957539"><code class="cCode">SecureDaemonProxy.removeUsers()</code></a>
+</div>
+</td>
+    <td><a name="wp1956331"> </a><div class="pCellBody">
+<a  href="rv_config138.htm#wp1957562">Remove a user of the secure daemon.</a>
+</div>
+</td>
+    <td><a name="wp1956337"> </a><div class="pCellBody">
+<a  href="rv_config138.htm#wp1957535">159</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1956342"> </a><div class="pCellBody">
+<a  href="rv_config139.htm#wp1957613"><code class="cCode">SecureDaemonProxy.setDefaultNetworkAndService()</code></a>
+</div>
+</td>
+    <td><a name="wp1956346"> </a><div class="pCellBody">
+<a  href="rv_config139.htm#wp1957628">Set the default network and service pair of the secure daemon.</a>
+</div>
+</td>
+    <td><a name="wp1956352"> </a><div class="pCellBody">
+<a  href="rv_config139.htm#wp1957613">160</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1956380"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1956359"> </a><p class="pBody">
+&#160;
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1956361"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1956366"> </a><p class="pBody">
+<a  href="rv_config13.htm#wp1949946"><code class="cCode">DaemonProxy.getComponentName()</code></a>
+</p>
+<a name="wp1956370"> </a><p class="pBody">
+<a  href="rv_config14.htm#wp1949960"><code class="cCode">DaemonProxy.getComponentInformation()</code></a>
+</p>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1956375"> </a><p class="pBody">
+<a  href="rv_config16.htm#wp1950057"><code class="cCode">XmlSerializable.printXml()</code></a>
+</p>
+<a name="wp1956379"> </a><p class="pBody">
+<a  href="rv_config17.htm#wp1950083"><code class="cCode">XmlSerializable.toXml()</code></a>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1956381"> </a><h4 class="pHeading3">
+Components
+</h4>
+<a name="wp1956382"> </a><p class="pBody">
+These components support this interface:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;rvsd<a name="wp1956383"> </a>
+&#160;rvsrd<a name="wp1956384"> </a>
+</pre></div>
+<a name="wp1956385"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1956386"> </a><p class="pBody">
+For information about the parameters that this interface can access, see these sections:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1956392"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('c', 'rv_adm57.htm#wp1139429');" onMouseOver="WWHShowPopup('c', 'rv_adm57.htm#wp1139429', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Secure Daemons (rvsd and rvsrd)</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em></li></div>
+
+<a name="wp1956399"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('c', 'rv_adm46.htm#wp1151056');" onMouseOver="WWHShowPopup('c', 'rv_adm46.htm#wp1151056', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Browser Administration Interface&#151;rvrd</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em></li></div>
+
+<a name="wp1956406"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('c', 'rv_adm66.htm#wp1142416');" onMouseOver="WWHShowPopup('c', 'rv_adm66.htm#wp1142416', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Browser Administration Interface&#151;rvsd and rvsrd</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em></li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

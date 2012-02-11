@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvcmTransport_SendRequest()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1086588"> </a><h2 class="pNewHTMLPage">
+tibrvcmTransport_SendRequest()
+</h2>
+<hr />
+<a name="wp1086589"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1086590"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a><a name="wp1086718"> </a>
+tibrvcmTransport_SendRequest(<a name="wp1086719"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref184.htm#wp1086288"><code class="cCode">tibrvcmTransport</code></a>&#160;&#160;&#160;&#160;cmTransport,<a name="wp1086728"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;message);<a name="wp1086729"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a>*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;reply,<a name="wp1086722"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128761"><code class="cCode">tibrv_f64</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;timeout);<a name="wp1086592"> </a>
+</pre></div>
+<a name="wp1086594"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1088555"> </a><p class="pBody">
+Send a labeled request message and wait for a reply.
+</p>
+<a name="wp1305230"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td  bgcolor="#CCE6FF" ><a name="wp1305240"> </a><div class="pMinorHead">
+Blocking can Stall Event Dispatch
+</div>
+<a name="wp1305249"> </a><p class="pBody">
+This call blocks all other activity on its program thread. If appropriate, programmers must ensure that other threads continue dispatching events on its queues.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1305229"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1103158"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1103163"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1103165"> </a><div class="pCellBody">
+<code class="cCode">cmTransport</code>
+</div>
+</td>
+    <td><a name="wp1103167"> </a><div class="pCellBody">
+Send a message using this certified delivery transport.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1103169"> </a><div class="pCellBody">
+<code class="cCode">message</code>
+</div>
+</td>
+    <td><a name="wp1108300"> </a><div class="pCellBody">
+Send this request message.
+</div>
+<a name="wp1103171"> </a><div class="pCellBody">
+Wildcard subjects are illegal.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1103173"> </a><div class="pCellBody">
+<code class="cCode">reply</code>
+</div>
+</td>
+    <td><a name="wp1103175"> </a><div class="pCellBody">
+The program supplies a location, and the function stores the inbound reply in that location.
+</div>
+<a name="wp1103176"> </a><div class="pCellBody">
+The program need not create the reply message, nor allocate space for it. However, the program <em class="cEmphasis">must destroy</em> the reply message, even though it did not create it.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1103178"> </a><div class="pCellBody">
+<code class="cCode">timeout</code>
+</div>
+</td>
+    <td><a name="wp1103180"> </a><div class="pCellBody">
+Maximum time (in seconds) that this call can block while waiting for a reply.
+</div>
+<a name="wp1148454"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_WAIT_FOREVER</code> (-1) indicates no timeout (wait without limit for a reply).
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1088556"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1131651"> </a><p class="pBody">
+Programs that receive and process the request message cannot determine that the sender has blocked until a reply arrives.
+</p>
+<a name="wp1103147"> </a><p class="pBody">
+The sender and receiver must already have a certified delivery agreement, otherwise the request is not certified.
+</p>
+<a name="wp1131627"> </a><p class="pBody">
+The request message must have a valid destination subject; see <a  href="rv_c_ref63.htm#wp1005928"><code class="cCode">tibrvMsg_SetSendSubject()</code> </a>.
+</p>
+<a name="wp1103148"> </a><p class="pBody">
+A certified request does not necessarily imply a certified reply; the replying program determines the type of reply message that it sends.
+</p>
+<a name="wp1088557"> </a><h4 class="pHeading3">
+Operation
+</h4>
+<a name="wp1103152"> </a><p class="pBody">
+This function operates in several synchronous steps:
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1088558"> </a><div class="pSmartList1"><li value="1">Create a <a  href="rv_c_ref175.htm#wp1101352"><code class="cCode">tibrvcmEvent</code></a> that listens for messages on the reply subject of <code class="cCode">message</code>.</li></div>
+
+<a name="wp1088559"> </a><div class="pSmartList1"><li value="2">Label and send the outbound <code class="cCode">message</code>.</li></div>
+
+<a name="wp1131640"> </a><div class="pSmartList1"><li value="3">Block until the listener receives a reply; if the time limit expires before a reply arrives, return the status code <a  href="rv_c_ref157.htm#wp1079394"><code class="cCode">TIBRV_TIMEOUT</code></a>. (The reply event uses a private queue that is not accessible to the program.)</li></div>
+
+<a name="wp1088564"> </a><div class="pSmartList1"><li value="4">Store the reply in the location specified by the <code class="cCode">reply</code> parameter.</li></div>
+
+<a name="wp1088565"> </a><div class="pSmartList1"><li value="5">Return.</li></div>
+
+</ol></div>
+
+<a name="wp1086618"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1086708"> </a><p class="pBody">
+<a  href="rv_c_ref203.htm#wp1086494"><code class="cCode">tibrvcmTransport_Send()</code> </a>
+</p>
+<a name="wp1086712"> </a><p class="pBody">
+<a  href="rv_c_ref204.htm#wp1086548"><code class="cCode">tibrvcmTransport_SendReply()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

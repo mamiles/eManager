@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Adding Neighbor Interfaces</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1066666"> </a><h2 class="pNewHTMLPage">
+Adding Neighbor Interfaces
+</h2>
+<hr />
+<a name="wp1066676"> </a><p class="pBody">
+Routing daemons can declare neighbors in four ways:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1066677"> </a><div class="pSmartList1"><li ><a  href="rv_adm36.htm#wp1066900"><em class="cEmphasis">Active Neighbor</em></a></li></div>
+
+<a name="wp1066681"> </a><div class="pSmartList1"><li ><a  href="rv_adm36.htm#wp1044405"><em class="cEmphasis">Passive Neighbor</em></a></li></div>
+
+<a name="wp1066685"> </a><div class="pSmartList1"><li ><a  href="rv_adm36.htm#wp1066007"><em class="cEmphasis">Accept Any as Neighbor</em></a></li></div>
+
+<a name="wp1066689"> </a><div class="pSmartList1"><li ><a  href="rv_adm36.htm#wp1066854"><em class="cEmphasis">Seek Neighbor with Any Name</em></a></li></div>
+
+</ul></div>
+
+<a name="wp1229654"> </a><p class="pBody">
+To specify a potential neighbor connection, see <a  href="rv_adm55.htm#wp1219594">Add New Neighbor Interface</a>.
+</p>
+<a name="wp1066900"> </a><h3 class="pHeading2">
+Active Neighbor
+</h3>
+<a name="wp1066902"> </a><p class="pBody">
+A routing daemon can declare another routing daemon as its neighbor, and actively initiate a connection to it. If the connection is broken, the routing daemon actively attempts to restore it.
+</p>
+<a name="wp1066533"> </a><p class="pBody">
+Consider an example situation in which a routing daemons link several networks within an enterprise. Each routing daemon within the enterprise declares every other routing daemon as an active neighbor.
+</p>
+<a name="wp1066786"> </a><p class="pBody">
+To specify an active neighbor, you must supply this information:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1066790"> </a><div class="pSmartList1"><li ><a  href="rv_adm35.htm#wp1229590">Remote Router Name</a></li></div>
+
+<a name="wp1068252"> </a><div class="pSmartList1"><li ><a  href="rv_adm35.htm#wp1229427">Remote Host</a></li></div>
+
+<a name="wp1066794"> </a><div class="pSmartList1"><li ><a  href="rv_adm35.htm#wp1229430">Remote Connect Port</a></li></div>
+
+<a name="wp1066821"> </a><div class="pSmartList1"><li ><a  href="rv_adm35.htm#wp1044394">Local Connect Port</a></li></div>
+
+</ul></div>
+
+<a name="wp1044405"> </a><h3 class="pHeading2">
+Passive Neighbor
+</h3>
+<a name="wp1044406"> </a><p class="pBody">
+A routing daemon can declare that it passively accepts connections from its neighbor, but does not actively initiate the connection itself.
+</p>
+<a name="wp1044727"> </a><p class="pBody">
+Consider these example situations:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1048802"> </a><div class="pSmartList1"><li >Unidirectional firewall.</li></div>
+
+<a name="wp1048804"> </a><p class="pBodyRelative">
+Routing daemon <code class="cCode">abc.homeNet.myDom.com</code> is located behind a firewall that allows connection requests in only one direction&#151;outward. Active connection attempts by its neighbor, <code class="cCode">mno.lyonNet.myDom.com</code>, would invariably fail, marking each attempt as a potential security violation at the firewall. When <code class="cCode">mno.lyonNet.myDom.com</code> declares <code class="cCode">abc.homeNet.myDom.com</code> as a neighbor, it can specify passive connect, reflecting its inability to initiate a connection to <code class="cCode">abc.homeNet.myDom.com</code>. To become <em class="cEmphasis">actual</em> neighbors, <code class="cCode">abc.homeNet.myDom.com</code> must initiate the connection to <code class="cCode">mno.lyonNet.myDom.com</code>.
+</p>
+<a name="wp1044762"> </a><div class="pSmartList1"><li >Modem restriction.</li></div>
+
+<a name="wp1044731"> </a><p class="pBodyRelative">
+Routing daemon <code class="cCode">fgh.oshkoshNet.myDom.com</code> is located on a host that depends on a modem for network access; the modem settings permit <code class="cCode">fgh.oshkoshNet.myDom.com</code> to dial out, but the modem does not accept incoming calls. Active connection attempts by its neighbor, <code class="cCode">klm.chicagoNet.myDom.com</code>, would invariably fail, while wasting resources. When <code class="cCode">klm.chicagoNet.myDom.com</code> declares <code class="cCode">fgh.oshkoshNet.myDom.com</code> as a neighbor, it can specify passive connect, reflecting its inability to initiate a connection to <code class="cCode">fgh.oshkoshNet.myDom.com</code>. To become <em class="cEmphasis">actual</em> neighbors, <code class="cCode">fgh.oshkoshNet.myDom.com</code> must initiate the connection to <code class="cCode">klm.chicagoNet.myDom.com</code>.
+</p>
+</ul></div>
+
+<a name="wp1066594"> </a><h4 class="pHeading3">
+Specifying Passive Neighbors
+</h4>
+<a name="wp1066769"> </a><p class="pBody">
+To specify a passive neighbor, you must supply this information:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1066770"> </a><div class="pSmartList1"><li ><a  href="rv_adm35.htm#wp1229590">Remote Router Name</a></li></div>
+
+<a name="wp1066778"> </a><div class="pSmartList1"><li ><a  href="rv_adm35.htm#wp1044394">Local Connect Port</a></li></div>
+
+</ul></div>
+
+<a name="wp1066007"> </a><h3 class="pHeading2">
+Accept Any as Neighbor
+</h3>
+<a name="wp1066008"> </a><p class="pBody">
+Instead of declaring a specific set of neighbors, a routing daemon can declare that it accepts neighbor connections from any routing daemon. 
+</p>
+<a name="wp1066009"> </a><p class="pBody">
+This configuration is especially useful for hub topologies, dial-in connections, and any situation in which a routing daemon might operate with a large number of potential neighbors.
+</p>
+<a name="wp1066010"> </a><p class="pBody">
+Specify the local connect port where this routing daemon accepts TCP connections from any (remote) routing daemon.
+</p>
+<a name="wp1066011"> </a><p class="pBody">
+A routing daemon can simultaneously specify individual neighbors <em class="cEmphasis">and </em>declare that it accepts any other routing daemons as neighbors.
+</p>
+<a name="wp1066854"> </a><h3 class="pHeading2">
+Seek Neighbor with Any Name
+</h3>
+<a name="wp1066855"> </a><p class="pBody">
+Instead of declaring a neighbor with a specific name, a routing daemon can seek out any available member from a set of routing daemons, without regard to its name.
+</p>
+<a name="wp1079239"> </a><p class="pBody">
+This configuration is especially useful for load balancing among a set of potential neighbors with identical routes.
+</p>
+<a name="wp1079240"> </a><p class="pBody">
+Specify the potential neighbors with two pieces of information:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1079245"> </a><div class="pSmartList1"><li ><a  href="rv_adm35.htm#wp1229427">Remote Host</a>, which must be either a <em class="cEmphasis">DNS</em> hostname that can resolve to more than one IP address, or a <em class="cEmphasis">virtual</em> IP address.</li></div>
+
+<a name="wp1066868"> </a><div class="pSmartList1"><li ><a  href="rv_adm35.htm#wp1229430">Remote Connect Port</a>&#151;all potential neighbors must listen for connection requests on this port).</li></div>
+
+</ul></div>
+
+<a name="wp1066131"> </a><p class="pBody">
+Each potential neighbor must accept connections from the seeking routing daemon, without actively attempting to connect to it. The potential neighbors can specify this in either of two ways:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1066064"> </a><div class="pSmartList1"><li >Accept connections from any neighbor, including the seeking routing daemon (see <a  href="rv_adm36.htm#wp1066007">Accept Any as Neighbor</a>).</li></div>
+
+<a name="wp1066077"> </a><div class="pSmartList1"><li >Passively accept connections specifically from the seeking routing daemon (see <a  href="rv_adm36.htm#wp1044405">Passive Neighbor</a>).</li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

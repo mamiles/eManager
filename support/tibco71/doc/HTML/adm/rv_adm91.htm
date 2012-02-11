@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Single Mode and Automatic Mode</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;10	 Performance Assessment (rvperf)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1068880"> </a><h2 class="pNewHTMLPage">
+Single Mode and Automatic Mode
+</h2>
+<hr />
+<a name="wp1068881"> </a><p class="pBody">
+Two modes characterize the operation of <code class="cCode">rvperfm</code>:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1068882"> </a><div class="pSmartList1"><li >In <b class="cBold">single mode</b>, <code class="cCode">rvperfm</code> sends a single run of messages, governed by its command parameters. At the end of the run, it outputs a report and exits.</li></div>
+
+<a name="wp1068883"> </a><p class="pBodyRelative">
+You can use single mode as a modeling tool to answer questions about network behavior under sustained load conditions. For example:
+</p>
+<div class="pSmartList2"><ul>
+<a name="wp1068884"> </a><div class="pSmartList2"><li >What happens to network performance when an application sends a batch of ten thousand messages without pausing?</li></div>
+<a name="wp1068885"> </a><div class="pSmartList2"><li >Which computers in my network can send messages the fastest? Which can receive fastest?</li></div>
+<a name="wp1068886"> </a><div class="pSmartList2"><li >How does introducing a router affect network throughput under normal network load conditions? How do peak loads affect network throughput?</li></div>
+</ul></div>
+
+<a name="wp1068887"> </a><div class="pSmartList1"><li >In <b class="cBold">automatic mode</b>, <code class="cCode">rvperfm</code> sends several runs of messages, modifying the parameters for each run until it finds the batch size and interval parameters that yield maximum sustainable network throughput. At the end of each run, it outputs a report. Then it adjusts the parameters and starts the next run.</li></div>
+
+<a name="wp1068888"> </a><p class="pBodyRelative">
+The overall effect is that <code class="cCode">rvperfm</code> tunes its send rate to match the maximum receive rate of the slowest <code class="cCode">rvperfs</code> process. The last report before the process exits displays the parameters that yield the maximum throughput. (In the <em class="cEmphasis">absence</em> of <code class="cCode">rvperfs</code> processes, <code class="cCode">rvperfm</code> determines the maximum send rate that the network can support. Note that the parameter tuning algorithm is the same, only the significance of the result differs.)
+</p>
+<a name="wp1068889"> </a><p class="pBodyRelative">
+You can use the results of testing in automatic mode to tune applications for maximum performance in a specific network configuration.
+</p>
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

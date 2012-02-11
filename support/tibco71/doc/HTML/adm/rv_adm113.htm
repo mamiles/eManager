@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Filtering</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;11	 Protocol Monitor (rvtrace)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1091345"> </a><h2 class="pNewHTMLPage">
+Filtering
+</h2>
+<hr />
+<a name="wp1091346"> </a><p class="pBody">
+You can narrow the set of packets that <code class="cCode">rvtrace</code> processes by supplying either the <code class="cCode">-filter</code> parameter, or a combination of the <code class="cCode">-src</code>, <code class="cCode">-dst</code>, <code class="cCode">-addr</code>, and <code class="cCode">-port</code> parameters. Filter expressions specify the set of packets to process.
+</p>
+<a name="wp1091347"> </a><p class="pBody">
+<code class="cCode">rvtrace</code> uses the <code class="cCode">pcap</code> facility to capture and filter packets. The <code class="cCode">tcpdump</code> utility also uses <code class="cCode">pcap</code>, so the syntax and semantics for <code class="cCode">rvtrace</code> and <code class="cCode">tcpdump</code> filter expressions are identical. <a  href="rv_adm113.htm#wp1091371">Table&#160;8</a> summarizes the subset of filter expressions that are relevant to <code class="cCode">rvtrace</code>; for additional options, see documentation for <code class="cCode">tcpdump</code>. (Disclaimer: <code class="cCode">pcap</code> and <code class="cCode">tcpdump</code> are not TIBCO products; we do not sell, support or document them.)
+</p>
+<a name="wp1091354"> </a><p class="pBody">
+Each row of <a  href="rv_adm113.htm#wp1091371">Table&#160;8</a> constitutes an <code class="cCodeItalic">&lt;expr&gt;, </code>and can be used in place of the syntax marker <code class="cCodeItalic">&lt;expr&gt;</code> elsewhere in <a  href="rv_adm113.htm#wp1091371">Table&#160;8</a>, and in the parameter table for <a  href="rv_adm112.htm#wp1091125"><code class="cCode">rvtrace</code></a>.
+</p>
+<a name="wp1091364"> </a><p class="pBody">
+When specifying a filter expression to an <code class="cCode">rvtrace</code> parameter, enclose the expression in quotation marks (&quot;).</p><div align="left">
+<table border="1">
+  <caption><a name="wp1091371"> </a><div class="pTableTitle">
+Table&#160;8   Filter Expressions (Sheet 1 of 2)
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1091375"> </a><div class="pCellHeading">
+Element
+</div>
+</th>
+    <th><a name="wp1091377"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1091380"> </a><div class="pMinorHead">
+Host Expressions
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091384"> </a><div class="pCellBody">
+<code class="cCode">host </code><code class="cCodeItalic">&lt;host&gt;</code>
+</div>
+</td>
+    <td><a name="wp1091386"> </a><div class="pCellBody">
+Process a packet if either the IP source or destination of the packet is <code class="cCodeItalic">&lt;host&gt;</code>. Specify <code class="cCodeItalic">&lt;host&gt;</code> as a name or an IP address.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091388"> </a><div class="pCellBody">
+<code class="cCode">dst host </code><code class="cCodeItalic">&lt;host&gt;</code>
+</div>
+</td>
+    <td><a name="wp1091390"> </a><div class="pCellBody">
+Process a packet if its IP destination is <code class="cCodeItalic">&lt;host&gt;</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091392"> </a><div class="pCellBody">
+<code class="cCode">src host </code><code class="cCodeItalic">&lt;host&gt;</code>
+</div>
+</td>
+    <td><a name="wp1091394"> </a><div class="pCellBody">
+Process a packet if its IP source is <code class="cCodeItalic">&lt;host&gt;</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1091397"> </a><div class="pMinorHead">
+Network Expressions
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091401"> </a><div class="pCellBody">
+<code class="cCode">net </code><code class="cCodeItalic">&lt;net&gt;</code>
+</div>
+</td>
+    <td><a name="wp1091403"> </a><div class="pCellBody">
+Process a packet if either the IP source or destination of the packet is <code class="cCodeItalic">&lt;net&gt;</code>. Specify <code class="cCodeItalic">&lt;net&gt;</code> as a name or an IP network number.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091405"> </a><div class="pCellBody">
+<code class="cCode">dst net </code><code class="cCodeItalic">&lt;net&gt;</code>
+</div>
+</td>
+    <td><a name="wp1091407"> </a><div class="pCellBody">
+Process a packet if its IP destination is <code class="cCodeItalic">&lt;net&gt;</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091409"> </a><div class="pCellBody">
+<code class="cCode">src net </code><code class="cCodeItalic">&lt;net&gt;</code>
+</div>
+</td>
+    <td><a name="wp1091411"> </a><div class="pCellBody">
+Process a packet if its IP source is <code class="cCodeItalic">&lt;net&gt;</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1091414"> </a><div class="pMinorHead">
+Port or Service Expressions
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091418"> </a><div class="pCellBody">
+<code class="cCode">port </code><code class="cCodeItalic">&lt;port&gt;</code>
+</div>
+</td>
+    <td><a name="wp1091420"> </a><div class="pCellBody">
+Process a packet if either the IP source or destination port of the packet is <code class="cCodeItalic">&lt;port&gt;</code>. Specify <code class="cCodeItalic">&lt;port&gt;</code> as a service name or a UDP port number.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091422"> </a><div class="pCellBody">
+<code class="cCode">dst port </code><code class="cCodeItalic">&lt;port&gt;</code>
+</div>
+</td>
+    <td><a name="wp1091424"> </a><div class="pCellBody">
+Process a packet if its IP destination port is <code class="cCodeItalic">&lt;port&gt;</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091426"> </a><div class="pCellBody">
+<code class="cCode">src port </code><code class="cCodeItalic">&lt;port&gt;</code>
+</div>
+</td>
+    <td><a name="wp1091428"> </a><div class="pCellBody">
+Process a packet if its IP source port is <code class="cCodeItalic">&lt;port&gt;</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1091431"> </a><div class="pMinorHead">
+Broadcast or Multicast Expressions
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091435"> </a><div class="pCellBody">
+<code class="cCode">ip broadcast</code>
+</div>
+<a name="wp1091436"> </a><div class="pCellBody">
+<code class="cCode">ip broadcast </code><code class="cCodeItalic">&lt;expr&gt;</code>
+</div>
+</td>
+    <td><a name="wp1091438"> </a><div class="pCellBody">
+Process a packet if it is an IP broadcast packet.
+</div>
+<a name="wp1091439"> </a><div class="pCellBody">
+If <code class="cCodeItalic">&lt;expr&gt;</code> is present, then process the packet only if it also meets the criteria of <code class="cCodeItalic">&lt;expr&gt;</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091441"> </a><div class="pCellBody">
+<code class="cCode">ip multicast</code>
+</div>
+<a name="wp1091442"> </a><div class="pCellBody">
+<code class="cCode">ip multicast </code><code class="cCodeItalic">&lt;expr&gt;</code>
+</div>
+</td>
+    <td><a name="wp1091444"> </a><div class="pCellBody">
+Process a packet if it is an IP multicast packet.
+</div>
+<a name="wp1091445"> </a><div class="pCellBody">
+If <code class="cCodeItalic">&lt;expr&gt;</code> is present, then process the packet only if it also meets the criteria of <code class="cCodeItalic">&lt;expr&gt;</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1091448"> </a><div class="pMinorHead">
+Protocol Expressions
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091452"> </a><div class="pCellBody">
+<code class="cCode">udp</code>
+</div>
+<a name="wp1091453"> </a><div class="pCellBody">
+<code class="cCode">udp </code><code class="cCodeItalic">&lt;expr&gt;</code>
+</div>
+</td>
+    <td><a name="wp1091455"> </a><div class="pCellBody">
+Process a packet if it is an IP packet with protocol type <code class="cCode">udp</code>. (All Rendezvous packets are UDP packets.)
+</div>
+<a name="wp1091459"> </a><div class="pCellBody">
+If <code class="cCodeItalic">&lt;expr&gt;</code> is present, then process the packet only if it also meets the criteria of <code class="cCodeItalic">&lt;expr&gt;</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091461"> </a><div class="pCellBody">
+<code class="cCode">ip</code>
+</div>
+<a name="wp1091462"> </a><div class="pCellBody">
+<code class="cCode">ip </code><code class="cCodeItalic">&lt;expr&gt;</code>
+</div>
+</td>
+    <td><a name="wp1091464"> </a><div class="pCellBody">
+Process a packet if it is an IP packet.
+</div>
+<a name="wp1091465"> </a><div class="pCellBody">
+If <code class="cCodeItalic">&lt;expr&gt;</code> is present, then process the packet only if it also meets the criteria of <code class="cCodeItalic">&lt;expr&gt;</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1091481"> </a><div class="pMinorHead">
+Boolean Operators
+</div>
+<a name="wp1091482"> </a><div class="pCellBody">
+Use parentheses to group boolean expressions; use appropriate escape characters to override shell-specific semantics of parentheses.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091486"> </a><div class="pCellBody">
+<code class="cCodeItalic">&lt;expr1&gt;</code><code class="cCode"> and </code><code class="cCodeItalic">&lt;expr2&gt;</code>
+</div>
+<a name="wp1091487"> </a><div class="pCellBody">
+<code class="cCodeItalic">&lt;expr1&gt;</code><code class="cCode"> </code><code class="cCodeItalic">&lt;expr2&gt;</code>
+</div>
+</td>
+    <td><a name="wp1091489"> </a><div class="pCellBody">
+Process a packet if it meets both criteria.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091491"> </a><div class="pCellBody">
+<code class="cCodeItalic">&lt;expr1&gt;</code><code class="cCode"> or </code><code class="cCodeItalic">&lt;expr2&gt;</code>
+</div>
+</td>
+    <td><a name="wp1091493"> </a><div class="pCellBody">
+Process a packet if it meets either criterion.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091495"> </a><div class="pCellBody">
+<code class="cCode">not </code><code class="cCodeItalic">&lt;expr&gt;</code>
+</div>
+</td>
+    <td><a name="wp1091497"> </a><div class="pCellBody">
+Process a packet if it does not meet the criterion.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

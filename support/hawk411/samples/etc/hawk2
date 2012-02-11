@@ -1,0 +1,162 @@
+#!/bin/sh
+# $Revision: 20 $
+# For all Unix platforms
+# Modify the environment variables defined below HAWK_ROOT, RV_ROOT and
+# LD_LIBRARY_PATH (SHLIB_PATH on HP-UX) to suit your site
+#
+# #########################################################################
+# Sample boot script for Unix platforms
+# This sample script takes one argument: "start" or "stop".
+#
+# If so installed, then TIBCO Hawk will be
+# automatically started whenever the system boots to level 2 (3 on Linux)
+# (multi-user) state.
+#
+# If you want TIBCO Hawk agent service to start during system startup do
+# the following :
+#
+# #########################################################################
+# SOLARIS
+# Modify $HAWK_ROOT/samples/etc/hawk2 file as described below, then
+# cp $HAWK_ROOT/samples/etc/hawk2 /etc/init.d/hawk2
+# ln -s /etc/init.d/hawk2 /etc/rc2.d/S99hawk
+#
+# #########################################################################
+# AIX
+# Modify $HAWK_ROOT/samples/etc/hawk2 file as described below, then
+# Add an entry to the /etc/inittab file as follows :
+# hawk:2:once:<HAWK_ROOT>/samples/etc/hawk2 -start >/dev/console 2>&1
+#
+# #########################################################################
+# HP-UX
+# Modify $HAWK_ROOT/samples/etc/hawk2 file as described below, then
+# cp $HAWK_ROOT/samples/etc/hawk2 /sbin/init.d/hawk2
+# ln -s /sbin/init.d/hawk2 /sbin/rc2.d/Sxxxhawk
+# [where "xxx" is an integer, dependent upon your system startup parameters]
+#
+# #########################################################################
+# Digital Unix 4.0D
+# Modify $HAWK_ROOT/samples/etc/hawk2 file as described below, then
+# cp $HAWK_ROOT/samples/etc/hawk2 /sbin/init.d/hawk2
+# ln -s /sbin/init.d/hawk2 /sbin/rc2.d/Sxxhawk
+#
+# #########################################################################
+# Linux
+# Modify $HAWK_ROOT/samples/etc/hawk2 file as described below, then
+# cp $HAWK_ROOT/samples/etc/hawk2 /etc/rc.d/init.d/hawk2
+# ln -s /etc/rc.d/init.d/hawk2 /etc/rc.d/rc3.d/S98hawk
+#
+# #########################################################################
+
+#        Copyright 2000 TIBCO Software Inc. All rights reserved.
+
+# Modify the lines below to set the correct HAWK_ROOT, RV_ROOT and JRE_ROOT
+#
+HAWK_ROOT=/opt/tibco/hawk
+export HAWK_ROOT
+
+RV_ROOT=/usr/rv
+export RV_ROOT
+
+JRE_ROOT=/opt/java/jre/jre
+export JRE_ROOT
+#
+
+CLASSPATH=${RV_ROOT}/java/rvjpro.jar:${JRE_ROOT}/lib/rt.jar
+export CLASSPATH
+
+#
+PATH=${RV_ROOT}/bin:${JRE_ROOT}/bin:/usr/sbin:/usr/bin:${PATH}
+export PATH
+NOHUP="nohup"
+
+OS_TYPE=`uname -a | awk '{print $1}'`
+
+case $OS_TYPE in
+
+'SunOS')
+          ulimit -n 256
+          ;;
+
+'HP-UX')
+          SHLIB_PATH=$RV_ROOT/lib
+          export SHLIB_PATH
+          ;;
+
+'AIX')
+          LD_LIBRARY_PATH=$RV_ROOT/lib
+          export LD_LIBRARY_PATH
+          LIBPATH=$RV_ROOT/lib
+          export LIBPATH
+          ;;
+ *)
+          LD_LIBRARY_PATH=$RV_ROOT/lib
+          export LD_LIBRARY_PATH
+          ;;
+
+esac
+
+HAWK_TWO=Y
+export HAWK_TWO
+
+case "$1" in
+'start_msg') echo "Starting TIBCO Hawk Components" ;;
+
+'start')
+	echo "TIBCO Hawk starting."
+        if [ -x $HAWK_ROOT/bin/tibhawkhma ]; then
+           if [ -z "$NOHUP" ]; then
+               $HAWK_ROOT/bin/starthma
+           else
+               $NOHUP $HAWK_ROOT/bin/starthma &
+           fi
+        fi
+        if [ -x $HAWK_ROOT/bin/startagent ]; then
+           $HAWK_ROOT/bin/startagent
+        fi
+	;;
+'stop_msg') echo "Stopping TIBCO Hawk Components" ;;
+
+'stop')
+	echo "TIBCO Hawk stopping."
+
+#       WARNING: PS COMMAND IN UNIX TRUNCATES OUTPUT IF IT EXCEEDS
+#                80 COLUMNS IN WIDTH, THEREFORE, IF THE PATH POINTING
+#                TO THE JRE/JAVA IS TOO LONG THEN THE GREP FOR
+#                "-DTIBHawk=ag" BELOW MAY FAIL.
+
+# killing tibhawkhma and making sure that we are able to
+# grep only tibhawkhma process not some process where tibhawkhma is embedded name.
+
+case $OS_TYPE in
+
+  'Linux')
+         pid=`/bin/ps ac | /bin/grep " tibhawkh " | awk '{print $1}'`
+         ;;
+
+  *)
+         pid=`ps -ae | grep "tibhawkh"|grep -v grep | awk '{print $1}'`
+          ;;
+esac
+
+[ "$pid" != "" ] && kill $pid
+
+# killing jre with TIBHawk=agent parameter. This makes sure that
+# we are not killing any other jre.
+
+case $OS_TYPE in
+  'Linux')
+      pid=`/bin/ps awxf | /bin/grep TIBHawk=ag|/bin/fgrep -v '\\_'| awk '{print $1}'`
+	;;
+  *)
+      myproc=" \-DTIBHawk=ag"
+      pid=`/usr/bin/ps -ef | grep "$myproc" | grep -v "grep" | awk '{print $2}'`
+	;;
+esac
+
+       [ "$pid" != "" ] && kill $pid
+	;;
+*)
+	echo "usage $0 [start|stop]" 1>&2
+	;;
+esac

@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>Rendezvous Daemon and Agent</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;1	 Concepts";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1103292"> </a><h2 class="pNewHTMLPage">
+Rendezvous Daemon and Agent
+</h2>
+<hr />
+<a name="wp1104058"> </a><p class="pBody">
+Rendezvous Java programs can connect to the network in either of two ways:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1104062"> </a><div class="pSmartList1"><li >An <em class="cEmphasis">rvd transport</em> connects to a Rendezvous daemon process (<code class="cCode">rvd</code>).</li></div>
+
+<a name="wp1104066"> </a><div class="pSmartList1"><li >An <em class="cEmphasis">rva transport</em> connects to a Rendezvous agent process (<code class="cCode">rva</code>), which in turn connects to a Rendezvous daemon process.</li></div>
+
+</ul></div>
+
+<a name="wp1104070"> </a><p class="pBody">
+This section describes the two kinds of transports, the processes to which they connect, and the reasons for choosing each one.
+</p>
+<a name="wp1103302"> </a><h3 class="pHeading2">
+Java Applications and Applets
+</h3>
+<a name="wp1103293"> </a><p class="pBody">
+A Java program runs either as an independent application or as an applet.
+</p>
+<a name="wp1103294"> </a><p class="pBody">
+An <em class="cEmphasis">independent application</em> runs as an ordinary process. It can access the usual resources, such as file I/O and network connections.
+</p>
+<a name="wp1103295"> </a><p class="pBody">
+An <em class="cEmphasis">applet</em> runs within a browser or an applet-viewer process. Since browsers download untrusted applets across the Internet, they enforce security restrictions on those applets. These restrictions protect the computer and its local network from tampering by unauthorized applets.
+</p>
+<a name="wp1103325"> </a><h3 class="pHeading2">
+Security versus Efficiency
+</h3>
+<a name="wp1103329"> </a><p class="pBody">
+Rendezvous daemon (<code class="cCode">rvd</code>) processes service all network communications for Rendezvous programs. Every Rendezvous program (in any supported language) uses a Rendezvous daemon. When a program sends a message, <code class="cCode">rvd</code> transmits it across the network. When a program listens to a subject, <code class="cCode">rvd</code> receives messages from the network, and presents messages with matching subject names to the listening program. 
+</p>
+<a name="wp1103342"> </a><p class="pBody">
+Within Rendezvous programs, each network transport object represents a connection to an <code class="cCode">rvd</code> process. Because <code class="cCode">rvd</code> is an essential link in Rendezvous communications, if the transport cannot connect to an <code class="cCode">rvd</code> process that is already running, it automatically starts one.
+</p>
+<a name="wp1115140"> </a><p class="pBody">
+However, Java applets present a security concern for <code class="cCode">rvd</code>. The Rendezvous agent (<code class="cCode">rva</code>) acts as a secure gateway between <code class="cCode">rvd</code> on a network, and untrusted remote Java applets. Instead of connecting directly to <code class="cCode">rvd</code>, applets must connect to an <code class="cCode">rva</code> process, which in turn connects to <code class="cCode">rvd</code>. As its name implies, <code class="cCode">rva</code> acts as the applet&#8217;s <em class="cEmphasis">agent</em> for all interactions with <code class="cCode">rvd</code>.
+</p>
+<a name="wp1103353"> </a><p class="pBody">
+<a  href="rv_java_ref7.htm#wp1131594">Figure&#160;2</a> depicts <code class="cCode">rva</code> (center) in this intermediary role between Java applets and <code class="cCode">rvd</code>. On the left side of <a  href="rv_java_ref7.htm#wp1131594">Figure&#160;2</a>, a user downloads a Java applet from a remote server; the applet connects back to that home server to gain access to the home network, so the applet can exchange data with programs on that network.
+</p>
+<a name="wp1103357"> </a><p class="pBody">
+Remote Java applets cannot spawn processes on the home network. Instead of spawning <code class="cCode">rvd</code> on the home network, they connect to <code class="cCode">rva</code>&#151;which must already be running before any applet attempts to connect. Network administrators retain complete control over <code class="cCode">rva</code>, along with its use of LAN, file and computational resources on the home network.
+</p>
+<a name="wp1103361"> </a><p class="pBody">
+The Rendezvous agent also protects <code class="cCode">rvd</code> from inappropriate requests; <code class="cCode">rva</code> checks and filters all requests from Java applets, so <code class="cCode">rvd</code> receives only well-formed, legitimate requests.
+</p>
+<a name="wp1103365"> </a><p class="pBody">
+Java applets using <code class="cCode">rva</code> do not require Rendezvous shared libraries (JNI), so they can run in browsers on computers where Rendezvous software is not installed.
+</p>
+<a name="wp1103369"> </a><p class="pBody">
+However, <code class="cCode">rva</code> does not support certified message delivery, distributed queue or fault tolerance features. Java programs that use these features must connect directly to <code class="cCode">rvd</code>; these features are not available to applets that connect from remote networks through <code class="cCode">rva</code>.
+</p>
+<a name="wp1103370"> </a><p class="pBody">
+For connections to the local network, a direct connection to <code class="cCode">rvd</code> is more efficient than an indirect connection through <code class="cCode">rva</code> to <code class="cCode">rvd</code>. In all situations we recommend <code class="cCode">rvd</code> transports in preference to <code class="cCode">rva</code> transports&#151;except for applets connecting to a remote home network, which must use <code class="cCode">rva</code> transports.
+</p>
+<a name="wp1103374"> </a><p class="pBody">
+For information about transport objects, see <a  href="rv_java_ref130.htm#wp1038525"><code class="cCode">TibrvTransport</code> </a>.
+</p>
+<a name="wp1103380"> </a><p class="pBody">
+For more information about <code class="cCode">rvd</code>, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm19.htm#wp1020040');" onMouseOver="WWHShowPopup('c', 'rv_adm19.htm#wp1020040', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Rendezvous Daemon (rvd)</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.
+</p>
+<a name="wp1103384"> </a><p class="pBody">
+For more information about <code class="cCode">rva</code>, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm76.htm#wp1054163');" onMouseOver="WWHShowPopup('c', 'rv_adm76.htm#wp1054163', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Rendezvous Agent (rva)</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.
+</p>
+<a name="wp1103386"> </a><h3 class="pHeading2">
+Starting rvd Automatically
+</h3>
+<a name="wp1103390"> </a><p class="pBody">
+<code class="cCode">rvd</code> transports attempt to connect to an <code class="cCode">rvd</code> process&#151;if such a process is already running. If an appropriate process is <em class="cEmphasis">not</em> already running, the <code class="cCode">rvd</code> transport starts one on its local host computer, and then connects to it.
+</p>
+<a name="wp1103391"> </a><p class="pBody">
+However, transports cannot automatically start processes on remote computers. If the parameters of an <code class="cCode">rvd</code> transport specify a remote daemon, then the daemon must already be running before the transport attempts to connect.
+</p>
+<a name="wp1103396"> </a><h3 class="pHeading2">
+Starting rva
+</h3>
+<a name="wp1103397"> </a><p class="pBody">
+Java programs can never start <code class="cCode">rva</code> automatically; they must connect to an existing <code class="cCode">rva</code> process.
+</p>
+<a name="wp1103401"> </a><p class="pBody">
+Start the Rendezvous agent using the <code class="cCode">rva</code> command or icon. The <code class="cCode">rva</code> command line accepts <code class="cCode">rvd</code> command parameters, and uses them to start <code class="cCode">rvd</code> (when appropriate).
+</p>
+<a name="wp1103402"> </a><p class="pBody">
+When <code class="cCode">rva</code> starts, it attempts to connect to an <code class="cCode">rvd</code> process with identical parameters. If an appropriate <code class="cCode">rvd</code> process is not already running, <code class="cCode">rva</code> starts it automatically. If <code class="cCode">rvd</code> terminates, <code class="cCode">rva</code> restarts it automatically. (However, <code class="cCode">rva</code> can start <code class="cCode">rvd</code> only on the same computer; it cannot automatically start a remote <code class="cCode">rvd</code>.)
+</p>
+<a name="wp1103403"> </a><p class="pBody">
+Numerous Java applets can connect to one <code class="cCode">rva</code> process, and each applet can create several <a  href="rv_java_ref141.htm#wp1038873"><code class="cCode">TibrvRvaTransport</code></a> objects (each representing a separate connection to <code class="cCode">rva</code>). An <code class="cCode">rva</code> process instance connects to <code class="cCode">rvd</code> only once, with a single transport, regardless of the number of Java <a  href="rv_java_ref141.htm#wp1038873"><code class="cCode">TibrvRvaTransport</code></a> objects that connect to it.
+</p>
+<a name="wp1103409"> </a><p class="pBody">
+For more information about starting <code class="cCode">rva</code>, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm76.htm#wp1054163');" onMouseOver="WWHShowPopup('c', 'rv_adm76.htm#wp1054163', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Rendezvous Agent (rva)</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.
+</p>
+<a name="wp1103413"> </a><p class="pBody">
+For more information about starting <code class="cCode">rvd</code>, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm19.htm#wp1020040');" onMouseOver="WWHShowPopup('c', 'rv_adm19.htm#wp1020040', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Rendezvous Daemon (rvd)</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.
+</p>
+<a name="wp1103424"> </a><h3 class="pHeading2">
+Browser Security
+</h3>
+<a name="wp1103425"> </a><h4 class="pHeading3">
+rva
+</h4>
+<a name="wp1103426"> </a><p class="pBody">
+Browsers download applets from web servers, using the hypertext transport protocol (HTTP). A web server host runs a process that services HTTP requests. Standard browser security arrangements permit an applet to connect back across the Internet to the web server host where it originated. Rendezvous applets that use <code class="cCode">rva</code> transports connect in this way, and so require this permission (for details, see <a  href="rv_java_ref8.htm#wp1131597">Internet Web Site Considerations</a>).
+</p>
+<a name="wp1103433"> </a><h4 class="pHeading3">
+rvd
+</h4>
+<a name="wp1103434"> </a><p class="pBody">
+Applets that use <code class="cCode">rvd</code> transports connect to an <code class="cCode">rvd</code> process. Most browsers permit TCP connections from locally installed classes, with appropriate configuration. For more information, see the documentation for the browser.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

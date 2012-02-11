@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvRvdTransport.setBatchMode()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;6	 Transports";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1254124"> </a><h2 class="pNewHTMLPage">
+TibrvRvdTransport.setBatchMode()
+</h2>
+<hr />
+<a name="wp1254125"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1254126"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+void <code class="cCodeBold">setBatchMode</code>(<a name="wp1254130"> </a>
+&#160;&#160;&#160;&#160;int mode)<a name="wp1254131"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1254684"> </a>
+<a name="wp1254721"> </a>
+static final int DEFAULT_BATCH = 0;<a name="wp1254722"> </a>
+static final int TIMER_BATCH = 1;<a name="wp1254733"> </a>
+</pre></div>
+<a name="wp1254132"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1254134"> </a><p class="pBody">
+Set the batch mode parameter of a transport.
+</p>
+<a name="wp1254135"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1254136"> </a><p class="pBody">
+The batch mode determines when the transport transmits outbound message data to <code class="cCode">rvd</code>:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1254137"> </a><div class="pSmartList1"><li >As soon as possible (the initial default for all transports)</li></div>
+
+<a name="wp1254138"> </a><div class="pSmartList1"><li >Either when its buffer is full, or when a timer interval expires&#151;either event triggers transmission to the daemon</li></div>
+
+</ul></div>
+
+<a name="wp1254148"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1254141"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1254143"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1254145"> </a><div class="pCellBody">
+<code class="cCode">mode</code>
+</div>
+</td>
+    <td><a name="wp1254147"> </a><div class="pCellBody">
+Use this value as the new batch mode.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1254751"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1254739"> </a><div class="pCellHeading">
+Constant
+</div>
+</th>
+    <th><a name="wp1254741"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1254743"> </a><div class="pCellBody">
+<code class="cCode">DEFAULT_BATCH</code>
+</div>
+</td>
+    <td><a name="wp1254745"> </a><div class="pCellBody">
+Default batch behavior. The transport transmits outbound messages to <code class="cCode">rvd</code> as soon as possible.
+</div>
+<a name="wp1254746"> </a><div class="pCellBody">
+This value is the initial default for all transports.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1254748"> </a><div class="pCellBody">
+<code class="cCode">TIMER_BATCH</code>
+</div>
+</td>
+    <td><a name="wp1254750"> </a><div class="pCellBody">
+Timer batch behavior. The transport accumulates outbound messages, and transmits them to <code class="cCode">rvd</code> in batches&#151;either when its buffer is full, or when a timer interval expires. (Programs cannot adjust the timer interval.)
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1254149"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1254160"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts79.htm#wp1135132');" onMouseOver="WWHShowPopup('a', 'rv_concepts79.htm#wp1135132', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Batch Modes for Transports</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvQueueGroup_Add()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;6	 Event Queue Groups";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1056395"> </a><h2 class="pNewHTMLPage">
+tibrvQueueGroup_Add()
+</h2>
+<hr />
+<a name="wp1056399"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1087094"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvQueueGroup_Add</code>(<a name="wp1077829"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref116.htm#wp1133039"><code class="cCode">tibrvQueueGroup</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;eventQueueGroup,<a name="wp1077831"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref96.htm#wp1065939"><code class="cCode">tibrvQueue</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;eventQueue);<a name="wp1077832"> </a>
+</pre></div>
+<a name="wp1087573"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1056406"> </a><p class="pBody">
+Add an event queue to a queue group.
+</p>
+<a name="wp1088024"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1060375"> </a><p class="pBody">
+If the queue is already in the group, adding it again has no effect, and the call returns <a  href="rv_c_ref227.htm#wp1129060"><code class="cCode">TIBRV_OK</code></a>.
+</p>
+<a name="wp1147003"> </a><p class="pBody">
+If either the queue or the group is invalid, this function returns an error status.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1056411"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1056413"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056415"> </a><div class="pCellBody">
+<code class="cCode">eventQueueGroup</code>
+</div>
+</td>
+    <td><a name="wp1056417"> </a><div class="pCellBody">
+Add an event queue to this queue group.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056419"> </a><div class="pCellBody">
+<code class="cCode">eventQueue</code>
+</div>
+</td>
+    <td><a name="wp1056421"> </a><div class="pCellBody">
+Add this event queue to a queue group.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1088418"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1056430"> </a><p class="pBody">
+<a  href="rv_c_ref96.htm#wp1065939"><code class="cCode">tibrvQueue</code> </a>
+</p>
+<a name="wp1115561"> </a><p class="pBody">
+<a  href="rv_c_ref122.htm#wp1056451"><code class="cCode">tibrvQueueGroup_Remove()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

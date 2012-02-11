@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>DELIVERY.COMPLETE</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Appendix&#160;B	 Certified Message Delivery (RVCM) Advisory Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1039134"> </a><h2 class="pNewHTMLPage">
+DELIVERY.COMPLETE
+</h2>
+<hr />
+<a name="wp1047188"> </a><p class="pSyntaxType">
+Advisory
+</p>
+<a name="wp1048926"> </a><h4 class="pHeading3">
+Subject Name Syntax
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+_RV.INFO.RVCM.DELIVERY.COMPLETE.<code class="cCodeItalic">&lt;subject&gt;</code><a name="wp1039136"> </a>
+</pre></div>
+<a name="wp1059587"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1039138"> </a><p class="pBody">
+A sender presents this advisory when all registered listeners have either confirmed delivery of a certified message, or canceled interest in receiving it.
+</p>
+<a name="wp1059733"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1039143"> </a><p class="pBody">
+The sender presents this advisory after deleting the message from its ledger.
+</p>
+<a name="wp1039144"> </a><p class="pBody">
+<code class="cCode">DELIVERY.COMPLETE</code> means that no listener still requires certified delivery of the message. It is possible that some listeners were previously expecting certified delivery of the message, but have canceled interest in it&#151;either by closing the subscription, or by moving without requiring old messages.
+</p>
+<a name="wp1039145"> </a><p class="pBody">
+The <code class="cCodeItalic">&lt;subject&gt;</code> element is the subject name of the certified message. The subject often consists of several elements, so the wildcard character <code class="cCode">&quot;&gt;&quot;</code> (rather than <code class="cCode">&quot;*&quot;</code>) is the correct way to match all subjects in this position.
+</p>
+<a name="wp1096987"> </a><h4 class="pHeading3">
+Message Fields
+</h4>
+<a name="wp1096992"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1039148"> </a><div class="pCellHeading">
+Field Name
+</div>
+</th>
+    <th><a name="wp1039153"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1039155"> </a><div class="pCellBody">
+<code class="cCode">subject</code>
+</div>
+</td>
+    <td><a name="wp1039157"> </a><div class="pCellBody">
+The subject name of the certified message. It is identical to the <code class="cCodeItalic">&lt;subject&gt;</code> element.
+</div>
+<a name="wp1039158"> </a><div class="pCellBody">
+This field has datatype <a  href="rv_concepts54.htm#wp1084160"><code class="cCode">TIBRVMSG_STRING</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1039160"> </a><div class="pCellBody">
+<code class="cCode">seqno</code>
+</div>
+</td>
+    <td><a name="wp1039162"> </a><div class="pCellBody">
+The sequence number of the complete message.
+</div>
+<a name="wp1059266"> </a><div class="pCellBody">
+This field has datatype <a  href="rv_concepts54.htm#wp1084235"><code class="cCode">TIBRVMSG_U64</code></a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

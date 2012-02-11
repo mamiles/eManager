@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvQueueGroup.timedDispatch</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1038451"> </a><h2 class="pNewHTMLPage">
+TibrvQueueGroup.timedDispatch
+</h2>
+<hr />
+<a name="wp1038452"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1038453"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+TibrvQueueGroup.<code class="cCodeBold">timedDispatch</code> timeout<a name="wp1038454"> </a>
+</pre></div>
+<a name="wp1038456"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1038458"> </a><p class="pBody">
+Dispatch an event, but if no event is ready to dispatch, limit the time that this call blocks while waiting for an event.
+</p>
+<a name="wp1038459"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1038460"> </a><p class="pBody">
+If any queue in the group contains an event, then this call searches the queues in priority order, dispatches an event from the first non-empty queue that it finds, and then returns. If the queue is empty, this call waits for an event to arrive in any queue. If an event arrives before the waiting time elapses, then the call searches the queues, dispatches the event, and returns. If the waiting time elapses first, then the call returns without dispatching an event, reporting the error <a  href="rv_com_ref217.htm#wp1188867"><code class="cCode">TIBRVCOM_TIMEOUT</code></a>.
+</p>
+<a name="wp1038461"> </a><p class="pBody">
+When searching the group for a non-empty queue, this call searches according to the priority values of the queues. If two or more queues have identical priorities, subsequent dispatch calls rotate through them in round-robin fashion.
+</p>
+<a name="wp1153891"> </a><p class="pBody">
+The Rendezvous component does not trigger dispatch while a program callback method is already running. When a program attempts to explicitly dispatch (in violation of this protective rule), the dispatch method reports the error <a  href="rv_com_ref218.htm#wp1189104"><code class="cCode">TIBRVCOM_EVENT_CALLBACK_ACTIVE</code></a>.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1038465"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1038467"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1038469"> </a><div class="pCellBody">
+<code class="cCode">timeout</code>
+</div>
+</td>
+    <td><a name="wp1038471"> </a><div class="pCellBody">
+<code class="cCode">Double</code>
+</div>
+<a name="wp1141473"> </a><div class="pCellBody">
+Maximum time (in seconds) that this call can block while waiting for an event to arrive in the queue group.
+</div>
+<a name="wp1141474"> </a><div class="pCellBody">
+Zero indicates no blocking (immediate timeout).
+</div>
+<a name="wp1141475"> </a><div class="pCellBody">
+-1 indicates no timeout.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody"></p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1237694"> </a><p class="pBody">
+Blocking effectively freezes the GUI operation of a program. Use with caution.
+</p>
+<a name="wp1237695"> </a><p class="pBody">
+We recommend automatic dispatch instead.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1181081"> </a><h4 class="pHeading3">
+Constants
+</h4>
+<a name="wp1152532"> </a><p class="pBody">
+The type library defines these constants for use with timed dispatch methods.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1152521"> </a><div class="pCellHeading">
+Constant
+</div>
+</th>
+    <th><a name="wp1152523"> </a><div class="pCellHeading">
+Value
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1152525"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_WAIT_FOREVER</code>
+</div>
+</td>
+    <td><a name="wp1152527"> </a><div class="pCellBody">
+<code class="cCode">-1</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1152529"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_NO_WAIT</code>
+</div>
+</td>
+    <td><a name="wp1152531"> </a><div class="pCellBody">
+<code class="cCode">0</code>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1038473"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1038477"> </a><p class="pBody">
+<a  href="rv_com_ref119.htm#wp1038292"><code class="cCode">TibrvQueueGroup.dispatch</code> </a>
+</p>
+<a name="wp1038481"> </a><p class="pBody">
+<a  href="rv_com_ref121.htm#wp1038489"><code class="cCode">TibrvQueueGroup.poll</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

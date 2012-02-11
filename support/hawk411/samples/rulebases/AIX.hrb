@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ruleBase>
+	<version>4.1.0</version>
+	<name><![CDATA[AIX]]></name>
+	<schedule></schedule>
+	<author>"TIBCO Hawk 4.1.0 Release"</author>
+	<lastModification></lastModification>
+	<comment><![CDATA[]]></comment>
+	<rule>
+		<name><![CDATA[COM.TIBCO.hawk.hma.Process:getInstanceCount(Process Name=ypbind):60]]></name>
+		<schedule></schedule>
+		<overRuling>0</overRuling>
+		<dataSource>
+			<microAgentName><![CDATA[COM.TIBCO.hawk.hma.Process]]></microAgentName>
+			<methodName>getInstanceCount</methodName>
+			<dataElement name="Process Name">
+				<dataObject class="java.lang.String" ><![CDATA[ypbind]]></dataObject>
+			</dataElement>
+			<interval>60000</interval>
+		</dataSource>
+		<test>
+			<name><![CDATA[(Process Count > 1)]]></name>
+			<schedule></schedule>
+			<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.GreaterThan" >
+				<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.RuleData" >
+					<dataObject class="java.lang.String" ><![CDATA[Process Count]]></dataObject>
+				</operator>
+				<dataObject class="java.lang.Integer"   value="1" />
+			</operator>
+			<consequenceAction>
+				<name><![CDATA[COM.TIBCO.hawk.microagent.RuleBaseEngine:sendAlertHigh(alertMsg=more than ${Process Count} ${Process Name} running)]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertHigh" ><![CDATA[more than ${Process Count} ${Process Name} running]]></dataObject>
+				</dataElement>
+				<performOnceOnly/>
+				<escalationTime>0</escalationTime>
+			</consequenceAction>
+			<trueConditionPolicy>
+				<trueCountThreshold>1</trueCountThreshold>
+			</trueConditionPolicy>
+			<clearOn>
+				<clearOnFirstFalse/>
+			</clearOn>
+		</test>
+	</rule>
+	<rule>
+		<name><![CDATA[COM.TIBCO.hawk.hma.Process:getInstanceCount(Process Name=cron):60]]></name>
+		<schedule></schedule>
+		<overRuling>0</overRuling>
+		<dataSource>
+			<microAgentName><![CDATA[COM.TIBCO.hawk.hma.Process]]></microAgentName>
+			<methodName>getInstanceCount</methodName>
+			<dataElement name="Process Name">
+				<dataObject class="java.lang.String" ><![CDATA[cron]]></dataObject>
+			</dataElement>
+			<interval>60000</interval>
+		</dataSource>
+		<test>
+			<name><![CDATA[(Process Count > 5)]]></name>
+			<schedule></schedule>
+			<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.GreaterThan" >
+				<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.RuleData" >
+					<dataObject class="java.lang.String" ><![CDATA[Process Count]]></dataObject>
+				</operator>
+				<dataObject class="java.lang.Integer"   value="5" />
+			</operator>
+			<consequenceAction>
+				<name><![CDATA[COM.TIBCO.hawk.microagent.RuleBaseEngine:sendAlertHigh(alertMsg=more than ${Process Count} ${Process Name} running)]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertHigh" ><![CDATA[more than ${Process Count} ${Process Name} running]]></dataObject>
+				</dataElement>
+				<performOnceOnly/>
+				<escalationTime>0</escalationTime>
+			</consequenceAction>
+			<trueConditionPolicy>
+				<trueCountThreshold>1</trueCountThreshold>
+			</trueConditionPolicy>
+			<clearOn>
+				<clearOnFirstFalse/>
+			</clearOn>
+		</test>
+	</rule>
+	<rule>
+		<name><![CDATA[COM.TIBCO.hawk.hma.Process:getInstanceCount(Process Name=inetd):60]]></name>
+		<schedule></schedule>
+		<overRuling>0</overRuling>
+		<dataSource>
+			<microAgentName><![CDATA[COM.TIBCO.hawk.hma.Process]]></microAgentName>
+			<methodName>getInstanceCount</methodName>
+			<dataElement name="Process Name">
+				<dataObject class="java.lang.String" ><![CDATA[inetd]]></dataObject>
+			</dataElement>
+			<interval>60000</interval>
+		</dataSource>
+		<test>
+			<name><![CDATA[(Process Count > 2)]]></name>
+			<schedule></schedule>
+			<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.GreaterThan" >
+				<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.RuleData" >
+					<dataObject class="java.lang.String" ><![CDATA[Process Count]]></dataObject>
+				</operator>
+				<dataObject class="java.lang.Integer"   value="2" />
+			</operator>
+			<consequenceAction>
+				<name><![CDATA[COM.TIBCO.hawk.microagent.RuleBaseEngine:sendAlertHigh(alertMsg=more than ${Process Count} ${Process Name} running)]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertHigh" ><![CDATA[more than ${Process Count} ${Process Name} running]]></dataObject>
+				</dataElement>
+				<performOnceOnly/>
+				<escalationTime>0</escalationTime>
+			</consequenceAction>
+			<trueConditionPolicy>
+				<trueCountThreshold>1</trueCountThreshold>
+			</trueConditionPolicy>
+			<clearOn>
+				<clearOnFirstFalse/>
+			</clearOn>
+		</test>
+		<test>
+			<name><![CDATA[(Process Count == 0)]]></name>
+			<schedule></schedule>
+			<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.EqualsNumber" >
+				<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.RuleData" >
+					<dataObject class="java.lang.String" ><![CDATA[Process Count]]></dataObject>
+				</operator>
+				<dataObject class="java.lang.Integer"   value="0" />
+			</operator>
+			<consequenceAction>
+				<name><![CDATA[COM.TIBCO.hawk.microagent.RuleBaseEngine:sendAlertHigh(alertMsg=no ${Process Name} are running)]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertHigh" ><![CDATA[no ${Process Name} are running]]></dataObject>
+				</dataElement>
+				<performOnceOnly/>
+				<escalationTime>0</escalationTime>
+			</consequenceAction>
+			<trueConditionPolicy>
+				<trueCountThreshold>1</trueCountThreshold>
+			</trueConditionPolicy>
+			<clearOn>
+				<clearOnFirstFalse/>
+			</clearOn>
+		</test>
+	</rule>
+	<rule>
+		<name><![CDATA[COM.TIBCO.hawk.hma.Process:getInstanceCount(Process Name=syslogd):60]]></name>
+		<schedule></schedule>
+		<overRuling>0</overRuling>
+		<dataSource>
+			<microAgentName><![CDATA[COM.TIBCO.hawk.hma.Process]]></microAgentName>
+			<methodName>getInstanceCount</methodName>
+			<dataElement name="Process Name">
+				<dataObject class="java.lang.String" ><![CDATA[syslogd]]></dataObject>
+			</dataElement>
+			<interval>60000</interval>
+		</dataSource>
+		<test>
+			<name><![CDATA[(Process Count > 1)]]></name>
+			<schedule></schedule>
+			<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.GreaterThan" >
+				<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.RuleData" >
+					<dataObject class="java.lang.String" ><![CDATA[Process Count]]></dataObject>
+				</operator>
+				<dataObject class="java.lang.Integer"   value="1" />
+			</operator>
+			<consequenceAction>
+				<name><![CDATA[COM.TIBCO.hawk.microagent.RuleBaseEngine:sendAlertHigh(alertMsg=More than ${Process Count} ${Process Name} running)]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertHigh" ><![CDATA[More than ${Process Count} ${Process Name} running]]></dataObject>
+				</dataElement>
+				<performOnceOnly/>
+				<escalationTime>0</escalationTime>
+			</consequenceAction>
+			<trueConditionPolicy>
+				<trueCountThreshold>1</trueCountThreshold>
+			</trueConditionPolicy>
+			<clearOn>
+				<clearOnFirstFalse/>
+			</clearOn>
+		</test>
+		<test>
+			<name><![CDATA[(Process Count == 0)]]></name>
+			<schedule></schedule>
+			<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.EqualsNumber" >
+				<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.RuleData" >
+					<dataObject class="java.lang.String" ><![CDATA[Process Count]]></dataObject>
+				</operator>
+				<dataObject class="java.lang.Integer"   value="0" />
+			</operator>
+			<consequenceAction>
+				<name><![CDATA[COM.TIBCO.hawk.microagent.RuleBaseEngine:sendAlertHigh(alertMsg=no ${Process Name} are running)]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertHigh" ><![CDATA[no ${Process Name} are running]]></dataObject>
+				</dataElement>
+				<performOnceOnly/>
+				<escalationTime>0</escalationTime>
+			</consequenceAction>
+			<trueConditionPolicy>
+				<trueCountThreshold>1</trueCountThreshold>
+			</trueConditionPolicy>
+			<clearOn>
+				<clearOnFirstFalse/>
+			</clearOn>
+		</test>
+	</rule>
+	<rule>
+		<name><![CDATA[COM.TIBCO.hawk.hma.Process:getInstanceCount(Process Name=automount):60]]></name>
+		<schedule></schedule>
+		<overRuling>0</overRuling>
+		<dataSource>
+			<microAgentName><![CDATA[COM.TIBCO.hawk.hma.Process]]></microAgentName>
+			<methodName>getInstanceCount</methodName>
+			<dataElement name="Process Name">
+				<dataObject class="java.lang.String" ><![CDATA[automount]]></dataObject>
+			</dataElement>
+			<interval>60000</interval>
+		</dataSource>
+		<test>
+			<name><![CDATA[(Process Count > 1)]]></name>
+			<schedule></schedule>
+			<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.GreaterThan" >
+				<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.RuleData" >
+					<dataObject class="java.lang.String" ><![CDATA[Process Count]]></dataObject>
+				</operator>
+				<dataObject class="java.lang.Integer"   value="1" />
+			</operator>
+			<consequenceAction>
+				<name><![CDATA[COM.TIBCO.hawk.microagent.RuleBaseEngine:sendAlertHigh(alertMsg=more than ${Process Count} ${Process Name} running)]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertHigh" ><![CDATA[more than ${Process Count} ${Process Name} running]]></dataObject>
+				</dataElement>
+				<performOnceOnly/>
+				<escalationTime>0</escalationTime>
+			</consequenceAction>
+			<trueConditionPolicy>
+				<trueCountThreshold>1</trueCountThreshold>
+			</trueConditionPolicy>
+			<clearOn>
+				<clearOnFirstFalse/>
+			</clearOn>
+		</test>
+	</rule>
+	<rule>
+		<name><![CDATA[COM.TIBCO.hawk.hma.Process:getProcess(Process Name=X):60]]></name>
+		<schedule></schedule>
+		<overRuling>0</overRuling>
+		<dataSource>
+			<microAgentName><![CDATA[COM.TIBCO.hawk.hma.Process]]></microAgentName>
+			<methodName>getProcess</methodName>
+			<dataElement name="Process Name">
+				<dataObject class="java.lang.String" ><![CDATA[X]]></dataObject>
+			</dataElement>
+			<interval>60000</interval>
+		</dataSource>
+		<test>
+			<name><![CDATA[(Virtual KBytes >= 18000)]]></name>
+			<schedule></schedule>
+			<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.GreaterThanOrEqualTo" >
+				<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.RuleData" >
+					<dataObject class="java.lang.String" ><![CDATA[Virtual KBytes]]></dataObject>
+				</operator>
+				<dataObject class="java.lang.Integer"   value="18000" />
+			</operator>
+			<consequenceAction>
+				<name><![CDATA[COM.TIBCO.hawk.microagent.RuleBaseEngine:sendAlertHigh(alertMsg=${Process Name} size is ${Virtual KBytes})]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertHigh" ><![CDATA[${Process Name} size is ${Virtual KBytes}]]></dataObject>
+				</dataElement>
+				<performOnceOnly/>
+				<escalationTime>0</escalationTime>
+			</consequenceAction>
+			<trueConditionPolicy>
+				<trueCountThreshold>1</trueCountThreshold>
+			</trueConditionPolicy>
+			<clearOn>
+				<clearOnFirstFalse/>
+			</clearOn>
+		</test>
+	</rule>
+	<rule>
+		<name><![CDATA[COM.TIBCO.hawk.hma.Process:getInstanceCount(Process Name=<defunct>):60]]></name>
+		<schedule></schedule>
+		<overRuling>0</overRuling>
+		<dataSource>
+			<microAgentName><![CDATA[COM.TIBCO.hawk.hma.Process]]></microAgentName>
+			<methodName>getInstanceCount</methodName>
+			<dataElement name="Process Name">
+				<dataObject class="java.lang.String" ><![CDATA[<defunct>]]></dataObject>
+			</dataElement>
+			<interval>60000</interval>
+		</dataSource>
+		<test>
+			<name><![CDATA[(Process Count > 10)]]></name>
+			<schedule></schedule>
+			<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.GreaterThan" >
+				<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.RuleData" >
+					<dataObject class="java.lang.String" ><![CDATA[Process Count]]></dataObject>
+				</operator>
+				<dataObject class="java.lang.Integer"   value="10" />
+			</operator>
+			<consequenceAction>
+				<name><![CDATA[COM.TIBCO.hawk.microagent.RuleBaseEngine:sendAlertHigh(alertMsg=more than ${Process Count} ${Process Name} running)]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertHigh" ><![CDATA[more than ${Process Count} ${Process Name} running]]></dataObject>
+				</dataElement>
+				<performOnceOnly/>
+				<escalationTime>0</escalationTime>
+			</consequenceAction>
+			<trueConditionPolicy>
+				<trueCountThreshold>1</trueCountThreshold>
+			</trueConditionPolicy>
+			<clearOn>
+				<clearOnFirstFalse/>
+			</clearOn>
+		</test>
+	</rule>
+	<rule>
+		<name><![CDATA[COM.TIBCO.hawk.hma.FileSystem:getByMountPoint(Mount Point=):60]]></name>
+		<schedule></schedule>
+		<overRuling>0</overRuling>
+		<dataSource>
+			<microAgentName><![CDATA[COM.TIBCO.hawk.hma.FileSystem]]></microAgentName>
+			<methodName>getByMountPoint</methodName>
+			<dataElement name="Mount Point">
+				<dataObject class="java.lang.String" ><![CDATA[]]></dataObject>
+			</dataElement>
+			<interval>60000</interval>
+		</dataSource>
+		<test>
+			<name><![CDATA[(% Free InRange 3 5)]]></name>
+			<schedule></schedule>
+			<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.InRange" >
+				<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.RuleData" >
+					<dataObject class="java.lang.String" ><![CDATA[% Free]]></dataObject>
+				</operator>
+				<dataObject class="java.lang.Integer"   value="3" />
+				<dataObject class="java.lang.Integer"   value="5" />
+			</operator>
+			<consequenceAction>
+				<name><![CDATA[COM.TIBCO.hawk.microagent.RuleBaseEngine:sendAlertLow(alertMsg=${Mount Point} is only ${% Free} % free)]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertLow" ><![CDATA[${Mount Point} is only ${% Free} % free]]></dataObject>
+				</dataElement>
+				<performOnceOnly/>
+				<escalationTime>0</escalationTime>
+			</consequenceAction>
+			<trueConditionPolicy>
+				<trueCountThreshold>1</trueCountThreshold>
+			</trueConditionPolicy>
+			<clearOn>
+				<clearOnFirstFalse/>
+			</clearOn>
+		</test>
+		<test>
+			<name><![CDATA[(% Free InRange 1 3)]]></name>
+			<schedule></schedule>
+			<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.InRange" >
+				<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.RuleData" >
+					<dataObject class="java.lang.String" ><![CDATA[% Free]]></dataObject>
+				</operator>
+				<dataObject class="java.lang.Integer"   value="1" />
+				<dataObject class="java.lang.Integer"   value="3" />
+			</operator>
+			<consequenceAction>
+				<name><![CDATA[COM.TIBCO.hawk.microagent.RuleBaseEngine:sendAlertMedium(alertMsg=${Mount Point} is only ${% Free} % free)]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertMedium" ><![CDATA[${Mount Point} is only ${% Free} % free]]></dataObject>
+				</dataElement>
+				<performOnceOnly/>
+				<escalationTime>0</escalationTime>
+			</consequenceAction>
+			<trueConditionPolicy>
+				<trueCountThreshold>1</trueCountThreshold>
+			</trueConditionPolicy>
+			<clearOn>
+				<clearOnFirstFalse/>
+			</clearOn>
+		</test>
+		<test>
+			<name><![CDATA[(% Free <= 1)]]></name>
+			<schedule></schedule>
+			<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.LessThanOrEqualTo" >
+				<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.RuleData" >
+					<dataObject class="java.lang.String" ><![CDATA[% Free]]></dataObject>
+				</operator>
+				<dataObject class="java.lang.Integer"   value="1" />
+			</operator>
+			<consequenceAction>
+				<name><![CDATA[COM.TIBCO.hawk.microagent.RuleBaseEngine:sendAlertHigh(alertMsg=${Mount Point} is only ${% Free} % free)]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertHigh" ><![CDATA[${Mount Point} is only ${% Free} % free]]></dataObject>
+				</dataElement>
+				<performOnceOnly/>
+				<escalationTime>0</escalationTime>
+			</consequenceAction>
+			<trueConditionPolicy>
+				<trueCountThreshold>1</trueCountThreshold>
+			</trueConditionPolicy>
+			<clearOn>
+				<clearOnFirstFalse/>
+			</clearOn>
+		</test>
+	</rule>
+</ruleBase>

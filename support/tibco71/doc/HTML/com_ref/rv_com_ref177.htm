@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvCmListener_onCmMsg</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;9	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1145678"> </a><h2 class="pNewHTMLPage">
+TibrvCmListener_onCmMsg
+</h2>
+<hr />
+<a name="wp1145679"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1145680"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+Private Sub <code class="cCodeItalic">&lt;myCmListener&gt;</code>_<code class="cCodeBold">onCmMsg</code>(<a name="wp1157521"> </a>
+&#160;&#160;&#160;&#160;ByVal cmListener As TIBRVCOMLib.I<a  href="rv_com_ref168.htm#wp1083717"><code class="cCode">TibrvCmListener</code></a>,<a name="wp1157526"> </a>
+&#160;&#160;&#160;&#160;ByVal message As TIBRVCOMLib.I<a  href="rv_com_ref34.htm#wp1055151"><code class="cCode">TibrvMsg</code></a>)<a name="wp1157522"> </a>
+</pre></div>
+<a name="wp1145682"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1145684"> </a><p class="pBody">
+Process inbound messages (CM listener events).
+</p>
+<a name="wp1145685"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1145686"> </a><p class="pBody">
+Implement this method to process inbound messages.
+</p>
+<a name="wp1149198"> </a><p class="pBody">
+Declaring a variable of class <a  href="rv_com_ref168.htm#wp1083717"><code class="cCode">TibrvCmListener</code></a> with events triggers VB to automatically define a COM event callback, and a private subroutine callback stub named <code class="cCodeItalic">&lt;var&gt;</code><code class="cCode">_OnCmMsg</code>. The program must complete this method for each CM listener object.
+</p>
+<a name="wp1145687"> </a><p class="pBody">
+This method receives its parameters by value, so it cannot delete them.
+</p>
+<a name="wp1145688"> </a><p class="pBody">
+To stop listening to the message subject, destroy the <em class="cEmphasis">original</em> listener object associated with this callback method.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1145698"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1145700"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1145702"> </a><div class="pCellBody">
+<code class="cCode">cmListener</code>
+</div>
+</td>
+    <td><a name="wp1145707"> </a><div class="pCellBody">
+<a  href="rv_com_ref168.htm#wp1083717"><code class="cCode">TibrvCmListener</code></a>
+</div>
+<a name="wp1145708"> </a><div class="pCellBody">
+This parameter receives the CM listener object.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1145710"> </a><div class="pCellBody">
+<code class="cCode">message</code>
+</div>
+</td>
+    <td><a name="wp1145715"> </a><div class="pCellBody">
+<a  href="rv_com_ref34.htm#wp1055151"><code class="cCode">TibrvMsg</code></a>
+</div>
+<a name="wp1145716"> </a><div class="pCellBody">
+This parameter receives the inbound message object. To preserve this message beyond exit from this callback method, the program must detach it.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1145719"> </a><h4 class="pHeading3">
+CM Label Information
+</h4>
+<a name="wp1145720"> </a><p class="pBody">
+The callback method for certified delivery messages can use certified delivery label properties to discriminate these situations:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1151780"> </a><div class="pSmartList1"><li >If extracting the <code class="cCode">cmSender</code> property yields the error <a  href="rv_com_ref217.htm#wp1188804"><code class="cCode">TIBRVCOM_NOT_FOUND</code></a>, then the message uses the reliable protocol (that is, it was sent from an ordinary transport).</li></div>
+
+<a name="wp1151781"> </a><div class="pSmartList1"><li >If the <code class="cCode">cmSender</code> property is a valid sender name, then the message uses the certified delivery protocol (that is, it is a labeled message, sent from a certified delivery transport).</li></div>
+
+<a name="wp1151782"> </a><p class="pBodyRelative">
+Once the callback method determines that the message uses the certified delivery protocol, it can discriminate further:
+</p>
+<div class="pSmartList2"><ul>
+<a name="wp1151783"> </a><div class="pSmartList2"><li >If extracting the <code class="cCode">cmSequenceNumber</code> property yields the error <a  href="rv_com_ref217.htm#wp1188804"><code class="cCode">TIBRVCOM_NOT_FOUND</code></a>, then the listener is <em class="cEmphasis">not registered</em> for certified delivery from the sender.</li></div>
+<a name="wp1151792"> </a><div class="pSmartList2"><li >If the <code class="cCode">cmSequenceNumber</code> property is a positive sequence number, then a certified delivery agreement is in effect for this subject with the sender.</li></div>
+</ul></div>
+
+</ul></div>
+
+<a name="wp1151794"> </a><p class="pBody">
+Notice that the first labeled message that a program receives on a subject may not be certified; that is, the sender has not registered a certified delivery agreement with the listener. If appropriate, the certified delivery library automatically requests that the sender register the listener for certified delivery. (See <a  href="javascript:WWHClickedPopup('a', 'rv_concepts106.htm#wp1056110');" onMouseOver="WWHShowPopup('a', 'rv_concepts106.htm#wp1056110', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Discovery and Registration for Certified Delivery</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.)
+</p>
+<a name="wp1145735"> </a><h4 class="pHeading3">
+Release 5 Interaction
+</h4>
+<a name="wp1145736"> </a><p class="pBody">
+In release 6 (and later) the sequence number is a 64-bit unsigned integer, while in older releases (5 and earlier) it is a 32-bit unsigned integer.
+</p>
+<a name="wp1145737"> </a><p class="pBody">
+When 32-bit senders overflow the sequence number, behavior is undefined.
+</p>
+<a name="wp1145738"> </a><p class="pBody">
+When 64-bit senders send sequence numbers greater than 32 bits, 32-bit receivers detect malformed label information, and process the message as an ordinary reliable message (uncertified and unlabeled).
+</p>
+<a name="wp1145739"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1145743"> </a><p class="pBody">
+<a  href="rv_com_ref42.htm#wp1135090"><code class="cCode">TibrvMsg.detach</code> </a>
+</p>
+<a name="wp1145747"> </a><p class="pBody">
+<a  href="rv_com_ref170.htm#wp1096047"><code class="cCode">TibrvCmListener.create</code> </a>
+</p>
+<a name="wp1145751"> </a><p class="pBody">
+<a  href="rv_com_ref52.htm#wp1133115"><code class="cCode">TibrvMsg.getProperty()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

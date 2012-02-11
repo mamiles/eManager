@@ -1,0 +1,182 @@
+# Copyright 1994-2000 by TIBCO, Inc
+# ALL RIGHTS RESERVED
+# @(#)Makefile.example	2.11
+
+# TIB/Rendezvous Example code
+#
+# To compile the examples, please set the necessary items for your environment
+# then make! 
+#
+
+#
+######################################################################
+# UNIX Specific items
+######################################################################
+# 
+#O=.o
+#EXE=
+#RM=rm -f
+#OUT=-o
+#TIBRV_DIR=/usr/tibco/tibrv
+#
+#CC = cc
+#OPT_DBG_FLAGS = -g
+#LDFLAGS=-L$(TIBRV_DIR)/lib
+#INCFILES=-I$(TIBRV_DIR)/include
+#CFLAGS=$(OPT_DBG_FLGS) $(INCFILES)
+#TIBRV_LIB=-ltibrv
+#TIBRVFT_LIB=-ltibrvft
+#TIBRVCM_LIB=-ltibrvcmq -ltibrvcm -ltibrvft
+#
+#
+# if you have a System V Release 4 system you need these libs as well
+#
+#SOCKET_LIBS=-lsocket -lgen -lnsl
+#
+# Digital UNIX needs this
+#
+#SOCKET_LIBS=-ldnet_stub
+#
+#
+# if you have HP-UX 11 system you'll need to add
+#
+#SOCKET_LIBS=-lxnet
+#
+# Specify a thread library. This is required on most unixes for things 
+# to have things work correctly. 
+#
+#TLIBS=-lpthread
+#
+# Solaris needs this thread library specification
+#
+#TLIBS=-lthread
+#
+
+
+#
+######################################################################
+# Windows 98 and Windows NT/2K/XP - Using Visual C++
+######################################################################
+#
+#O=.obj
+#EXE=.exe
+#RM=del
+#TIBRV_DIR=c:\TIBCO\TIBRV
+#INCFILES=-I$(TIBRV_DIR)/include
+#OUT=/Fe
+#LIB=$(LIB);$(TIBRV_DIR)\lib
+#CC=cl /D_STDC_PROTO /MT
+#CFLAGS=$(OPT_DBG_FLGS) $(INCFILES)
+#
+# The rvcmlstn example can be used for both CM and 1 of N 
+# if you are only needing to to CertifiedMessaging in your apps
+# use just librvcm.lib
+#
+# To use the dll versions of the libraries just remove the leading
+# lib from the library names.  So for example RV_LIB would be rv.lib
+# instead of librv.lib
+#
+#
+#TIBRV_LIB=tibrv.lib
+#TIBRVFT_LIB=tibrvft.lib
+#TIBRVCM_LIB=tibrvcmq.lib tibrvcm.lib tibrvft.lib
+#
+# Windows needs winsock 2
+#
+#SOCKET_LIBS=ws2_32.lib
+#SYS_LIBS=advapi32.lib
+
+
+
+#
+######################################################################
+# end of system dependent items.
+######################################################################
+#
+
+LIBS=  $(TIBRV_LIB) $(SOCKET_LIBS) $(SYS_LIBS) $(TLIBS)
+
+
+all:	tibrvsend$(EXE) tibrvlisten$(EXE) \
+	tibrvclient$(EXE) tibrvserver$(EXE) \
+	tibrvfttime$(EXE) tibrvftmon$(EXE) \
+	tibrvinitval$(EXE) tibrvcmsend$(EXE)\
+	tibrvcmlisten$(EXE) tibrvdqlisten$(EXE) \
+	dispatcher$(EXE) priority$(EXE) \
+	usertypes$(EXE) tibrvmultisend$(EXE) \
+	tibrvreviewldgr$(EXE) \
+	tibrvvcserver$(EXE) tibrvvcclient$(EXE) 
+
+clean: 	
+	$(RM) *$(O)
+	$(RM) core
+	$(RM) tibrvlisten$(EXE) 
+	$(RM) tibrvsend$(EXE) 
+	$(RM) tibrvclient$(EXE) 
+	$(RM) tibrvserver$(EXE)
+	$(RM) tibrvfttime$(EXE) 
+	$(RM) tibrvftmon$(EXE) 
+	$(RM) tibrvinitval$(EXE) 
+	$(RM) tibrvcmsend$(EXE) 
+	$(RM) tibrvcmlisten$(EXE)
+	$(RM) tibrvdqlisten$(EXE)
+	$(RM) dispatcher$(EXE)
+	$(RM) priority$(EXE)
+	$(RM) usertypes$(EXE)
+	$(RM) tibrvmultisend$(EXE)
+	$(RM) tibrvreviewldgr$(EXE)
+	$(RM) tibrvvcserver$(EXE)
+	$(RM) tibrvvcclient$(EXE)
+
+tibrvlisten$(EXE):	tibrvlisten$(O)
+	$(CC) $(LDFLAGS) tibrvlisten$(O) $(LIBS) $(OUT)$@
+
+tibrvsend$(EXE):	tibrvsend$(O)
+	$(CC) $(LDFLAGS) tibrvsend$(O)  $(LIBS) $(OUT)$@
+
+tibrvclient$(EXE):	tibrvclient$(O)
+	$(CC) $(LDFLAGS) tibrvclient$(O)  $(LIBS) $(OUT)$@
+
+tibrvserver$(EXE):	tibrvserver$(O)
+	$(CC) $(LDFLAGS) tibrvserver$(O)  $(LIBS) $(OUT)$@
+
+dispatcher$(EXE):	dispatcher$(O)
+	$(CC) $(LDFLAGS) dispatcher$(O)  $(LIBS) $(OUT)$@
+
+priority$(EXE):	priority$(O)
+	$(CC) $(LDFLAGS) priority$(O)  $(LIBS) $(OUT)$@
+
+tibrvfttime$(EXE):	tibrvfttime$(O)
+	$(CC) $(LDFLAGS) tibrvfttime$(O) $(TIBRVFT_LIB) $(LIBS) $(OUT)$@
+
+tibrvftmon$(EXE):	tibrvftmon$(O)
+	$(CC) $(LDFLAGS) tibrvftmon$(O)  $(TIBRVFT_LIB) $(LIBS) $(OUT)$@
+
+tibrvinitval$(EXE):	tibrvinitval$(O)
+	$(CC) $(LDFLAGS) tibrvinitval$(O) $(LIBS) $(OUT)$@
+
+tibrvcmlisten$(EXE):	tibrvcmlisten$(O)
+	$(CC) $(LDFLAGS) tibrvcmlisten$(O) $(TIBRVCM_LIB) $(LIBS) $(OUT)$@
+
+tibrvcmsend$(EXE):	tibrvcmsend$(O)
+	$(CC) $(LDFLAGS) tibrvcmsend$(O) $(TIBRVCM_LIB) $(LIBS) $(OUT)$@
+
+tibrvdqlisten$(EXE):	tibrvdqlisten$(O)
+	$(CC) $(LDFLAGS) tibrvdqlisten$(O) $(TIBRVCM_LIB) $(LIBS) $(OUT)$@
+
+usertypes$(EXE):	usertypes$(O)
+	$(CC) $(LDFLAGS) usertypes$(O) $(LIBS) $(OUT)$@
+
+tibrvmultisend$(EXE):	tibrvmultisend$(O)
+	$(CC) $(LDFLAGS) tibrvmultisend$(O)  $(LIBS) $(OUT)$@
+
+tibrvreviewldgr$(EXE):	tibrvreviewldgr$(O)
+	$(CC) $(LDFLAGS) tibrvreviewldgr$(O)  $(TIBRVCM_LIB) $(LIBS) $(OUT)$@
+
+
+tibrvvcserver$(EXE):	tibrvvcserver$(O)
+	$(CC) $(LDFLAGS) tibrvvcserver$(O)  $(LIBS) $(OUT)$@
+
+
+tibrvvcclient$(EXE):	tibrvvcclient$(O)
+	$(CC) $(LDFLAGS) tibrvvcclient$(O)  $(LIBS) $(OUT)$@

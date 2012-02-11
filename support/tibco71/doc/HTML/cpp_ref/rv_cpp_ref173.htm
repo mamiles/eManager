@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>tibrvTransportBatchMode</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;6	 Transports";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1257450"> </a><h2 class="pNewHTMLPage">
+tibrvTransportBatchMode
+</h2>
+<hr />
+<a name="wp1257451"> </a><p class="pSyntaxType">
+Type
+</p>
+<a name="wp1257452"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+typedef enum {<a name="wp1257453"> </a>
+&#160;&#160;&#160;&#160;TIBRV_TRANSPORT_DEFAULT_BATCH,<a name="wp1257454"> </a>
+&#160;&#160;&#160;&#160;TIBRV_TRANSPORT_TIMER_BATCH<a name="wp1257455"> </a>
+} <code class="cCodeBold">tibrvTransportBatchMode</code>;<a name="wp1257456"> </a>
+</pre></div>
+<a name="wp1257457"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1257459"> </a><p class="pBody">
+Specify the batch mode of a transport.
+</p>
+<a name="wp1257474"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1257462"> </a><div class="pCellHeading">
+Value
+</div>
+</th>
+    <th><a name="wp1257464"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1257466"> </a><div class="pCellBody">
+TIBRV_TRANSPORT_DEFAULT_BATCH
+</div>
+</td>
+    <td><a name="wp1257468"> </a><div class="pCellBody">
+Default batch behavior. The transport transmits outbound messages to <code class="cCode">rvd</code> as soon as possible.
+</div>
+<a name="wp1257469"> </a><div class="pCellBody">
+This value is the initial default for all transports.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1257471"> </a><div class="pCellBody">
+TIBRV_TRANSPORT_TIMER_BATCH
+</div>
+</td>
+    <td><a name="wp1257473"> </a><div class="pCellBody">
+Timer batch behavior. The transport accumulates outbound messages, and transmits them to <code class="cCode">rvd</code> in batches&#151;either when its buffer is full, or when a timer interval expires. (Programs cannot adjust the timer interval.)
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1257475"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1257479"> </a><p class="pBody">
+<a  href="rv_cpp_ref180.htm#wp1044810"><code class="cCode">TibrvNetTransport::setBatchMode()</code> </a>
+</p>
+<a name="wp1257486"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts79.htm#wp1135132');" onMouseOver="WWHShowPopup('a', 'rv_concepts79.htm#wp1135132', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Batch Modes for Transports</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

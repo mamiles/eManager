@@ -1,0 +1,3140 @@
+
+(object Petal
+    version    	47
+    _written   	"Rose 8.0.0303.1400"
+    charSet    	0)
+
+(object SubSystem "inventory"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"3F0C29160086"
+    visible_modules 	(list dependency_list
+	(object Module_Visibility_Relationship
+	    quid       	"3F60C6F4014E"
+	    supplier   	"Component View::java::util"
+	    quidu      	"3E400BC001EB"
+	    supplier_is_subsystem 	TRUE)
+	(object Module_Visibility_Relationship
+	    quid       	"3F60C6F401B2"
+	    supplier   	"Component View::org::apache::log4j"
+	    quidu      	"3F58D7FC033E"
+	    supplier_is_subsystem 	TRUE)
+	(object Module_Visibility_Relationship
+	    quid       	"3F60C6F40248"
+	    supplier   	"Component View::com::cisco::eManager::common::inventory"
+	    quidu      	"3F561DF5011A"
+	    supplier_is_subsystem 	TRUE)
+	(object Module_Visibility_Relationship
+	    quid       	"3F60C6F4024A"
+	    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appInstance"
+	    quidu      	"3F4D0781034F"
+	    supplier_is_subsystem 	TRUE)
+	(object Module_Visibility_Relationship
+	    quid       	"3F60C6F4024C"
+	    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appType"
+	    quidu      	"3F4D081200A7"
+	    supplier_is_subsystem 	TRUE)
+	(object Module_Visibility_Relationship
+	    quid       	"3F60C6F40253"
+	    supplier   	"Component View::com::cisco::eManager::eManager::inventory::host"
+	    quidu      	"3F4D08350347"
+	    supplier_is_subsystem 	TRUE)
+	(object Module_Visibility_Relationship
+	    quid       	"3F60C6F40299"
+	    supplier   	"Component View::com::cisco::eManager::eManager::inventory::mgmtPolicy"
+	    quidu      	"3F4D0882029F"
+	    supplier_is_subsystem 	TRUE)
+	(object Module_Visibility_Relationship
+	    quid       	"3F60C6F4037F"
+	    supplier   	"Component View::com::cisco::eManager::eManager::network"
+	    quidu      	"3F4D092500EE"
+	    supplier_is_subsystem 	TRUE)
+	(object Module_Visibility_Relationship
+	    quid       	"3F60FCF702C9"
+	    supplier   	"Component View::com::cisco::eManager::eManager::inventory::instrumentation"
+	    quidu      	"3F4D085A0098"
+	    supplier_is_subsystem 	TRUE)
+	(object Module_Visibility_Relationship
+	    quid       	"3F872C2603C1"
+	    supplier   	"Component View::COM::TIBCO::hawk::console::hawkeye"
+	    quidu      	"3F58D87B0202"
+	    supplier_is_subsystem 	TRUE)
+	(object Module_Visibility_Relationship
+	    quid       	"3F872C28003F"
+	    supplier   	"Component View::COM::TIBCO::hawk::talon"
+	    quidu      	"3F58D91500C7"
+	    supplier_is_subsystem 	TRUE)
+	(object Module_Visibility_Relationship
+	    quid       	"3F872C290113"
+	    supplier   	"Component View::com::cisco::eManager::common::util"
+	    quidu      	"3F872BD202C3"
+	    supplier_is_subsystem 	TRUE))
+    physical_models 	(list unit_reference_list
+	(object module "InventoryManager" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\InventoryManager.java")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"RootPath"
+		    value      	"$SRC")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CmIdentification"
+		    value      	(value Text ""))
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CopyrightNotice"
+		    value      	(value Text "")))
+	    quid       	"3F4D03D60300"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F872C2401A1"
+		    supplier   	"Component View::java::util"
+		    quidu      	"3E400BC001EB"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F872C2502B1"
+		    supplier   	"Component View::org::apache::log4j::Logger"
+		    quidu      	"3F58D7FD010E"
+		    supplier_is_spec 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F872C270278"
+		    supplier   	"Component View::COM::TIBCO::hawk::console::hawkeye"
+		    quidu      	"3F58D87B0202"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F872C2802DE"
+		    supplier   	"Component View::COM::TIBCO::hawk::talon"
+		    quidu      	"3F58D91500C7"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F872C2802FC"
+		    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+		    quidu      	"3F561E310172"
+		    supplier_is_spec 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F872C290112"
+		    supplier   	"Component View::com::cisco::eManager::common::inventory::Transport"
+		    quidu      	"3F62273002B5"
+		    supplier_is_spec 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F872C290325"
+		    supplier   	"Component View::com::cisco::eManager::common::util"
+		    quidu      	"3F872BD202C3"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F872C2A015A"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appInstance"
+		    quidu      	"3F4D0781034F"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F872C2A015B"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appType"
+		    quidu      	"3F4D081200A7"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F872C2A031D"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::host"
+		    quidu      	"3F4D08350347"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F872C2B0256"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::instrumentation"
+		    quidu      	"3F4D085A0098"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F872C2C0008"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::mgmtPolicy"
+		    quidu      	"3F4D0882029F"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F872C2C0239"
+		    supplier   	"Component View::com::cisco::eManager::eManager::network"
+		    quidu      	"3F4D092500EE"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "ImAppInstanceConsolidation" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\ImAppInstanceConsolidation.java")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"RootPath"
+		    value      	"$SRC")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CmIdentification"
+		    value      	(value Text ""))
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CopyrightNotice"
+		    value      	(value Text "")))
+	    quid       	"3F671E24032E"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F872B3F0029"
+		    supplier   	"Component View::java::util"
+		    quidu      	"3E400BC001EB"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F872B400297"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appInstance::AppInstance"
+		    quidu      	"3F4D078300A9"
+		    supplier_is_spec 	TRUE))
+	    language   	"Java")
+	(object module "ImAppInstanceCreation" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\ImAppInstanceCreation.java")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"RootPath"
+		    value      	"$SRC")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CmIdentification"
+		    value      	(value Text ""))
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CopyrightNotice"
+		    value      	(value Text "")))
+	    quid       	"3F671E2C00F5"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F872B450027"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appInstance::AppInstance"
+		    quidu      	"3F4D078300A9"
+		    supplier_is_spec 	TRUE))
+	    language   	"Java")
+	(object module "ImAppInstanceDeletion" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\ImAppInstanceDeletion.java")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"RootPath"
+		    value      	"$SRC")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CmIdentification"
+		    value      	(value Text ""))
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CopyrightNotice"
+		    value      	(value Text "")))
+	    quid       	"3F671E310098"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F872B490069"
+		    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+		    quidu      	"3F561E310172"
+		    supplier_is_spec 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F872B49036C"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appInstance::AppInstance"
+		    quidu      	"3F4D078300A9"
+		    supplier_is_spec 	TRUE))
+	    language   	"Java")
+	(object module "ImAppInstanceManage" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\ImAppInstanceManage.java")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"RootPath"
+		    value      	"$SRC")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CmIdentification"
+		    value      	(value Text ""))
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CopyrightNotice"
+		    value      	(value Text "")))
+	    quid       	"3F671E36006D"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F872B4B03A1"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appInstance::AppInstance"
+		    quidu      	"3F4D078300A9"
+		    supplier_is_spec 	TRUE))
+	    language   	"Java")
+	(object module "ImAppInstanceUnmanage" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\ImAppInstanceUnmanage.java")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"RootPath"
+		    value      	"$SRC")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CmIdentification"
+		    value      	(value Text ""))
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CopyrightNotice"
+		    value      	(value Text "")))
+	    quid       	"3F671E3B0147"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F872B4F0253"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appInstance::AppInstance"
+		    quidu      	"3F4D078300A9"
+		    supplier_is_spec 	TRUE))
+	    language   	"Java")
+	(object module "ImAppTypeCreation" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\ImAppTypeCreation.java")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"RootPath"
+		    value      	"$SRC")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CmIdentification"
+		    value      	(value Text ""))
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CopyrightNotice"
+		    value      	(value Text "")))
+	    quid       	"3F6E0AC7027D"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F872B520370"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appType::AppType"
+		    quidu      	"3F4D0813006D"
+		    supplier_is_spec 	TRUE))
+	    language   	"Java")
+	(object module "ImAppTypeDeletion" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\ImAppTypeDeletion.java")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"RootPath"
+		    value      	"$SRC")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CmIdentification"
+		    value      	(value Text ""))
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CopyrightNotice"
+		    value      	(value Text "")))
+	    quid       	"3F6E0AC800B2"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F872B5500AD"
+		    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+		    quidu      	"3F561E310172"
+		    supplier_is_spec 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F872B5502B6"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appType::AppType"
+		    quidu      	"3F4D0813006D"
+		    supplier_is_spec 	TRUE))
+	    language   	"Java")
+	(object module "ImHostCreation" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\ImHostCreation.java")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"RootPath"
+		    value      	"$SRC")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CmIdentification"
+		    value      	(value Text ""))
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CopyrightNotice"
+		    value      	(value Text "")))
+	    quid       	"3F6E0AC8021A"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F872B58033C"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::host::Host"
+		    quidu      	"3F4D08360226"
+		    supplier_is_spec 	TRUE))
+	    language   	"Java")
+	(object module "ImHostDeletion" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\ImHostDeletion.java")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"RootPath"
+		    value      	"$SRC")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CmIdentification"
+		    value      	(value Text ""))
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CopyrightNotice"
+		    value      	(value Text "")))
+	    quid       	"3F6E0AC90031"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F872B5B01B0"
+		    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+		    quidu      	"3F561E310172"
+		    supplier_is_spec 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F872B5C0053"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::host::Host"
+		    quidu      	"3F4D08360226"
+		    supplier_is_spec 	TRUE))
+	    language   	"Java")
+	(object module "ImInstrumentationCreation" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\ImInstrumentationCreation.java")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"RootPath"
+		    value      	"$SRC")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CmIdentification"
+		    value      	(value Text ""))
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CopyrightNotice"
+		    value      	(value Text "")))
+	    quid       	"3F6E0AC901FE"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F872B5E0092"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::instrumentation::Instrumentation"
+		    quidu      	"3F4D085D0291"
+		    supplier_is_spec 	TRUE))
+	    language   	"Java")
+	(object module "ImInstrumentationDeletion" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\ImInstrumentationDeletion.java")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"RootPath"
+		    value      	"$SRC")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CmIdentification"
+		    value      	(value Text ""))
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CopyrightNotice"
+		    value      	(value Text "")))
+	    quid       	"3F6E0AC903D5"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F872B5F03C9"
+		    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+		    quidu      	"3F561E310172"
+		    supplier_is_spec 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F872B600230"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::instrumentation::Instrumentation"
+		    quidu      	"3F4D085D0291"
+		    supplier_is_spec 	TRUE))
+	    language   	"Java")
+	(object module "ImMgmtPolicyCreation" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\ImMgmtPolicyCreation.java")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"RootPath"
+		    value      	"$SRC")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CmIdentification"
+		    value      	(value Text ""))
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CopyrightNotice"
+		    value      	(value Text "")))
+	    quid       	"3F6E0ACA0209"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F872B6200F2"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::mgmtPolicy::MgmtPolicy"
+		    quidu      	"3F4D088402DE"
+		    supplier_is_spec 	TRUE))
+	    language   	"Java")
+	(object module "ImMgmtPolicyDeletion" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\ImMgmtPolicyDeletion.java")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"RootPath"
+		    value      	"$SRC")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CmIdentification"
+		    value      	(value Text ""))
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CopyrightNotice"
+		    value      	(value Text "")))
+	    quid       	"3F6E0ACB0020"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F872B64005F"
+		    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+		    quidu      	"3F561E310172"
+		    supplier_is_spec 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F872B640344"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::mgmtPolicy::MgmtPolicy"
+		    quidu      	"3F4D088402DE"
+		    supplier_is_spec 	TRUE))
+	    language   	"Java")
+	(object module "ImMgmtPolicyLoad" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\ImMgmtPolicyLoad.java")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"RootPath"
+		    value      	"$SRC")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CmIdentification"
+		    value      	(value Text ""))
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CopyrightNotice"
+		    value      	(value Text "")))
+	    quid       	"3F872B650223"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F872B6E012C"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::mgmtPolicy::MgmtPolicy"
+		    quidu      	"3F4D088402DE"
+		    supplier_is_spec 	TRUE))
+	    language   	"Java")
+	(object module "ImMgmtPolicyUnload" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\ImMgmtPolicyUnload.java")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"RootPath"
+		    value      	"$SRC")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CmIdentification"
+		    value      	(value Text ""))
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CopyrightNotice"
+		    value      	(value Text "")))
+	    quid       	"3F872B6E03A3"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F872B7602B4"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::mgmtPolicy::MgmtPolicy"
+		    quidu      	"3F4D088402DE"
+		    supplier_is_spec 	TRUE))
+	    language   	"Java")
+	(object module "InventoryGlobals" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\InventoryGlobals.java")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"RootPath"
+		    value      	"$SRC")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CmIdentification"
+		    value      	(value Text ""))
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CopyrightNotice"
+		    value      	(value Text "")))
+	    quid       	"3F872B7701B1"
+	    stereotype 	""
+	    language   	"Java")
+	(object SubSystem "view"
+	    quid       	"3F0C291E02A5"
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C71500DE"
+		    supplier   	"Component View::java::util"
+		    quidu      	"3E400BC001EB"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C7170087"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appType"
+		    quidu      	"3F4D081200A7"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C71700A5"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appInstance"
+		    quidu      	"3F4D0781034F"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C7180114"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::host"
+		    quidu      	"3F4D08350347"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C71802D7"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::container"
+		    quidu      	"3F60C718020F"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C71A02DA"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::node"
+		    quidu      	"3F60C7190383"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F61F3940158"
+		    supplier   	"Component View::org::apache::log4j"
+		    quidu      	"3F58D7FC033E"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F872D28008A"
+		    supplier   	"Component View::com::cisco::eManager::common::inventory"
+		    quidu      	"3F561DF5011A"
+		    supplier_is_subsystem 	TRUE))
+	    physical_models 	(list unit_reference_list
+		(object module "AppInstanceObserver" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\AppInstanceObserver.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D08DA0031"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D120128"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D120146"
+			    supplier   	"Component View::org::apache::log4j::Logger"
+			    quidu      	"3F58D7FD010E"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "AppTypeObserver" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\AppTypeObserver.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D08DB028B"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D140334"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D140366"
+			    supplier   	"Component View::org::apache::log4j::Logger"
+			    quidu      	"3F58D7FD010E"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "AppViewManager" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\AppViewManager.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D08DD02CA"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D1702AC"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appInstance"
+			    quidu      	"3F4D0781034F"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D1702B6"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::host"
+			    quidu      	"3F4D08350347"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D1800C3"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appType::AppTypeManager"
+			    quidu      	"3F4D08160071"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D1801C7"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appType::AppTypeCreation"
+			    quidu      	"3F6722D3035A"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D180330"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appType::AppTypeDeletion"
+			    quidu      	"3F6722D50119"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "HostObserver" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\HostObserver.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D08DF009C"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D1C0001"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D1C03CC"
+			    supplier   	"Component View::org::apache::log4j::Logger"
+			    quidu      	"3F58D7FD010E"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "HostViewManager" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\HostViewManager.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D08E10172"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D1D02F1"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::host"
+			    quidu      	"3F4D08350347"
+			    supplier_is_subsystem 	TRUE))
+		    language   	"Java")
+		(object module "RootNode" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\RootNode.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D08E302DD"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F6E0AF802A6"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::container::ContainerNode"
+			    quidu      	"3F60C7180219"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "ViewManager" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\ViewManager.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D08E601FB"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D1F02FE"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D200025"
+			    supplier   	"Component View::org::apache::log4j::Logger"
+			    quidu      	"3F58D7FD010E"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "ViewTree" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\ViewTree.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D08E8024E"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D280044"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D28006C"
+			    supplier   	"Component View::org::apache::log4j::Logger"
+			    quidu      	"3F58D7FD010E"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D280149"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+			    quidu      	"3F561E310172"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D28014A"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::container"
+			    quidu      	"3F60C718020F"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D28031F"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::node"
+			    quidu      	"3F60C7190383"
+			    supplier_is_subsystem 	TRUE))
+		    language   	"Java")
+		(object module "ViewTreeHelper" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\ViewTreeHelper.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D08EA00AC"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D2C0181"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::node::Node"
+			    quidu      	"3F60C7190397"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object SubSystem "container"
+		    quid       	"3F60C718020F"
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F60C724007C"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::appTypeNode"
+			    quidu      	"3F60C71F01FB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F60C724009A"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::node"
+			    quidu      	"3F60C7190383"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F60C7250159"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F61F3A900B8"
+			    supplier   	"Component View::org::apache::log4j"
+			    quidu      	"3F58D7FC033E"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D5C013B"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory"
+			    quidu      	"3F561DF5011A"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D6B03BF"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view"
+			    quidu      	"3F0C291E02A5"
+			    supplier_is_subsystem 	TRUE))
+		    physical_models 	(list unit_reference_list
+			(object module "ContainerNode" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\container\\ContainerNode.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C7180219"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F883124021C"
+				    supplier   	"Component View::java::util"
+				    quidu      	"3E400BC001EB"
+				    supplier_is_subsystem 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F8831240384"
+				    supplier   	"Component View::com::cisco::eManager::common::inventory"
+				    quidu      	"3F561DF5011A"
+				    supplier_is_subsystem 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F8831250155"
+				    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::node"
+				    quidu      	"3F60C7190383"
+				    supplier_is_subsystem 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F883125032C"
+				    supplier   	"Component View::org::apache::log4j::Logger"
+				    quidu      	"3F58D7FD010E"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "ContainerNodeManager" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\container\\ContainerNodeManager.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C7240130"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F872D6B036E"
+				    supplier   	"Component View::java::util"
+				    quidu      	"3E400BC001EB"
+				    supplier_is_subsystem 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F872D6B0396"
+				    supplier   	"Component View::org::apache::log4j::Logger"
+				    quidu      	"3F58D7FD010E"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F872D6B03BE"
+				    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+				    quidu      	"3F561E310172"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F872D6C024D"
+				    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view"
+				    quidu      	"3F0C291E02A5"
+				    supplier_is_subsystem 	TRUE))
+			    language   	"Java")
+			(object module "ContainerNodeCreation" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\container\\ContainerNodeCreation.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F872D5D01BF"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "ContainerNodeDeletion" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\container\\ContainerNodeDeletion.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F872D600065"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F872D630177"
+				    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+				    quidu      	"3F561E310172"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java"))
+		    physical_presentations 	(list unit_reference_list))
+		(object SubSystem "node"
+		    quid       	"3F60C7190383"
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F60C7290390"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F61F3AF036A"
+			    supplier   	"Component View::org::apache::log4j"
+			    quidu      	"3F58D7FC033E"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D8D035A"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory"
+			    quidu      	"3F561DF5011A"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F881641018E"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::container"
+			    quidu      	"3F60C718020F"
+			    supplier_is_subsystem 	TRUE))
+		    physical_models 	(list unit_reference_list
+			(object module "Node" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\node\\Node.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C7190397"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F8831AA0133"
+				    supplier   	"Component View::java::util"
+				    quidu      	"3E400BC001EB"
+				    supplier_is_subsystem 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F8831AA02EC"
+				    supplier   	"Component View::org::apache::log4j::Logger"
+				    quidu      	"3F58D7FD010E"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F8831AB0063"
+				    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+				    quidu      	"3F561E310172"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F8831AB026B"
+				    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::container::ContainerNode"
+				    quidu      	"3F60C7180219"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "NodeInformation" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\node\\NodeInformation.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C728004F"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "NodeInformationManager" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\node\\NodeInformationManager.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C72801E0"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F872D8F01EA"
+				    supplier   	"Component View::java::util"
+				    quidu      	"3E400BC001EB"
+				    supplier_is_subsystem 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F872D9000B5"
+				    supplier   	"Component View::org::apache::log4j::Logger"
+				    quidu      	"3F58D7FD010E"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "NodeManager" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\node\\NodeManager.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C72903CC"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F872D91021F"
+				    supplier   	"Component View::java::util"
+				    quidu      	"3E400BC001EB"
+				    supplier_is_subsystem 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F872D910247"
+				    supplier   	"Component View::org::apache::log4j::Logger"
+				    quidu      	"3F58D7FD010E"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java"))
+		    physical_presentations 	(list unit_reference_list))
+		(object SubSystem "appInstanceNode"
+		    quid       	"3F60C71B028B"
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F60C71C0142"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::node"
+			    quidu      	"3F60C7190383"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F60C71E034E"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F60C71E0358"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appInstance"
+			    quidu      	"3F4D0781034F"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F61F3A1005D"
+			    supplier   	"Component View::org::apache::log4j"
+			    quidu      	"3F58D7FC033E"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D3D0136"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory"
+			    quidu      	"3F561DF5011A"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D3D0276"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::container"
+			    quidu      	"3F60C718020F"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D3D0366"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::leafNode"
+			    quidu      	"3F872D2F01F3"
+			    supplier_is_subsystem 	TRUE))
+		    physical_models 	(list unit_reference_list
+			(object module "AppInstanceNode" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\appInstanceNode\\AppInstanceNode.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C71B0295"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F88308900F0"
+				    supplier   	"Component View::org::apache::log4j::Logger"
+				    quidu      	"3F58D7FD010E"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F8830890371"
+				    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+				    quidu      	"3F561E310172"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F88308A0156"
+				    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::container"
+				    quidu      	"3F60C718020F"
+				    supplier_is_subsystem 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F88308A021E"
+				    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::leafNode"
+				    quidu      	"3F872D2F01F3"
+				    supplier_is_subsystem 	TRUE))
+			    language   	"Java")
+			(object module "AppInstanceNodeManager" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\appInstanceNode\\AppInstanceNodeManager.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C71C0188"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F872D3F037D"
+				    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appInstance"
+				    quidu      	"3F4D0781034F"
+				    supplier_is_subsystem 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F872D4000AE"
+				    supplier   	"Component View::java::util"
+				    quidu      	"3E400BC001EB"
+				    supplier_is_subsystem 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F872D400176"
+				    supplier   	"Component View::org::apache::log4j::Logger"
+				    quidu      	"3F58D7FD010E"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java"))
+		    physical_presentations 	(list unit_reference_list))
+		(object SubSystem "appTypeNode"
+		    quid       	"3F60C71F01FB"
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F60C720035B"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appType"
+			    quidu      	"3F4D081200A7"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F60C7200383"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::appInstanceNode"
+			    quidu      	"3F60C71B028B"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F60C7200385"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::node"
+			    quidu      	"3F60C7190383"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F60C7230066"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F61F3A40165"
+			    supplier   	"Component View::org::apache::log4j"
+			    quidu      	"3F58D7FC033E"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D470112"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory"
+			    quidu      	"3F561DF5011A"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D470158"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::container"
+			    quidu      	"3F60C718020F"
+			    supplier_is_subsystem 	TRUE))
+		    physical_models 	(list unit_reference_list
+			(object module "AppTypeNode" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\appTypeNode\\AppTypeNode.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C71F020F"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F88BE780393"
+				    supplier   	"Component View::org::apache::log4j::Logger"
+				    quidu      	"3F58D7FD010E"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F88BE7901A9"
+				    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+				    quidu      	"3F561E310172"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F88BE7A0006"
+				    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appType::AppType"
+				    quidu      	"3F4D0813006D"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F88BE7A024B"
+				    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::container::ContainerNode"
+				    quidu      	"3F60C7180219"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F88BE7B00B2"
+				    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::node::Node"
+				    quidu      	"3F60C7190397"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F88BE7B00DA"
+				    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::appInstanceNode::AppInstanceNode"
+				    quidu      	"3F60C71B0295"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "AppTypeNodeManager" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\appTypeNode\\AppTypeNodeManager.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C72003C9"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F872D4A0384"
+				    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appType"
+				    quidu      	"3F4D081200A7"
+				    supplier_is_subsystem 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F872D4A0385"
+				    supplier   	"Component View::java::util"
+				    quidu      	"3E400BC001EB"
+				    supplier_is_subsystem 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F872D4A03B6"
+				    supplier   	"Component View::org::apache::log4j::Logger"
+				    quidu      	"3F58D7FD010E"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java"))
+		    physical_presentations 	(list unit_reference_list))
+		(object SubSystem "hostNode"
+		    quid       	"3F60C726009D"
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F60C72601A1"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::appInstanceNode"
+			    quidu      	"3F60C71B028B"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F60C72601BF"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::node"
+			    quidu      	"3F60C7190383"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F60C727031F"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F60C727033D"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::host"
+			    quidu      	"3F4D08350347"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F61F3AE020A"
+			    supplier   	"Component View::org::apache::log4j"
+			    quidu      	"3F58D7FC033E"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D7300E5"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory"
+			    quidu      	"3F561DF5011A"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D73012B"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::container"
+			    quidu      	"3F60C718020F"
+			    supplier_is_subsystem 	TRUE))
+		    physical_models 	(list unit_reference_list
+			(object module "HostNode" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\hostNode\\HostNode.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C72600A7"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F8831560049"
+				    supplier   	"Component View::org::apache::log4j::Logger"
+				    quidu      	"3F58D7FD010E"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F88315700C3"
+				    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+				    quidu      	"3F561E310172"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F8831580164"
+				    supplier   	"Component View::com::cisco::eManager::eManager::inventory::host::Host"
+				    quidu      	"3F4D08360226"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F88315802EB"
+				    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::container::ContainerNode"
+				    quidu      	"3F60C7180219"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F88315803E5"
+				    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::node::Node"
+				    quidu      	"3F60C7190397"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F8831590256"
+				    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::appInstanceNode::AppInstanceNode"
+				    quidu      	"3F60C71B0295"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "HostNodeManager" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\hostNode\\HostNodeManager.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C7260237"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F872D760125"
+				    supplier   	"Component View::java::util"
+				    quidu      	"3E400BC001EB"
+				    supplier_is_subsystem 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F872D7601BB"
+				    supplier   	"Component View::com::cisco::eManager::eManager::inventory::host::Host"
+				    quidu      	"3F4D08360226"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F872D7601E3"
+				    supplier   	"Component View::org::apache::log4j::Logger"
+				    quidu      	"3F58D7FD010E"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java"))
+		    physical_presentations 	(list unit_reference_list))
+		(object SubSystem "leafNode"
+		    quid       	"3F872D2F01F3"
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D7903AB"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D7903E7"
+			    supplier   	"Component View::org::apache::log4j"
+			    quidu      	"3F58D7FC033E"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D7B01D7"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory"
+			    quidu      	"3F561DF5011A"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D7B01D9"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::container"
+			    quidu      	"3F60C718020F"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D7B02E5"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::node"
+			    quidu      	"3F60C7190383"
+			    supplier_is_subsystem 	TRUE))
+		    physical_models 	(list unit_reference_list
+			(object module "LeafNode" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\leafNode\\LeafNode.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F872D2F01FD"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F88BE56013A"
+				    supplier   	"Component View::java::util"
+				    quidu      	"3E400BC001EB"
+				    supplier_is_subsystem 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F88BE570005"
+				    supplier   	"Component View::com::cisco::eManager::common::inventory"
+				    quidu      	"3F561DF5011A"
+				    supplier_is_subsystem 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F88BE570272"
+				    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::container"
+				    quidu      	"3F60C718020F"
+				    supplier_is_subsystem 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F88BE58004D"
+				    supplier   	"Component View::com::cisco::eManager::eManager::inventory::view::node"
+				    quidu      	"3F60C7190383"
+				    supplier_is_subsystem 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F88BE5801F1"
+				    supplier   	"Component View::org::apache::log4j::Logger"
+				    quidu      	"3F58D7FD010E"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "LeafNodeManager" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\view\\leafNode\\LeafNodeManager.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F872D7C0305"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F872D840108"
+				    supplier   	"Component View::java::util"
+				    quidu      	"3E400BC001EB"
+				    supplier_is_subsystem 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F872D840298"
+				    supplier   	"Component View::org::apache::log4j::Logger"
+				    quidu      	"3F58D7FD010E"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java"))
+		    physical_presentations 	(list unit_reference_list)))
+	    physical_presentations 	(list unit_reference_list))
+	(object SubSystem "appInstance"
+	    quid       	"3F4D0781034F"
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C6F70058"
+		    supplier   	"Component View::com::cisco::eManager::common::inventory"
+		    quidu      	"3F561DF5011A"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C6F700F8"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::instrumentation"
+		    quidu      	"3F4D085A0098"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C6F70116"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::procSeq"
+		    quidu      	"3F4D08BB020C"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C6F701D5"
+		    supplier   	"Component View::java::util"
+		    quidu      	"3E400BC001EB"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C6F70207"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::host"
+		    quidu      	"3F4D08350347"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60F820029A"
+		    supplier   	"Component View::org::apache::log4j"
+		    quidu      	"3F58D7FC033E"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F65AC280170"
+		    supplier   	"Component View::com::cisco::eManager::eManager::network"
+		    quidu      	"3F4D092500EE"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F68EE3F013F"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appType"
+		    quidu      	"3F4D081200A7"
+		    supplier_is_subsystem 	TRUE))
+	    physical_models 	(list unit_reference_list
+		(object module "AppInstance" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\appInstance\\AppInstance.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D078300A9"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C4402A3"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C4500CD"
+			    supplier   	"Component View::org::apache::log4j::Logger"
+			    quidu      	"3F58D7FD010E"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C4500EB"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory::AppInstanceMgmtMode"
+			    quidu      	"3F622232032F"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C450109"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+			    quidu      	"3F561E310172"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C4502CC"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory::Transport"
+			    quidu      	"3F62273002B5"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C460093"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appType"
+			    quidu      	"3F4D081200A7"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C46009D"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::instrumentation"
+			    quidu      	"3F4D085A0098"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C460396"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::host"
+			    quidu      	"3F4D08350347"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C460397"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::procSeq"
+			    quidu      	"3F4D08BB020C"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C470207"
+			    supplier   	"Component View::com::cisco::eManager::eManager::network"
+			    quidu      	"3F4D092500EE"
+			    supplier_is_subsystem 	TRUE))
+		    language   	"Java")
+		(object module "AppInstanceManager" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\appInstance\\AppInstanceManager.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D0786036A"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C62035B"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C620383"
+			    supplier   	"Component View::org::apache::log4j::Logger"
+			    quidu      	"3F58D7FD010E"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C6301EA"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory::AppInstanceMgmtMode"
+			    quidu      	"3F622232032F"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C640047"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+			    quidu      	"3F561E310172"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C64021D"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory::Transport"
+			    quidu      	"3F62273002B5"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C650189"
+			    supplier   	"Component View::com::cisco::eManager::eManager::network::AgentId"
+			    quidu      	"3F5C97D70209"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "AppInstanceCreation" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\appInstance\\AppInstanceCreation.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F65AC3500E3"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "AppInstanceDeletion" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\appInstance\\AppInstanceDeletion.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F65AC4201A0"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C4B0144"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+			    quidu      	"3F561E310172"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "AppInstanceManage" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\appInstance\\AppInstanceManage.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F65AC4F02DF"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "AppInstanceUnmanage" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\appInstance\\AppInstanceUnmanage.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F65AC830064"
+		    stereotype 	""
+		    language   	"Java"))
+	    physical_presentations 	(list unit_reference_list))
+	(object SubSystem "appType"
+	    quid       	"3F4D081200A7"
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C6FE00BC"
+		    supplier   	"Component View::com::cisco::eManager::common::inventory"
+		    quidu      	"3F561DF5011A"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C6FE00DA"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appInstance"
+		    quidu      	"3F4D0781034F"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C6FE00F8"
+		    supplier   	"Component View::java::util"
+		    quidu      	"3E400BC001EB"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C70003A5"
+		    supplier   	"Component View::com::cisco::eManager::eManager::network"
+		    quidu      	"3F4D092500EE"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C701017F"
+		    supplier   	"Component View::org::apache::log4j"
+		    quidu      	"3F58D7FC033E"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F68EE6F0135"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::host"
+		    quidu      	"3F4D08350347"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F68EE6F032A"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::mgmtPolicy"
+		    quidu      	"3F4D0882029F"
+		    supplier_is_subsystem 	TRUE))
+	    physical_models 	(list unit_reference_list
+		(object module "AppType" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\appType\\AppType.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D0813006D"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C6C0052"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C6C01D9"
+			    supplier   	"Component View::org::apache::log4j::Logger"
+			    quidu      	"3F58D7FD010E"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C6C03D8"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+			    quidu      	"3F561E310172"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C6D016C"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appInstance"
+			    quidu      	"3F4D0781034F"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C6D016D"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::host"
+			    quidu      	"3F4D08350347"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C6D0307"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::mgmtPolicy"
+			    quidu      	"3F4D0882029F"
+			    supplier_is_subsystem 	TRUE))
+		    language   	"Java")
+		(object module "AppTypeManager" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\appType\\AppTypeManager.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D08160071"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C7702D0"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appInstance"
+			    quidu      	"3F4D0781034F"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C78003C"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appType"
+			    quidu      	"3F4D081200A7"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C78026D"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::host"
+			    quidu      	"3F4D08350347"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C79003E"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::mgmtPolicy"
+			    quidu      	"3F4D0882029F"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C7901BA"
+			    supplier   	"Component View::com::cisco::eManager::eManager::network"
+			    quidu      	"3F4D092500EE"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C7901BB"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C7A008F"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+			    quidu      	"3F561E310172"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C7B0131"
+			    supplier   	"Component View::org::apache::log4j::Logger"
+			    quidu      	"3F58D7FD010E"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "AppTypeCreation" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\appType\\AppTypeCreation.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F6722D3035A"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "AppTypeDeletion" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\appType\\AppTypeDeletion.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F6722D50119"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C700153"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+			    quidu      	"3F561E310172"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java"))
+	    physical_presentations 	(list unit_reference_list))
+	(object SubSystem "host"
+	    quid       	"3F4D08350347"
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C7020311"
+		    supplier   	"Component View::com::cisco::eManager::common::inventory"
+		    quidu      	"3F561DF5011A"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C7030056"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appInstance"
+		    quidu      	"3F4D0781034F"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C70300BA"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appType"
+		    quidu      	"3F4D081200A7"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C70300D8"
+		    supplier   	"Component View::java::util"
+		    quidu      	"3E400BC001EB"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C70501B8"
+		    supplier   	"Component View::com::cisco::eManager::eManager::network"
+		    quidu      	"3F4D092500EE"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C70502E3"
+		    supplier   	"Component View::org::apache::log4j"
+		    quidu      	"3F58D7FC033E"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F68EE850028"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::mgmtPolicy"
+		    quidu      	"3F4D0882029F"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F872C910288"
+		    supplier   	"Component View::COM::TIBCO::hawk::console::hawkeye"
+		    quidu      	"3F58D87B0202"
+		    supplier_is_subsystem 	TRUE))
+	    physical_models 	(list unit_reference_list
+		(object module "Host" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\host\\Host.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D08360226"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C9100B1"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C9100D9"
+			    supplier   	"Component View::org::apache::log4j::Logger"
+			    quidu      	"3F58D7FD010E"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C91029C"
+			    supplier   	"Component View::COM::TIBCO::hawk::console::hawkeye"
+			    quidu      	"3F58D87B0202"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C920030"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+			    quidu      	"3F561E310172"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C920167"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appInstance"
+			    quidu      	"3F4D0781034F"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C93001E"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appType"
+			    quidu      	"3F4D081200A7"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C940001"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::mgmtPolicy"
+			    quidu      	"3F4D0882029F"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C9403C2"
+			    supplier   	"Component View::com::cisco::eManager::eManager::network"
+			    quidu      	"3F4D092500EE"
+			    supplier_is_subsystem 	TRUE))
+		    language   	"Java")
+		(object module "HostManager" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\host\\HostManager.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D08390235"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CA900A2"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CAA00F4"
+			    supplier   	"Component View::org::apache::log4j::Logger"
+			    quidu      	"3F58D7FD010E"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CAB004B"
+			    supplier   	"Component View::COM::TIBCO::hawk::console::hawkeye"
+			    quidu      	"3F58D87B0202"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CAB0069"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+			    quidu      	"3F561E310172"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CAC0038"
+			    supplier   	"Component View::com::cisco::eManager::eManager::network"
+			    quidu      	"3F4D092500EE"
+			    supplier_is_subsystem 	TRUE))
+		    language   	"Java")
+		(object module "HostCreation" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\host\\HostCreation.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F67258D0340"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "HostDeletion" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\host\\HostDeletion.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F67258F019E"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872C9F0328"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+			    quidu      	"3F561E310172"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java"))
+	    physical_presentations 	(list unit_reference_list))
+	(object SubSystem "instrumentation"
+	    quid       	"3F4D085A0098"
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C7060385"
+		    supplier   	"Component View::java::util"
+		    quidu      	"3E400BC001EB"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C7080125"
+		    supplier   	"Component View::com::cisco::eManager::common::inventory"
+		    quidu      	"3F561DF5011A"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F61F3790041"
+		    supplier   	"Component View::com::cisco::eManager::eManager::network"
+		    quidu      	"3F4D092500EE"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F61F37B03D3"
+		    supplier   	"Component View::org::apache::log4j"
+		    quidu      	"3F58D7FC033E"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F68EE9C00B8"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appInstance"
+		    quidu      	"3F4D0781034F"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F68EE9C02D6"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appType"
+		    quidu      	"3F4D081200A7"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F68EE9D0240"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::host"
+		    quidu      	"3F4D08350347"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F872CC40156"
+		    supplier   	"Component View::COM::TIBCO::hawk::console::hawkeye"
+		    quidu      	"3F58D87B0202"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F872CC5023E"
+		    supplier   	"Component View::COM::TIBCO::hawk::talon"
+		    quidu      	"3F58D91500C7"
+		    supplier_is_subsystem 	TRUE))
+	    physical_models 	(list unit_reference_list
+		(object module "Instrumentation" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\instrumentation\\Instrumentation.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D085D0291"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CC10007"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CC2015D"
+			    supplier   	"Component View::org::apache::log4j::Logger"
+			    quidu      	"3F58D7FD010E"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CC50049"
+			    supplier   	"Component View::COM::TIBCO::hawk::console::hawkeye::AgentManager"
+			    quidu      	"3F5AAD860092"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CC5023F"
+			    supplier   	"Component View::COM::TIBCO::hawk::talon::MicroAgentDescriptor"
+			    quidu      	"3F5A86990166"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CC5027A"
+			    supplier   	"Component View::COM::TIBCO::hawk::talon::MethodDescriptor"
+			    quidu      	"3F5A85A8011F"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CC6022B"
+			    supplier   	"Component View::COM::TIBCO::hawk::talon::MicroAgentID"
+			    quidu      	"3F5A85D302A8"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CC702AF"
+			    supplier   	"Component View::COM::TIBCO::hawk::talon::MicroAgentException"
+			    quidu      	"3F5A8691020F"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CC80166"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+			    quidu      	"3F561E310172"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CC8018E"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appInstance::AppInstance"
+			    quidu      	"3F4D078300A9"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CC80315"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appInstance::AppInstanceManager"
+			    quidu      	"3F4D0786036A"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CC803C9"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::host"
+			    quidu      	"3F4D08350347"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CC803CA"
+			    supplier   	"Component View::com::cisco::eManager::eManager::network"
+			    quidu      	"3F4D092500EE"
+			    supplier_is_subsystem 	TRUE))
+		    language   	"Java")
+		(object module "InstrumentationManager" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\instrumentation\\InstrumentationManager.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D085E02D9"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CD50043"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CD60120"
+			    supplier   	"Component View::org::apache::log4j::Logger"
+			    quidu      	"3F58D7FD010E"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CD6026B"
+			    supplier   	"Component View::COM::TIBCO::hawk::console::hawkeye"
+			    quidu      	"3F58D87B0202"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CD700FA"
+			    supplier   	"Component View::COM::TIBCO::hawk::talon"
+			    quidu      	"3F58D91500C7"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CD80079"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appInstance"
+			    quidu      	"3F4D0781034F"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CD8007A"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appType"
+			    quidu      	"3F4D081200A7"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CD80187"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::host"
+			    quidu      	"3F4D08350347"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CD803B8"
+			    supplier   	"Component View::com::cisco::eManager::eManager::network"
+			    quidu      	"3F4D092500EE"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CD90193"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+			    quidu      	"3F561E310172"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "Method" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\instrumentation\\Method.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D08600200"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CE90006"
+			    supplier   	"Component View::org::apache::log4j::Logger"
+			    quidu      	"3F58D7FD010E"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CE90007"
+			    supplier   	"Component View::COM::TIBCO::hawk::talon"
+			    quidu      	"3F58D91500C7"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CE90146"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::instrumentation::Instrumentation"
+			    quidu      	"3F4D085D0291"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "InstrumentationCreation" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\instrumentation\\InstrumentationCreation.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F67279F0107"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "InstrumentationDeletion" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\instrumentation\\InstrumentationDeletion.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F6727A300A9"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CCA0141"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+			    quidu      	"3F561E310172"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java"))
+	    physical_presentations 	(list unit_reference_list))
+	(object SubSystem "mgmtPolicy"
+	    quid       	"3F4D0882029F"
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C7090054"
+		    supplier   	"Component View::com::cisco::eManager::eManager::network"
+		    quidu      	"3F4D092500EE"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C70B00B1"
+		    supplier   	"Component View::com::cisco::eManager::common::inventory"
+		    quidu      	"3F561DF5011A"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C70B00D9"
+		    supplier   	"Component View::java::net"
+		    quidu      	"3E400BBC0394"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C70B017A"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::host"
+		    quidu      	"3F4D08350347"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C70B0198"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appType"
+		    quidu      	"3F4D081200A7"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C70E01C4"
+		    supplier   	"Component View::java::util"
+		    quidu      	"3E400BC001EB"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C70E020A"
+		    supplier   	"Component View::org::apache::log4j"
+		    quidu      	"3F58D7FC033E"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C70E0341"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::instrumentation"
+		    quidu      	"3F4D085A0098"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F6E0AF103D2"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appInstance"
+		    quidu      	"3F4D0781034F"
+		    supplier_is_subsystem 	TRUE))
+	    physical_models 	(list unit_reference_list
+		(object module "MgmtPolicy" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\mgmtPolicy\\MgmtPolicy.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D088402DE"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CF30354"
+			    supplier   	"Component View::org::apache::log4j::Logger"
+			    quidu      	"3F58D7FD010E"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CF30386"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+			    quidu      	"3F561E310172"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CF400A2"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::host"
+			    quidu      	"3F4D08350347"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CF402AB"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appType"
+			    quidu      	"3F4D081200A7"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872CF5005E"
+			    supplier   	"Component View::com::cisco::eManager::eManager::network::ManagementPolicyId"
+			    quidu      	"3F5C97FB01CF"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "MgmtPolicyManager" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\mgmtPolicy\\MgmtPolicyManager.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D08870225"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D000046"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D000172"
+			    supplier   	"Component View::org::apache::log4j::Logger"
+			    quidu      	"3F58D7FD010E"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D0002F9"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+			    quidu      	"3F561E310172"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D0003DF"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appInstance"
+			    quidu      	"3F4D0781034F"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D0100B5"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::appType"
+			    quidu      	"3F4D081200A7"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D01026E"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::host"
+			    quidu      	"3F4D08350347"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D020157"
+			    supplier   	"Component View::com::cisco::eManager::eManager::network::ManagementPolicyId"
+			    quidu      	"3F5C97FB01CF"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "Rule" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\mgmtPolicy\\Rule.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D0889021D"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D040331"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::instrumentation::Method"
+			    quidu      	"3F4D08600200"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "MgmtPolicyManagerUser" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\mgmtPolicy\\MgmtPolicyManagerUser.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC"))
+		    quid       	"3F6742550255"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "PolicyCreation" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\mgmtPolicy\\PolicyCreation.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F67425802AA"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "PolicyDeletion" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\mgmtPolicy\\PolicyDeletion.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F67425B033A"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D040038"
+			    supplier   	"Component View::com::cisco::eManager::common::inventory::ManagedObjectId"
+			    quidu      	"3F561E310172"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java"))
+	    physical_presentations 	(list unit_reference_list))
+	(object SubSystem "network"
+	    quid       	"3F4D08A002E9"
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C71000C3"
+		    supplier   	"Component View::org::apache::log4j"
+		    quidu      	"3F58D7FC033E"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C71000F5"
+		    supplier   	"Component View::com::cisco::eManager::eManager::network"
+		    quidu      	"3F4D092500EE"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C7110241"
+		    supplier   	"Component View::com::cisco::eManager::eManager::inventory"
+		    quidu      	"3F0C29160086"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C71203BF"
+		    supplier   	"Component View::java::util"
+		    quidu      	"3E400BC001EB"
+		    supplier_is_subsystem 	TRUE))
+	    physical_models 	(list unit_reference_list
+		(object module "MsgHandler" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\network\\MsgHandler.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D08A10164"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D0602D9"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D06030C"
+			    supplier   	"Component View::com::cisco::eManager::eManager::network::AgentMessage"
+			    quidu      	"3F4D0927010F"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D0700BE"
+			    supplier   	"Component View::org::apache::log4j::Logger"
+			    quidu      	"3F58D7FD010E"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "MsgProcessor" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\network\\MsgProcessor.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D08A3008B"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D0B0150"
+			    supplier   	"Component View::com::cisco::eManager::eManager::inventory::InventoryManager"
+			    quidu      	"3F4D03D60300"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D0B02D7"
+			    supplier   	"Component View::com::cisco::eManager::eManager::network::AgentMessage"
+			    quidu      	"3F4D0927010F"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D0C00DA"
+			    supplier   	"Component View::org::apache::log4j::Logger"
+			    quidu      	"3F58D7FD010E"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "MsgQueue" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\network\\MsgQueue.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D08A50048"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D0E035D"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D0E0385"
+			    supplier   	"Component View::org::apache::log4j::Logger"
+			    quidu      	"3F58D7FD010E"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F872D0E03A3"
+			    supplier   	"Component View::com::cisco::eManager::eManager::network::AgentMessage"
+			    quidu      	"3F4D0927010F"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java"))
+	    physical_presentations 	(list unit_reference_list))
+	(object SubSystem "procSeq"
+	    quid       	"3F4D08BB020C"
+	    physical_models 	(list unit_reference_list
+		(object module "AppsGroup" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\procSeq\\AppsGroup.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D08BC009B"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "AppsProcess" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\eManager\\inventory\\procSeq\\AppsProcess.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F4D08BD02AF"
+		    stereotype 	""
+		    language   	"Java"))
+	    physical_presentations 	(list unit_reference_list)))
+    physical_presentations 	(list unit_reference_list))

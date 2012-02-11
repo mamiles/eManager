@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by marco matchefts (cisco systems inc) -->
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Marvin Miles (Cisco Systems, Inc.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="statusResp" type="StatusResponse">
+		<xs:annotation>
+			<xs:documentation>Status of response message</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="StatusResponse">
+		<xs:annotation>
+			<xs:documentation>rc=0 for success - other values are error return code</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="rc" type="ResponseType"/>
+			<xs:element name="description" type="xs:string" nillable="true" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ResponseType">
+		<xs:choice>
+			<xs:element name="Success" type="xs:int"/>
+			<xs:element name="Warning" type="xs:int"/>
+			<xs:element name="Failure" type="xs:int"/>
+		</xs:choice>
+	</xs:complexType>
+</xs:schema>

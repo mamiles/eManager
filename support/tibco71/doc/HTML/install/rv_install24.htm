@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:10:06" />
+  <title>Daemon Privilege and Priority</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Installation";
+    var ChapterTitle = "Chapter&#160;4	 VMS";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp582727"> </a><h2 class="pNewHTMLPage">
+Daemon Privilege and Priority
+</h2>
+<hr />
+<a name="wp33573785"> </a><h3 class="pHeading2">
+OPER
+</h3>
+<a name="wp33573585"> </a><p class="pBody">
+To send multicast and broadcast messages, the Rendezvous daemon must have <code class="cCode">OPER</code> privilege. Without this privilege, Rendezvous programs will not be able to create transport objects.
+</p>
+<a name="wp33573595"> </a><p class="pBody">
+The best way to ensure this privilege is to install the Rendezvous daemon with <code class="cCode">OPER</code> privilege. The file <code class="cCode">TIBRV_STARTUP.COM</code> does this automatically.
+</p>
+<a name="wp33573777"> </a><h3 class="pHeading2">
+ALTPRI
+</h3>
+<a name="wp33573786"> </a><p class="pBody">
+The Rendezvous daemon process is as an extension of the operating system&#8217;s network device driver. To avoid data loss, it must respond immediately to network I/O. To ensure immediate response, the daemon must run at elevated priority&#151;preempting interactive users and the processes that support them.
+</p>
+<a name="wp33573797"> </a><p class="pBody">
+The daemon executable always runs with <code class="cCode">ALTPRI</code> privilege, which enables elevated priority. This privilege is in effect whether the daemon starts automatically or explicitly. You do not need to configure anything to set this privilege.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Installation <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

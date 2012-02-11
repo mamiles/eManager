@@ -1,0 +1,430 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Relay Agent</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1056518"> </a><h2 class="pNewHTMLPage">
+Relay Agent
+</h2>
+<hr />
+<a name="wp1056519"> </a><p class="pBody">
+Relay agents support certified delivery in situations where persistent correspondents connect only intermittently to the network. This feature supports certified message delivery among laptop computers, and among persistent correspondents that run as ephemeral processes (for example, UNIX <code class="cCode">cron</code> jobs).
+</p>
+<a name="wp1056523"> </a><p class="pBody">
+For example, consider the situation in <a  href="rv_concepts116.htm#wp1056535">Figure&#160;14</a>. Mobile employees use laptop computers, connecting to the network whenever time and communications access permit. They run programs that communicate using certified message delivery. Relay agents collect messages on behalf of disconnected client programs, and deliver them when the programs reconnect. Relay agents also store certified delivery protocol state on behalf of their client programs, and resynchronize that state whenever the client reconnects.
+</p>
+<a name="wp1056524"> </a><h3 class="pHeading2">
+Operation
+</h3>
+<a name="wp1056528"> </a><p class="pBody">
+In <a  href="rv_concepts116.htm#wp1056535">Figure&#160;14</a>, solid lines represent continuous connections, while broken lines represent intermittent connections.
+</p>
+<a name="wp1056529"> </a><p class="pBody">
+The sending program on laptop A creates a CM transport, designating RAB as its relay agent. The listening program on laptop D creates a CM transport, designating RAC as its relay agent. (When both programs run in the same network, they could designate the same relay agent. In this example, the programs use separate relay agents, to illustrate that computers B and C could be in different networks.) Computers E and F remain continuously connected to the network; their programs do not require relay agents, but they can interact with RAB and RAC.
+</p>
+<a name="wp1056530"> </a><p class="pBody">
+The relay agents store inbound certified messages and labeled messages (and other messages related to certified delivery features) on behalf of their disconnected client programs. When a client is connected, it receives inbound messages immediately.
+</p>
+<a name="wp1070723"> </a><p class="pBody">
+
+</p>
+<a name="wp1056535"> </a><div class="pFigureTitle">
+Figure&#160;14   Relay Agents</div><div align="center"><img src="images/rv_conceptsa14.gif" height="576" width="528" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1070724"> </a><p class="pBody">
+
+</p>
+<a name="wp1056536"> </a><p class="pBody">
+When laptop A is connected to the network, and connected to RAB, the sending program transfers its outbound certified messages to RAB, which in turn sends them to the network. When laptop A is disconnected, the program process stores its outbound certified messages; upon reconnection, it transfers the stored messages to RAB, which sends them to the network.
+</p>
+<a name="wp1056537"> </a><p class="pBody">
+When laptop D is connected to the network, and connected to RAC, the listening program receives all inbound certified messages through RAC. When the connected listener confirms receipt, the confirmations flow through RAC.
+</p>
+<a name="wp1056538"> </a><p class="pBody">
+In contrast, when laptop D is disconnected, the relay agent named RAC stores certified messages on behalf of the listening program; upon reconnection, RAC transfers the stored messages to the listening program.
+</p>
+<a name="wp1056539"> </a><p class="pBody">
+When laptops A and D are both connected to the network, the sending program receives inbound confirmations as the listening program on D sends them (through intermediaries RAC and RAB). When laptop A is disconnected, the relay agent named RAB stores the confirmations from D; upon reconnection, it transfers the confirmations to the sending program on A. If the listener on D disconnects before confirming receipt, the listener stores the confirmations until it reconnects to RAC; upon reconnection, the listener transfers the stored confirmations to RAC.
+</p>
+<a name="wp1056540"> </a><h3 class="pHeading2">
+Communication
+</h3>
+<a name="wp1056541"> </a><p class="pBody">
+Once a CM transport designates a relay agent, <em class="cEmphasis">all</em> its communications flow through that relay agent.
+</p>
+<a name="wp1056542"> </a><p class="pBody">
+Each time a CM transport reconnects with the network, it attempts to contact its designated relay agent using multicast or broadcast protocol messages. After establishing contact, the program client and its relay agent use point-to-point communications to transfer messages and resynchronize protocol state information.
+</p>
+<a name="wp1056543"> </a><h3 class="pHeading2">
+Protocol State
+</h3>
+<a name="wp1056544"> </a><p class="pBody">
+Relay agents mirror the protocol state associated with certified delivery&#151;including registration state and message confirmation state. When the client is disconnected from the relay agent, their protocol states can diverge; they resynchronize when the client reconnects. The client CM transport is <em class="cEmphasis">always</em> the master of the protocol state, and the relay agent is the mirror.
+</p>
+<a name="wp1056545"> </a><h3 class="pHeading2">
+Transparency
+</h3>
+<a name="wp1056546"> </a><p class="pBody">
+Relay agents are <em class="cEmphasis">transparent</em>; that is, the <em class="cEmphasis">semantics</em> of certified delivery, confirmation, discovery, and registration remain the same, whether or not relay agents are operating. Confirmation indicates that the certified listener has actually received the certified message (relay agents do not generate confirmations on behalf of listening clients).
+</p>
+<a name="wp1056548"> </a><h3 class="pHeading2">
+Connecting and Disconnecting
+</h3>
+<a name="wp1056549"> </a><p class="pBody">
+A program can control the connections to its relay agent <em class="cEmphasis">implicitly</em> or <em class="cEmphasis">explicitly</em>:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1056550"> </a><div class="pSmartList1"><li >Implicit control works best for a program that creates a new CM transport each time it establishes network connectivity.</li></div>
+
+<div class="pSmartList2"><ul>
+<a name="wp1056551"> </a><div class="pSmartList2"><li >Creating a CM transport implicitly connects it to its designated relay agent.</li></div>
+<a name="wp1056552"> </a><div class="pSmartList2"><li >Destroying a CM transport implicitly disconnects it from its relay agent.</li></div>
+<a name="wp1056553"> </a><p class="pBodyRelative">
+For example, consider a laptop program that the user terminates before disconnecting, and restarts after reconnecting. Even though this program embodies a persistent correspondent, it creates a new CM transport object each time it restarts.
+</p>
+<a name="wp1070561"> </a><p class="pBodyRelative">
+As another example, consider an ephemeral process (such as a UNIX <code class="cCode">cron</code> job). Each time it starts, it creates a new CM transport object, even though each instance embodies the same persistent correspondent.
+</p>
+</ul></div>
+
+<a name="wp1056554"> </a><div class="pSmartList1"><li >Explicit control works best for a program that retains the same CM transport object through several cycles of intermittent network connectivity.</li></div>
+
+<div class="pSmartList2"><ul>
+<a name="wp1056555"> </a><div class="pSmartList2"><li >Explicitly connect each CM transport to its relay agent whenever network connectivity resumes.</li></div>
+<a name="wp1056556"> </a><div class="pSmartList2"><li >Explicitly disconnect each CM transport from its relay agent before disconnecting from the network.</li></div>
+<a name="wp1056557"> </a><p class="pBodyRelative">
+For example, consider a laptop user who connects to the network whenever a telephone line is available, yet continues to use the same program process even when the computer is physically disconnected from the network. The program can use one CM transport object for its entire process lifetime, explicitly connecting to the relay agent when the computer connects to the network, and disconnecting from the relay agent when the computer disconnects from the network.
+</p>
+</ul></div>
+
+</ul></div>
+
+<a name="wp1056561"> </a><p class="pBody">
+<a  href="rv_concepts116.htm#wp1056568">Table&#160;35</a> summarizes the calls that control relay agent connections&#151;implicitly and explicitly.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1056568"> </a><div class="pTableTitle">
+Table&#160;35   Relay Agent Connect and Disconnect Calls (Sheet 1 of 2)
+</div>
+</caption>
+  <tr align="left" valign="top">    <td colspan="1" rowspan="2"><a name="wp1056574"> </a><div class="pCellBody">
+C
+</div>
+</td>
+    <td><a name="wp1056576"> </a><div class="pCellBody">
+Implicit
+</div>
+</td>
+    <td><a name="wp1056581"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref188.htm#wp1120127');" onMouseOver="WWHShowPopup('e', 'rv_c_ref188.htm#wp1120127', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvcmTransport_Create()</code></a>
+</div>
+<a name="wp1056585"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref189.htm#wp1090827');" onMouseOver="WWHShowPopup('e', 'rv_c_ref189.htm#wp1090827', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvcmTransport_Destroy()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056589"> </a><div class="pCellBody">
+Explicit
+</div>
+</td>
+    <td><a name="wp1056594"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref187.htm#wp1090484');" onMouseOver="WWHShowPopup('e', 'rv_c_ref187.htm#wp1090484', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvcmTransport_ConnectToRelayAgent()</code></a>
+</div>
+<a name="wp1056598"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref191.htm#wp1090646');" onMouseOver="WWHShowPopup('e', 'rv_c_ref191.htm#wp1090646', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvcmTransport_DisconnectFromRelayAgent()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td colspan="1" rowspan="2"><a name="wp1056600"> </a><div class="pCellBody">
+C++
+</div>
+</td>
+    <td><a name="wp1056602"> </a><div class="pCellBody">
+Implicit
+</div>
+</td>
+    <td><a name="wp1056612"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref230.htm#wp1158326');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref230.htm#wp1158326', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport::create()</code></a>
+</div>
+<a name="wp1072312"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref232.htm#wp1084655');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref232.htm#wp1084655', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport::destroy()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056616"> </a><div class="pCellBody">
+Explicit
+</div>
+</td>
+    <td><a name="wp1056625"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref229.htm#wp1139993');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref229.htm#wp1139993', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport::connectToRelayAgent()</code></a>
+</div>
+<a name="wp1072296"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref234.htm#wp1084766');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref234.htm#wp1084766', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport::disconnectFromRelayAgent()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td colspan="1" rowspan="2"><a name="wp1056627"> </a><div class="pCellBody">
+Java
+</div>
+</td>
+    <td><a name="wp1056629"> </a><div class="pCellBody">
+Implicit
+</div>
+</td>
+    <td><a name="wp1056634"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref192.htm#wp1097723');" onMouseOver="WWHShowPopup('g', 'rv_java_ref192.htm#wp1097723', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport()</code></a>
+</div>
+<a name="wp1056638"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref196.htm#wp1084655');" onMouseOver="WWHShowPopup('g', 'rv_java_ref196.htm#wp1084655', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport.destroy()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056642"> </a><div class="pCellBody">
+Explicit
+</div>
+</td>
+    <td><a name="wp1056647"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref195.htm#wp1084414');" onMouseOver="WWHShowPopup('g', 'rv_java_ref195.htm#wp1084414', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport.connectToRelayAgent()</code></a>
+</div>
+<a name="wp1056651"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref198.htm#wp1084766');" onMouseOver="WWHShowPopup('g', 'rv_java_ref198.htm#wp1084766', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport.disconnectFromRelayAgent()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td colspan="1" rowspan="2"><a name="wp1056653"> </a><div class="pCellBody">
+COM
+</div>
+</td>
+    <td><a name="wp1056655"> </a><div class="pCellBody">
+Implicit
+</div>
+</td>
+    <td><a name="wp1056664"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref183.htm#wp1145168');" onMouseOver="WWHShowPopup('h', 'rv_com_ref183.htm#wp1145168', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport.create</code></a>
+</div>
+<a name="wp1073287"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref184.htm#wp1084655');" onMouseOver="WWHShowPopup('h', 'rv_com_ref184.htm#wp1084655', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport.destroy</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056668"> </a><div class="pCellBody">
+Explicit
+</div>
+</td>
+    <td><a name="wp1056677"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref182.htm#wp1186101');" onMouseOver="WWHShowPopup('h', 'rv_com_ref182.htm#wp1186101', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport.connectToRelayAgent</code></a>
+</div>
+<a name="wp1073302"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref186.htm#wp1084766');" onMouseOver="WWHShowPopup('h', 'rv_com_ref186.htm#wp1084766', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport.disconnectFromRelayAgent</code></a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1056678"> </a><h4 class="pHeading3">
+Connecting
+</h4>
+<a name="wp1056679"> </a><p class="pBody">
+Connect calls are non-blocking; they immediately return control to the program, and asynchronously attempt to connect to the relay agent (continuing until they succeed, or until the program makes a disconnect call).
+</p>
+<a name="wp1056683"> </a><p class="pBody">
+When a CM transport attempts to connect to a relay agent, Rendezvous software automatically locates the relay agent process (if it exists). When the CM transport successfully connects to the relay agent, they synchronize:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1056687"> </a><div class="pSmartList1"><li >The CM transport receives a <a  href="rv_concepts187.htm#wp1039667"><code class="cCode">RELAY.CONNECTED</code></a> advisory, informing it of successful contact with the relay agent.</li></div>
+
+<a name="wp1056688"> </a><p class="pBodyRelative">
+(When a CM transport cannot locate its relay agent, it presents a <a  href="rv_concepts176.htm#wp1039175"><code class="cCode">DELIVERY.NO_RESPONSE</code></a> advisory; however, we recommend against designing programs to rely on this side effect.)
+</p>
+<a name="wp1056692"> </a><div class="pSmartList1"><li >If the client transport is a <em class="cEmphasis">CM listener</em>, the relay agent ensures that it is listening to the same set of subjects on behalf of the client. The relay agent also updates its confirmation state to reflect the state of the program transport.</li></div>
+
+<a name="wp1056693"> </a><div class="pSmartList1"><li >If the client transport is a <em class="cEmphasis">CM sender</em>, the relay agent updates its acceptance state to reflect the state of the program. The sending client updates its confirmation state to reflect the state of the relay agent.</li></div>
+
+<a name="wp1056694"> </a><div class="pSmartList1"><li >The CM transport and relay agent exchange the data messages that they have been storing during the time they were disconnected.</li></div>
+
+</ul></div>
+
+<a name="wp1056695"> </a><p class="pBody">
+We recommend that programs remain connected for a minimum of two minutes, to allow time for synchronization to complete. (Two minutes is a generous estimate, which is sufficient for most situations. Actual time synchronization time can be much shorter, and varies with the number of stored messages and the degree to which protocol state has changed.)
+</p>
+<a name="wp1056696"> </a><h4 class="pHeading3">
+Disconnecting
+</h4>
+<a name="wp1056697"> </a><p class="pBody">
+Disconnect calls are non-blocking; they immediately return control to the program, and asynchronously proceed with clean-up tasks:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1056698"> </a><div class="pSmartList1"><li >If the client transport is a <em class="cEmphasis">CM listener</em>, the relay agent attempts to synchronize its listening state with the transport (to assure that the relay agent adequately represents the CM listeners of the client).</li></div>
+
+<a name="wp1056699"> </a><div class="pSmartList1"><li >The CM transport stops communicating with the relay agent.</li></div>
+
+<a name="wp1056700"> </a><p class="pBodyRelative">
+The CM transport stores subsequent outbound events&#151;including data messages and protocol state changes. If the CM transport is a certified <em class="cEmphasis">sender</em>, it stops requesting delivery confirmation for outstanding unconfirmed messages. (See also, <a  href="rv_concepts107.htm#wp1056232">Requesting Confirmation</a>.)
+</p>
+<a name="wp1056704"> </a><p class="pBodyRelative">
+The relay agent stores subsequent inbound events for the CM transport&#151;including data messages and protocol state changes.
+</p>
+<a name="wp1056705"> </a><div class="pSmartList1"><li >A CM transport that explicitly disconnects (and is not destroyed) presents a <a  href="rv_concepts188.htm#wp1039704"><code class="cCode">RELAY.DISCONNECTED</code></a> advisory, informing the program that it is safe to sever the physical network connection. (A CM transport that implicitly disconnects during its destruction sequence will never present this advisory; instead, it is safe to sever the physical connection when the destroy call returns.)</li></div>
+
+</ul></div>
+
+<a name="wp1056709"> </a><h3 class="pHeading2">
+Delays
+</h3>
+<a name="wp1056710"> </a><p class="pBody">
+Programs that connect only intermittently add delays to several phases of certified message delivery, including discovery and registration, delivery, and confirmation of receipt. Because of these delays, certified messages might require longer time limits than they would in the absence of relay agents.
+</p>
+<a name="wp1056713"> </a><p class="pBody">
+To understand the possible sources of delays, consider this worst-case situation. <a  href="rv_concepts116.htm#wp1056737">Figure&#160;15</a> depicts the network arrangement; <a  href="rv_concepts116.htm#wp1056742">Figure&#160;16</a> illustrates the narrative:
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1056719"> </a><div class="pSmartList1"><li value="1">The CM transport on laptop D listens to the subject <code class="cCode">foo</code>. When the listener transport connects to its relay agent (RAC), RAC begins listening on its behalf. The listener transport then disconnects from RAC.</li></div>
+
+<a name="wp1056720"> </a><div class="pSmartList1"><li value="2">The CM transport on laptop A sends messages to the subject <code class="cCode">foo</code>.</li></div>
+
+<a name="wp1056721"> </a><p class="pBodyRelative">
+Although the CM send call produces a labeled message, the CM transport on D is not yet registered as a certified listener&#151;so when it receives this message, it does not confirm receipt. By anticipating the listener and pre-registering it, the CM sender can certify this outbound message even before the listener requests registration.
+</p>
+<a name="wp1056722"> </a><p class="pBodyRelative">
+When the sender transport connects to its relay agent (RAB), it transfers its stored outbound messages to RAB, which in turn sends them to the network. The sender then disconnects from RAB.
+</p>
+<a name="wp1056723"> </a><div class="pSmartList1"><li value="3">RAC receives the messages from RAB, stores them for its listening CM transport client on D, and automatically requests registration on behalf of that listening client.</li></div>
+
+<a name="wp1056724"> </a><p class="pBodyRelative">
+RAB receives the registration request, and stores it for its sending client on A.
+</p>
+<a name="wp1056726"> </a><div class="pSmartList1"><li value="4">When the CM sending transport on A connects, it transfers its waiting outbound messages to RAB, and accepts the registration request.</li></div>
+
+<a name="wp1056727"> </a><p class="pBodyRelative">
+Both RAB and RAC store the acceptance state.
+</p>
+<a name="wp1056728"> </a><p class="pBodyRelative">
+From this time forward, the sender and listener transports have a certified delivery agreement (even though the listener has not yet received any notice of acceptance). Subsequent messages from the sender are certified (but messages sent previously are not certified).
+</p>
+<a name="wp1056729"> </a><p class="pBodyRelative">
+Then the sender disconnects.
+</p>
+<a name="wp1056730"> </a><div class="pSmartList1"><li value="5">When the listening CM transport on D connects, it transfers the acceptance state from RAC, along with stored inbound messages. The listener confirms receipt of the certified messages. Both RAB and RAC store the confirmation state.</li></div>
+
+<a name="wp1056732"> </a><div class="pSmartList1"><li value="6">When the sending CM transport on A connects, it transfers the confirmation state from RAB.</li></div>
+
+</ol></div>
+
+<a name="wp1056737"> </a><div class="pFigureTitle">
+Figure&#160;15   Relay Agents and Delays: Network</div><div align="center"><img src="images/rv_conceptsa15.gif" height="370" width="531" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1070722"> </a><p class="pBody">
+
+</p>
+<a name="wp1056742"> </a><div class="pFigureTitle">
+Figure&#160;16   Relay Agents and Delays: Timing</div><div align="center"><img src="images/rv_conceptsa16.gif" height="689" width="531" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1056743"> </a><p class="pBody">
+
+</p>
+<a name="wp1056744"> </a><p class="pBody">
+Notice these delays:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1056748"> </a><div class="pSmartList1"><li >Although the listener transport begins listening at step <a  href="rv_concepts116.htm#wp1056719">1</a>, the sender transport does not receive a request for certified delivery until step <a  href="rv_concepts116.htm#wp1056726">4</a>. Messages sent before establishing the certified delivery agreement are not certified for that listener.</li></div>
+
+<a name="wp1056755"> </a><div class="pSmartList1"><li >Although the sender transport begins sending certified messages at step <a  href="rv_concepts116.htm#wp1056726">4</a>, it does not receive confirmation until step <a  href="rv_concepts116.htm#wp1056732">6</a>. The message time limit must be longer than this delay, otherwise the message expires before confirmation arrives, and the sender transport presents a <a  href="rv_concepts177.htm#wp1039214"><code class="cCode">DELIVERY.FAILED</code></a> advisory.</li></div>
+
+</ul></div>
+
+<a name="wp1056762"> </a><h3 class="pHeading2">
+Capacity
+</h3>
+<a name="wp1056763"> </a><p class="pBody">
+Each relay agent can serve CM transports in several client programs simultaneously, limited only by the relay agent host computer and its network interface. The client CM transports of a relay agent can both send and listen.
+</p>
+<a name="wp1056764"> </a><h3 class="pHeading2">
+Reply Name Substitution
+</h3>
+<a name="wp1056769"> </a><p class="pBody">
+Consider the intermittently connected program (A) in <a  href="rv_concepts116.htm#wp1056779">Figure&#160;17</a>. A sends a certified request message (for example, a query) and expects a reply message by listening to an inbox name (the reply can be certified or an ordinary message). When A disconnects, it becomes unavailable to receive the reply message.
+</p>
+<a name="wp1056770"> </a><p class="pBody">
+To ensure that the reply arrives properly, the relay agent (RAB) establishes a surrogate inbox name, and substitutes that name as the reply name on the outbound message. When the reply arrives, RAB receives it, and substitutes the original reply inbox name before transferring the reply to A. <a  href="rv_concepts116.htm#wp1056779">Figure&#160;17</a> illustrates this sequence.
+</p>
+<a name="wp1056774"> </a><p class="pBody">
+To see why reply name substitution is important, consider the result <em class="cEmphasis">without</em> substitution. Suppose instead that A places the reply inbox name in a field of the request message, and sends it without a proper reply name. In this erroneous situation, the relay agent cannot intercept the reply message&#151;so if A is disconnected when the reply is sent, A does not receive the reply.
+</p>
+<a name="wp1056779"> </a><div class="pFigureTitle">
+Figure&#160;17   Relay Agents: Reply Name Substitution</div><div align="center"><img src="images/rv_conceptsa17.gif" height="579" width="531" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1056780"> </a><p class="pBody">
+Notice that if A destroys the original inbox listener event or invalidates its transport, then it can never receive the reply message from RAB.
+</p>
+<a name="wp1056781"> </a><p class="pBody">
+Notice that when the reply name is a public subject (rather than an inbox), reply name substitution is unnecessary&#151;since the relay agent can listen to the same reply subject as A. This arrangement works properly even when A terminates and restarts, or creates a new transport.
+</p>
+<a name="wp1056790"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1069666"> </a><p class="pBody">
+For information about the relay agent process, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm74.htm#wp1024285');" onMouseOver="WWHShowPopup('c', 'rv_adm74.htm#wp1024285', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Relay Agent</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.
+</p>
+<a name="wp1069670"> </a><p class="pBody">
+
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

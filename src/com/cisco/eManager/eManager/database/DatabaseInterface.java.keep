@@ -1,0 +1,1235 @@
+package com.cisco.eManager.eManager.database;
+
+import java.util.Iterator;
+import java.util.Collection;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Date;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.CallableStatement;
+import java.sql.Statement;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Types;
+
+import org.apache.log4j.*;
+
+import com.cisco.eManager.common.database.EmanagerDatabaseException;
+import com.cisco.eManager.common.database.EmanagerDatabaseStatusCode;
+
+import com.cisco.eManager.common.event.AbstractEventMessage;
+import com.cisco.eManager.common.event.EmanagerEventMessage;
+import com.cisco.eManager.common.event.EventDeletionCriteria;
+import com.cisco.eManager.common.event.EventSearchCriteria;
+import com.cisco.eManager.common.event.EmanagerEventDetails;
+import com.cisco.eManager.common.event.TibcoEventDetails;
+import com.cisco.eManager.common.event.ProcessSequencerEventDetails;
+
+import com.cisco.eManager.common.inventory.ManagedObjectId;
+
+import com.cisco.eManager.eManager.event.TibcoEventMessage;
+import com.cisco.eManager.common.event.EmanagerEventDetails;
+
+import com.cisco.eManager.eManager.inventory.view.ContainerNode;
+import com.cisco.eManager.eManager.inventory.host.Host;
+import com.cisco.eManager.eManager.inventory.appType.AppType;
+import com.cisco.eManager.eManager.inventory.mgmtPolicy.MgmtPolicy;
+import com.cisco.eManager.eManager.inventory.procSeq.AppsGroup;
+import com.cisco.eManager.eManager.inventory.appInstance.AppInstance;
+
+import com.cisco.eManager.eManager.database.DatabaseConnectionManager;
+import com.cisco.eManager.eManager.database.DatabaseGlobals;
+
+public class DatabaseInterface
+{
+    private static Logger      logger = Logger.getLogger(DatabaseInterface.class);
+
+    private static DatabaseInterface databaseInterface = null;
+    private static Boolean hostSequenceLock = new Boolean (true);
+    private static Boolean appTypeSequenceLock = new Boolean (true);
+    private static Boolean appInstanceSequenceLock = new Boolean (true);
+    private static Boolean eventSequenceLock = new Boolean (true);
+    private static Boolean mgmtPolicySequenceLock = new Boolean (true);
+    private static Boolean userIdSequenceLock = new Boolean (true);
+    private static Boolean physicalHierarchySequenceLock = new Boolean (true);
+    private static Boolean applicationHierarchySequenceLock = new Boolean (true);
+    private static Boolean auditLogSequenceLock = new Boolean (true);
+
+    private Connection heartbeatConnection =  null;
+    private PreparedStatement heartbeatPreparedStatement = null;
+
+    /**
+     * @roseuid 3F5767C20086
+     */
+    private DatabaseInterface() throws EmanagerDatabaseException
+    {
+        DatabaseConnectionManager.instance();
+    }
+
+    /**
+     * @return com.cisco.eManager.eManager.database.DatabaseInterface
+     * @roseuid 3F41963B00F4
+     */
+    public static synchronized DatabaseInterface instance() throws EmanagerDatabaseException
+    {
+        if (databaseInterface == null) {
+            databaseInterface = new DatabaseInterface();
+        }
+
+        return databaseInterface;
+    }
+
+    /**
+     * @return int
+     * @roseuid 3F4196A30210
+     */
+    private long getNextEventKey() throws EmanagerDatabaseException
+    {
+        long key;
+        ResultSetMetaData rsmd;
+        Connection connection;
+        CallableStatement cs;
+
+        key = 0;
+        synchronized (eventSequenceLock) {
+            try {
+                connection = DatabaseConnectionManager.instance().getConnection();
+                cs = connection.prepareCall("{? = call get_event_id()}");
+                cs.registerOutParameter(1, Types.BIGINT);
+                cs.execute();
+                key = cs.getLong(1);
+                connection.close();
+            }
+            catch (SQLException e) {
+                String logString;
+                EmanagerDatabaseException ede;
+
+                logString =
+                    EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered.getStatusCodeDescription() +
+                    e.getMessage();
+
+                logger.log(Priority.ERROR, logString);
+                ede = new EmanagerDatabaseException (EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered,
+                                                     logString);
+                throw ede;
+            }
+        }
+
+        return key;
+    }
+
+    private long getNextHostKey() throws EmanagerDatabaseException
+    {
+        long key;
+        ResultSetMetaData rsmd;
+        Connection connection;
+        CallableStatement cs;
+
+        key = 0;
+        synchronized (hostSequenceLock) {
+            try {
+                connection = DatabaseConnectionManager.instance().getConnection();
+                cs = connection.prepareCall("{? = call get_host_id()}");
+                cs.registerOutParameter(1, Types.BIGINT);
+                cs.execute();
+                key = cs.getLong(1);
+                connection.close();
+            }
+            catch (SQLException e) {
+                String logString;
+                EmanagerDatabaseException ede;
+
+                logString =
+                    EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered.getStatusCodeDescription() +
+                    e.getMessage();
+
+                logger.log(Priority.ERROR, logString);
+                ede = new EmanagerDatabaseException (EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered,
+                                                     logString);
+                throw ede;
+            }
+        }
+
+        return key;
+    }
+
+    private long getNextAppTypeKey() throws EmanagerDatabaseException
+    {
+        long key;
+        ResultSetMetaData rsmd;
+        Connection connection;
+        CallableStatement cs;
+
+        key = 0;
+        synchronized (appTypeSequenceLock) {
+            try {
+                connection = DatabaseConnectionManager.instance().getConnection();
+                cs = connection.prepareCall("{? = call get_applicationtype_id()}");
+                cs.registerOutParameter(1, Types.BIGINT);
+                cs.execute();
+                key = cs.getLong(1);
+                connection.close();
+            }
+            catch (SQLException e) {
+                String logString;
+                EmanagerDatabaseException ede;
+
+                logString =
+                    EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered.getStatusCodeDescription() +
+                    e.getMessage();
+
+                logger.log(Priority.ERROR, logString);
+                ede = new EmanagerDatabaseException (EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered,
+                                                     logString);
+                throw ede;
+            }
+        }
+
+        return key;
+    }
+
+    private long getNextAppInstanceKey() throws EmanagerDatabaseException
+    {
+        long key;
+        ResultSetMetaData rsmd;
+        Connection connection;
+        CallableStatement cs;
+
+        key = 0;
+        synchronized (appInstanceSequenceLock) {
+            try {
+                connection = DatabaseConnectionManager.instance().getConnection();
+                cs = connection.prepareCall("{? = call get_application_instance_id()}");
+                cs.registerOutParameter(1, Types.BIGINT);
+                cs.execute();
+                key = cs.getLong(1);
+                connection.close();
+            }
+            catch (SQLException e) {
+                String logString;
+                EmanagerDatabaseException ede;
+
+                logString =
+                    EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered.getStatusCodeDescription() +
+                    e.getMessage();
+
+                logger.log(Priority.ERROR, logString);
+                ede = new EmanagerDatabaseException (EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered,
+                                                     logString);
+                throw ede;
+            }
+        }
+
+        return key;
+    }
+
+    private long getNextMgmtPolicyKey() throws EmanagerDatabaseException
+    {
+        long key;
+        ResultSetMetaData rsmd;
+        Connection connection;
+        CallableStatement cs;
+
+        key = 0;
+        synchronized (mgmtPolicySequenceLock) {
+            try {
+                connection = DatabaseConnectionManager.instance().getConnection();
+                cs = connection.prepareCall("{? = call get_managementpolicy_id()}");
+                cs.registerOutParameter(1, Types.BIGINT);
+                cs.execute();
+                key = cs.getLong(1);
+                connection.close();
+            }
+            catch (SQLException e) {
+                String logString;
+                EmanagerDatabaseException ede;
+
+                logString =
+                    EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered.getStatusCodeDescription() +
+                    e.getMessage();
+
+                logger.log(Priority.ERROR, logString);
+                ede = new EmanagerDatabaseException (EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered,
+                                                     logString);
+                throw ede;
+            }
+        }
+
+        return key;
+    }
+
+    private long getNextUserIdKey() throws EmanagerDatabaseException
+    {
+        long key;
+        ResultSetMetaData rsmd;
+        Connection connection;
+        CallableStatement cs;
+
+        key = 0;
+        synchronized (userIdSequenceLock) {
+            try {
+                connection = DatabaseConnectionManager.instance().getConnection();
+                cs = connection.prepareCall("{? = call get_userid_id()}");
+                cs.registerOutParameter(1, Types.BIGINT);
+                cs.execute();
+                key = cs.getLong(1);
+                connection.close();
+            }
+            catch (SQLException e) {
+                String logString;
+                EmanagerDatabaseException ede;
+
+                logString =
+                    EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered.getStatusCodeDescription() +
+                    e.getMessage();
+
+                logger.log(Priority.ERROR, logString);
+                ede = new EmanagerDatabaseException (EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered,
+                                                     logString);
+                throw ede;
+            }
+        }
+
+        return key;
+    }
+
+    private long getNextPhysicalHierarchyKey() throws EmanagerDatabaseException
+    {
+        long key;
+        ResultSetMetaData rsmd;
+        Connection connection;
+        CallableStatement cs;
+
+        key = 0;
+        synchronized (physicalHierarchySequenceLock) {
+            try {
+                connection = DatabaseConnectionManager.instance().getConnection();
+                cs = connection.prepareCall("{? = call get_physicalhiearchy_id()}");
+                cs.registerOutParameter(1, Types.BIGINT);
+                cs.execute();
+                key = cs.getLong(1);
+                connection.close();
+            }
+            catch (SQLException e) {
+                String logString;
+                EmanagerDatabaseException ede;
+
+                logString =
+                    EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered.getStatusCodeDescription() +
+                    e.getMessage();
+
+                logger.log(Priority.ERROR, logString);
+                ede = new EmanagerDatabaseException (EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered,
+                                                     logString);
+                throw ede;
+            }
+        }
+
+        return key;
+    }
+
+    private long getNextApplicationHierarchyKey() throws EmanagerDatabaseException
+    {
+        long key;
+        ResultSetMetaData rsmd;
+        Connection connection;
+        CallableStatement cs;
+
+        key = 0;
+        synchronized (applicationHierarchySequenceLock) {
+            try {
+                connection = DatabaseConnectionManager.instance().getConnection();
+                cs = connection.prepareCall("{? = call get_applicationhiearchy_id()}");
+                cs.registerOutParameter(1, Types.BIGINT);
+                cs.execute();
+                key = cs.getLong(1);
+                connection.close();
+            }
+            catch (SQLException e) {
+                String logString;
+                EmanagerDatabaseException ede;
+
+                logString =
+                    EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered.getStatusCodeDescription() +
+                    e.getMessage();
+
+                logger.log(Priority.ERROR, logString);
+                ede = new EmanagerDatabaseException (EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered,
+                                                     logString);
+                throw ede;
+            }
+        }
+
+        return key;
+    }
+
+    private long getNextAuditLogKey() throws EmanagerDatabaseException
+    {
+        long key;
+        ResultSetMetaData rsmd;
+        Connection connection;
+        CallableStatement cs;
+
+        key = 0;
+        connection = null;
+        synchronized (auditLogSequenceLock) {
+            try {
+                connection = DatabaseConnectionManager.instance().getConnection();
+                cs = connection.prepareCall("{? = call get_auditlog_id()}");
+                cs.registerOutParameter(1, Types.BIGINT);
+                cs.execute();
+                key = cs.getLong(1);
+                connection.close();
+            }
+            catch (SQLException e) {
+                String logString;
+                EmanagerDatabaseException ede;
+
+                logString =
+                    EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered.getStatusCodeDescription() +
+                    e.getMessage();
+
+                logger.log(Priority.ERROR, logString);
+                ede = new EmanagerDatabaseException (EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered,
+                    logString);
+
+                if (connection != null) {
+                    try {
+                        connection.close();
+                    }
+                    catch (SQLException closeE) {
+                    }
+                }
+
+                throw ede;
+            }
+        }
+
+        return key;
+    }
+
+    /**
+     * @param event
+     * @return com.cisco.eManager.common.event.AbstractEventMessage
+     * @roseuid 3F4197970289
+     */
+    public ManagedObjectId createNewEvent(AbstractEventMessage event) throws EmanagerDatabaseException
+    {
+
+	if (event instanceof EmanagerEventMessage) {
+	    return createNewEmanagerEvent ((EmanagerEventMessage) event);
+	} else if (event instanceof TibcoEventMessage) {
+	    return createNewTibcoEvent((TibcoEventMessage) event);
+	}
+        /*
+         // fix
+        else if (event instanceof ProcessSequencerEventMessage) {
+	    return createNewProcessSequencerEvent((ProcessSequencerEventMessage) event);
+	}
+       */
+
+        return null;
+    }
+
+    private String convertDateToSQLDate (Date date)
+    {
+	StringBuffer buffer;
+	GregorianCalendar calendar;
+
+	buffer = new StringBuffer();
+	calendar = new GregorianCalendar();
+	calendar.setTime (date);
+
+	buffer.append (Integer.toString (calendar.get (Calendar.YEAR)));
+	buffer.append ("-");
+	buffer.append (Integer.toString (calendar.get (Calendar.MONTH)));
+	buffer.append ("-");
+	buffer.append (Integer.toString (calendar.get (Calendar.DAY_OF_MONTH)));
+	buffer.append (" ");
+	buffer.append (Integer.toString (calendar.get (Calendar.HOUR_OF_DAY)));
+	buffer.append (":");
+	buffer.append (Integer.toString (calendar.get (Calendar.MINUTE)));
+	buffer.append (":");
+	buffer.append (Integer.toString (calendar.get (Calendar.SECOND)));
+	buffer.append (".");
+	buffer.append (Integer.toString (calendar.get (Calendar.MILLISECOND)));
+
+        return buffer.toString();
+    }
+
+    /**
+     * @param event
+     * @return com.cisco.eManager.eManager.event.TibcoEventMessage
+     * @roseuid 3F4197F1000B
+     */
+    private ManagedObjectId createNewTibcoEvent(TibcoEventMessage event) throws EmanagerDatabaseException
+    {
+	long newEventId;
+	ManagedObjectId eventObjectId;
+	StringBuffer tibcoEventData;
+	StringBuffer sqlStatement;
+	Connection connection;
+	Statement  statement;
+	Date eventTime;
+
+	sqlStatement = new StringBuffer();
+	tibcoEventData = new StringBuffer();
+
+	tibcoEventData.append (DatabaseGlobals.TibcoEventIdKey +
+			       DatabaseGlobals.DatabaseEventKeyValueSeparator +
+			       Integer.toString (event.getTibcoEventId()));
+	tibcoEventData.append (DatabaseGlobals.DatabaseEventParmDelimeter +
+			       DatabaseGlobals.TibcoRuleTextKey +
+			       DatabaseGlobals.DatabaseEventKeyValueSeparator +
+			       event.getRuleText());
+	tibcoEventData.append (DatabaseGlobals.DatabaseEventParmDelimeter +
+			       DatabaseGlobals.TibcoRuleTestKey +
+			       DatabaseGlobals.DatabaseEventKeyValueSeparator +
+			       event.getRuleTestText());
+	tibcoEventData.append (DatabaseGlobals.DatabaseEventParmDelimeter +
+			       DatabaseGlobals.TibcoEventMgmtPolicyId +
+			       DatabaseGlobals.DatabaseEventKeyValueSeparator +
+			       Long.toString (event.getManagementPolicyManagedObjectId().getManagedObjectKey()));
+
+	eventTime = event.getEventTime();
+
+	newEventId = getNextEventKey();
+        eventObjectId = new ManagedObjectId (ManagedObjectId.EventType, newEventId);
+
+	sqlStatement.append ("INSERT INTO event " +
+			     "(id, event_type, post_time, severity, display_text," +
+			     " managed_object_type, managed_object_key, event_type_values)" +
+			     " VALUES (" +
+			     Long.toString (newEventId) + ", " +
+			     Integer.toString (DatabaseGlobals.DatabaseTibcoEventType) + ", " +
+			     "'" + convertDateToSQLDate (eventTime) + "', " +
+			     Integer.toString (event.getSeverity().intValue()) + ", " +
+			     "'" + event.getDisplayText() + "', " +
+			     Integer.toString (event.getManagedObjectId().getManagedObjectType()) + ", " +
+			     Long.toString (event.getManagedObjectId().getManagedObjectKey()) + ", " +
+			     "'" + tibcoEventData.toString() + "');");
+
+	connection = DatabaseConnectionManager.instance().getConnection();
+
+	try {
+            String sqlStatementString;
+
+            sqlStatementString = sqlStatement.toString();
+	    statement = connection.createStatement();
+	    statement.executeUpdate (sqlStatementString);
+	    connection.commit();
+            connection.close();
+	}
+	catch (SQLException e) {
+                String logString;
+                EmanagerDatabaseException ede;
+
+                logString =
+                    EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered.getStatusCodeDescription() +
+                    e.getMessage();
+
+                logger.log(Priority.ERROR, logString);
+                ede = new EmanagerDatabaseException (EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered,
+                                                     logString);
+
+                if (connection != null) {
+                    try {
+                        connection.rollback();
+                        connection.close();
+                    }
+                    catch (SQLException closeE) {
+                    }
+                }
+
+                throw ede;
+	}
+
+        return eventObjectId;
+    }
+
+    /**
+     * @param event
+     * @return com.cisco.eManager.common.event.EmanagerEventMessage
+     * @roseuid 3F419838011E
+     */
+    private ManagedObjectId createNewEmanagerEvent(EmanagerEventMessage event) throws EmanagerDatabaseException
+    {
+        long newEventId;
+        ManagedObjectId eventObjectId;
+        StringBuffer tibcoEventData;
+        StringBuffer sqlStatement;
+        Connection connection;
+        Statement  statement;
+        Date eventTime;
+
+        sqlStatement = new StringBuffer();
+
+        eventTime = event.getEventTime();
+
+        newEventId = getNextEventKey();
+
+        eventObjectId = new ManagedObjectId (ManagedObjectId.EventType, newEventId);
+
+        sqlStatement.append ("INSERT INTO event " +
+                             "(id, event_type, post_time, severity, display_text," +
+                             " managed_object_type, managed_object_key)" +
+                             " VALUES (" +
+                             Long.toString (newEventId) + ", " +
+                             Integer.toString (DatabaseGlobals.DatabaseTibcoEventType) + ", " +
+                             "'" + convertDateToSQLDate (eventTime) + "', " +
+                             Integer.toString (event.getSeverity().intValue()) + ", " +
+                             "'" + event.getDisplayText() + "', " +
+                             Integer.toString (event.getManagedObjectId().getManagedObjectType()) + ", " +
+                             Long.toString (event.getManagedObjectId().getManagedObjectKey()) + ");");
+
+        connection = DatabaseConnectionManager.instance().getConnection();
+
+        try {
+            String sqlStatementString;
+
+            sqlStatementString = sqlStatement.toString();
+            statement = connection.createStatement();
+            statement.executeUpdate (sqlStatementString);
+            connection.commit();
+            connection.close();
+        }
+        catch (SQLException e) {
+                String logString;
+                EmanagerDatabaseException ede;
+
+                logString =
+                    EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered.getStatusCodeDescription() +
+                    e.getMessage();
+
+                logger.log(Priority.ERROR, logString);
+                ede = new EmanagerDatabaseException (EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered,
+                                                     logString);
+
+                if (connection != null) {
+                    try {
+                        connection.rollback();
+                        connection.close();
+                    }
+                    catch (SQLException closeE) {
+                    }
+                }
+
+                throw ede;
+        }
+
+        return eventObjectId;
+    }
+
+    private ManagedObjectId createNewProcessSequencerEvent(EmanagerEventMessage event) throws EmanagerDatabaseException
+    {
+        long newEventId;
+        ManagedObjectId eventObjectId;
+        StringBuffer psEventData;
+        StringBuffer sqlStatement;
+        Connection connection;
+        Statement  statement;
+        Date eventTime;
+
+        sqlStatement = new StringBuffer();
+        psEventData = new StringBuffer();
+
+        eventTime = event.getEventTime();
+
+        newEventId = getNextEventKey();
+        eventObjectId = new ManagedObjectId (ManagedObjectId.EventType, newEventId);
+
+        sqlStatement.append ("INSERT INTO event " +
+                             "(id, event_type, post_time, severity, display_text," +
+                             " managed_object_type, managed_object_key, event_type_values)" +
+                             " VALUES (");
+
+        connection = DatabaseConnectionManager.instance().getConnection();
+
+        try {
+            String sqlStatementString;
+
+            sqlStatementString = sqlStatement.toString();
+            statement = connection.createStatement();
+            statement.executeUpdate (sqlStatementString);
+            connection.commit();
+            connection.close();
+        }
+        catch (SQLException e) {
+                String logString;
+                EmanagerDatabaseException ede;
+
+                logString =
+                    EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered.getStatusCodeDescription() +
+                    e.getMessage();
+
+                logger.log(Priority.ERROR, logString);
+                ede = new EmanagerDatabaseException (EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered,
+                                                     logString);
+
+                if (connection != null) {
+                    try {
+                        connection.rollback();
+                        connection.close();
+                    }
+                    catch (SQLException closeE) {
+                    }
+                }
+
+                throw ede;
+        }
+
+        return eventObjectId;
+    }
+
+    public void heartbeat() throws EmanagerDatabaseException
+    {
+        try {
+            if (heartbeatConnection == null) {
+                heartbeatConnection = DatabaseConnectionManager.instance().getConnection();
+                heartbeatPreparedStatement =
+                    heartbeatConnection.prepareStatement("select value from sequence where id = 'user';");
+            }
+
+            heartbeatPreparedStatement.executeQuery();
+        }
+        catch (SQLException e) {
+            String logString;
+            EmanagerDatabaseException ede;
+
+            logString =
+                EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered.getStatusCodeDescription() +
+                e.getMessage();
+
+            logger.log(Priority.ERROR, logString);
+            ede = new EmanagerDatabaseException (EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered,
+                                                 logString);
+            throw ede;
+        }
+    }
+
+    /**
+     * @param event
+     * @roseuid 3F4198600358
+     */
+    public void updateEvent(EmanagerEventDetails event)
+    {
+
+    }
+
+    public void updateEvents (Collection events) throws EmanagerDatabaseException
+    {
+        Iterator iter;
+        Connection connection;
+        EmanagerEventDetails event;
+
+        connection = DatabaseConnectionManager.instance().getConnection();
+
+        iter = events.iterator();
+        while (iter.hasNext()) {
+            event = (EmanagerEventDetails) iter.next();
+            try {
+                if (event instanceof EmanagerEventDetails)
+                {
+                    updateEvent((EmanagerEventDetails)event,
+                                connection);
+                }
+                else if (event instanceof TibcoEventDetails)
+                {
+                    updateEvent((TibcoEventDetails)event,
+                                connection);
+                }
+                else if (event instanceof ProcessSequencerEventDetails)
+                {
+                    updateEvent((ProcessSequencerEventDetails)event,
+                                connection);
+                }
+            }
+            catch (SQLException e) {
+                String logString;
+                EmanagerDatabaseException ede;
+
+                logString =
+                    EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered.getStatusCodeDescription() +
+                    e.getMessage();
+
+                logger.log(Priority.ERROR, logString);
+                ede = new EmanagerDatabaseException (EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered,
+                    logString);
+
+                try {
+                    connection.rollback();
+                    connection.close();
+                }
+                catch (SQLException ee) {
+
+                }
+
+                throw ede;
+            }
+        }
+
+        try {
+            connection.commit();
+            connection.close();
+        }
+        catch (SQLException e) {
+                String logString;
+                EmanagerDatabaseException ede;
+
+                logString =
+                    EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered.getStatusCodeDescription() +
+                    e.getMessage();
+
+                logger.log(Priority.ERROR, logString);
+                ede = new EmanagerDatabaseException (EmanagerDatabaseStatusCode.DatabaseSQLExceptionEncountered,
+                                                     logString);
+
+                if (connection != null) {
+                    try {
+                        connection.rollback();
+                        connection.close();
+                    }
+                    catch (SQLException ee) {
+                    }
+                }
+
+                throw ede;
+        }
+    }
+
+    private void updateEvent(TibcoEventDetails event,
+                             Connection connection) throws SQLException
+    {
+	long newEventId;
+        String postTimeString;
+        String clearTimeString;
+        String sqlStatementString;
+        Statement  statement;
+	ManagedObjectId eventObjectId;
+	StringBuffer tibcoEventData;
+	StringBuffer sqlStatement;
+
+	sqlStatement = new StringBuffer();
+	tibcoEventData = new StringBuffer();
+
+	tibcoEventData.append (DatabaseGlobals.TibcoEventIdKey +
+			       DatabaseGlobals.DatabaseEventKeyValueSeparator +
+			       Integer.toString (event.getTibcoEventId()));
+	tibcoEventData.append (DatabaseGlobals.DatabaseEventParmDelimeter +
+			       DatabaseGlobals.TibcoRuleTextKey +
+			       DatabaseGlobals.DatabaseEventKeyValueSeparator +
+			       event.getRuleText());
+	tibcoEventData.append (DatabaseGlobals.DatabaseEventParmDelimeter +
+			       DatabaseGlobals.TibcoRuleTestKey +
+			       DatabaseGlobals.DatabaseEventKeyValueSeparator +
+			       event.getRuleTestText());
+	tibcoEventData.append (DatabaseGlobals.DatabaseEventParmDelimeter +
+			       DatabaseGlobals.TibcoEventMgmtPolicyId +
+			       DatabaseGlobals.DatabaseEventKeyValueSeparator +
+			       Long.toString (event.getManagementPolicyId().getManagedObjectKey()));
+
+	postTimeString = new String ("'" + convertDateToSQLDate (event.getPostTime()) + "'");
+        if (event.getClearTime() != null) {
+            clearTimeString = new String ("'" + convertDateToSQLDate (event.getClearTime()) + "'");
+        } else {
+            clearTimeString = new String ("NULL");
+        }
+
+	sqlStatement.append ("UPDATE event SET ");
+
+        sqlStatement.append("post_time=" + postTimeString + ", ");
+        sqlStatement.append("clear_time=" + clearTimeString + ", ");
+
+        sqlStatement.append("acknowledgement_user_id=");
+        if (event.getAcknowledgement() != null &&
+            event.getAcknowledgement().getUserId() != null) {
+            sqlStatement.append("'" + event.getAcknowledgement().getUserId() + "', ");
+        } else {
+            sqlStatement.append("NULL, ");
+        }
+
+        sqlStatement.append("acknowledgement_time=");
+        if (event.getAcknowledgement() != null &&
+            event.getAcknowledgement().getDate() != null) {
+            sqlStatement.append("'" + convertDateToSQLDate (event.getAcknowledgement().getDate()) + "', ");
+        } else {
+            sqlStatement.append ("NULL, ");
+        }
+
+        sqlStatement.append("acknowledgement_comment=");
+        if (event.getAcknowledgement() != null &&
+            event.getAcknowledgement().getComment() != null) {
+            sqlStatement.append("'" + event.getAcknowledgement().getComment() + "', ");
+        } else {
+            sqlStatement.append ("NULL, ");
+        }
+
+        sqlStatement.append("severity=" + event.getSeverity().intValue() + ", ");
+        sqlStatement.append("display_text='" + event.getDisplayText() + "', ");
+        sqlStatement.append("managed_object_type=" +
+                            Integer.toString (event.getManagedObjectId().getManagedObjectType()) +
+                            ", ");
+        sqlStatement.append("managed_object_key=" +
+                            Long.toString (event.getManagedObjectId().getManagedObjectKey()) +
+                            ", ");
+        sqlStatement.append("event_type_values='" + tibcoEventData.toString() + "' ");
+
+        sqlStatement.append("WHERE id=" + event.getEmanagerEventId() + ";");
+
+        sqlStatementString = sqlStatement.toString();
+        statement = connection.createStatement();
+        statement.executeUpdate (sqlStatementString);
+    }
+
+    private void updateEvent (EmanagerEventDetails event,
+                              Connection connection) throws SQLException
+    {
+        long newEventId;
+        String postTimeString;
+        String clearTimeString;
+        String sqlStatementString;
+        Statement  statement;
+        ManagedObjectId eventObjectId;
+        StringBuffer sqlStatement;
+
+        sqlStatement = new StringBuffer();
+
+        postTimeString = new String ("'" + convertDateToSQLDate (event.getPostTime()) + "'");
+        if (event.getClearTime() != null) {
+            clearTimeString = new String ("'" + convertDateToSQLDate (event.getClearTime()) + "'");
+        } else {
+            clearTimeString = new String ("NULL");
+        }
+
+        sqlStatement.append ("UPDATE event SET ");
+
+        sqlStatement.append("post_time=" + postTimeString + ", ");
+        sqlStatement.append("clear_time=" + clearTimeString + ", ");
+
+        sqlStatement.append("acknowledgement_user_id=");
+        if (event.getAcknowledgement() != null &&
+            event.getAcknowledgement().getUserId() != null) {
+            sqlStatement.append("'" + event.getAcknowledgement().getUserId() + "', ");
+        } else {
+            sqlStatement.append("NULL, ");
+        }
+
+        sqlStatement.append("acknowledgement_time=");
+        if (event.getAcknowledgement() != null &&
+            event.getAcknowledgement().getDate() != null) {
+            sqlStatement.append("'" + convertDateToSQLDate (event.getAcknowledgement().getDate()) + "', ");
+        } else {
+            sqlStatement.append ("NULL, ");
+        }
+
+        sqlStatement.append("acknowledgement_comment=");
+        if (event.getAcknowledgement() != null &&
+            event.getAcknowledgement().getComment() != null) {
+            sqlStatement.append("'" + event.getAcknowledgement().getComment() + "', ");
+        } else {
+            sqlStatement.append ("NULL, ");
+        }
+
+        sqlStatement.append("severity=" + event.getSeverity().intValue() + ", ");
+        sqlStatement.append("display_text='" + event.getDisplayText() + "', ");
+        sqlStatement.append("managed_object_type=" +
+                            Integer.toString (event.getManagedObjectId().getManagedObjectType()) +
+                            ", ");
+        sqlStatement.append("managed_object_key=" +
+                            Long.toString (event.getManagedObjectId().getManagedObjectKey()) + " ");
+
+        sqlStatement.append("WHERE id=" + event.getEmanagerEventId() + ";");
+
+        sqlStatementString = sqlStatement.toString();
+        statement = connection.createStatement();
+        statement.executeUpdate (sqlStatementString);
+    }
+
+    private void updateEvent (ProcessSequencerEventDetails event,
+                              Connection connection) throws SQLException
+    {
+        long newEventId;
+        String postTimeString;
+        String clearTimeString;
+        String sqlStatementString;
+        Statement  statement;
+        ManagedObjectId eventObjectId;
+        StringBuffer sqlStatement;
+
+    }
+
+    /**
+     * @param criteria
+     * @roseuid 3F4198BD0048
+     */
+    public void removeEvents(EventDeletionCriteria criteria)
+    {
+
+    }
+
+    /**
+     * @param criteria
+     * @return Collection
+     * @roseuid 3F41991D019F
+     */
+    public Collection retrieveEvents(EventSearchCriteria criteria)
+    {
+     return null;
+    }
+
+    /**
+     * @param agentHost The agent host object to store in the database.
+     * @return The agent host object that includes the database key.
+     * @roseuid 3F424DDB0045
+     */
+    public Host createAgent(Host agentHost)
+    {
+     return null;
+    }
+
+    /**
+     * @param agentHost The agent host information to update in the database.
+     * @roseuid 3F424DED027C
+     */
+    public void updateAgent(Host agentHost)
+    {
+
+    }
+
+    /**
+     * @param agentHostKey The key of the agent host to remove from the database.
+     * @roseuid 3F424DF603B5
+     */
+    public void removeAgent(int agentHostKey)
+    {
+
+    }
+
+    /**
+     * @param agentHostKeys The collection of agent host keys to remove from the
+     * database.
+     * @roseuid 3F424DFD02C5
+     */
+    public void removeAgents(Collection agentHostKeys)
+    {
+
+    }
+
+    /**
+     * @param applicationType The application type to store in the database.
+     * @return The applicationType object is returned with the database key.
+     * @roseuid 3F424F8103B3
+     */
+    public AppType createApplicationType(AppType applicationType)
+    {
+     return null;
+    }
+
+    /**
+     * @param applicationType The application object to update in the database.
+     * @roseuid 3F424FE303C5
+     */
+    public void updateApplicaitonType(AppType applicationType)
+    {
+
+    }
+
+    /**
+     * @param applicationTypeKey The key to the application type object to remove from
+     * the database.
+     * @roseuid 3F424FF601EC
+     */
+    public void removeApplicaitonType(int applicationTypeKey)
+    {
+
+    }
+
+    /**
+     * @param applicationTypeKeys The collection of applicationType object keys to
+     * remove from the database.
+     * @roseuid 3F425002001D
+     */
+    public void removeApplicationTypes(Collection applicationTypeKeys)
+    {
+
+    }
+
+    /**
+     * @param managementPolicy
+     * @return com.cisco.eManager.eManager.inventory.mgmtPolicy.MgmtPolicy
+     * @roseuid 3F42511A0202
+     */
+    public MgmtPolicy createManagementPolicy(MgmtPolicy managementPolicy)
+    {
+     return null;
+    }
+
+    /**
+     * @param managementPolicy
+     * @roseuid 3F42512802A3
+     */
+    public void updateManagementPolicy(MgmtPolicy managementPolicy)
+    {
+
+    }
+
+    /**
+     * @param managementPolicyKey
+     * @roseuid 3F425131006B
+     */
+    public void removeManagementPolicy(int managementPolicyKey)
+    {
+
+    }
+
+    /**
+     * @param managementPolicyKeys
+     * @roseuid 3F42513A0277
+     */
+    public void removeManagementPolicies(Collection managementPolicyKeys)
+    {
+
+    }
+
+    /**
+     * @param applicationSequenceGroup ApplicationInstanceGroup object to create in
+     * the database.
+     * @return The ApplicationInstanceGroup that contains the database key.
+     * @roseuid 3F4252AA0267
+     */
+    public AppsGroup createApplicationInstanceGroup(AppsGroup applicationSequenceGroup)
+    {
+     return null;
+    }
+
+    /**
+     * @param applicationInstanceGroupKey The key to the ApplicationInstanceGroup
+     * object to remove from the database.
+     * @roseuid 3F4252D40183
+     */
+    public void removeApplicationInstanceGroup(int applicationInstanceGroupKey)
+    {
+
+    }
+
+    /**
+     * @param applicationInstanceGroupKeys The keys of the ApplicationInstanceGroup
+     * objects to remove from the database.
+     * @roseuid 3F4252E2029C
+     */
+    public void removeApplicationInstanceGroups(Collection applicationInstanceGroupKeys)
+    {
+
+    }
+
+    /**
+     * @param applicationInstance The ApplicationInstance object to store in the
+     * database.
+     * @return The ApplicationInstance object that contains the database key.
+     * @roseuid 3F4254660227
+     */
+    public AppInstance createApplicationInstance(AppInstance applicationInstance)
+    {
+     return null;
+    }
+
+    /**
+     * @param applicationInstance The ApplicationInstance object to update in the
+     * database.
+     * @roseuid 3F4254720239
+     */
+    public void updateApplicationInstance(AppInstance applicationInstance)
+    {
+
+    }
+
+    /**
+     * @param applicationInstanceKey The key of the ApplicationInstance object to
+     * delete from the database.
+     * @roseuid 3F42547B0138
+     */
+    public void removeApplicationInstance(int applicationInstanceKey)
+    {
+
+    }
+
+    /**
+     * @param applicationInstanceKeys The key of the ApplicationInstance objects to
+     * remove from the database.
+     * @roseuid 3F425486017A
+     */
+    public void removeApplicationInstances(Collection applicationInstanceKeys)
+    {
+
+    }
+
+    /**
+     * @param containerNode The ContainerNode object to create in the database.
+     * @return The ContainerNode object that contains the database key.
+     * @roseuid 3F4255F400BD
+     */
+    public ContainerNode createPhysicalHierarchyNode(ContainerNode containerNode)
+    {
+     return null;
+    }
+
+    /**
+     * @param containerNode The ContainerNode object to update in the database.
+     * @roseuid 3F4256F103CE
+     */
+    public void updatePhysicalHierarchyNode(ContainerNode containerNode)
+    {
+
+    }
+
+    /**
+     * @param containerNodeKey The ContainerNode key to remove from the database.
+     * @roseuid 3F42570A00F0
+     */
+    public void removePhysicalHierarchyNode(int containerNodeKey)
+    {
+
+    }
+
+    /**
+     * @param containerNode The ContainerNode object to store in the database.
+     * @return The updated ContainerNode object that contains the database key.
+     * @roseuid 3F4257D1023E
+     */
+    public ContainerNode createApplicationHierarchyNode(ContainerNode containerNode)
+    {
+     return null;
+    }
+
+    /**
+     * @param containerNode The ContainerNode object to update in the database.
+     * @roseuid 3F4257DD0354
+     */
+    public void updateApplicationHierarchyNode(ContainerNode containerNode)
+    {
+
+    }
+
+    /**
+     * @param containerNodeKey The ContainerNode object key to delete from the
+     * database.
+     * @roseuid 3F4257E90316
+     */
+    public void removeApplicationHierarchyNode(int containerNodeKey)
+    {
+
+    }
+
+    /**
+     * @param eventId
+     * @return com.cisco.eManager.common.event.EmanagerEventDetails
+     * @roseuid 3F4B83FC0360
+     */
+    public EmanagerEventDetails getEvent(int eventId)
+    {
+     return null;
+    }
+}

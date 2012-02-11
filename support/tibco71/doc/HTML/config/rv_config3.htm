@@ -1,0 +1,300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>API Architecture</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;1	 Overview";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1949305"> </a><h2 class="pNewHTMLPage">
+API Architecture
+</h2>
+<hr />
+<a name="wp1949309"> </a><p class="pBody">
+<a  href="rv_config3.htm#wp1949321">Table&#160;1</a> describes the Java classes that compose the configuration API. These classes belong to five categories:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1949310"> </a><div class="pSmartList1"><li >Manager</li></div>
+
+<a name="wp1949311"> </a><div class="pSmartList1"><li >Proxies</li></div>
+
+<a name="wp1949312"> </a><div class="pSmartList1"><li >Immediate-Access Objects</li></div>
+
+<a name="wp1949313"> </a><div class="pSmartList1"><li >Read-Only Objects</li></div>
+
+<a name="wp1949314"> </a><div class="pSmartList1"><li >Exceptions</li></div>
+
+</ul></div>
+
+<a name="wp1949518"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1949321"> </a><div class="pTableTitle">
+Table&#160;1   Overview of Configuration Classes (Sheet 1 of 3)
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1949325"> </a><div class="pCellHeading">
+Class
+</div>
+</th>
+    <th><a name="wp1949327"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1949332"> </a><div class="pCellBody">
+<a  href="rv_config8.htm#wp1949616"><code class="cCode">DaemonManager</code></a>
+</div>
+</td>
+    <td><a name="wp1949336"> </a><div class="pCellBody">
+<a  href="rv_config8.htm#wp1949623">Establish and manage a connection to the browser administration interface of a daemon process.</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1949339"> </a><div class="pMinorHead">
+Proxy interfaces represent daemon component processes within a configuration program.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1949346"> </a><div class="pCellBody">
+<a  href="rv_config12.htm#wp1949843"><code class="cCode">DaemonProxy</code></a>
+</div>
+</td>
+    <td><a name="wp1949348"> </a><div class="pCellBody">
+This interface defines methods common to all Rendezvous components.
+</div>
+<a name="wp1949355"> </a><div class="pCellBody">
+The <a  href="rv_config8.htm#wp1949616"><code class="cCode">DaemonManager</code></a> automatically creates a proxy instance, which the program uses as its main interface to the daemon process.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1949360"> </a><p class="pBody">
+<a  href="rv_config19.htm#wp1950120"><code class="cCode">RvdProxy</code></a>
+</p>
+<a name="wp1949364"> </a><p class="pBody">
+<a  href="rv_config52.htm#wp1951492"><code class="cCode">RvrdProxy</code></a>
+</p>
+<a name="wp1949368"> </a><p class="pBody">
+<a  href="rv_config107.htm#wp1955023"><code class="cCode">SecurityProxy</code></a>
+</p>
+<a name="wp1949372"> </a><p class="pBody">
+<a  href="rv_config123.htm#wp1956040"><code class="cCode">SecureDaemonProxy</code></a>
+</p>
+<a name="wp1949376"> </a><p class="pBody">
+<a  href="rv_config167.htm#wp1959123"><code class="cCode">RvaProxy</code></a>
+</p>
+<a name="wp1949380"> </a><p class="pBody">
+<a  href="rv_config201.htm#wp1960914"><code class="cCode">RvcacheProxy</code></a>
+</p>
+</td>
+    <td><a name="wp1949382"> </a><div class="pCellBody">
+These interfaces define methods specific to each Rendezvous component. For example, <a  href="rv_config167.htm#wp1959123"><code class="cCode">RvaProxy</code></a> defines methods for interacting with <code class="cCode">rva</code>.
+</div>
+<a name="wp1949386"> </a><div class="pCellBody">
+Each proxy interface represents one aspect of the behavior of the component. Some components incorporate several aspects, and they support the corresponding proxy interfaces. For example, <code class="cCode">rvrd</code> has aspects of communications daemon (<code class="cCode">rvd</code>) behavior, and aspects of routing daemon behavior (<code class="cCode">rvrd</code>)&#151;so it supports both <a  href="rv_config19.htm#wp1950120"><code class="cCode">RvdProxy</code></a> and <a  href="rv_config52.htm#wp1951492"><code class="cCode">RvrdProxy</code></a>.
+</div>
+<a name="wp1949393"> </a><div class="pCellBody">
+Programs cast the proxy instance to the appropriate proxy interfaces in order to call methods specific to the corresponding aspects.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1949395"> </a><div class="pMinorHead">
+Immediate-access data structure classes represent data structures within component processes. Methods interact with the corresponding process.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1949402"> </a><p class="pBody">
+<a  href="rv_config22.htm#wp1950277"><code class="cCode">ClientTransport</code></a>
+</p>
+<a name="wp1949406"> </a><p class="pBody">
+<a  href="rv_config37.htm#wp1950835"><code class="cCode">Service</code></a>
+</p>
+<a name="wp1949410"> </a><p class="pBody">
+<a  href="rv_config30.htm#wp1950563"><code class="cCode">Host</code></a>
+</p>
+</td>
+    <td><a name="wp1949412"> </a><div class="pCellBody">
+These classes represent data structures within a communications daemon process (including <code class="cCode">rvd</code>, <code class="cCode">rvsd</code>, <code class="cCode">rvrd</code> and <code class="cCode">rvsrd</code>).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1949417"> </a><p class="pBody">
+<a  href="rv_config91.htm#wp1953701"><code class="cCode">Router</code></a>
+</p>
+<a name="wp1949421"> </a><p class="pBody">
+<a  href="rv_config61.htm#wp1952132"><code class="cCode">LocalNetworkInterface</code></a>
+</p>
+<a name="wp1949425"> </a><p class="pBody">
+<a  href="rv_config80.htm#wp1953195"><code class="cCode">NeighborInterface</code></a>
+</p>
+<a name="wp1949429"> </a><p class="pBody">
+<a  href="rv_config58.htm#wp1951981"><code class="cCode">ImportSubject</code></a>
+</p>
+</td>
+    <td><a name="wp1949431"> </a><div class="pCellBody">
+These classes represent data structures within a routing daemon process (including <code class="cCode">rvrd</code> and <code class="cCode">rvsrd</code>).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1949436"> </a><p class="pBody">
+<a  href="rv_config114.htm#wp1955576"><code class="cCode">CertificateSlot</code></a>
+</p>
+</td>
+    <td><a name="wp1949438"> </a><div class="pCellBody">
+This class represents a data structure that can contain an X.509 certificate. These slots occur in processes that permit secure HTTPS connections (including <code class="cCode">rvd</code>, <code class="cCode">rvsd</code>, <code class="cCode">rvrd</code>, <code class="cCode">rvsrd</code>, <code class="cCode">rva</code> and <code class="cCode">rvcache</code>).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1949443"> </a><p class="pBody">
+<a  href="rv_config140.htm#wp1957687"><code class="cCode">NetworkServicePair</code></a>
+</p>
+<a name="wp1949447"> </a><p class="pBody">
+<a  href="rv_config144.htm#wp1957894"><code class="cCode">User</code></a>
+</p>
+<a name="wp1949451"> </a><p class="pBody">
+<a  href="rv_config153.htm#wp1958515"><code class="cCode">UserCertificate</code></a>
+</p>
+</td>
+    <td><a name="wp1949453"> </a><div class="pCellBody">
+These classes represent data structures within a secure daemon process (including <code class="cCode">rvsd</code> and <code class="cCode">rvsrd</code>).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1949458"> </a><p class="pBody">
+<a  href="rv_config213.htm#wp1961932"><code class="cCode">CachedField</code></a>
+</p>
+<a name="wp1949462"> </a><p class="pBody">
+<a  href="rv_config217.htm#wp1962088"><code class="cCode">CachedSubject</code></a>
+</p>
+</td>
+    <td><a name="wp1949464"> </a><div class="pCellBody">
+These classes represent data structures within an <code class="cCode">rvcache</code> process.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1949466"> </a><div class="pMinorHead">
+Read-only data structure classes contain information retrieved from component processes. Methods do not interact with component processes.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1997028"> </a><p class="pBody">
+<a  href="rv_config239.htm#wp1962823"><code class="cCode">ComponentInformation</code></a>
+</p>
+<a name="wp2037625"> </a><p class="pBody">
+<a  href="rv_config256.htm#wp1963434"><code class="cCode">RvdInformation</code></a>
+</p>
+<a name="wp2037629"> </a><p class="pBody">
+<a  href="rv_config260.htm#wp1963590"><code class="cCode">RvrdInformation</code></a>
+</p>
+<a name="wp2037633"> </a><p class="pBody">
+<a  href="rv_config263.htm#wp1963739"><code class="cCode">RvsdInformation</code></a>
+</p>
+<a name="wp2037637"> </a><p class="pBody">
+<a  href="rv_config265.htm#wp1963852"><code class="cCode">RvsrdInformation</code></a>
+</p>
+<a name="wp1997032"> </a><p class="pBody">
+<a  href="rv_config247.htm#wp2022960"><code class="cCode">RvaInformation</code></a>
+</p>
+<a name="wp1997039"> </a><p class="pBody">
+<a  href="rv_config253.htm#wp1963253"><code class="cCode">RvcacheInformation</code></a>
+</p>
+</td>
+    <td><a name="wp1997057"> </a><div class="pCellBody">
+These classes structure general information from the various components.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1949473"> </a><p class="pBody">
+<a  href="rv_config75.htm#wp2021495"><code class="cCode">LoggingParams</code></a>
+</p>
+<a name="wp1997078"> </a><p class="pBody">
+<a  href="rv_config182.htm#wp1960328"><code class="cCode">HttpTunnelParams</code></a>
+</p>
+<a name="wp1997082"> </a><p class="pBody">
+<a  href="rv_config194.htm#wp1960698"><code class="cCode">RvaNetworkParams</code></a>
+</p>
+<a name="wp1997087"> </a><p class="pBody">
+<a  href="rv_config224.htm#wp1962378"><code class="cCode">FaultToleranceParams</code></a>
+</p>
+<a name="wp1997091"> </a><p class="pBody">
+<a  href="rv_config233.htm#wp1962630"><code class="cCode">RvcacheNetworkParams</code></a>
+</p>
+</td>
+    <td><a name="wp1949502"> </a><div class="pCellBody">
+These classes structure parameter information from the various components.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1949504"> </a><div class="pMinorHead">
+Exception classes
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1949511"> </a><p class="pBody">
+<a  href="rv_config267.htm#wp1963961"><code class="cCode">ConfigurationException</code></a>
+</p>
+<a name="wp1949515"> </a><p class="pBody">
+<a  href="rv_config268.htm#wp1963994"><code class="cCode">FatalConfigurationException</code></a>
+</p>
+</td>
+    <td><a name="wp1949517"> </a><div class="pCellBody">
+Methods of the configuration API throw these exception classes.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

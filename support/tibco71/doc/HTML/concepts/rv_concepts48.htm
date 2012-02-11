@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Subject Name Syntax</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;5	 Subject Names";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1178162"> </a><h2 class="pNewHTMLPage">
+Subject Name Syntax
+</h2>
+<hr />
+<a name="wp1065601"> </a><p class="pBody">
+Subject-based addressing&#8482; technology places few restrictions on the syntax and interpretation of subject names. System designers and developers have the freedom (and responsibility) to establish conventions for using subject names. The best subject names reflect the structure of data in the application itself.
+</p>
+<a name="wp1231078"> </a><h4 class="pHeading3">
+Structure
+</h4>
+<a name="wp1065602"> </a><p class="pBody">
+Each subject name is a string of characters that is divided into elements by the dot (.) character. It is illegal to incorporate the dot character into an element by using an escape sequence.
+</p>
+<a name="wp1231089"> </a><h4 class="pHeading3">
+Length
+</h4>
+<a name="wp1065609"> </a><p class="pBody">
+Rendezvous limits subject names to a total length of 255 characters (including dot separators). However, some of that length is reserved for internal use.
+</p>
+<a name="wp1231649"> </a><p class="pBody">
+The longest subject that (most) programs can receive is 196 characters.
+</p>
+<a name="wp1231160"> </a><p class="pBody">
+The maximum total length (in characters) of subjects that your programs may send is 196 <em class="cEmphasis">minus</em> the number of elements. Include dot separators in this total.
+</p>
+<a name="wp1231154"> </a><p class="pBody">
+The maximum element length is 127 characters (dot separators are not included in element length).
+</p>
+<a name="wp1231204"> </a><p class="pBody">
+Typical subject names are shorter and use fewer elements. For maximum speed and throughput rates, use short subject names. For details, see <a  href="rv_concepts49.htm#wp1186433">Subject Name Performance Considerations</a>.
+</p>
+<a name="wp1231130"> </a><h4 class="pHeading3">
+Empty String Illegal
+</h4>
+<a name="wp1073493"> </a><p class="pBody">
+The empty string (<code class="cCode">&#8220;&#8220;</code>) is not a legal subject name.
+</p>
+<a name="wp1231555"> </a><h3 class="pHeading2">
+Examples
+</h3>
+<a name="wp1231576"> </a><p class="pBody">
+These examples illustrate the syntax for subject names.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1231561"> </a><div class="pTableTitle">
+Table&#160;9   Valid Subject Name Examples&#160;
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1231563"> </a><div class="pCellBody">
+<code class="cCode">NEWS.LOCAL.POLITICS.CITY_COUNCIL</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231565"> </a><div class="pCellBody">
+<code class="cCode">NEWS.NATIONAL.ARTS.MOVIES.REVIEWS</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231567"> </a><div class="pCellBody">
+<code class="cCode">CHAT.MRKTG.NEW_PRODUCTS</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231569"> </a><div class="pCellBody">
+<code class="cCode">CHAT.DEVELOPMENT.BIG_PROJECT.DESIGN</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231571"> </a><div class="pCellBody">
+<code class="cCode">News.Sports.Baseball</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231573"> </a><div class="pCellBody">
+<code class="cCode">finance</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231575"> </a><div class="pCellBody">
+<code class="cCode">This.long.subject_name.is.valid.even.though.quite.uninformative</code>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1231589"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1231582"> </a><div class="pTableTitle">
+Table&#160;10   Invalid Subject Name Examples&#160;
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1231584"> </a><div class="pCellBody">
+<code class="cCode">News..Natural_Disasters.Flood</code> (null element)
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231586"> </a><div class="pCellBody">
+<code class="cCode">WRONG.</code> (null element)
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231588"> </a><div class="pCellBody">
+<code class="cCode">.TRIPLE.WRONG..</code> (three null elements)
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1065639"> </a><h3 class="pHeading2">
+Special Characters in Subject Names
+</h3>
+<a name="wp1065684"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1065645"> </a><div class="pTableTitle">
+Table&#160;11   Characters with Special Meaning in Subject Names (Sheet 1 of 2)
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1065651"> </a><div class="pCellHeading">
+Char
+</div>
+</th>
+    <th><a name="wp1065653"> </a><div class="pCellHeading">
+Char Name
+</div>
+</th>
+    <th><a name="wp1065655"> </a><div class="pCellHeading">
+Special Meaning
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065657"> </a><div class="pCellBody">
+<code class="cCode">_</code>
+</div>
+</td>
+    <td><a name="wp1065659"> </a><div class="pCellBody">
+Underscore
+</div>
+</td>
+    <td><a name="wp1099576"> </a><div class="pCellBody">
+<b class="cBold">Reserved Subject Names</b>
+</div>
+<img src="images/warning.gif" border="0" /><a name="wp1065663"> </a><div class="pCellBody">
+Subject names beginning with underscore are reserved.
+</div>
+<a name="wp1065664"> </a><div class="pCellBody">
+It is illegal for application programs to send to subjects with underscore as the first character of the first element, except <code class="cCode">_INBOX</code> and <code class="cCode">_LOCAL</code>.
+</div>
+<a name="wp1065665"> </a><div class="pCellBody">
+It is legal to use underscore elsewhere in subject names.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065667"> </a><div class="pCellBody">
+<code class="cCode">.</code>
+</div>
+</td>
+    <td><a name="wp1065669"> </a><div class="pCellBody">
+Dot
+</div>
+</td>
+    <td><a name="wp1065671"> </a><div class="pCellBody">
+Separates elements within a subject name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065673"> </a><div class="pCellBody">
+<code class="cCode">&gt;</code>
+</div>
+</td>
+    <td><a name="wp1065675"> </a><div class="pCellBody">
+Greater-than
+</div>
+</td>
+    <td><a name="wp1065677"> </a><div class="pCellBody">
+Wildcard character, matches one or more trailing elements.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065679"> </a><div class="pCellBody">
+<code class="cCode">*</code>
+</div>
+</td>
+    <td><a name="wp1065681"> </a><div class="pCellBody">
+Asterisk
+</div>
+</td>
+    <td><a name="wp1065683"> </a><div class="pCellBody">
+Wildcard character, matches one element.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1078754"> </a><p class="pBody">
+We recommend that you do not use tabs, spaces, or any unprintable character in a subject name.
+</p>
+<a name="wp1065688"> </a><p class="pBody">
+For information about wildcard characters and matching, see <a  href="rv_concepts50.htm#wp1065692">Using Wildcards to Receive Related Subjects</a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

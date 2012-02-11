@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvEvent_DestroyEx()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;4	 Events";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1118835"> </a><h2 class="pNewHTMLPage">
+tibrvEvent_DestroyEx()
+</h2>
+<hr />
+<a name="wp1072338"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1086994"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvEvent_DestroyEx</code>(<a name="wp1077489"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref75.htm#wp1157970"><code class="cCode">tibrvEvent</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;event,<a name="wp1077491"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref77.htm#wp1177081"><code class="cCode">tibrvEventOnComplete</code></a>&#160;&#160;&#160;&#160;completionFunction);<a name="wp1077492"> </a>
+</pre></div>
+<a name="wp1087465"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1072344"> </a><p class="pBody">
+Destroy an event, and run a completion function when all of the destroyed event&#8217;s callback functions are complete.
+</p>
+<a name="wp1087928"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1073058"> </a><p class="pBody">
+Destroying an event object cancels interest in the specified event. Upon return from <a  href="rv_c_ref82.htm#wp1118835"><code class="cCode">tibrvEvent_DestroyEx()</code></a>, the destroyed event&#8217;s callback function is no longer dispatched.
+</p>
+<a name="wp1072932"> </a><p class="pBody">
+It is legal for an event callback function to destroy its own event argument.
+</p>
+<a name="wp1072968"> </a><p class="pBody">
+Although <a  href="rv_c_ref82.htm#wp1118835"><code class="cCode">tibrvEvent_DestroyEx()</code></a> prevents future dispatch calls from running the destroyed event&#8217;s callback function, that callback function might be already running in one or more threads that dispatch events from the same queue. In each thread where the callback function is already in progress, that callback function does continue to run until complete. Rendezvous software ensures that the completion function runs when the last callback-in-progress has completed; for important details, see <a  href="rv_c_ref77.htm#wp1177081"><code class="cCode">tibrvEventOnComplete</code> </a>.
+</p>
+<a name="wp1072357"> </a><p class="pBody">
+Destroying event interest invalidates the event object; passing the event object as an argument to subsequent API calls produces an error.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1072361"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1072363"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1072990"> </a><div class="pCellBody">
+<code class="cCode">event</code>
+</div>
+</td>
+    <td><a name="wp1072992"> </a><div class="pCellBody">
+Cancel interest in this event.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1072365"> </a><div class="pCellBody">
+<code class="cCode">completionFunction</code>
+</div>
+</td>
+    <td><a name="wp1073105"> </a><div class="pCellBody">
+Rendezvous software runs this function immediately after all instances of the event&#8217;s callback function have completed. If the event&#8217;s callback function is not running when the event is destroyed, the destroy call runs it before returning.
+</div>
+<a name="wp1073099"> </a><div class="pCellBody">
+If this parameter is <code class="cCode">NULL</code>, <a  href="rv_c_ref82.htm#wp1118835"><code class="cCode">tibrvEvent_DestroyEx()</code></a> does not run a completion function; instead, its behavior is the same as <a  href="rv_c_ref81.htm#wp1030625"><code class="cCode">tibrvEvent_Destroy()</code></a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1088318"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1072375"> </a><p class="pBody">
+<a  href="rv_c_ref77.htm#wp1177081"><code class="cCode">tibrvEventOnComplete</code> </a>
+</p>
+<a name="wp1072379"> </a><p class="pBody">
+<a  href="rv_c_ref78.htm#wp1071513"><code class="cCode">tibrvEvent_CreateIO()</code> </a>
+</p>
+<a name="wp1072383"> </a><p class="pBody">
+<a  href="rv_c_ref79.htm#wp1030177"><code class="cCode">tibrvEvent_CreateListener()</code> </a>
+</p>
+<a name="wp1072387"> </a><p class="pBody">
+<a  href="rv_c_ref81.htm#wp1030625"><code class="cCode">tibrvEvent_Destroy()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

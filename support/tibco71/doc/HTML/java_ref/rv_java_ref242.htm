@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvMsgDecoder.decode()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Appendix&#160;A	 Custom Datatypes";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1075027"> </a><h2 class="pNewHTMLPage">
+TibrvMsgDecoder.decode()
+</h2>
+<hr />
+<a name="wp1075028"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1075061"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+java.lang.Object <code class="cCodeBold">decode</code>(<a name="wp1075068"> </a>
+&#160;&#160;&#160;&#160;short type,<a name="wp1075072"> </a>
+&#160;&#160;&#160;&#160;byte[] bytes)<a name="wp1075062"> </a>
+</pre></div>
+<a name="wp1075063"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1076792"> </a><p class="pBody">
+Decode data (of a custom datatype) from wire format into a Java object.
+</p>
+<a name="wp1075034"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1075232"> </a><p class="pBody">
+When this method successfully decodes the data, it must return the decoding as a Java object. When this method cannot decode the data, it must return <code class="cCode">null</code>.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1075038"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1075040"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1075129"> </a><div class="pCellBody">
+<code class="cCode">type</code>
+</div>
+</td>
+    <td><a name="wp1075131"> </a><div class="pCellBody">
+Decode this custom datatype.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1075042"> </a><div class="pCellBody">
+<code class="cCode">bytes</code>
+</div>
+</td>
+    <td><a name="wp1075044"> </a><div class="pCellBody">
+Decode the data contained in this byte array.
+</div>
+<a name="wp1075233"> </a><div class="pCellBody">
+This argument cannot be <code class="cCode">null</code>. However, it can be a byte array with length zero.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1075046"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1075047"> </a><p class="pBody">
+<a  href="rv_java_ref245.htm#wp1075780"><code class="cCode">TibrvMsgEncoder.encode()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

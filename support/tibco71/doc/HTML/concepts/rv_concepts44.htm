@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>The Daemon and its Client Programs</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;4	 The Rendezvous Daemon";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1066772"> </a><h2 class="pNewHTMLPage">
+The Daemon and its Client Programs
+</h2>
+<hr />
+<a name="wp1066776"> </a><p class="pBody">
+The Rendezvous daemon completes the information pathway between a Rendezvous program process and the network. Each computer that runs a Rendezvous program usually runs a Rendezvous daemon process as well.
+</p>
+<a name="wp1066789"> </a><p class="pBody">
+Each network transport object attempts to connect to a Rendezvous daemon process. If the daemon process is not yet running, the program starts one automatically and connects to it. If the transport cannot connect with a Rendezvous daemon, the Rendezvous transport creation call fails.
+</p>
+<a name="wp1066799"> </a><p class="pBody">
+If the Rendezvous daemon exits, programs automatically restart it. Programs can monitor these events by listening for the system advisory messages <a  href="rv_concepts165.htm#wp1047150"><code class="cCode">RVD</code></a><code class="cCode">.DISCONNECTED</code> and <a  href="rv_concepts165.htm#wp1047150"><code class="cCode">RVD</code></a><code class="cCode">.CONNECTED</code>.
+</p>
+<a name="wp1066806"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1066810"> </a><p class="pBody">
+<a  href="rv_concepts5.htm#wp1027672">Rendezvous Daemon</a>.
+</p>
+<a name="wp1066814"> </a><p class="pBody">
+Advisory message <a  href="rv_concepts165.htm#wp1047150"><code class="cCode">RVD</code> </a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

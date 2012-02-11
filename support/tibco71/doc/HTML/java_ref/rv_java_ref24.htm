@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvSdContext</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;3	 Rendezvous Environment";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1256103"> </a><h2 class="pNewHTMLPage">
+TibrvSdContext
+</h2>
+<hr />
+<a name="wp1256104"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1256105"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+final class com.tibco.tibrv.<code class="cCodeBold">TibrvSdContext</code><a name="wp1256106"> </a>
+<a name="wp1257774"> </a>
+static final String TIBRV_SECURE_DAEMON_ANY_NAME&#160;&#160;=&#160;null;<a name="wp1257775"> </a>
+static final String TIBRV_SECURE_DAEMON_ANY_CERT&#160;&#160;=&#160;null;<a name="wp1257776"> </a>
+</pre></div>
+<a name="wp1256107"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1256111"> </a><p class="pBody">
+This class defines static methods for interacting with secure Rendezvous daemons.
+</p>
+<a name="wp1256112"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1256116"> </a><p class="pBody">
+Programs do not create instances of <a  href="rv_java_ref24.htm#wp1256103"><code class="cCode">TibrvSdContext</code></a>. Instead, programs use its static methods to configure user names, passwords and certificates, and to register trust in daemon certificates.
+</p>
+<a name="wp1266235"> </a><p class="pBody">
+To use the methods of this class, Java programs must satisfy these two criteria:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1266288"> </a><div class="pSmartList1"><li >Programs must compile and run with the archive file <code class="cCode">tibrvjsd.jar</code> (which defines this class); see <a  href="rv_java_ref11.htm#wp1112750">Archive Files</a>.</li></div>
+
+<a name="wp1266292"> </a><div class="pSmartList1"><li >Programs must open the Rendezvous environment with the native implementation; see <a  href="rv_java_ref21.htm#wp1020167"><code class="cCode">Tibrv.open()</code> </a>&#151;in particular, the constant <a  href="rv_java_ref21.htm#wp1021518"><code class="cCode">Tibrv.IMPL_NATIVE</code></a>, which loads the Rendezvous JNI library.</li></div>
+
+</ul></div>
+
+<a name="wp1266236"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1257939"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1257941"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1257943"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1257948"> </a><div class="pCellBody">
+<a  href="rv_java_ref25.htm#wp1256171"><code class="cCode">TibrvSdContext.setDaemonCert()</code></a>
+</div>
+</td>
+    <td><a name="wp1257953"> </a><div class="pCellBody">
+<a  href="rv_java_ref25.htm#wp1256187">Register trust in a secure daemon.</a>
+</div>
+</td>
+    <td><a name="wp1257958"> </a><div class="pCellBody">
+<a  href="rv_java_ref25.htm#wp1256171">37</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1257963"> </a><div class="pCellBody">
+<a  href="rv_java_ref26.htm#wp1256227"><code class="cCode">TibrvSdContext.setUserCertWithKey()</code></a>
+</div>
+</td>
+    <td><a name="wp1257967"> </a><div class="pCellBody">
+<a  href="rv_java_ref26.htm#wp1256238">Register a (PEM) certificate with private key for identification to secure daemons.</a>
+</div>
+</td>
+    <td><a name="wp1257973"> </a><div class="pCellBody">
+<a  href="rv_java_ref26.htm#wp1256227">39</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1292738"> </a><div class="pCellBody">
+<a  href="rv_java_ref27.htm#wp1292581"><code class="cCode">TibrvSdContext.setUserCertWithKeyBin()</code></a>
+</div>
+</td>
+    <td><a name="wp1292742"> </a><div class="pCellBody">
+<a  href="rv_java_ref27.htm#wp1292596">Register a (PKCS #12) certificate with private key for identification to secure daemons.</a>
+</div>
+</td>
+    <td><a name="wp1292748"> </a><div class="pCellBody">
+<a  href="rv_java_ref27.htm#wp1292581">40</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1257978"> </a><div class="pCellBody">
+<a  href="rv_java_ref28.htm#wp1256268"><code class="cCode">TibrvSdContext.setUserNameWithPassword()</code></a>
+</div>
+</td>
+    <td><a name="wp1257982"> </a><div class="pCellBody">
+<a  href="rv_java_ref28.htm#wp1256279">Register a user name with password for identification to secure daemons.</a>
+</div>
+</td>
+    <td><a name="wp1257988"> </a><div class="pCellBody">
+<a  href="rv_java_ref28.htm#wp1256268">41</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

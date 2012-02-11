@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrv_Open()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;2	 Environment";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1057434"> </a><h2 class="pNewHTMLPage">
+tibrv_Open()
+</h2>
+<hr />
+<a name="wp1057365"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1086766"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrv_Open</code>(void);<a name="wp1057449"> </a>
+</pre></div>
+<a name="wp1087237"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1057451"> </a><p class="pBody">
+Create and start Rendezvous internal machinery.
+</p>
+<a name="wp1087732"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1057377"> </a><p class="pBody">
+This call creates the internal machinery that Rendezvous software requires for its operation:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1057472"> </a><div class="pSmartList1"><li >Internal data structures.</li></div>
+
+<a name="wp1137064"> </a><div class="pSmartList1"><li >Default event queue.</li></div>
+
+<a name="wp1137065"> </a><div class="pSmartList1"><li >Intra-process transport.</li></div>
+
+<a name="wp1137069"> </a><div class="pSmartList1"><li >Event driver.</li></div>
+
+</ul></div>
+
+<a name="wp1069306"> </a><p class="pBody">
+Until the first call to <a  href="rv_c_ref8.htm#wp1057434"><code class="cCode">tibrv_Open()</code></a> creates the internal machinery, all events, queues, and transports are unusable. However, calls that manipulate messages do not require this machinery, and programs may use them before calling <a  href="rv_c_ref8.htm#wp1057434"><code class="cCode">tibrv_Open()</code></a><code class="cCode">.</code>
+</p>
+<a name="wp1057508"> </a><h4 class="pHeading3">
+Reference Count
+</h4>
+<a name="wp1069312"> </a><p class="pBody">
+A reference count protects against interactions between programs and third-party packages that call <a  href="rv_c_ref8.htm#wp1057434"><code class="cCode">tibrv_Open()</code></a> and <a  href="rv_c_ref7.htm#wp1057420"><code class="cCode">tibrv_Close()</code></a>. Each call to <a  href="rv_c_ref8.htm#wp1057434"><code class="cCode">tibrv_Open()</code></a> increments an internal counter; each call to <a  href="rv_c_ref7.htm#wp1057420"><code class="cCode">tibrv_Close()</code></a> decrements that counter. A call to <a  href="rv_c_ref8.htm#wp1057434"><code class="cCode">tibrv_Open()</code></a> actually creates internal machinery only when the reference counter is zero; subsequent calls merely increment the counter, but do not duplicate the machinery. A call to <a  href="rv_c_ref7.htm#wp1057420"><code class="cCode">tibrv_Close()</code></a> actually destroys the internal machinery only when the call decrements the counter to zero; other calls merely decrement the counter. In each program, the number of calls to <a  href="rv_c_ref8.htm#wp1057434"><code class="cCode">tibrv_Open()</code></a> and <a  href="rv_c_ref7.htm#wp1057420"><code class="cCode">tibrv_Close()</code></a> must match.
+</p>
+<a name="wp1088134"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1057689"> </a><p class="pBody">
+<a  href="rv_c_ref7.htm#wp1057420"><code class="cCode">tibrv_Close()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

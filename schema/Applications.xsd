@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Wm. Mark Stubbeman (Cisco Systems, Inc.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="applications">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="appType" type="AppType" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="AppInstance">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string"/>
+			<xs:element name="instrumentation" type="Instrumentation" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AppType">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="rulebaseName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="appInstance" type="AppInstance"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Instrumentation">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="method" type="Method" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Method">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="description" type="xs:string"/>
+			<xs:element name="parameter" type="Parameter" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Parameter">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="description" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

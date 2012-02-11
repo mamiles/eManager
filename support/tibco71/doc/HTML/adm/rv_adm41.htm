@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Connecting PGM and TRDP Networks with Routing Daemons</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1170453"> </a><h2 class="pNewHTMLPage">
+Connecting PGM and TRDP Networks with Routing Daemons
+</h2>
+<hr />
+<a name="wp1170507"> </a><p class="pBody">
+PGM and TRDP network protocols do <em class="cEmphasis">not</em> interoperate. Nor can Rendezvous components and programs from one variant interoperate with components and programs from the other variant. The only exception to this rule is the Rendezvous routing daemon.
+</p>
+<a name="wp1170639"> </a><p class="pBody">
+You can deploy a pair of Rendezvous routing daemons to construct a bridge that connects a PGM network with a TRDP network. This bridge lets PGM programs in one network communicate with TRDP programs in the other network.
+</p>
+<a name="wp1170643"> </a><p class="pBody">
+<a  href="rv_adm41.htm#wp1170547">Figure&#160;17</a> depicts an example. A routing daemon from the TRDP variant runs in the TRDP network, while a routing daemon from the PGM variant runs in the PGM network. The two routers specify each another as neighbors. They forward both multicast and point-to-point messages.
+</p>
+<a name="wp1170547"> </a><div class="pFigureTitle">
+Figure&#160;17   Bridge PGM and TRDP Networks with rvrd</div><div align="center"><img src="images/rv_adma33.gif" height="119" width="258" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1170593"> </a><p class="pBody">
+
+</p>
+<a name="wp1170594"> </a><p class="pBody">
+The two networks need not be physically distinct. For example, you can run PGM and TRDP variants on the same physical LAN&#151;as long as they use non-overlapping services (that is, port numbers).
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Names and Subject-Based Addressing</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;3	 Fundamentals";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1022986"> </a><h2 class="pNewHTMLPage">
+Names and Subject-Based Addressing
+</h2>
+<hr />
+<a name="wp1020571"> </a><p class="pBody">
+<em class="cEmphasis">Subject-based addressing</em> technology helps messages reach their destinations without involving programmers in the details of network addresses, protocols, hardware and operating system differences, ports and sockets. Subject-based addressing conventions define a simple, uniform name space for messages and their destinations.
+</p>
+<a name="wp1020572"> </a><p class="pBody">
+Programs that produce data arrange that data into messages, label each outbound message with a subject name, and <em class="cEmphasis">send</em> those messages. Programs that consume data receive it by <em class="cEmphasis">listening</em> to subject names; a consumer listening to a subject name receives all messages labeled with that name, from the time it begins listening until it stops listening.
+</p>
+<a name="wp1020573"> </a><p class="pBody">
+A subject name is a character string that specifies the destination of a message, and can also describe the message content. For programs to communicate, they must agree upon a subject name at which to <em class="cEmphasis">rendezvous</em> (hence the name of this product). Subject-based addressing technology enables <em class="cEmphasis">anonymous </em>rendezvous, an important breakthrough, which decouples programs from the network addresses of specific computers.
+</p>
+<a name="wp1020574"> </a><p class="pBody">
+Communication between programs is also anonymous&#151;consumers need not know where or how data is produced, and producers need not know where data is consumed, nor how it is used. Producers and consumers only need to agree to label data items with the same set of subject names, and that the actual data be in a form that both can manipulate and interpret.
+</p>
+<a name="wp1020575"> </a><p class="pBody">
+Anonymous communication decouples data consumers from data producers. Consumers are insulated from most changes in data producing software, including the replacement of producer processes, and the shifting of responsibilities among a collection of producer processes.
+</p>
+<a name="wp1020576"> </a><p class="pBody">
+Subject-based addressing technology places few restrictions on the syntax and interpretation of subject names. System designers and developers have the freedom (and responsibility) to establish conventions for using subject names. For more information, see <a  href="rv_concepts48.htm#wp1178162">Subject Name Syntax</a>.
+</p>
+<a name="wp1020580"> </a><p class="pBody">
+Programs can listen for wildcard subject names to access a collection of related data through a single subscription. For more information about wildcard subjects, see <a  href="rv_concepts50.htm#wp1065692">Using Wildcards to Receive Related Subjects</a>.
+</p>
+<a name="wp1020585"> </a><h3 class="pHeading2">
+Subject Names
+</h3>
+<a name="wp1020586"> </a><p class="pBody">
+Subject names consist of one or more <em class="cEmphasis">elements</em> separated by dot characters (periods). The elements can be used to implement a <em class="cEmphasis">subject name hierarchy</em> that reflects the structure of information in an application system.
+</p>
+<a name="wp1020587"> </a><p class="pBody">
+These strings are examples of valid subject names:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;&#160;RUN.HOME<a name="wp1020588"> </a>
+&#160;&#160;&#160;&#160;RUN.for.Elected_office.President<a name="wp1020589"> </a>
+</pre></div>
+<a name="wp1050880"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1050885"> </a><p class="pBody">
+<a  href="rv_concepts47.htm#wp1065576">Subject Names</a>.
+</p>
+<a name="wp1020675"> </a><h3 class="pHeading2">
+Wildcard Subject Names
+</h3>
+<a name="wp1020676"> </a><p class="pBody">
+A program can receive a group of related subjects by listening for a <em class="cEmphasis">wildcard subject</em>. The following examples illustrate wildcard syntax and matching semantics. (For further examples, see <a  href="rv_concepts48.htm#wp1178162">Subject Name Syntax</a>.)</p><div align="center"><img src="images/rv_conceptsa4.gif" height="209" width="602" border="0" hspace="0" vspace="0"/>
+</div><p class="pBody">
+</p>
+<a name="wp1029630"> </a><h3 class="pHeading2">
+Inbox Names
+</h3>
+<a name="wp1029782"> </a><p class="pBody">
+An <em class="cEmphasis">inbox name</em> specifies a destination that is unique to a particular process. Rendezvous software uses point-to-point techniques to deliver messages with inbox subject names. See also:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1029789"> </a><div class="pSmartList1"><li ><a  href="rv_concepts37.htm#wp1029645">Subject-Based Addressing and Message Destinations</a>.</li></div>
+
+<a name="wp1029756"> </a><div class="pSmartList1"><li ><a  href="rv_concepts38.htm#wp1020739">Multicast and Point-to-Point Messages</a>.</li></div>
+
+<a name="wp1029661"> </a><div class="pSmartList1"><li ><a  href="rv_concepts77.htm#wp1117158">Inbox Names</a>.</li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

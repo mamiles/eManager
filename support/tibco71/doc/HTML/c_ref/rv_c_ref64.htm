@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvMsg_UpdateField()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;3	 Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1019909"> </a><h2 class="pNewHTMLPage">
+tibrvMsg_UpdateField()
+</h2>
+<hr />
+<a name="wp1012617"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1086930"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvMsg_UpdateField</code>(<a name="wp1123652"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;message, <a name="wp1077104"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref25.htm#wp1129956"><code class="cCode">tibrvMsgField</code></a>*&#160;&#160;&#160;&#160;&#160;&#160;field);<a name="wp1077105"> </a>
+</pre></div>
+<a name="wp1087401"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1008443"> </a><p class="pBody">
+Update a field within a message.
+</p>
+<a name="wp1059766"> </a><p class="pBody">
+For most programs, we recommend type-specific convenience functions instead of this generic function. However, translation engine programs can require generic <a  href="rv_c_ref64.htm#wp1019909"><code class="cCode">tibrvMsg_UpdateField()</code></a>, and would use it in conjunction with generic <a  href="rv_c_ref45.htm#wp1019366"><code class="cCode">tibrvMsg_GetField()</code></a>. In this paradigm, modify the field returned from <a  href="rv_c_ref45.htm#wp1019366"><code class="cCode">tibrvMsg_GetField()</code></a> by replacing its <code class="cCode">field-&gt;value</code>, and supply it as the <code class="cCode">field</code> argument to <a  href="rv_c_ref64.htm#wp1019909"><code class="cCode">tibrvMsg_UpdateField()</code></a>. 
+</p>
+<a name="wp1087876"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1008445"> </a><p class="pBody">
+This function locates a field within the message by matching the name and identifier of <code class="cCode">field</code>. Then it updates the message field using the <code class="cCode">field</code> argument. (Notice that the program may not supply a field object with a different field name, field identifier, or datatype.)
+</p>
+<a name="wp1059842"> </a><p class="pBody">
+If no existing field matches the specifications in the <code class="cCode">field</code> argument, then this function adds the field to the message. Update convenience functions also add the field if it is not present.
+</p>
+<a name="wp1059846"> </a><p class="pBody">
+The type of the existing field (within the message) and the type of the updating <code class="cCode">field</code> argument must be identical; otherwise, the function returns the error status code <a  href="rv_c_ref227.htm#wp1129154"><code class="cCode">TIBRV_INVALID_TYPE</code></a>. However, when updating array or vector fields, the count (number of elements) can change.
+</p>
+<a name="wp1041050"> </a><p class="pBody">
+Pointer data (such as strings, arrays, submessages, opaque byte sequences or XML data) previously extracted from the field remain valid and unchanged until the message is destroyed; that is, even updating the field&#8217;s value does <em class="cEmphasis">not</em> invalidate pointer data.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1023015"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1023017"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1023019"> </a><div class="pCellBody">
+<code class="cCode">message</code>
+</div>
+</td>
+    <td><a name="wp1023021"> </a><div class="pCellBody">
+Update this message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1023023"> </a><div class="pCellBody">
+<code class="cCode">field</code>
+</div>
+</td>
+    <td><a name="wp1023025"> </a><div class="pCellBody">
+Update the existing message field using this field.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1107511"> </a><h4 class="pHeading3">
+Field Search Algorithm
+</h4>
+<a name="wp1107512"> </a><p class="pBody">
+This function, and related functions that <em class="cEmphasis">update</em> message fields, all use this algorithm to find and update a field within a message, as specified by a field identifier and a field name.
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1107513"> </a><div class="pSmartList1"><li value="1">Extended functions begin here. Regular functions begin at step 3.</li></div>
+
+<a name="wp1107514"> </a><p class="pBodyRelative">
+If the identifier is zero, skip to step 3.
+</p>
+<a name="wp1109342"> </a><p class="pBodyRelative">
+If the program supplied a <em class="cEmphasis">non-zero</em> field identifier, then search for the field with that identifier.
+</p>
+<a name="wp1108054"> </a><p class="pBodyRelative">
+If the search succeeds, then update that field.
+</p>
+<a name="wp1108053"> </a><p class="pBodyRelative">
+On failure, continue to step 2.
+</p>
+<a name="wp1107515"> </a><div class="pSmartList1"><li value="2">If the identifier search (in step 1) fails, and the program supplied a non-<code class="cCode">NULL</code> field name, then search for a field with that name. </li></div>
+
+<a name="wp1107549"> </a><p class="pBodyRelative">
+If the program supplied <code class="cCode">NULL</code> as the field name, return the status code <a  href="rv_c_ref227.htm#wp1129168"><code class="cCode">TIBRV_NOT_FOUND</code></a>.
+</p>
+<a name="wp1107550"> </a><p class="pBodyRelative">
+If the name search succeeds, but the actual identifier in the field is non-<code class="cCode">NULL</code> (so it does not match the identifier supplied) then return the status code <a  href="rv_c_ref227.htm#wp1129178"><code class="cCode">TIBRV_ID_CONFLICT</code></a>.
+</p>
+<a name="wp1107551"> </a><p class="pBodyRelative">
+If the search fails, <em class="cEmphasis">add</em> the field as specified (with name and identifier).
+</p>
+<a name="wp1107522"> </a><div class="pSmartList1"><li value="3">Regular functions begin here. Extended functions also begin here when the program supplied <em class="cEmphasis">zero</em> as the identifier (supplying zero is equivalent to not supplying a field identifier, so the behavior is equivalent to the corresponding regular function).</li></div>
+
+<a name="wp1107523"> </a><p class="pBodyRelative">
+Search for a field with the specified name&#151;even if that name is <code class="cCode">NULL</code>.
+</p>
+<a name="wp1107560"> </a><p class="pBodyRelative">
+If the search fails, <em class="cEmphasis">add</em> the field as specified (with name and identifier).
+</p>
+</ol></div>
+
+<a name="wp1136508"> </a><p class="pBody">
+If a message contains several fields with the same name, searching by name finds the first instance of the field with that name.
+</p>
+<a name="wp1118973"> </a><h4 class="pHeading3">
+Reserved Field Name
+</h4>
+<a name="wp1200739"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1304048"> </a><p class="pBody">
+The field name <code class="cCode">_data_</code> is reserved. Programs may not add fields with this name.
+</p>
+<a name="wp1304049"> </a><p class="pBody">
+(More generally, all fields that begin with the underbar character are reserved.)
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1137123"> </a><h4 class="pHeading3">
+Field Name Length
+</h4>
+<a name="wp1137124"> </a><p class="pBody">
+The constant <code class="cCode">TIBRVMSG_FIELDNAME_MAX</code> determines the longest possible field name.
+</p>
+<a name="wp1023027"> </a><h4 class="pHeading3">
+Convenience Functions
+</h4>
+<a name="wp1023035"> </a><p class="pBody">
+When the datatype of a field is determined during execution, use this general function. When you can determine the datatype of a field before compile-time, we recommend using type-specific convenience functions instead of this general function. Type-specific functions yield these advantages when updating fields:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1023037"> </a><div class="pSmartList1"><li >Code readability.</li></div>
+
+<a name="wp1023038"> </a><div class="pSmartList1"><li >Type checking.</li></div>
+
+</ul></div>
+
+<a name="wp1028022"> </a><p class="pBody">
+These categories of type-specific convenience functions find a field and update its data:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1028026"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref65.htm#wp1017339">Update Scalar</a>.</li></div>
+
+<a name="wp1028030"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref66.htm#wp1028415">Update Array</a>.</li></div>
+
+<a name="wp1045402"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref67.htm#wp1044937">Update Nested Message</a>.</li></div>
+
+<a name="wp1070686"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref68.htm#wp1045047">Update String</a>.</li></div>
+
+<a name="wp1161547"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref69.htm#wp1045160">Update Opaque Byte Sequence</a></li></div>
+
+<a name="wp1121240"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref70.htm#wp1161421">Update XML Byte Sequence</a></li></div>
+
+<a name="wp1121246"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref71.htm#wp1074793">Update DateTime</a></li></div>
+
+</ul></div>
+
+<a name="wp1121243"> </a><h4 class="pHeading3">
+Extended Functions
+</h4>
+<a name="wp1140495"> </a><p class="pBody">
+Each convenience function has two forms.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1140496"> </a><div class="pSmartList1"><li >The usual form specifies the field to update using a field name.</li></div>
+
+<a name="wp1140497"> </a><div class="pSmartList1"><li >The extended form specifies the field to update using a field name and a field identifier. </li></div>
+
+</ul></div>
+
+<a name="wp1140534"> </a><p class="pBody">
+For example, the function <code class="cCode">tibrvMsg_UpdateI32()</code> is paired with the extended form <code class="cCode">tibrvMsg_UpdateI32Ex()</code>.
+</p>
+<a name="wp1140535"> </a><p class="pBody">
+The field identifier has type <a  href="rv_c_ref224.htm#wp1128797"><code class="cCode">tibrv_u16</code></a>. Zero is a special value that signifies no field identifier. All non-zero field identifiers must be unique within each message.
+</p>
+<a name="wp1109323"> </a><p class="pBody">
+It is illegal to add a field that has both a <code class="cCode">NULL</code> field name, and a non-zero field identifier.
+</p>
+<a name="wp1083409"> </a><div class="pCellBody">
+For details, see <a  href="rv_c_ref20.htm#wp1062225">Field Names and Field Identifiers</a>.
+</div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+ <!-- Copyright (c) 2000-2001 Quadralay Corporation.  All rights reserved. -->
+
+ <head>
+  <meta http-equiv="content-type" content="text/html">
+  <meta http-equiv="charset"      content="UTF-8">
+
+  <title>nosecns.htm</title>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+    var  WWHFrame = eval("parent");
+
+
+    function  WWHNavigationFrame_AppletLoading()
+    {
+      WWHFrame.WWHJava.fAppletLoading();
+    }
+
+    function  WWHNavigationFrame_SetDocumentHREF(ParamURL)
+    {
+      var  HREF = "";
+
+
+      HREF += ParamURL;
+      WWHFrame.WWHHelp.fSetDocumentHREF(HREF);
+    }
+
+    function  WWHNormalizeSearchWords(ParamSearchWords)
+    {
+      var  SearchWords = "";
+
+
+      SearchWords += ParamSearchWords;
+
+      return WWHFrame.WWHJava.fNormalizeSearchWords(SearchWords);
+    }
+
+    function  WWHSetSearchWords(ParamSearchWords)
+    {
+      WWHFrame.WWHHighlightWords.fSetWordList(ParamSearchWords);
+    }
+
+    function  WWHNavigationFrame_FakeEvent_Object()
+    {
+      this.width  = 0;
+      this.height = 0;
+    }
+
+    function  WWHNavigationFrame_InitSize()
+    {
+      var  FakeEvent = new WWHNavigationFrame_FakeEvent_Object();
+
+
+      FakeEvent.width  = self.innerWidth;
+      FakeEvent.height = self.innerHeight;
+
+      WWHNavigationFrame_HandleResize(FakeEvent);
+    }
+
+    function  WWHNavigationFrame_HandleResize(ParamEvent)
+    {
+      if (WWHFrame.WWHBrowserInfo.mBrowser == 1)  // Shorthand for Netscape
+      {
+        if (WWHFrame.WWHHandler.mbInitialized)
+        {
+          WWHFrame.WWHNavigationFrame.document.applets[0].setSize(ParamEvent.width, ParamEvent.height);
+        }
+      }
+    }
+   // -->
+  </script>
+ </head>
+
+ <body onLoad="WWHFrame.WWHJava.fAppletLoaded();" onUnload="WWHFrame.WWHJava.fAppletUnloaded();" onResize="WWHNavigationFrame_HandleResize(event);">
+  <applet codebase="../../../.." code="com.webworks.help3.WWHelp" width="1600" height="1200" name="WWHelp" archive="wwhelp3.jar" mayscript>
+  </applet>
+ </body>
+</html>

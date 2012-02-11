@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Detecting Member Failure</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;13	 Fault Tolerance Concepts";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1057408"> </a><h2 class="pNewHTMLPage">
+Detecting Member Failure
+</h2>
+<hr />
+<a name="wp1057409"> </a><p class="pBody">
+Members can fail for several reasons (this list is not exhaustive):
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1057410"> </a><div class="pSmartList1"><li >Process termination.</li></div>
+
+<a name="wp1057411"> </a><div class="pSmartList1"><li >Process suspension (for example, UNIX Control-Z).</li></div>
+
+<a name="wp1057412"> </a><div class="pSmartList1"><li >Software errors.</li></div>
+
+<a name="wp1057413"> </a><div class="pSmartList1"><li >Hardware failure.</li></div>
+
+<a name="wp1057414"> </a><div class="pSmartList1"><li >Network disconnect.</li></div>
+
+</ul></div>
+
+<a name="wp1057418"> </a><p class="pBody">
+Rendezvous fault tolerance software does not distinguish between these failures. In each case, the failed member cannot fulfill its mission (or can fulfill it only locally), and another member must take its place.
+</p>
+<a name="wp1057422"> </a><p class="pBody">
+Rendezvous fault tolerance software detects failure of an active member in two ways&#151;heartbeat tracking and independent confirmation.
+</p>
+<a name="wp1057423"> </a><h3 class="pHeading2">
+Heartbeat Tracking
+</h3>
+<a name="wp1057424"> </a><p class="pBody">
+The inactive members of a group listen for heartbeat messages from all of the active members. A steady stream of heartbeat messages is an important indicator of process health. While the heartbeat continues, no action is needed. If the heartbeat messages from an active member cease to arrive, then Rendezvous fault tolerance software considers that member to be <em class="cEmphasis">lost</em>, and instructs the ranking inactive member to activate, replacing the lost member.
+</p>
+<a name="wp1057429"> </a><h3 class="pHeading2">
+Independent Confirmation
+</h3>
+<a name="wp1057433"> </a><p class="pBody">
+Rendezvous fault tolerance software also detects a set of events that indicate the loss of an active member. Consider these example events:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1057434"> </a><div class="pSmartList1"><li >An active member withdraws from the fault tolerance group.</li></div>
+
+<a name="wp1057438"> </a><div class="pSmartList1"><li >An active member process terminates, or disconnects from its Rendezvous daemon.</li></div>
+
+<a name="wp1057442"> </a><div class="pSmartList1"><li >A Rendezvous daemon process terminates; an active member that relies on that daemon is unable to function.</li></div>
+
+<a name="wp1057443"> </a><div class="pSmartList1"><li >A network hardware failure separates the network into two or more disconnected parts.</li></div>
+
+</ul></div>
+
+<a name="wp1057447"> </a><p class="pBody">
+When Rendezvous fault tolerance software detects such events, it restores the active goal by directing member processes to activate.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

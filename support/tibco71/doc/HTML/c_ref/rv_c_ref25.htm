@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvMsgField</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;3	 Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1129956"> </a><h2 class="pNewHTMLPage">
+tibrvMsgField
+</h2>
+<hr />
+<a name="wp1129957"> </a><p class="pSyntaxType">
+Type
+</p>
+<a name="wp1129958"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+typedef struct<a name="wp1129959"> </a>
+{<a name="wp1129960"> </a>
+&#160;&#160;&#160;&#160;char*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;name;<a name="wp1129961"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128803"><code class="cCode">tibrv_u32</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;size;<a name="wp1129962"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128803"><code class="cCode">tibrv_u32</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;count;<a name="wp1129963"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref22.htm#wp1061432"><code class="cCode">tibrvLocalData</code></a>&#160;&#160;&#160;&#160;&#160;&#160;data;<a name="wp1129964"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128797"><code class="cCode">tibrv_u16</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;id;<a name="wp1129965"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128791"><code class="cCode">tibrv_u8</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;type;<a name="wp1129966"> </a>
+} <code class="cCodeBold">tibrvMsgField</code>;<a name="wp1129967"> </a>
+</pre></div>
+<a name="wp1129968"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1129970"> </a><p class="pBody">
+Fields hold data within messages. Programs manipulate the content of field structs using the public struct accessors of this type.
+</p>
+<a name="wp1130013"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1129973"> </a><div class="pCellHeading">
+Accessor
+</div>
+</th>
+    <th><a name="wp1129975"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1129977"> </a><div class="pCellBody">
+<code class="cCode">name</code>
+</div>
+</td>
+    <td><a name="wp1129979"> </a><div class="pCellBody">
+The field&#8217;s name. <code class="cCode">NULL</code> signifies the empty string as the field name.
+</div>
+<a name="wp1129980"> </a><div class="pCellBody">
+Field name strings use the ISO 8859-1 character encoding.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1129982"> </a><div class="pCellBody">
+<code class="cCode">size</code>
+</div>
+</td>
+    <td><a name="wp1129984"> </a><div class="pCellBody">
+The size of the field&#8217;s <code class="cCode">data</code> (in bytes).
+</div>
+<a name="wp1129985"> </a><div class="pCellBody">
+For array types, <code class="cCode">size</code> reflects the size (in bytes) of one array element. For <a  href="rv_c_ref223.htm#wp1193363"><code class="cCode">TIBRVMSG_STRING</code></a>, <code class="cCode">size</code> reflects the number of bytes in the string (including the <code class="cCode">NULL</code> terminator, if present). For <a  href="rv_c_ref223.htm#wp1193356"><code class="cCode">TIBRVMSG_OPAQUE</code></a> and <a  href="rv_c_ref223.htm#wp1193370"><code class="cCode">TIBRVMSG_XML</code></a>, <code class="cCode">size</code> reflects the number of bytes of data.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1129993"> </a><div class="pCellBody">
+<code class="cCode">count</code>
+</div>
+</td>
+    <td><a name="wp1129995"> </a><div class="pCellBody">
+The number of values in an array field. For array types, <code class="cCode">count</code> is the number of array elements.
+</div>
+<a name="wp1129996"> </a><div class="pCellBody">
+For example, when a field contains a array of ten 32-bit integers, its <code class="cCode">size</code> is <code class="cCode">4</code>, and its <code class="cCode">count</code> is <code class="cCode">10</code>.
+</div>
+<a name="wp1129997"> </a><div class="pCellBody">
+(For scalar types, strings, opaque byte sequences and XML data, <code class="cCode">count</code> is <code class="cCode">1</code>. That is, the field contains one string&#151;not an array of characters; one opaque value&#151;not an array of bytes.)
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1129999"> </a><div class="pCellBody">
+<code class="cCode">data</code>
+</div>
+</td>
+    <td><a name="wp1130001"> </a><div class="pCellBody">
+The field&#8217;s data value.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1130003"> </a><div class="pCellBody">
+<code class="cCode">id</code>
+</div>
+</td>
+    <td><a name="wp1130005"> </a><div class="pCellBody">
+The field&#8217;s identifier. Identifiers are optional, but must be unique within each message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1130007"> </a><div class="pCellBody">
+<code class="cCode">type</code>
+</div>
+</td>
+    <td><a name="wp1130012"> </a><div class="pCellBody">
+A Rendezvous datatype token denoting the type of the field&#8217;s <code class="cCode">data</code>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

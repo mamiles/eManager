@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvcmTransport_RemoveListener()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1089656"> </a><h2 class="pNewHTMLPage">
+tibrvcmTransport_RemoveListener()
+</h2>
+<hr />
+<a name="wp1089657"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1089658"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvcmTransport_RemoveListener</code>(<a name="wp1089659"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref184.htm#wp1086288"><code class="cCode">tibrvcmTransport</code></a>&#160;&#160;&#160;&#160;cmTransport,<a name="wp1089660"> </a>
+&#160;&#160;&#160;&#160;const char*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;cmName,<a name="wp1089661"> </a>
+&#160;&#160;&#160;&#160;const char*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;subject);<a name="wp1089662"> </a>
+</pre></div>
+<a name="wp1089663"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1089739"> </a><p class="pBody">
+Unregister a specific listener at a specific correspondent, and free associated storage in the sender&#8217;s ledger.
+</p>
+<a name="wp1089665"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1089747"> </a><p class="pBody">
+This function cancels certified delivery of the specific <code class="cCode">subject</code> to the correspondent with this <code class="cCode">name</code>. The listening correspondent may subsequently re-register for certified delivery of the subject. (In contrast, <a  href="rv_c_ref190.htm#wp1190238"><code class="cCode">tibrvcmTransport_DisallowListener()</code></a> cancels certified delivery of <em class="cEmphasis">all</em> subjects to the correspondent, <em class="cEmphasis">and</em> prohibits re-registration.)
+</p>
+<a name="wp1089751"> </a><p class="pBody">
+Senders can call this function when the ledger item for a listening correspondent has grown very large. Such growth indicates that the listener is not confirming delivery, and may have terminated. Removing the listener reduces the ledger size by deleting messages stored for the listener.
+</p>
+<a name="wp1089752"> </a><p class="pBody">
+When a sending program calls this function, certified delivery software in the sender behaves as if the listener had closed the endpoint for the <code class="cCode">subject</code>. The sending program deletes from its ledger all information about delivery of the <code class="cCode">subject</code> to the correspondent with this <code class="cCode">cmName</code>. The sending program receives a <a  href="javascript:WWHClickedPopup('a', 'rv_concepts183.htm#wp1039506');" onMouseOver="WWHShowPopup('a', 'rv_concepts183.htm#wp1039506', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">REGISTRATION.CLOSED</code></a> advisory, to trigger any operations in the callback function for the advisory.
+</p>
+<a name="wp1089756"> </a><p class="pBody">
+If the listening correspondent is available (running and reachable), it receives a <a  href="javascript:WWHClickedPopup('a', 'rv_concepts181.htm#wp1039415');" onMouseOver="WWHShowPopup('a', 'rv_concepts181.htm#wp1039415', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">REGISTRATION.NOT_CERTIFIED</code></a> advisory, informing it that the sender no longer certifies delivery of the subject.
+</p>
+<a name="wp1089785"> </a><p class="pBody">
+If the correspondent with this <code class="cCode">name</code> does not receive certified delivery of the <code class="cCode">subject</code> from this sender <code class="cCode">cmTransport</code>, then <a  href="rv_c_ref199.htm#wp1089656"><code class="cCode">tibrvcmTransport_RemoveListener()</code></a> returns the status code <a  href="rv_c_ref227.htm#wp1129118"><code class="cCode">TIBRV_INVALID_SUBJECT</code></a>.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1089791"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1089796"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1089798"> </a><div class="pCellBody">
+<code class="cCode">cmTransport</code>
+</div>
+</td>
+    <td><a name="wp1089800"> </a><div class="pCellBody">
+Instruct this transport to unregister the specified listeners.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1089802"> </a><div class="pCellBody">
+<code class="cCode">cmName</code>
+</div>
+</td>
+    <td><a name="wp1089836"> </a><div class="pCellBody">
+Cancel certified delivery of the subject to listeners of this correspondent.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1089806"> </a><div class="pCellBody">
+<code class="cCode">subject</code>
+</div>
+</td>
+    <td><a name="wp1089808"> </a><div class="pCellBody">
+Cancel certified delivery of this subject to the named listener. Wildcard subjects are illegal.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1089710"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1089714"> </a><p class="pBody">
+<a  href="rv_c_ref188.htm#wp1086226">Name</a>
+</p>
+<a name="wp1089858"> </a><p class="pBody">
+<a  href="rv_c_ref185.htm#wp1089437"><code class="cCode">tibrvcmTransport_AddListener()</code> </a>
+</p>
+<a name="wp1089722"> </a><p class="pBody">
+<a  href="rv_c_ref190.htm#wp1190238"><code class="cCode">tibrvcmTransport_DisallowListener()</code> </a>
+</p>
+<a name="wp1120169"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts111.htm#wp1056313');" onMouseOver="WWHShowPopup('a', 'rv_concepts111.htm#wp1056313', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Canceling Certified Delivery</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

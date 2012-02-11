@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>CLIENT.FASTPRODUCER</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Appendix&#160;A	 System Advisory Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1063676"> </a><h2 class="pNewHTMLPage">
+CLIENT.FASTPRODUCER
+</h2>
+<hr />
+<a name="wp1063677"> </a><p class="pSyntaxType">
+Advisory
+</p>
+<a name="wp1038292"> </a><h4 class="pHeading3">
+Subject Name Syntax
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+_RV.WARN.SYSTEM.CLIENT.FASTPRODUCER<a name="wp1038293"> </a>
+</pre></div>
+<a name="wp1059547"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1038298"> </a><p class="pBody">
+A sending client of the Rendezvous daemon receives this advisory when it produces data faster than the network can distribute it.
+</p>
+<a name="wp1059693"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1106361"> </a><p class="pBody">
+Only the specific client transport receives this advisory.
+</p>
+<a name="wp1106362"> </a><p class="pBody">
+This message is a warning&#151;the program is sending messages faster than the physical network can accept them; the program&#8217;s outbound message queue will grow until it exhausts available storage. (In contrast to <a  href="rv_concepts160.htm#wp1047085"><code class="cCode">CLIENT.SLOWCONSUMER</code></a>, this advisory does not indicate an error, because data is never discarded.)
+</p>
+<a name="wp1234980"> </a><p class="pBody">
+When a client program sends many outbound messages in rapid succession, they remain in the client&#8217;s storage until <code class="cCode">rvd</code> can accept them to place them on the network. When <code class="cCode">rvd</code> leaves an outbound message waiting in the client program more than 5 seconds, Rendezvous software presents this advisory to the client transport.
+</p>
+<a name="wp1063574"> </a><h4 class="pHeading3">
+Message Fields
+</h4>
+<a name="wp1095748"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1063564"> </a><div class="pCellHeading">
+Field Name
+</div>
+</th>
+    <th><a name="wp1063569"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1063571"> </a><div class="pCellBody">
+<code class="cCode">waiting</code>
+</div>
+</td>
+    <td><a name="wp1063573"> </a><div class="pCellBody">
+The number of outbound messages waiting in the client program.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1038309"> </a><h4 class="pHeading3">
+Diagnosis
+</h4>
+<a name="wp1038310"> </a><p class="pBody">
+<code class="cCode">FASTPRODUCER</code> advisories can indicate any of several situations:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1038311"> </a><div class="pSmartList1"><li >The client program is sending messages in a tight loop&#151;either the daemon or the physical network cannot absorb the volume.</li></div>
+
+<a name="wp1038315"> </a><div class="pSmartList1"><li >The Rendezvous daemon is starved for CPU cycles; either its host computer is too heavily loaded, or the priority of the daemon process is too low.</li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

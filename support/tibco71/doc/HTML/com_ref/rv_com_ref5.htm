@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>Callback Methods and Event Handlers</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;1	 Concepts";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1141317"> </a><h2 class="pNewHTMLPage">
+Callback Methods and Event Handlers
+</h2>
+<hr />
+<a name="wp1148688"> </a><p class="pBody">
+Event processing in COM is more complicated than in other supported languages in the Rendezvous software family.
+</p>
+<a name="wp1148698"> </a><p class="pBody">
+In the other languages, dispatching an event object triggers Rendezvous software to call back into your program code&#151;invoking a <em class="cEmphasis">callback method</em> (or <em class="cEmphasis">callback function</em>) to process the event.
+</p>
+<a name="wp1148710"> </a><p class="pBody">
+In COM, dispatching an event object triggers a longer sequence. That is, dispatch triggers a callback in the <code class="cCode">tibrvcom</code> DLL, which fires a COM event, which in turn invokes the program&#8217;s <em class="cEmphasis">event handler method</em> (which is associated with the event object). For consistency with other languages, this manual uses the term <em class="cEmphasis">callback method</em> to refer to that event handler method&#151;even though (strictly speaking) COM cannot directly call back into the program.
+</p>
+<a name="wp1151961"> </a><h3 class="pHeading2">
+Limitations
+</h3>
+<a name="wp1227379"> </a><p class="pBody">
+In the single-threaded apartment model (STA), the Rendezvous component does not trigger dispatch while a program callback method is already running. Visual Basic is subject to this limitation.
+</p>
+<a name="wp1227380"> </a><p class="pBody">
+This restriction does not apply in the multi-threaded apartment model (MTA).
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

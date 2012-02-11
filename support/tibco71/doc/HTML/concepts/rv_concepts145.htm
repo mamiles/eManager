@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Longest Service Interruption</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;14	 Fault Tolerance Programming";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1057994"> </a><h2 class="pNewHTMLPage">
+Longest Service Interruption
+</h2>
+<hr />
+<a name="wp1057995"> </a><p class="pBody">
+In most situations, the longest service interruption is no longer than the activation interval.
+</p>
+<a name="wp1057996"> </a><h3 class="pHeading2">
+Cascading Failure Situations
+</h3>
+<a name="wp1057997"> </a><p class="pBody">
+<em class="cEmphasis">Cascading failure</em> is an unusual situation in which several members fail in succession&#151;either as they activate, or toward the end of their activation interval. As a result, several activation intervals may elapse before service is restored (or the supply of inactive members is exhausted).
+</p>
+<a name="wp1057998"> </a><p class="pBody">
+Cascading failure can result from fatal program errors during activation, or from a rare coincidence of unrelated failures.
+</p>
+<a name="wp1057999"> </a><h3 class="pHeading2">
+New Member Situations
+</h3>
+<a name="wp1058003"> </a><p class="pBody">
+When a new member joins a group, Rendezvous fault tolerance software identifies the new member to existing members (if any), and then waits for a period of one activation interval to receive identification from them in return. If, at the end of this interval, it determines that too few members are active, then it instructs the new member to activate.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

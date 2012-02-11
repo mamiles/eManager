@@ -1,0 +1,542 @@
+<HTML>
+   <HEAD>
+      <META http-equiv="Content-Type" content="text/html">
+      <title>SNMPv3 Trap Test suite</title>
+   </HEAD>
+   <BODY>
+      <a name="TOP"></a>
+      <a name="agents"></a>
+      <h1>List of Test SNMP agents</h1>
+      <p>
+         <table width="95%" border="1">
+            <tr>
+               <th>Platform</th>
+               <th>Machine</th>
+               <th>SNMPv1</th>
+               <th>SNMPv2c</th>
+               <th>SNMPv3</th>
+            </tr>
+            <tr>
+               <td>Solaris 2.8</td>
+               <td>roke</td>
+               <td>Y </td>
+               <td>N </td>
+               <td>N </td>
+            </tr>
+            <tr>
+               <td>Windows 2000</td>
+               <td>selidor</td>
+               <td>Y </td>
+               <td>Y </td>
+               <td>N </td>
+            </tr>
+            <tr>
+               <td>UCD on Linux RedHat 7.2</td>
+               <td>way</td>
+               <td>Y </td>
+               <td>Y </td>
+               <td>Y </td>
+            </tr>
+         </table>
+      </p>
+      <h3>List of hosts that send traps</h3>
+      <ul>
+         <li>
+            <a href="#roke_1">roke_1</a>
+         </li>
+         <li>
+            <a href="#selidor_1">selidor_1</a>
+         </li>
+         <li>
+            <a href="#selidor_2c">selidor_2c</a>
+         </li>
+         <li>
+            <a href="#way_1">way_1</a>
+         </li>
+         <li>
+            <a href="#way_2c">way_2c</a>
+         </li>
+         <li>
+            <a href="#way_3_no">way_3_no</a>
+         </li>
+         <li>
+            <a href="#way_3_yes_MD5_no">way_3_yes_MD5_no</a>
+         </li>
+         <li>
+            <a href="#way_3_yes_MD5_yes">way_3_yes_MD5_yes</a>
+         </li>
+         <li>
+            <a href="#way_3_yes_SHA1_no">way_3_yes_SHA1_no</a>
+         </li>
+         <li>
+            <a href="#way_3_yes_SHA1_yes">way_3_yes_SHA1_yes</a>
+         </li>
+      </ul>
+      <a name="roke_1"></a>
+      <h2>roke_1</h2>
+      <table width="95%" border="1">
+         <tr>
+            <td>
+               <b>Version</b>
+            </td>
+            <td>
+               <b>Host</b>
+            </td>
+            <td>
+               <b>Port</b>
+            </td>
+            <td>
+               <b>Socket</b>
+            </td>
+            <td>
+               <b>Community</b>
+            </td>
+         </tr>
+         <tr>
+            <td>1</td>
+            <td>roke</td>
+            <td>161</td>
+            <td>STD</td>
+            <td>public</td>
+         </tr>
+      </table>
+      <a href="#TOP">Back to Top</a>
+      <p></p>
+      <a name="selidor_1"></a>
+      <h2>selidor_1</h2>
+      <table width="95%" border="1">
+         <tr>
+            <td>
+               <b>Version</b>
+            </td>
+            <td>
+               <b>Host</b>
+            </td>
+            <td>
+               <b>Port</b>
+            </td>
+            <td>
+               <b>Socket</b>
+            </td>
+            <td>
+               <b>Community</b>
+            </td>
+         </tr>
+         <tr>
+            <td>1</td>
+            <td>selidor</td>
+            <td>161</td>
+            <td>STD</td>
+            <td>public</td>
+         </tr>
+      </table>
+      <a href="#TOP">Back to Top</a>
+      <p></p>
+      <a name="selidor_2c"></a>
+      <h2>selidor_2c</h2>
+      <table width="95%" border="1">
+         <tr>
+            <td>
+               <b>Version</b>
+            </td>
+            <td>
+               <b>Host</b>
+            </td>
+            <td>
+               <b>Port</b>
+            </td>
+            <td>
+               <b>Socket</b>
+            </td>
+            <td>
+               <b>Community</b>
+            </td>
+         </tr>
+         <tr>
+            <td>2c</td>
+            <td>selidor</td>
+            <td>161</td>
+            <td>STD</td>
+            <td>public</td>
+         </tr>
+      </table>
+      <a href="#TOP">Back to Top</a>
+      <p></p>
+      <a name="way_1"></a>
+      <h2>way_1</h2>
+      <table width="95%" border="1">
+         <tr>
+            <td>
+               <b>Version</b>
+            </td>
+            <td>
+               <b>Host</b>
+            </td>
+            <td>
+               <b>Port</b>
+            </td>
+            <td>
+               <b>Socket</b>
+            </td>
+            <td>
+               <b>Community</b>
+            </td>
+         </tr>
+         <tr>
+            <td>1</td>
+            <td>way</td>
+            <td>161</td>
+            <td>STD</td>
+            <td>public</td>
+         </tr>
+      </table>
+      <a href="#TOP">Back to Top</a>
+      <p></p>
+      <a name="way_2c"></a>
+      <h2>way_2c</h2>
+      <table width="95%" border="1">
+         <tr>
+            <td>
+               <b>Version</b>
+            </td>
+            <td>
+               <b>Host</b>
+            </td>
+            <td>
+               <b>Port</b>
+            </td>
+            <td>
+               <b>Socket</b>
+            </td>
+            <td>
+               <b>Community</b>
+            </td>
+         </tr>
+         <tr>
+            <td>2c</td>
+            <td>way</td>
+            <td>161</td>
+            <td>STD</td>
+            <td>public</td>
+         </tr>
+      </table>
+      <a href="#TOP">Back to Top</a>
+      <p></p>
+      <a name="way_3_no"></a>
+      <h2>way_3_no</h2>
+      <table width="95%" border="1">
+         <tr>
+            <td>
+               <b>Version</b>
+            </td>
+            <td>
+               <b>Host</b>
+            </td>
+            <td>
+               <b>Port</b>
+            </td>
+            <td>
+               <b>Socket</b>
+            </td>
+         </tr>
+         <tr>
+            <td>3</td>
+            <td>way</td>
+            <td>161</td>
+            <td>STD</td>
+         </tr>
+         <tr></tr>
+         <tr>
+            <td>
+               <b>Username</b>
+            </td>
+            <td>
+               <b>Context Id</b>
+            </td>
+            <td>
+               <b>Context Name</b>
+            </td>
+         </tr>
+         <tr>
+            <td>noAuthUser</td>
+            <td></td>
+            <td>public</td>
+         </tr>
+         <tr></tr>
+         <tr>
+            <td>
+               <b>Authetication ?</b>
+            </td>
+         </tr>
+         <tr>
+            <td>no</td>
+         </tr>
+      </table>
+      <a href="#TOP">Back to Top</a>
+      <p></p>
+      <a name="way_3_yes_MD5_no"></a>
+      <h2>way_3_yes_MD5_no</h2>
+      <table width="95%" border="1">
+         <tr>
+            <td>
+               <b>Version</b>
+            </td>
+            <td>
+               <b>Host</b>
+            </td>
+            <td>
+               <b>Port</b>
+            </td>
+            <td>
+               <b>Socket</b>
+            </td>
+         </tr>
+         <tr>
+            <td>3</td>
+            <td>way</td>
+            <td>161</td>
+            <td>STD</td>
+         </tr>
+         <tr></tr>
+         <tr>
+            <td>
+               <b>Username</b>
+            </td>
+            <td>
+               <b>Context Id</b>
+            </td>
+            <td>
+               <b>Context Name</b>
+            </td>
+         </tr>
+         <tr>
+            <td>authUser</td>
+            <td></td>
+            <td>public</td>
+         </tr>
+         <tr></tr>
+         <tr>
+            <td>
+               <b>Authetication ?</b>
+            </td>
+            <td>
+               <b>Auth Protocol</b>
+            </td>
+            <td>
+               <b>Auth Password</b>
+            </td>
+            <td>
+               <b>Privacy ?</b>
+            </td>
+         </tr>
+         <tr>
+            <td>yes</td>
+            <td>MD5</td>
+            <td>AuthPassword</td>
+            <td>no</td>
+         </tr>
+      </table>
+      <a href="#TOP">Back to Top</a>
+      <p></p>
+      <a name="way_3_yes_MD5_yes"></a>
+      <h2>way_3_yes_MD5_yes</h2>
+      <table width="95%" border="1">
+         <tr>
+            <td>
+               <b>Version</b>
+            </td>
+            <td>
+               <b>Host</b>
+            </td>
+            <td>
+               <b>Port</b>
+            </td>
+            <td>
+               <b>Socket</b>
+            </td>
+         </tr>
+         <tr>
+            <td>3</td>
+            <td>way</td>
+            <td>161</td>
+            <td>STD</td>
+         </tr>
+         <tr></tr>
+         <tr>
+            <td>
+               <b>Username</b>
+            </td>
+            <td>
+               <b>Context Id</b>
+            </td>
+            <td>
+               <b>Context Name</b>
+            </td>
+         </tr>
+         <tr>
+            <td>privUser</td>
+            <td></td>
+            <td>public</td>
+         </tr>
+         <tr></tr>
+         <tr>
+            <td>
+               <b>Authetication ?</b>
+            </td>
+            <td>
+               <b>Auth Protocol</b>
+            </td>
+            <td>
+               <b>Auth Password</b>
+            </td>
+            <td>
+               <b>Privacy ?</b>
+            </td>
+            <td>
+               <b>Priv Password</b>
+            </td>
+         </tr>
+         <tr>
+            <td>yes</td>
+            <td>MD5</td>
+            <td>AuthPassword</td>
+            <td>yes</td>
+            <td>PrivPassword</td>
+         </tr>
+      </table>
+      <a href="#TOP">Back to Top</a>
+      <p></p>
+      <a name="way_3_yes_SHA1_no"></a>
+      <h2>way_3_yes_SHA1_no</h2>
+      <table width="95%" border="1">
+         <tr>
+            <td>
+               <b>Version</b>
+            </td>
+            <td>
+               <b>Host</b>
+            </td>
+            <td>
+               <b>Port</b>
+            </td>
+            <td>
+               <b>Socket</b>
+            </td>
+         </tr>
+         <tr>
+            <td>3</td>
+            <td>way</td>
+            <td>161</td>
+            <td>STD</td>
+         </tr>
+         <tr></tr>
+         <tr>
+            <td>
+               <b>Username</b>
+            </td>
+            <td>
+               <b>Context Id</b>
+            </td>
+            <td>
+               <b>Context Name</b>
+            </td>
+         </tr>
+         <tr>
+            <td>authSHAUser</td>
+            <td></td>
+            <td>public</td>
+         </tr>
+         <tr></tr>
+         <tr>
+            <td>
+               <b>Authetication ?</b>
+            </td>
+            <td>
+               <b>Auth Protocol</b>
+            </td>
+            <td>
+               <b>Auth Password</b>
+            </td>
+            <td>
+               <b>Privacy ?</b>
+            </td>
+         </tr>
+         <tr>
+            <td>yes</td>
+            <td>SHA1</td>
+            <td>AuthPassword</td>
+            <td>no</td>
+         </tr>
+      </table>
+      <a href="#TOP">Back to Top</a>
+      <p></p>
+      <a name="way_3_yes_SHA1_yes"></a>
+      <h2>way_3_yes_SHA1_yes</h2>
+      <table width="95%" border="1">
+         <tr>
+            <td>
+               <b>Version</b>
+            </td>
+            <td>
+               <b>Host</b>
+            </td>
+            <td>
+               <b>Port</b>
+            </td>
+            <td>
+               <b>Socket</b>
+            </td>
+         </tr>
+         <tr>
+            <td>3</td>
+            <td>way</td>
+            <td>161</td>
+            <td>STD</td>
+         </tr>
+         <tr></tr>
+         <tr>
+            <td>
+               <b>Username</b>
+            </td>
+            <td>
+               <b>Context Id</b>
+            </td>
+            <td>
+               <b>Context Name</b>
+            </td>
+         </tr>
+         <tr>
+            <td>privSHAUser</td>
+            <td></td>
+            <td>public</td>
+         </tr>
+         <tr></tr>
+         <tr>
+            <td>
+               <b>Authetication ?</b>
+            </td>
+            <td>
+               <b>Auth Protocol</b>
+            </td>
+            <td>
+               <b>Auth Password</b>
+            </td>
+            <td>
+               <b>Privacy ?</b>
+            </td>
+            <td>
+               <b>Priv Password</b>
+            </td>
+         </tr>
+         <tr>
+            <td>yes</td>
+            <td>SHA1</td>
+            <td>AuthPassword</td>
+            <td>yes</td>
+            <td>PrivPassword</td>
+         </tr>
+      </table>
+      <a href="#TOP">Back to Top</a>
+      <p></p>
+   </BODY>
+</HTML>

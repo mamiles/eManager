@@ -1,0 +1,436 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvCmQueueTransport</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;10	 Distributed Queue";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1108902"> </a><h2 class="pNewHTMLPage">
+TibrvCmQueueTransport
+</h2>
+<hr />
+<a name="wp1109299"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1092848"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+class com.tibco.tibrv.<code class="cCodeBold">TibrvCmQueueTransport</code><a name="wp1092849"> </a>
+&#160;&#160;extends <a  href="rv_java_ref191.htm#wp1084243"><code style="font-weight: normal" class="cCode">TibrvCmTransport</code></a><span style="font-weight: bold"></span><a name="wp1280504"> </a>
+</pre></div>
+<a name="wp1092850"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1091825"> </a><p class="pBody">
+Coordinate a distributed queue for <em class="cEmphasis">one-of-n</em> delivery.
+</p>
+<a name="wp1091826"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1091830"> </a><p class="pBody">
+Each <a  href="rv_java_ref222.htm#wp1108902"><code class="cCode">TibrvCmQueueTransport</code></a> object employs a <a  href="rv_java_ref130.htm#wp1038525"><code class="cCode">TibrvTransport</code></a> for network communications. The <a  href="rv_java_ref222.htm#wp1108902"><code class="cCode">TibrvCmQueueTransport</code></a> adds the accounting and coordination mechanisms needed for one-of-n delivery.
+</p>
+<a name="wp1091840"> </a><p class="pBody">
+Several <a  href="rv_java_ref222.htm#wp1108902"><code class="cCode">TibrvCmQueueTransport</code></a> objects can employ one <a  href="rv_java_ref130.htm#wp1038525"><code class="cCode">TibrvTransport</code></a>, which also remains available for its own ordinary listeners and for sending ordinary messages. Destroying this <a  href="rv_java_ref130.htm#wp1038525"><code class="cCode">TibrvTransport</code></a> causes the <a  href="rv_java_ref222.htm#wp1108902"><code class="cCode">TibrvCmQueueTransport</code></a> to destroy itself as well (along with all its listeners, while preserving their certified delivery agreements).
+</p>
+<a name="wp1109354"> </a><p class="pBody">
+We recommend that programs explicitly destroy each <a  href="rv_java_ref222.htm#wp1108902"><code class="cCode">TibrvCmQueueTransport</code></a> object. Destroying a <a  href="rv_java_ref222.htm#wp1108902"><code class="cCode">TibrvCmQueueTransport</code></a> invalidates any certified listeners using that transport (while preserving their certified delivery agreements).
+</p>
+<a name="wp1112118"> </a><p class="pBody">
+Whether explicitly or implicitly, programs must destroy instances of this class. Rendezvous software keeps internal references to these objects, so the Java garbage collector does not delete them automatically.
+</p>
+<a name="wp1108606"> </a><p class="pBody">
+All members of a distributed queue must listen to exactly the same set of subjects. See <a  href="javascript:WWHClickedPopup('a', 'rv_concepts119.htm#wp1056870');" onMouseOver="WWHShowPopup('a', 'rv_concepts119.htm#wp1056870', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Enforcing Identical Subscriptions</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+<a name="wp1120086"> </a><p class="pBody">
+Scheduler recovery and task rescheduling are available only when the task message is a certified message (that is, a certified delivery agreement is in effect between the task sender and the distributed queue transport scheduler).
+</p>
+<a name="wp1108632"> </a><h4 class="pHeading3">
+Disabled Methods
+</h4>
+<a name="wp1108642"> </a><p class="pBody">
+Although <a  href="rv_java_ref222.htm#wp1108902"><code class="cCode">TibrvCmQueueTransport</code></a> is a subclass of <a  href="rv_java_ref191.htm#wp1084243"><code class="cCode">TibrvCmTransport</code></a>, all methods related to sending messages are disabled in <a  href="rv_java_ref222.htm#wp1108902"><code class="cCode">TibrvCmQueueTransport</code></a>. These disabled methods throw an <code class="cCode">IllegalStateException</code>; for a list, see <a  href="rv_java_ref222.htm#wp1253326">Disabled Methods</a>. See also <a  href="javascript:WWHClickedPopup('a', 'rv_concepts119.htm#wp1056857');" onMouseOver="WWHShowPopup('a', 'rv_concepts119.htm#wp1056857', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Certified Delivery Behavior in Queue Members</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1221112"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1221118"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1221120"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1221122"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1221127"> </a><div class="pCellBody">
+<a  href="rv_java_ref223.htm#wp1093285"><code class="cCode">TibrvCmQueueTransport()</code></a>
+</div>
+</td>
+    <td><a name="wp1221131"> </a><div class="pCellBody">
+<a  href="rv_java_ref223.htm#wp1086080">Create a transport as a distributed queue member.</a>
+</div>
+</td>
+    <td><a name="wp1221137"> </a><div class="pCellBody">
+<a  href="rv_java_ref223.htm#wp1093285">301</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1221148"> </a><div class="pCellBody">
+<a  href="rv_java_ref224.htm#wp1093708"><code class="cCode">TibrvCmQueueTransport.destroy()</code></a>
+</div>
+</td>
+    <td><a name="wp1221152"> </a><div class="pCellBody">
+<a  href="rv_java_ref224.htm#wp1093715">Destroy a distributed queue member object.</a>
+</div>
+</td>
+    <td><a name="wp1221158"> </a><div class="pCellBody">
+<a  href="rv_java_ref224.htm#wp1093708">304</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1221169"> </a><div class="pCellBody">
+<a  href="rv_java_ref225.htm#wp1086227"><code class="cCode">TibrvCmQueueTransport.getCompleteTime()</code></a>
+</div>
+</td>
+    <td><a name="wp1221173"> </a><div class="pCellBody">
+<a  href="rv_java_ref225.htm#wp1086238">Extract the worker complete time limit of a distributed queue member.</a>
+</div>
+</td>
+    <td><a name="wp1221179"> </a><div class="pCellBody">
+<a  href="rv_java_ref225.htm#wp1086227">305</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1221190"> </a><div class="pCellBody">
+<a  href="rv_java_ref226.htm#wp1086267"><code class="cCode">TibrvCmQueueTransport.getWorkerWeight()</code></a>
+</div>
+</td>
+    <td><a name="wp1221194"> </a><div class="pCellBody">
+<a  href="rv_java_ref226.htm#wp1110294">Extract the worker weight of a distributed queue member.</a>
+</div>
+</td>
+    <td><a name="wp1221200"> </a><div class="pCellBody">
+<a  href="rv_java_ref226.htm#wp1086267">306</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1221211"> </a><div class="pCellBody">
+<a  href="rv_java_ref227.htm#wp1086311"><code class="cCode">TibrvCmQueueTransport.getWorkerTasks()</code></a>
+</div>
+</td>
+    <td><a name="wp1221215"> </a><div class="pCellBody">
+<a  href="rv_java_ref227.htm#wp1086322">Extract the worker task capacity of a distributed queue member.</a>
+</div>
+</td>
+    <td><a name="wp1221221"> </a><div class="pCellBody">
+<a  href="rv_java_ref227.htm#wp1086311">307</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1221226"> </a><div class="pCellBody">
+<a  href="rv_java_ref228.htm#wp1111703"><code class="cCode">TibrvCmQueueTransport.setCompleteTime()</code></a>
+</div>
+</td>
+    <td><a name="wp1221230"> </a><div class="pCellBody">
+<a  href="rv_java_ref228.htm#wp1086409">Set the worker complete time limit of a distributed queue member.</a>
+</div>
+</td>
+    <td><a name="wp1221236"> </a><div class="pCellBody">
+<a  href="rv_java_ref228.htm#wp1111703">308</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1221241"> </a><div class="pCellBody">
+<a  href="rv_java_ref229.htm#wp1086441"><code class="cCode">TibrvCmQueueTransport.setWorkerWeight()</code></a>
+</div>
+</td>
+    <td><a name="wp1221245"> </a><div class="pCellBody">
+<a  href="rv_java_ref229.htm#wp1086452">Set the worker weight of a distributed queue member.</a>
+</div>
+</td>
+    <td><a name="wp1221251"> </a><div class="pCellBody">
+<a  href="rv_java_ref229.htm#wp1086441">309</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1221256"> </a><div class="pCellBody">
+<a  href="rv_java_ref230.htm#wp1086491"><code class="cCode">TibrvCmQueueTransport.setWorkerTasks()</code></a>
+</div>
+</td>
+    <td><a name="wp1221260"> </a><div class="pCellBody">
+<a  href="rv_java_ref230.htm#wp1086502">Set the worker task capacity of a distributed queue member.</a>
+</div>
+</td>
+    <td><a name="wp1221266"> </a><div class="pCellBody">
+<a  href="rv_java_ref230.htm#wp1086491">310</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1221564"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th colspan="2" rowspan="1"><a name="wp1221555"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1253324"> </a><div class="pCellBody">
+Legal Methods
+</div>
+</td>
+    <td><a name="wp1221571"> </a><p class="pBody">
+<a  href="rv_java_ref201.htm#wp1084905"><code class="cCode">TibrvCmTransport.getName()</code></a>
+</p>
+<a name="wp1221575"> </a><p class="pBody">
+<a  href="rv_java_ref205.htm#wp1085054"><code class="cCode">TibrvCmTransport.getTransport()</code></a>
+</p>
+<a name="wp1253399"> </a><p class="pBody">
+<a  href="rv_java_ref131.htm#wp1040342"><code class="cCode">TibrvTransport.createInbox()</code></a>
+</p>
+<a name="wp1253396"> </a><p class="pBody">
+<a  href="rv_java_ref133.htm#wp1070914"><code class="cCode">TibrvTransport.isValid()</code></a> (override)
+</p>
+<a name="wp1253402"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.equals</code>
+</p>
+<a name="wp1253403"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.getClass</code>
+</p>
+<a name="wp1253404"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.hashCode</code>
+</p>
+<a name="wp1253405"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notify</code>
+</p>
+<a name="wp1253406"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notifyAll</code>
+</p>
+<a name="wp1253407"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.toString</code>
+</p>
+<a name="wp1253408"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.wait</code>
+</p>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1253326"> </a><div class="pCellBody">
+Disabled Methods
+</div>
+</td>
+    <td><a name="wp1221760"> </a><p class="pBody">
+<a  href="rv_java_ref193.htm#wp1084281"><code class="cCode">TibrvCmTransport.addListener()</code></a>
+</p>
+<a name="wp1221639"> </a><p class="pBody">
+<a  href="rv_java_ref194.htm#wp1084365"><code class="cCode">TibrvCmTransport.allowListener()</code></a>
+</p>
+<a name="wp1221643"> </a><p class="pBody">
+<a  href="rv_java_ref195.htm#wp1084414"><code class="cCode">TibrvCmTransport.connectToRelayAgent()</code></a>
+</p>
+<a name="wp1221647"> </a><p class="pBody">
+<a  href="rv_java_ref197.htm#wp1084693"><code class="cCode">TibrvCmTransport.disallowListener()</code></a>
+</p>
+<a name="wp1221651"> </a><p class="pBody">
+<a  href="rv_java_ref198.htm#wp1084766"><code class="cCode">TibrvCmTransport.disconnectFromRelayAgent()</code></a>
+</p>
+<a name="wp1221655"> </a><p class="pBody">
+<a  href="rv_java_ref199.htm#wp1084825"><code class="cCode">TibrvCmTransport.getDefaultTimeLimit()</code></a>
+</p>
+<a name="wp1221659"> </a><p class="pBody">
+<a  href="rv_java_ref200.htm#wp1084868"><code class="cCode">TibrvCmTransport.getLedgerName()</code></a>
+</p>
+<a name="wp1221663"> </a><p class="pBody">
+<a  href="rv_java_ref202.htm#wp1084942"><code class="cCode">TibrvCmTransport.getRelayAgent()</code></a>
+</p>
+<a name="wp1221667"> </a><p class="pBody">
+<a  href="rv_java_ref203.htm#wp1084979"><code class="cCode">TibrvCmTransport.getRequestOld()</code></a>
+</p>
+<a name="wp1221671"> </a><p class="pBody">
+<a  href="rv_java_ref204.htm#wp1085017"><code class="cCode">TibrvCmTransport.getSyncLedger()</code></a>
+</p>
+<a name="wp1221675"> </a><p class="pBody">
+<a  href="rv_java_ref206.htm#wp1085087"><code class="cCode">TibrvCmTransport.removeListener()</code></a>
+</p>
+<a name="wp1221679"> </a><p class="pBody">
+<a  href="rv_java_ref207.htm#wp1104483"><code class="cCode">TibrvCmTransport.removeSendState()</code></a>
+</p>
+<a name="wp1221683"> </a><p class="pBody">
+<a  href="rv_java_ref208.htm#wp1220095"><code class="cCode">TibrvCmTransport.reviewLedger()</code></a>
+</p>
+<a name="wp1221687"> </a><p class="pBody">
+<a  href="rv_java_ref209.htm#wp1085385"><code class="cCode">TibrvCmTransport.send()</code></a>
+</p>
+<a name="wp1221691"> </a><p class="pBody">
+<a  href="rv_java_ref210.htm#wp1085443"><code class="cCode">TibrvCmTransport.sendReply()</code></a>
+</p>
+<a name="wp1221695"> </a><p class="pBody">
+<a  href="rv_java_ref211.htm#wp1085494"><code class="cCode">TibrvCmTransport.sendRequest()</code></a>
+</p>
+<a name="wp1221699"> </a><p class="pBody">
+<a  href="rv_java_ref212.htm#wp1085565"><code class="cCode">TibrvCmTransport.setDefaultTimeLimit()</code></a>
+</p>
+<a name="wp1221703"> </a><p class="pBody">
+<a  href="rv_java_ref213.htm#wp1085609"><code class="cCode">TibrvCmTransport.syncLedger()</code></a>
+</p>
+<a name="wp1253365"> </a><p class="pBody">
+<a  href="rv_java_ref135.htm#wp1040046"><code class="cCode">TibrvTransport.send()</code></a>
+</p>
+<a name="wp1253369"> </a><p class="pBody">
+<a  href="rv_java_ref136.htm#wp1040235"><code class="cCode">TibrvTransport.sendReply()</code></a>
+</p>
+<a name="wp1253373"> </a><p class="pBody">
+<a  href="rv_java_ref137.htm#wp1040108"><code class="cCode">TibrvTransport.sendRequest()</code></a>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1091928"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1091915"> </a><div class="pCellHeading">
+Constant
+</div>
+</th>
+    <th><a name="wp1091917"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1093322"> </a><div class="pCellBody">
+TibrvCmQueueTransport.<code class="cCode">DEFAULT_COMPLETE_TIME</code>
+</div>
+</td>
+    <td><a name="wp1093324"> </a><div class="pCellBody">
+<code class="cCode">static final double 0</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1093318"> </a><div class="pCellBody">
+TibrvCmQueueTransport.<code class="cCode">DEFAULT_WORKER_WEIGHT</code>
+</div>
+</td>
+    <td><a name="wp1093320"> </a><div class="pCellBody">
+<code class="cCode">static final int 1</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1093314"> </a><div class="pCellBody">
+TibrvCmQueueTransport.<code class="cCode">DEFAULT_WORKER_TASKS</code>
+</div>
+</td>
+    <td><a name="wp1093316"> </a><div class="pCellBody">
+<code class="cCode">static final int 1</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1093310"> </a><div class="pCellBody">
+TibrvCmQueueTransport.<code class="cCode">DEFAULT_SCHEDULER_WEIGHT</code>
+</div>
+</td>
+    <td><a name="wp1093312"> </a><div class="pCellBody">
+<code class="cCode">static final int 1</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1093306"> </a><div class="pCellBody">
+TibrvCmQueueTransport.<code class="cCode">DEFAULT_SCHEDULER_HEARTBEAT</code>
+</div>
+</td>
+    <td><a name="wp1093308"> </a><div class="pCellBody">
+<code class="cCode">static final double 1.0</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1093346"> </a><div class="pCellBody">
+TibrvCmQueueTransport.<code class="cCode">DEFAULT_SCHEDULER_ACTIVATION</code>
+</div>
+</td>
+    <td><a name="wp1093348"> </a><div class="pCellBody">
+<code class="cCode">static final double 3.5</code>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1220520"> </a><h4 class="pHeading3">
+Related Classes
+</h4>
+<a name="wp1220524"> </a><p class="pBody">
+<a  href="rv_java_ref130.htm#wp1038525"><code class="cCode">TibrvTransport</code> </a>
+</p>
+<a name="wp1220529"> </a><p class="pBody">
+<a  href="rv_java_ref148.htm#wp1039175"><code class="cCode">TibrvRvdTransport</code> </a>
+</p>
+<a name="wp1220533"> </a><p class="pBody">
+<a  href="rv_java_ref191.htm#wp1084243"><code class="cCode">TibrvCmTransport</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

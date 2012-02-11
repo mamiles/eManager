@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>I/O Event Semantics</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;7	 Events";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1030356"> </a><h2 class="pNewHTMLPage">
+I/O Event Semantics
+</h2>
+<hr />
+<a name="wp1030357"> </a><p class="pBody">
+Socket I/O can proceed only when certain I/O conditions exist. To receive notification of those conditions, programs can create I/O events, and define callback functions to read or write when sockets are ready.
+</p>
+<a name="wp1024847"> </a><p class="pBody">
+When a program registers event interest on an I/O socket, the specified condition may occur repeatedly; each time the program can read or write one or more bytes on that socket, the event driver queues the I/O event.
+</p>
+<a name="wp1025046"> </a><p class="pBody">
+When a program creates an I/O event, the creation call <em class="cEmphasis">activates</em> the event&#151;that is, it requests notification from the operating system when the corresponding I/O situation occurs. When the specified condition occurs, Rendezvous software <em class="cEmphasis">deactivates</em> the event, and places the event object on its event queue. When the callback function returns, Rendezvous software automatically <em class="cEmphasis">reactivates</em> the event. In this way, only one reference to the I/O event can appear in a queue at any moment in time. (References to several I/O events can appear simultaneously, but two references to the same event cannot appear at the same time.) <a  href="rv_concepts66.htm#wp1052284">Figure&#160;11</a> illustrates that Rendezvous software temporarily deactivates the I/O event from the time it enters the queue until its callback function returns.
+</p>
+<a name="wp1052284"> </a><div class="pFigureTitle">
+Figure&#160;11   I/O Event Activation and Dispatch</div><div align="center"><img src="images/rv_conceptsa9.gif" height="286" width="531" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1049510"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1049480"> </a><div class="pTableTitle">
+Table&#160;20   I/O Event Creation (Sheet 1 of 2)
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1049484"> </a><div class="pCellBody">
+C
+</div>
+</td>
+    <td><a name="wp1049489"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref78.htm#wp1071513');" onMouseOver="WWHShowPopup('e', 'rv_c_ref78.htm#wp1071513', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvEvent_CreateIO()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1049491"> </a><div class="pCellBody">
+C++
+</div>
+</td>
+    <td><a name="wp1049493"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref115.htm#wp1129107');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref115.htm#wp1129107', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvIOEvent::create()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1060317"> </a><div class="pCellBody">
+Java
+</div>
+</td>
+    <td><a name="wp1060319"> </a><div class="pCellBody">
+I/O events are not available with Java.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1060324"> </a><div class="pCellBody">
+COM
+</div>
+</td>
+    <td><a name="wp1060326"> </a><div class="pCellBody">
+I/O events are not available with COM.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1024864"> </a><h3 class="pHeading2">
+Operating System I/O Semantics
+</h3>
+<a name="wp1063262"> </a><p class="pBody">
+The semantics of all I/O conditions depend on the I/O semantics of the underlying operating system and its event manager. Rendezvous software does not change those semantics.
+</p>
+<a name="wp1024868"> </a><p class="pBody">
+I/O events trigger when the operating system <em class="cEmphasis">reports</em> that an I/O condition on a monitored socket would succeed (transfer at least one byte without blocking).
+</p>
+<a name="wp1025130"> </a><p class="pBody">
+For example, write events depend on the <em class="cEmphasis">state</em> of the socket&#151;it must be write-available. That is, on each pass through the event driver&#8217;s loop, the socket can accept one or more bytes.
+</p>
+<a name="wp1025127"> </a><h3 class="pHeading2">
+Blocking I/O Calls
+</h3>
+<a name="wp1024872"> </a><p class="pBody">
+Rendezvous software <em class="cEmphasis">cannot guarantee</em> that a subsequent I/O call will not block.
+</p>
+<a name="wp1025144"> </a><p class="pBody">
+I/O conditions are not necessarily static. <em class="cEmphasis">Event stealing</em> or <em class="cEmphasis">write overload</em> can change the I/O condition before the callback function runs.
+</p>
+<a name="wp1063273"> </a><p class="pBody">
+As an example of event stealing, consider an I/O event indicating that a particular socket has data available for reading. Another thread or process could read the data from that socket before the I/O event callback function can read the socket. In that case, a read call could indeed block.
+</p>
+<a name="wp1052295"> </a><h3 class="pHeading2">
+Availability
+</h3>
+<a name="wp1052300"> </a><p class="pBody">
+Socket I/O is available in the C and C++ interfaces, but not in the Java and COM interfaces.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

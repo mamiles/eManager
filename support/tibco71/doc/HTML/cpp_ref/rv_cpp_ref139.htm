@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvQueue::setName()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1158091"> </a><h2 class="pNewHTMLPage">
+TibrvQueue::setName()
+</h2>
+<hr />
+<a name="wp1158092"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1158093"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">setName</code>  (const char* queueName);<a name="wp1158097"> </a>
+</pre></div>
+<a name="wp1158098"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1158100"> </a><p class="pBody">
+Set the name of a queue.
+</p>
+<a name="wp1158101"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1158102"> </a><p class="pBody">
+Queue names assist programmers and administrators in troubleshooting queues. When Rendezvous software delivers an advisory message pertaining to a queue, it includes the queue&#8217;s name; administrators can use queue names to identify specific queues within a program.
+</p>
+<a name="wp1165206"> </a><p class="pBody">
+The default name of every queue is <code class="cCode">tibrvQueue</code>. We strongly recommend that you relabel each queue with a distinct and informative name, for use in debugging.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1158115"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1158117"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1158119"> </a><div class="pCellBody">
+<code class="cCode">queueName</code>
+</div>
+</td>
+    <td><a name="wp1158121"> </a><div class="pCellBody">
+Replace the name of the queue with this new name.
+</div>
+<a name="wp1158122"> </a><div class="pCellBody">
+It is illegal to supply <code class="cCode">NULL</code> as the new queue name.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1158124"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1158128"> </a><p class="pBody">
+<a  href="rv_cpp_ref134.htm#wp1036839"><code class="cCode">TibrvQueue::getName()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

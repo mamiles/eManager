@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvInt64</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1126548"> </a><h2 class="pNewHTMLPage">
+TibrvInt64
+</h2>
+<hr />
+<a name="wp1122579"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1122583"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1122584"> </a><p class="pBody">
+Represent a 64-bit integer.
+</p>
+<a name="wp1122585"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1122586"> </a><p class="pBody">
+Inbound messages can contain 64-bit integers, which COM and VB do not directly support. Programs can store signed or unsigned 64-bit values in this object; it is the responsibility of the program to use the high-order bit consistently (either as a sign bit or a value bit).
+</p>
+<a name="wp1156767"> </a><p class="pBody">
+Certified delivery software attaches 64-bit sequence numbers to messages. <code class="cCode">TIBRVCOM</code> includes this object to represent those sequence numbers.
+</p>
+<a name="wp1156655"> </a><p class="pBody">
+Rendezvous software does not support arithmetic on this object. However, VB programmers can use the VB currency type (scaled 64-bit integer) to facilitate 64-bit arithmetic; programs must handle scale factor appropriately.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1156667"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1156669"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1156671"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1156676"> </a><div class="pCellBody">
+<a  href="rv_com_ref74.htm#wp1123004"><code class="cCode">TibrvInt64.getAsHexString()</code></a>
+</div>
+</td>
+    <td><a name="wp1156680"> </a><div class="pCellBody">
+<a  href="rv_com_ref74.htm#wp1123010">Get the value of a 64-bit integer as a hexidecimal string.</a>
+</div>
+</td>
+    <td><a name="wp1156686"> </a><div class="pCellBody">
+<a  href="rv_com_ref74.htm#wp1123004">97</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1156691"> </a><div class="pCellBody">
+<a  href="rv_com_ref75.htm#wp1123037"><code class="cCode">TibrvInt64.getAsString()</code></a>
+</div>
+</td>
+    <td><a name="wp1156695"> </a><div class="pCellBody">
+<a  href="rv_com_ref75.htm#wp1123043">Get the value of a 64-bit integer as a string, interpreting the high order bit as a sign bit.</a>
+</div>
+</td>
+    <td><a name="wp1156701"> </a><div class="pCellBody">
+<a  href="rv_com_ref75.htm#wp1123037">98</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1156706"> </a><div class="pCellBody">
+<a  href="rv_com_ref76.htm#wp1122953"><code class="cCode">TibrvInt64.getAsUnsignedString()</code></a>
+</div>
+</td>
+    <td><a name="wp1156710"> </a><div class="pCellBody">
+<a  href="rv_com_ref76.htm#wp1122959">Get the value of a 64-bit integer as a string, interpreting the high order bit as a value bit (rather than a sign bit).</a>
+</div>
+</td>
+    <td><a name="wp1156716"> </a><div class="pCellBody">
+<a  href="rv_com_ref76.htm#wp1122953">99</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1156721"> </a><div class="pCellBody">
+<a  href="rv_com_ref77.htm#wp1123144"><code class="cCode">TibrvInt64.getLowOrderPart()</code></a>
+</div>
+</td>
+    <td><a name="wp1156725"> </a><div class="pCellBody">
+<a  href="rv_com_ref77.htm#wp1123150">Get the low-order 32 bits of a 64-bit integer.</a>
+</div>
+</td>
+    <td><a name="wp1156731"> </a><div class="pCellBody">
+<a  href="rv_com_ref77.htm#wp1123144">100</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1156736"> </a><div class="pCellBody">
+<a  href="rv_com_ref78.htm#wp1123071"><code class="cCode">TibrvInt64.getHighOrderPart()</code></a>
+</div>
+</td>
+    <td><a name="wp1156740"> </a><div class="pCellBody">
+<a  href="rv_com_ref78.htm#wp1126789">Get the high-order 32 bits of a 64-bit integer.</a>
+</div>
+</td>
+    <td><a name="wp1156746"> </a><div class="pCellBody">
+<a  href="rv_com_ref78.htm#wp1123071">101</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1156751"> </a><div class="pCellBody">
+<a  href="rv_com_ref79.htm#wp1122695"><code class="cCode">TibrvInt64.setFromString</code></a>
+</div>
+</td>
+    <td><a name="wp1156756"> </a><div class="pCellBody">
+<a  href="rv_com_ref79.htm#wp1122725">Set the value of a 64-bit integer.</a>
+</div>
+</td>
+    <td><a name="wp1156761"> </a><div class="pCellBody">
+<a  href="rv_com_ref79.htm#wp1122695">102</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1126776"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1122692"> </a><p class="pBody">
+<a  href="rv_com_ref43.htm#wp1024668"><code class="cCode">TibrvMsg.get()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

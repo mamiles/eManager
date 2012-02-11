@@ -1,0 +1,354 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>rvperfm</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;10	 Performance Assessment (rvperf)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1068989"> </a><h2 class="pNewHTMLPage">
+rvperfm
+</h2>
+<hr />
+<a name="wp1070564"> </a><p class="pSyntaxType">
+Command
+</p>
+<a name="wp1068990"> </a><h4 class="pHeading3">
+Syntax
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">rvperfm&#160;&#160;[-service </code><code class="cCodeItalic">&lt;service&gt; </code>]<a name="wp1068991"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-network </code><code class="cCodeItalic">&lt;network&gt; </code><code class="cCode">]</code><a name="wp1068992"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-daemon </code><code class="cCodeItalic">&lt;daemon&gt; </code><code class="cCode">]</code><a name="wp1068993"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-subject </code><code class="cCodeItalic">&lt;subject&gt; </code><code class="cCode">]</code><a name="wp1068994"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-inbox]</code><a name="wp1068995"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</code>[-auto]<a name="wp1068996"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-messages </code><code class="cCodeItalic">&lt;m&gt; </code><code class="cCode">]</code><a name="wp1068997"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-size </code><code class="cCodeItalic">&lt;size&gt; </code><code class="cCode">]</code><a name="wp1068998"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-interval </code><code class="cCodeItalic">&lt;interval&gt; </code>]<a name="wp1068999"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-batch </code><code class="cCodeItalic">&lt;batch_size&gt; </code><code class="cCode">]</code><a name="wp1069000"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-cm]</code><a name="wp1069001"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-cm-name </code><code class="cCodeItalic">&lt;name&gt; </code><code class="cCode">]</code><a name="wp1069886"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-cm-ledger </code><code class="cCodeItalic">&lt;filename&gt; </code><code class="cCode">]</code><a name="wp1069887"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-cm-sync]</code><a name="wp1071440"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</code>[-h]<a name="wp1069888"> </a>
+</pre></div>
+<a name="wp1069005"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1069006"> </a><p class="pBody">
+<code class="cCode">rvperfm</code> coordinates the tasks of measuring network performance. It sends messages to the network, and reports statistics to <code class="cCode">stdout</code>.
+</p>
+<a name="wp1069007"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1069903"> </a><p class="pBody">
+In single mode (without the flag <code class="cCode">-auto</code>), <code class="cCode">rvperfm</code> sends one run of messages, and then exits.
+</p>
+<a name="wp1069904"> </a><p class="pBody">
+In automatic mode (with the flag <code class="cCode">-auto</code>), <code class="cCode">rvperfm</code> sends several runs of messages, adjusting the batch size and interval parameters to empirically determine the combination that yields maximum network throughput. After it finds the optimal settings, it exits; the parameters and report of the final run reflect optimal network performance. For details, see <a  href="rv_adm92.htm#wp1068892">Automatic Mode&#151;Binary Search</a>.
+</p>
+<a name="wp1069912"> </a><h4 class="pHeading3">
+Outline
+</h4>
+<a name="wp1069913"> </a><p class="pBody">
+Each run consists of these steps:
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1069914"> </a><div class="pSmartList1"><li value="1">Dynamically discover the available <code class="cCode">rvperfs</code> processes; output a list of participating instances. In the discovery step, <code class="cCode">rvperfm</code> polls for listeners, and waits 3 seconds for ready signals from <code class="cCode">rvperfs</code> processes; then it continues to the next step.</li></div>
+
+<a name="wp1069016"> </a><div class="pSmartList1"><li value="2">Send the run of messages.</li></div>
+
+<a name="wp1069017"> </a><div class="pSmartList1"><li value="3">Output statistics that measure the performance of the <em class="cEmphasis">sender</em>.</li></div>
+
+<a name="wp1069018"> </a><div class="pSmartList1"><li value="4">Output statistics that measure the performance of each <em class="cEmphasis">receiver</em> (if any).</li></div>
+
+<a name="wp1069019"> </a><div class="pSmartList1"><li value="5">Output a summary of error advisories pertaining to the <em class="cEmphasis">sender</em>.</li></div>
+
+</ol></div>
+
+<a name="wp1069922"> </a><h4 class="pHeading3">
+Collision
+</h4>
+<a name="wp1069022"> </a><p class="pBody">
+When two instances of <code class="cCode">rvperfm</code> (simultaneously) attempt to use the same subject, service and network, at least one of them detects the collision and exits immediately.
+</p>
+<a name="wp1069023"> </a><p class="pBody">
+Simultaneous instances that differ in subject or service (or both) do not constitute a collision. Such processes can coexist.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1071466"> </a><p class="pBody">
+ (Sheet 1 of 4)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1071470"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1071472"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1071475"> </a><div class="pCellBody">
+<code class="cCode">-service </code><code class="cCodeItalic">&lt;service&gt;</code>
+</div>
+</td>
+    <td><a name="wp1071477"> </a><div class="pCellBody">
+<code class="cCodeItalic">&lt;service&gt;</code> is the service name or UDP or PGM port number that defines the service group.
+</div>
+<a name="wp1071481"> </a><div class="pCellBody">
+See <a  href="rv_adm15.htm#wp1019269">Service Selection</a>.
+</div>
+<a name="wp1071482"> </a><div class="pCellBody">
+If you do not specify the <code class="cCode">-service</code> parameter, the default value is <code class="cCode">7599</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1071485"> </a><div class="pCellBody">
+<code class="cCode">-network </code><code class="cCodeItalic">&lt;network&gt;</code>
+</div>
+</td>
+    <td><a name="wp1071487"> </a><div class="pCellBody">
+<code class="cCodeItalic">&lt;network&gt;</code> narrows the service group by selecting a local network by network name or IP network number (when the host computer has multiple network interfaces). It can also specify multicast addresses.
+</div>
+<a name="wp1071491"> </a><div class="pCellBody">
+See <a  href="rv_adm16.htm#wp1019316">Network Selection</a>.
+</div>
+<a name="wp1071492"> </a><div class="pCellBody">
+If you do not specify the <code class="cCode">-network</code> parameter, the default value is the multicast address<code class="cCode"> &quot;;225.9.9.9&quot;</code>. On operating systems that do not support multicast addressing, you must supply a valid broadcast network address.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1071495"> </a><div class="pCellBody">
+<code class="cCode">-daemon </code><code class="cCodeItalic">&lt;daemon&gt;</code>
+</div>
+</td>
+    <td><a name="wp1071497"> </a><div class="pCellBody">
+The <code class="cCode">-daemon</code> parameter instructs the program about how and where to find <code class="cCode">rvd</code> and establish communication.
+</div>
+<a name="wp1071500"> </a><div class="pCellBody">
+See <a  href="rv_adm17.htm#wp1019451">Daemon Client Socket&#151;Establishing Connections</a>.
+</div>
+<a name="wp1071502"> </a><div class="pCellBody">
+You can specify a daemon on a remote computer. For details, see <a  href="rv_adm17.htm#wp1019505">Remote Daemon</a>. However, the program cannot start a remote daemon automatically&#151;you must start it manually on the remote computer.
+</div>
+<a name="wp1071506"> </a><div class="pCellBody">
+If you do not specify the <code class="cCode">-daemon</code> parameter, the program finds the local daemon on TCP socket <code class="cCode">7500</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1071509"> </a><div class="pCellBody">
+<code class="cCode">-subject </code><code class="cCodeItalic">&lt;subject&gt;</code>
+</div>
+</td>
+    <td><a name="wp1071511"> </a><div class="pCellBody">
+<code class="cCode">rvperfm</code> sends messages to this subject name.
+</div>
+<a name="wp1071512"> </a><div class="pCellBody">
+If you specify neither <code class="cCode">-subject</code> nor <code class="cCode">-inbox</code>, then the program uses <code class="cCode">_perf</code> as a prefix to construct broadcast subjects.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1071515"> </a><div class="pCellBody">
+<code class="cCode">-inbox</code>
+</div>
+</td>
+    <td><a name="wp1071517"> </a><div class="pCellBody">
+<code class="cCode">rvperfm</code> sends point-to-point messages
+</div>
+<a name="wp1071518"> </a><div class="pCellBody">
+<code class="cCode">rvperfm</code> probes the network to discover available instances of <code class="cCode">rvperfs</code>. The first instance to respond becomes the sole receiver&#151;<code class="cCode">rvperfm</code> sends point-to-point messages only to an inbox in that process instance.
+</div>
+<a name="wp1071519"> </a><div class="pCellBody">
+(Since <code class="cCode">rvperfm</code> uses broadcast subjects for the initial discovery phase, it is not a contradiction to specify both <code class="cCode">-inbox</code> and <code class="cCode">-subject</code> parameters. When both parameters are present, <code class="cCode">-inbox</code> determines the sending behavior.)
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1071522"> </a><div class="pCellBody">
+<code class="cCode">-auto</code>
+</div>
+</td>
+    <td><a name="wp1071524"> </a><div class="pCellBody">
+When present, <code class="cCode">rvperfm</code> operates in <em class="cEmphasis">automatic mode,</em> sending several runs of messages to automatically determine the optimal batch size and interval parameters for the network.
+</div>
+<a name="wp1071525"> </a><div class="pCellBody">
+When absent, <code class="cCode">rvperfm</code> operates in <em class="cEmphasis">single mode,</em> sending only one run of messages.
+</div>
+<a name="wp1071529"> </a><div class="pCellBody">
+See also, <a  href="rv_adm92.htm#wp1068892">Automatic Mode&#151;Binary Search</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1071532"> </a><div class="pCellBody">
+<code class="cCode">-messages </code><code class="cCodeItalic">&lt;m&gt;</code>
+</div>
+</td>
+    <td><a name="wp1071534"> </a><div class="pCellBody">
+<code class="cCode">rvperfm</code> sends <code class="cCodeItalic">&lt;m&gt;</code> messages per run.
+</div>
+<a name="wp1071535"> </a><div class="pCellBody">
+If not present, the default is 10000 messages per run.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1071538"> </a><div class="pCellBody">
+<code class="cCode">-size </code><code class="cCodeItalic">&lt;size&gt;</code>
+</div>
+</td>
+    <td><a name="wp1071540"> </a><div class="pCellBody">
+<code class="cCode">rvperfm</code> sends messages with <code class="cCodeItalic">&lt;size&gt;</code> bytes of payload data.
+</div>
+<a name="wp1071541"> </a><div class="pCellBody">
+Use this size to model application data rates. This size does not include message header data nor packet overhead, so computing the network byte transfer rate from this size results in an slight underestimate of the actual throughput.
+</div>
+<a name="wp1071542"> </a><div class="pCellBody">
+If not present, the default is 256 payload bytes in each message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1071545"> </a><div class="pCellBody">
+<code class="cCode">-interval </code><code class="cCodeItalic">&lt;pause&gt;</code>
+</div>
+</td>
+    <td><a name="wp1071636"> </a><div class="pCellBody">
+<code class="cCode">rvperfm</code> sends messages in batches, waiting for <code class="cCodeItalic">&lt;pause&gt;</code> seconds between the end of one batch and the start of the next batch.
+</div>
+<a name="wp1071548"> </a><div class="pCellBody">
+When absent, the default pause is zero seconds.
+</div>
+<a name="wp1071549"> </a><div class="pCellBody">
+In <em class="cEmphasis">single mode</em>, <code class="cCode">rvperfm</code> sends the run with this interval.
+</div>
+<a name="wp1071550"> </a><div class="pCellBody">
+In <em class="cEmphasis">automatic mode</em>, <code class="cCode">rvperfm</code> sends the <em class="cEmphasis">first</em> run with this interval, adjusting the parameters in subsequent runs.
+</div>
+<img src="images/warning.gif" border="0" /><a name="wp1085965"> </a><div class="pCellBody">
+<b class="cBold">Change of Units</b>: In earlier releases the value of this parameter was interpreted as milliseconds&#151;now it is a floating point value interpreted as seconds.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1071556"> </a><div class="pCellBody">
+<code class="cCode">-batch </code><code class="cCodeItalic">&lt;batch_size&gt;</code>
+</div>
+</td>
+    <td><a name="wp1071558"> </a><div class="pCellBody">
+<code class="cCode">rvperfm</code> sends messages in batches, with <code class="cCodeItalic">&lt;batch_size&gt;</code> messages in each batch.
+</div>
+<a name="wp1071559"> </a><div class="pCellBody">
+The default is 10 messages per batch.
+</div>
+<a name="wp1071560"> </a><div class="pCellBody">
+In <em class="cEmphasis">single mode</em>, <code class="cCode">rvperfm</code> sends the run with this batch size.
+</div>
+<a name="wp1071561"> </a><div class="pCellBody">
+In <em class="cEmphasis">automatic mode</em>, <code class="cCode">rvperfm</code> sends the <em class="cEmphasis">first</em> run with this batch size, adjusting the parameters in subsequent runs.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1071564"> </a><div class="pCellBody">
+<code class="cCode">-cm</code>
+</div>
+</td>
+    <td><a name="wp1071566"> </a><div class="pCellBody">
+When present, <code class="cCode">rvperfm</code> sends messages with certified delivery features. If <code class="cCode">rvperfs</code> also specifies <code class="cCode">-cm</code>, then the programs establish a certified delivery agreement.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1071572"> </a><div class="pCellBody">
+<code class="cCode">-cm-name </code><code class="cCodeItalic">&lt;name&gt;</code>
+</div>
+</td>
+    <td><a name="wp1071574"> </a><div class="pCellBody">
+When present, <code class="cCode">rvperfm</code> specifies this reusable correspondent name when it enables certified delivery.
+</div>
+<a name="wp1071575"> </a><div class="pCellBody">
+When <code class="cCode">-cm</code> is present, but <code class="cCode">-cm-name</code> is not, <code class="cCode">rvperfm</code> operates with a non-reusable correspondent name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1071578"> </a><div class="pCellBody">
+<code class="cCode">-cm-ledger </code><code class="cCodeItalic">&lt;filename&gt;</code>
+</div>
+</td>
+    <td><a name="wp1071580"> </a><div class="pCellBody">
+When present, <code class="cCode">rvperfm</code> uses this ledger file. You must also supply <code class="cCode">-cm-name</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1071584"> </a><div class="pCellBody">
+<code class="cCode">-cm-sync</code>
+</div>
+</td>
+    <td><a name="wp1071595"> </a><div class="pCellBody">
+When present, then operations that update the ledger file do not return until the changes are written to the storage medium. You must also supply <code class="cCode">-cm-ledger</code> and <code class="cCode">-cm-name</code>.
+</div>
+<a name="wp1071596"> </a><div class="pCellBody">
+When absent, the operating system writes ledger file changes to the storage medium asynchronously.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1071591"> </a><div class="pCellBody">
+<code class="cCode">-h</code>
+</div>
+</td>
+    <td><a name="wp1071593"> </a><div class="pCellBody">
+When present, output a parameter usage list to <code class="cCode">stdout</code>, and exit immediately.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

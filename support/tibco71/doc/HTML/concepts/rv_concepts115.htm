@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Ledger Storage</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1056491"> </a><h2 class="pNewHTMLPage">
+Ledger Storage
+</h2>
+<hr />
+<a name="wp1056492"> </a><p class="pBody">
+Each CM transport records information in a ledger, which occupies storage space&#151;whether within the program process, in a ledger file, or both.
+</p>
+<a name="wp1056493"> </a><p class="pBody">
+A CM transport that represents a persistent correspondent must keep a copy of the ledger in a file. The file-based ledger preserves certified delivery information beyond transport invalidation, or process termination and restart.
+</p>
+<a name="wp1056494"> </a><p class="pBody">
+A file-based ledger has two associated costs:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1056495"> </a><div class="pSmartList1"><li >The ledger file consumes disk space.</li></div>
+
+<a name="wp1056496"> </a><div class="pSmartList1"><li >The program pauses to update the ledger file (synchronously or asynchronously).</li></div>
+
+</ul></div>
+
+<a name="wp1056497"> </a><p class="pBody">
+Transient correspondents need not pay these costs, because they do not use ledger files. However, keeping the ledger in process-based storage consumes process memory.
+</p>
+<a name="wp1056501"> </a><p class="pBody">
+Rendezvous software neither clears nor deletes ledger files.
+</p>
+<a name="wp1056503"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1056507"> </a><p class="pBody">
+<a  href="rv_concepts109.htm#wp1056251">Persistent Correspondents</a>.
+</p>
+<a name="wp1056508"> </a><h3 class="pHeading2">
+Ledger Size
+</h3>
+<a name="wp1056509"> </a><p class="pBody">
+The size of the ledger depends on several factors&#151;the most important of which is the retention rate of stored data. That is, the ledger grows fastest in response to the cumulative length of incompletely delivered messages.
+</p>
+<a name="wp1056510"> </a><p class="pBody">
+Program developers can estimate the expected size of the ledger, and must ensure that the process can allocate sufficient memory to contain it. For a file-based ledger, ensure that sufficient disk space is available as well.
+</p>
+<a name="wp1056511"> </a><h4 class="pHeading3">
+Ledger Storage Allocation
+</h4>
+<a name="wp1056512"> </a><p class="pBody">
+Ledger files use a general storage allocation scheme:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1056513"> </a><div class="pSmartList1"><li >Each ledger acquires a pool of storage, and manages that pool. The ledger reuses existing storage whenever possible. Ledger files grow as needed.</li></div>
+
+<a name="wp1056514"> </a><div class="pSmartList1"><li >Ledger files grow by adding storage in integer multiples of a minimum allocation size.</li></div>
+
+<a name="wp1056515"> </a><div class="pSmartList1"><li >Because storage allocation involves <em class="cEmphasis">expensive</em> operating system calls, ledger files pre-allocate large blocks of storage to reduce the number and frequency of such calls.</li></div>
+
+<a name="wp1073030"> </a><div class="pSmartList1"><li >Rendezvous software automatically reclaims ledger file storage on operating systems that support this feature.</li></div>
+
+</ul></div>
+
+<a name="wp1187494"> </a><h3 class="pHeading2">
+Ledger File Location
+</h3>
+<a name="wp1187499"> </a><p class="pBody">
+The ledger file must reside on the same host computer as the program that uses it. Do <em class="cEmphasis">not</em> use network-mounted storage for ledger files.
+</p>
+<a name="wp1187526"> </a><p class="pBody">
+Remember that certified message delivery protects against component or network failure. Placing ledger files across a network (for example, on a separate file server) introduces a new dependency on the network, leaving components vulnerable to network failures.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

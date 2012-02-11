@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://admin.soap.eManager.cisco.com" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://admin.soap.eManager.cisco.com" xmlns:intf="http://admin.soap.eManager.cisco.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+   <wsdl:message name="updateUserTimeoutSessionResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="loginRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateUserPasswordResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="loginResponse">
+
+      <wsdl:part name="loginReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createUserAccountResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteUserAccountResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="createUserAccountRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+      <wsdl:part name="in2" type="soapenc:string"/>
+
+      <wsdl:part name="in3" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateUserPasswordRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+      <wsdl:part name="in2" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteUserAccountRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="resetUserPasswordRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+      <wsdl:part name="in2" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="resetUserPasswordResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="logoutResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="logoutRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateUserTimeoutSessionRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="xsd:long"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="AdminManager">
+
+      <wsdl:operation name="createUserAccount" parameterOrder="in0 in1 in2 in3">
+
+         <wsdl:input message="impl:createUserAccountRequest" name="createUserAccountRequest"/>
+
+         <wsdl:output message="impl:createUserAccountResponse" name="createUserAccountResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteUserAccount" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:deleteUserAccountRequest" name="deleteUserAccountRequest"/>
+
+         <wsdl:output message="impl:deleteUserAccountResponse" name="deleteUserAccountResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="login" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:loginRequest" name="loginRequest"/>
+
+         <wsdl:output message="impl:loginResponse" name="loginResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="logout" parameterOrder="in0">
+
+         <wsdl:input message="impl:logoutRequest" name="logoutRequest"/>
+
+         <wsdl:output message="impl:logoutResponse" name="logoutResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="resetUserPassword" parameterOrder="in0 in1 in2">
+
+         <wsdl:input message="impl:resetUserPasswordRequest" name="resetUserPasswordRequest"/>
+
+         <wsdl:output message="impl:resetUserPasswordResponse" name="resetUserPasswordResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateUserPassword" parameterOrder="in0 in1 in2">
+
+         <wsdl:input message="impl:updateUserPasswordRequest" name="updateUserPasswordRequest"/>
+
+         <wsdl:output message="impl:updateUserPasswordResponse" name="updateUserPasswordResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateUserTimeoutSession" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:updateUserTimeoutSessionRequest" name="updateUserTimeoutSessionRequest"/>
+
+         <wsdl:output message="impl:updateUserTimeoutSessionResponse" name="updateUserTimeoutSessionResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="AdminManagerSoapBinding" type="impl:AdminManager">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="createUserAccount">
+
+         <wsdlsoap:operation soapAction="createUserAccount"/>
+
+         <wsdl:input name="createUserAccountRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://admin.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createUserAccountResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://admin.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteUserAccount">
+
+         <wsdlsoap:operation soapAction="deleteUserAccount"/>
+
+         <wsdl:input name="deleteUserAccountRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://admin.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteUserAccountResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://admin.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="login">
+
+         <wsdlsoap:operation soapAction="login"/>
+
+         <wsdl:input name="loginRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://admin.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="loginResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://admin.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="logout">
+
+         <wsdlsoap:operation soapAction="logout"/>
+
+         <wsdl:input name="logoutRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://admin.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="logoutResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://admin.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="resetUserPassword">
+
+         <wsdlsoap:operation soapAction="resetUserPassword"/>
+
+         <wsdl:input name="resetUserPasswordRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://admin.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="resetUserPasswordResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://admin.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateUserPassword">
+
+         <wsdlsoap:operation soapAction="updateUserPassword"/>
+
+         <wsdl:input name="updateUserPasswordRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://admin.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateUserPasswordResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://admin.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateUserTimeoutSession">
+
+         <wsdlsoap:operation soapAction="updateUserTimeoutSession"/>
+
+         <wsdl:input name="updateUserTimeoutSessionRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://admin.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateUserTimeoutSessionResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://admin.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="AdminManagerService">
+
+      <wsdl:port binding="impl:AdminManagerSoapBinding" name="AdminManager">
+
+         <wsdlsoap:address location="http://localhost:9080/emanager/services/AdminManager"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

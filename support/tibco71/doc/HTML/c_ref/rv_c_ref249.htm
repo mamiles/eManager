@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>Using the Perl 5 Interface</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Appendix&#160;B	 Perl 5 Interface";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1132860"> </a><h2 class="pNewHTMLPage">
+Using the Perl 5 Interface
+</h2>
+<hr />
+<a name="wp1132861"> </a><p class="pBody">
+Be sure that the library path variable is set properly; for instructions, see the <code class="cCode">README</code> file.
+</p>
+<a name="wp1132862"> </a><p class="pBody">
+Place this module reference near the top of each Perl program file that calls Rendezvous API functions:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+	<code class="cCodeBold">use Tibrv;</code><a name="wp1132866"> </a>
+<a name="wp1195199"> </a>
+</pre></div>
+<a name="wp1132870"> </a><p class="pBody">
+If the program uses Rendezvous fault tolerance features, add this module reference:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+	<code class="cCodeBold">use TibrvFt;</code><a name="wp1132871"> </a>
+<a name="wp1195200"> </a>
+</pre></div>
+<a name="wp1132875"> </a><p class="pBody">
+If the program uses Rendezvous certified message delivery features or distributed queues, add this module reference:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+	<code class="cCodeBold">use TibrvCm;</code><a name="wp1132876"> </a>
+<a name="wp1195201"> </a>
+</pre></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

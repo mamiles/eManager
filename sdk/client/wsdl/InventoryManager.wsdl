@@ -1,0 +1,936 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://inventory.soap.eManager.cisco.com" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://inventory.soap.eManager.cisco.com" xmlns:intf="http://inventory.soap.eManager.cisco.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns2="http://inventory.common.eManager.cisco.com" xmlns:tns3="http://common.eManager.cisco.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ <wsdl:types>
+  <schema targetNamespace="http://inventory.common.eManager.cisco.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="Method">
+    <sequence/>
+   </complexType>
+   <complexType name="EmanagerInventoryException">
+    <complexContent>
+     <extension base="tns3:EmanagerException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ManagedObjectIdType">
+    <sequence/>
+   </complexType>
+   <complexType name="ManagedObjectId">
+    <sequence>
+     <element name="managedObjectKey" type="xsd:long"/>
+     <element name="managedObjectType" nillable="true" type="tns2:ManagedObjectIdType"/>
+    </sequence>
+   </complexType>
+   <complexType name="Agent">
+    <sequence/>
+   </complexType>
+   <complexType name="AppInstance">
+    <sequence/>
+   </complexType>
+   <complexType name="ViewContainer">
+    <sequence/>
+   </complexType>
+   <complexType name="AppType">
+    <sequence/>
+   </complexType>
+   <complexType name="Instrumentation">
+    <sequence/>
+   </complexType>
+   <complexType name="MgmtPolicy">
+    <sequence/>
+   </complexType>
+   <complexType name="LogLevel">
+    <sequence>
+     <element name="config" type="xsd:boolean"/>
+     <element name="fine" type="xsd:boolean"/>
+     <element name="finer" type="xsd:boolean"/>
+     <element name="finest" type="xsd:boolean"/>
+     <element name="info" type="xsd:boolean"/>
+     <element name="severe" type="xsd:boolean"/>
+     <element name="warning" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://common.eManager.cisco.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType abstract="true" name="EmanagerStatusCode">
+    <sequence>
+     <element name="statusCodeDescription" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType abstract="true" name="EmanagerException">
+    <sequence>
+     <element name="statusCode" nillable="true" type="tns3:EmanagerStatusCode"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://inventory.soap.eManager.cisco.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ArrayOf_tns2_ViewContainer">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns2:ViewContainer[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_Instrumentation">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns2:Instrumentation[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_MgmtPolicy">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns2:MgmtPolicy[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="manageAppInstanceRequest">
+
+      <wsdl:part name="in0" type="tns2:ManagedObjectId"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="invokeResponse">
+
+      <wsdl:part name="invokeReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="unmanageAppInstanceResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="getAppInstanceResponse">
+
+      <wsdl:part name="getAppInstanceReturn" type="tns2:AppInstance"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getInstrumentationResponse">
+
+      <wsdl:part name="getInstrumentationReturn" type="impl:ArrayOf_tns2_Instrumentation"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAppInstanceRequest">
+
+      <wsdl:part name="in0" type="tns2:ManagedObjectId"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getContainerResponse">
+
+      <wsdl:part name="getContainerReturn" type="tns2:ViewContainer"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="unmanageAppInstanceRequest">
+
+      <wsdl:part name="in0" type="tns2:ManagedObjectId"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAppTypeRequest">
+
+      <wsdl:part name="in0" type="tns2:ManagedObjectId"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="xmlMessageRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="manageAppInstanceResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="getAppsViewRootRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="getHostViewRootResponse">
+
+      <wsdl:part name="getHostViewRootReturn" type="tns2:ViewContainer"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="invokeRequest">
+
+      <wsdl:part name="in0" type="tns2:Method"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createContainerNodeRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="xsd:int"/>
+
+      <wsdl:part name="in2" type="tns2:ManagedObjectId"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAgentResponse">
+
+      <wsdl:part name="getAgentReturn" type="tns2:Agent"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="moveContainerNodeResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="getManagementPoliciesRequest">
+
+      <wsdl:part name="in0" type="tns2:ManagedObjectId"/>
+
+      <wsdl:part name="in1" type="tns2:ManagedObjectId"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAgentRequest">
+
+      <wsdl:part name="in0" type="tns2:ManagedObjectId"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createContainerNodeResponse">
+
+      <wsdl:part name="createContainerNodeReturn" type="tns2:ManagedObjectId"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="EmanagerInventoryException">
+
+      <wsdl:part name="fault" type="tns2:EmanagerInventoryException"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="setLogLevelResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="getContainerChildrenResponse">
+
+      <wsdl:part name="getContainerChildrenReturn" type="impl:ArrayOf_tns2_ViewContainer"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteContainerNodeResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="getContainerRequest">
+
+      <wsdl:part name="in0" type="tns2:ManagedObjectId"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="moveContainerNodeRequest">
+
+      <wsdl:part name="in0" type="tns2:ManagedObjectId"/>
+
+      <wsdl:part name="in1" type="tns2:ManagedObjectId"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getHostViewRootRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="getManagementPoliciesResponse">
+
+      <wsdl:part name="getManagementPoliciesReturn" type="impl:ArrayOf_tns2_MgmtPolicy"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAppsViewRootResponse">
+
+      <wsdl:part name="getAppsViewRootReturn" type="tns2:ViewContainer"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getContainerChildrenRequest">
+
+      <wsdl:part name="in0" type="tns2:ManagedObjectId"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getLogLevelResponse">
+
+      <wsdl:part name="getLogLevelReturn" type="tns2:LogLevel"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="xmlMessageResponse">
+
+      <wsdl:part name="xmlMessageReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="setLogLevelRequest">
+
+      <wsdl:part name="in0" type="tns2:ManagedObjectId"/>
+
+      <wsdl:part name="in1" type="tns2:LogLevel"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAppTypeResponse">
+
+      <wsdl:part name="getAppTypeReturn" type="tns2:AppType"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteContainerNodeRequest">
+
+      <wsdl:part name="in0" type="tns2:ManagedObjectId"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getInstrumentationRequest">
+
+      <wsdl:part name="in0" type="tns2:ManagedObjectId"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getLogLevelRequest">
+
+      <wsdl:part name="in0" type="tns2:ManagedObjectId"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="InventoryManager">
+
+      <wsdl:operation name="invoke" parameterOrder="in0">
+
+         <wsdl:input message="impl:invokeRequest" name="invokeRequest"/>
+
+         <wsdl:output message="impl:invokeResponse" name="invokeResponse"/>
+
+         <wsdl:fault message="impl:EmanagerInventoryException" name="EmanagerInventoryException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="xmlMessage" parameterOrder="in0">
+
+         <wsdl:input message="impl:xmlMessageRequest" name="xmlMessageRequest"/>
+
+         <wsdl:output message="impl:xmlMessageResponse" name="xmlMessageResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createContainerNode" parameterOrder="in0 in1 in2">
+
+         <wsdl:input message="impl:createContainerNodeRequest" name="createContainerNodeRequest"/>
+
+         <wsdl:output message="impl:createContainerNodeResponse" name="createContainerNodeResponse"/>
+
+         <wsdl:fault message="impl:EmanagerInventoryException" name="EmanagerInventoryException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteContainerNode" parameterOrder="in0">
+
+         <wsdl:input message="impl:deleteContainerNodeRequest" name="deleteContainerNodeRequest"/>
+
+         <wsdl:output message="impl:deleteContainerNodeResponse" name="deleteContainerNodeResponse"/>
+
+         <wsdl:fault message="impl:EmanagerInventoryException" name="EmanagerInventoryException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAgent" parameterOrder="in0">
+
+         <wsdl:input message="impl:getAgentRequest" name="getAgentRequest"/>
+
+         <wsdl:output message="impl:getAgentResponse" name="getAgentResponse"/>
+
+         <wsdl:fault message="impl:EmanagerInventoryException" name="EmanagerInventoryException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAppInstance" parameterOrder="in0">
+
+         <wsdl:input message="impl:getAppInstanceRequest" name="getAppInstanceRequest"/>
+
+         <wsdl:output message="impl:getAppInstanceResponse" name="getAppInstanceResponse"/>
+
+         <wsdl:fault message="impl:EmanagerInventoryException" name="EmanagerInventoryException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAppsViewRoot">
+
+         <wsdl:input message="impl:getAppsViewRootRequest" name="getAppsViewRootRequest"/>
+
+         <wsdl:output message="impl:getAppsViewRootResponse" name="getAppsViewRootResponse"/>
+
+         <wsdl:fault message="impl:EmanagerInventoryException" name="EmanagerInventoryException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAppType" parameterOrder="in0">
+
+         <wsdl:input message="impl:getAppTypeRequest" name="getAppTypeRequest"/>
+
+         <wsdl:output message="impl:getAppTypeResponse" name="getAppTypeResponse"/>
+
+         <wsdl:fault message="impl:EmanagerInventoryException" name="EmanagerInventoryException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getContainer" parameterOrder="in0">
+
+         <wsdl:input message="impl:getContainerRequest" name="getContainerRequest"/>
+
+         <wsdl:output message="impl:getContainerResponse" name="getContainerResponse"/>
+
+         <wsdl:fault message="impl:EmanagerInventoryException" name="EmanagerInventoryException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getContainerChildren" parameterOrder="in0">
+
+         <wsdl:input message="impl:getContainerChildrenRequest" name="getContainerChildrenRequest"/>
+
+         <wsdl:output message="impl:getContainerChildrenResponse" name="getContainerChildrenResponse"/>
+
+         <wsdl:fault message="impl:EmanagerInventoryException" name="EmanagerInventoryException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getHostViewRoot">
+
+         <wsdl:input message="impl:getHostViewRootRequest" name="getHostViewRootRequest"/>
+
+         <wsdl:output message="impl:getHostViewRootResponse" name="getHostViewRootResponse"/>
+
+         <wsdl:fault message="impl:EmanagerInventoryException" name="EmanagerInventoryException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getInstrumentation" parameterOrder="in0">
+
+         <wsdl:input message="impl:getInstrumentationRequest" name="getInstrumentationRequest"/>
+
+         <wsdl:output message="impl:getInstrumentationResponse" name="getInstrumentationResponse"/>
+
+         <wsdl:fault message="impl:EmanagerInventoryException" name="EmanagerInventoryException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getManagementPolicies" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:getManagementPoliciesRequest" name="getManagementPoliciesRequest"/>
+
+         <wsdl:output message="impl:getManagementPoliciesResponse" name="getManagementPoliciesResponse"/>
+
+         <wsdl:fault message="impl:EmanagerInventoryException" name="EmanagerInventoryException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="manageAppInstance" parameterOrder="in0">
+
+         <wsdl:input message="impl:manageAppInstanceRequest" name="manageAppInstanceRequest"/>
+
+         <wsdl:output message="impl:manageAppInstanceResponse" name="manageAppInstanceResponse"/>
+
+         <wsdl:fault message="impl:EmanagerInventoryException" name="EmanagerInventoryException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="moveContainerNode" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:moveContainerNodeRequest" name="moveContainerNodeRequest"/>
+
+         <wsdl:output message="impl:moveContainerNodeResponse" name="moveContainerNodeResponse"/>
+
+         <wsdl:fault message="impl:EmanagerInventoryException" name="EmanagerInventoryException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="unmanageAppInstance" parameterOrder="in0">
+
+         <wsdl:input message="impl:unmanageAppInstanceRequest" name="unmanageAppInstanceRequest"/>
+
+         <wsdl:output message="impl:unmanageAppInstanceResponse" name="unmanageAppInstanceResponse"/>
+
+         <wsdl:fault message="impl:EmanagerInventoryException" name="EmanagerInventoryException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getLogLevel" parameterOrder="in0">
+
+         <wsdl:input message="impl:getLogLevelRequest" name="getLogLevelRequest"/>
+
+         <wsdl:output message="impl:getLogLevelResponse" name="getLogLevelResponse"/>
+
+         <wsdl:fault message="impl:EmanagerInventoryException" name="EmanagerInventoryException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setLogLevel" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:setLogLevelRequest" name="setLogLevelRequest"/>
+
+         <wsdl:output message="impl:setLogLevelResponse" name="setLogLevelResponse"/>
+
+         <wsdl:fault message="impl:EmanagerInventoryException" name="EmanagerInventoryException"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="InventoryManagerSoapBinding" type="impl:InventoryManager">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="invoke">
+
+         <wsdlsoap:operation soapAction="invoke"/>
+
+         <wsdl:input name="invokeRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="invokeResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerInventoryException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="xmlMessage">
+
+         <wsdlsoap:operation soapAction="xmlMessage"/>
+
+         <wsdl:input name="xmlMessageRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="xmlMessageResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createContainerNode">
+
+         <wsdlsoap:operation soapAction="createContainerNode"/>
+
+         <wsdl:input name="createContainerNodeRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createContainerNodeResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerInventoryException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteContainerNode">
+
+         <wsdlsoap:operation soapAction="deleteContainerNode"/>
+
+         <wsdl:input name="deleteContainerNodeRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteContainerNodeResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerInventoryException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAgent">
+
+         <wsdlsoap:operation soapAction="getAgent"/>
+
+         <wsdl:input name="getAgentRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAgentResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerInventoryException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAppInstance">
+
+         <wsdlsoap:operation soapAction="getAppInstance"/>
+
+         <wsdl:input name="getAppInstanceRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAppInstanceResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerInventoryException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAppsViewRoot">
+
+         <wsdlsoap:operation soapAction="getAppsViewRoot"/>
+
+         <wsdl:input name="getAppsViewRootRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAppsViewRootResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerInventoryException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAppType">
+
+         <wsdlsoap:operation soapAction="getAppType"/>
+
+         <wsdl:input name="getAppTypeRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAppTypeResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerInventoryException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getContainer">
+
+         <wsdlsoap:operation soapAction="getContainer"/>
+
+         <wsdl:input name="getContainerRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getContainerResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerInventoryException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getContainerChildren">
+
+         <wsdlsoap:operation soapAction="getContainerChildren"/>
+
+         <wsdl:input name="getContainerChildrenRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getContainerChildrenResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerInventoryException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getHostViewRoot">
+
+         <wsdlsoap:operation soapAction="getHostViewRoot"/>
+
+         <wsdl:input name="getHostViewRootRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getHostViewRootResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerInventoryException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getInstrumentation">
+
+         <wsdlsoap:operation soapAction="getInstrumentation"/>
+
+         <wsdl:input name="getInstrumentationRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getInstrumentationResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerInventoryException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getManagementPolicies">
+
+         <wsdlsoap:operation soapAction="getManagementPolicies"/>
+
+         <wsdl:input name="getManagementPoliciesRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getManagementPoliciesResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerInventoryException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="manageAppInstance">
+
+         <wsdlsoap:operation soapAction="manageAppInstance"/>
+
+         <wsdl:input name="manageAppInstanceRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="manageAppInstanceResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerInventoryException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="moveContainerNode">
+
+         <wsdlsoap:operation soapAction="moveContainerNode"/>
+
+         <wsdl:input name="moveContainerNodeRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="moveContainerNodeResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerInventoryException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="unmanageAppInstance">
+
+         <wsdlsoap:operation soapAction="unmanageAppInstance"/>
+
+         <wsdl:input name="unmanageAppInstanceRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="unmanageAppInstanceResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerInventoryException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getLogLevel">
+
+         <wsdlsoap:operation soapAction="getLogLevel"/>
+
+         <wsdl:input name="getLogLevelRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getLogLevelResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerInventoryException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setLogLevel">
+
+         <wsdlsoap:operation soapAction="setLogLevel"/>
+
+         <wsdl:input name="setLogLevelRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="setLogLevelResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerInventoryException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://inventory.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="InventoryManagerService">
+
+      <wsdl:port binding="impl:InventoryManagerSoapBinding" name="InventoryManager">
+
+         <wsdlsoap:address location="http://localhost:8080/axis/services/InventoryManager"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Interpreting the Report</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;11	 Protocol Monitor (rvtrace)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1096026"> </a><h2 class="pNewHTMLPage">
+Interpreting the Report
+</h2>
+<hr />
+<a name="wp1096200"> </a><p class="pBody">
+The remaining sections of this chapter describe the output from <code class="cCode">rvtrace</code>.
+</p>
+<a name="wp1096204"> </a><p class="pBody">
+<a  href="rv_adm114.htm#wp1096231">Figure&#160;47</a> shows a sample of the output that <code class="cCode">rvtrace</code> prints at the conclusion of each interval, when the <code class="cCode">-addrinfo</code> flag is present:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1096205"> </a><div class="pSmartList1"><li >Time stamp&#151;identifies the interval</li></div>
+
+<a name="wp1096209"> </a><div class="pSmartList1"><li >Multicast Data Statistics&#151;summarizes Rendezvous <em class="cEmphasis">multicast and broadcast</em> packets during the interval, organized by UDP port (service) and destination address (see <a  href="rv_adm115.htm#wp1097600">Multicast Data Statistics</a>)</li></div>
+
+<a name="wp1096329"> </a><div class="pSmartList1"><li >Multicast Retrans Statistics&#151;summarizes requests to retransmit packets of multicast and broadcast data (this table does not appear in <a  href="rv_adm114.htm#wp1096231">Figure&#160;47</a>; see <a  href="rv_adm116.htm#wp1107281">Multicast Retransmit Statistics</a>)</li></div>
+
+<a name="wp1096213"> </a><div class="pSmartList1"><li >PTP Statistics&#151;summarizes Rendezvous <em class="cEmphasis">point-to-point</em> packets during the interval, organized by UDP port (service) and destination address (see <a  href="rv_adm117.htm#wp1107861">Point-to-Point Statistics</a>)</li></div>
+
+<a name="wp1096217"> </a><div class="pSmartList1"><li >Subject Statistics&#151;recapitulates Rendezvous multicast and broadcast <em class="cEmphasis">message</em> activity during the interval, featuring information about <em class="cEmphasis">subject names</em> (see <a  href="rv_adm118.htm#wp1097792">Subject Statistics</a>)</li></div>
+
+</ul></div>
+
+<a name="wp1117490"> </a><p class="pBody">
+Notice that each table begins with a network total, and then breaks down the total into subtotals and fine-grained categories.
+</p>
+<a name="wp1120728"> </a><p class="pBody">
+<a  href="rv_adm114.htm#wp1115583">Figure&#160;48</a> shows a sample of the less verbose output that <code class="cCode">rvtrace</code> prints when the <code class="cCode">-addrinfo</code> flag is absent. Notice that tables omit the fine-grained categories&#151;displaying only the network total and subtotals
+</p>
+<a name="wp1117556"> </a><h3 class="pHeading2">
+General Network Load
+</h3>
+<a name="wp1117565"> </a><p class="pBody">
+To assess network load, inspect the <a  href="rv_adm115.htm#wp1128388"><code class="cCode">Data</code></a> and <a  href="rv_adm115.htm#wp1128395"><code class="cCode">Bytes</code></a> columns of the <a  href="rv_adm115.htm#wp1097600">Multicast Data Statistics</a> table, and the <a  href="rv_adm117.htm#wp1109148"><code class="cCode">Data</code></a> and <a  href="rv_adm117.htm#wp1109154"><code class="cCode">Bytes</code></a> columns of the <a  href="rv_adm117.htm#wp1107861">Point-to-Point Statistics</a> table.
+</p>
+<a name="wp1117576"> </a><h3 class="pHeading2">
+Number of Senders
+</h3>
+<a name="wp1117580"> </a><p class="pBody">
+To determine the number of Rendezvous daemons that sent data messages during an interval, count the number of distinct source addresses in all source rows of the <a  href="rv_adm115.htm#wp1097600">Multicast Data Statistics</a> table and the <a  href="rv_adm117.htm#wp1107861">Point-to-Point Statistics</a> table.
+</p>
+<a name="wp1117603"> </a><h3 class="pHeading2">
+Scanning for Problems
+</h3>
+<a name="wp1130225"> </a><p class="pBody">
+To quickly review <code class="cCode">rvtrace</code> output for problems, scan down the right side of the page, looking for non-zero values in the <a  href="rv_adm115.htm#wp1128455"><code class="cCode">Bad</code></a>, <a  href="rv_adm115.htm#wp1128439"><code class="cCode">Gaps</code></a>, and <a  href="rv_adm115.htm#wp1128429"><code class="cCode">Rbytes</code></a> columns of the multicast data tables. Non-zero values in these columns indicate a problem; look more closely at statistics in other columns in that interval and subsequent intervals.
+</p>
+<a name="wp1096231"> </a><div class="pFigureTitle">
+Figure&#160;47   rvtrace Output with -addrinfo</div><div align="center"><img src="images/rv_adma8.gif" height="388" width="599" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1115438"> </a><p class="pBody">
+
+</p>
+<a name="wp1115583"> </a><div class="pFigureTitle">
+Figure&#160;48   rvtrace Output without -addrinfo</div><div align="center"><img src="images/rv_adma16.gif" height="320" width="599" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1117447"> </a><p class="pBody">
+
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>rvrd Process</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1054609"> </a><h2 class="pNewHTMLPage">
+rvrd Process
+</h2>
+<hr />
+<a name="wp1045744"> </a><h3 class="pHeading2">
+Initial State
+</h3>
+<a name="wp1045745"> </a><p class="pBody">
+In its initial state an <code class="cCode">rvrd</code> process operates identically to an <code class="cCode">rvd</code> process; it does not route messages <em class="cEmphasis">yet</em>.
+</p>
+<a name="wp1053020"> </a><p class="pBody">
+Administrators use the browser administration interface to configure the routing daemon, and to start its operation as a software router.
+</p>
+<a name="wp1053022"> </a><h3 class="pHeading2">
+Administration File
+</h3>
+<a name="wp1052986"> </a><p class="pBody">
+An <code class="cCode">rvrd</code> process can store its routing table entry and parameters in a file. When the process restarts, it can read that file to resume its previous operating configuration.
+</p>
+<a name="wp1053061"> </a><p class="pBody">
+The administration file is stored in a format that is <em class="cEmphasis">not</em> human-readable. To examine or change the routing table entry or parameters, use the browser administration interface.
+</p>
+<a name="wp1057703"> </a><h3 class="pHeading2">
+HTTP Administration Interface
+</h3>
+<a name="wp1057704"> </a><p class="pBody">
+You can configure <code class="cCode">rvrd</code> using the browser administration interface. For more information, see <a  href="rv_adm46.htm#wp1151056">Browser Administration Interface&#151;rvrd</a>, and the command line parameter <code class="cCode">-http</code> for <a  href="rv_adm45.htm#wp1066458"><code class="cCode">rvrd</code> </a>.
+</p>
+<a name="wp1053063"> </a><h3 class="pHeading2">
+Logging
+</h3>
+<a name="wp1045878"> </a><p class="pBody">
+An <code class="cCode">rvrd</code> process can output a log of its activity. For details, see <a  href="rv_adm44.htm#wp1068587">Routing Daemon Logging</a>.
+</p>
+<a name="wp1053156"> </a><h3 class="pHeading2">
+Routing Table Entry
+</h3>
+<a name="wp1053160"> </a><p class="pBody">
+Each <code class="cCode">rvrd</code> process specifies its routing table entry. For details, see <a  href="rv_adm33.htm#wp1053162">Routing Table Entry</a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

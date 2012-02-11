@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvMsgData_Encoder</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Appendix&#160;A	 Custom Datatypes";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1148962"> </a><h2 class="pNewHTMLPage">
+tibrvMsgData_Encoder
+</h2>
+<hr />
+<a name="wp1148963"> </a><p class="pSyntaxType">
+Function Type
+</p>
+<a name="wp1148964"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+typedef <a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> (*<code class="cCodeBold">tibrvMsgData_Encoder</code>)(<a name="wp1148965"> </a>
+&#160;&#160;&#160;&#160;char**&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;wire_buffer, <a name="wp1148966"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128803"><code class="cCode">tibrv_u32</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;mem_available,<a name="wp1148967"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref25.htm#wp1129956"><code class="cCode">tibrvMsgField</code></a>*&#160;&#160;&#160;&#160;&#160;&#160;&#160;field);<a name="wp1148968"> </a>
+</pre></div>
+<a name="wp1148969"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1148970"> </a><p class="pBody">
+Encode a local format field to wire format.
+</p>
+<a name="wp1148971"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1160822"> </a><p class="pBody">
+Programs define encoders for custom datatypes. Layer 2 encoder functions translate custom datatypes into Rendezvous wire format.
+</p>
+<a name="wp1160824"> </a><p class="pBody">
+Each encoder must fulfill these responsibilities:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1151848"> </a><div class="pSmartList1"><li >Check that the field contains valid data of the appropriate type.</li></div>
+
+<a name="wp1151849"> </a><div class="pSmartList1"><li >Check that the data will fit in the available space; if not, return the error status <a  href="rv_c_ref227.htm#wp1129113"><code class="cCode">TIBRV_NO_MEMORY</code></a>.</li></div>
+
+<a name="wp1151894"> </a><p class="pBodyRelative">
+The encoder can use <a  href="rv_c_ref237.htm#wp1149538"><code class="cCode">tibrvMsgData_ByteSize()</code></a> to compute the wire size of the data.
+</p>
+<a name="wp1151855"> </a><div class="pSmartList1"><li >Write the data into wire buffer of the message. Do not overwrite space that is not available.</li></div>
+
+<a name="wp1151822"> </a><div class="pSmartList1"><li >Advance <code class="cCode">*wire_buffer</code> to the end of the destination data (in the message). <a  href="rv_c_ref239.htm#wp1149570"><code class="cCode">tibrvMsgData_CopyBytes()</code></a> automatically advances this buffer pointer.</li></div>
+
+<a name="wp1151827"> </a><div class="pSmartList1"><li >Check consistency, and properly address byte order and <em class="cEmphasis">endian</em> issues.<div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1148980"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1148982"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1148984"> </a><div class="pCellBody">
+<code class="cCode">wire_buffer</code>
+</div>
+</td>
+    <td><a name="wp1151861"> </a><div class="pCellBody">
+This parameter receives the location of an address within the wire buffer of the destination message. The encoder must write the wire-format encoded data to this destination.
+</div>
+<a name="wp1151871"> </a><div class="pCellBody">
+We strongly recommend using <a  href="rv_c_ref239.htm#wp1149570"><code class="cCode">tibrvMsgData_CopyBytes()</code></a> to transfer the data.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1148988"> </a><div class="pCellBody">
+<code class="cCode">mem_available</code>
+</div>
+</td>
+    <td><a name="wp1148990"> </a><div class="pCellBody">
+This parameter receives the size of the available storage in the message&#8217;s wire buffer.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1148992"> </a><div class="pCellBody">
+<code class="cCode">field</code>
+</div>
+</td>
+    <td><a name="wp1148994"> </a><div class="pCellBody">
+This parameter receives a field object, with self-describing data in local format. This source field determines the data to place into the destination <code class="cCode">wire_buffer</code>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li></div>
+
+</ul></div>
+
+<a name="wp1160197"> </a><div class="pFigureTitle">
+Figure&#160;14   Advancing the Wire Buffer Pointer</div><div align="center"><img src="images/rv_c_refa17.gif" height="237" width="528" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1148997"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1149902"> </a><p class="pBody">
+<a  href="rv_c_ref25.htm#wp1129956"><code class="cCode">tibrvMsgField</code> </a>
+</p>
+<a name="wp1151931"> </a><p class="pBody">
+<a  href="rv_c_ref237.htm#wp1149538"><code class="cCode">tibrvMsgData_ByteSize()</code> </a>
+</p>
+<a name="wp1151935"> </a><p class="pBody">
+<a  href="rv_c_ref239.htm#wp1149570"><code class="cCode">tibrvMsgData_CopyBytes()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

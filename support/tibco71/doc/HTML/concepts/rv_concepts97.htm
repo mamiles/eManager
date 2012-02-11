@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Chapter&#160;11	Certified Message Delivery</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1055521"> </a><h2 class="pNewHTMLPageSetChapterTitle">
+Chapter&#160;11	Certified Message Delivery
+</h2>
+<hr />
+<a name="wp1055525"> </a><p class="pBody">
+Although Rendezvous communications are highly reliable, some programs require even stronger assurances of delivery. Certified delivery features offer greater certainty of delivery&#151;even in situations where processes and their network connections are unstable.
+</p>
+<a name="wp1055529"> </a><p class="pBody">
+This chapter explains the conceptual foundations of Rendezvous certified message delivery, the way it works, and ways to use it.
+</p>
+<a name="wp1055530"> </a><h4 class="pHeading3">
+Topics
+</h4>
+<div class="pSmartList1"><ul>
+<a name="wp1055534"> </a><div class="pSmartList1"><li ><a  href="rv_concepts98.htm#wp1055662"><em class="cEmphasis">Certified Delivery Features</em></a></li></div>
+
+<a name="wp1055538"> </a><div class="pSmartList1"><li ><a  href="rv_concepts99.htm#wp1055701"><em class="cEmphasis">Reliable versus Certified Message Delivery</em></a></li></div>
+
+<a name="wp1055542"> </a><div class="pSmartList1"><li ><a  href="rv_concepts100.htm#wp1055791"><em class="cEmphasis">Example Applications</em></a></li></div>
+
+<a name="wp1055546"> </a><div class="pSmartList1"><li ><a  href="rv_concepts101.htm#wp1055797"><em class="cEmphasis">Inappropriate Situations</em></a></li></div>
+
+<a name="wp1055550"> </a><div class="pSmartList1"><li ><a  href="rv_concepts102.htm#wp1055806"><em class="cEmphasis">Decentralization</em></a></li></div>
+
+<a name="wp1055554"> </a><div class="pSmartList1"><li ><a  href="rv_concepts103.htm#wp1055935"><em class="cEmphasis">Certified Message Delivery in Action</em></a></li></div>
+
+<a name="wp1055558"> </a><div class="pSmartList1"><li ><a  href="rv_concepts104.htm#wp1055951"><em class="cEmphasis">Creating a CM Transport</em></a></li></div>
+
+<a name="wp1055562"> </a><div class="pSmartList1"><li ><a  href="rv_concepts105.htm#wp1056023"><em class="cEmphasis">Labeled Messages</em></a></li></div>
+
+<a name="wp1055566"> </a><div class="pSmartList1"><li ><a  href="rv_concepts106.htm#wp1056110"><em class="cEmphasis">Discovery and Registration for Certified Delivery</em></a></li></div>
+
+<a name="wp1055570"> </a><div class="pSmartList1"><li ><a  href="rv_concepts107.htm#wp1105170"><em class="cEmphasis">Delivering a Certified Message</em></a></li></div>
+
+<a name="wp1055574"> </a><div class="pSmartList1"><li ><a  href="rv_concepts108.htm#wp1056240"><em class="cEmphasis">Sequencing and Retransmission</em></a></li></div>
+
+<a name="wp1055578"> </a><div class="pSmartList1"><li ><a  href="rv_concepts109.htm#wp1056251"><em class="cEmphasis">Persistent Correspondents</em></a></li></div>
+
+<a name="wp1055582"> </a><div class="pSmartList1"><li ><a  href="rv_concepts110.htm#wp1056268"><em class="cEmphasis">Anticipating a Listener</em></a></li></div>
+
+<a name="wp1055586"> </a><div class="pSmartList1"><li ><a  href="rv_concepts111.htm#wp1056313"><em class="cEmphasis">Canceling Certified Delivery</em></a></li></div>
+
+<a name="wp1055590"> </a><div class="pSmartList1"><li ><a  href="rv_concepts112.htm#wp1056417"><em class="cEmphasis">Disallowing Certified Delivery</em></a></li></div>
+
+<a name="wp1055594"> </a><div class="pSmartList1"><li ><a  href="rv_concepts113.htm#wp1056471"><em class="cEmphasis">No Response to Registration Requests</em></a></li></div>
+
+<a name="wp1055598"> </a><div class="pSmartList1"><li ><a  href="rv_concepts114.htm#wp1056478"><em class="cEmphasis">Reusable Names</em></a></li></div>
+
+<a name="wp1055602"> </a><div class="pSmartList1"><li ><a  href="rv_concepts115.htm#wp1056491"><em class="cEmphasis">Ledger Storage</em></a></li></div>
+
+<a name="wp1055606"> </a><div class="pSmartList1"><li ><a  href="rv_concepts116.htm#wp1056518"><em class="cEmphasis">Relay Agent</em></a></li></div>
+
+</ul></div>
+
+<a name="wp1055607"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1055608"> </a><p class="pBody">
+Certified delivery software uses advisory messages extensively. For example, advisories inform sending and receiving programs of the delivery status of each message. For complete details, see <a  href="rv_concepts171.htm#wp1038728">Appendix&#160;B, Certified Message Delivery (RVCM) Advisory Messages</a>.
+</p>
+<a name="wp1070405"> </a><p class="pBody">
+With programs that send or receive certified messages across network boundaries, you must configure the Rendezvous routing daemons to exchange <code class="cCode">_RVCM</code> administrative messages. Discuss this detail with your network administrator.
+</p>
+<a name="wp1070446"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1070414"> </a><div class="pTableTitle">
+Table&#160;25   Certified Message Delivery Programming Details&#160;
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1070418"> </a><div class="pCellBody">
+C
+</div>
+</td>
+    <td><a name="wp1070426"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref171.htm#wp1085082');" onMouseOver="WWHShowPopup('e', 'rv_c_ref171.htm#wp1085082', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Certified Message Delivery</a> in <em class="cEmphasis">TIBCO Rendezvous C Reference</em>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1070428"> </a><div class="pCellBody">
+C++
+</div>
+</td>
+    <td><a name="wp1070430"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref217.htm#wp1082153');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref217.htm#wp1082153', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Certified Message Delivery</a> in <em class="cEmphasis">TIBCO Rendezvous C++ Reference</em>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1070433"> </a><div class="pCellBody">
+Java
+</div>
+</td>
+    <td><a name="wp1070441"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref184.htm#wp1082153');" onMouseOver="WWHShowPopup('g', 'rv_java_ref184.htm#wp1082153', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Certified Message Delivery</a> in <em class="cEmphasis">TIBCO Rendezvous Java Reference</em>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1070443"> </a><div class="pCellBody">
+COM
+</div>
+</td>
+    <td><a name="wp1070445"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref167.htm#wp1082153');" onMouseOver="WWHShowPopup('h', 'rv_com_ref167.htm#wp1082153', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Certified Message Delivery</a> in <em class="cEmphasis">TIBCO Rendezvous COM Reference</em>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Minimizing Response Time</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;14	 Fault Tolerance Programming";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1058006"> </a><h2 class="pNewHTMLPage">
+Minimizing Response Time
+</h2>
+<hr />
+<a name="wp1058007"> </a><p class="pBody">
+You can minimize the response time in failure situations by separating fault tolerance messages from other Rendezvous messages. Two kinds of separation affect response time:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1058011"> </a><div class="pSmartList1"><li >Queue and dispatch.</li></div>
+
+<a name="wp1058012"> </a><p class="pBodyRelative">
+Use a separate queue object only for fault tolerance messages. Assign that queue high priority within its group queue. Ensure that the thread that dispatches that queue group does not delay or block.
+</p>
+<a name="wp1058013"> </a><p class="pBodyRelative">
+This strategy prevents heartbeat messages from waiting behind other events in the queue.
+</p>
+<a name="wp1058014"> </a><div class="pSmartList1"><li >Service.</li></div>
+
+<a name="wp1058018"> </a><p class="pBodyRelative">
+Use a separate Rendezvous service (UDP or PGM port) for fault tolerance messages.
+</p>
+<a name="wp1058019"> </a><p class="pBodyRelative">
+Designating separate services on the network separates fault tolerance messages from competing messages (from your program or other programs). An uncluttered service results in faster handling of fault tolerance messages by the Rendezvous daemons.
+</p>
+<a name="wp1058023"> </a><p class="pBodyRelative">
+A separate service implies a separate transport.
+</p>
+<a name="wp1058025"> </a><p class="pBodyRelative">
+Before you specify a service, always consult with your system administrator. Your system administrator assigns specific network services for specific purposes. Explain that you need a clear UDP or PGM port, free from any other messages.
+</p>
+</ul></div>
+
+<a name="wp1058026"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1058033"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('c', 'rv_adm15.htm#wp1019269');" onMouseOver="WWHShowPopup('c', 'rv_adm15.htm#wp1019269', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Service Selection</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

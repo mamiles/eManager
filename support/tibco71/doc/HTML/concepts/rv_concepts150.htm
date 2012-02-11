@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Adjusting Member Weights</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;14	 Fault Tolerance Programming";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1058079"> </a><h2 class="pNewHTMLPage">
+Adjusting Member Weights
+</h2>
+<hr />
+<a name="wp1058080"> </a><p class="pBody">
+Member processes can change their weight using the set weight call. 
+</p>
+<a name="wp1058118"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1058086"> </a><div class="pTableTitle">
+Table&#160;39   Set Weight Call&#160;
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1058090"> </a><div class="pCellBody">
+C
+</div>
+</td>
+    <td><a name="wp1058095"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref162.htm#wp1079720');" onMouseOver="WWHShowPopup('e', 'rv_c_ref162.htm#wp1079720', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvftMember_SetWeight()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1058097"> </a><div class="pCellBody">
+C++
+</div>
+</td>
+    <td><a name="wp1058102"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref199.htm#wp1061770');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref199.htm#wp1061770', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvFtMember::setWeight()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1058105"> </a><div class="pCellBody">
+Java
+</div>
+</td>
+    <td><a name="wp1058110"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref174.htm#wp1061770');" onMouseOver="WWHShowPopup('g', 'rv_java_ref174.htm#wp1061770', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvFtMember.setWeight()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1058112"> </a><div class="pCellBody">
+COM
+</div>
+</td>
+    <td><a name="wp1058117"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref157.htm#wp1142581');" onMouseOver="WWHShowPopup('h', 'rv_com_ref157.htm#wp1142581', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvFtMember.setWeight</code></a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1058119"> </a><p class="pBody">
+A program that can determine its own suitability for its task can adjust its weight accordingly, as in these examples. (Nonetheless, changing weight frequently can cause thrashing, so we do not recommend it.)
+</p>
+<a name="wp1058120"> </a><h3 class="pHeading2">
+Example 1: Resources
+</h3>
+<a name="wp1058121"> </a><p class="pBody">
+Consider a situation in which program performance depends upon a resource, such as long distance communications lines. Such a program could vary its weight as a function of available lines.
+</p>
+<a name="wp1058122"> </a><h3 class="pHeading2">
+Example 2: Load
+</h3>
+<a name="wp1058123"> </a><p class="pBody">
+If a program can detect that its host computer has become heavily loaded, the program could lower its weight, allowing a member on a lightly loaded computer to become active in its place.
+</p>
+<a name="wp1058124"> </a><h3 class="pHeading2">
+Example 3: System Administrator
+</h3>
+<a name="wp1058125"> </a><p class="pBody">
+In a third example, system administration staff track the availability of resources and the performance of various computers. In response to such information, an administrator could send a message instructing a member process to change its weight.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

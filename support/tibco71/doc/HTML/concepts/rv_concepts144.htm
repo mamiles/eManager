@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Multiple Groups</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;14	 Fault Tolerance Programming";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1057871"> </a><h2 class="pNewHTMLPage">
+Multiple Groups
+</h2>
+<hr />
+<a name="wp1057872"> </a><p class="pBody">
+In some situations a process joins more than one fault tolerance group. Each group protects a specific role that the process plays within a larger distributed application system.
+</p>
+<a name="wp1057873"> </a><h3 class="pHeading2">
+Example: Mutual Backup across a WAN
+</h3>
+<a name="wp1057877"> </a><p class="pBody">
+<a  href="rv_concepts144.htm#wp1057891">Figure&#160;20</a> illustrates a situation with two levels of fault tolerance. Network sites in Tokyo and Seattle are connected by a WAN link, and Rendezvous routing daemons forward messages on demand between the two sites.
+</p>
+<a name="wp1057881"> </a><p class="pBody">
+At each site, a pair of computation servers listens for client requests, processes each request, and sends the results to the client.
+</p>
+<a name="wp1057882"> </a><h4 class="pHeading3">
+Local Fault Tolerance Coverage
+</h4>
+<a name="wp1057883"> </a><p class="pBody">
+The volume of requests is low, and one process can accommodate them. However, the query service is critical to the enterprise, so each site runs two process instances, which cooperate for fault tolerance. In Tokyo the processes are A and B; in Seattle, J and K.
+</p>
+<a name="wp1057884"> </a><p class="pBody">
+The active Tokyo process listens for requests that carry the subject name <code class="cCode">TOKYO.REQUEST</code>. The active Seattle process listens for requests that carry the subject name <code class="cCode">SEATTLE.REQUEST</code>. 
+</p>
+<a name="wp1057885"> </a><p class="pBody">
+To administer fault tolerance at the Tokyo site, processes A and B join a fault tolerant group named <code class="cCode">TOKYO.APP1</code>. A has higher weight than B, so A is initially active. The group&#8217;s active goal is one, so only one member of the group actively processes requests. Similarly, processes J and K in Seattle join a group named <code class="cCode">SEATTLE.APP1</code>. J has higher weight than K, so J is initially active.
+</p>
+<a name="wp1057886"> </a><p class="pBody">
+If the active member at either site fails, the inactive member at the same site takes its place.
+</p>
+<a name="wp1057891"> </a><div class="pFigureTitle">
+Figure&#160;20   Mutual Backup across a WAN</div><div align="center"><img src="images/rv_conceptsa20.gif" height="339" width="528" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1057892"> </a><h4 class="pHeading3">
+Long-Distance Fault Tolerance Coverage
+</h4>
+<a name="wp1057893"> </a><p class="pBody">
+Although unlikely, it is distinctly possible that both request servers at a site might fail simultaneously. If the WAN link is still operative, the Seattle site can serve as a backup for the Tokyo site, and vice versa.
+</p>
+<a name="wp1057894"> </a><p class="pBody">
+For long-distance fault tolerance coverage, Seattle processes J and K join the Tokyo fault tolerant group, <code class="cCode">TOKYO.APP1</code>; and Tokyo processes A and B join the Seattle fault tolerant group, <code class="cCode">SEATTLE.APP1</code>. The table in <a  href="rv_concepts144.htm#wp1057891">Figure&#160;20</a> lists the relative weights of all four processes in each of the two fault tolerance groups. Notice that within each group, local members have higher weight than distant members, so a distant member activates only when both local members fail or withdraw from the group.
+</p>
+<a name="wp1057898"> </a><p class="pBody">
+If both Tokyo processes A and B fail, Seattle process K takes their place. When K receives a prepare-to-activate hint, it begins listening to the subject <code class="cCode">TOKYO.REQUEST</code>. When the Rendezvous routing daemon detects the new listening interest, it begins forwarding the messages with subject <code class="cCode">TOKYO.REQUEST</code> from Tokyo to Seattle, where K receives them. When Rendezvous fault tolerance software instructs K to activate, K begins processing those request messages, sending the results back to clients in Tokyo.
+</p>
+<a name="wp1057905"> </a><p class="pBody">
+To enable this example, the routing daemons on each side of the WAN link must exchange all messages with subjects that match <code class="cCode">_RVFT.&gt;</code>. For details, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm129.htm#wp1025025');" onMouseOver="WWHShowPopup('c', 'rv_adm129.htm#wp1025025', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Forward Fault Tolerance Messages across Network Boundaries</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

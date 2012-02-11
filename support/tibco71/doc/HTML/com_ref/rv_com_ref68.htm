@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvMsgField.getData()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1030793"> </a><h2 class="pNewHTMLPage">
+TibrvMsgField.getData()
+</h2>
+<hr />
+<a name="wp1120388"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1120390"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+data = TibrvMsgField.<code class="cCodeBold">getData</code>()&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#8217;For non-object data.<a name="wp1156631"> </a>
+<a name="wp1120391"> </a>
+Set data = TibrvMsgField.<code class="cCodeBold">getData</code>()&#160;&#160;&#160;&#160;&#8217;For object data<a name="wp1156634"> </a>
+</pre></div>
+<a name="wp1120392"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1120393"> </a><p class="pBody">
+Extract the data portion of a field object.
+</p>
+<a name="wp1154746"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1154747"> </a><p class="pBody">
+This method <em class="cEmphasis">always</em> yields an independent snapshot copy of the field data&#151;as does <a  href="rv_com_ref43.htm#wp1024668"><code class="cCode">TibrvMsg.get()</code></a>.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1120489"> </a><div class="pCellHeading">
+Field
+</div>
+</th>
+    <th><a name="wp1120491"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1120507"> </a><div class="pCellBody">
+<code class="cCode">data</code>
+</div>
+</td>
+    <td><a name="wp1120509"> </a><div class="pCellBody">
+<code class="cCode">Variant</code>
+</div>
+<a name="wp1120563"> </a><div class="pCellBody">
+Return the data content of the field.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1154769"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1237292"> </a><p class="pBody">
+When a field object contains a reference datatype (array, message, opaque, XML, or string), the data in the field object depends on a reference into the parent message. If the parent message is deleted, the program can no longer extract these datatypes from the field object; attempting to extract them references freed storage, which is illegal, and can cause serious consequences.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

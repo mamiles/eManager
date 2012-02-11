@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>Service.getInboundTotals()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;3	 Communications Daemon&#151;rvd";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1951276"> </a><h2 class="pNewHTMLPage">
+Service.getInboundTotals()
+</h2>
+<hr />
+<a name="wp1951277"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1951278"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+java.util.Map <code class="cCodeBold">getInboundTotals</code>()<a name="wp1951279"> </a>
+</pre></div>
+<a name="wp1951280"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1951282"> </a><p class="pBody">
+Get cumulative statistics about inbound data.
+</p>
+<a name="wp1951283"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1951284"> </a><p class="pBody">
+The return value contains a set of running totals for inbound data on this network service, accumulated since the start of the daemon process:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1951285"> </a><div class="pSmartList1"><li ><code class="cCode">msgs</code>&#151;number of messages</li></div>
+
+<a name="wp1951286"> </a><div class="pSmartList1"><li ><code class="cCode">bytes</code>&#151;number of bytes</li></div>
+
+<a name="wp1951287"> </a><div class="pSmartList1"><li ><code class="cCode">pkts</code>&#151;number of packets</li></div>
+
+<a name="wp1951288"> </a><div class="pSmartList1"><li ><code class="cCode">missed</code>&#151;number of missed packets (detected as a packet sequence gap)</li></div>
+
+<a name="wp1951289"> </a><div class="pSmartList1"><li ><code class="cCode">lostMc</code>&#151;number of multicast packets lost because the sending daemon could not retransmit them</li></div>
+
+<a name="wp1951290"> </a><div class="pSmartList1"><li ><code class="cCode">lostPtp</code>&#151;number of point-to-point packets lost because the sending daemon could not retransmit them</li></div>
+
+</ul></div>
+
+<a name="wp1951292"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1951296"> </a><p class="pBody">
+<a  href="rv_config37.htm#wp1950835"><code class="cCode">Service</code> </a>
+</p>
+<a name="wp1951300"> </a><p class="pBody">
+<a  href="rv_config47.htm#wp1951359"><code class="cCode">Service.getOutboundTotals()</code> </a>
+</p>
+<a name="wp1951306"> </a><p class="pBody">
+For the corresponding browser page, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm26.htm#wp1180898');" onMouseOver="WWHShowPopup('c', 'rv_adm26.htm#wp1180898', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Service Detail</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Field Names and Field Identifiers</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;6	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1066243"> </a><h2 class="pNewHTMLPage">
+Field Names and Field Identifiers
+</h2>
+<hr />
+<a name="wp1066247"> </a><p class="pBody">
+In Rendezvous 5 and earlier releases, programs would specify fields within a message using a field name. In Rendezvous 6 and later releases, programs can specify fields in two ways:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1066251"> </a><div class="pSmartList1"><li >A <em class="cEmphasis">field name</em> is a character string. Each field can have at most one name. Several fields can have the same name.</li></div>
+
+<a name="wp1066252"> </a><div class="pSmartList1"><li >A <em class="cEmphasis">field identifier</em> is a 16-bit unsigned integer, which must be unique within the message. That is, two fields in the same message cannot have the same identifier. However, a nested submessage is considered a separate identifier space from its enclosing parent message and any sibling submessages.</li></div>
+
+<a name="wp1066253"> </a><p class="pBodyRelative">
+(Java and COM store field identifiers as 32-bit signed integers, but the range is still only 16 unsigned bits.)
+</p>
+</ul></div>
+
+<a name="wp1067628"> </a><p class="pBody">
+Message calls specify fields using a field name, or a combination of a field name and a unique field identifier. Field names are appropriate for <em class="cEmphasis">most</em> application programs; most programs do not require field identifiers.
+</p>
+<a name="wp1071615"> </a><h4 class="pHeading3">
+Rules and Restrictions
+</h4>
+<a name="wp1071616"> </a><p class="pBody">
+<code class="cCode">NULL</code> is a legal field name <em class="cEmphasis">only</em> when the identifier is zero. It is <em class="cEmphasis">illegal</em> for a field to have <em class="cEmphasis">both</em> a non-zero identifier <em class="cEmphasis">and</em> a <code class="cCode">NULL</code> field name.
+</p>
+<a name="wp1066258"> </a><h4 class="pHeading3">
+Search Characteristics
+</h4>
+<a name="wp1066259"> </a><p class="pBody">
+In general, an identifier search completes in constant time. In contrast, a name search completes in linear time proportional to the number of fields in the message. Name search is quite fast for messages with 16 fields or fewer; for messages with more than 16 fields, identifier search is faster.
+</p>
+<a name="wp1066260"> </a><h4 class="pHeading3">
+Space Characteristics
+</h4>
+<a name="wp1066261"> </a><p class="pBody">
+The smallest field name is a one-character string, which occupies three bytes in Rendezvous wire format. That one ASCII character yields a name space of 127 possible field names; a larger range requires additional characters.
+</p>
+<a name="wp1066268"> </a><p class="pBody">
+Field identifiers are 16 bits, which also occupy three bytes in Rendezvous wire format. However, those 16 bits yield a space of 65535 possible field identifiers; that range is fixed, and cannot be extended.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Callback Functions</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;7	 Events";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1025782"> </a><h2 class="pNewHTMLPage">
+Callback Functions
+</h2>
+<hr />
+<a name="wp1025939"> </a><p class="pBody">
+Callback functions are an essential component of your program&#8217;s code. They do the actual application-specific work of responding to events&#151;processing inbound messages, timer events and I/O conditions.
+</p>
+<a name="wp1025927"> </a><p class="pBody">
+For example, inbound messages carry information from other program processes. As each message arrives, the receiving program must take appropriate actions, such as these:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1025928"> </a><div class="pSmartList1"><li >Display the message to an end-user.</li></div>
+
+<a name="wp1025929"> </a><div class="pSmartList1"><li >Store the message in a database.</li></div>
+
+<a name="wp1025930"> </a><div class="pSmartList1"><li >Use message elements in calculations.</li></div>
+
+<a name="wp1025931"> </a><div class="pSmartList1"><li >Forward the message across a gateway to another network.</li></div>
+
+<a name="wp1025932"> </a><div class="pSmartList1"><li >Compose and send a reply message.</li></div>
+
+</ul></div>
+
+<a name="wp1024817"> </a><p class="pBody">
+In essence, an event object represents a request to run program-specific code whenever a matching event occurs. Event interest persists until the program explicitly cancels its interest by destroying the event object.
+</p>
+<a name="wp1024818"> </a><p class="pBody">
+While an event object exists, the event that it specifies can occur many times; consequently the event object reappears in its event queue as matching events occur and recur. The callback function runs once for each occurrence of the event (that is, each time the event appears in its queue, and the program dispatches it).
+</p>
+<a name="wp1025330"> </a><h3 class="pHeading2">
+Dispatch Thread
+</h3>
+<a name="wp1025332"> </a><p class="pBody">
+A callback function always runs in the thread that dispatched its event.
+</p>
+<a name="wp1071710"> </a><p class="pBody">
+For example, the dispatcher convenience feature (see <a  href="rv_concepts63.htm#wp1067785">Dispatcher Threads</a>) runs callback functions outside of program control (usually, in a separate dispatcher thread). In a contrasting example, when a program explicitly calls a dispatch function, the callback function runs in the thread that called the dispatch function.
+</p>
+<a name="wp1050548"> </a><h3 class="pHeading2">
+Closure Data
+</h3>
+<a name="wp1050552"> </a><p class="pBody">
+When creating an event, a program can supply closure data. Rendezvous software neither examines nor modifies the closure. Instead, the event creation call stores the data with the event, and presents it to the event callback function.
+</p>
+<a name="wp1050553"> </a><p class="pBody">
+A similar mechanism passes closure data to ledger review callback functions.
+</p>
+<a name="wp1050562"> </a><p class="pBody">
+In C and C++ programs, the closure argument is a pointer (of type <code class="cCode">void*</code>); it can point to any type of data.
+</p>
+<a name="wp1067643"> </a><p class="pBody">
+In Java programs, the closure argument is a reference to any object.
+</p>
+<a name="wp1073531"> </a><p class="pBody">
+In COM, the closure argument is a <code class="cCode">Variant</code>.
+</p>
+<a name="wp1025840"> </a><h4 class="pHeading3">
+Return Promptly
+</h4>
+<a name="wp1101440"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/obsolete.gif" border="0" /></td>
+    <td><a name="wp1245817"> </a><p class="pBody">
+In releases 5 and earlier, we warned programmers to ensure that callback functions return promptly and do not block. Callback functions that did not observe these precautions would obstruct important internal mechanisms of Rendezvous software.
+</p>
+<a name="wp1245821"> </a><p class="pBody">
+Starting in release 6, the event driver is entirely separate from the event dispatch mechanism. Consequently, blocking and long-running callback functions cannot interfere with Rendezvous internal mechanisms.
+</p>
+<a name="wp1245825"> </a><p class="pBody">
+&#160;
+</p>
+</td>
+</tr>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1245829"> </a><p class="pBody">
+However, programmers must recognize that blocking and longing-running callback functions can delay dispatch of other events. For most programs, we still recommend avoiding these behaviors. When callback functions must block, or must run for long periods of time, we recommend dispatching from several threads to ensure prompt processing of all events.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

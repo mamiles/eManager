@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvCmQueueTransport()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;10	 Distributed Queue";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1093285"> </a><h2 class="pNewHTMLPage">
+TibrvCmQueueTransport()
+</h2>
+<hr />
+<a name="wp1086056"> </a><p class="pSyntaxType">
+Constructor
+</p>
+<a name="wp1086057"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCodeBold">TibrvCmQueueTransport</code>(<a name="wp1125818"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_java_ref148.htm#wp1039175"><code style="font-weight: normal" class="cCode">TibrvRvdTransport</code></a>&#160;&#160;&#160;&#160;transport,<a name="wp1125822"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;&#160;&#160;&#160;cmName)<a name="wp1125823"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125827"> </a>
+<a name="wp1125810"> </a>
+<code class="cCodeBold">TibrvCmQueueTransport</code>(<a name="wp1125831"> </a>
+&#160;&#160;&#160;<a  href="rv_java_ref148.htm#wp1039175"><code style="font-weight: normal" class="cCode">TibrvRvdTransport</code></a>&#160;&#160;&#160;&#160;transport,<a name="wp1125835"> </a>
+&#160;&#160;&#160;java.lang.String&#160;&#160;&#160;&#160;&#160;cmName,<a name="wp1125836"> </a>
+&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;workerWeight,<a name="wp1125837"> </a>
+&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;workerTasks,<a name="wp1125838"> </a>
+&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;schedulerWeight,<a name="wp1125839"> </a>
+&#160;&#160;&#160;double&#160;&#160;&#160;&#160;&#160;&#160;&#160;schedulerHeartbeat,<a name="wp1125840"> </a>
+&#160;&#160;&#160;double&#160;&#160;&#160;&#160;&#160;&#160;&#160;schedulerActivation)<a name="wp1125841"> </a>
+&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125845"> </a>
+</pre></div>
+<a name="wp1086078"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1086080"> </a><p class="pBody">
+Create a transport as a distributed queue member.
+</p>
+<a name="wp1086081"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1102734"> </a><p class="pBody">
+The new <a  href="rv_java_ref222.htm#wp1108902"><code class="cCode">TibrvCmQueueTransport</code></a> must employ a valid <a  href="rv_java_ref148.htm#wp1039175"><code class="cCode">TibrvRvdTransport</code></a> for network communications.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1102741"> </a><p class="pBody">
+ (Sheet 1 of 3)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1102745"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1102747"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1102749"> </a><div class="pCellBody">
+<code class="cCode">transport</code>
+</div>
+</td>
+    <td><a name="wp1102751"> </a><div class="pCellBody">
+The new <a  href="rv_java_ref222.htm#wp1108902"><code class="cCode">TibrvCmQueueTransport</code></a> employs this <a  href="rv_java_ref148.htm#wp1039175"><code class="cCode">TibrvRvdTransport</code></a> object for network communications.
+</div>
+<a name="wp1102755"> </a><div class="pCellBody">
+Destroying the <a  href="rv_java_ref222.htm#wp1108902"><code class="cCode">TibrvCmQueueTransport</code></a> does not affect this transport.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1102757"> </a><div class="pCellBody">
+<code class="cCode">cmName</code>
+</div>
+</td>
+    <td><a name="wp1110213"> </a><div class="pCellBody">
+Bind this reusable name to the new transport object, which becomes a member of the distributed queue with this name.
+</div>
+<a name="wp1102760"> </a><div class="pCellBody">
+The name must be non-<code class="cCode">null</code>, and conform to the syntax rules for Rendezvous subject names. It cannot begin with reserved tokens. It cannot be a non-reusable name generated by a call to <a  href="rv_java_ref192.htm#wp1097723"><code class="cCode">TibrvCmTransport()</code></a>. It cannot be the empty string.
+</div>
+<a name="wp1102770"> </a><div class="pCellBody">
+For more information, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts114.htm#wp1056478');" onMouseOver="WWHShowPopup('a', 'rv_concepts114.htm#wp1056478', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Reusable Names</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1102775"> </a><div class="pCellBody">
+<code class="cCode">workerWeight</code>
+</div>
+</td>
+    <td><a name="wp1102778"> </a><div class="pCellBody">
+When the scheduler receives a task, it assigns the task to the available worker with the greatest worker weight.
+</div>
+<a name="wp1102779"> </a><div class="pCellBody">
+A worker is considered available unless either of these conditions are true:
+</div>
+<div class="pSmartList1"><ul>
+<a name="wp1102780"> </a><div class="pSmartList1"><li >The pending tasks assigned to the worker member exceed its task capacity.</li></div>
+
+<a name="wp1102781"> </a><div class="pSmartList1"><li >The worker is also the scheduler. (The scheduler assigns tasks to its own worker role only when no other workers are available.)</li></div>
+
+</ul></div>
+
+<a name="wp1102782"> </a><div class="pCellBody">
+When omitted, the default value is <code class="cCode">1</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1102784"> </a><div class="pCellBody">
+<code class="cCode">workerTasks</code>
+</div>
+</td>
+    <td><a name="wp1102786"> </a><div class="pCellBody">
+Task capacity is the maximum number of tasks that a worker can accept. When the number of accepted tasks reaches this maximum, the worker cannot accept additional tasks until it completes one or more of them.
+</div>
+<a name="wp1102787"> </a><div class="pCellBody">
+When the scheduler receives a task, it assigns the task to the worker with the greatest worker weight&#151;unless the pending tasks assigned to that worker exceed its task capacity. When the preferred worker has too many tasks, the scheduler assigns the new inbound task to the worker with the next greatest worker weight.
+</div>
+<a name="wp1102788"> </a><div class="pCellBody">
+When omitted, the default value is <code class="cCode">1</code>. Value must be greater than zero.
+</div>
+<img src="images/warning.gif" border="0" /><a name="wp1102791"> </a><div class="pCellBody">
+Tuning task capacity to compensate for communication time lag is more complicated than it might seem. Before setting this value to anything other than 1, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts121.htm#wp1056907');" onMouseOver="WWHShowPopup('a', 'rv_concepts121.htm#wp1056907', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Task Capacity</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1102799"> </a><div class="pCellBody">
+<code class="cCode">schedulerWeight</code>
+</div>
+</td>
+    <td><a name="wp1102801"> </a><div class="pCellBody">
+Weight represents the ability of this member to fulfill the role of scheduler, relative to other members with the same name. Cooperating members use relative scheduler weight values to elect one member as the scheduler; members with higher scheduler weight take precedence.
+</div>
+<a name="wp1235317"> </a><div class="pCellBody">
+When omitted, the default value is <code class="cCode">1</code>.
+</div>
+<a name="wp1102803"> </a><div class="pCellBody">
+Acceptable values range from 0 to 65535. Zero is a special value, indicating that the member can never be the scheduler. For more information, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts134.htm#wp1057331');" onMouseOver="WWHShowPopup('a', 'rv_concepts134.htm#wp1057331', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Rank and Weight</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1102811"> </a><div class="pCellBody">
+<code class="cCode">schedulerHeartbeat</code>
+</div>
+</td>
+    <td><a name="wp1110335"> </a><div class="pCellBody">
+The scheduler sends heartbeat messages at this interval (in seconds).
+</div>
+<a name="wp1110336"> </a><div class="pCellBody">
+All <a  href="rv_java_ref222.htm#wp1108902"><code class="cCode">TibrvCmQueueTransport</code></a> objects with the same name must specify the same value for this parameter. The value must be strictly positive. To determine the correct value, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts155.htm#wp1058304');" onMouseOver="WWHShowPopup('a', 'rv_concepts155.htm#wp1058304', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Step 4: Choose the Intervals</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+<a name="wp1102821"> </a><div class="pCellBody">
+When omitted, the default value is <code class="cCode">1.0</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1102823"> </a><div class="pCellBody">
+<code class="cCode">schedulerActivation</code>
+</div>
+</td>
+    <td><a name="wp1104792"> </a><div class="pCellBody">
+When the heartbeat signal from the scheduler has been silent for this interval (in seconds), the cooperating member with the greatest scheduler weight takes its place as the new scheduler.
+</div>
+<a name="wp1104793"> </a><div class="pCellBody">
+All <a  href="rv_java_ref222.htm#wp1108902"><code class="cCode">TibrvCmQueueTransport</code></a> objects with the same name must specify the same value for this parameter. The value must be strictly positive. To determine the correct value, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts155.htm#wp1058304');" onMouseOver="WWHShowPopup('a', 'rv_concepts155.htm#wp1058304', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Step 4: Choose the Intervals</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+<a name="wp1102833"> </a><div class="pCellBody">
+When omitted, the default value is <code class="cCode">3.5</code>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1093672"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1093676"> </a><p class="pBody">
+<a  href="rv_java_ref224.htm#wp1093708"><code class="cCode">TibrvCmQueueTransport.destroy()</code> </a>
+</p>
+<a name="wp1093683"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts117.htm#wp1056801');" onMouseOver="WWHShowPopup('a', 'rv_concepts117.htm#wp1056801', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Distributed Queue</a>, in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

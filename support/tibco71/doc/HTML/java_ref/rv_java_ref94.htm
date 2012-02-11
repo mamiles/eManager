@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvDispatchable</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1059389"> </a><h2 class="pNewHTMLPage">
+TibrvDispatchable
+</h2>
+<hr />
+<a name="wp1059554"> </a><p class="pSyntaxType">
+Interface
+</p>
+<a name="wp1059555"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+interface com.tibco.tibrv.<code class="cCodeBold">TibrvDispatchable</code><a name="wp1059556"> </a>
+</pre></div>
+<a name="wp1059557"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1059558"> </a><p class="pBody">
+Common interface for queues and queue groups.
+</p>
+<a name="wp1059559"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1059665"> </a><p class="pBody">
+Both <a  href="rv_java_ref98.htm#wp1035245"><code class="cCode">TibrvQueue</code></a> and <a  href="rv_java_ref115.htm#wp1037388"><code class="cCode">TibrvQueueGroup</code></a> implement this interface, so programs can call the common methods on objects of either class. For example, consider a dispatcher routine that receives an object of type <a  href="rv_java_ref94.htm#wp1059389"><code class="cCode">TibrvDispatchable</code></a>; it can call the <code class="cCode">dispatch()</code> method, without needing to determine whether the object is queue or a queue group.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1059563"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1059565"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1059567"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1059569"> </a><div class="pCellBody">
+<a  href="rv_java_ref95.htm#wp1059689"><code class="cCode">TibrvDispatchable.dispatch()</code></a>
+</div>
+</td>
+    <td><a name="wp1059571"> </a><div class="pCellBody">
+<a  href="rv_java_ref95.htm#wp1059696">Dispatch an event; if no event is ready, block.</a>
+</div>
+</td>
+    <td><a name="wp1059576"> </a><div class="pCellBody">
+<a  href="rv_java_ref95.htm#wp1059689">133</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1060088"> </a><div class="pCellBody">
+<a  href="rv_java_ref96.htm#wp1113816"><code class="cCode">TibrvDispatchable.poll()</code></a>
+</div>
+</td>
+    <td><a name="wp1060092"> </a><div class="pCellBody">
+<a  href="rv_java_ref96.htm#wp1059768">Dispatch an event, if possible.</a>
+</div>
+</td>
+    <td><a name="wp1060098"> </a><div class="pCellBody">
+<a  href="rv_java_ref96.htm#wp1113816">134</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1060073"> </a><div class="pCellBody">
+<a  href="rv_java_ref97.htm#wp1059825"><code class="cCode">TibrvDispatchable.timedDispatch()</code></a>
+</div>
+</td>
+    <td><a name="wp1060077"> </a><div class="pCellBody">
+<a  href="rv_java_ref97.htm#wp1059833">Dispatch an event, but if no event is ready to dispatch, limit the time that this call blocks while waiting for an event.</a>
+</div>
+</td>
+    <td><a name="wp1060083"> </a><div class="pCellBody">
+<a  href="rv_java_ref97.htm#wp1059825">135</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1059591"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1081306"> </a><p class="pBody">
+<a  href="rv_java_ref4.htm#wp1107485">Interrupting Event Dispatch Threads</a>
+</p>
+<a name="wp1059595"> </a><p class="pBody">
+<a  href="rv_java_ref98.htm#wp1035245"><code class="cCode">TibrvQueue</code> </a>
+</p>
+<a name="wp1060103"> </a><p class="pBody">
+<a  href="rv_java_ref115.htm#wp1037388"><code class="cCode">TibrvQueueGroup</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

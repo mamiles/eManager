@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Multicast, Broadcast, Point-to-Point and Direct</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;10	 Performance Assessment (rvperf)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1281741"> </a><h2 class="pNewHTMLPage">
+Multicast, Broadcast, Point-to-Point and Direct
+</h2>
+<hr />
+<a name="wp1281745"> </a><p class="pBody">
+Rendezvous can transport messages among application programs using several mechanisms. The performance assessment tool can model the performance of an application sending messages in any of these ways:</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1281805"> </a><div class="pCellHeading">
+Transport
+</div>
+</th>
+    <th><a name="wp1281119"> </a><div class="pCellHeading">
+Modelling
+</div>
+</th>
+    <th><a name="wp1283307"> </a><div class="pCellHeading">
+Notes
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1281533"> </a><div class="pCellBody">
+Multicast
+</div>
+</td>
+    <td><a name="wp1281121"> </a><div class="pCellBody">
+Specify multicast addressing in the <code class="cCode">-network</code> parameter.
+</div>
+<a name="wp1281866"> </a><div class="pCellBody">
+Omit the <code class="cCode">-inbox</code> parameter.
+</div>
+</td>
+    <td><a name="wp1283310"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1281535"> </a><div class="pCellBody">
+Broadcast
+</div>
+</td>
+    <td><a name="wp1281833"> </a><div class="pCellBody">
+Do <em class="cEmphasis">not</em> specify multicast addressing in the <code class="cCode">-network</code> parameter.
+</div>
+<a name="wp1281868"> </a><div class="pCellBody">
+Omit the <code class="cCode">-inbox</code> parameter.
+</div>
+</td>
+    <td><a name="wp1283313"> </a><div class="pCellBody">
+TRDP only
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1281537"> </a><div class="pCellBody">
+Point-to-Point
+</div>
+</td>
+    <td><a name="wp1281125"> </a><div class="pCellBody">
+Include the <code class="cCode">-inbox</code> parameter.
+</div>
+</td>
+    <td><a name="wp1283316"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1281658"> </a><div class="pCellBody">
+Direct Point-to-Point
+</div>
+</td>
+    <td><a name="wp1281693"> </a><div class="pCellBody">
+Specify a two part <code class="cCode">-service</code> parameter to enable direct communication (bypassing <code class="cCode">rvd</code>).
+</div>
+<a name="wp1281889"> </a><div class="pCellBody">
+Include the <code class="cCode">-inbox</code> parameter.
+</div>
+</td>
+    <td><a name="wp1283319"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1281770"> </a><h4 class="pHeading3">
+Performance Characteristics
+</h4>
+<a name="wp1283377"> </a><p class="pBody">
+The various transport mechanisms can display dramatically different performance profiles, which group into two broad classes.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1283601"> </a><p class="pBody">
+&#160;
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1283583"> </a><div class="pCellHeading">
+Transport
+</div>
+</th>
+    <th><a name="wp1283585"> </a><div class="pCellHeading">
+Description and Performance Characteristics
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1283587"> </a><div class="pCellBody">
+Multicast;
+</div>
+<a name="wp1283588"> </a><div class="pCellBody">
+Broadcast
+</div>
+</td>
+    <td><a name="wp1283590"> </a><div class="pCellBody">
+Multicast and broadcast messages use an unmetered protocol with negative acknowledgment. A sender transmits packets as fast as possible. Receivers are responsible for requesting retransmission of missed packets.
+</div>
+<a name="wp1283591"> </a><div class="pCellBody">
+Many applications can gain efficiency by dividing very large multicast or broadcast messages into smaller pieces, sending them in batches, and pausing between batches to avoid overloading slow receivers (that is, receivers running on relatively slow computers).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1283593"> </a><div class="pCellBody">
+Point-to-Point;
+</div>
+<a name="wp1283594"> </a><div class="pCellBody">
+Direct Point-to-Point
+</div>
+</td>
+    <td><a name="wp1283596"> </a><div class="pCellBody">
+Point-to-point messages use a metered protocol with positive acknowledgment. A sender requires positive acknowledgment from the receiver before it transmits additional point-to-point packets.
+</div>
+<a name="wp1283597"> </a><div class="pCellBody">
+As a result, point-to-point packets (from a single sender) rarely arrive faster than a receiver can process them. Applications generally do not gain efficiency by dividing very large point-to-point messages into smaller pieces (since the protocol itself already meters delivery).
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

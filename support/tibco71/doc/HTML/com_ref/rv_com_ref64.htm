@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvMsg.toString()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1024541"> </a><h2 class="pNewHTMLPage">
+TibrvMsg.toString()
+</h2>
+<hr />
+<a name="wp1024542"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1024544"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+formattedString = tibrvMsg.<code class="cCodeBold">toString</code>()<a name="wp1024545"> </a>
+</pre></div>
+<a name="wp1024546"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1024622"> </a><p class="pBody">
+Format a message as a string.
+</p>
+<a name="wp1024548"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1024626"> </a><p class="pBody">
+Programs can use this method to obtain a string representation of the message for printing.
+</p>
+<a name="wp1189462"> </a><p class="pBody">
+For most datatypes, this method formats the full value of each field to the output string; however, these two types are exceptions:</p><div align="left">
+<table border="0">
+  <caption></caption>
+  <tr align="left" valign="top">    <td><a name="wp1189468"> </a><div class="pCellBody">
+<a  href="rv_com_ref34.htm#wp1159108"><code class="cCode">TIBRVCOM_MSG_OPAQUE</code></a>
+</div>
+</td>
+    <td><a name="wp1189470"> </a><div class="pCellBody">
+This method abbreviates the value of an opaque field; for example, <code class="cCode">[472 opaque bytes]</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189475"> </a><div class="pCellBody">
+<a  href="rv_com_ref34.htm#wp1159195"><code class="cCode">TIBRVCOM_MSG_XML</code></a>
+</div>
+</td>
+    <td><a name="wp1189477"> </a><div class="pCellBody">
+This method abbreviates the value of an XML field; for example, <code class="cCode">[XML document: 472 bytes]</code>.
+</div>
+<a name="wp1189478"> </a><div class="pCellBody">
+The size measures <em class="cEmphasis">un</em>compressed data.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1024634"> </a><p class="pBody">
+This method formats <a  href="rv_com_ref34.htm#wp1159147"><code class="cCode">TIBRVCOM_MSG_IPADDR32</code></a> fields as four dot-separated decimal integers.
+</p>
+<a name="wp1024638"> </a><p class="pBody">
+This method formats <a  href="rv_com_ref34.htm#wp1159144"><code class="cCode">TIBRVCOM_MSG_IPPORT16</code></a> fields as one decimal integer.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1119943"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1119945"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1119947"> </a><div class="pCellBody">
+<code class="cCode">formattedString</code>
+</div>
+</td>
+    <td><a name="wp1119949"> </a><div class="pCellBody">
+<code class="cCode">String</code>
+</div>
+<a name="wp1119950"> </a><div class="pCellBody">
+Return a string denoting the message.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1126566"> </a><h4 class="pHeading3">
+Converting Dates to Strings
+</h4>
+<a name="wp1126570"> </a><p class="pBody">
+<a  href="rv_com_ref64.htm#wp1024541"><code class="cCode">TibrvMsg.toString()</code></a> prints times in UTC format (also known as Zulu time or GMT). The ISO-8601 standard requires appending a <code class="cCode">Z</code> character in this notation.
+</p>
+<a name="wp1126574"> </a><p class="pBody">
+<a  href="rv_com_ref64.htm#wp1024541"><code class="cCode">TibrvMsg.toString()</code></a> uses Common Era numbering for years. This system does not include a year zero. So for example, the time 1 second before <code class="cCode">0001-01-01 00:00:00Z</code> would print as <code class="cCode">-0001-12-31 23:59:59Z</code>.
+</p>
+<a name="wp1126578"> </a><p class="pBody">
+<a  href="rv_com_ref64.htm#wp1024541"><code class="cCode">TibrvMsg.toString()</code></a> uses a proleptic Gregorian calendar. That is, when formatting dates earlier than the adoption of the Gregorian calendar, it projects the Gregorian calendar backward beyond its actual invention and adoption.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvFtMember</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;8	 Fault Tolerance";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1062294"> </a><h2 class="pNewHTMLPage">
+TibrvFtMember
+</h2>
+<hr />
+<a name="wp1062591"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1062594"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1062595"> </a><p class="pBody">
+Represent membership in a fault tolerance group.
+</p>
+<a name="wp1062596"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1062769"> </a><p class="pBody">
+Upon creating the internal structure of this object, the process joins a fault tolerance group.
+</p>
+<a name="wp1141524"> </a><p class="pBody">
+By destroying or deleting a member object, the process withdraws its membership in the fault tolerance group.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1072295"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1072297"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1072299"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1145529"> </a><div class="pMinorHead">
+Life Cycle
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1072304"> </a><div class="pCellBody">
+<a  href="rv_com_ref148.htm#wp1062937"><code class="cCode">TibrvFtMember.create</code></a>
+</div>
+</td>
+    <td><a name="wp1072308"> </a><div class="pCellBody">
+<a  href="rv_com_ref148.htm#wp1129704">Create a member of a fault tolerance group.</a>
+</div>
+</td>
+    <td><a name="wp1072314"> </a><div class="pCellBody">
+<a  href="rv_com_ref148.htm#wp1062937">190</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1072319"> </a><div class="pCellBody">
+<a  href="rv_com_ref149.htm#wp1062646"><code class="cCode">TibrvFtMember.destroy</code></a>
+</div>
+</td>
+    <td><a name="wp1072323"> </a><div class="pCellBody">
+<a  href="rv_com_ref149.htm#wp1062802">Destroy a member of a fault tolerance group.</a>
+</div>
+</td>
+    <td><a name="wp1072329"> </a><div class="pCellBody">
+<a  href="rv_com_ref149.htm#wp1062646">194</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1145538"> </a><div class="pCellBody">
+<a  href="rv_com_ref155.htm#wp1113963"><code class="cCode">TibrvFtMember.isValid()</code></a>
+</div>
+</td>
+    <td><a name="wp1145542"> </a><div class="pCellBody">
+<a  href="rv_com_ref155.htm#wp1064092">Test validity of a fault tolerance member object.</a>
+</div>
+</td>
+    <td><a name="wp1145548"> </a><div class="pCellBody">
+<a  href="rv_com_ref155.htm#wp1113963">200</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1145560"> </a><div class="pMinorHead">
+Callback Method
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1145569"> </a><div class="pCellBody">
+<a  href="rv_com_ref156.htm#wp1064128"><code class="cCode">TibrvFtMember_onFtAction</code></a>
+</div>
+</td>
+    <td><a name="wp1145573"> </a><div class="pCellBody">
+<a  href="rv_com_ref156.htm#wp1063536">Process fault tolerance events for a group member.</a>
+</div>
+</td>
+    <td><a name="wp1145579"> </a><div class="pCellBody">
+<a  href="rv_com_ref156.htm#wp1064128">201</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1145550"> </a><div class="pMinorHead">
+Accessors
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1130165"> </a><div class="pCellBody">
+<a  href="rv_com_ref150.htm#wp1130354"><code class="cCode">TibrvFtMember.getClosure()</code></a>
+</div>
+</td>
+    <td><a name="wp1130169"> </a><div class="pCellBody">
+<a  href="rv_com_ref150.htm#wp1130360">Extract the closure of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1130175"> </a><div class="pCellBody">
+<a  href="rv_com_ref150.htm#wp1130354">195</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1130113"> </a><div class="pCellBody">
+<a  href="rv_com_ref151.htm#wp1061649"><code class="cCode">TibrvFtMember.getGroupName()</code></a>
+</div>
+</td>
+    <td><a name="wp1130117"> </a><div class="pCellBody">
+<a  href="rv_com_ref151.htm#wp1061657">Extract the group name of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1130123"> </a><div class="pCellBody">
+<a  href="rv_com_ref151.htm#wp1061649">196</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1072427"> </a><div class="pCellBody">
+<a  href="rv_com_ref152.htm#wp1061680"><code class="cCode">TibrvFtMember.getQueue()</code></a>
+</div>
+</td>
+    <td><a name="wp1072431"> </a><div class="pCellBody">
+<a  href="rv_com_ref152.htm#wp1061688">Extract the event queue of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1072437"> </a><div class="pCellBody">
+<a  href="rv_com_ref152.htm#wp1061680">197</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1072442"> </a><div class="pCellBody">
+<a  href="rv_com_ref153.htm#wp1061710"><code class="cCode">TibrvFtMember.getTransport()</code></a>
+</div>
+</td>
+    <td><a name="wp1072446"> </a><div class="pCellBody">
+<a  href="rv_com_ref153.htm#wp1061718">Extract the transport of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1072452"> </a><div class="pCellBody">
+<a  href="rv_com_ref153.htm#wp1061710">198</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1130149"> </a><div class="pCellBody">
+<a  href="rv_com_ref154.htm#wp1061740"><code class="cCode">TibrvFtMember.getWeight()</code></a>
+</div>
+</td>
+    <td><a name="wp1130153"> </a><div class="pCellBody">
+<a  href="rv_com_ref154.htm#wp1061748">Extract the weight of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1130159"> </a><div class="pCellBody">
+<a  href="rv_com_ref154.htm#wp1061740">199</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1072472"> </a><div class="pCellBody">
+<a  href="rv_com_ref157.htm#wp1142581"><code class="cCode">TibrvFtMember.setWeight</code></a>
+</div>
+</td>
+    <td><a name="wp1072476"> </a><div class="pCellBody">
+<a  href="rv_com_ref157.htm#wp1142587">Change the weight of a fault tolerance member within its group.</a>
+</div>
+</td>
+    <td><a name="wp1072482"> </a><div class="pCellBody">
+<a  href="rv_com_ref157.htm#wp1142581">204</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

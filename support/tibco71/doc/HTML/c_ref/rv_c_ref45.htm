@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvMsg_GetField()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;3	 Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1019366"> </a><h2 class="pNewHTMLPage">
+tibrvMsg_GetField()
+</h2>
+<hr />
+<a name="wp1019370"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1086858"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvMsg_GetField</code>(<a name="wp1162534"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;message,<a name="wp1162538"> </a>
+&#160;&#160;&#160;&#160;const char*&#160;&#160;&#160;&#160;&#160;&#160;&#160;fieldName,<a name="wp1162539"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref25.htm#wp1129956"><code class="cCode">tibrvMsgField</code></a>*&#160;&#160;&#160;&#160;field);<a name="wp1162543"> </a>
+<a name="wp1162548"> </a>
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvMsg_GetFieldEx</code>(<a name="wp1162555"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;message,<a name="wp1162559"> </a>
+&#160;&#160;&#160;&#160;const char*&#160;&#160;&#160;&#160;&#160;&#160;fieldName,<a name="wp1162560"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref25.htm#wp1129956"><code class="cCode">tibrvMsgField</code></a>*&#160;&#160;&#160;field,<a name="wp1162564"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128797"><code class="cCode">tibrv_u16</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;fieldId);<a name="wp1162568"> </a>
+</pre></div>
+<a name="wp1087329"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1019379"> </a><p class="pBody">
+Get a specified field from a message.
+</p>
+<a name="wp1087804"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1022868"> </a><p class="pBody">
+Programs specify the field to retrieve using the <code class="cCode">fieldName</code> and <code class="cCode">fieldId</code> parameters. For details, see <a  href="rv_c_ref20.htm#wp1062225">Field Names and Field Identifiers</a>.
+</p>
+<a name="wp1059669"> </a><p class="pBody">
+The function takes a snapshot of the field, and stores that information in the <code class="cCode">field</code> argument, overwriting the struct supplied as an argument.
+</p>
+<a name="wp1059153"> </a><p class="pBody">
+The function copies scalar data into the program&#8217;s field struct. Pointer data (such as strings, arrays, submessages, opaque byte sequences, or XML data) extracted from the field remain valid until the message is destroyed; that is, even removing the field or updating the field&#8217;s value does <em class="cEmphasis">not</em> invalidate pointer data.
+</p>
+<a name="wp1046238"> </a><p class="pBody">
+Programs can use a related function to loop through all the fields of a message. To retrieve each field by its integer index number, see <a  href="rv_c_ref53.htm#wp1123906"><code class="cCode">tibrvMsg_GetFieldByIndex()</code> </a>.
+</p>
+<a name="wp1019452"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1019429"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1019431"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1019433"> </a><div class="pCellBody">
+<code class="cCode">message</code>
+</div>
+</td>
+    <td><a name="wp1019435"> </a><div class="pCellBody">
+Get the specified field of this message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1019437"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1019439"> </a><div class="pCellBody">
+Get a field with this name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1107437"> </a><div class="pCellBody">
+<code class="cCode">field</code>
+</div>
+</td>
+    <td><a name="wp1107442"> </a><div class="pCellBody">
+The program supplies a pointer to a <a  href="rv_c_ref25.htm#wp1129956"><code class="cCode">tibrvMsgField</code></a> struct; the function overwrites the contents of the struct with a snapshot of the information from the message field.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1019441"> </a><div class="pCellBody">
+<code class="cCode">fieldId</code>
+</div>
+</td>
+    <td><a name="wp1107444"> </a><div class="pCellBody">
+Get the field with this identifier. Zero is a special value that signifies no field identifier. All non-zero field identifiers must be unique within each message.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1107316"> </a><h4 class="pHeading3">
+Field Search Algorithm
+</h4>
+<a name="wp1107317"> </a><p class="pBody">
+This function, and related functions that <em class="cEmphasis">get</em> message fields, all use this algorithm to find a field within a message, as specified by a field identifier and a field name.
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1107318"> </a><div class="pSmartList1"><li value="1">Extended functions begin here. Regular functions begin at step 3.</li></div>
+
+<a name="wp1107653"> </a><p class="pBodyRelative">
+If the identifier is zero, skip to step 3.
+</p>
+<a name="wp1109044"> </a><p class="pBodyRelative">
+If the program supplied a <em class="cEmphasis">non-zero</em> field identifier, then search for the field with that identifier.
+</p>
+<a name="wp1107664"> </a><p class="pBodyRelative">
+If the search succeeds, return the field.
+</p>
+<a name="wp1107663"> </a><p class="pBodyRelative">
+On failure, continue to step 2. 
+</p>
+<a name="wp1107654"> </a><div class="pSmartList1"><li value="2">If the identifier search (in step 1) fails, and the program supplied a non-<code class="cCode">NULL</code> field name, then search for a field with that name.</li></div>
+
+<a name="wp1107669"> </a><p class="pBodyRelative">
+If the name search succeeds, and the identifier in the field is <code class="cCode">NULL</code>, return the field.
+</p>
+<a name="wp1107672"> </a><p class="pBodyRelative">
+If the name search succeeds, but the actual identifier in the field is non-<code class="cCode">NULL</code> (so it does not match the identifier supplied) then return the status code <a  href="rv_c_ref227.htm#wp1129178"><code class="cCode">TIBRV_ID_CONFLICT</code></a>.
+</p>
+<a name="wp1107676"> </a><p class="pBodyRelative">
+If the name search fails, or if the program supplied <code class="cCode">NULL</code> as the field name, return the status code <a  href="rv_c_ref227.htm#wp1129168"><code class="cCode">TIBRV_NOT_FOUND</code></a>.
+</p>
+<a name="wp1107327"> </a><div class="pSmartList1"><li value="3">Regular functions begin here. Extended functions also begin here when the program supplied <em class="cEmphasis">zero</em> as the identifier (supplying zero is equivalent to not supplying a field identifier, so the behavior is equivalent to the corresponding regular function).</li></div>
+
+<a name="wp1107328"> </a><p class="pBodyRelative">
+Search for a field with the specified name&#151;even if that name is <code class="cCode">NULL</code>.
+</p>
+<a name="wp1107685"> </a><p class="pBodyRelative">
+If the search succeeds, return the field.
+</p>
+<a name="wp1107682"> </a><p class="pBodyRelative">
+On failure, return the status code <a  href="rv_c_ref227.htm#wp1129168"><code class="cCode">TIBRV_NOT_FOUND</code></a>.
+</p>
+</ol></div>
+
+<a name="wp1136482"> </a><p class="pBody">
+If a message contains several fields with the same name, searching by name finds the first instance of the field with that name.
+</p>
+<a name="wp1038352"> </a><h4 class="pHeading3">
+Extracting Fields from a Nested Message
+</h4>
+<a name="wp1200711"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/obsolete.gif" border="0" /></td>
+    <td><a name="wp1304023"> </a><p class="pBody">
+Earlier releases of Rendezvous software allowed programs to get fields from a nested submessage by concatenating field names. Starting with release 6, Rendezvous software no longer supports this special case convenience. Instead, programs must separately extract the nested submessage using <code class="cCode">tibrvMsg_GetMsg()</code>, and then get the desired fields from the submessage.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1045455"> </a><h4 class="pHeading3">
+Convenience Functions
+</h4>
+<a name="wp1045457"> </a><p class="pBody">
+In most situations, we recommend using type-specific convenience functions instead of this general function. Type-specific functions yield these advantages when extracting fields:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1019456"> </a><div class="pSmartList1"><li >Code readability.</li></div>
+
+<a name="wp1019457"> </a><div class="pSmartList1"><li >Type checking.</li></div>
+
+<a name="wp1045481"> </a><div class="pSmartList1"><li >Automatic type conversion.</li></div>
+
+</ul></div>
+
+<a name="wp1045486"> </a><p class="pBody">
+
+</p>
+<a name="wp1045482"> </a><p class="pBody">
+However, we do recommend the general function in two specific situations:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1045483"> </a><div class="pSmartList1"><li >No convenience function exists.</li></div>
+
+<a name="wp1045476"> </a><div class="pSmartList1"><li >The program must extract the data exactly as it appears in the message, without automatic type conversion. (Convenience functions always convert extracted data to a specific type.)</li></div>
+
+</ul></div>
+
+<a name="wp1045490"> </a><p class="pBody">
+
+</p>
+<a name="wp1045466"> </a><p class="pBody">
+These categories of type-specific convenience functions find a field and get its data:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1040178"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref46.htm#wp1176268">Get Scalar</a>.</li></div>
+
+<a name="wp1044787"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref47.htm#wp1083281">Get Array</a>.</li></div>
+
+<a name="wp1058246"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref48.htm#wp1045617">Get Nested Message</a>.</li></div>
+
+<a name="wp1070678"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref49.htm#wp1044294">Get String</a>.</li></div>
+
+<a name="wp1161407"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref50.htm#wp1044438">Get Opaque Byte Sequence</a>.</li></div>
+
+<a name="wp1161414"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref51.htm#wp1161255">Get XML Byte Sequence</a>.</li></div>
+
+<a name="wp1083195"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref52.htm#wp1074372">Get DateTime</a>.</li></div>
+
+</ul></div>
+
+<a name="wp1083197"> </a><h4 class="pHeading3">
+Extended Functions
+</h4>
+<a name="wp1140460"> </a><p class="pBody">
+Each convenience function has two forms.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1140461"> </a><div class="pSmartList1"><li >The usual form specifies the field to get using a field name.</li></div>
+
+<a name="wp1140462"> </a><div class="pSmartList1"><li >The extended form specifies the field to get using a field name and a field identifier. </li></div>
+
+</ul></div>
+
+<a name="wp1140464"> </a><p class="pBody">
+For example, the function <code class="cCode">tibrvMsg_GetI32()</code> is paired with the extended form <code class="cCode">tibrvMsg_GetI32Ex()</code>.
+</p>
+<a name="wp1083172"> </a><p class="pBody">
+The field identifier has type <a  href="rv_c_ref224.htm#wp1128797"><code class="cCode">tibrv_u16</code></a>. Zero is a special value that signifies no field identifier. All non-zero field identifiers must be unique within each message.
+</p>
+<a name="wp1083225"> </a><div class="pCellBody">
+For details, see <a  href="rv_c_ref20.htm#wp1062225">Field Names and Field Identifiers</a>.
+</div>
+<a name="wp1176253"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1176257"> </a><p class="pBody">
+<a  href="rv_c_ref20.htm#wp1062225">Field Names and Field Identifiers</a>
+</p>
+<a name="wp1176261"> </a><p class="pBody">
+<a  href="rv_c_ref46.htm#wp1176268">Get Scalar</a>
+</p>
+<a name="wp1176265"> </a><p class="pBody">
+<a  href="rv_c_ref25.htm#wp1129956"><code class="cCode">tibrvMsgField</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

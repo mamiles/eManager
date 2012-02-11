@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Distinguished Subject Names with Special Meaning</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;5	 Subject Names";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1065779"> </a><h2 class="pNewHTMLPage">
+Distinguished Subject Names with Special Meaning
+</h2>
+<hr />
+<a name="wp1065780"> </a><p class="pBody">
+Names that begin with an underscore character (<code class="cCode">_</code>) are called <em class="cEmphasis">distinguished subject names</em>. Distinguished names indicate special meaning, special handling, or restricted use.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1065787"> </a><div class="pTableTitle">
+Table&#160;14   Distinguished Subject Names&#160;
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1065791"> </a><div class="pCellHeading">
+Prefix
+</div>
+</th>
+    <th><a name="wp1065793"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065795"> </a><div class="pCellBody">
+<code class="cCode">_INBOX.</code>
+</div>
+</td>
+    <td><a name="wp1065797"> </a><div class="pCellBody">
+All inbox names begin with this prefix.
+</div>
+<a name="wp1065798"> </a><div class="pCellBody">
+Programs may not create inbox names except with inbox creation calls. Programs cannot combine inbox names with wildcards.
+</div>
+<a name="wp1075104"> </a><div class="pCellBody">
+Programs must treat inbox names as opaque, not modify them, and refrain from making inferences based on the form of inbox names.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065801"> </a><div class="pCellBody">
+<code class="cCode">_LOCAL.</code>
+</div>
+</td>
+    <td><a name="wp1065803"> </a><div class="pCellBody">
+Messages with subject names that have this prefix are only visible and distributed to transports connected to the same Rendezvous daemon as the sender.
+</div>
+<a name="wp1065807"> </a><div class="pCellBody">
+For example, a program listening to the subject <code class="cCode">_LOCAL.A.B.C</code> receives all messages sent on subject <code class="cCode">_LOCAL.A.B.C</code> from <em class="cEmphasis">any</em> transport connected to the <em class="cEmphasis">same</em> daemon. A Rendezvous daemon does not transmit messages with <code class="cCode">_LOCAL</code> subjects beyond that daemon.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065812"> </a><div class="pCellBody">
+<code class="cCode">_RV.</code>
+</div>
+</td>
+    <td><a name="wp1065814"> </a><div class="pCellBody">
+Subject names with this prefix indicate advisory messages, including informational messages, warnings and errors. Programs must not send to subjects with this prefix. For a description of advisory messages, see <a  href="rv_concepts158.htm#wp1052829">Advisory Messages</a>. 
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065819"> </a><div class="pCellBody">
+<code class="cCode">_</code>
+</div>
+</td>
+    <td><a name="wp1065821"> </a><div class="pCellBody">
+All other subject names that begin with an underscore character indicate internal administrative messages. Programs must not send to subjects with this prefix. 
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

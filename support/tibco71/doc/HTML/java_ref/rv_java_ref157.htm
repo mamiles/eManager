@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvVcTransport.createConnectVc()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;7	 Virtual Circuits";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1239278"> </a><h2 class="pNewHTMLPage">
+TibrvVcTransport.createConnectVc()
+</h2>
+<hr />
+<a name="wp1239279"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1239280"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_java_ref155.htm#wp1239085"><code class="cCode">TibrvVcTransport</code></a> <code class="cCodeBold">CreateConnectVc</code>(<a name="wp1249451"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;&#160;&#160;connectSubject,<a name="wp1250120"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_java_ref130.htm#wp1038525"><code class="cCode">TibrvTransport</code></a>&#160;&#160;&#160;&#160;&#160;&#160;transport)<a name="wp1249455"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1249459"> </a>
+</pre></div>
+<a name="wp1239290"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1249478"> </a><p class="pBody">
+Create a virtual circuit connect object
+</p>
+<a name="wp1239319"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1239299"> </a><p class="pBody">
+&#160;
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1239303"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1239305"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1239307"> </a><div class="pCellBody">
+<code class="cCode">connectSubject</code>
+</div>
+</td>
+    <td><a name="wp1239309"> </a><div class="pCellBody">
+The terminal uses this connect subject to establish a virtual circuit with an <em class="cEmphasis">accept</em> transport in another program.
+</div>
+<a name="wp1239310"> </a><div class="pCellBody">
+The program must receive this connect subject from the accepting program. The call to <a  href="rv_java_ref156.htm#wp1240207"><code class="cCode">TibrvVcTransport.createAcceptVc()</code></a> creates and returns this subject.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1249465"> </a><div class="pCellBody">
+<code class="cCode">transport</code>
+</div>
+</td>
+    <td><a name="wp1249467"> </a><div class="pCellBody">
+The virtual circuit terminal uses this ordinary transport for communications.
+</div>
+<a name="wp1254094"> </a><div class="pCellBody">
+Programs may use this transport for other purposes.
+</div>
+<a name="wp1249468"> </a><div class="pCellBody">
+It is illegal to supply a virtual circuit transport object for this parameter (that is, you cannot nest a virtual circuit within another virtual circuit).
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1255510"> </a><h4 class="pHeading3">
+Test Before Using
+</h4>
+<a name="wp1255511"> </a><p class="pBody">
+Either of two conditions indicate that the connection is ready to use:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1255515"> </a><div class="pSmartList1"><li >The transport presents the <a  href="javascript:WWHClickedPopup('a', 'rv_concepts169.htm#wp1112941');" onMouseOver="WWHShowPopup('a', 'rv_concepts169.htm#wp1112941', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">VC.CONNECTED</code></a> advisory.</li></div>
+
+<a name="wp1255519"> </a><div class="pSmartList1"><li ><a  href="rv_java_ref159.htm#wp1239347"><code class="cCode">TibrvVcTransport.waitForVcConnection()</code></a> returns without error.</li></div>
+
+</ul></div>
+
+<a name="wp1255521"> </a><p class="pBody">
+Immediately after this call, test <em class="cEmphasis">both</em> conditions with these two steps (in this order):
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1255525"> </a><div class="pSmartList1"><li value="1">Listen on the virtual circuit transport object for the <a  href="javascript:WWHClickedPopup('a', 'rv_concepts169.htm#wp1112941');" onMouseOver="WWHShowPopup('a', 'rv_concepts169.htm#wp1112941', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">VC.CONNECTED</code></a> advisory.</li></div>
+
+<a name="wp1255529"> </a><div class="pSmartList1"><li value="2">Call <a  href="rv_java_ref159.htm#wp1239347"><code class="cCode">TibrvVcTransport.waitForVcConnection()</code></a> with zero as the timeout parameter.</li></div>
+
+</ol></div>
+
+<a name="wp1255536"> </a><p class="pBody">
+For an explanation, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts83.htm#wp1187618');" onMouseOver="WWHShowPopup('a', 'rv_concepts83.htm#wp1187618', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Testing the New Connection</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+<a name="wp1239322"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1254102"> </a><p class="pBody">
+<a  href="rv_java_ref156.htm#wp1240207"><code class="cCode">TibrvVcTransport.createAcceptVc()</code> </a>
+</p>
+<a name="wp1239326"> </a><p class="pBody">
+<a  href="rv_java_ref158.htm#wp1249517"><code class="cCode">TibrvVcTransport.getConnectSubject()</code> </a>
+</p>
+<a name="wp1239330"> </a><p class="pBody">
+<a  href="rv_java_ref159.htm#wp1239347"><code class="cCode">TibrvVcTransport.waitForVcConnection()</code> </a>
+</p>
+<a name="wp1239337"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts169.htm#wp1112941');" onMouseOver="WWHShowPopup('a', 'rv_concepts169.htm#wp1112941', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">VC.CONNECTED</code> </a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+<a name="wp1239344"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts170.htm#wp1114062');" onMouseOver="WWHShowPopup('a', 'rv_concepts170.htm#wp1114062', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">VC.DISCONNECTED</code> </a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

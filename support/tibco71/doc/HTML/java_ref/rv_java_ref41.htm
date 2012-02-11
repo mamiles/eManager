@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvMsg.getFieldInstance()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1025938"> </a><h2 class="pNewHTMLPage">
+TibrvMsg.getFieldInstance()
+</h2>
+<hr />
+<a name="wp1025939"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1025941"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_java_ref56.htm#wp1028876"><code class="cCode">TibrvMsgField</code></a> <code class="cCodeBold">getFieldInstance</code>(<a name="wp1025970"> </a>
+&#160;&#160;&#160;&#160;java.lang.String fieldName,<a name="wp1025974"> </a>
+&#160;&#160;&#160;&#160;int instance)<a name="wp1055000"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1025942"> </a>
+</pre></div>
+<a name="wp1025943"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1026011"> </a><p class="pBody">
+Get a specific instance of a field from a message.
+</p>
+<a name="wp1025945"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1026015"> </a><p class="pBody">
+When a message contains several field instances with the same field name, retrieve a specific instance by number (for example, get the <code class="cCode">i</code><em class="cEmphasis">th</em> field named <code class="cCode">foo</code>). Programs can use this method in a loop that examines every field with a specified name.
+</p>
+<a name="wp1111239"> </a><p class="pBody">
+The argument <code class="cCode">1</code> denotes the first instance of the named field.
+</p>
+<a name="wp1026062"> </a><p class="pBody">
+The method takes a snapshot of the field, and returns that information as a field object.
+</p>
+<a name="wp1224445"> </a><p class="pBody">
+The method copies scalar data into the field object. Non-scalar data extracted from the field remain valid until the message is destroyed; that is, even removing the field or updating the field&#8217;s value does <em class="cEmphasis">not</em> invalidate non-scalar data (such as arrays, strings, submessages, XML data, or opaque byte sequences).
+</p>
+<a name="wp1224446"> </a><p class="pBody">
+When the <code class="cCode">instance</code> argument is greater than the actual number of instances of the field in the message, this method returns <code class="cCode">null</code>.
+</p>
+<a name="wp1026017"> </a><h4 class="pHeading3">
+Release 5 Interaction
+</h4>
+<a name="wp1026021"> </a><p class="pBody">
+Rendezvous 5 (and earlier) did not support array datatypes. Some older programs circumvented this limitation by using several fields with the same name to simulate arrays. This work-around is no longer necessary, since release 6 (and later) supports array datatypes within message fields. The method <a  href="rv_java_ref41.htm#wp1025938"><code class="cCode">TibrvMsg.getFieldInstance()</code></a> ensures backward compatibility, so new programs can still receive and manipulate messages sent from older programs. Nonetheless, we encourage programmers to use array types as appropriate, and we discourage storing several fields with the same name in a message.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1025949"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1025951"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1026055"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1026057"> </a><div class="pCellBody">
+Get an instance of the field with this name.
+</div>
+<a name="wp1026058"> </a><div class="pCellBody">
+<code class="cCode">null</code> specifies the empty string as the field name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1026044"> </a><div class="pCellBody">
+<code class="cCode">instance</code>
+</div>
+</td>
+    <td><a name="wp1026046"> </a><div class="pCellBody">
+Get this instance of the specified field name. The argument <code class="cCode">1</code> denotes the first instance of the named field.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1106902"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1106903"> </a><p class="pBody">
+<a  href="rv_java_ref56.htm#wp1028876"><code class="cCode">TibrvMsgField</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

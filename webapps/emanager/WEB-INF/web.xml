@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
+    "http://java.sun.com/j2ee/dtds/web-app_2.2.dtd">
+
+<web-app>
+  <display-name>Apache-Axis</display-name>
+
+  <servlet>
+    <servlet-name>EManagerServer</servlet-name>
+    <display-name>eManager Server</display-name>
+    <servlet-class>
+        com.cisco.eManager.eManager.EManagerController
+    </servlet-class>
+    <init-param>
+	<param-name>EMANAGER_ROOT</param-name>
+	<param-value>EMANAGERROOT</param-value>
+    </init-param>
+    <init-param>
+	<param-name>TOMCAT_PORT</param-name>
+	<param-value>TOMCATPORT</param-value>
+    </init-param>
+    <init-param>
+	<param-name>CATALINA_HOME</param-name>
+	<param-value>CATALINAHOME</param-value>
+    </init-param>
+    <init-param>
+	<param-name>java.rmi.server.codebase</param-name>
+	<param-value>file:CATALINAHOME/webapps/emanager/WEB-INF/classes/</param-value>
+    </init-param>
+    <init-param>
+	<param-name>java.security.policy</param-name>
+	<param-value>file:EMANAGERROOT/config/em.security.policy</param-value>
+    </init-param>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+
+  <servlet>
+    <servlet-name>AxisServlet</servlet-name>
+    <display-name>Apache-Axis Servlet</display-name>
+    <servlet-class>
+        org.apache.axis.transport.http.AxisServlet
+    </servlet-class>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AxisServlet</servlet-name>
+    <url-pattern>/services/*</url-pattern>
+  </servlet-mapping>
+
+</web-app>

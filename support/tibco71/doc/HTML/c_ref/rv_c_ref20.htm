@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>Field Names and Field Identifiers</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;3	 Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1062225"> </a><h2 class="pNewHTMLPage">
+Field Names and Field Identifiers
+</h2>
+<hr />
+<a name="wp1039793"> </a><p class="pBody">
+In Rendezvous 5 and earlier releases, programs would specify fields within a message using a field name. In Rendezvous 6 and later releases, programs can specify fields in two ways:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1039823"> </a><div class="pSmartList1"><li >A <em class="cEmphasis">field name</em> is a character string. Each field can have at most one name. Several fields can have the same name.</li></div>
+
+<a name="wp1039827"> </a><div class="pSmartList1"><li >A <em class="cEmphasis">field identifier</em> is a 16-bit unsigned integer, which must be unique within the message. That is, two fields in the same message cannot have the same identifier. However, a nested submessage is considered a separate identifier space from its enclosing parent message and any sibling submessages.</li></div>
+
+</ul></div>
+
+<a name="wp1123369"> </a><p class="pBody">
+Regular message functions specify fields using a field name. Extended functions specify fields using a combination of a field name and a unique field identifier.
+</p>
+<a name="wp1123372"> </a><p class="pBody">
+To compare the speed and space characteristics of these two options, see <a  href="rv_c_ref20.htm#wp1039403">Search Characteristics</a>.
+</p>
+<a name="wp1147267"> </a><h4 class="pHeading3">
+Rules and Restrictions
+</h4>
+<a name="wp1147268"> </a><p class="pBody">
+<code class="cCode">NULL</code> is a legal field name <em class="cEmphasis">only</em> when the identifier is zero. It is <em class="cEmphasis">illegal</em> for a field to have <em class="cEmphasis">both</em> a non-zero identifier <em class="cEmphasis">and</em> a <code class="cCode">NULL</code> field name.
+</p>
+<a name="wp1148416"> </a><p class="pBody">
+However, <code class="cCode">NULL</code> is not the same as <code class="cCode">&quot;&quot;</code> (the empty string). It is <em class="cEmphasis">legal</em> for a field to have a non-zero identifier and the empty string as its field name.
+</p>
+<a name="wp1039803"> </a><h4 class="pHeading3">
+Field Search Algorithm
+</h4>
+<a name="wp1083657"> </a><p class="pBody">
+The functions that <em class="cEmphasis">get</em> message fields (including functions that <em class="cEmphasis">update</em> or <em class="cEmphasis">remove</em> fields, since these functions call <em class="cEmphasis">get</em> internally) all use this algorithm to find a field within a message, as specified by a field identifier and a field name.
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1039679"> </a><div class="pSmartList1"><li value="1">Extended functions begin here. Regular functions begin at step 3.</li></div>
+
+<a name="wp1083669"> </a><p class="pBodyRelative">
+If the program supplied a <em class="cEmphasis">non-zero</em> field identifier, then search for the field with that identifier. On failure, continue to step 2. (If the identifier is zero, skip to step 3.)
+</p>
+<a name="wp1084162"> </a><div class="pSmartList1"><li value="2">If the identifier search (in step 1) fails, and the program supplied a non-<code class="cCode">NULL</code> field name, then search for a field with that name. On failure, or if the program supplied <code class="cCode">NULL</code> as the field name, return the status code <a  href="rv_c_ref227.htm#wp1129168"><code class="cCode">TIBRV_NOT_FOUND</code></a>. If the name search succeeds, but the actual identifier in the field is non-<code class="cCode">NULL</code> (so it does not match the identifier supplied) then return the status code <a  href="rv_c_ref227.htm#wp1129178"><code class="cCode">TIBRV_ID_CONFLICT</code></a>.</li></div>
+
+<a name="wp1084166"> </a><div class="pSmartList1"><li value="3">Regular functions begin here. Extended functions also begin here when the program supplied <em class="cEmphasis">zero</em> as the identifier (supplying zero is equivalent to not supplying a field identifier, so the behavior is equivalent to the corresponding regular function).</li></div>
+
+<a name="wp1083677"> </a><p class="pBodyRelative">
+Search for a field with the specified name&#151;even if that name is <code class="cCode">NULL</code>. On failure, return the status code <a  href="rv_c_ref227.htm#wp1129168"><code class="cCode">TIBRV_NOT_FOUND</code></a>.
+</p>
+</ol></div>
+
+<a name="wp1136475"> </a><p class="pBody">
+If a message contains several fields with the same name, searching by name finds the first instance of the field with that name.
+</p>
+<a name="wp1039638"> </a><h4 class="pHeading3">
+Adding a New Field
+</h4>
+<a name="wp1039906"> </a><p class="pBody">
+When a program uses an extended function to add a new field to a message, it can attach a field name, a field identifier, or both. If the program supplies an identifier, Rendezvous software checks that it is unique within the message; if the identifier is already in use, the operation fails and returns the status code <a  href="rv_c_ref227.htm#wp1129173"><code class="cCode">TIBRV_ID_IN_USE</code></a>.
+</p>
+<a name="wp1039914"> </a><h4 class="pHeading3">
+Passing Field Name and Identifiers
+</h4>
+<a name="wp1022691"> </a><p class="pBody">
+The program can pass the field name and identifier to functions in either of two ways:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1022695"> </a><div class="pSmartList1"><li >All extended functions accept two separate parameters, named <code class="cCode">fieldName</code> and <code class="cCode">fieldId</code>.</li></div>
+
+<a name="wp1022703"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref26.htm#wp1026733"><code class="cCode">tibrvMsg_AddField()</code></a> and <a  href="rv_c_ref64.htm#wp1019909"><code class="cCode">tibrvMsg_UpdateField()</code></a> do <em class="cEmphasis">not</em> have extended functions. Instead, they accept a <code class="cCode">field</code> parameter, which contains these two items as members within a <a  href="rv_c_ref25.htm#wp1129956"><code class="cCode">tibrvMsgField</code></a> struct. (The convenience functions that add and update fields <em class="cEmphasis">do</em> have extended functions.)</li></div>
+
+</ul></div>
+
+<a name="wp1039403"> </a><h4 class="pHeading3">
+Search Characteristics
+</h4>
+<a name="wp1040043"> </a><p class="pBody">
+In general, an identifier search completes in constant time. In contrast, a name search completes in linear time proportional to the number of fields in the message. Name search is quite fast for messages with 16 fields or fewer; for messages with more than 16 fields, identifier search is faster.
+</p>
+<a name="wp1040089"> </a><h4 class="pHeading3">
+Space Characteristics
+</h4>
+<a name="wp1040079"> </a><p class="pBody">
+The smallest field name is a one-character string, which occupies three bytes in Rendezvous wire format. That one ASCII character yields a name space of 127 possible field names; a larger range requires additional characters.
+</p>
+<a name="wp1040086"> </a><p class="pBody">
+Field identifiers are 16 bits, which also occupy three bytes in Rendezvous wire format. However, those 16 bits yield a space of 65535 possible field identifiers; that range is fixed, and cannot be extended.
+</p>
+<a name="wp1022888"> </a><h3 class="pHeading2">
+Finding a Field Instance
+</h3>
+<a name="wp1022880"> </a><p class="pBody">
+When a message contains several field instances with the same field name, these functions find a specific instance by name and number (they do not use field identifiers):
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1022936"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref60.htm#wp1123852"><code class="cCode">tibrvMsg_RemoveFieldInstance()</code> </a>.</li></div>
+
+<a name="wp1022892"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref54.htm#wp1019745"><code class="cCode">tibrvMsg_GetFieldInstance()</code> </a>.</li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

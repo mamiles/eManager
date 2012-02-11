@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Fault Tolerance in Action</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;13	 Fault Tolerance Concepts";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1057163"> </a><h2 class="pNewHTMLPage">
+Fault Tolerance in Action
+</h2>
+<hr />
+<a name="wp1057170"> </a><p class="pBody">
+Rendezvous fault tolerance software uses Rendezvous software to communicate between processes.
+</p>
+<a name="wp1057171"> </a><h3 class="pHeading2">
+Components and Operating Environment
+</h3>
+<a name="wp1057175"> </a><p class="pBody">
+<a  href="rv_concepts128.htm#wp1057193">Figure&#160;19</a> illustrates the components of a fault-tolerant distributed program in a typical network operating environment. Four identical program processes (A1, A2, A3, A4) run on four separate computers, connected by a network. The program incorporates the Rendezvous API library (including fault tolerance and communications software); a Rendezvous daemon process mediates between each program process and the network.
+</p>
+<a name="wp1057193"> </a><div class="pFigureTitle">
+Figure&#160;19   Fault Tolerance Operating Environment</div><div align="center"><img src="images/rv_conceptsa19.gif" height="434" width="599" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1090624"> </a><h3 class="pHeading2">
+Example Fault-Tolerant Multicast Producer 
+</h3>
+<a name="wp1090625"> </a><p class="pBody">
+In one scenario, a program produces a stream of multicast messages to the network (for example, stock market prices, news stories). Other programs on the network listen to those messages and consume the information.
+</p>
+<a name="wp1090626"> </a><p class="pBody">
+Only one of the four producer processes (A1) actively sends information. The other three are backup processes; they each compute an information stream that is parallel to that of the active process, but they do not send the information. If the active process stops functioning, Rendezvous fault tolerance software directs one of the three backup processes to begin active multicasting in its place. In this way the redundant processes cooperate to provide a fault-tolerant service without flooding the network with redundant information.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

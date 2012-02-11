@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Messages and Data</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;3	 Fundamentals";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1064117"> </a><h2 class="pNewHTMLPage">
+Messages and Data
+</h2>
+<hr />
+<a name="wp1021099"> </a><p class="pBody">
+Computer hardware and operating system platforms use different conventions for data representation. Data from one platform can be unintelligible on another platform. Rendezvous software uses a unified data representation to exchange messages among all supported platforms.
+</p>
+<a name="wp1052524"> </a><p class="pBody">
+<em class="cEmphasis">Messages</em> are the common currency that Rendezvous programs use to exchange data. Rendezvous messages contain fields of <em class="cEmphasis">self-describing data</em>. Every message has a <em class="cEmphasis">subject name</em>, which describes its destination.
+</p>
+<a name="wp1021095"> </a><p class="pBody">
+All data that enters or leaves a program through the Rendezvous daemon must be encapsulated in the fields of a message. As an abstraction, a message is a collection of self-describing data fields, which travel together between programs, processes or threads.
+</p>
+<a name="wp1060022"> </a><p class="pBody">
+Programs can manipulate messages even before opening the Rendezvous environment (see <a  href="rv_concepts40.htm#wp1049256">The Rendezvous Environment</a>).
+</p>
+<a name="wp1060009"> </a><h3 class="pHeading2">
+Fields
+</h3>
+<a name="wp1021344"> </a><p class="pBody">
+Each field contains one data item of a specific datatype. Programs can identify and access the individual fields of a message either by <em class="cEmphasis">name</em> or by <em class="cEmphasis">numeric identifiers</em>.
+</p>
+<a name="wp1021397"> </a><p class="pBody">
+From the programmer&#8217;s point of view, a message is a set of fields. Programs manipulate messages using API calls. A program can <em class="cEmphasis">create</em> a message, <em class="cEmphasis">add</em> fields to it, <em class="cEmphasis">remove</em> fields from it<em class="cEmphasis">, get</em> a field from a message, <em class="cEmphasis">update</em> the data value in a field, and <em class="cEmphasis">destroy</em> a message.
+</p>
+<a name="wp1060014"> </a><h3 class="pHeading2">
+Wire Format
+</h3>
+<a name="wp1021422"> </a><p class="pBody">
+At a lower level, beyond these abstract operations, each message exists as a byte sequence in Rendezvous <em class="cEmphasis">wire format</em>&#151;a uniform representation suitable for network communication among diverse hardware, operating system, and programming language platforms. Programs never access this representation, yet it is the foundation for all Rendezvous communication.
+</p>
+<a name="wp1021436"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1021437"> </a><p class="pBody">
+<a  href="rv_concepts52.htm#wp1065843">Data</a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

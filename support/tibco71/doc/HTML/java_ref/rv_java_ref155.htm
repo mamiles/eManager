@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvVcTransport</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;7	 Virtual Circuits";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1239085"> </a><h2 class="pNewHTMLPage">
+TibrvVcTransport
+</h2>
+<hr />
+<a name="wp1239086"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1239087"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+class com.tibco.tibrv.<code class="cCodeBold">TibrvVcTransport</code><a name="wp1239091"> </a>
+&#160;&#160;extends <a  href="rv_java_ref130.htm#wp1038525"><code class="cCode">TibrvTransport</code></a><code class="cCodeBold"></code><a name="wp1280407"> </a>
+</pre></div>
+<a name="wp1239094"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1239096"> </a><p class="pBody">
+A virtual circuit transport object represents a terminal in a potential circuit.
+</p>
+<a name="wp1239097"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1239098"> </a><p class="pBody">
+A virtual circuit transport can fill the same roles as an ordinary transport. Programs can use them to create inbox names, send messages, create listeners and other events.
+</p>
+<a name="wp1246544"> </a><p class="pBody">
+Instead of a constructor, this class has two create methods. These two methods also determine the protocol role of the transport object&#151;one method creates a terminal that <em class="cEmphasis">accepts</em> connections, and another method creates a terminal that attempts to <em class="cEmphasis">connect</em>.
+</p>
+<a name="wp1239102"> </a><p class="pBody">
+The two terminals play complementary roles as they attempt to establish a connection. However, this difference soon evaporates. After the connection is complete, the two terminals behave identically.
+</p>
+<a name="wp1239164"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1239108"> </a><p class="pBody">
+&#160;
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1239114"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1239116"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1239118"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1239123"> </a><div class="pCellBody">
+<a  href="rv_java_ref156.htm#wp1240207"><code class="cCode">TibrvVcTransport.createAcceptVc()</code></a>
+</div>
+</td>
+    <td><a name="wp1239128"> </a><div class="pCellBody">
+<a  href="rv_java_ref156.htm#wp1239224">Create a virtual circuit accept object.</a>
+</div>
+</td>
+    <td><a name="wp1239133"> </a><div class="pCellBody">
+<a  href="rv_java_ref156.htm#wp1240207">208</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1239138"> </a><div class="pCellBody">
+<a  href="rv_java_ref157.htm#wp1239278"><code class="cCode">TibrvVcTransport.createConnectVc()</code></a>
+</div>
+</td>
+    <td><a name="wp1239143"> </a><div class="pCellBody">
+<a  href="rv_java_ref157.htm#wp1249478">Create a virtual circuit connect object</a>
+</div>
+</td>
+    <td><a name="wp1239148"> </a><div class="pCellBody">
+<a  href="rv_java_ref157.htm#wp1239278">209</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1252442"> </a><div class="pCellBody">
+<a  href="rv_java_ref158.htm#wp1249517"><code class="cCode">TibrvVcTransport.getConnectSubject()</code></a>
+</div>
+</td>
+    <td><a name="wp1252446"> </a><div class="pCellBody">
+<a  href="rv_java_ref158.htm#wp1252370">Return the connect subject of an accept terminal.</a>
+</div>
+</td>
+    <td><a name="wp1252452"> </a><div class="pCellBody">
+<a  href="rv_java_ref158.htm#wp1249517">211</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1239153"> </a><div class="pCellBody">
+<a  href="rv_java_ref159.htm#wp1239347"><code class="cCode">TibrvVcTransport.waitForVcConnection()</code></a>
+</div>
+</td>
+    <td><a name="wp1239157"> </a><div class="pCellBody">
+<a  href="rv_java_ref159.htm#wp1239360">Test the connection status of a virtual circuit.</a>
+</div>
+</td>
+    <td><a name="wp1239163"> </a><div class="pCellBody">
+<a  href="rv_java_ref159.htm#wp1239347">212</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1239165"> </a><p class="pBody">
+
+</p>
+<a name="wp1239166"> </a><h4 class="pHeading3">
+Broken Connection
+</h4>
+<a name="wp1239167"> </a><p class="pBody">
+The following conditions can close a virtual circuit connection:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1239168"> </a><div class="pSmartList1"><li >Contact is broken between the object and its terminal.</li></div>
+
+<a name="wp1239172"> </a><div class="pSmartList1"><li >The virtual circuit loses data in either direction (see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts164.htm#wp1038437');" onMouseOver="WWHShowPopup('a', 'rv_concepts164.htm#wp1038437', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">DATALOSS</code> </a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>).</li></div>
+
+<a name="wp1239176"> </a><div class="pSmartList1"><li >The partner program destroys its terminal object (or that terminal becomes invalid).</li></div>
+
+<a name="wp1239177"> </a><div class="pSmartList1"><li >The program destroys the object.</li></div>
+
+<a name="wp1239178"> </a><div class="pSmartList1"><li >The program destroys the object&#8217;s ordinary transport.</li></div>
+
+</ul></div>
+
+<a name="wp1239184"> </a><h4 class="pHeading3">
+Direct Communication
+</h4>
+<a name="wp1239185"> </a><p class="pBody">
+Because virtual circuits rely on point-to-point messages between the two terminals, they can use direct communication to good advantage. To do so, both terminals must use network transports that enable direct communication.
+</p>
+<a name="wp1239191"> </a><p class="pBody">
+For an overview, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts78.htm#wp1144571');" onMouseOver="WWHShowPopup('a', 'rv_concepts78.htm#wp1144571', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Direct Communication</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+<a name="wp1239196"> </a><p class="pBody">
+For programming details, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts72.htm#wp1177702');" onMouseOver="WWHShowPopup('a', 'rv_concepts72.htm#wp1177702', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Specifying Direct Communication</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+<a name="wp1246443"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1246409"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1246414"> </a><p class="pBody">
+<a  href="rv_java_ref131.htm#wp1040342"><code class="cCode">TibrvTransport.createInbox()</code></a>
+</p>
+<a name="wp1246418"> </a><p class="pBody">
+<a  href="rv_java_ref132.htm#wp1039911"><code class="cCode">TibrvTransport.destroy()</code></a>
+</p>
+<a name="wp1246422"> </a><p class="pBody">
+<a  href="rv_java_ref133.htm#wp1070914"><code class="cCode">TibrvTransport.isValid()</code></a>
+</p>
+<a name="wp1246426"> </a><p class="pBody">
+<a  href="rv_java_ref135.htm#wp1040046"><code class="cCode">TibrvTransport.send()</code></a>
+</p>
+<a name="wp1246430"> </a><p class="pBody">
+<a  href="rv_java_ref136.htm#wp1040235"><code class="cCode">TibrvTransport.sendReply()</code></a>
+</p>
+<a name="wp1246434"> </a><p class="pBody">
+<a  href="rv_java_ref137.htm#wp1040108"><code class="cCode">TibrvTransport.sendRequest()</code></a>
+</p>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1253303"> </a><div class="pCellBody">
+Disabled Methods inherited from <a  href="rv_java_ref130.htm#wp1038525"><code class="cCode">TibrvTransport</code></a>
+</div>
+<a name="wp1253307"> </a><p class="pBody">
+<a  href="rv_java_ref134.htm#wp1118664"><code class="cCode">TibrvTransport.getDescription()</code></a>
+</p>
+<a name="wp1253315"> </a><p class="pBody">
+<a  href="rv_java_ref138.htm#wp1118418"><code class="cCode">TibrvTransport.setDescription()</code></a>
+</p>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1246436"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.equals</code>
+</p>
+<a name="wp1246437"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.getClass</code>
+</p>
+<a name="wp1246438"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.hashCode</code>
+</p>
+<a name="wp1246439"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notify</code>
+</p>
+<a name="wp1246440"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notifyAll</code>
+</p>
+<a name="wp1246441"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.toString</code> (override)
+</p>
+<a name="wp1246442"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.wait</code>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1246444"> </a><h4 class="pHeading3">
+Related Classes
+</h4>
+<a name="wp1246448"> </a><p class="pBody">
+<a  href="rv_java_ref130.htm#wp1038525"><code class="cCode">TibrvTransport</code> </a>
+</p>
+<a name="wp1246452"> </a><p class="pBody">
+<a  href="rv_java_ref139.htm#wp1188011"><code class="cCode">TibrvProcessTransport</code> </a>
+</p>
+<a name="wp1246456"> </a><p class="pBody">
+<a  href="rv_java_ref140.htm#wp1111502"><code class="cCode">TibrvNetTransport</code> </a>
+</p>
+<a name="wp1239200"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1239207"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts80.htm#wp1124075');" onMouseOver="WWHShowPopup('a', 'rv_concepts80.htm#wp1124075', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Virtual Circuits</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

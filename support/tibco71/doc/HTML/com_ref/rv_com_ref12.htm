@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>Checklist</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;2	 Programmer&#8217;s Checklist";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1141232"> </a><h2 class="pNewHTMLPage">
+Checklist
+</h2>
+<hr />
+<a name="wp1141237"> </a><p class="pBody">
+Developers of Rendezvous programs can use this checklist during the three phases of the development cycle: installing Rendezvous software, coding your program, and running your program.
+</p>
+<a name="wp1117548"> </a><h3 class="pHeading2">
+Install
+</h3>
+<div class="pSmartList1"><ul>
+<a name="wp1112628"> </a><div class="pSmartList1"><li >Install the Rendezvous software release.</li></div>
+
+<a name="wp1141163"> </a><p class="pBodyRelative">
+Installation automatically places the files <code class="cCode">tibrvcom.dll</code>, <code class="cCode">tibrvcom.tlb</code>, <code class="cCode">tibrvsdcom.dll</code> and <code class="cCode">tibrvsdcom.tlb</code> in the <code class="cCode">bin</code> subdirectory. 
+</p>
+<a name="wp1141171"> </a><p class="pBodyRelative">
+Installation also automatically registers two components in the Windows registry, using these commands:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;regsvr32 </code><code class="cCodeItalic">&lt;path&gt;</code><code class="cCode">\bin\tibrvcom.dll</code><a name="wp1203391"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;regsvr32 </code><code class="cCodeItalic">&lt;path&gt;</code><code class="cCode">\bin\tibrvsdcom.dll</code><a name="wp1141173"> </a>
+</pre></div>
+</ul></div>
+
+<a name="wp1112638"> </a><h3 class="pHeading2">
+Code
+</h3>
+<div class="pSmartList1"><ul>
+<a name="wp1204288"> </a><div class="pSmartList1"><li >The project must set a reference to the Rendezvous component; see <a  href="rv_com_ref13.htm#wp1158669">Referencing the Rendezvous COM Component</a>.</li></div>
+
+<a name="wp1141257"> </a><div class="pSmartList1"><li >Excel programs (and other applications that use VBA) must enable macros in order to execute code using the Rendezvous component.</li></div>
+
+<a name="wp1152264"> </a><div class="pSmartList1"><li >The type library contains constant definitions that are available in all programming environments. To view these constants in VB, use the object browser. Select the appropriate constant library for your program (one includes secure daemon features, the other does not).</li></div>
+
+</ul></div>
+
+<a name="wp1141187"> </a><h3 class="pHeading2">
+Run
+</h3>
+<div class="pSmartList1"><ul>
+<a name="wp1144456"> </a><div class="pSmartList1"><li ><code class="cCode">rvd</code> must be in one of the path directories.</li></div>
+
+<a name="wp1141188"> </a><div class="pSmartList1"><li ><code class="cCode">rvd</code> requires valid licensing.</li></div>
+
+<a name="wp1158667"> </a><p class="pBodyRelative">
+See <a  href="javascript:WWHClickedPopup('c', 'rv_adm9.htm#wp1018938');" onMouseOver="WWHShowPopup('c', 'rv_adm9.htm#wp1018938', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Licensing Information</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.
+</p>
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

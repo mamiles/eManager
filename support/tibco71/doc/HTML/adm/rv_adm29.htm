@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Concepts</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1020282"> </a><h2 class="pNewHTMLPage">
+Concepts
+</h2>
+<hr />
+<a name="wp1048102"> </a><p class="pBody">
+This section compares routing daemon <em class="cEmphasis">software</em> to a <em class="cEmphasis">hardware </em>router, using an extended analogy to introduce the operational concepts of Rendezvous routing daemons.
+</p>
+<a name="wp1048254"> </a><h3 class="pHeading2">
+Goal
+</h3>
+<a name="wp1048255"> </a><p class="pBody">
+The goal of routing daemon software is to take Rendezvous <em class="cEmphasis">messages</em> from one network, and make them available on other networks. The effect is to connect a set of networks into a larger network.
+</p>
+<a name="wp1048258"> </a><p class="pBody">
+Compare this goal to the goal of routing hardware&#151;to take <em class="cEmphasis">packets</em> from one network, and make them available on other networks. Once again, the effect is to connect a set of networks into a larger network.
+</p>
+<a name="wp1048182"> </a><h3 class="pHeading2">
+Connections
+</h3>
+<a name="wp1048295"> </a><p class="pBody">
+Routing daemon software uses a <em class="cEmphasis">routing table</em> to define <em class="cEmphasis">connections</em> to local networks, and to other routing daemons.
+</p>
+<a name="wp1048198"> </a><p class="pBody">
+Compare this tool to a hardware router, which uses a routing table to define the connections between the router and its interfaces.
+</p>
+<a name="wp1048372"> </a><p class="pBody">
+Each <em class="cEmphasis">entry</em> in the routing table describes one routing daemon and its connections. Although each routing daemon specifies only its own routing table entry, all the routing daemons in a WAN cooperate to share this information, so that every routing daemon builds a copy of the complete <em class="cEmphasis">global routing table</em>.
+</p>
+<a name="wp1048302"> </a><h3 class="pHeading2">
+Local Network
+</h3>
+<a name="wp1048303"> </a><p class="pBody">
+A routing daemon <em class="cEmphasis">serves</em> a set of <em class="cEmphasis">local networks</em> by forwarding messages between those networks and other networks (usually, by way of other routing daemons).
+</p>
+<a name="wp1054522"> </a><p class="pBody">
+While routing hardware specifies its local networks primarily in terms of network interfaces, routing daemon software specifies each local network as a pair combining network and UDP or PGM service. UDP or PGM services effectively divide the physical network into separate logical networks&#151;even though they use the same hardware.
+</p>
+<a name="wp1060657"> </a><p class="pBody">
+A routing daemon filters messages by subject name, restricting the subjects that its local networks can import and export. Filtering messages by subject in routing daemon software yields a finer granularity of control than filtering packets in a hardware router. Routing daemons control the set of subjects that each network can export to other networks, and import from other networks. For more information, see <a  href="rv_adm34.htm#wp1044190">Subject Gating</a>.
+</p>
+<a name="wp1048352"> </a><h3 class="pHeading2">
+Neighbor
+</h3>
+<a name="wp1055620"> </a><p class="pBody">
+To achieve the goal of forwarding message between networks, routing daemons connect to other routing daemons. A routing daemon declares its potential <em class="cEmphasis">neighbors</em>&#151;the other routing daemons to which it can directly connect.
+</p>
+<a name="wp1055638"> </a><p class="pBody">
+Two <em class="cEmphasis">potential</em> neighbors become <em class="cEmphasis">actual</em> neighbors when they establish a TCP connection.
+</p>
+<a name="wp1052741"> </a><div class="pFigureTitle">
+Figure&#160;8   Routing Daemons</div><div align="center"><img src="images/rv_adma7.gif" height="180" width="479" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1052742"> </a><h3 class="pHeading2">
+Route
+</h3>
+<a name="wp1052743"> </a><p class="pBody">
+The set of connections through which a message travels between its originating network and its destination network is called a <em class="cEmphasis">route</em>. Several potential routes can exist between the originating and destination networks; routing daemons select the actual route for each message.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Local Networks Configuration</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1213002"> </a><h2 class="pNewHTMLPage">
+Local Networks Configuration
+</h2>
+<hr />
+<a name="wp1196902"> </a><p class="pBody">
+This page lets you configure local networks for a routing table entry.
+</p>
+<a name="wp1215073"> </a><p class="pBody">
+To display this page, click the number of local networks in a row of the <a  href="rv_adm52.htm#wp1194491"><b class="cBold">Routers</b></a> page.
+</p>
+<a name="wp1215089"> </a><p class="pBody">
+For background information, see <a  href="rv_adm34.htm#wp1047084">Local Network</a>.
+</p>
+<a name="wp1300714"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/note.gif" border="0" /></td>
+    <td><a name="wp1304490"> </a><p class="pBody">
+This page is not the same as the page described in <a  href="rv_adm49.htm#wp1191055">Local Networks</a>.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1215086"> </a><div class="pFigureTitle">
+Figure&#160;25   rvrd Local Networks Configuration Page</div><div align="center"><img src="images/rv_adma41.gif" height="278" width="550" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1207178"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1207140"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1207144"> </a><div class="pCellHeading">
+Item
+</div>
+</th>
+    <th><a name="wp1207146"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1207148"> </a><div class="pCellBody">
+<em class="cEmphasis">existing local networks</em>
+</div>
+</td>
+    <td><a name="wp1207151"> </a><div class="pCellBody">
+The upper table lists local networks. Each row represents one local network.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1207153"> </a><div class="pCellBody">
+Local Network Name
+</div>
+</td>
+    <td><a name="wp1207155"> </a><div class="pCellBody">
+The name of a local network. Local network names must be globally unique.
+</div>
+<a name="wp1216407"> </a><div class="pCellBody">
+To configure subject gating for a local network, click its name in the table of existing local networks.
+</div>
+<a name="wp1216387"> </a><div class="pCellBody">
+For more information, see <a  href="rv_adm34.htm#wp1047084">Local Network</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1207160"> </a><div class="pCellBody">
+Service
+</div>
+</td>
+    <td><a name="wp1216418"> </a><div class="pCellBody">
+The UDP or PGM service for communication on a local network. Programs within the local network communicate using this service.
+</div>
+<a name="wp1216425"> </a><div class="pCellBody">
+For more information, see <a  href="rv_adm15.htm#wp1288869">Specifying the UDP or PGM Service</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1207164"> </a><div class="pCellBody">
+Network Specification
+</div>
+</td>
+    <td><a name="wp1207166"> </a><div class="pCellBody">
+The network specification for a local network.
+</div>
+<a name="wp1216433"> </a><div class="pCellBody">
+For more information, see <a  href="rv_adm16.htm#wp1034613">Constructing the Network Parameter</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1207168"> </a><div class="pCellBody">
+Cost
+</div>
+</td>
+    <td><a name="wp1207170"> </a><div class="pCellBody">
+Path cost for routing between a local network and the routing daemon.
+</div>
+<a name="wp1216441"> </a><div class="pCellBody">
+For more information, see <a  href="rv_adm37.htm#wp1174944">Load Balancing</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1207175"> </a><div class="pCellBody">
+Add Local Network Interface
+</div>
+</td>
+    <td><a name="wp1207177"> </a><div class="pCellBody">
+To add a new local network, type the specifications and click this button.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

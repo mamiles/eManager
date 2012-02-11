@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvMsg.get()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1024668"> </a><h2 class="pNewHTMLPage">
+TibrvMsg.get()
+</h2>
+<hr />
+<a name="wp1024669"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1024671"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+java.lang.Object <code class="cCodeBold">get</code>(<a name="wp1125126"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;fieldName)<a name="wp1125127"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125131"> </a>
+<a name="wp1125122"> </a>
+java.lang.Object <code class="cCodeBold">get</code>(<a name="wp1125135"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;fieldId)<a name="wp1125136"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125140"> </a>
+<a name="wp1125123"> </a>
+java.lang.Object <code class="cCodeBold">get</code>(<a name="wp1125145"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;fieldName,<a name="wp1125146"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;fieldId)<a name="wp1125147"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125151"> </a>
+</pre></div>
+<a name="wp1077945"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1024753"> </a><p class="pBody">
+Get the value of a specified field from a message.
+</p>
+<a name="wp1024675"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1024757"> </a><p class="pBody">
+Programs specify the field to retrieve using the <code class="cCode">fieldName</code> and <code class="cCode">fieldId</code> parameters.
+</p>
+<a name="wp1099615"> </a><p class="pBody">
+The method returns a snapshot of the field value.
+</p>
+<a name="wp1108081"> </a><p class="pBody">
+When a program gets fields with the datatypes listed here, this method (and convenience methods) return a reference to the actual value in the message&#151;<em class="cEmphasis">not</em> a copy. Use caution when modifying values of these types: <a  href="rv_java_ref31.htm#wp1124095"><code class="cCode">TibrvMsg.MSG</code></a>, <a  href="rv_java_ref31.htm#wp1124098"><code class="cCode">TibrvMsg.DATETIME</code></a>, <a  href="rv_java_ref31.htm#wp1124133"><code class="cCode">TibrvMsg.IPPORT16</code></a>, <a  href="rv_java_ref31.htm#wp1124136"><code class="cCode">TibrvMsg.IPADDR32</code></a>, <a  href="rv_java_ref31.htm#wp1124101"><code class="cCode">TibrvMsg.OPAQUE</code></a> (extracted as a byte array), <a  href="rv_java_ref31.htm#wp1124167"><code class="cCode">TibrvMsg.XML</code></a> (extracted as a byte array), and <em class="cEmphasis">all</em> array types.
+</p>
+<a name="wp1111202"> </a><p class="pBody">
+Programs can use a related method to loop through all the fields of a message; to retrieve each field by its integer index number, see <a  href="rv_java_ref40.htm#wp1025852"><code class="cCode">TibrvMsg.getFieldByIndex()</code> </a>.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1108099"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1108101"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1108103"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1108105"> </a><div class="pCellBody">
+Get a field with this name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1108107"> </a><div class="pCellBody">
+<code class="cCode">fieldId</code>
+</div>
+</td>
+    <td><a name="wp1108109"> </a><div class="pCellBody">
+Get the field with this identifier.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1078238"> </a><h4 class="pHeading3">
+Field Search Algorithm
+</h4>
+<a name="wp1078239"> </a><p class="pBody">
+This method, and related methods that <em class="cEmphasis">get</em> message fields, all use this algorithm to find a field within a message, as specified by a field identifier and a field name.
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1078241"> </a><div class="pSmartList1"><li value="1">If the program supplied zero as the identifier, or omitted any identifier, then begin at step 3.</li></div>
+
+<a name="wp1078288"> </a><p class="pBodyRelative">
+If the program supplied a <em class="cEmphasis">non-zero</em> field identifier, then search for the field with that identifier. 
+</p>
+<a name="wp1078242"> </a><p class="pBodyRelative">
+If the search succeeds, return the field.
+</p>
+<a name="wp1078243"> </a><p class="pBodyRelative">
+On failure, continue to step 2.
+</p>
+<a name="wp1078244"> </a><div class="pSmartList1"><li value="2">If the identifier search (in step 1) fails, and the program supplied a non-<code class="cCode">null</code> field name, then search for a field with that name.</li></div>
+
+<a name="wp1078245"> </a><p class="pBodyRelative">
+If the name search succeeds, and the identifier in the field is <code class="cCode">null</code>, return the field.
+</p>
+<a name="wp1078246"> </a><p class="pBodyRelative">
+If the name search succeeds, but the actual identifier in the field is non-<code class="cCode">null</code> (so it does not match the identifier supplied) then throw an exception with the status code <a  href="rv_java_ref234.htm#wp1238204"><code class="cCode">TibrvStatus.ID_CONFLICT</code></a>.
+</p>
+<a name="wp1078250"> </a><p class="pBodyRelative">
+On failure, or if the program supplied <code class="cCode">null</code> as the field name, throw an exception with the status code <a  href="rv_java_ref234.htm#wp1238194"><code class="cCode">TibrvStatus.NOT_FOUND</code></a>.
+</p>
+<a name="wp1078254"> </a><div class="pSmartList1"><li value="3">When the program supplied zero as the identifier, or omitted any identifier, then begin here.</li></div>
+
+<a name="wp1078255"> </a><p class="pBodyRelative">
+Search for a field with the specified name&#151;even if that name is <code class="cCode">null</code>.
+</p>
+<a name="wp1078256"> </a><p class="pBodyRelative">
+If the search succeeds, return the field.
+</p>
+<a name="wp1078260"> </a><p class="pBodyRelative">
+On failure, return <code class="cCode">null</code>.
+</p>
+</ol></div>
+
+<a name="wp1109439"> </a><p class="pBody">
+If a message contains several fields with the same name, searching by name finds the first instance of the field with that name.
+</p>
+<a name="wp1054342"> </a><h4 class="pHeading3">
+Extracting Fields from a Nested Message
+</h4>
+<a name="wp1025838"> </a><p class="pBody">
+Earlier releases of Rendezvous software allowed programs to get fields from a nested submessage by concatenating field names. Starting with release 6, Rendezvous software no longer supports this special case convenience. Instead, programs must separately extract the nested submessage using <a  href="rv_java_ref36.htm#wp1024668"><code class="cCode">TibrvMsg.get()</code></a> (or a related method), and then get the desired fields from the submessage.
+</p>
+<a name="wp1024687"> </a><h4 class="pHeading3">
+Method Forms
+</h4>
+<a name="wp1024870"> </a><p class="pBody">
+With only a field name, find the field by name. If the field name is not present in the message, return <code class="cCode">null</code>. If several fields with that name are present in the message, this method returns the first one that it finds. 
+</p>
+<a name="wp1024953"> </a><p class="pBody">
+With only a field identifier, find the field with that identifier (since identifiers are unique, the message can contain at most one such field). If the identifier is not present in the message, return <code class="cCode">null</code>.
+</p>
+<a name="wp1024956"> </a><p class="pBody">
+With both a field name and a field identifier, search first by identifier, and then by field name. If neither are present in the message, return <code class="cCode">null</code>. If identifier search succeeds, return the field value. If the name search succeeds, but the actual identifier in the field is non-zero (so it does not match the identifier supplied) then throw a <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a> with status code <a  href="rv_java_ref234.htm#wp1238204"><code class="cCode">TibrvStatus.ID_CONFLICT</code></a>.
+</p>
+<a name="wp1024860"> </a><h4 class="pHeading3">
+Decoding and Type Conversion
+</h4>
+<a name="wp1076935"> </a><p class="pBody">
+This method automatically decodes the extracted field data from its Rendezvous wire format type to a corresponding Java type. In <a  href="rv_java_ref36.htm#wp1067615">Figure&#160;6</a>, filled circles (as well as <code class="cCode">+</code> and <code class="cCode">-</code> symbols) specify default decodings between homologous types; you can override the default decoding by supplying an explicit <code class="cCode">type</code> argument (numeric and supported conversions).
+</p>
+<a name="wp1067607"> </a><p class="pBody">
+Java does not admit unsigned integers. When extracting an unsigned integer from an inbound message field, this method automatically promotes the value to the corresponding Java type that is large enough to contain it (<a  href="rv_java_ref36.htm#wp1067615">Figure&#160;6</a> indicates this with <code class="cCode">+</code>). When extracting an unsigned 64-bit integer, Java does not have a type that can contain a number that uses all 64 bits; this method decodes it to a Java <code class="cCode">long</code>, interpreting the high bit as a sign bit (<a  href="rv_java_ref36.htm#wp1067615">Figure&#160;6</a> indicates this with <code class="cCode">-</code>).
+</p>
+<a name="wp1269229"> </a><h4 class="pHeading3">
+Decoding XML
+</h4>
+<a name="wp1269230"> </a><p class="pBody">
+After extracting the XML document into a byte array, explicitly convert it to a string using the encoding that corresponds to your locale (file encoding system property). For more information, see <a  href="rv_java_ref33.htm#wp1269193">Encoding XML</a>.
+</p>
+<a name="wp1067615"> </a><div class="pFigureTitle">
+Figure&#160;6   Wire Format to Java Datatype Conversion Matrix</div><div align="center"><img src="images/rv_java_refa2.gif" height="638" width="526" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1138736"> </a><p class="pBody">
+
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

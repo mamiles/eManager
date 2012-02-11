@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>SecureDaemonProxy.getNetworksAndServices()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;6	 Secure Daemons&#151;rvsd &amp; rvsrd";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp2021968"> </a><h2 class="pNewHTMLPage">
+SecureDaemonProxy.getNetworksAndServices()
+</h2>
+<hr />
+<a name="wp2021969"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1956968"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_config140.htm#wp1957687"><code class="cCode">NetworkServicePair</code></a>[] <code class="cCodeBold">getNetworksAndServices</code>()<a name="wp1956972"> </a>
+&#160;&#160;throws <a  href="rv_config267.htm#wp1963961"><code class="cCode">ConfigurationException</code></a><a name="wp1956976"> </a>
+</pre></div>
+<a name="wp1956977"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1956979"> </a><p class="pBody">
+Get the authorized network and service pairs of the secure daemon.
+</p>
+<a name="wp1956980"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1956984"> </a><p class="pBody">
+To convert the resulting array of <a  href="rv_config140.htm#wp1957687"><code class="cCode">NetworkServicePair</code></a> objects to an array of strings (suitable as an argument to <a  href="rv_config136.htm#wp1957222"><code class="cCode">SecureDaemonProxy.removeNetworkAndService()</code> </a>), iterate through the array, applying <a  href="rv_config140.htm#wp1957687"><code class="cCode">NetworkServicePair</code></a><code class="cCode">.toString()</code> to each element.
+</p>
+<a name="wp1956995"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1956999"> </a><p class="pBody">
+<a  href="rv_config123.htm#wp1956040"><code class="cCode">SecureDaemonProxy</code> </a>
+</p>
+<a name="wp1957003"> </a><p class="pBody">
+<a  href="rv_config127.htm#wp1956577"><code class="cCode">SecureDaemonProxy.authorizeNetworkAndService()</code> </a>
+</p>
+<a name="wp1957007"> </a><p class="pBody">
+<a  href="rv_config136.htm#wp1957222"><code class="cCode">SecureDaemonProxy.removeNetworkAndService()</code> </a>
+</p>
+<a name="wp1957011"> </a><p class="pBody">
+<a  href="rv_config140.htm#wp1957687"><code class="cCode">NetworkServicePair</code> </a>
+</p>
+<a name="wp1957014"> </a><p class="pBody">
+For the corresponding browser pages, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm71.htm#wp1159720');" onMouseOver="WWHShowPopup('c', 'rv_adm71.htm#wp1159720', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Authorize Network and Service Pairs</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+<a name="wp1957022"> </a><p class="pBody">
+For background information, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm61.htm#wp1162302');" onMouseOver="WWHShowPopup('c', 'rv_adm61.htm#wp1162302', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Network and Service Authorization</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

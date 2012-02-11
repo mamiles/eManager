@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvQueueGroup</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1037388"> </a><h2 class="pNewHTMLPage">
+TibrvQueueGroup
+</h2>
+<hr />
+<a name="wp1037550"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1037552"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+class com.tibco.tibrv.<code class="cCodeBold">TibrvQueueGroup</code><a name="wp1037553"> </a>
+&#160;&#160;extends java.lang.Object<a name="wp1281191"> </a>
+&#160;&#160;implements <a  href="rv_java_ref94.htm#wp1059389"><code style="font-weight: normal" class="cCode">TibrvDispatchable</code></a><span style="font-weight: bold"></span><a name="wp1037610"> </a>
+</pre></div>
+<a name="wp1037554"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1037555"> </a><p class="pBody">
+Prioritized dispatch of several queues with one call.
+</p>
+<a name="wp1037556"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1037616"> </a><p class="pBody">
+Queue groups add flexibility and fine-grained control to the event queue dispatch mechanism. Programs can create groups of queues and dispatch them according to their queue priorities.
+</p>
+<a name="wp1112069"> </a><p class="pBody">
+Programs must explicitly destroy instances of this class. Rendezvous software keeps internal references to these objects, so the Java garbage collector does not delete them automatically.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1115545"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1079084"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1079086"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1079088"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1079090"> </a><div class="pMinorHead">
+Life Cycle
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1079099"> </a><div class="pCellBody">
+<a  href="rv_java_ref116.htm#wp1079320"><code class="cCode">TibrvQueueGroup()</code></a>
+</div>
+</td>
+    <td><a name="wp1079104"> </a><div class="pCellBody">
+<a  href="rv_java_ref116.htm#wp1037717">Create an event queue group.</a>
+</div>
+</td>
+    <td><a name="wp1079109"> </a><div class="pCellBody">
+<a  href="rv_java_ref116.htm#wp1079320">157</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1079114"> </a><div class="pCellBody">
+<a  href="rv_java_ref119.htm#wp1037813"><code class="cCode">TibrvQueueGroup.destroy()</code></a>
+</div>
+</td>
+    <td><a name="wp1079119"> </a><div class="pCellBody">
+<a  href="rv_java_ref119.htm#wp1037846">Destroy an event queue group.</a>
+</div>
+</td>
+    <td><a name="wp1079124"> </a><div class="pCellBody">
+<a  href="rv_java_ref119.htm#wp1037813">160</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1079129"> </a><div class="pCellBody">
+<a  href="rv_java_ref123.htm#wp1037734"><code class="cCode">TibrvQueueGroup.isValid()</code></a>
+</div>
+</td>
+    <td><a name="wp1079134"> </a><div class="pCellBody">
+<a  href="rv_java_ref123.htm#wp1037790">Test validity of a queue group.</a>
+</div>
+</td>
+    <td><a name="wp1079139"> </a><div class="pCellBody">
+<a  href="rv_java_ref123.htm#wp1037734">164</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1079141"> </a><div class="pMinorHead">
+Dispatch
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1079150"> </a><div class="pCellBody">
+<a  href="rv_java_ref120.htm#wp1038292"><code class="cCode">TibrvQueueGroup.dispatch()</code></a>
+</div>
+</td>
+    <td><a name="wp1079154"> </a><div class="pCellBody">
+<a  href="rv_java_ref120.htm#wp1038299">Dispatch an event from a queue group; if no event is ready, block.</a>
+</div>
+</td>
+    <td><a name="wp1079160"> </a><div class="pCellBody">
+<a  href="rv_java_ref120.htm#wp1038292">161</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1079165"> </a><div class="pCellBody">
+<a  href="rv_java_ref124.htm#wp1038489"><code class="cCode">TibrvQueueGroup.poll()</code></a>
+</div>
+</td>
+    <td><a name="wp1079169"> </a><div class="pCellBody">
+<a  href="rv_java_ref124.htm#wp1038495">Dispatch an event, but if no event is ready to dispatch, return immediately (without blocking).</a>
+</div>
+</td>
+    <td><a name="wp1079175"> </a><div class="pCellBody">
+<a  href="rv_java_ref124.htm#wp1038489">165</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1079180"> </a><div class="pCellBody">
+<a  href="rv_java_ref126.htm#wp1038451"><code class="cCode">TibrvQueueGroup.timedDispatch()</code></a>
+</div>
+</td>
+    <td><a name="wp1079182"> </a><div class="pCellBody">
+<a  href="rv_java_ref126.htm#wp1038458">Dispatch an event, but if no event is ready to dispatch, limit the time that this call blocks while waiting for an event.</a>
+</div>
+</td>
+    <td><a name="wp1079187"> </a><div class="pCellBody">
+<a  href="rv_java_ref126.htm#wp1038451">167</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1079198"> </a><div class="pMinorHead">
+Queues
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1079207"> </a><div class="pCellBody">
+<a  href="rv_java_ref117.htm#wp1113851"><code class="cCode">TibrvQueueGroup.add()</code></a>
+</div>
+</td>
+    <td><a name="wp1079212"> </a><div class="pCellBody">
+<a  href="rv_java_ref117.htm#wp1037940">Add an event queue to a queue group.</a>
+</div>
+</td>
+    <td><a name="wp1079217"> </a><div class="pCellBody">
+<a  href="rv_java_ref117.htm#wp1113851">158</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1079222"> </a><div class="pCellBody">
+<a  href="rv_java_ref118.htm#wp1111466"><code class="cCode">TibrvQueueGroup.contains()</code></a>
+</div>
+</td>
+    <td><a name="wp1079227"> </a><div class="pCellBody">
+<a  href="rv_java_ref118.htm#wp1038091">Test whether a queue is in a queue group.</a>
+</div>
+</td>
+    <td><a name="wp1079232"> </a><div class="pCellBody">
+<a  href="rv_java_ref118.htm#wp1111466">159</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1124896"> </a><div class="pCellBody">
+<a  href="rv_java_ref121.htm#wp1124881"><code class="cCode">TibrvQueueGroup.elements()</code></a>
+</div>
+</td>
+    <td><a name="wp1124900"> </a><div class="pCellBody">
+<a  href="rv_java_ref121.htm#wp1124887">Extract an enumeration of the queues in a queue group.</a>
+</div>
+</td>
+    <td><a name="wp1124906"> </a><div class="pCellBody">
+<a  href="rv_java_ref121.htm#wp1124881">162</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1079237"> </a><div class="pCellBody">
+<a  href="rv_java_ref122.htm#wp1038153"><code class="cCode">TibrvQueueGroup.getCount()</code></a>
+</div>
+</td>
+    <td><a name="wp1079239"> </a><div class="pCellBody">
+<a  href="rv_java_ref122.htm#wp1038158">Extract the number of queues in a queue group.</a>
+</div>
+</td>
+    <td><a name="wp1079244"> </a><div class="pCellBody">
+<a  href="rv_java_ref122.htm#wp1038153">163</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1079273"> </a><div class="pCellBody">
+<a  href="rv_java_ref125.htm#wp1037972"><code class="cCode">TibrvQueueGroup.remove()</code></a>
+</div>
+</td>
+    <td><a name="wp1079277"> </a><div class="pCellBody">
+<a  href="rv_java_ref125.htm#wp1038016">Remove an event queue from a queue group.</a>
+</div>
+</td>
+    <td><a name="wp1079283"> </a><div class="pCellBody">
+<a  href="rv_java_ref125.htm#wp1037972">166</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1177149"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1177140"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1177142"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.equals</code>
+</p>
+<a name="wp1177143"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.getClass</code>
+</p>
+<a name="wp1177144"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.hashCode</code>
+</p>
+<a name="wp1177145"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notify</code>
+</p>
+<a name="wp1177146"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notifyAll</code>
+</p>
+<a name="wp1177147"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.toString</code> (override)
+</p>
+<a name="wp1177148"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.wait</code>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Restricting Message Flow</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1054980"> </a><h2 class="pNewHTMLPage">
+Restricting Message Flow
+</h2>
+<hr />
+<a name="wp1054982"> </a><p class="pBody">
+Routing daemons can be very selective in allowing messages to flow between networks. Network administrators can use this selectivity in several important ways:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1054983"> </a><div class="pSmartList1"><li >Restrict sensitive information to particular networks.</li></div>
+
+<a name="wp1054984"> </a><div class="pSmartList1"><li >Limit the volume of messages between networks.</li></div>
+
+<a name="wp1054985"> </a><div class="pSmartList1"><li >Constrain information to flow in only one direction between two networks.</li></div>
+
+</ul></div>
+
+<a name="wp1054987"> </a><h3 class="pHeading2">
+Restricting Messages by Service or Port
+</h3>
+<a name="wp1054988"> </a><p class="pBody">
+For coarse-grained control over information flow, limit communication between networks to particular UDP or PGM services.
+</p>
+<a name="wp1054992"> </a><p class="pBody">
+Recall that Rendezvous programs can segregate messages by specifying the <code class="cCode">service</code> parameter to the transport creation function. The UDP or PGM service is part of the definition of a local network; the routing daemon exchanges with its neighbors only information that arrives on the designated service.
+</p>
+<a name="wp1054993"> </a><p class="pBody">
+For example, if your organization adopts a convention to send sensitive information via particular UDP or PGM services, then you can use the routing daemon to regulate (or even completely disable) the import and export of messages sent via those services.
+</p>
+<a name="wp1054994"> </a><h3 class="pHeading2">
+Restricting Messages by Subject Name
+</h3>
+<a name="wp1054996"> </a><p class="pBody">
+For fine-grained control over all the information flowing in or out of your networks, limit communication by subject name.
+</p>
+<a name="wp1054997"> </a><p class="pBody">
+Subject names specify exactly which messages may enter and leave a local network&#151;the routing daemon blocks all other Rendezvous messages. For details, see <a  href="rv_adm34.htm#wp1044190">Subject Gating</a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

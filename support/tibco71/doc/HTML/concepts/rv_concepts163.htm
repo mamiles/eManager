@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>LICENSE.EXPIRE</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Appendix&#160;A	 System Advisory Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1038397"> </a><h2 class="pNewHTMLPage">
+LICENSE.EXPIRE
+</h2>
+<hr />
+<a name="wp1047127"> </a><p class="pSyntaxType">
+Advisory
+</p>
+<a name="wp1048886"> </a><h4 class="pHeading3">
+Subject Name Syntax
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+_RV.ERROR.SYSTEM.LICENSE.EXPIRE<a name="wp1038399"> </a>
+_RV.WARN.SYSTEM.LICENSE.EXPIRE<a name="wp1038400"> </a>
+</pre></div>
+<a name="wp1059567"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1038405"> </a><p class="pBody">
+The Rendezvous daemon license has expired, or will expire soon.
+</p>
+<a name="wp1059713"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1038410"> </a><p class="pBody">
+Each Rendezvous daemon process requires a valid license. Some licenses are valid for only a limited time. These messages indicate expiration (or impending expiration) of a license.
+</p>
+<a name="wp1226502"> </a><h4 class="pHeading3">
+Warning
+</h4>
+<a name="wp1038411"> </a><p class="pBody">
+As a warning advisory, this message indicates that the license will expire soon. Every Rendezvous daemon that depends on that license presents this warning message to each of its client transports.
+</p>
+<a name="wp1226505"> </a><h4 class="pHeading3">
+Error
+</h4>
+<a name="wp1038415"> </a><p class="pBody">
+As an error advisory, this message indicates that the license has already expired. Every affected Rendezvous daemon stops servicing its client programs, and presents this error message to each client transport.
+</p>
+<a name="wp1038434"> </a><h4 class="pHeading3">
+Message Fields
+</h4>
+<a name="wp1095761"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1038421"> </a><div class="pCellHeading">
+Field Name
+</div>
+</th>
+    <th><a name="wp1038426"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1038428"> </a><div class="pCellBody">
+<code class="cCode">expiretime</code>
+</div>
+</td>
+    <td><a name="wp1038430"> </a><div class="pCellBody">
+The expiration time of the license. The value has type <a  href="rv_concepts54.htm#wp1084143"><code class="cCode">TIBRVMSG_DATETIME</code></a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

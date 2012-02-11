@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>tibrvftAction</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;8	 Fault Tolerance";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1160259"> </a><h2 class="pNewHTMLPage">
+tibrvftAction
+</h2>
+<hr />
+<a name="wp1160260"> </a><p class="pSyntaxType">
+Type
+</p>
+<a name="wp1160261"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+typedef enum<a name="wp1160262"> </a>
+{<a name="wp1160263"> </a>
+&#160;&#160;&#160;&#160;TIBRVFT_PREPARE_TO_ACTIVATE = 1,<a name="wp1160264"> </a>
+&#160;&#160;&#160;&#160;TIBRVFT_ACTIVATE&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; = 2,<a name="wp1160265"> </a>
+&#160;&#160;&#160;&#160;TIBRVFT_DEACTIVATE&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; = 3<a name="wp1160266"> </a>
+<a name="wp1160267"> </a>
+} <code class="cCodeBold">tibrvftAction</code>;<a name="wp1160268"> </a>
+</pre></div>
+<a name="wp1160269"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1160271"> </a><p class="pBody">
+Instruct fault tolerance callback methods to react to changing circumstances.
+</p>
+<a name="wp1160272"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1160273"> </a><p class="pBody">
+Each token of this enumerated type designates a command to a fault tolerance callback method. The program&#8217;s callback method receives one of these tokens in a parameter, and interprets it as an instruction from the Rendezvous fault tolerance software as described in this table (see also, <a  href="javascript:WWHClickedPopup('a', 'rv_concepts141.htm#wp1057747');" onMouseOver="WWHShowPopup('a', 'rv_concepts141.htm#wp1057747', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Fault Tolerance Callback Actions</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>).</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1160292"> </a><div class="pCellHeading">
+Token
+</div>
+</th>
+    <th><a name="wp1160294"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1160298"> </a><div class="pCellBody">
+<code class="cCode">TIBRVFT_PREPARE_TO_ACTIVATE</code>
+</div>
+</td>
+    <td><a name="wp1160300"> </a><div class="pCellBody">
+Prepare to activate (hint).
+</div>
+<a name="wp1160304"> </a><div class="pCellBody">
+Rendezvous fault tolerance software passes this token to the callback method to instruct the program to make itself ready to activate on short notice&#151;so that if the callback method subsequently receives the instruction to activate, it can do so without delay.
+</div>
+<a name="wp1160305"> </a><div class="pCellBody">
+This token is a hint, indicating that the program might soon receive an instruction to activate. It does not guarantee that an activate instruction will follow, nor that any minimum time will elapse before an activate instruction follows.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1160309"> </a><div class="pCellBody">
+<code class="cCode">TIBRVFT_ACTIVATE</code>
+</div>
+</td>
+    <td><a name="wp1160311"> </a><div class="pCellBody">
+Activate immediately.
+</div>
+<a name="wp1160315"> </a><div class="pCellBody">
+Rendezvous fault tolerance software passes this token to the callback method to instruct the program to activate.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1160319"> </a><div class="pCellBody">
+<code class="cCode">TIBRVFT_DEACTIVATE</code>
+</div>
+</td>
+    <td><a name="wp1160321"> </a><div class="pCellBody">
+Deactivate immediately.
+</div>
+<a name="wp1160325"> </a><div class="pCellBody">
+Rendezvous fault tolerance software passes this token to the callback method to instruct the program to deactivate.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1160326"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1160330"> </a><p class="pBody">
+<a  href="rv_cpp_ref201.htm#wp1064128"><code class="cCode">TibrvFtMemberCallback::onFtAction()</code> </a>
+</p>
+<a name="wp1160334"> </a><p class="pBody">
+<a  href="rv_cpp_ref190.htm#wp1062937"><code class="cCode">TibrvFtMember::create()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

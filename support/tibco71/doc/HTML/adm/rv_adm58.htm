@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Secure Daemon Overview</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;6	 Secure Daemons (rvsd and rvsrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1139946"> </a><h2 class="pNewHTMLPage">
+Secure Daemon Overview
+</h2>
+<hr />
+<a name="wp1140049"> </a><p class="pBody">
+This chapter describes the two daemons that offer secure client connections:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1143013"> </a><div class="pSmartList1"><li ><code class="cCode">rvsd</code>, the Rendezvous secure communications daemon, corresponds to <code class="cCode">rvd</code>. <a  href="rv_adm19.htm#wp1020040">Chapter&#160;4</a> describes <code class="cCode">rvd</code>, the Rendezvous communications daemon.</li></div>
+
+<a name="wp1140021"> </a><div class="pSmartList1"><li ><code class="cCode">rvsrd</code>, the Rendezvous secure routing daemon, corresponds to <code class="cCode">rvrd</code>. <a  href="rv_adm27.htm#wp1029490">Chapter&#160;5</a> describes <code class="cCode">rvrd</code>, the Rendezvous routing daemon.</li></div>
+
+</ul></div>
+
+<a name="wp1143047"> </a><h3 class="pHeading2">
+Secure Connections
+</h3>
+<a name="wp1140035"> </a><p class="pBody">
+The two ordinary Rendezvous daemons, <code class="cCode">rvd</code> and <code class="cCode">rvrd</code>, communicate with clients over non-secure TCP connections. In contrast, their secure counterparts, <code class="cCode">rvsd</code> and <code class="cCode">rvsrd</code>, communicate with clients over SSL connections, allowing secure client communication over non-secure networks.
+</p>
+<a name="wp1142976"> </a><h3 class="pHeading2">
+Restricting Access
+</h3>
+<a name="wp1142979"> </a><p class="pBody">
+Secure daemons restrict client access in three ways:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1142997"> </a><div class="pSmartList1"><li >Only authorized clients can connect to a secure daemon.</li></div>
+
+<a name="wp1142998"> </a><div class="pSmartList1"><li >Secure daemons restrict the combinations of network and UDP or PGM service over which client transports can communicate.</li></div>
+
+<a name="wp1143003"> </a><div class="pSmartList1"><li >Secure daemons limit the subject space that its clients can access.</li></div>
+
+</ul></div>
+
+<a name="wp1143058"> </a><h3 class="pHeading2">
+Plaintext Communication
+</h3>
+<a name="wp1143081"> </a><p class="pBody">
+Although they ensure secure client connections, both secure daemons transmit messages as plaintext. That is, when they publish messages from clients to local networks, those messages are not encrypted.
+</p>
+<a name="wp1143079"> </a><p class="pBody">
+For message-level encryption, use TIBCO Rendezvous DataSecurity (RVDS); see the documentation for that product.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Limitations</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;11	 Protocol Monitor (rvtrace)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1090877"> </a><h2 class="pNewHTMLPage">
+Limitations
+</h2>
+<hr />
+<a name="wp1090880"> </a><h3 class="pHeading2">
+Range Limitations
+</h3>
+<a name="wp1090881"> </a><p class="pBody">
+<code class="cCode">rvtrace</code> cannot examine packets unless they traverse the immediate network segment in which <code class="cCode">rvtrace</code> is running. For example, point-to-point conversations within or between other network segments are invisible to <code class="cCode">rvtrace</code>. Most saliently, retransmission requests and retransmission rejections are point-to-point packets, so they are visible to <code class="cCode">rvtrace</code> only when they either originate or terminate in the local network segment. Consequently, in some situations <code class="cCode">rvtrace</code> can detect retransmission broadcasts, even though it cannot detect the point-to-point packets that request retransmissions.
+</p>
+<a name="wp1132249"> </a><p class="pBody">
+Switched network environments (such as switched Ethernet, or ATM) further limit the usefulness of <code class="cCode">rvtrace</code> as a diagnostic tool. Since switching hardware forwards every point-to-point packet directly to its destination host, <code class="cCode">rvtrace</code> detects point-to-point packets only when they either originate or terminate in the computer running <code class="cCode">rvtrace</code>. In some switched networks, you can ameliorate this situation by disabling switching behavior&#151;for example, by setting one port to diagnostic mode, or by using a diagnostic utility. This tactic can yield the full stream of point-to-point packets in a limited portion of the network; run <code class="cCode">rvtrace</code> in that portion.
+</p>
+<a name="wp1132250"> </a><p class="pBody">
+In addition, some network switching hardware can route multicast packets to a network segment only when a host in the segment is actually listening to the corresponding multicast group. Such high specificity further limits the range of <code class="cCode">rvtrace</code>.
+</p>
+<a name="wp1090885"> </a><h3 class="pHeading2">
+Protocol Limitation
+</h3>
+<a name="wp1265671"> </a><p class="pBody">
+<code class="cCode">rvtrace</code> supports only UDP multicast and UDP point-to-point protocols. It does not support PGM or RPTP protocols.
+</p>
+<a name="wp1265667"> </a><h3 class="pHeading2">
+Interface Limitation
+</h3>
+<a name="wp1090886"> </a><p class="pBody">
+<code class="cCode">rvtrace</code> supports only Ethernet interfaces.
+</p>
+<a name="wp1090887"> </a><p class="pBody">
+<code class="cCode">rvtrace</code> does not support these (or any other) non-Ethernet interfaces: Token Ring, FDDI, ATM.
+</p>
+<a name="wp1094057"> </a><h3 class="pHeading2">
+Platform Support and Limitations
+</h3>
+<a name="wp1094061"> </a><p class="pBody">
+<code class="cCode">rvtrace</code> operates on all platforms that Rendezvous supports&#151;except VMS and OS/390 (MVS).
+</p>
+<a name="wp1124078"> </a><p class="pBody">
+TIBCO supports <code class="cCode">rvtrace</code> on Microsoft Windows platforms, but requires that you first obtain and install <code class="cCode">WinPcap</code> (see <a  href="rv_adm110.htm#wp1094092">Obtaining pcap</a>).
+</p>
+<a name="wp1323964"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1323986"> </a><p class="pBody">
+However, we do <em class="cEmphasis">not</em> support <code class="cCode">rvtrace</code> on Windows SMP (Symmetric Multi-Processor) platforms at this time.
+</p>
+<a name="wp1324076"> </a><p class="pBody">
+<code class="cCode">WinPcap</code> does not support SMP platforms, and might not operate correctly in multiprocessor environments. For more information, see <a href="http://winpcap.polito.it/misc/faq.htm" target="_blank">
+<span class="cWebJump">winpcap.polito.it/misc/faq.htm</span></a>.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1323948"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/note.gif" border="0" /></td>
+    <td><a name="wp1323947"> </a><p class="pBody">
+UnixWare places security restrictions on programs that open interfaces in promiscuous mode (such as <code class="cCode">pcap</code>). To run <code class="cCode">rvtrace</code> on UnixWare platforms, you must dedicate a separate physical interface for that purpose.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

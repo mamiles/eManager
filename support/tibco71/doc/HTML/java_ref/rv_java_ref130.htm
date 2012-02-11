@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvTransport</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;6	 Transports";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1038525"> </a><h2 class="pNewHTMLPage">
+TibrvTransport
+</h2>
+<hr />
+<a name="wp1038687"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1039757"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+abstract class com.tibco.tibrv.<code class="cCodeBold">TibrvTransport</code><a name="wp1039764"> </a>
+&#160;&#160;extends java.lang.Object<a name="wp1280344"> </a>
+</pre></div>
+<a name="wp1039759"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1039813"> </a><p class="pBody">
+A transport object represents a delivery mechanism for messages.
+</p>
+<a name="wp1038693"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1039843"> </a><p class="pBody">
+A transport describes a carrier for messages&#151;whether across a network, among processes on a single computer, or within a process. Transports manage network connections, and send outbound messages.
+</p>
+<a name="wp1112394"> </a><p class="pBody">
+A transport also defines the delivery scope of a message&#151;that is, the set of <em class="cEmphasis">possible</em> destinations for the messages it sends.
+</p>
+<a name="wp1039825"> </a><p class="pBody">
+Destroying a transport object invalidates subsequent send calls on that transport, and invalidates any listeners using that transport.
+</p>
+<a name="wp1112078"> </a><p class="pBody">
+Programs must explicitly destroy instances of these classes. Rendezvous software keeps internal references to these objects, so the Java garbage collector does not delete them automatically.
+</p>
+<a name="wp1039836"> </a><p class="pBody">
+This abstract class is the superclass of all other transport classes. Methods defined by this class are implemented by all transport subclasses (except <a  href="rv_java_ref222.htm#wp1108902"><code class="cCode">TibrvCmQueueTransport</code></a>, for which some methods do not apply).
+</p>
+<a name="wp1039826"> </a><h4 class="pHeading3">
+Intra-Process Transport
+</h4>
+<a name="wp1039830"> </a><p class="pBody">
+Each process has exactly one intra-process transport; the call <a  href="rv_java_ref21.htm#wp1020167"><code class="cCode">Tibrv.open()</code></a> automatically creates it, and the call <a  href="rv_java_ref22.htm#wp1053428"><code class="cCode">Tibrv.processTransport()</code></a> extracts it. Programs must not destroy the intra-process transport.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1185648"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1181690"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1181692"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1181694"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1181699"> </a><div class="pCellBody">
+<a  href="rv_java_ref131.htm#wp1040342"><code class="cCode">TibrvTransport.createInbox()</code></a>
+</div>
+</td>
+    <td><a name="wp1181704"> </a><div class="pCellBody">
+<a  href="rv_java_ref131.htm#wp1040413">Create a unique inbox subject name.</a>
+</div>
+</td>
+    <td><a name="wp1181709"> </a><div class="pCellBody">
+<a  href="rv_java_ref131.htm#wp1040342">176</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1181714"> </a><div class="pCellBody">
+<a  href="rv_java_ref132.htm#wp1039911"><code class="cCode">TibrvTransport.destroy()</code></a>
+</div>
+</td>
+    <td><a name="wp1181719"> </a><div class="pCellBody">
+<a  href="rv_java_ref132.htm#wp1040010">Destroy a transport.</a>
+</div>
+</td>
+    <td><a name="wp1181724"> </a><div class="pCellBody">
+<a  href="rv_java_ref132.htm#wp1039911">177</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1181729"> </a><div class="pCellBody">
+<a  href="rv_java_ref133.htm#wp1070914"><code class="cCode">TibrvTransport.isValid()</code></a>
+</div>
+</td>
+    <td><a name="wp1181734"> </a><div class="pCellBody">
+<a  href="rv_java_ref133.htm#wp1039885">Test validity of a transport.</a>
+</div>
+</td>
+    <td><a name="wp1181739"> </a><div class="pCellBody">
+<a  href="rv_java_ref133.htm#wp1070914">178</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1181744"> </a><div class="pCellBody">
+<a  href="rv_java_ref134.htm#wp1118664"><code class="cCode">TibrvTransport.getDescription()</code></a>
+</div>
+</td>
+    <td><a name="wp1181748"> </a><div class="pCellBody">
+<a  href="rv_java_ref134.htm#wp1118669">Extract the program description parameter from a transport.</a>
+</div>
+</td>
+    <td><a name="wp1181754"> </a><div class="pCellBody">
+<a  href="rv_java_ref134.htm#wp1118664">179</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1181759"> </a><div class="pCellBody">
+<a  href="rv_java_ref135.htm#wp1040046"><code class="cCode">TibrvTransport.send()</code></a>
+</div>
+</td>
+    <td><a name="wp1181764"> </a><div class="pCellBody">
+<a  href="rv_java_ref135.htm#wp1040095">Send a message.</a>
+</div>
+</td>
+    <td><a name="wp1181769"> </a><div class="pCellBody">
+<a  href="rv_java_ref135.htm#wp1040046">180</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1181774"> </a><div class="pCellBody">
+<a  href="rv_java_ref136.htm#wp1040235"><code class="cCode">TibrvTransport.sendReply()</code></a>
+</div>
+</td>
+    <td><a name="wp1181779"> </a><div class="pCellBody">
+<a  href="rv_java_ref136.htm#wp1040321">Send a reply message.</a>
+</div>
+</td>
+    <td><a name="wp1181784"> </a><div class="pCellBody">
+<a  href="rv_java_ref136.htm#wp1040235">181</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1181789"> </a><div class="pCellBody">
+<a  href="rv_java_ref137.htm#wp1040108"><code class="cCode">TibrvTransport.sendRequest()</code></a>
+</div>
+</td>
+    <td><a name="wp1181794"> </a><div class="pCellBody">
+<a  href="rv_java_ref137.htm#wp1040182">Send a request message and wait for a reply.</a>
+</div>
+</td>
+    <td><a name="wp1181799"> </a><div class="pCellBody">
+<a  href="rv_java_ref137.htm#wp1040108">182</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1181804"> </a><div class="pCellBody">
+<a  href="rv_java_ref138.htm#wp1118418"><code class="cCode">TibrvTransport.setDescription()</code></a>
+</div>
+</td>
+    <td><a name="wp1181808"> </a><div class="pCellBody">
+<a  href="rv_java_ref138.htm#wp1118479">Set the program description parameter of a transport.</a>
+</div>
+</td>
+    <td><a name="wp1181814"> </a><div class="pCellBody">
+<a  href="rv_java_ref138.htm#wp1118418">183</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1181891"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1181853"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1181885"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.equals</code>
+</p>
+<a name="wp1181886"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.getClass</code>
+</p>
+<a name="wp1181887"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.hashCode</code>
+</p>
+<a name="wp1181888"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notify</code>
+</p>
+<a name="wp1185034"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notifyAll</code>
+</p>
+<a name="wp1181889"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.toString</code>
+</p>
+<a name="wp1181890"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.wait</code>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1112455"> </a><h4 class="pHeading3">
+Descendants
+</h4>
+<a name="wp1185598"> </a><p class="pBody">
+<a  href="rv_java_ref139.htm#wp1188011"><code class="cCode">TibrvProcessTransport</code> </a>
+</p>
+<a name="wp1185604"> </a><p class="pBody">
+<a  href="rv_java_ref140.htm#wp1111502"><code class="cCode">TibrvNetTransport</code> </a>
+</p>
+<a name="wp1185608"> </a><p class="pBody">
+<a  href="rv_java_ref141.htm#wp1038873"><code class="cCode">TibrvRvaTransport</code> </a>
+</p>
+<a name="wp1185612"> </a><p class="pBody">
+<a  href="rv_java_ref148.htm#wp1039175"><code class="cCode">TibrvRvdTransport</code> </a>
+</p>
+<a name="wp1185616"> </a><p class="pBody">
+<a  href="rv_java_ref191.htm#wp1084243"><code class="cCode">TibrvCmTransport</code> </a>
+</p>
+<a name="wp1185620"> </a><p class="pBody">
+<a  href="rv_java_ref222.htm#wp1108902"><code class="cCode">TibrvCmQueueTransport</code> </a>
+</p>
+<a name="wp1185597"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1112460"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts68.htm#wp1052644');" onMouseOver="WWHShowPopup('a', 'rv_concepts68.htm#wp1052644', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Transport</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

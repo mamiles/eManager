@@ -1,0 +1,174 @@
+#
+# NAME
+#      $RCSfile: Makefile.general,v $
+# DESCRIPTION
+#      [given below in javadoc format]
+# DELTA
+#      $Revision: 1.34 $
+# CREATED
+#      $Date: 2002/10/23 14:14:41 $
+# COPYRIGHT
+#      Westhawk Ltd
+# TO DO
+#
+
+#
+# DISTRIBDIR is changed in every subdirectory
+#
+
+NO=4_13
+
+ROOTDIR=/project/snmp
+#ROOTDIR=/tmp/snmp$(NO)
+#ROOTDIR=/project/snmp/working/$(USER)
+
+JARDIR=$(ROOTDIR)/jardir
+ORACLEJARDIR=$(ROOTDIR)/jardir
+ZIPDIR=$(ROOTDIR)/zipdir
+
+ZIPFILE=snmp$(NO).zip
+JARFILE=snmp$(NO).jar
+ORACLEJARFILE=snmpOracle$(NO).jar
+
+
+TOPDISTRIBDIR=$(ZIPDIR)
+
+.SUFFIXES:
+.SUFFIXES: .java .class $(SUFFIXES)
+
+OBJ=$(SRC:.java=.class)
+ORACLEOBJ=$(ORACLESRC:.java=.class)
+
+# JDK 1.1.8 setup (servlets)
+SNMP=$(ROOTDIR)
+#SNMP=$(ROOTDIR)/$(JARFILE):$(ROOTDIR)
+
+#
+# XML, xerces.jar can be downloaded from the IBM website:
+# http://alphaworks.ibm.com/tech/xml4j
+#
+
+#
+# HTTPD, this contains the javax.servlet package.
+# The Java Servlet jar(s) can be downloaded from:
+# http://java.sun.com/products/servlet/download.html
+#  
+
+XML=/project/xml4j_3_1_1/xerces.jar
+HTTPD=/var/tomcat4/common/lib/servlet.jar
+JME=/project/jme/j2me_cldc_palm/lib/classes/
+NETSCAPE=/usr/lib/netscape/java/classes/java40.jar
+TABLE=/project/classes1.1/tablelayout.jar
+#TABLE=$(ROOTDIR)/tablelayout.jar
+
+# JDK 1.2.2 setup (javadoc)
+JAVA_HOME122=/opt/jdk1.2.2
+CLASSPATH122=$(TABLE):$(SNMP)
+
+# JDK 1.3.0 setup (javadoc)
+JAVA_HOME130=/opt/jdk1.3
+CLASSPATH130=$(TABLE):$(SNMP)
+#CLASSPATH130=$(TABLE):$(SNMP):$(XML):$(HTTPD):$(NETSCAPE)
+
+# JDK 1.4.0 setup (test if it compiles)
+JAVA_HOME140=/opt/jdk1.4.0_01
+CLASSPATH140=$(TABLE):$(SNMP)
+
+
+#
+# set the default to 1.3.0
+#
+
+#.CLASSPATH=$(CLASSPATH122)
+#.JAVA_HOME=$(JAVA_HOME122)
+
+.CLASSPATH=$(CLASSPATH130)
+.JAVA_HOME=$(JAVA_HOME130)
+
+#.CLASSPATH=$(CLASSPATH140)
+#.JAVA_HOME=$(JAVA_HOME140)
+
+CLASSPATH=$(.CLASSPATH)
+JAVA_HOME=$(.JAVA_HOME)
+
+SH=/bin/sh
+
+JAVA=javac
+JFLAGS=-g -deprecation
+#JFLAGS= -O
+KVMFLAGS=-g:none -bootclasspath $(JME)
+
+.java:
+	$(JAVA_HOME)/bin/$(JAVA) -classpath $(CLASSPATH) $(JFLAGS) $<
+
+.java.class:
+	$(JAVA_HOME)/bin/$(JAVA) -classpath $(CLASSPATH) $(JFLAGS) $<
+
+
+all: $(OBJ)
+	@if [ -n "$(DIRS)" ]; then \
+		make dir ; \
+	fi
+
+dir:
+	@for i in $(DIRS); do \
+		(cd $$i ; echo "Making in $$i .." ; make all); \
+	done 
+
+#
+# Don't use install directly, only via ./make_distrib
+#
+
+INSTALL_ORACLEJAR=$(TOORACLEJAR:%=$(DISTRIBDIR)/%)
+INSTALL_JAR=$(TOJAR:%=$(DISTRIBDIR)/%)
+INSTALL_ZIP=$(TOZIP:%=$(DISTRIBDIR)/%)
+
+.jar: $(INSTALL_JAR)
+	-cp *.class $(DISTRIBDIR)
+	@if [ -n "$(JARDIRS)" ]; then \
+		make DISTRIBDIR=$(DISTRIBDIR)/$$i .jardir ; \
+	fi
+
+.jardir:
+	@for i in $(JARDIRS); do \
+		(cd $$i ; echo "Making in $$i .." ; mkdir -p $(DISTRIBDIR)/$$i ; make DISTRIBDIR=$(DISTRIBDIR)/$$i .jar); \
+	done
+
+
+.oraclejar: $(INSTALL_ORACLEJAR)
+#	-cp *.class $(DISTRIBDIR)
+	@if [ -n "$(ORACLEJARDIRS)" ]; then \
+		make DISTRIBDIR=$(DISTRIBDIR)/$$i .oraclejardir ; \
+	fi
+
+.oraclejardir:
+	@for i in $(ORACLEJARDIRS); do \
+		(cd $$i ; echo "Making in $$i .." ; mkdir -p $(DISTRIBDIR)/$$i ; make DISTRIBDIR=$(DISTRIBDIR)/$$i .oraclejar); \
+	done
+
+
+.zip: $(INSTALL_ZIP)
+	@if [ -n "$(ZIPDIRS)" ]; then \
+    make DISTRIBDIR=$(DISTRIBDIR)/$$i .zipdir ; \
+	fi
+
+.zipdir:
+	@for i in $(ZIPDIRS); do \
+		(cd $$i ; echo "Making in $$i .." ; mkdir -p $(DISTRIBDIR)/$$i ; make DISTRIBDIR=$(DISTRIBDIR)/$$i .zip); \
+	done
+
+$(DISTRIBDIR)/%: %
+	@rm -f $(DISTRIBDIR)/$<
+	cp $< $(DISTRIBDIR)
+
+clean: 
+	@if [ -n "$(DIRS)" ]; then \
+		make cleandir ; \
+	fi
+	@rm -f *.class *~ *% *.bak *.~jav
+
+cleandir:
+	@for i in $(DIRS); do \
+		(cd $$i ; echo "Making in $$i .." ; make clean); \
+	done
+

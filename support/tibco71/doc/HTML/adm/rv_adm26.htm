@@ -1,0 +1,411 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Services</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;4	 Rendezvous Daemon (rvd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1180385"> </a><h2 class="pNewHTMLPage">
+Services
+</h2>
+<hr />
+<a name="wp1169061"> </a><div class="pCellBody">
+On this page <code class="cCode">rvd</code> displays information about the network services it mediates for its clients.
+</div>
+<a name="wp1168793"> </a><p class="pBody">
+To display this page, click <b class="cBold">Services</b> in the left margin of any page of the <code class="cCode">rvd</code> browser administration interface.
+</p>
+<a name="wp1168797"> </a><div class="pFigureTitle">
+Figure&#160;5   rvd Services Page</div><div align="center"><img src="images/rv_adma39.gif" height="98" width="552" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1180897"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1180869"> </a><p class="pBody">
+&#160;
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1180873"> </a><div class="pCellHeading">
+Item
+</div>
+</th>
+    <th><a name="wp1180875"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1180877"> </a><div class="pCellBody">
+<em class="cEmphasis">table rows</em>
+</div>
+</td>
+    <td><a name="wp1180879"> </a><div class="pCellBody">
+Each row of the table describes one network service&#151;that is, a UDP or PGM service on a particular network interface.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1180881"> </a><div class="pCellBody">
+Service
+</div>
+</td>
+    <td><a name="wp1180883"> </a><div class="pCellBody">
+The UDP or PGM service number. Click this number to view <a  href="rv_adm26.htm#wp1180898">Service Detail</a> page.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1180885"> </a><div class="pCellBody">
+Network
+</div>
+</td>
+    <td><a name="wp1180887"> </a><div class="pCellBody">
+The network number.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1180889"> </a><div class="pCellBody">
+Hosts
+</div>
+</td>
+    <td><a name="wp1261565"> </a><div class="pCellBody">
+The number of <em class="cEmphasis">other</em> host computers with Rendezvous daemons that communicate on this network and service.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1180894"> </a><div class="pCellBody">
+Clients
+</div>
+</td>
+    <td><a name="wp1180896"> </a><div class="pCellBody">
+The number of client transports that use this network and service.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1180898"> </a><h3 class="pHeading2">
+Service Detail
+</h3>
+<a name="wp1180905"> </a><p class="pBody">
+This page displays additional detail about a particular network service.
+</p>
+<a name="wp1180909"> </a><p class="pBody">
+To display this page, click any service number in the <a  href="rv_adm26.htm#wp1180385">Services</a> page.
+</p>
+<a name="wp1180913"> </a><div class="pFigureTitle">
+Figure&#160;6   rvd Service Detail Page</div><div align="center"><img src="images/rv_adma54.gif" height="477" width="552" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1261861"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1261779"> </a><p class="pBody">
+ (Sheet 1 of 3)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1261783"> </a><div class="pCellHeading">
+Item
+</div>
+</th>
+    <th><a name="wp1261785"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1261787"> </a><div class="pCellBody">
+Service
+</div>
+</td>
+    <td><a name="wp1261789"> </a><div class="pCellBody">
+The UDP or PGM service number.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1261791"> </a><div class="pCellBody">
+Network
+</div>
+</td>
+    <td><a name="wp1261793"> </a><div class="pCellBody">
+The network number.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1261795"> </a><div class="pCellBody">
+Reliability
+</div>
+</td>
+    <td><a name="wp1261797"> </a><div class="pCellBody">
+<code class="cCode">rvd</code> retains outbound message data for retransmission. After this interval, it discards the data. For complete details, see <a  href="rv_adm21.htm#wp1146262">Reliability and Message Retention Time</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1261802"> </a><div class="pCellBody">
+Creation
+</div>
+</td>
+    <td><a name="wp1261804"> </a><div class="pCellBody">
+Date and time that this service became active.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1261806"> </a><div class="pCellBody">
+Clients
+</div>
+</td>
+    <td><a name="wp1261811"> </a><div class="pCellBody">
+The number of client transports that use this network service. To view the <a  href="rv_adm25.htm#wp1168965">Clients</a> page, click this item.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1261813"> </a><div class="pCellBody">
+Hosts
+</div>
+</td>
+    <td><a name="wp1261818"> </a><div class="pCellBody">
+The number of <em class="cEmphasis">other</em> host computers with Rendezvous daemons that communicate on this network and service. To view the <a  href="rv_adm26.htm#wp1261863">Hosts</a> page, click this item.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1261823"> </a><div class="pCellBody">
+Subscriptions
+</div>
+</td>
+    <td><a name="wp1261825"> </a><div class="pCellBody">
+The number of subscriptions registered with the daemon on this network service. To view the list of subscriptions, click this item.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1261827"> </a><div class="pCellBody">
+Inbound Rates
+</div>
+</td>
+    <td><a name="wp1261829"> </a><div class="pCellBody">
+The rate (per second) at which inbound messages, bytes and packets arrived on this network service during the most recent sampling period.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1261831"> </a><div class="pCellBody">
+Outbound Rates
+</div>
+</td>
+    <td><a name="wp1261833"> </a><div class="pCellBody">
+The rate (per second) at which the daemon sent outbound messages, bytes and packets on this network service during the most recent sampling period.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1261835"> </a><div class="pCellBody">
+Information Alerts
+</div>
+</td>
+    <td><a name="wp1261840"> </a><div class="pCellBody">
+This panel displays the 50 most recent <a  href="javascript:WWHClickedPopup('a', 'rv_concepts164.htm#wp1038437');" onMouseOver="WWHShowPopup('a', 'rv_concepts164.htm#wp1038437', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">DATALOSS</code></a> advisories.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1261842"> </a><div class="pCellBody">
+Inbound Totals
+</div>
+</td>
+    <td><a name="wp1261844"> </a><div class="pCellBody">
+Cumulative statistics about inbound data; running totals since the start of the daemon process:
+</div>
+<div class="pSmartList1"><ul>
+<a name="wp1261845"> </a><div class="pSmartList1"><li >msgs&#151;number of messages</li></div>
+
+<a name="wp1261846"> </a><div class="pSmartList1"><li >bytes&#151;number of bytes</li></div>
+
+<a name="wp1261847"> </a><div class="pSmartList1"><li >pkts&#151;number of packets</li></div>
+
+<a name="wp1261848"> </a><div class="pSmartList1"><li >missed&#151;number of missed packets (detected as a packet sequence gap)</li></div>
+
+<a name="wp1261849"> </a><div class="pSmartList1"><li >lost MC&#151;number of multicast packets lost because the sending daemon could not retransmit them</li></div>
+
+<a name="wp1261850"> </a><div class="pSmartList1"><li >lost PTP&#151;number of point-to-point packets lost because the sending daemon could not retransmit them</li></div>
+
+</ul></div>
+
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1261852"> </a><div class="pCellBody">
+Outbound Totals
+</div>
+</td>
+    <td><a name="wp1261854"> </a><div class="pCellBody">
+Cumulative statistics about outbound data; running totals since the start of the daemon process:
+</div>
+<div class="pSmartList1"><ul>
+<a name="wp1261855"> </a><div class="pSmartList1"><li >msgs&#151;number of messages</li></div>
+
+<a name="wp1261856"> </a><div class="pSmartList1"><li >bytes&#151;number of bytes</li></div>
+
+<a name="wp1261857"> </a><div class="pSmartList1"><li >pkts&#151;number of packets</li></div>
+
+<a name="wp1261858"> </a><div class="pSmartList1"><li >retrans&#151;number of packets retransmitted (multicast and point-to-point)</li></div>
+
+<a name="wp1261859"> </a><div class="pSmartList1"><li >lost MC&#151;number of multicast packets the daemon could not retransmit (too old)</li></div>
+
+<a name="wp1261860"> </a><div class="pSmartList1"><li >lost PTP&#151;number of point-to-point packets the daemon could not retransmit (too old)</li></div>
+
+</ul></div>
+
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1261863"> </a><h3 class="pHeading2">
+Hosts
+</h3>
+<a name="wp1261867"> </a><p class="pBody">
+This page displays Rendezvous daemon process instances on other host computers that communicate on the same network and service. From this page, you can view the service pages of those other daemons.
+</p>
+<a name="wp1258293"> </a><p class="pBody">
+To display this page, click the word <code class="cCode">hosts</code> in the <a  href="rv_adm26.htm#wp1180898">Service Detail</a> page.
+</p>
+<a name="wp1298558"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/note.gif" border="0" /></td>
+    <td><a name="wp1303472"> </a><p class="pBody">
+This page lists any Rendezvous communications daemon host, whether the process is <code class="cCode">rvd</code>, <code class="cCode">rvsd</code>, <code class="cCode">rvrd</code>, or <code class="cCode">rvsrd</code>.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1259402"> </a><div class="pFigureTitle">
+Figure&#160;7   rvd Hosts Page</div><div align="center"><img src="images/rv_adma42.gif" height="98" width="552" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1258387"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1258303"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1258307"> </a><div class="pCellHeading">
+Item
+</div>
+</th>
+    <th><a name="wp1258309"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1260807"> </a><div class="pCellBody">
+<em class="cEmphasis">host</em>
+</div>
+</td>
+    <td><a name="wp1260809"> </a><div class="pCellBody">
+Each row of this table represents one Rendezvous daemon process and its host computer.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1258311"> </a><div class="pCellBody">
+Hostname
+</div>
+</td>
+    <td><a name="wp1258313"> </a><div class="pCellBody">
+The name of the computer where the other daemon is running.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1258315"> </a><div class="pCellBody">
+IP Address
+</div>
+</td>
+    <td><a name="wp1260117"> </a><div class="pCellBody">
+The IP address of the computer where the other daemon is running.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1258319"> </a><div class="pCellBody">
+Version
+</div>
+</td>
+    <td><a name="wp1258321"> </a><div class="pCellBody">
+The version of the Rendezvous daemon on the other host.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1258326"> </a><div class="pCellBody">
+Serial
+</div>
+</td>
+    <td><a name="wp1258328"> </a><div class="pCellBody">
+The serial number of the license for that daemon.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1258330"> </a><div class="pCellBody">
+Uptime
+</div>
+</td>
+    <td><a name="wp1324476"> </a><p class="pBody">
+The elapsed time that the daemon has been using the common UDP or PGM service.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

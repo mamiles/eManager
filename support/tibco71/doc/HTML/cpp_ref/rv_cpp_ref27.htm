@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvMsg()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1023389"> </a><h2 class="pNewHTMLPage">
+TibrvMsg()
+</h2>
+<hr />
+<a name="wp1023390"> </a><p class="pSyntaxType">
+Constructor
+</p>
+<a name="wp1023392"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCodeBold">TibrvMsg</code>(tibrv_u32 initialSize=512);&#160;&#160;&#160;&#160;// Declare empty variable.<a name="wp1023393"> </a>
+<a name="wp1023424"> </a>
+<code class="cCodeBold">TibrvMsg</code>(const <a  href="rv_cpp_ref26.htm#wp1055151"><code class="cCode">TibrvMsg</code></a>&amp; msg);&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;// Copy constructor.<a name="wp1024604"> </a>
+<a name="wp1024615"> </a>
+<code class="cCodeBold">TibrvMsg</code>(const void* bytes);&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;// Create from bytes.<a name="wp1024616"> </a>
+<a name="wp1119274"> </a>
+<code class="cCodeBold">TibrvMsg</code>(<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref23.htm#wp1069469');" onMouseOver="WWHShowPopup('e', 'rv_c_ref23.htm#wp1069469', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvMsg</code></a> Cmsg,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;// Create from C handle.<a name="wp1119280"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;tibrv_bool detached);<a name="wp1172359"> </a>
+</pre></div>
+<a name="wp1024617"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1023395"> </a><p class="pBody">
+Create a message object.
+</p>
+<a name="wp1023396"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1151382"> </a><p class="pBody">
+The first form of this constructor merely declares a C++ variable. It does not allocate storage; it does not create a C message object. (Subsequent operations on the variable automatically allocates storage and create the inner structure.) This form works efficiently with methods such as <a  href="rv_cpp_ref171.htm#wp1040108"><code class="cCode">TibrvTransport::sendRequest()</code></a>, which requires a variable to receive its reply message and overwrites the contents of that variable.
+</p>
+<a name="wp1151400"> </a><p class="pBody">
+The other forms of this constructor simultaneously declare a variable, allocate storage, create an object with inner structure, and store the status code in the object. The status code indicates any conditions that might make the message object unusable; if the object is unusable, any subsequent operation on the message will return the same status code.
+</p>
+<a name="wp1151424"> </a><p class="pBody">
+None of the constructors place address information (for example, the subject) on the new message object.
+</p>
+<a name="wp1151431"> </a><p class="pBody">
+This class has no <code class="cCode">destroy()</code> method; use the destructor instead (see <a  href="rv_cpp_ref28.htm#wp1176105"><code class="cCode">~TibrvMsg()</code> </a>).</p><div align="left">
+<table border="1">
+  <caption><a name="wp1119342"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1119346"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1119348"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1119350"> </a><div class="pCellBody">
+<code class="cCode">initialSize</code>
+</div>
+</td>
+    <td><a name="wp1119352"> </a><div class="pCellBody">
+Optional.
+</div>
+<a name="wp1151439"> </a><div class="pCellBody">
+This form of the constructor declares an empty message variable. When a subsequent operation triggers storage allocation, allocate a storage block of this size (in bytes).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1119354"> </a><div class="pCellBody">
+<code class="cCode">msg</code>
+</div>
+</td>
+    <td><a name="wp1119356"> </a><div class="pCellBody">
+Create an independent copy of this message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1119358"> </a><div class="pCellBody">
+<code class="cCode">bytes</code>
+</div>
+</td>
+    <td><a name="wp1119360"> </a><div class="pCellBody">
+Create a message with fields populated from this byte array. The new message is completely independent of the byte array.
+</div>
+<a name="wp1119361"> </a><div class="pCellBody">
+For example, programs can create such byte arrays from messages using the method <a  href="rv_cpp_ref42.htm#wp1157526"><code class="cCode">TibrvMsg::getAsBytes()</code></a>, and store them in files; after reading them from such files, programs can reconstruct a message from its byte array.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1119373"> </a><div class="pCellBody">
+<code class="cCode">Cmsg</code>
+</div>
+</td>
+    <td><a name="wp1151448"> </a><div class="pCellBody">
+Create a C++ message object that embeds this C message handle. This form of the constructor does not copy the C message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1119366"> </a><div class="pCellBody">
+<code class="cCode">detached</code>
+</div>
+</td>
+    <td><a name="wp1119371"> </a><div class="pCellBody">
+Specify whether the <a  href="rv_cpp_ref27.htm#wp1119373"><code class="cCode">Cmsg</code></a> is detached&#151;that is, whether the program owns the message.
+</div>
+<a name="wp1119415"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_TRUE</code> indicates a detached inbound message, or a message created in the program. The destructor also destroys the embedded C message.
+</div>
+<a name="wp1119406"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_FALSE</code> indicates an attached inbound message. The destructor does not destroy the embedded C message.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1176075"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1176079"> </a><p class="pBody">
+<a  href="rv_cpp_ref39.htm#wp1147710"><code class="cCode">TibrvMsg::createCopy()</code> </a>
+</p>
+<a name="wp1176083"> </a><p class="pBody">
+<a  href="rv_cpp_ref40.htm#wp1119797"><code class="cCode">TibrvMsg::detach()</code> </a>
+</p>
+<a name="wp1176087"> </a><p class="pBody">
+<a  href="rv_cpp_ref42.htm#wp1157526"><code class="cCode">TibrvMsg::getAsBytes()</code> </a>
+</p>
+<a name="wp1176091"> </a><p class="pBody">
+<a  href="rv_cpp_ref60.htm#wp1119507"><code class="cCode">TibrvMsg::getStatus()</code> </a>
+</p>
+<a name="wp1176095"> </a><p class="pBody">
+<a  href="rv_cpp_ref56.htm#wp1154780"><code class="cCode">TibrvMsg::getHandle()</code> </a>
+</p>
+<a name="wp1176102"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref23.htm#wp1069469');" onMouseOver="WWHShowPopup('e', 'rv_c_ref23.htm#wp1069469', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvMsg</code> </a> in <em class="cEmphasis">TIBCO Rendezvous C Reference</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

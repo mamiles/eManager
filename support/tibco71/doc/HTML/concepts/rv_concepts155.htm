@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Step 4: Choose the Intervals</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;15	 Developing Fault-Tolerant Programs";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1058304"> </a><h2 class="pNewHTMLPage">
+Step 4: Choose the Intervals
+</h2>
+<hr />
+<a name="wp1058308"> </a><p class="pBody">
+<a  href="rv_concepts155.htm#wp1058325">Table&#160;40</a> summarizes the four interval parameters that regulate the behavior of Rendezvous fault tolerance software. It is important that you choose appropriate values for these interval parameters.
+</p>
+<a name="wp1058312"> </a><p class="pBody">
+Choosing the intervals requires a balance among several considerations:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1058313"> </a><div class="pSmartList1"><li >The need for uninterrupted service.</li></div>
+
+<a name="wp1058314"> </a><p class="pBodyRelative">
+Ideally, critical applications must run with only minimal interruptions in service. Realistically, it takes time to discover a service interruption. You can reduce this time to the minimum that your network can support, but at the cost of network capacity and computer time.
+</p>
+<a name="wp1058315"> </a><div class="pSmartList1"><li >Network transmission time.</li></div>
+
+<a name="wp1058316"> </a><p class="pBodyRelative">
+It takes time for heartbeat messages to traverse the network, and that time varies with distance and network load. This fact limits the minimum achievable heartbeat interval, which in turn limits the minimum achievable activation interval.
+</p>
+<a name="wp1058317"> </a><div class="pSmartList1"><li >Finite network capacity.</li></div>
+
+<a name="wp1058318"> </a><p class="pBodyRelative">
+The network that carries heartbeat messages also carries application data. Smaller heartbeat intervals imply more frequent heartbeats. Avoid cluttering the network with too-frequent heartbeat messages.
+</p>
+</ul></div>
+
+<a name="wp1058370"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1058325"> </a><div class="pTableTitle">
+Table&#160;40   Fault Tolerance Interval Parameters (Sheet 1 of 2)
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1058329"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1058331"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1058336"> </a><div class="pCellBody">
+<code class="cCode">heartbeatInterval</code>
+</div>
+</td>
+    <td><a name="wp1058338"> </a><div class="pCellBody">
+Each active member broadcasts a sequence of heartbeat messages to inform the other group members that it is still active. The heartbeat interval determines the time between heartbeat messages.
+</div>
+<a name="wp1058339"> </a><div class="pCellBody">
+Parameter to the member creation call.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1058341"> </a><div class="pCellBody">
+<code class="cCode">activationInterval</code>
+</div>
+</td>
+    <td><a name="wp1058343"> </a><div class="pCellBody">
+Inactive members track heartbeat messages from each active member. When the time since the last heartbeat from an active member reaches this activation interval, Rendezvous fault tolerance software instructs the ranking inactive member to activate.
+</div>
+<a name="wp1058347"> </a><div class="pCellBody">
+Parameter to the member creation call.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1058352"> </a><div class="pCellBody">
+<code class="cCode">preparationInterval</code>
+</div>
+</td>
+    <td><a name="wp1058354"> </a><div class="pCellBody">
+Some programs require advance notice to prepare before activation. When the time since the last heartbeat from an active member equals this preparation interval, Rendezvous fault tolerance software issues a hint to the ranking inactive member, so it can prepare to activate.
+</div>
+<a name="wp1058358"> </a><div class="pCellBody">
+Parameter to the member creation call.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1058363"> </a><div class="pCellBody">
+<code class="cCode">lostInterval</code>
+</div>
+</td>
+    <td><a name="wp1058365"> </a><div class="pCellBody">
+Monitor functions passively track heartbeat messages from active members of a fault tolerance group. When the time since the last heartbeat from an active member reaches this lost interval, Rendezvous fault tolerance software considers that member lost, and calls the monitor callback, passing it the current number of active members.
+</div>
+<a name="wp1058369"> </a><div class="pCellBody">
+Supply to the start monitor creation call.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1058372"> </a><h3 class="pHeading2">
+First: Determine the Activation Interval
+</h3>
+<a name="wp1058373"> </a><p class="pBody">
+The activation interval influences the longest service interruption in two situations:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1058374"> </a><div class="pSmartList1"><li >When a new member joins a fault tolerance group, the initialization phase requires one activation interval before it can become active.</li></div>
+
+<a name="wp1058375"> </a><div class="pSmartList1"><li >In most failure situations the maximum service interruption is identical to the activation interval (assuming an inactive member exists).</li></div>
+
+</ul></div>
+
+<a name="wp1058376"> </a><p class="pBody">
+In each case, you must determine the amount of time that can elapse before interrupted service becomes a problem. Use an activation interval equal to that time.
+</p>
+<a name="wp1058377"> </a><h4 class="pHeading3">
+Recommended Lower Bound
+</h4>
+<a name="wp1058381"> </a><p class="pBody">
+We recommend an activation interval no less than 3 seconds, though Rendezvous fault tolerance software accepts lower values. However, if your application is distributed across a WAN, we recommend an activation interval no less than 10 seconds.
+</p>
+<a name="wp1058383"> </a><h3 class="pHeading2">
+Second: Determine the Heartbeat Interval
+</h3>
+<a name="wp1058384"> </a><h4 class="pHeading3">
+Recommended Lower Bounds
+</h4>
+<a name="wp1058388"> </a><p class="pBody">
+We recommend a heartbeat interval no lower than 1 second, though Rendezvous fault tolerance software accepts lower values.
+</p>
+<a name="wp1058389"> </a><p class="pBody">
+However, wide-area links transmit heartbeats more slowly (and at greater cost) than local networks. If your application is distributed across a WAN, we recommend a heartbeat interval no less than 2 seconds.
+</p>
+<a name="wp1058390"> </a><h4 class="pHeading3">
+Recommended Relationship between Activation and Heartbeat Interval
+</h4>
+<a name="wp1058391"> </a><p class="pBody">
+The heartbeat interval must be <em class="cEmphasis">strictly less</em> than the activation interval.
+</p>
+<a name="wp1058392"> </a><p class="pBody">
+Our experience indicates that in most situations, the optimal heartbeat interval is slightly less than one third of the activation interval. For example, an activation interval of 10 seconds implies a heartbeat interval of 3 seconds.
+</p>
+<a name="wp1058393"> </a><p class="pBody">
+However, messages traversing wide-area links show greater variability in arrival time (compared with local networks). If your application is distributed across a WAN, we recommend a heartbeat interval that is less than one fifth of the activation interval. For example, an activation interval of 30 seconds implies a heartbeat interval of 6 seconds or less.
+</p>
+<a name="wp1058394"> </a><h4 class="pHeading3">
+Conserving Network Capacity
+</h4>
+<a name="wp1058395"> </a><p class="pBody">
+It is important to conserve network capacity (bandwidth). Each heartbeat is a message. Each active member sends one message at every heartbeat interval. If the heartbeat interval is too small, then your program may overload the network with heartbeat messages.
+</p>
+<a name="wp1058396"> </a><p class="pBody">
+Once you have established the activation and heartbeat intervals for your application, apply this reality check. Calculate the number of heartbeat messages that all the active members of your program will send. Does this figure still leave network capacity for other programs? If not, increase the heartbeat and activation intervals accordingly.
+</p>
+<a name="wp1058397"> </a><p class="pBody">
+For example, if the heartbeat interval is 0.1 seconds, and an application requires one active member, then the network must carry 100 messages per second to sustain the heartbeat signal. If the application requires 50 active members, then the network must carry 5000 messages per second to sustain the heartbeat signals.
+</p>
+<a name="wp1058400"> </a><h3 class="pHeading2">
+Third: Determine the Preparation Interval
+</h3>
+<a name="wp1058401"> </a><p class="pBody">
+The last step is to determine whether the program requires time to prepare before it can activate, and if so, the length of time it needs.
+</p>
+<a name="wp1058402"> </a><p class="pBody">
+If the program needs no preparation time, then supply zero as the preparation interval.
+</p>
+<a name="wp1058403"> </a><p class="pBody">
+If the program does need preparation time to complete set-up tasks, estimate the length of time needed. Subtract that time from the activation interval to obtain the preparation interval.
+</p>
+<a name="wp1058404"> </a><h4 class="pHeading3">
+Recommended Relationship between Preparation and Activation Interval
+</h4>
+<a name="wp1058405"> </a><p class="pBody">
+If non-zero, the preparation interval must be strictly greater than the heartbeat interval, and strictly less than the activation interval. We recommend that you choose a preparation interval that is greater than twice the heartbeat interval.
+</p>
+<a name="wp1058406"> </a><p class="pBody">
+For programs that require preparation time, we recommend a preparation interval no less than 75% of the activation interval. For example, an activation interval of 10 seconds implies a preparation interval of 7.5&#8211;9.5 seconds. Smaller preparation intervals may increase the rate of false-positive prepare-to-activate hints.
+</p>
+<a name="wp1058408"> </a><h3 class="pHeading2">
+For Monitors: Determine the Lost Interval
+</h3>
+<a name="wp1058409"> </a><p class="pBody">
+When monitoring a fault tolerance group, the lost interval argument must equal the activation interval of the group.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

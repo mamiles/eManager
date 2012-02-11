@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>QUEUE.LIMIT_EXCEEDED</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Appendix&#160;A	 System Advisory Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1064290"> </a><h2 class="pNewHTMLPage">
+QUEUE.LIMIT_EXCEEDED
+</h2>
+<hr />
+<a name="wp1064291"> </a><p class="pSyntaxType">
+Advisory
+</p>
+<a name="wp1064292"> </a><h4 class="pHeading3">
+Subject Name Syntax
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+_RV.WARN.SYSTEM.QUEUE.LIMIT_EXCEEDED.<code class="cCodeItalic">&lt;queue_name&gt;</code><a name="wp1064293"> </a>
+</pre></div>
+<a name="wp1064294"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1064295"> </a><p class="pBody">
+An event queue exceeded its event limit, discarding an event.
+</p>
+<a name="wp1064296"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1064298"> </a><p class="pBody">
+When the queue has a name, it appears as the <code class="cCodeItalic">&lt;queue_name&gt;</code> element of the advisory subject; otherwise a default queue name appears in that position.
+</p>
+<a name="wp1064299"> </a><p class="pBody">
+The process transport presents this advisory.
+</p>
+<a name="wp1064300"> </a><p class="pBody">
+If a program is listening for this advisory, the event driver places it on the queue associated with the listener event. We strongly recommend using a queue that never discards an event; the default queue is a good choice for this purpose.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

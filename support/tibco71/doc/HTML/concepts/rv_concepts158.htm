@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Advisory Messages</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Appendix&#160;A	 System Advisory Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1052829"> </a><h2 class="pNewHTMLPage">
+Advisory Messages
+</h2>
+<hr />
+<a name="wp1052837"> </a><p class="pBody">
+Rendezvous software presents asynchronous advisory messages to Rendezvous programs. Advisory messages indicate errors, warnings and other information.
+</p>
+<a name="wp1052838"> </a><p class="pBody">
+In contrast with status codes (which indicate success or failure <em class="cEmphasis">within</em> a specific Rendezvous call), asynchronous advisory messages notify programs of events that occur <em class="cEmphasis">outside</em> of the program&#8217;s direct flow of control&#151;for example, the program is processing inbound messages too slowly, causing the daemon&#8217;s message queue to overflow.
+</p>
+<a name="wp1095670"> </a><h3 class="pHeading2">
+Advisory Summary
+</h3>
+<a name="wp1095679"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1095551"> </a><div class="pTableTitle">
+Table&#160;41   Rendezvous System Advisories&#160;
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1095557"> </a><div class="pCellHeading">
+Advisory Message
+</div>
+</th>
+    <th><a name="wp1095559"> </a><div class="pCellHeading">
+Class
+</div>
+</th>
+    <th><a name="wp1095561"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1095566"> </a><div class="pCellBody">
+<a  href="rv_concepts160.htm#wp1047085"><code class="cCode">CLIENT.SLOWCONSUMER</code></a>
+</div>
+</td>
+    <td><a name="wp1095568"> </a><div class="pCellBody">
+<code class="cCode">ERROR</code>
+</div>
+</td>
+    <td><a name="wp1095573"> </a><div class="pCellBody">
+<a  href="rv_concepts160.htm#wp1047085">245</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1095578"> </a><div class="pCellBody">
+<a  href="rv_concepts161.htm#wp1063676"><code class="cCode">CLIENT.FASTPRODUCER</code></a>
+</div>
+</td>
+    <td><a name="wp1095580"> </a><div class="pCellBody">
+<code class="cCode">WARN</code>
+</div>
+</td>
+    <td><a name="wp1095585"> </a><div class="pCellBody">
+<a  href="rv_concepts161.htm#wp1063676">246</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1095590"> </a><div class="pCellBody">
+<a  href="rv_concepts162.htm#wp1047104"><code class="cCode">CLIENT.NOMEMORY</code></a>
+</div>
+</td>
+    <td><a name="wp1095592"> </a><div class="pCellBody">
+<code class="cCode">ERROR</code>
+</div>
+</td>
+    <td><a name="wp1095597"> </a><div class="pCellBody">
+<a  href="rv_concepts162.htm#wp1047104">247</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1095602"> </a><div class="pCellBody">
+<a  href="rv_concepts163.htm#wp1038397"><code class="cCode">LICENSE.EXPIRE</code></a>
+</div>
+</td>
+    <td><a name="wp1095604"> </a><div class="pCellBody">
+<code class="cCode">ERROR, WARN</code>
+</div>
+</td>
+    <td><a name="wp1095609"> </a><div class="pCellBody">
+<a  href="rv_concepts163.htm#wp1038397">248</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1095614"> </a><div class="pCellBody">
+<a  href="rv_concepts164.htm#wp1038437"><code class="cCode">DATALOSS</code></a>
+</div>
+</td>
+    <td><a name="wp1095616"> </a><div class="pCellBody">
+<code class="cCode">ERROR</code>
+</div>
+</td>
+    <td><a name="wp1095621"> </a><div class="pCellBody">
+<a  href="rv_concepts164.htm#wp1038437">249</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1095626"> </a><div class="pCellBody">
+<a  href="rv_concepts165.htm#wp1047150"><code class="cCode">RVD</code></a>
+</div>
+</td>
+    <td><a name="wp1095628"> </a><div class="pCellBody">
+<code class="cCode">WARN, INFO</code>
+</div>
+</td>
+    <td><a name="wp1095633"> </a><div class="pCellBody">
+<a  href="rv_concepts165.htm#wp1047150">251</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1095638"> </a><div class="pCellBody">
+<a  href="rv_concepts166.htm#wp1072685"><code class="cCode">UNREACHABLE.TRANSPORT</code></a>
+</div>
+</td>
+    <td><a name="wp1095640"> </a><div class="pCellBody">
+<code class="cCode">INFO</code>
+</div>
+</td>
+    <td><a name="wp1095645"> </a><div class="pCellBody">
+<a  href="rv_concepts166.htm#wp1072685">252</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1095650"> </a><div class="pCellBody">
+<a  href="rv_concepts167.htm#wp1064290"><code class="cCode">QUEUE.LIMIT_EXCEEDED</code></a>
+</div>
+</td>
+    <td><a name="wp1095652"> </a><div class="pCellBody">
+<code class="cCode">WARN</code>
+</div>
+</td>
+    <td><a name="wp1095657"> </a><div class="pCellBody">
+<a  href="rv_concepts167.htm#wp1064290">253</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1112953"> </a><div class="pCellBody">
+<a  href="rv_concepts168.htm#wp1063810"><code class="cCode">DISPATCHER.THREAD_EXITED</code></a>
+</div>
+</td>
+    <td><a name="wp1112955"> </a><div class="pCellBody">
+<code class="cCode">INFO</code>
+</div>
+</td>
+    <td><a name="wp1112960"> </a><div class="pCellBody">
+<a  href="rv_concepts168.htm#wp1063810">254</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1112965"> </a><div class="pCellBody">
+<a  href="rv_concepts169.htm#wp1112941"><code class="cCode">VC.CONNECTED</code></a>
+</div>
+</td>
+    <td><a name="wp1112967"> </a><div class="pCellBody">
+<code class="cCode">INFO</code>
+</div>
+</td>
+    <td><a name="wp1112972"> </a><div class="pCellBody">
+<a  href="rv_concepts169.htm#wp1112941">255</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1095662"> </a><div class="pCellBody">
+<a  href="rv_concepts170.htm#wp1114062"><code class="cCode">VC.DISCONNECTED</code></a>
+</div>
+</td>
+    <td><a name="wp1095664"> </a><div class="pCellBody">
+<code class="cCode">ERROR, INFO</code>
+</div>
+</td>
+    <td><a name="wp1095669"> </a><div class="pCellBody">
+<a  href="rv_concepts170.htm#wp1114062">256</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1095539"> </a><h3 class="pHeading2">
+Receiving Advisory Messages
+</h3>
+<a name="wp1052862"> </a><p class="pBody">
+Rendezvous programs can receive advisory messages in the same way as any other messages&#151;by listening to subject names. 
+</p>
+<a name="wp1052863"> </a><p class="pBody">
+For example, the subject <code class="cCode">_RV.*.SYSTEM.&gt;</code> matches all advisories related to communications. Programs can also listen more selectively for specific advisories, as appropriate.
+</p>
+<a name="wp1052864"> </a><p class="pBody">
+Advisories related to a specific transport present on that transport. A program that creates several transports might need to listen for advisory messages on each of its transports.
+</p>
+<a name="wp1073564"> </a><p class="pBody">
+Advisories not related to a specific transport present on the intra-process transport.
+</p>
+<a name="wp1052865"> </a><p class="pBody">
+Advisory messages wait for dispatch in the queue that the program designates when creating the listener.
+</p>
+<a name="wp1052869"> </a><p class="pBody">
+(Programs listen for advisory messages using ordinary Rendezvous listening calls, rather than certified listening calls.)
+</p>
+<a name="wp1052871"> </a><h4 class="pHeading3">
+Redirecting Advisories to stderr
+</h4>
+<a name="wp1052875"> </a><p class="pBody">
+Rendezvous software informs programs of exceptional conditions by presenting advisory messages. Error and warning messages indicate situations that could have serious consequences. Rendezvous software protects programs from losing important messages by catching error and warning messages that would otherwise be lost.
+</p>
+<a name="wp1052882"> </a><p class="pBody">
+If Rendezvous software detects an error or warning message, and the program is listening for a matching subject, then Rendezvous software queues it for the appropriate callback function within the program. However, if the program is <em class="cEmphasis">not</em> listening for a matching subject, Rendezvous software intercepts the error or warning message, and redirects it to <code class="cCode">stderr</code> (or equivalent).
+</p>
+<a name="wp1071142"> </a><p class="pBody">
+Informational messages are neither caught nor redirected; the only way to receive them is to listen for them explicitly.
+</p>
+<a name="wp1075418"> </a><p class="pBody">
+Some platforms do not support the concept of <code class="cCode">stderr</code>, or support it only in limited cases. When <code class="cCode">stderr</code> is not supported, error and warning messages are lost unless the program explicitly listens for them. For example, Microsoft Windows operating systems do support <code class="cCode">stderr</code>, but only in console-based applications; they do not support it in GUI (window-based) programs.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

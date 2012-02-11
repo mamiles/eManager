@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Rendezvous Components</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;1	 Product Overview";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1019203"> </a><h2 class="pNewHTMLPage">
+Rendezvous Components
+</h2>
+<hr />
+<a name="wp1019207"> </a><p class="pBody">
+Rendezvous software adds two parts to your current operating environment:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1019211"> </a><div class="pSmartList1"><li >An API library. Each program process links a version of the Rendezvous API library. Other books in the Rendezvous documentation set describe versions of the Rendezvous API for use with several different programming languages.</li></div>
+
+<a name="wp1019218"> </a><div class="pSmartList1"><li >The Rendezvous communications daemon&#151;in most environments, one daemon process runs on each host computer.</li></div>
+
+</ul></div>
+
+<a name="wp1110984"> </a><p class="pBody">
+<a  href="rv_concepts5.htm#wp1110992">Figure&#160;1</a> illustrates the interaction of these two parts in the operating environment. Computer 1 runs program A and a daemon process. Computer 2 runs two programs, B and C, which connect to the network using a single Rendezvous daemon process. All three programs can communicate with one another.
+</p>
+<a name="wp1110992"> </a><div class="pFigureTitle">
+Figure&#160;1   Rendezvous Operating Environment</div><div align="center"><img src="images/rv_conceptsa7.gif" height="394" width="528" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1110996"> </a><p class="pBody">
+Any computer can run any number of Rendezvous programs. Usually all the programs on one computer share the same Rendezvous daemon.
+</p>
+<a name="wp1027672"> </a><h3 class="pHeading2">
+Rendezvous Daemon
+</h3>
+<a name="wp1027649"> </a><p class="pBody">
+Programs depend on the Rendezvous<em class="cEmphasis"> daemon</em>, a background process (<code class="cCode">rvd</code>), for reliable and efficient network communication. The Rendezvous daemon completes the information pathway between Rendezvous program processes across the network. (Usually the daemon runs on the same computer as the program; however, it is possible to connect to a remote daemon.)
+</p>
+<a name="wp1027659"> </a><p class="pBody">
+Programs attempt to connect to a Rendezvous daemon process. If a local daemon process is not yet running, the program starts one automatically and connects to it.
+</p>
+<a name="wp1019310"> </a><p class="pBody">
+The Rendezvous daemon arranges the details of data transport, packet ordering, receipt acknowledgment, retransmission requests, and dispatching information to the correct program processes. The daemon hides all these details from Rendezvous programs.
+</p>
+<a name="wp1019320"> </a><p class="pBody">
+The Rendezvous daemon is nearly invisible to the programs that depend upon it. Programs send and receive information using Rendezvous communications calls, and the Rendezvous daemon does the work of getting information to the right place.
+</p>
+<a name="wp1027588"> </a><p class="pBody">
+For details of the daemon process and its command line, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm20.htm#wp1020072');" onMouseOver="WWHShowPopup('c', 'rv_adm20.htm#wp1020072', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">rvd</code> </a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.
+</p>
+<a name="wp1027591"> </a><h4 class="pHeading3">
+Multiple Daemons
+</h4>
+<a name="wp1027553"> </a><p class="pBody">
+In most situations, each computer runs one Rendezvous daemon process, which serves all the programs running on the same computer. In general, adding multiple daemons does <em class="cEmphasis">not</em> increase performance.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

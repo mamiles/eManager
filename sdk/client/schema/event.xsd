@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by marco matchefts (cisco systems inc) -->
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by marco matchefts (Cisco Systems, Inc.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="eventMgrMsg">
+		<xs:annotation>
+			<xs:documentation>Event Mgr request messages</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="acknowledgeEvent" type="AcknowledgeEventType"/>
+				<xs:element name="unacknowledgeEvent" type="UnacknowledgeEventType"/>
+				<xs:element name="getEventDetails" type="ManagedObjectIdType"/>
+				<xs:element name="retrieveEvents" type="EventSearchCriteriaType"/>
+				<xs:element name="deleteEvents" type="EventDeletionCriteriaType"/>
+				<xs:element name="registerSNMPClient" type="SnmpClient"/>
+				<xs:element name="unregisterSNMPClient" type="SnmpClient"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="eventMgrResp">
+		<xs:annotation>
+			<xs:documentation>Event Mgr response messages</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="getEventDetailsResp">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="emanagerEventDetails" type="EmanagerEventDetailsType" nillable="true"/>
+							<xs:element name="tibcoEventDetails" type="TibcoEventDetailsType" nillable="true"/>
+							<xs:element name="processSequencerEventDetails" type="ProcessSequencerEventDetailsType" nillable="true"/>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="retrieveEventsResp" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="emanagerEventDetails" type="EmanagerEventDetailsType"/>
+							<xs:element name="tibcoEventDetails" type="TibcoEventDetailsType"/>
+							<xs:element name="processSequencerEventDetails" type="ProcessSequencerEventDetailsType"/>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="eventNotificationMsg">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="eventAcknowledgementNotification" type="AcknowledgeEventType"/>
+				<xs:element name="eventUnacknowledgementNotification" type="UnacknowledgeEventType"/>
+				<xs:element name="eventNotification">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="emanagerEventNotification" type="EmanagerEventNotificationType"/>
+							<xs:element name="tibcoEventNotification" type="TibcoEventNotificationType"/>
+							<xs:element name="processSequencerEventNotification" type="ProcessSequencerNotificationType"/>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="AcknowledgeEventType">
+		<xs:sequence>
+			<xs:element name="eventId" type="ManagedObjectIdType"/>
+			<xs:element name="acknowledgement" type="AcknowledgementType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SnmpClient">
+		<xs:sequence>
+			<xs:element name="host" type="xs:string"/>
+			<xs:element name="community" type="xs:string"/>
+			<xs:element name="port" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EmanagerEventDetailsType">
+		<xs:annotation>
+			<xs:documentation>Event Details</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="eventId" type="ManagedObjectIdType"/>
+			<xs:element name="severity" type="EventSeverityType"/>
+			<xs:element name="postTime" type="xs:dateTime"/>
+			<xs:element name="clearTime" type="xs:dateTime" nillable="true"/>
+			<xs:element name="managedObjectId" type="ManagedObjectIdType"/>
+			<xs:element name="acknowledgement" type="AcknowledgementType" nillable="true"/>
+			<xs:element name="displayText" type="DisplayTextType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AcknowledgementType">
+		<xs:sequence>
+			<xs:element name="userId" type="ManagedObjectIdType"/>
+			<xs:element name="date" type="xs:dateTime"/>
+			<xs:element name="comment" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="255"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UnacknowledgeEventType">
+		<xs:sequence>
+			<xs:element name="eventId" type="ManagedObjectIdType"/>
+			<xs:element name="userId" type="ManagedObjectIdType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DateSearchCriteriaType">
+		<xs:sequence>
+			<xs:element name="StartDate" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:dateTime"/>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="EndDate" nillable="true" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:dateTime"/>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NumericSearchCriteriaType">
+		<xs:sequence>
+			<xs:element name="Start" type="xs:long" nillable="true"/>
+			<xs:element name="End" type="xs:long" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StringSearchCriteriaType">
+		<xs:sequence>
+			<xs:element name="SearchString" type="xs:string" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AcknowledgementSearchCriteriaType">
+		<xs:sequence>
+			<xs:element name="UserIdSearchCriteria" type="ManagedObjectIdType" nillable="true" maxOccurs="unbounded"/>
+			<xs:element name="AckTimeSearchCriteria" type="DateSearchCriteriaType" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ObjectKeyType">
+		<xs:restriction base="xs:long"/>
+	</xs:simpleType>
+	<xs:complexType name="ManagedObjectIdType">
+		<xs:sequence>
+			<xs:element name="ObjectType" type="ObjectTypeType"/>
+			<xs:element name="ObjectKey" type="ObjectKeyType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AbstractSearchCriteriaType" abstract="true">
+		<xs:sequence>
+			<xs:element name="postDateSearchCriteria" type="DateSearchCriteriaType" nillable="true"/>
+			<xs:element name="clearDateSearchCriteria" type="DateSearchCriteriaType" nillable="true"/>
+			<xs:element name="emanagerEventIdSearchCriteria" type="NumericSearchCriteriaType" nillable="true"/>
+			<xs:element name="acknowledgementSearchCriteria" type="AcknowledgementSearchCriteriaType" nillable="true"/>
+			<xs:element name="managedObjects" type="ManagedObjectIdType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="severities" type="EventSeverityType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AbstractTibcoSearchCriteriaType" abstract="true">
+		<xs:sequence>
+			<xs:element name="tibcoEventIdSearchCriteria" type="NumericSearchCriteriaType" nillable="true"/>
+			<xs:element name="ruleSearchCriteria" type="StringSearchCriteriaType" nillable="true"/>
+			<xs:element name="testSearchCriteria" type="StringSearchCriteriaType" nillable="true"/>
+			<xs:element name="managementPolicyIds" type="ManagedObjectIdType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TibcoEventSearchCriteriaType">
+		<xs:complexContent>
+			<xs:extension base="AbstractTibcoSearchCriteriaType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TibcoEventDeletionCriteriaType">
+		<xs:complexContent>
+			<xs:extension base="AbstractTibcoSearchCriteriaType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="AbstractProcessSequencerSearchCriteriaType" abstract="true">
+		<xs:sequence>
+			<xs:element name="psEventIdSearchCriteria" type="NumericSearchCriteriaType" nillable="false"/>
+			<xs:element name="psId" type="xs:integer"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProcessSequencerEventSearchCriteriaType">
+		<xs:complexContent>
+			<xs:extension base="AbstractProcessSequencerSearchCriteriaType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProcessSequencerEventDeletionCriteriaType">
+		<xs:complexContent>
+			<xs:extension base="AbstractProcessSequencerSearchCriteriaType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EventSearchCriteriaType">
+		<xs:complexContent>
+			<xs:extension base="AbstractSearchCriteriaType">
+				<xs:sequence>
+					<xs:element name="tibcoSearchCriteria" type="TibcoEventSearchCriteriaType" nillable="true"/>
+					<xs:element name="processSequencerSearchCriteria" type="ProcessSequencerEventSearchCriteriaType" nillable="true"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EventDeletionCriteriaType">
+		<xs:complexContent>
+			<xs:extension base="AbstractSearchCriteriaType">
+				<xs:sequence>
+					<xs:element name="tibcoDeletionCriteria" type="TibcoEventDeletionCriteriaType" nillable="true"/>
+					<xs:element name="processSequencerCriteria" type="ProcessSequencerEventDeletionCriteriaType" nillable="true"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TibcoEventDetailsType">
+		<xs:complexContent>
+			<xs:extension base="EmanagerEventDetailsType">
+				<xs:sequence>
+					<xs:element name="tibcoEventId" type="TibcoEventIdType"/>
+					<xs:element name="rule" type="RuleTextType"/>
+					<xs:element name="test" type="TestTextType"/>
+					<xs:element name="microagentName" type="xs:string"/>
+					<xs:element name="mgmtPolicyId" type="ManagedObjectIdType"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="RuleTextType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="255"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TestTextType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="255"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TibcoEventIdType">
+		<xs:restriction base="xs:long">
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ProcessSequencerEventDetailsType">
+		<xs:complexContent>
+			<xs:extension base="EmanagerEventDetailsType">
+				<xs:sequence>
+					<xs:element name="processSequencerId" type="ProcessSequencerEventIdType"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProcessSequencerEventIdType">
+		<xs:sequence>
+			<xs:element name="processSequencerId" type="xs:long"/>
+			<xs:element name="processSequencerEventId">
+				<xs:simpleType>
+					<xs:restriction base="xs:long">
+						<xs:minInclusive value="0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EventSeverityType">
+		<xs:choice>
+			<xs:element name="Informational" type="xs:integer"/>
+			<xs:element name="Low" type="xs:integer"/>
+			<xs:element name="Medium" type="xs:integer"/>
+			<xs:element name="High" type="xs:integer"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="ObjectTypeType">
+		<xs:choice>
+			<xs:element name="HostAgent" type="xs:integer"/>
+			<xs:element name="ApplicationType" type="xs:integer"/>
+			<xs:element name="ApplicationInstance" type="xs:integer"/>
+			<xs:element name="PhysicalHierarchyContainer" type="xs:integer"/>
+			<xs:element name="ApplicationHierarchyContainer" type="xs:integer"/>
+			<xs:element name="MgmtPolicy" type="xs:integer"/>
+			<xs:element name="Instrumentation" type="xs:integer"/>
+			<xs:element name="UserAccount" type="xs:integer"/>
+			<xs:element name="Event" type="xs:integer"/>
+			<xs:element name="AuditLog" type="xs:integer"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="EmanagerEventNotificationType">
+		<xs:sequence>
+			<xs:element name="notificationType" type="EventNotificationType"/>
+			<xs:element name="eventId" type="ManagedObjectIdType"/>
+			<xs:element name="severity" type="EventSeverityType"/>
+			<xs:element name="time" type="xs:dateTime"/>
+			<xs:element name="managedObjectId" type="ManagedObjectIdType"/>
+			<xs:element name="displayText" type="DisplayTextType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EventNotificationType">
+		<xs:choice>
+			<xs:element name="Post" type="xs:int"/>
+			<xs:element name="Clear" type="xs:int"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:simpleType name="DisplayTextType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="255"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="TibcoEventNotificationType">
+		<xs:complexContent>
+			<xs:extension base="EmanagerEventNotificationType">
+				<xs:sequence>
+					<xs:element name="tibcoEventId" type="TibcoEventIdType"/>
+					<xs:element name="rule" type="RuleTextType"/>
+					<xs:element name="test" type="TestTextType"/>
+					<xs:element name="microagentName" type="xs:string"/>
+					<xs:element name="mgmtPolicyId" type="ManagedObjectIdType"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProcessSequencerNotificationType">
+		<xs:complexContent>
+			<xs:extension base="EmanagerEventNotificationType">
+				<xs:sequence>
+					<xs:element name="processSequencerId" type="ProcessSequencerEventIdType"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

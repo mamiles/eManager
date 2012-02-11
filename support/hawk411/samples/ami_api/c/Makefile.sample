@@ -1,0 +1,99 @@
+#*******************************************************************************
+# File:    Makefile.sample
+#
+# Purpose: This is a sample makefile to build the TIBCO Hawk AMI C API sample
+#          program ami_sample1. This is only a sample makefile and may require
+#          modifications to build correctly with your platform/environment.
+#
+#          Check TIBCO Rendezvous documentation for platform specific requirements
+#          to build TIBCO Rendezvous applications in C.
+#
+#*******************************************************************************
+
+#*******************************************************************************
+#                               UNIX Platforms
+#
+# To compile the sample programs for UNIX un-comment this section and set
+# HAWK_ROOT, RV_ROOT, and CC accordingly. Then execute:
+#
+#                         make -f Makefile.sample
+#
+#*******************************************************************************
+#
+#HAWK_ROOT=/usr/tibco/hawk
+#RV_ROOT=/usr/tibco/tibrv
+#CC=/SUNWspro/SC5.0/bin/cc -mt
+#
+## The following libraries are required for the specified platforms. Remember to
+## link with the -ltibhawkami64 -ltibrv64 libraries for 64-bit builds.
+
+## For Solaris
+#LIBS=-ltibhawkami -ltibrv -lsocket -lgen -lnsl
+
+## For AIX
+#LIBS=-ltibhawkami -ltibrv
+
+## For HPUX
+#LIBS=-ltibhawkami -ltibrv -lpthread -lxnet
+
+## For DEC UNIX
+#LIBS=-ltibhawkami -ltibrv -lpthread -Ldnet_stub /usr/lib/libdb.a
+
+## For LINUX
+#LIBS=-ltibhawkami -ltibrv -lpthread -lxnet
+#
+#all:	ami_sample1 ami_sample2 ami_sample3 ami_sample4
+#
+#ami_sample1:
+#	$(CC) -o ami_sample1 -I$(HAWK_ROOT)/include -I$(RV_ROOT)/include \
+#        -L$(HAWK_ROOT)/lib -L$(RV_ROOT)/lib ami_sample1.c $(LIBS)
+#
+#ami_sample2:
+#	$(CC) -o ami_sample2 -I$(HAWK_ROOT)/include -I$(RV_ROOT)/include \
+#        -L$(HAWK_ROOT)/lib -L$(RV_ROOT)/lib ami_sample2.c $(LIBS)
+#
+#ami_sample3:
+#	$(CC) -o ami_sample3 -I$(HAWK_ROOT)/include -I$(RV_ROOT)/include \
+#        -L$(HAWK_ROOT)/lib -L$(RV_ROOT)/lib ami_sample3.c $(LIBS)
+#
+#ami_sample4:
+#	$(CC) -o ami_sample4 -I$(HAWK_ROOT)/include -I$(RV_ROOT)/include \
+#        -L$(HAWK_ROOT)/lib -L$(RV_ROOT)/lib ami_sample4.c $(LIBS)
+#
+#*******************************************************************************
+#                 Windows NT / Windows 2000 Using Visual C++
+#
+# To make the sample programs for Windows NT un-comment this section and set
+# HAWK_ROOT and RV_ROOT accordingly. Then execute:
+#
+#                         nmake -f Makefile.sample
+#
+#*******************************************************************************
+
+HAWK_ROOT = c:\tibco\hawk
+RV_ROOT   = c:\tibco\tibrv
+
+CPPFLAGS = /MT \
+           /I$(HAWK_ROOT)\include \
+           /I$(RV_ROOT)\include
+
+LDFLAGS = /DEFAULTLIB:$(HAWK_ROOT)\lib\libtibhawkamimt.lib \
+          /DEFAULTLIB:$(RV_ROOT)\lib\libtibrv.lib \
+          /DEFAULTLIB:wsock32.lib \
+          /DEFAULTLIB:advapi32.lib
+
+all: ami_sample1.exe ami_sample2.exe ami_sample3.exe ami_sample4.exe
+
+ami_sample1.exe:
+         $(CPP) $(CPPFLAGS) $*.c -link $(LDFLAGS)
+
+ami_sample2.exe:
+         $(CPP) $(CPPFLAGS) $*.c -link $(LDFLAGS)
+
+ami_sample3.exe:
+         $(CPP) $(CPPFLAGS) $*.c -link $(LDFLAGS)
+
+ami_sample4.exe:
+         $(CPP) $(CPPFLAGS) $*.c -link $(LDFLAGS)
+
+#*******************************************************************************

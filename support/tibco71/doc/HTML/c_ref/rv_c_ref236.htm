@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvMsgDataType</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Appendix&#160;A	 Custom Datatypes";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1148824"> </a><h2 class="pNewHTMLPage">
+tibrvMsgDataType
+</h2>
+<hr />
+<a name="wp1148825"> </a><p class="pSyntaxType">
+Type
+</p>
+<a name="wp1148826"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+typedef enum {<a name="wp1148827"> </a>
+&#160;&#160;&#160;&#160;tibrvMsgData_Primitive,<a name="wp1148828"> </a>
+&#160;&#160;&#160;&#160;tibrvMsgData_MallocBlock,<a name="wp1148829"> </a>
+&#160;&#160;&#160;&#160;tibrvMsgData_SubMessage,<a name="wp1148830"> </a>
+&#160;&#160;&#160;&#160;tibrvMsgData_WireReference<a name="wp1148831"> </a>
+} <code class="cCodeBold">tibrvMsgDataType</code>;<a name="wp1148832"> </a>
+</pre></div>
+<a name="wp1148834"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1148835"> </a><p class="pBody">
+Enumerate the types of low-level data references.
+</p>
+<a name="wp1148837"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1151029"> </a><p class="pBody">
+This enumeration specifies the four low-level types of data reference that can be extracted from a message field. Decoders and converters create references to the data that they extract, and must inform the message of the type each time they create a reference. Internal functions use this type information to properly maintain references to the extracted data.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1148845"> </a><div class="pCellHeading">
+Value
+</div>
+</th>
+    <th><a name="wp1148847"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1148849"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsgData_Primitive</code>
+</div>
+</td>
+    <td><a name="wp1148851"> </a><div class="pCellBody">
+Extract primitive types by copying the data into the destination field struct.
+</div>
+<a name="wp1154232"> </a><div class="pCellBody">
+The predefined set of primitive types is <a  href="rv_c_ref224.htm#wp1128749"><code class="cCode">tibrv_bool</code></a>, <a  href="rv_c_ref224.htm#wp1128755"><code class="cCode">tibrv_f32</code></a>, <a  href="rv_c_ref224.htm#wp1128761"><code class="cCode">tibrv_f64</code></a>, <a  href="rv_c_ref224.htm#wp1128767"><code class="cCode">tibrv_i8</code></a>, <a  href="rv_c_ref224.htm#wp1128773"><code class="cCode">tibrv_i16</code></a>, <a  href="rv_c_ref224.htm#wp1128779"><code class="cCode">tibrv_i32</code></a>, <a  href="rv_c_ref224.htm#wp1128785"><code class="cCode">tibrv_i64</code></a>, <a  href="rv_c_ref224.htm#wp1128791"><code class="cCode">tibrv_u8</code></a>, <a  href="rv_c_ref224.htm#wp1128797"><code class="cCode">tibrv_u16</code></a>, <a  href="rv_c_ref224.htm#wp1128803"><code class="cCode">tibrv_u32</code></a>, <a  href="rv_c_ref224.htm#wp1128809"><code class="cCode">tibrv_u64</code></a>, <a  href="rv_c_ref224.htm#wp1128815"><code class="cCode">tibrv_ipaddr32</code></a>, <a  href="rv_c_ref224.htm#wp1128829"><code class="cCode">tibrv_ipport16</code></a>, <a  href="rv_c_ref224.htm#wp1128836"><code class="cCode">tibrvMsgDateTime</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1148854"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsgData_MallocBlock</code>
+</div>
+</td>
+    <td><a name="wp1148856"> </a><div class="pCellBody">
+Extract this type by allocating a block of storage associated with the message.
+</div>
+<a name="wp1151266"> </a><div class="pCellBody">
+The predefined set of malloc block types includes all arrays. On EBCDIC architectures, it also includes EBCDIC strings.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1148859"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsgData_SubMessage</code>
+</div>
+</td>
+    <td><a name="wp1148861"> </a><div class="pCellBody">
+Extract this type by creating a new <a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a> object for the decoded data.
+</div>
+<a name="wp1151358"> </a><div class="pCellBody">
+The only submessage type is <a  href="rv_c_ref224.htm#wp1128908"><code class="cCode">tibrvMsg</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1148864"> </a><div class="pCellBody">
+<code class="cCode">tibrvMsgData_WireReference</code>
+</div>
+</td>
+    <td><a name="wp1148866"> </a><div class="pCellBody">
+Extract this type by copying a pointer into the destination field struct; the pointer refers to a location within the wire buffer of the message.
+</div>
+<a name="wp1151401"> </a><div class="pCellBody">
+The predefined set of wire reference types includes character strings, opaque byte sequences, and XML data.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1148869"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1151425"> </a><p class="pBody">
+<a  href="rv_c_ref223.htm#wp1128526">Wire Format Datatypes</a>
+</p>
+<a name="wp1151429"> </a><p class="pBody">
+<a  href="rv_c_ref224.htm#wp1128739">C Datatypes</a>
+</p>
+<a name="wp1151125"> </a><p class="pBody">
+<a  href="rv_c_ref238.htm#wp1148872"><code class="cCode">tibrvMsgData_Converter</code> </a>
+</p>
+<a name="wp1154203"> </a><p class="pBody">
+<a  href="rv_c_ref240.htm#wp1150007"><code class="cCode">tibrvMsgData_Decoder</code> </a>
+</p>
+<a name="wp1151419"> </a><p class="pBody">
+<a  href="rv_c_ref244.htm#wp1149614"><code class="cCode">tibrvMsgData_Malloc()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

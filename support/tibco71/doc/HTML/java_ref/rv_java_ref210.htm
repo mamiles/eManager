@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvCmTransport.sendReply()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;9	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1085443"> </a><h2 class="pNewHTMLPage">
+TibrvCmTransport.sendReply()
+</h2>
+<hr />
+<a name="wp1085444"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1085445"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+void <code class="cCodeBold">sendReply</code>(<a name="wp1090249"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_java_ref31.htm#wp1055151"><code class="cCode">TibrvMsg</code></a>&#160;&#160;&#160;&#160;replyMsg,<a name="wp1090289"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_java_ref31.htm#wp1055151"><code class="cCode">TibrvMsg</code></a>&#160;&#160;&#160;&#160;requestMsg)<a name="wp1090250"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1085449"> </a>
+</pre></div>
+<a name="wp1085450"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1085452"> </a><p class="pBody">
+Send a labeled reply message.
+</p>
+<a name="wp1085453"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1085454"> </a><p class="pBody">
+This convenience call extracts the reply subject of an inbound request message, and sends a labeled outbound reply message to that subject. In addition to the convenience, this call is marginally faster than using separate calls to extract the subject and send the reply.
+</p>
+<a name="wp1085455"> </a><p class="pBody">
+This method can send a labeled reply to an ordinary message.
+</p>
+<a name="wp1108249"> </a><p class="pBody">
+This method automatically registers the requesting CM transport, so the reply message is certified.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1085460"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1085465"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1085471"> </a><div class="pCellBody">
+<code class="cCode">replyMsg</code>
+</div>
+</td>
+    <td><a name="wp1085473"> </a><div class="pCellBody">
+Send this <em class="cEmphasis">outbound </em>reply message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1085475"> </a><div class="pCellBody">
+<code class="cCode">requestMsg</code>
+</div>
+</td>
+    <td><a name="wp1085477"> </a><div class="pCellBody">
+Send a reply to this <em class="cEmphasis">inbound </em>request message; extract its reply subject to use as the subject of the outbound reply message.
+</div>
+<a name="wp1085478"> </a><div class="pCellBody">
+If this message has a wildcard reply subject, the method produces an error.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1220130"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1290102"> </a><p class="pBody">
+Give special attention to the order of the arguments to this method. Reversing the inbound and outbound messages can cause an infinite loop, in which the program repeatedly resends the inbound message to itself (and all other recipients).
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1085483"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1085487"> </a><p class="pBody">
+<a  href="rv_java_ref209.htm#wp1085385"><code class="cCode">TibrvCmTransport.send()</code> </a>
+</p>
+<a name="wp1085491"> </a><p class="pBody">
+<a  href="rv_java_ref211.htm#wp1085494"><code class="cCode">TibrvCmTransport.sendRequest()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

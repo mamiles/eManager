@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Certified Message Delivery</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;10	 Performance Assessment (rvperf)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1069445"> </a><h2 class="pNewHTMLPage">
+Certified Message Delivery
+</h2>
+<hr />
+<a name="wp1069446"> </a><p class="pBody">
+Certified message delivery introduces additional complexity. The performance assessment tool can help you measure its effects on application performance.
+</p>
+<a name="wp1069450"> </a><p class="pBody">
+When the <code class="cCode">-cm</code> parameter is present, <code class="cCode">rvperfm</code> sends messages using Rendezvous certified delivery features. Before each run, it clears its ledger (whether file-based or process-based), and sends a test message to provoke <code class="cCode">-cm</code> receivers to register for certified delivery. After the registration period, it sends the run of messages.
+</p>
+<a name="wp1069451"> </a><h3 class="pHeading2">
+Number of Certified Receivers
+</h3>
+<a name="wp1069452"> </a><p class="pBody">
+When a certified sender process is operating near maximum capacity (either the capacity of its host computer, or the network capacity), then the number of certified receivers can dramatically affect the timing results.
+</p>
+<a name="wp1069453"> </a><p class="pBody">
+Throughput of certified messages decreases as the number of registered receivers increases. This decrease is a direct result of confirmation messages flowing back from certified receivers to the sender. You can use the performance tool to measure the network capacity for certified messages with varying numbers of registered receivers.
+</p>
+<a name="wp1069455"> </a><h3 class="pHeading2">
+Ledger
+</h3>
+<a name="wp1069456"> </a><p class="pBody">
+Certified delivery depends on a ledger to track messages and confirmations. Two types of ledger are available; each has a different effect on performance:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1069458"> </a><div class="pSmartList1"><li >A file-based ledger with asynchronous I/O offers persistence at the cost of disk operations. With asynchronous file I/O, some information could be lost in the event of sudden termination.</li></div>
+
+<a name="wp1069459"> </a><div class="pSmartList1"><li >A file-based ledger with synchronous I/O offers greater certainty at the cost of additional speed because the disk write operations block. Synchronous file I/O dramatically reduces the probability of lost information in the event of sudden termination.</li></div>
+
+</ul></div>
+
+<a name="wp1069460"> </a><p class="pBody">
+You can use the performance tool to compare the effect of these three options on certified message throughput.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Default Port and Service Numbers</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;3	 Network Details";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1063538"> </a><h2 class="pNewHTMLPage">
+Default Port and Service Numbers
+</h2>
+<hr />
+<a name="wp1063799"> </a><p class="pBody">
+For convenient reference, these tables list port and service numbers with special meaning to Rendezvous components.
+</p>
+<a name="wp1063919"> </a><p class="pBody">
+Rendezvous components use HTTP ports for browser administration interfaces.
+</p>
+<a name="wp1286978"> </a><p class="pBody">
+Configurable daemons distributed with Rendezvous also open an ephemeral HTTPS port (to keep the daemon configuration secure against unauthorized modification). To find the actual HTTPS port that the operating system has assigned, check the daemon&#8217;s start banner or log file. The configurable daemons are <code class="cCode">rvrd</code>, <code class="cCode">rvsd</code>, <code class="cCode">rvsrd</code>, <code class="cCode">rva</code> and <code class="cCode">rvcache</code>&#151;but not <code class="cCode">rvd</code>.
+</p>
+<a name="wp1287146"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1286984"> </a><div class="pTableTitle">
+Table&#160;3   Default HTTP Port Numbers&#160;
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1286988"> </a><div class="pCellHeading">
+HTTP Port
+</div>
+</th>
+    <th><a name="wp1286993"> </a><div class="pCellHeading">
+Rendezvous Component
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1286998"> </a><div class="pMinorHead">
+Daemons Distributed with Rendezvous
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1287002"> </a><div class="pCellBody">
+7580
+</div>
+</td>
+    <td><a name="wp1287016"> </a><div class="pCellBody">
+<a  href="rv_adm20.htm#wp1020072"><code class="cCode">rvd</code></a>, <a  href="rv_adm45.htm#wp1066458"><code class="cCode">rvrd</code></a>, <a  href="rv_adm64.htm#wp1142406"><code class="cCode">rvsd</code></a>, <a  href="rv_adm65.htm#wp1178978"><code class="cCode">rvsrd</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1287018"> </a><div class="pCellBody">
+7581
+</div>
+</td>
+    <td><a name="wp1287023"> </a><div class="pCellBody">
+<a  href="rv_adm87.htm#wp1024721"><code class="cCode">rvcache</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1287033"> </a><div class="pCellBody">
+7680
+</div>
+</td>
+    <td><a name="wp1287038"> </a><div class="pCellBody">
+<a  href="rv_adm77.htm#wp1054197"><code class="cCode">rva</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1287040"> </a><div class="pMinorHead">
+Daemons Distributed with Related Products
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1287044"> </a><div class="pCellBody">
+7880
+</div>
+</td>
+    <td><a name="wp1287046"> </a><div class="pCellBody">
+<code class="cCode">rvacld</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1287048"> </a><div class="pCellBody">
+7590
+</div>
+</td>
+    <td><a name="wp1287050"> </a><div class="pCellBody">
+<code class="cCode">rvtxd</code>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1287095"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1287060"> </a><div class="pTableTitle">
+Table&#160;4   Default UDP or PGM Service Numbers&#160;
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1287064"> </a><div class="pCellHeading">
+Service
+</div>
+</th>
+    <th><a name="wp1287066"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1287068"> </a><div class="pCellBody">
+<code class="cCode">rendezvous</code>
+</div>
+<a name="wp1287069"> </a><div class="pCellBody">
+7500 (TRDP)
+</div>
+<a name="wp1287070"> </a><div class="pCellBody">
+7550 (PGM)
+</div>
+</td>
+    <td><a name="wp1287075"> </a><div class="pCellBody">
+Program transport objects use these UDP or PGM services as defaults.
+</div>
+<a name="wp1287076"> </a><div class="pCellBody">
+The component programs <code class="cCode">rva</code> and <code class="cCode">rvrad</code> follow this convention.
+</div>
+<a name="wp1287079"> </a><div class="pCellBody">
+For more detail, see <a  href="rv_adm15.htm#wp1288869">Specifying the UDP or PGM Service</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1287082"> </a><div class="pCellBody">
+<code class="cCode">rendezvous-ft</code>
+</div>
+<a name="wp1287083"> </a><div class="pCellBody">
+7504
+</div>
+</td>
+    <td><a name="wp1287088"> </a><div class="pCellBody">
+Fault tolerance members use these UDP or PGM services as defaults for fault-tolerance protocol communications.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1287143"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1287101"> </a><div class="pTableTitle">
+Table&#160;5   Default TCP Port Numbers&#160;
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1287105"> </a><div class="pCellHeading">
+TCP Port
+</div>
+</th>
+    <th><a name="wp1287110"> </a><div class="pCellHeading">
+Rendezvous Component
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1287112"> </a><div class="pCellBody">
+7500
+</div>
+</td>
+    <td><a name="wp1287120"> </a><div class="pCellBody">
+<a  href="rv_adm20.htm#wp1020072"><code class="cCode">rvd</code></a> and <a  href="rv_adm45.htm#wp1066458"><code class="cCode">rvrd</code></a> use this TCP port as the default to listen for new connections from program transports.
+</div>
+<a name="wp1287121"> </a><div class="pCellBody">
+Program transport objects use this TCP port as the default to establish connections to <a  href="rv_adm20.htm#wp1020072"><code class="cCode">rvd</code></a> or <a  href="rv_adm45.htm#wp1066458"><code class="cCode">rvrd</code></a>.
+</div>
+<a name="wp1287128"> </a><div class="pCellBody">
+The component programs <code class="cCode">rva</code> and <code class="cCode">rvrad</code> follow this convention.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1287130"> </a><div class="pCellBody">
+7600
+</div>
+</td>
+    <td><a name="wp1287135"> </a><div class="pCellBody">
+<a  href="rv_adm77.htm#wp1054197"><code class="cCode">rva</code></a> uses this TCP port as the default to listen for new connections from Java applets. See <a  href="rv_adm77.htm#wp1061512"><code class="cCode">Listen Port</code> </a>.
+</div>
+<a name="wp1287142"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref141.htm#wp1038873');" onMouseOver="WWHShowPopup('g', 'rv_java_ref141.htm#wp1038873', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvRvaTransport</code></a> objects in Java applets use this TCP port as the default to establish connections with <code class="cCode">rva</code>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>RVFT Advisory Subject Names</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Appendix&#160;C	 Fault Tolerance (RVFT) Advisory Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1039879"> </a><h2 class="pNewHTMLPage">
+RVFT Advisory Subject Names
+</h2>
+<hr />
+<a name="wp1039883"> </a><p class="pBody">
+Rendezvous fault tolerance software constructs the subject names of advisory messages using this template:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;&#160;_RV.<code class="cCodeItalic">&lt;class&gt;</code>.RVFT.<code class="cCodeItalic">&lt;name&gt;</code>.<code class="cCodeItalic">&lt;group&gt;</code><a name="wp1039884"> </a>
+<a name="wp1039885"> </a>
+</pre></div>
+<a name="wp1039920"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1039891"> </a><div class="pTableTitle">
+Table&#160;46   RVFT Advisory Subject Name Elements&#160;
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1039895"> </a><div class="pCellHeading">
+Element
+</div>
+</th>
+    <th><a name="wp1039897"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1039899"> </a><div class="pCellBody">
+<code class="cCodeItalic">&lt;class&gt;</code>
+</div>
+</td>
+    <td><a name="wp1039901"> </a><div class="pCellBody">
+The <code class="cCodeItalic">&lt;class&gt;</code> element denotes the severity of the situation.
+</div>
+<div class="pSmartList1"><ul>
+<a name="wp1039902"> </a><div class="pSmartList1"><li ><code class="cCode">ERROR</code> indicates a problem that certainly precludes fault tolerance. </li></div>
+
+<a name="wp1039903"> </a><div class="pSmartList1"><li ><code class="cCode">WARN</code> indicates an anomalous situation that might jeopardize fault tolerance.</li></div>
+
+</ul></div>
+
+<a name="wp1039907"> </a><div class="pCellBody">
+(Rendezvous fault tolerance software does not generate advisory messages with class <code class="cCode">INFO</code>.)
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1039909"> </a><div class="pCellBody">
+<code class="cCodeItalic">&lt;source&gt;</code>
+</div>
+</td>
+    <td><a name="wp1039911"> </a><div class="pCellBody">
+The <code class="cCodeItalic">&lt;source&gt;</code> element is <code class="cCode">RVFT</code> for all advisories from fault tolerance software.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1039913"> </a><div class="pCellBody">
+<code class="cCodeItalic">&lt;name&gt;</code>
+</div>
+</td>
+    <td><a name="wp1039915"> </a><div class="pCellBody">
+The <code class="cCodeItalic">&lt;name&gt;</code> element describes the situation that the advisory reports.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1039917"> </a><div class="pCellBody">
+<code class="cCodeItalic">&lt;group&gt;</code>
+</div>
+</td>
+    <td><a name="wp1039919"> </a><div class="pCellBody">
+The <code class="cCodeItalic">&lt;group&gt;</code> element is the name of the fault tolerance group to which the problematic situation applies. Group names may consist of several elements, so the wildcard character <code class="cCode">&quot;&gt;&quot;</code> (rather than <code class="cCode">&quot;*&quot;</code>) is the correct way to match all names in this position.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Reliable Message Delivery</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;4	 The Rendezvous Daemon";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1066818"> </a><h2 class="pNewHTMLPage">
+Reliable Message Delivery
+</h2>
+<hr />
+<a name="wp1066825"> </a><p class="pBody">
+Rendezvous programs send and receive messages. The Rendezvous daemon at the sending computer divides messages into a stream of packets and sends them across the network. The Rendezvous daemon on each receiving computer reassembles the packets into messages and presents them to the listening program.
+</p>
+<a name="wp1066829"> </a><p class="pBody">
+Standard multicast and broadcast protocols are not reliable and are unable to detect lost messages. Under normal conditions, Rendezvous reliable multicast protocols ensure that all operational hosts either receive each multicast message or detect the loss of a message. (For details and limitations, see <a  href="rv_concepts164.htm#wp1038437"><code class="cCode">DATALOSS</code> </a>.)
+</p>
+<a name="wp1066836"> </a><h3 class="pHeading2">
+Reliability
+</h3>
+<a name="wp1066840"> </a><p class="pBody">
+Reliable delivery compensates for brief network failures. The receiving Rendezvous daemon detects missing packets and requests that the sending daemon retransmit them. The sending daemon stores outbound messages for a limited period of time (60 seconds), so it can retransmit the information upon request. It discards old messages after the time period elapses, and cannot retransmit after that time.
+</p>
+<a name="wp1066844"> </a><p class="pBody">
+The Rendezvous daemon requires that the physical network and packet recipients are working. The Rendezvous daemon does not guarantee delivery to components that fail and do not recover for periods exceeding 60 seconds. (For stronger assurances of delivery, see <a  href="rv_concepts97.htm#wp1055521">Certified Message Delivery</a>.)
+</p>
+<a name="wp1066851"> </a><p class="pBody">
+When a sending daemon receives a retransmission request for data it has already discarded, it notifies the requesting daemon that it cannot retransmit it. One or both daemons present error advisories to indicate that this situation has occurred (see <a  href="rv_concepts164.htm#wp1038437"><code class="cCode">DATALOSS</code> </a>).
+</p>
+<a name="wp1066855"> </a><h3 class="pHeading2">
+Other Features of Reliable Message Delivery
+</h3>
+<a name="wp1066856"> </a><p class="pBody">
+The reliable multicast protocol delivers messages <em class="cEmphasis">once and only once</em> to each subscription, despite multiple transient network failures.
+</p>
+<a name="wp1066858"> </a><p class="pBody">
+It delivers all point-to-point messages from each sending transport in the order they are sent. It also delivers all multicast messages from each sending transport in the order they are sent. However, if a sending program interleaves multicast and point-to-point messages, Rendezvous software does not necessarily preserve the sending order between the two types of messages.
+</p>
+<a name="wp1066865"> </a><p class="pBody">
+Rendezvous software does not preserve the absolute chronological order of messages sent by two or more different transports.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

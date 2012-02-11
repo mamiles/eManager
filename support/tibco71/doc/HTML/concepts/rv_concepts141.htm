@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Fault Tolerance Callback Actions</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;14	 Fault Tolerance Programming";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1057747"> </a><h2 class="pNewHTMLPage">
+Fault Tolerance Callback Actions
+</h2>
+<hr />
+<a name="wp1057748"> </a><p class="pBody">
+Fault tolerance callback functions receive an <code class="cCode">action</code> argument&#151;one of three tokens, which instruct the callback function to behave in one of three ways:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1057749"> </a><div class="pSmartList1"><li ><code class="cCode">ACTIVATE</code></li></div>
+
+<a name="wp1057750"> </a><p class="pBodyRelative">
+This action token instructs the callback function to switch the member process into active mode.
+</p>
+<a name="wp1057751"> </a><div class="pSmartList1"><li ><code class="cCode">DEACTIVATE</code></li></div>
+
+<a name="wp1057752"> </a><p class="pBodyRelative">
+This action token instructs the callback function to switch the member process into inactive mode.
+</p>
+<a name="wp1057753"> </a><div class="pSmartList1"><li ><code class="cCode">PREPARE_TO_ACTIVATE</code></li></div>
+
+<a name="wp1057757"> </a><p class="pBodyRelative">
+This action token is a hint that Rendezvous fault tolerance software might soon issue an instruction to activate. It instructs the callback function to prepare for possible activation by doing any time-consuming steps that can be done before the actual order to activate.
+</p>
+<a name="wp1057758"> </a><p class="pBodyRelative">
+Remember that the prepare-to-activate hint is exactly that&#151;a hint. Several circumstances might later render activation unnecessary.
+</p>
+</ul></div>
+
+<a name="wp1057759"> </a><p class="pBody">
+
+</p>
+<a name="wp1057760"> </a><p class="pBody">
+The names of the tokens vary slightly among the different programming languages.
+</p>
+<a name="wp1057798"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1057766"> </a><div class="pTableTitle">
+Table&#160;37   Fault Tolerance Actions&#160;
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1057770"> </a><div class="pCellBody">
+C
+</div>
+</td>
+    <td><a name="wp1057775"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref152.htm#wp1082025');" onMouseOver="WWHShowPopup('e', 'rv_c_ref152.htm#wp1082025', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvftAction</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1057777"> </a><div class="pCellBody">
+C++
+</div>
+</td>
+    <td><a name="wp1057782"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref188.htm#wp1160259');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref188.htm#wp1160259', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvftAction</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1057785"> </a><div class="pCellBody">
+Java
+</div>
+</td>
+    <td><a name="wp1057790"> </a><div class="pCellBody">
+Tokens are defined as constant fields of <a  href="javascript:WWHClickedPopup('g', 'rv_java_ref162.htm#wp1062294');" onMouseOver="WWHShowPopup('g', 'rv_java_ref162.htm#wp1062294', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvFtMember</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1057792"> </a><div class="pCellBody">
+COM
+</div>
+</td>
+    <td><a name="wp1073637"> </a><div class="pCellBody">
+Tokens are defined as in the interface definition file.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

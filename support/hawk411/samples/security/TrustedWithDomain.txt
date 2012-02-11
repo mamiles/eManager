@@ -1,0 +1,91 @@
+#
+# This file is used by agent running with 
+# COM.TIBCO.hawk.security.trusted.TrustedWithDomain security model.
+#
+# To allow a user running with COM.TIBCO.hawk.security.trusted.TrustedWithDomain 
+# security model on Windows platform to access this agent, the user 
+# specified should include the domain of the user where the user. 
+# For example, for user1 in domainX, the user should be specified as 
+# "domainX\user1". 
+#
+# Note that agents using the TrustedWithDomain security model also allow
+# users running with COM.TIBCO.hawk.security.trusted.Trusted security model 
+# to access this agent.  For these users, the domain should not be 
+# included in the user.
+#
+#
+# Explanation of Settings:
+#
+# Grant "user1" point-to-point access to all methods on all Microagents, EXCEPT
+#	- all ACTION methods on the Custom microagent on all nodes.
+# 	- the specified methods on the Repository microagent on all nodes.
+# 	- the specified methods on the RuleBaseEngine microagent on "nodeA".
+#
+# Grant "user2" point-to-point and network access to all methods on all 
+# Microagents, EXCEPT
+#	- all ACTION methods on the Custom microagent on all nodes.
+#	- all ACTION methods on the Repository microagent on all nodes.
+#	- all ACTION methods on the RuleBase microagent on all nodes.
+#
+# Grant "user3" point-to-point and network access to all methods on all
+# Microagents on all nodes, EXCEPT
+#	- network access to all ACTION methods on the RuleBase microagent.
+#
+# Grant "user4" full access to all methods on all microagents on nodeB.
+#
+# Grant "user5" point-to-point access to all INFO methods on all microagents
+# on all nodes. 
+#
+#
+# Wildcard characters + and * usage:
+#
+# - Use + in node access for allowing access to group operations.
+# - Use * in node access for allowing access to  point-to-point invocations.
+# - Use + in method access for allowing access to all INFO and ACTION methods.
+# - Use * in method access for allowing access to all INFO methods only.
+# 
+#
+# File format:
+#
+# user     node                  microagent                    method
+#         access                   access                      access
+#           &                        &                           &
+#       restrictions            restrictions                restrictions
+#
+user1        *
+!user1       *     COM.TIBCO.hawk.microagent.Custom              +
+!user1       *     COM.TIBCO.hawk.microagent.Repository     addRuleBase
+!user1       *     COM.TIBCO.hawk.microagent.Repository     updateRuleBase
+!user1       *     COM.TIBCO.hawk.microagent.Repository     deleteRuleBase
+!user1       *     COM.TIBCO.hawk.microagent.Repository     setSchedules
+!user1       *     COM.TIBCO.hawk.microagent.Repository     setRBMap
+!user1     nodeA   COM.TIBCO.hawk.microagent.RuleBaseEngine addRuleBase
+!user1     nodeA   COM.TIBCO.hawk.microagent.RuleBaseEngine updateRuleBase
+!user1     nodeA   COM.TIBCO.hawk.microagent.RuleBaseEngine deleteRuleBase
+!user1     nodeA   COM.TIBCO.hawk.microagent.RuleBaseEngine loadRuleBase
+!user1     nodeA   COM.TIBCO.hawk.microagent.RuleBaseEngine unloadRuleBase
+!user1     nodeA   COM.TIBCO.hawk.microagent.RuleBaseEngine loadRuleBaseFromFile
+!user1     nodeA   COM.TIBCO.hawk.microagent.RuleBaseEngine setSchedules
+!user1     nodeA   COM.TIBCO.hawk.microagent.RuleBaseEngine setRBMap
+
+user2        +                        *                          +
+!user2       *     COM.TIBCO.hawk.microagent.Custom              +
+!user2       *     COM.TIBCO.hawk.microagent.Repository          +
+!user2       *     COM.TIBCO.hawk.microagent.RuleBaseEngine      +
+
+user3
+!user3       +     COM.TIBCO.hawk.microagent.RuleBaseEngine      +
+
+user4      nodeB
+
+user5        *                        *                          *
+
+#
+# To activate logging, uncomment the following:
+# <LogService>  -log_dir logDir  -log_max_size size  -log_max_num n
+#
+# where: logDir is the directory where the log file will be stored
+#        size is the maximum size of a rotating log file in KB. 
+#          A suffix m or M  can be used for indicating MB .
+#        n is the maximum number of rotating log files.
+

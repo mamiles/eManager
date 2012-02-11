@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvIPAddr()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1046122"> </a><h2 class="pNewHTMLPage">
+TibrvIPAddr()
+</h2>
+<hr />
+<a name="wp1046123"> </a><p class="pSyntaxType">
+Constructor
+</p>
+<a name="wp1046171"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCodeBold">TibrvIPAddr</code>(byte[] bytes)<a name="wp1125458"> </a>
+<a name="wp1125448"> </a>
+<code class="cCodeBold">TibrvIPAddr</code>(<a name="wp1125462"> </a>
+&#160;&#160;&#160;&#160;java.net.InetAddress inetAddr)<a name="wp1125463"> </a>
+<a name="wp1125455"> </a>
+<code class="cCodeBold">TibrvIPAddr</code>(<a name="wp1125467"> </a>
+&#160;&#160;&#160;&#160;byte b1,<a name="wp1125468"> </a>
+&#160;&#160;&#160;&#160;byte b2,<a name="wp1125469"> </a>
+&#160;&#160;&#160;&#160;byte b3,<a name="wp1125470"> </a>
+&#160;&#160;&#160;&#160;byte b4)<a name="wp1125471"> </a>
+<a name="wp1125456"> </a>
+<code class="cCodeBold">TibrvIPAddr</code>(<a name="wp1125475"> </a>
+&#160;&#160;&#160;&#160;java.lang.String ipString)<a name="wp1125476"> </a>
+&#160;&#160;throws java.lang.NumberFormatException<a name="wp1125477"> </a>
+<a name="wp1125449"> </a>
+<code class="cCodeBold">TibrvIPAddr</code>(int address)<a name="wp1125481"> </a>
+<a name="wp1125450"> </a>
+<code class="cCodeBold">TibrvIPAddr</code>(<a  href="rv_java_ref64.htm#wp1045873"><code class="cCode">TibrvIPAddr</code></a> ipAddr)<a name="wp1125488"> </a>
+</pre></div>
+<a name="wp1046127"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1046128"> </a><p class="pBody">
+Create an IP address object.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1046133"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1046135"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1046288"> </a><div class="pCellBody">
+<code class="cCode">bytes</code>
+</div>
+</td>
+    <td><a name="wp1046290"> </a><div class="pCellBody">
+Create an IP address from an array of 4 bytes. For <code class="cCode">aaa.bbb.ccc.ddd</code>, let <code class="cCode">bytes[0]</code> be the high byte <code class="cCode">aaa</code>, and <code class="cCode">bytes[3]</code> be the low byte <code class="cCode">ddd</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1046292"> </a><div class="pCellBody">
+<code class="cCode">b1</code>, <code class="cCode">b2</code>, <code class="cCode">b3</code>, <code class="cCode">b4</code>
+</div>
+</td>
+    <td><a name="wp1046654"> </a><div class="pCellBody">
+Create an IP address from these 4 bytes. For <code class="cCode">aaa.bbb.ccc.ddd</code>, let <code class="cCode">b1</code> be the high byte <code class="cCode">aaa</code>, and <code class="cCode">b4</code> be the low byte <code class="cCode">ddd</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1046296"> </a><div class="pCellBody">
+<code class="cCode">address</code>
+</div>
+</td>
+    <td><a name="wp1046298"> </a><div class="pCellBody">
+Create an IP address from a 32-bit integer, interpreted as 4 bytes in network byte order.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1046337"> </a><div class="pCellBody">
+<code class="cCode">ipString</code>
+</div>
+</td>
+    <td><a name="wp1046339"> </a><div class="pCellBody">
+Create an IP address from a string representation (for example, <code class="cCode">&quot;aaa.bbb.ccc.ddd&quot;</code>).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1046341"> </a><div class="pCellBody">
+<code class="cCode">inetAddr</code>
+</div>
+</td>
+    <td><a name="wp1046343"> </a><div class="pCellBody">
+Copy this Java internet address into a <a  href="rv_java_ref64.htm#wp1045873"><code class="cCode">TibrvIPAddr</code></a> object with an equivalent value.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1046137"> </a><div class="pCellBody">
+<code class="cCode">ipAddr</code>
+</div>
+</td>
+    <td><a name="wp1046374"> </a><div class="pCellBody">
+Make an independent copy of this <a  href="rv_java_ref64.htm#wp1045873"><code class="cCode">TibrvIPAddr</code></a> object.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1046576"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1046577"> </a><p class="pBody">
+If the <code class="cCode">ipString</code> argument does not represent a valid IP address, this constructor throws a <code class="cCode">java.lang.NumberFormatException</code>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Marvin Miles (Cisco Systems, Inc.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="event.xsd"/>
+	<xs:include schemaLocation="processmgr.xsd"/>
+	<xs:include schemaLocation="inventory.xsd"/>
+	<xs:include schemaLocation="StatusResponse.xsd"/>
+	<xs:include schemaLocation="log.xsd"/>
+	<xs:element name="eManagerMessage">
+		<xs:annotation>
+			<xs:documentation>Top level of all eManager Message</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="messageID"/>
+				<xs:choice>
+					<xs:element name="request">
+						<xs:complexType>
+							<xs:choice>
+								<xs:element ref="eventMgrMsg"/>
+								<xs:element ref="processMgrMsg"/>
+								<xs:element ref="inventoryMgrMsg"/>
+								<xs:element ref="logMgrMsg"/>
+							</xs:choice>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="response">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element ref="statusResp"/>
+								<xs:choice>
+									<xs:element ref="eventMgrResp"/>
+									<xs:element ref="processMgrResp"/>
+									<xs:element ref="inventoryMgrResp"/>
+									<xs:element ref="logMgrResp"/>
+								</xs:choice>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="messageID" type="xs:long">
+		<xs:annotation>
+			<xs:documentation>Used to map request and response</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

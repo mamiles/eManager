@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Direct Communication</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;8	 Transport";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1144571"> </a><h2 class="pNewHTMLPage">
+Direct Communication
+</h2>
+<hr />
+<a name="wp1144572"> </a><p class="pBody">
+Release 7 introduces direct communication capabilities between two network transport objects.
+</p>
+<a name="wp1147854"> </a><h4 class="pHeading3">
+Overview
+</h4>
+<a name="wp1147856"> </a><p class="pBody">
+With <em class="cEmphasis">direct communication</em>, two application programs can conduct eligible point-to-point communications without intermediary Rendezvous daemon (<code class="cCode">rvd</code>) processes. This arrangement can decrease message latency and context switching for point-to-point messages.
+</p>
+<a name="wp1155876"> </a><p class="pBody">
+<a  href="rv_concepts78.htm#wp1155860">Figure&#160;13</a> contrasts the route of a point-to-point message with direct communication against the same message with regular communication (through <code class="cCode">rvd</code>). In the path through <code class="cCode">rvd</code>, each of the two daemons could add a small delay. The direct path avoids these sources of potential delay.
+</p>
+<a name="wp1155860"> </a><div class="pFigureTitle">
+Figure&#160;13   Direct Communication between Two Programs</div><div align="center"><img src="images/rv_conceptsa21.gif" height="164" width="452" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1145294"> </a><p class="pBody">
+Direct communication uses <a  href="rv_concepts14.htm#wp1206788">RPTP</a> over a UDP channel.
+</p>
+<a name="wp1147866"> </a><h4 class="pHeading3">
+Usage
+</h4>
+<a name="wp1147869"> </a><p class="pBody">
+To enable direct communication, specify a two-part <code class="cCode">service</code> parameter when creating the transport object:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1159758"> </a><div class="pSmartList1"><li >The first part controls regular communication&#151;including messages to public subjects and ineligible point-to-point messages.</li></div>
+
+<a name="wp1159760"> </a><div class="pSmartList1"><li >The second part controls direct communication&#151;messages to inbox subjects at eligible destination transports.</li></div>
+
+</ul></div>
+
+<a name="wp1159809"> </a><h4 class="pHeading3">
+Eligibility
+</h4>
+<a name="wp1159889"> </a><p class="pBody">
+All <em class="cEmphasis">eligible</em> messages automatically use direct communication, traveling directly between the two programs. All <em class="cEmphasis">ineligible</em> messages flow through <code class="cCode">rvd</code>.
+</p>
+<a name="wp1167726"> </a><p class="pBody">
+A <em class="cEmphasis">message</em> is eligible for direct communication if it meets <em class="cEmphasis">all</em> of these conditions:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1159892"> </a><div class="pSmartList1"><li >The message has an <em class="cEmphasis">inbox</em> destination subject.</li></div>
+
+<a name="wp1159958"> </a><div class="pSmartList1"><li >Its sending transport object is eligible and enabled.</li></div>
+
+<a name="wp1167755"> </a><div class="pSmartList1"><li >Its receiving transport object is eligible and enabled.</li></div>
+
+<a name="wp1167759"> </a><div class="pSmartList1"><li >The network path between the sender and the receiver does not cross through Rendezvous routing daemon (<code class="cCode">rvrd</code>).</li></div>
+
+</ul></div>
+
+<a name="wp1159815"> </a><p class="pBody">
+A <em class="cEmphasis">transport</em> object is eligible for direct communication if it meets <em class="cEmphasis">all</em> of these conditions:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1159927"> </a><div class="pSmartList1"><li >The transport is <em class="cEmphasis">enabled</em> for direct communication (that is, it has a two-part <code class="cCode">service</code> parameter).</li></div>
+
+<a name="wp1159940"> </a><p class="pBodyRelative">
+Note that a program can enable a transport only if program links release 7 (or later) of the Rendezvous API library.
+</p>
+<a name="wp1159928"> </a><div class="pSmartList1"><li >The transport connects to a <em class="cEmphasis">local</em> daemon.</li></div>
+
+</ul></div>
+
+<a name="wp1159973"> </a><h4 class="pHeading3">
+Restrictions
+</h4>
+<a name="wp1163239"> </a><p class="pBody">
+<em class="cEmphasis">Both</em> the sending and receiving transport objects must enable direct communication. If only one of the two transports enables direct communication, then point-to-point messages between them flow through <code class="cCode">rvd</code>.
+</p>
+<a name="wp1163241"> </a><p class="pBody">
+Direct communication is <em class="cEmphasis">not</em> available for transport objects that connect to remote daemons.
+</p>
+<a name="wp1156021"> </a><p class="pBody">
+Direct communication is <em class="cEmphasis">not</em> available for <code class="cCode">rva</code> transport objects in Java programs.
+</p>
+<a name="wp1155667"> </a><p class="pBody">
+When the path between two transports crosses a routing daemon (<code class="cCode">rvrd</code>), direct communication is <em class="cEmphasis">not</em> available between those transports. Even if both transports enable direct communication, point-to-point messages still flow through <code class="cCode">rvd</code> and <code class="cCode">rvrd</code>.
+</p>
+<a name="wp1163297"> </a><p class="pBody">
+Direct communication applies only to point-to-point messages (that is, messages with inbox destinations) between two enabled transports.
+</p>
+<a name="wp1163298"> </a><p class="pBody">
+Nonetheless, messages on a virtual circuit <em class="cEmphasis">always</em> travel point-to-point&#151;even messages with public subject names. The virtual circuit terminals wrap all messages within internal point-to-point messages. So a virtual circuit that employs enabled transports at both terminals always reaps the benefits of direct communication.
+</p>
+<a name="wp1167704"> </a><h4 class="pHeading3">
+Cost
+</h4>
+<a name="wp1167705"> </a><p class="pBody">
+Each enabled transport consumes a UDP port.
+</p>
+<a name="wp1144583"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1155597"> </a><p class="pBody">
+<a  href="rv_concepts72.htm#wp1177702">Specifying Direct Communication</a>
+</p>
+<a name="wp1155599"> </a><p class="pBody">
+<a  href="rv_concepts74.htm#wp1028724">Remote Daemon</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Reliable versus Certified Message Delivery</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1055701"> </a><h2 class="pNewHTMLPage">
+Reliable versus Certified Message Delivery
+</h2>
+<hr />
+<a name="wp1055705"> </a><p class="pBody">
+Standard Rendezvous communications software features <em class="cEmphasis">reliable message delivery</em>, which works well for many programs. <em class="cEmphasis">Certified message delivery</em> protocols offer even stronger assurances of delivery, along with tighter control, greater flexibility and fine-grained reporting. <a  href="rv_concepts99.htm#wp1084855">Table&#160;26</a> compares the two delivery protocols.
+</p>
+<a name="wp1055789"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1084855"> </a><div class="pTableTitle">
+Table&#160;26   Comparing Reliable and Certified Message Delivery (Sheet 1 of 2)
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1084861"> </a><div class="pCellHeading">
+Aspect
+</div>
+</th>
+    <th><a name="wp1084863"> </a><div class="pCellHeading">
+Reliable Delivery
+</div>
+</th>
+    <th><a name="wp1084865"> </a><div class="pCellHeading">
+Certified Delivery
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1084867"> </a><div class="pCellBody">
+Location of Protocols
+</div>
+</td>
+    <td><a name="wp1084869"> </a><div class="pCellBody">
+Reliable message delivery protocols are implemented in the Rendezvous daemon (<code class="cCode">rvd</code>).
+</div>
+</td>
+    <td><a name="wp1084874"> </a><div class="pCellBody">
+Certified message delivery protocols are implemented in a separate library layer (<code class="cCode">tibrvcm</code>). This library uses <code class="cCode">rvd</code> for message transport.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1084876"> </a><div class="pCellBody">
+Protocol Visibility
+</div>
+</td>
+    <td><a name="wp1084878"> </a><div class="pCellBody">
+Reliable delivery protocols are invisible to programmers.
+</div>
+</td>
+    <td><a name="wp1084880"> </a><div class="pCellBody">
+Certified delivery calls automatically adhere to certified delivery protocols, yet the protocols give programmers abundant status information and limited control.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1084882"> </a><div class="pCellBody">
+Protocol Information
+</div>
+</td>
+    <td><a name="wp1084887"> </a><div class="pCellBody">
+Rendezvous daemons inform programs when data is lost. No information about the lost data is available.
+</div>
+</td>
+    <td><a name="wp1084889"> </a><div class="pCellBody">
+The library presents advisory messages to inform programs of every significant event related to certified delivery. Advisories identify specific messages by correspondent name, subject name and sequence number.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1084891"> </a><div class="pCellBody">
+Ledger
+</div>
+</td>
+    <td><a name="wp1084893"> </a><div class="pCellBody">
+None.
+</div>
+</td>
+    <td><a name="wp1084895"> </a><div class="pCellBody">
+The certified delivery library records outbound messages in a ledger, either within the program process storage, or in file storage.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1084897"> </a><div class="pCellBody">
+Time Limit
+</div>
+</td>
+    <td><a name="wp1084899"> </a><div class="pCellBody">
+<code class="cCode">rvd</code> retains outbound messages for 60 seconds.
+</div>
+</td>
+    <td><a name="wp1084901"> </a><div class="pCellBody">
+The certified delivery library retains outbound messages in the ledger until either delivery is complete or the time limit (set by the program) expires.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1084903"> </a><div class="pCellBody">
+Effective Range
+</div>
+</td>
+    <td><a name="wp1084905"> </a><div class="pCellBody">
+60 seconds, or <code class="cCode">rvd</code> process termination&#151;whichever is first.
+</div>
+</td>
+    <td><a name="wp1084907"> </a><div class="pCellBody">
+With persistent correspondents, certified delivery can extend beyond program process restart. It is not affected by <code class="cCode">rvd</code> process termination.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1084909"> </a><div class="pCellBody">
+Network Bandwidth
+</div>
+</td>
+    <td><a name="wp1084911"> </a><div class="pCellBody">
+Minimal network overhead beyond the message itself.
+</div>
+</td>
+    <td><a name="wp1084913"> </a><div class="pCellBody">
+Additional network overhead to confirm delivery of each certified message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1084915"> </a><div class="pCellBody">
+File Storage
+</div>
+</td>
+    <td><a name="wp1084917"> </a><div class="pCellBody">
+No file storage overhead.
+</div>
+</td>
+    <td><a name="wp1084919"> </a><div class="pCellBody">
+Optional file-based ledgers consume file storage for each message until delivery is complete (or the time limit expires).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1084921"> </a><div class="pCellBody">
+Routing Daemons
+</div>
+</td>
+    <td colspan="2" rowspan="1"><a name="wp1084926"> </a><div class="pCellBody">
+Both protocols work across Rendezvous routing daemons (<code class="cCode">rvrd</code>).
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Discovery and Registration for Certified Delivery</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1056110"> </a><h2 class="pNewHTMLPage">
+Discovery and Registration for Certified Delivery
+</h2>
+<hr />
+<a name="wp1056112"> </a><h3 class="pHeading2">
+Discovery
+</h3>
+<a name="wp1056113"> </a><p class="pBody">
+When a CM listening transport receives a labeled message from a sending CM transport that is not listed in the listener&#8217;s ledger, we say that the listener <em class="cEmphasis">discovers</em> the sender on the message subject.
+</p>
+<a name="wp1056114"> </a><p class="pBody">
+Four actions follow discovery:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1056116"> </a><div class="pSmartList1"><li >The CM listener transport adds the sender&#8217;s correspondent name to the listener&#8217;s ledger, as a source of messages on the subject.</li></div>
+
+<a name="wp1056117"> </a><div class="pSmartList1"><li >The CM listener transport contacts the CM sending transport to <em class="cEmphasis">request registration</em> for certified delivery of the subject.</li></div>
+
+<a name="wp1056121"> </a><div class="pSmartList1"><li >The CM listener transport presents a <a  href="rv_concepts184.htm#wp1039556"><code class="cCode">REGISTRATION.DISCOVERY</code></a> advisory.</li></div>
+
+<a name="wp1104840"> </a><div class="pSmartList1"><li >The CM listener transport stores inbound messages on the newly discovered subject from the CM sender.</li></div>
+
+</ul></div>
+
+<a name="wp1056124"> </a><h3 class="pHeading2">
+Registration
+</h3>
+<a name="wp1056125"> </a><p class="pBody">
+When a sending CM transport receives a registration request from a CM listener transport, the sender automatically <em class="cEmphasis">accepts</em> the request (but see <a  href="rv_concepts112.htm#wp1056417">Disallowing Certified Delivery</a>, and <a  href="rv_concepts113.htm#wp1056471">No Response to Registration Requests</a>). Acceptance consists of these four actions:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1056132"> </a><div class="pSmartList1"><li >The CM sender transport <em class="cEmphasis">registers</em> the listener for certified delivery of the subject&#151; recording that fact in the sender&#8217;s ledger.</li></div>
+
+<a name="wp1056133"> </a><div class="pSmartList1"><li >The CM sender transport notifies the CM listener transport that the registration requested is accepted&#151;the sender accepts responsibility for certified delivery on the subject.</li></div>
+
+<a name="wp1056137"> </a><div class="pSmartList1"><li >The CM sender transport presents a <a  href="rv_concepts179.htm#wp1039328"><code class="cCode">REGISTRATION.REQUEST</code></a> advisory, to announce the new registered listener to the sending program.</li></div>
+
+<a name="wp1056138"> </a><div class="pSmartList1"><li >When the CM listener transport receives the acceptance reply, it presents a <a  href="rv_concepts180.htm#wp1039374"><code class="cCode">REGISTRATION.CERTIFIED</code></a> advisory.</li></div>
+
+</ul></div>
+
+<a name="wp1104989"> </a><p class="pBody">
+After registration completes successfully, the CM listener transport queues the stored inbound messages in the correct sequence.
+</p>
+<a name="wp1056143"> </a><h3 class="pHeading2">
+Certified Delivery Agreement
+</h3>
+<a name="wp1056144"> </a><p class="pBody">
+Following registration and acceptance, the sending and listening CM transports have a <em class="cEmphasis">certified delivery agreement</em> on the subject.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1056145"> </a><div class="pSmartList1"><li >The sending CM transport is responsible to record each outbound message on that subject, and to retain the message in its ledger until it receives confirmation of delivery from the listener (or until the time limit of the message elapses).</li></div>
+
+<a name="wp1056146"> </a><div class="pSmartList1"><li >In return, the listening CM transport is responsible for confirming delivery of each message.</li></div>
+
+</ul></div>
+
+<a name="wp1056150"> </a><p class="pBody">
+Rendezvous certified delivery software arranges all of this accounting automatically. The sending and listening programs do not participate directly in these protocols&#151;only indirectly, by sending and listening with certified delivery library calls.
+</p>
+<a name="wp1056151"> </a><p class="pBody">
+Notice that although both transports participate in a certified delivery agreement, the agreement is asymmetric&#151;it certifies messages from a sender to a listener. A two-way conversation requires <em class="cEmphasis">two</em> separate certified delivery agreements to certify messages in both directions.
+</p>
+<a name="wp1105167"> </a><p class="pBody">
+We refer to the two CM transports that participate in a certified delivery agreement as a <em class="cEmphasis">certified sender</em> and a <em class="cEmphasis">certified listener</em>, and the labeled messages that flow between them are <em class="cEmphasis">certified messages</em>. Notice the subtle difference in terminology&#151;before establishing a certified delivery agreement, the participating transports are <em class="cEmphasis">CM senders and CM listeners</em>; afterward, they are <em class="cEmphasis">certified senders and certified listeners.</em> Similarly, a labeled message becomes a <em class="cEmphasis">certified message</em> only when the sender and receiver maintain a certified delivery agreement.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

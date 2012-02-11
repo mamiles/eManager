@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:10:06" />
+  <title>Run the Installation Program</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Installation";
+    var ChapterTitle = "Chapter&#160;5	 AS/400";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp33574596"> </a><h2 class="pNewHTMLPage">
+Run the Installation Program
+</h2>
+<hr />
+<a name="wp33574597"> </a><p class="pBody">
+This procedure installs the Rendezvous software.
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp33574598"> </a><div class="pSmartList1"><li value="1">Login as <code class="cCode">QSECOFR</code>.</li></div>
+
+<a name="wp33574599"> </a><div class="pSmartList1"><li value="2">On the Rendezvous distribution CD-ROM, locate the appropriate directory for your platform, as listed in <a  href="rv_install33.htm#wp33574730">Table&#160;6</a>. (For the latest changes, see the <code class="cCode">README</code> file.) <div align="left">
+<table border="1">
+  <caption><a name="wp33574730"> </a><div class="pTableTitle">
+Table&#160;6   OS/400 Distribution Directories&#160;
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp33574734"> </a><div class="pCellHeading">
+Platform
+</div>
+</th>
+    <th><a name="wp33580452"> </a><div class="pCellHeading">
+Variant
+</div>
+</th>
+    <th><a name="wp33574736"> </a><div class="pCellHeading">
+Directory
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp33574742"> </a><div class="pCellBody">
+OS/400 V4R3 or later
+</div>
+</td>
+    <td><a name="wp33580454"> </a><div class="pCellBody">
+TRDP
+</div>
+</td>
+    <td><a name="wp33574744"> </a><div class="pCellBody">
+<span style="font-style: italic">&lt;CD_device&gt;</span><code class="cCode">OS400V4/AS400</code>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li></div>
+
+<a name="wp33574623"> </a><div class="pSmartList1"><li value="3">Type this command:</li></div>
+
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;LODRUN DEV(*OPT) DIR(&#39;/OS400V4/AS40&#39;)</code><a name="wp33574624"> </a>
+</pre></div>
+<a name="wp33574627"> </a><div class="pSmartList1"><li value="4"><code class="cCode">LODRUN</code> automatically starts <code class="cCode">RSTLICPGM</code>, which presents a display like the one in <a  href="rv_install33.htm#wp33576882">Figure&#160;5</a>.</li></div>
+
+<a name="wp33574629"> </a><p class="pBodyRelative">
+By default <code class="cCode">RSTLICPGM</code> installs Rendezvous software in a library named <code class="cCode">TIBRV</code>.
+</p>
+</ol></div>
+
+<a name="wp33576882"> </a><div class="pFigureTitle">
+Figure&#160;5   AS/400: Beginning the Installation</div><div align="center"><img src="images/rv_installa5.gif" height="319" width="599" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Installation <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

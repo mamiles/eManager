@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvCmListener</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;9	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1083717"> </a><h2 class="pNewHTMLPage">
+TibrvCmListener
+</h2>
+<hr />
+<a name="wp1087173"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1083719"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+class com.tibco.tibrv.<code class="cCodeBold">TibrvCmListener</code><a name="wp1087251"> </a>
+&#160;&#160;extends <a  href="rv_java_ref82.htm#wp1031628"><code style="font-weight: normal" class="cCode">TibrvListener</code></a><span style="font-weight: bold"></span><a name="wp1083720"> </a>
+</pre></div>
+<a name="wp1083721"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1083723"> </a><p class="pBody">
+A certified delivery listener object listens for labeled messages and certified messages.
+</p>
+<a name="wp1083724"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1083728"> </a><p class="pBody">
+Each call to the constructor <a  href="rv_java_ref186.htm#wp1213777"><code class="cCode">TibrvCmListener()</code></a> results in a new certified delivery listener, which represents your program&#8217;s listening interest in a stream of labeled messages and certified messages. Rendezvous software uses the same listener object to signal each occurrence of such an event.
+</p>
+<a name="wp1083733"> </a><p class="pBody">
+We recommend that programs explicitly destroy each certified delivery listener object using <a  href="rv_java_ref187.htm#wp1098068"><code class="cCode">TibrvCmListener.destroy()</code></a>. Destroying a certified listener object cancels the program&#8217;s immediate interest in that event, and frees its storage; nonetheless, a parameter to the destroy call determines whether certified delivery agreements continue to persist beyond the destroy call.
+</p>
+<a name="wp1112039"> </a><p class="pBody">
+Programs must destroy instances of this class. Rendezvous software keeps internal references to these objects, so the Java garbage collector does not delete them automatically.
+</p>
+<a name="wp1087677"> </a><p class="pBody">
+Destroying the queue or the certified delivery transport of a listener object automatically destroys the listener as well (but certified delivery agreements continue to persist).</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1214089"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1214091"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1214093"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1214098"> </a><div class="pCellBody">
+<a  href="rv_java_ref186.htm#wp1213777"><code class="cCode">TibrvCmListener()</code></a>
+</div>
+</td>
+    <td><a name="wp1214102"> </a><div class="pCellBody">
+<a  href="rv_java_ref186.htm#wp1087311">Listen for messages that match the subject, and request certified delivery when available.</a>
+</div>
+</td>
+    <td><a name="wp1214108"> </a><div class="pCellBody">
+<a  href="rv_java_ref186.htm#wp1213777">250</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1214113"> </a><div class="pCellBody">
+<a  href="rv_java_ref187.htm#wp1098068"><code class="cCode">TibrvCmListener.destroy()</code></a>
+</div>
+</td>
+    <td><a name="wp1214118"> </a><div class="pCellBody">
+<a  href="rv_java_ref187.htm#wp1087392">Destroy a certified delivery listener.</a>
+</div>
+</td>
+    <td><a name="wp1214123"> </a><div class="pCellBody">
+<a  href="rv_java_ref187.htm#wp1098068">251</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1214128"> </a><div class="pCellBody">
+<a  href="rv_java_ref188.htm#wp1083852"><code class="cCode">TibrvCmListener.confirmMsg()</code></a>
+</div>
+</td>
+    <td><a name="wp1214132"> </a><div class="pCellBody">
+<a  href="rv_java_ref188.htm#wp1083863">Explicitly confirm delivery of a certified message.</a>
+</div>
+</td>
+    <td><a name="wp1214138"> </a><div class="pCellBody">
+<a  href="rv_java_ref188.htm#wp1083852">252</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1214143"> </a><div class="pCellBody">
+<a  href="rv_java_ref189.htm#wp1088202"><code class="cCode">TibrvCmListener.isExplicitConfirm()</code></a>
+</div>
+</td>
+    <td><a name="wp1214147"> </a><div class="pCellBody">
+<a  href="rv_java_ref189.htm#wp1088213">Test whether this listener expects explicit confirmation of delivery.</a>
+</div>
+</td>
+    <td><a name="wp1214153"> </a><div class="pCellBody">
+<a  href="rv_java_ref189.htm#wp1088202">253</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1214158"> </a><div class="pCellBody">
+<a  href="rv_java_ref190.htm#wp1084196"><code class="cCode">TibrvCmListener.setExplicitConfirm()</code></a>
+</div>
+</td>
+    <td><a name="wp1214162"> </a><div class="pCellBody">
+<a  href="rv_java_ref190.htm#wp1084206">Override automatic confirmation of delivery for this listener.</a>
+</div>
+</td>
+    <td><a name="wp1214168"> </a><div class="pCellBody">
+<a  href="rv_java_ref190.htm#wp1084196">254</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1214226"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1214200"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1214243"> </a><p class="pBody">
+<a  href="rv_java_ref84.htm#wp1034287"><code class="cCode">TibrvListener.getSubject()</code></a>
+</p>
+<a name="wp1214247"> </a><p class="pBody">
+<a  href="rv_java_ref85.htm#wp1034332"><code class="cCode">TibrvListener.getTransport()</code></a>
+</p>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1214209"> </a><p class="pBody">
+<a  href="rv_java_ref79.htm#wp1033576"><code class="cCode">TibrvEvent.getClosure()</code></a>
+</p>
+<a name="wp1214213"> </a><p class="pBody">
+<a  href="rv_java_ref80.htm#wp1033600"><code class="cCode">TibrvEvent.getQueue()</code></a>
+</p>
+<a name="wp1214217"> </a><p class="pBody">
+<a  href="rv_java_ref81.htm#wp1033426"><code class="cCode">TibrvEvent.isValid()</code></a>
+</p>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1214219"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.equals</code>
+</p>
+<a name="wp1214220"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.getClass</code>
+</p>
+<a name="wp1214221"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.hashCode</code>
+</p>
+<a name="wp1214222"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notify</code>
+</p>
+<a name="wp1214223"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notifyAll</code>
+</p>
+<a name="wp1214224"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.toString</code> (override)
+</p>
+<a name="wp1214225"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.wait</code>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1213787"> </a><h4 class="pHeading3">
+Related Classes
+</h4>
+<a name="wp1213793"> </a><p class="pBody">
+<a  href="rv_java_ref77.htm#wp1047420"><code class="cCode">TibrvEvent</code> </a>
+</p>
+<a name="wp1213798"> </a><p class="pBody">
+<a  href="rv_java_ref82.htm#wp1031628"><code class="cCode">TibrvListener</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

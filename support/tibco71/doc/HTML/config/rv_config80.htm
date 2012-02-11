@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>NeighborInterface</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;4	 Routing Daemon&#151;rvrd";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1953195"> </a><h2 class="pNewHTMLPage">
+NeighborInterface
+</h2>
+<hr />
+<a name="wp1953196"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1953197"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">class com.tibco.tibrv.config.</code><code class="cCodeBold">NeighborInterface</code><a name="wp1953198"> </a>
+<code class="cCode">&#160;&#160;extends java.lang.Object</code><a name="wp1953199"> </a>
+</pre></div>
+<a name="wp1953200"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1953201"> </a><p class="pBody">
+Represent a neighbor interface of a router.
+</p>
+<a name="wp1953202"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1953206"> </a><p class="pBody">
+The method <a  href="rv_config101.htm#wp1954692"><code class="cCode">Router.getNeighborInterfaces()</code></a> returns an array of objects of this class.
+</p>
+<a name="wp1953255"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1953209"> </a><div class="pCellHeading">
+Constant
+</div>
+</th>
+    <th><a name="wp1953211"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953216"> </a><div class="pCellBody">
+<a  href="rv_config80.htm#wp1953195"><code class="cCode">NeighborInterface</code></a><code class="cCode">.ACCEPT_ANY</code>
+</div>
+<a name="wp1953220"> </a><div class="pCellBody">
+<a  href="rv_config80.htm#wp1953195"><code class="cCode">NeighborInterface</code></a><code class="cCode">.ACTIVE</code>
+</div>
+<a name="wp1953224"> </a><div class="pCellBody">
+<a  href="rv_config80.htm#wp1953195"><code class="cCode">NeighborInterface</code></a><code class="cCode">.PASSIVE</code>
+</div>
+<a name="wp1953228"> </a><div class="pCellBody">
+<a  href="rv_config80.htm#wp1953195"><code class="cCode">NeighborInterface</code></a><code class="cCode">.SEEK_ANY</code>
+</div>
+</td>
+    <td><a name="wp1953233"> </a><div class="pCellBody">
+<a  href="rv_config87.htm#wp1953607"><code class="cCode">NeighborInterface.getType()</code></a> returns these integer constants, which denote the four types of neighbor interfaces.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953239"> </a><div class="pCellBody">
+<a  href="rv_config80.htm#wp1953195"><code class="cCode">NeighborInterface</code></a><code class="cCode">.DEFAULT_COST</code>
+</div>
+</td>
+    <td><a name="wp1953241"> </a><div class="pCellBody">
+Default path cost between two routers. To use the default cost, supply this constant to <a  href="rv_config94.htm#wp1954189"><code class="cCode">Router.addLocalNetworkInterface()</code> </a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953249"> </a><div class="pCellBody">
+<a  href="rv_config80.htm#wp1953195"><code class="cCode">NeighborInterface</code></a><code class="cCode">.DEFAULT_PORT</code>
+</div>
+</td>
+    <td><a name="wp1953251"> </a><div class="pCellBody">
+Default TCP port (7501). To use the default port, supply this constant to any of the four methods of <a  href="rv_config91.htm#wp1953701"><code class="cCode">Router</code></a> that add neighbor interfaces.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1953407"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1953261"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1953267"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1953269"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1953271"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953276"> </a><div class="pCellBody">
+<a  href="rv_config81.htm#wp1953452"><code class="cCode">NeighborInterface.getCost()</code></a>
+</div>
+</td>
+    <td><a name="wp1953281"> </a><div class="pCellBody">
+<a  href="rv_config81.htm#wp1953458">Get the path cost of the neighbor link.</a>
+</div>
+</td>
+    <td><a name="wp1953286"> </a><div class="pCellBody">
+<a  href="rv_config81.htm#wp1953452">89</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953291"> </a><div class="pCellBody">
+<a  href="rv_config82.htm#wp1953479"><code class="cCode">NeighborInterface.getId()</code></a>
+</div>
+</td>
+    <td><a name="wp1953295"> </a><div class="pCellBody">
+<a  href="rv_config82.htm#wp1953485">Get the interface ID of the neighbor interface.</a>
+</div>
+</td>
+    <td><a name="wp1953301"> </a><div class="pCellBody">
+<a  href="rv_config82.htm#wp1953479">90</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953306"> </a><div class="pCellBody">
+<a  href="rv_config83.htm#wp1953499"><code class="cCode">NeighborInterface.getLocalPort()</code></a>
+</div>
+</td>
+    <td><a name="wp1953310"> </a><div class="pCellBody">
+<a  href="rv_config83.htm#wp1953505">Get the TCP connect port of the local endpoint.</a>
+</div>
+</td>
+    <td><a name="wp1953316"> </a><div class="pCellBody">
+<a  href="rv_config83.htm#wp1953499">91</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953321"> </a><div class="pCellBody">
+<a  href="rv_config84.htm#wp1953526"><code class="cCode">NeighborInterface.getNeighborHost()</code></a>
+</div>
+</td>
+    <td><a name="wp1953326"> </a><div class="pCellBody">
+<a  href="rv_config84.htm#wp1953532">Get the host of the remote endpoint.</a>
+</div>
+</td>
+    <td><a name="wp1953331"> </a><div class="pCellBody">
+<a  href="rv_config84.htm#wp1953526">92</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953336"> </a><div class="pCellBody">
+<a  href="rv_config85.htm#wp1953553"><code class="cCode">NeighborInterface.getNeighborName()</code></a>
+</div>
+</td>
+    <td><a name="wp1953341"> </a><div class="pCellBody">
+<a  href="rv_config85.htm#wp1953559">Get the router name of the remote endpoint.</a>
+</div>
+</td>
+    <td><a name="wp1953346"> </a><div class="pCellBody">
+<a  href="rv_config85.htm#wp1953553">93</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953351"> </a><div class="pCellBody">
+<a  href="rv_config86.htm#wp1953580"><code class="cCode">NeighborInterface.getNeighborPort()</code></a>
+</div>
+</td>
+    <td><a name="wp1953355"> </a><div class="pCellBody">
+<a  href="rv_config86.htm#wp1953586">Get the TCP connect port of the remote endpoint.</a>
+</div>
+</td>
+    <td><a name="wp1953361"> </a><div class="pCellBody">
+<a  href="rv_config86.htm#wp1953580">94</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953366"> </a><div class="pCellBody">
+<a  href="rv_config87.htm#wp1953607"><code class="cCode">NeighborInterface.getType()</code></a>
+</div>
+</td>
+    <td><a name="wp1953371"> </a><div class="pCellBody">
+<a  href="rv_config87.htm#wp1953613">Get the type of the neighbor interface.</a>
+</div>
+</td>
+    <td><a name="wp1953376"> </a><div class="pCellBody">
+<a  href="rv_config87.htm#wp1953607">95</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953381"> </a><div class="pCellBody">
+<a  href="rv_config89.htm#wp1953639"><code class="cCode">NeighborInterface.isEncrypted()</code></a>
+</div>
+</td>
+    <td><a name="wp1953385"> </a><div class="pCellBody">
+<a  href="rv_config89.htm#wp1953645">Get the SSL requirement flag of the neighbor interface.</a>
+</div>
+</td>
+    <td><a name="wp1953391"> </a><div class="pCellBody">
+<a  href="rv_config89.htm#wp1953639">97</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1953396"> </a><div class="pCellBody">
+<a  href="rv_config90.htm#wp1953681"><code class="cCode">NeighborInterface.toXml()</code></a>
+</div>
+</td>
+    <td><a name="wp1953400"> </a><div class="pCellBody">
+<a  href="rv_config90.htm#wp1953687">Format the neighbor interface information as an XML document.</a>
+</div>
+</td>
+    <td><a name="wp1953406"> </a><div class="pCellBody">
+<a  href="rv_config90.htm#wp1953681">98</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1953408"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1953412"> </a><p class="pBody">
+<a  href="rv_config92.htm#wp1953972"><code class="cCode">Router.addAcceptAnyInterface()</code> </a>
+</p>
+<a name="wp1953416"> </a><p class="pBody">
+<a  href="rv_config93.htm#wp1954062"><code class="cCode">Router.addActiveInterface()</code> </a>
+</p>
+<a name="wp1953420"> </a><p class="pBody">
+<a  href="rv_config95.htm#wp1954315"><code class="cCode">Router.addPassiveInterface()</code> </a>
+</p>
+<a name="wp1953424"> </a><p class="pBody">
+<a  href="rv_config96.htm#wp1954420"><code class="cCode">Router.addSeekAnyInterface()</code> </a>
+</p>
+<a name="wp1953428"> </a><p class="pBody">
+<a  href="rv_config101.htm#wp1954692"><code class="cCode">Router.getNeighborInterfaces()</code> </a>
+</p>
+<a name="wp1953432"> </a><p class="pBody">
+For the corresponding browser pages, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm55.htm#wp1209711');" onMouseOver="WWHShowPopup('c', 'rv_adm55.htm#wp1209711', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Neighbor Interfaces</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>, and the sections that follow it
+</p>
+<a name="wp1953436"> </a><p class="pBody">
+For background information, see these sections:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1953443"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('c', 'rv_adm35.htm#wp1035365');" onMouseOver="WWHShowPopup('c', 'rv_adm35.htm#wp1035365', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Neighbors</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em></li></div>
+
+<a name="wp1953450"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('c', 'rv_adm36.htm#wp1066666');" onMouseOver="WWHShowPopup('c', 'rv_adm36.htm#wp1066666', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Adding Neighbor Interfaces</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em></li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

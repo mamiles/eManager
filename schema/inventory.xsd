@@ -1,0 +1,910 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Wm. Mark Stubbeman (Cisco Systems, Inc.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="inventoryMgrMsg">
+		<xs:annotation>
+			<xs:documentation>eManager Inventory Msgs</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="applicationViewMsg">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="avMsgGetRoot" type="xs:string"/>
+							<xs:element name="avMsgCreateNode">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="name" type="xs:string"/>
+										<xs:element name="parentNodeId" type="NodeId"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="avMsgFindNodes">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="searchRootNodeId" type="NodeId" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>inclusive; if not provided, search begins at root node</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="searchCriteria" type="ViewSearchCriteria"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="avMsgMoveNode">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="nodeId" type="NodeId"/>
+										<xs:element name="parentNodeId" type="NodeId"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="avMsgDeleteNode" type="NodeId"/>
+							<xs:element name="avMsgGetChildren" type="NodeId"/>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="physicalViewMsg">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="pvMsgGetRoot" type="xs:string"/>
+							<xs:element name="pvMsgCreateNode">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="name" type="xs:string"/>
+										<xs:element name="parentNodeId" type="NodeId"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="pvMsgFindNodes">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="searchRootNodeId" type="NodeId" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>inclusive; if not provided, search begins at root node</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="searchCriteria" type="ViewSearchCriteria"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="pvMsgMoveNode">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="nodeId" type="NodeId"/>
+										<xs:element name="parentNodeId" type="NodeId">
+											<xs:annotation>
+												<xs:documentation>new parent node</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="pvMsgDeleteNode" type="NodeId"/>
+							<xs:element name="pvMsgGetChildren" type="NodeId"/>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="solutionViewMsg">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="svMsgGetRoot" type="xs:string"/>
+							<xs:element name="svMsgCreateNode">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="name" type="xs:string"/>
+										<xs:element name="parentNodeId" type="NodeId"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="svMsgFindNodes">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="searchRootNodeId" type="NodeId" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>inclusive; if not provided, search begins at root node</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="searchCriteria" type="ViewSearchCriteria"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="svMsgMoveNode">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="nodeId" type="NodeId"/>
+										<xs:element name="parentNodeId" type="NodeId">
+											<xs:annotation>
+												<xs:documentation>new parent node</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="svMsgDeleteNode" type="NodeId"/>
+							<xs:element name="svMsgGetChildren" type="NodeId"/>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="appInstanceMsg">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="aiMsgGetAppInstances">
+								<xs:complexType>
+									<xs:choice>
+										<xs:element name="appInstanceId" type="AppInstanceId"/>
+										<xs:element name="hostId" type="HostId"/>
+										<xs:element name="appTypeId" type="AppTypeId"/>
+										<xs:element name="all" type="xs:string"/>
+									</xs:choice>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="aiMsgManage" type="AppInstanceId"/>
+							<xs:element name="aiMsgUnmanage" type="AppInstanceId"/>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="appTypeMsg">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="atMsgGetAppTypes">
+								<xs:complexType>
+									<xs:choice>
+										<xs:element name="appTypeId" type="AppTypeId"/>
+										<xs:element name="hostId" type="HostId"/>
+										<xs:element name="all" type="xs:string"/>
+									</xs:choice>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="hostMsg">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="hMsgGetHosts">
+								<xs:complexType>
+									<xs:choice>
+										<xs:element name="hostId" type="HostId"/>
+										<xs:element name="all" type="xs:string"/>
+									</xs:choice>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="instrumentationMsg">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="iMsgFindInstrumentations">
+								<xs:complexType>
+									<xs:choice>
+										<xs:element name="instrumentationId" type="ManagedObjectId">
+											<xs:annotation>
+												<xs:documentation>zero or one match possible</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="instrumentationName" type="xs:string">
+											<xs:annotation>
+												<xs:documentation>zero or one match possible</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="appInstanceId" type="AppInstanceId">
+											<xs:annotation>
+												<xs:documentation>many matches possible</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:choice>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="iMsgGetMethods">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="instrumentationId" type="ManagedObjectId"/>
+										<xs:element name="searchCriteria">
+											<xs:complexType>
+												<xs:choice>
+													<xs:element name="methodName" type="xs:string"/>
+													<xs:element name="all" type="xs:string"/>
+												</xs:choice>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="iMsgInvokeMethod">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="instrumentationId" type="ManagedObjectId"/>
+										<xs:element name="methodName" type="xs:string"/>
+										<xs:element name="args">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="arg" type="NvPair" minOccurs="0" maxOccurs="unbounded"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="mgmtPolicyMsg">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="mpMsgGetMgmtPolicies">
+								<xs:complexType>
+									<xs:choice>
+										<xs:element name="mgmtPolicyId" type="ManagedObjectId"/>
+										<xs:element name="appTypeId" type="AppTypeId"/>
+										<xs:element name="hostId" type="HostId"/>
+										<xs:element name="all" type="xs:string"/>
+									</xs:choice>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="solutionMsg">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="sMsgGetSolutions">
+								<xs:complexType>
+									<xs:choice>
+										<xs:element name="solutionId" type="SolutionId"/>
+										<xs:element name="all" type="xs:string"/>
+									</xs:choice>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="inventoryMgrResp">
+		<xs:annotation>
+			<xs:documentation>eManager Inventory Responses</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="applicationViewResp">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="avRspGetRoot">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="node" type="ContainerNode" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="avRspCreateNode">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="node" type="ContainerNode" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="avRspFindNodes">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="containerNodes" type="ContainerNode" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element name="appTypeNodes" type="AppTypeNode" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element name="appInstanceNodes" type="AppInstanceNode" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="avRspMoveNode">
+								<xs:complexType>
+									<xs:sequence/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="avRspDeleteNode">
+								<xs:complexType>
+									<xs:sequence/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="avRspMoveAppType">
+								<xs:complexType>
+									<xs:sequence/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="avRspGetChildren">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="containerNodes" type="ContainerNode" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element name="appTypeNodes" type="AppTypeNode" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element name="appInstanceNodes" type="AppInstanceNode" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="physicalViewResp">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="pvRspGetRoot">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="node" type="ContainerNode" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="pvRspCreateNode">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="node" type="ContainerNode" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="pvRspFindNodes">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="containerNodes" type="ContainerNode" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element name="hostNodes" type="HostNode" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element name="appInstanceNodes" type="AppInstanceNode" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="pvRspMoveNode">
+								<xs:complexType>
+									<xs:sequence/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="pvRspDeleteNode">
+								<xs:complexType>
+									<xs:sequence/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="pvRspMoveAppType">
+								<xs:complexType>
+									<xs:sequence/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="pvRspGetChildren">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="containerNodes" type="ContainerNode" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element name="hostNodes" type="HostNode" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element name="appInstanceNodes" type="AppInstanceNode" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="solutionViewResp">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="svRspGetRoot">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="node" type="ContainerNode" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="svRspCreateNode">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="node" type="ContainerNode" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="svRspFindNodes">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="containerNodes" type="ContainerNode" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element name="solutionNodes" type="SolutionNode" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element name="appInstanceNodes" type="AppInstanceNode" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="svRspMoveNode">
+								<xs:complexType>
+									<xs:sequence/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="svRspDeleteNode">
+								<xs:complexType>
+									<xs:sequence/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="svRspGetChildren">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="containerNodes" type="ContainerNode" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element name="solutionNodes" type="SolutionNode" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element name="appInstanceNodes" type="AppInstanceNode" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="appInstanceResp">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="aiRspGetAppInstances">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="appInstances" type="AppInstance" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="aiRspManage">
+								<xs:complexType>
+									<xs:sequence/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="aiRspUnmanage">
+								<xs:complexType>
+									<xs:sequence/>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="appTypeResp">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="atRspGetAppTypes">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="appTypes" type="AppType" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="hostResp">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="hRspGetHosts">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="hosts" type="Host" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="instrumentationResp">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="iRspFindInstrumentations">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="instrumentations" type="Instrumentation" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="iRspGetMethods">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="methods" type="Method" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="iRspInvokeMethod">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="results" type="NvPair" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="mgmtPolicyResp">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="mpRspGetMgmtPolicies">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="mgmtPolicies" type="MgmtPolicy" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="solutionResp">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="sRspGetHosts">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="solutions" type="Solution" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="inventoryNotification">
+		<xs:annotation>
+			<xs:documentation>eManager Inventory Notification</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="inventoryChanges" type="InventoryChangeNotification" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ManagedObjectId">
+		<xs:sequence>
+			<xs:element name="objectKey" type="ObjectKey"/>
+			<xs:element name="objectType" type="ObjectType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ObjectType">
+		<xs:choice>
+			<xs:element name="AppInstanceType" type="xs:integer"/>
+			<xs:element name="ApplicationHierarchyContainerType" type="xs:integer"/>
+			<xs:element name="AppTypeType" type="xs:integer"/>
+			<xs:element name="AuditLogType" type="xs:integer"/>
+			<xs:element name="EventType" type="xs:integer"/>
+			<xs:element name="HostAgentType" type="xs:integer"/>
+			<xs:element name="InstrumentationType" type="xs:integer"/>
+			<xs:element name="MgmtPolicyType" type="xs:integer"/>
+			<xs:element name="PhysicalHierarchyContainerType" type="xs:integer"/>
+			<xs:element name="SecurityRoleType" type="xs:integer"/>
+			<xs:element name="SolutionHierarchyContainerType" type="xs:integer"/>
+			<xs:element name="SolutionType" type="xs:integer"/>
+			<xs:element name="UserAccountType" type="xs:integer"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:simpleType name="ObjectKey">
+		<xs:restriction base="xs:long"/>
+	</xs:simpleType>
+	<xs:complexType name="AppInstance">
+		<xs:sequence>
+			<xs:element name="id" type="ManagedObjectId"/>
+			<xs:element name="appTypeId" type="ManagedObjectId"/>
+			<xs:element name="hostId" type="ManagedObjectId"/>
+			<xs:element name="instrumentationIds" type="ManagedObjectId" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="logfileDirectories" type="xs:string" nillable="false" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="logfilePassword" type="xs:string" nillable="true"/>
+			<xs:element name="logfileTransport" type="Transport" nillable="true"/>
+			<xs:element name="logfileUsername" type="xs:string" nillable="true"/>
+			<xs:element name="managementMode" type="ManagementMode"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="propertyFile" type="xs:string"/>
+			<xs:element name="unixPrompt" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Instrumentation">
+		<xs:sequence>
+			<xs:element name="id" type="ManagedObjectId"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="appInstanceId" type="ManagedObjectId"/>
+			<xs:element name="methods" type="Method" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Transport">
+		<xs:choice>
+			<xs:element name="Ssh" type="xs:integer"/>
+			<xs:element name="Telnet" type="xs:integer"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="ManagementMode">
+		<xs:choice>
+			<xs:element name="Managed" type="xs:boolean"/>
+			<xs:element name="Unmanaged" type="xs:boolean"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="AppType">
+		<xs:sequence>
+			<xs:element name="id" type="ManagedObjectId"/>
+			<xs:element name="localAppType" type="LocalAppType" maxOccurs="unbounded"/>
+			<xs:element name="version" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LocalAppType">
+		<xs:annotation>
+			<xs:documentation>an appType on a specific host</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="hostId" type="ManagedObjectId"/>
+			<xs:element name="mgmtPolicyId" type="ManagedObjectId" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="appInstanceId" type="ManagedObjectId" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Host">
+		<xs:sequence>
+			<xs:element name="id" type="ManagedObjectId"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="appBundle" type="AppBundle" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="dnsName" type="xs:string"/>
+			<xs:element name="domain" type="xs:string"/>
+			<xs:element name="ipAddress" type="xs:string"/>
+			<xs:element name="state" type="HostState"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AppBundle">
+		<xs:annotation>
+			<xs:documentation>a collection of appInstances of a specific appType</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="appTypeId" type="ManagedObjectId"/>
+			<xs:element name="appInstanceId" type="ManagedObjectId" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HostState">
+		<xs:choice>
+			<xs:element name="Down" type="xs:integer"/>
+			<xs:element name="Up" type="xs:integer"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="Method">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MgmtPolicy">
+		<xs:sequence>
+			<xs:element name="id" type="ManagedObjectId"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="pathname" type="xs:string"/>
+			<xs:element name="state" type="MgmtPolicyState"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MgmtPolicyState">
+		<xs:choice>
+			<xs:element name="Loaded" type="xs:integer"/>
+			<xs:element name="Unloaded" type="xs:integer"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="FullyDistinguishedName">
+		<xs:sequence>
+			<xs:element name="elementName" type="xs:string" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NvPair">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="value" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ViewSearchCriteria">
+		<xs:choice>
+			<xs:element name="nodeId" type="NodeId">
+				<xs:annotation>
+					<xs:documentation>zero orone match possible</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="nodeName" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>many matches possible</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="ContainerNode">
+		<xs:sequence>
+			<xs:element name="parentNodeId" type="ManagedObjectId" nillable="true" minOccurs="0"/>
+			<xs:element name="nodeId" type="ManagedObjectId"/>
+			<xs:element name="nodeName" type="xs:string"/>
+			<xs:element name="childNodeId" type="ManagedObjectId" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AppTypeNode">
+		<xs:sequence>
+			<xs:element name="id" type="ManagedObjectId"/>
+			<xs:element name="parentId" type="ManagedObjectId"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="appInstanceIds" type="ManagedObjectId" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AppInstanceNode">
+		<xs:sequence>
+			<xs:element name="id" type="ManagedObjectId"/>
+			<xs:element name="parentId" type="ManagedObjectId"/>
+			<xs:element name="name" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HostNode">
+		<xs:sequence>
+			<xs:element name="id" type="ManagedObjectId"/>
+			<xs:element name="parentId" type="ManagedObjectId"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="appInstanceIds" type="ManagedObjectId" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AppInstanceId">
+		<xs:choice>
+			<xs:element name="id" type="ManagedObjectId"/>
+			<xs:element name="typeAndName" type="AppTypeInstanceName"/>
+			<xs:element name="avFdn" type="FullyDistinguishedName">
+				<xs:annotation>
+					<xs:documentation>Apps View FDN</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="pvFdn" type="FullyDistinguishedName">
+				<xs:annotation>
+					<xs:documentation>Physical View FDN</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="AppTypeId">
+		<xs:choice>
+			<xs:element name="id" type="ManagedObjectId"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="avFdn" type="FullyDistinguishedName">
+				<xs:annotation>
+					<xs:documentation>Apps View FDN</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="HostId">
+		<xs:choice>
+			<xs:element name="id" type="ManagedObjectId"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="pvFdn" type="FullyDistinguishedName">
+				<xs:annotation>
+					<xs:documentation>Physical View FDN</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="NodeId">
+		<xs:choice>
+			<xs:element name="id" type="ManagedObjectId"/>
+			<xs:element name="fdn" type="FullyDistinguishedName"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="AppTypeInstanceName">
+		<xs:sequence>
+			<xs:element name="appTypeId" type="AppTypeId"/>
+			<xs:element name="name" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InventoryChangeNotification">
+		<xs:choice>
+			<xs:element name="appInstanceChange">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="created" type="ManagedObjectId"/>
+						<xs:element name="restored" type="ManagedObjectId"/>
+						<xs:element name="managed" type="ManagedObjectId"/>
+						<xs:element name="unmanaged" type="ManagedObjectId"/>
+						<xs:element name="deleted" type="ManagedObjectId"/>
+						<xs:element name="appsConsolidation" type="AppsConsolidationNotification"/>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="appTypeChange">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="created" type="ManagedObjectId"/>
+						<xs:element name="restored" type="ManagedObjectId"/>
+						<xs:element name="deleted" type="ManagedObjectId"/>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="hostChange">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="created" type="ManagedObjectId"/>
+						<xs:element name="restored" type="ManagedObjectId"/>
+						<xs:element name="deleted" type="ManagedObjectId"/>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="instrumentationChange">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="created" type="ManagedObjectId"/>
+						<xs:element name="restored" type="ManagedObjectId"/>
+						<xs:element name="deleted" type="ManagedObjectId"/>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="mgmtPolicyChange">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="created" type="ManagedObjectId"/>
+						<xs:element name="restored" type="ManagedObjectId"/>
+						<xs:element name="deleted" type="ManagedObjectId"/>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="solutionChange">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="created" type="ManagedObjectId"/>
+						<xs:element name="restored" type="ManagedObjectId"/>
+						<xs:element name="deleted" type="ManagedObjectId"/>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="viewChange">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="appsViewChange">
+							<xs:complexType>
+								<xs:choice>
+									<xs:element name="created" type="ManagedObjectId"/>
+									<xs:element name="restored" type="ManagedObjectId"/>
+									<xs:element name="moved" type="NodeMovedNotification"/>
+									<xs:element name="deleted" type="ManagedObjectId"/>
+								</xs:choice>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="physicalViewChange">
+							<xs:complexType>
+								<xs:choice>
+									<xs:element name="created" type="ManagedObjectId"/>
+									<xs:element name="restored" type="ManagedObjectId"/>
+									<xs:element name="moved" type="NodeMovedNotification"/>
+									<xs:element name="deleted" type="ManagedObjectId"/>
+								</xs:choice>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="solutionViewChange">
+							<xs:complexType>
+								<xs:choice>
+									<xs:element name="created" type="ManagedObjectId"/>
+									<xs:element name="restored" type="ManagedObjectId"/>
+									<xs:element name="moved" type="NodeMovedNotification"/>
+									<xs:element name="deleted" type="ManagedObjectId"/>
+								</xs:choice>
+							</xs:complexType>
+						</xs:element>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="NodeMovedNotification">
+		<xs:annotation>
+			<xs:documentation>provides info pertaining to movement of a view node</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="node" type="ManagedObjectId"/>
+			<xs:element name="oldParent" type="ManagedObjectId"/>
+			<xs:element name="newParent" type="ManagedObjectId"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AppsConsolidationNotification">
+		<xs:sequence>
+			<xs:element name="newAppInstances" type="ManagedObjectId" maxOccurs="unbounded"/>
+			<xs:element name="deletedAppInstances" type="ManagedObjectId" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Solution">
+		<xs:sequence>
+			<xs:element name="id" type="ManagedObjectId"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="appInstanceIds" type="ManagedObjectId" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SolutionId">
+		<xs:choice>
+			<xs:element name="id" type="ManagedObjectId"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="svFdn" type="FullyDistinguishedName">
+				<xs:annotation>
+					<xs:documentation>Solution View FDN</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="SolutionNode">
+		<xs:sequence>
+			<xs:element name="id" type="ManagedObjectId"/>
+			<xs:element name="parentId" type="ManagedObjectId"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="appInstanceIds" type="ManagedObjectId" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

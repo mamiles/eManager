@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvQueue_SetLimitPolicy()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;5	 Event Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1066306"> </a><h2 class="pNewHTMLPage">
+tibrvQueue_SetLimitPolicy()
+</h2>
+<hr />
+<a name="wp1066310"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1087078"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvQueue_SetLimitPolicy</code>(<a name="wp1077785"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref96.htm#wp1065939"><code class="cCode">tibrvQueue</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;eventQueue,<a name="wp1077787"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref98.htm#wp1065967"><code class="cCode">tibrvQueueLimitPolicy</code></a>&#160;&#160;&#160;&#160;policy,<a name="wp1077788"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128803"><code class="cCode">tibrv_u32</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;maxEvents,<a name="wp1077789"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128803"><code class="cCode">tibrv_u32</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;discardAmount);<a name="wp1077790"> </a>
+</pre></div>
+<a name="wp1087557"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1066319"> </a><p class="pBody">
+Set the limit properties of a queue.
+</p>
+<a name="wp1088008"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1066321"> </a><p class="pBody">
+This function simultaneously sets three related properties, which together describe the behavior of a queue in overflow situations. Each call must explicitly specify all three properties.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1143231"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1066324"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1066326"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1066328"> </a><div class="pCellBody">
+<code class="cCode">eventQueue</code>
+</div>
+</td>
+    <td><a name="wp1066330"> </a><div class="pCellBody">
+Set the limit properties of this queue.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1066332"> </a><div class="pCellBody">
+<code class="cCode">policy</code>
+</div>
+</td>
+    <td><a name="wp1066334"> </a><div class="pCellBody">
+Each queue has a policy for discarding events when a new event would cause the queue to exceed its <code class="cCode">maxEvents</code> limit. Choose from the values of <a  href="rv_c_ref98.htm#wp1065967"><code class="cCode">tibrvQueueLimitPolicy</code> </a>.
+</div>
+<a name="wp1066338"> </a><div class="pCellBody">
+When <code class="cCode">maxEvents</code> is zero (unlimited), the <code class="cCode">policy</code> must be <a  href="rv_c_ref98.htm#wp1110910"><code class="cCode">TIBRVQUEUE_DISCARD_NONE</code></a>.
+</div>
+<a name="wp1066342"> </a><div class="pCellBody">
+The program supplies a value, and the function sets the limit policy of the queue to that value.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1066344"> </a><div class="pCellBody">
+<code class="cCode">maxEvents</code>
+</div>
+</td>
+    <td><a name="wp1066346"> </a><div class="pCellBody">
+Programs can limit the number of events that a queue can hold&#151;either to curb queue growth, or implement a specialized dispatch semantics.
+</div>
+<a name="wp1066347"> </a><div class="pCellBody">
+Zero specifies an unlimited number of events; in this case, the <code class="cCode">policy</code> must be <a  href="rv_c_ref98.htm#wp1110910"><code class="cCode">TIBRVQUEUE_DISCARD_NONE</code></a>.
+</div>
+<a name="wp1066351"> </a><div class="pCellBody">
+The program supplies a value, and the function sets the maximum event limit of the queue to that value.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1066353"> </a><div class="pCellBody">
+<code class="cCode">discardAmount</code>
+</div>
+</td>
+    <td><a name="wp1066355"> </a><div class="pCellBody">
+When the queue exceeds its maximum event limit, discard a block of events. This property specifies the number of events to discard.
+</div>
+<a name="wp1066356"> </a><div class="pCellBody">
+When <code class="cCode">discardAmount</code> is zero, the <code class="cCode">policy</code> must be <a  href="rv_c_ref98.htm#wp1110910"><code class="cCode">TIBRVQUEUE_DISCARD_NONE</code></a>.
+</div>
+<a name="wp1066360"> </a><div class="pCellBody">
+The program supplies a value, and the function sets the discard amount of the queue to that value.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1088402"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1136613"> </a><p class="pBody">
+<a  href="rv_c_ref105.htm#wp1066180"><code class="cCode">tibrvQueue_GetLimitPolicy()</code> </a>
+</p>
+<a name="wp1066365"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts167.htm#wp1064290');" onMouseOver="WWHShowPopup('a', 'rv_concepts167.htm#wp1064290', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">QUEUE.LIMIT_EXCEEDED</code> </a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvQueue::destroy()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1036179"> </a><h2 class="pNewHTMLPage">
+TibrvQueue::destroy()
+</h2>
+<hr />
+<a name="wp1036180"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1131059"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">destroy</code> ();<a name="wp1131060"> </a>
+<a name="wp1131094"> </a>
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">destroy</code> (<a name="wp1131114"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_cpp_ref142.htm#wp1145952"><code class="cCode">TibrvQueueOnComplete</code></a>* completeCB,<a name="wp1131150"> </a>
+&#160;&#160;&#160;&#160;const void* closure = NULL);<a name="wp1131152"> </a>
+</pre></div>
+<a name="wp1131061"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1131191"> </a><p class="pBody">
+Destroy an event queue.
+</p>
+<a name="wp1131192"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1131193"> </a><p class="pBody">
+When a queue is destroyed, events that remain in the queue are discarded.
+</p>
+<a name="wp1131091"> </a><p class="pBody">
+The destructor calls this method.
+</p>
+<a name="wp1131085"> </a><p class="pBody">
+When a program destroys a queue, all events associated with the queue become invalid. These invalid events still occupy storage until the program explicitly destroys them, or until the program calls <a  href="rv_cpp_ref13.htm#wp1051787"><code class="cCode">Tibrv::close()</code></a>.
+</p>
+<a name="wp1151123"> </a><p class="pBody">
+A program must not call <a  href="rv_cpp_ref129.htm#wp1036179"><code class="cCode">TibrvQueue::destroy()</code></a> on the default queue. Closing <a  href="rv_cpp_ref12.htm#wp1158783"><code class="cCode">Tibrv</code></a> destroys the default queue; see <a  href="rv_cpp_ref13.htm#wp1051787"><code class="cCode">Tibrv::close()</code> </a>.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1131207"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1131209"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1131215"> </a><div class="pCellBody">
+<code class="cCode">completeCB</code>
+</div>
+</td>
+    <td><a name="wp1131220"> </a><div class="pCellBody">
+Rendezvous software runs this method immediately after all event callback methods dispatched from the queue have completed. If no event callback methods are running when the queue is destroyed, the destroy call runs the completion method before returning.
+</div>
+<a name="wp1131221"> </a><div class="pCellBody">
+If this parameter is <code class="cCode">NULL</code>, this method does not run a completion.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1131226"> </a><div class="pCellBody">
+<code class="cCode">closure</code>
+</div>
+</td>
+    <td><a name="wp1131228"> </a><div class="pCellBody">
+Pass this closure argument to the completion method.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

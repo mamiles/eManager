@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvMsgData_GetBytes()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Appendix&#160;A	 Custom Datatypes";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1151924"> </a><h2 class="pNewHTMLPage">
+tibrvMsgData_GetBytes()
+</h2>
+<hr />
+<a name="wp1149148"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1149149"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvMsgData_GetBytes</code>(<a name="wp1149150"> </a>
+&#160;&#160;&#160;&#160;char**&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;buffer,<a name="wp1149151"> </a>
+&#160;&#160;&#160;&#160;const void**&#160;&#160;&#160;&#160;src,<a name="wp1149152"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128803"><code class="cCode">tibrv_u32</code></a>*&#160;&#160;&#160;&#160;&#160;&#160;size);<a name="wp1149153"> </a>
+</pre></div>
+<a name="wp1149154"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1149155"> </a><p class="pBody">
+Get data pointer and size from a wire buffer for a decoder.
+</p>
+<a name="wp1149157"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1151944"> </a><p class="pBody">
+This layer 1 function helps decoders extract data from a message&#8217;s wire buffer. It does these steps (see <a  href="rv_c_ref242.htm#wp1152078">Figure&#160;15</a>):
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1151945"> </a><div class="pSmartList1"><li value="1">Read the size information from the wire buffer (starting at the position <code class="cCode">*buffer</code>) and store it in the <code class="cCode">size</code> parameter.</li></div>
+
+<a name="wp1151972"> </a><div class="pSmartList1"><li value="2">Store the start position of the actual data in the <code class="cCode">src</code> parameter.</li></div>
+
+<a name="wp1151946"> </a><div class="pSmartList1"><li value="3">Advance <code class="cCode">*buffer</code> to point to the end of the actual data.</li></div>
+
+<a name="wp1151948"> </a><div class="pSmartList1"><li value="4">Return.</li></div>
+
+</ol></div>
+
+<a name="wp1152057"> </a><p class="pBody">
+After <a  href="rv_c_ref242.htm#wp1151924"><code class="cCode">tibrvMsgData_GetBytes()</code></a> returns, the decoder can obtain the data by copying <code class="cCode">*size</code> bytes from the location <code class="cCode">*src</code>.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1152098"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1152100"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1152102"> </a><div class="pCellBody">
+<code class="cCode">buffer</code>
+</div>
+</td>
+    <td><a name="wp1152104"> </a><div class="pCellBody">
+The decoder supplies the location of an address within the wire buffer of a source message. After reading the size information, this function advances <code class="cCode">*buffer</code> to point to the location at the end of the data.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1152106"> </a><div class="pCellBody">
+<code class="cCode">src</code>
+</div>
+</td>
+    <td><a name="wp1152108"> </a><div class="pCellBody">
+The decoder supplies the location of a buffer pointer. This function stores the address of the actual data in that pointer.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1152110"> </a><div class="pCellBody">
+<code class="cCode">size</code>
+</div>
+</td>
+    <td><a name="wp1152112"> </a><div class="pCellBody">
+The decoder supplies a location. This function stores the size of the actual data in that location.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1152078"> </a><div class="pFigureTitle">
+Figure&#160;15   tibrvMsgData_GetBytes</div><div align="center"><img src="images/rv_c_refa13.gif" height="372" width="527" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1149183"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1152127"> </a><p class="pBody">
+<a  href="rv_c_ref240.htm#wp1150007"><code class="cCode">tibrvMsgData_Decoder</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

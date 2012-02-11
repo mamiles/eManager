@@ -1,0 +1,9 @@
+#!/bin/ksh -p
+
+. /opt/CSCOemgmt/bin/emenv.ksh
+
+CLASSPATH=$CLASSPATH:$EM_HOME/sdk/process/test_application/classes
+export CLASSPATH
+
+echo $JRE_ROOT/bin/java -cp $CLASSPATH Receiver
+$JRE_ROOT/bin/java -Dlog4j=/opt/CSCOemgmt/sdk/process/test_application/bin/log4j.config -cp $CLASSPATH Receiver

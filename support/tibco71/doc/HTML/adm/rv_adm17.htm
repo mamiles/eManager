@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Daemon Client Socket-Establishing Connections</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;3	 Network Details";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1019451"> </a><h2 class="pNewHTMLPage">
+Daemon Client Socket&#151;Establishing Connections
+</h2>
+<hr />
+<a name="wp1019459"> </a><p class="pBody">
+The Rendezvous daemon (<code class="cCode">rvd</code>) and the Rendezvous routing daemon (<code class="cCode">rvrd</code>) both open a client socket to establish communication with their clients (Rendezvous programs). The <code class="cCode">-listen</code> option to <code class="cCode">rvd</code> and <code class="cCode">rvrd</code> lets you specify where the daemon should listen for new client connections. Conversely, Rendezvous programs request connections with the daemon at that client socket. The <code class="cCode">daemon</code> parameter of the transport creation function determines how and where to find the Rendezvous daemon and establish communication.
+</p>
+<a name="wp1019472"> </a><p class="pBody">
+Each transport object establishes a communication conduit with a Rendezvous daemon, as described in these steps:
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1019476"> </a><div class="pSmartList1"><li value="1">The daemon process opens a (TCP) <em class="cEmphasis">client socket</em>, and waits for a client to request a connection.</li></div>
+
+<a name="wp1020020"> </a><p class="pBodyRelative">
+The <code class="cCode">-listen</code> option of the Rendezvous daemon specifies where the daemon listens for new client transports. 
+</p>
+<a name="wp1020024"> </a><div class="pSmartList1"><li value="2">The program calls the transport creation function, which contacts the daemon at the client socket specified in its <code class="cCode">daemon</code> parameter.</li></div>
+
+<a name="wp1019485"> </a><p class="pBodyRelative">
+The <code class="cCode">daemon</code> parameter of the transport creation function <em class="cEmphasis">must</em> correspond to the <code class="cCode">-listen</code> option of the daemon process; that is, they must specify the same communication type and socket number.
+</p>
+<a name="wp1019486"> </a><p class="pBodyRelative">
+If no daemon process is listening on the specified client socket, then the transport creation call automatically starts a new daemon process (which listens on the specified client socket) and then attempts to connect to it.
+</p>
+<a name="wp1019487"> </a><div class="pSmartList1"><li value="3">The daemon process opens a conduit for private communication with the new transport. All future communication uses that private conduit.</li></div>
+
+<a name="wp1019488"> </a><p class="pBodyRelative">
+The request socket is now free for additional requests from other client transports.
+</p>
+</ol></div>
+
+<a name="wp1019489"> </a><h3 class="pHeading2">
+Specifying a Local Daemon
+</h3>
+<a name="wp1019490"> </a><p class="pBody">
+Specify the daemon&#8217;s client socket as a character string.
+</p>
+<a name="wp1019491"> </a><p class="pBody">
+For <em class="cEmphasis">local</em> daemons, specify a TCP socket number; for example: <code class="cCode">&quot;6555&quot;</code>
+</p>
+<a name="wp1019497"> </a><p class="pBody">
+If you omit the daemon parameter of the transport creation function (in C, supply <code class="cCode">NULL</code>), it uses <code class="cCode">7500</code> as the default. Similarly, to start a daemon process using the default socket, omit the <code class="cCode">-listen</code> option to the daemon command line. 
+</p>
+<a name="wp1019503"> </a><p class="pBody">
+In all cases, the communication type and socket number in the <code class="cCode">daemon</code> parameter of the transport creation call must match those given to <code class="cCode">rvd</code> through its <code class="cCode">-listen</code> parameter.
+</p>
+<a name="wp1019505"> </a><h3 class="pHeading2">
+Remote Daemon
+</h3>
+<a name="wp1019506"> </a><p class="pBody">
+In most cases, programs use a local daemon, running on the same host as the program. Certain situations require a <em class="cEmphasis">remote</em> daemon, for example:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1019507"> </a><div class="pSmartList1"><li >The program runs on a laptop computer that is not directly connected to the network. Instead, the laptop connects to a workstation on the network, and the daemon runs on that workstation.</li></div>
+
+<a name="wp1019508"> </a><div class="pSmartList1"><li >The program connects to a network at a remote site.</li></div>
+
+</ul></div>
+
+<a name="wp1019509"> </a><p class="pBody">
+For <em class="cEmphasis">remote</em> daemons, specify two parts (introducing the remote host name as the first part):
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1019511"> </a><div class="pSmartList1"><li >Remote host name.</li></div>
+
+<a name="wp1077057"> </a><div class="pSmartList1"><li >TCP socket number.</li></div>
+
+</ul></div>
+
+<a name="wp1077059"> </a><p class="pBody">
+For example: <code class="cCode">&quot;purple_host:6555&quot;</code>.
+</p>
+<a name="wp1019516"> </a><p class="pBody">
+Once again the communication type and socket number in the <code class="cCode">daemon</code> parameter of the transport creation call must match those given to <code class="cCode">rvd</code> through its <code class="cCode">-listen</code> parameter. However, the <code class="cCode">-listen</code> parameter still receives only a two-part argument&#151;without a remote host name.
+</p>
+<a name="wp1169565"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/note.gif" border="0" /></td>
+    <td><a name="wp1303433"> </a><div class="pCellBody">
+Direct communication is not available when connecting to a remote daemon.
+</div>
+<a name="wp1303439"> </a><div class="pCellBody">
+For a general overview, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts78.htm#wp1144571');" onMouseOver="WWHShowPopup('a', 'rv_concepts78.htm#wp1144571', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Direct Communication</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1019518"> </a><h4 class="pHeading3">
+Barring Remote Connections
+</h4>
+<a name="wp1019522"> </a><p class="pBody">
+A Rendezvous daemon or routing daemon can prohibit connections from remote programs by specifying <code class="cCode">-listen &quot;127.0.0.1&quot;</code>. The special network address <code class="cCode">127.0.0.1</code> represents the local host, so this parameter specifies that only local programs may connect.
+</p>
+<a name="wp1019523"> </a><p class="pBody">
+This configuration is especially important when a routing daemon runs on a firewall computer.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

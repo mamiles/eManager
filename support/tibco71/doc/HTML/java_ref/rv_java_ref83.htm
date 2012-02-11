@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvListener()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1033788"> </a><h2 class="pNewHTMLPage">
+TibrvListener()
+</h2>
+<hr />
+<a name="wp1033789"> </a><p class="pSyntaxType">
+Constructor
+</p>
+<a name="wp1033791"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCodeBold">TibrvListener</code>(<a name="wp1125530"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_java_ref98.htm#wp1035245"><code class="cCode">TibrvQueue</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;queue,<a name="wp1125534"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_java_ref86.htm#wp1170508"><code class="cCode">TibrvMsgCallback</code></a>&#160;&#160;&#160;&#160;callback,<a name="wp1125538"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_java_ref130.htm#wp1038525"><code style="font-weight: normal" class="cCode">TibrvTransport</code></a>&#160;&#160;&#160;&#160;&#160;&#160;transport,<a name="wp1125542"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;&#160;&#160;subject,<a name="wp1125543"> </a>
+&#160;&#160;&#160;&#160;java.lang.Object&#160;&#160;&#160;&#160;closure)<a name="wp1125544"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125548"> </a>
+</pre></div>
+<a name="wp1033793"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1033794"> </a><p class="pBody">
+Create a listener object to listen for inbound messages.
+</p>
+<a name="wp1033795"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1116471"> </a><p class="pBody">
+For each inbound message, place this event on the event queue.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1116481"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1116483"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1116485"> </a><div class="pCellBody">
+<code class="cCode">queue</code>
+</div>
+</td>
+    <td><a name="wp1116487"> </a><div class="pCellBody">
+For each inbound message, place the event on this event queue.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1116489"> </a><div class="pCellBody">
+<code class="cCode">callback</code>
+</div>
+</td>
+    <td><a name="wp1116491"> </a><div class="pCellBody">
+On dispatch, process the event with this interface implementation.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1116493"> </a><div class="pCellBody">
+<code class="cCode">transport</code>
+</div>
+</td>
+    <td><a name="wp1116495"> </a><div class="pCellBody">
+Listen for inbound messages on this transport.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1116497"> </a><div class="pCellBody">
+<code class="cCode">subject</code>
+</div>
+</td>
+    <td><a name="wp1116499"> </a><div class="pCellBody">
+Listen for inbound messages with subjects that match this specification. Wildcard subjects are permitted. Them empty string is not a legal subject name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1116501"> </a><div class="pCellBody">
+<code class="cCode">closure</code>
+</div>
+</td>
+    <td><a name="wp1116503"> </a><div class="pCellBody">
+Store this closure data in the event object.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1116505"> </a><h4 class="pHeading3">
+Inbox Listener
+</h4>
+<a name="wp1087711"> </a><p class="pBody">
+To receive unicast (point-to-point) messages, listen to a unique inbox subject name. First call <a  href="rv_java_ref131.htm#wp1040342"><code class="cCode">TibrvTransport.createInbox()</code></a> to create the unique inbox name; then call <a  href="rv_java_ref83.htm#wp1033788"><code class="cCode">TibrvListener()</code></a> to begin listening. Remember that other programs have no information about an inbox until the listening program uses it as a reply subject in an outbound message.
+</p>
+<a name="wp1034213"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1033808"> </a><p class="pBody">
+<a  href="rv_java_ref78.htm#wp1068928"><code class="cCode">TibrvEvent.destroy()</code> </a>
+</p>
+<a name="wp1070264"> </a><p class="pBody">
+<a  href="rv_java_ref86.htm#wp1170508"><code class="cCode">TibrvMsgCallback</code> </a>
+</p>
+<a name="wp1059262"> </a><p class="pBody">
+<a  href="rv_java_ref87.htm#wp1098410"><code class="cCode">TibrvMsgCallback.onMsg()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

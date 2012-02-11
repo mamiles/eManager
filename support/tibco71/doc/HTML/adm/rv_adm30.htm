@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Requirements</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1048099"> </a><h2 class="pNewHTMLPage">
+Requirements
+</h2>
+<hr />
+<a name="wp1020300"> </a><p class="pBody">
+These four conditions enable delivery of Rendezvous messages between networks:
+</p>
+<a name="wp1052814"> </a><h3 class="pHeading2">
+Routing Daemons
+</h3>
+<a name="wp1052803"> </a><p class="pBody">
+A routing daemon must exist on at least one computer of each local network that participates by sending or receiving Rendezvous messages.
+</p>
+<a name="wp1052820"> </a><h3 class="pHeading2">
+Neighbor Connections
+</h3>
+<a name="wp1052902"> </a><p class="pBody">
+The network administrator must allow the routing daemons to establish TCP or SSL connections, so the routing daemons can become neighbors.
+</p>
+<a name="wp1052903"> </a><h3 class="pHeading2">
+Subject Gating
+</h3>
+<a name="wp1054541"> </a><p class="pBody">
+Each routing daemon must <em class="cEmphasis">export</em> the relevant subject names from its local network, and <em class="cEmphasis">import</em> the relevant subject names from other networks.
+</p>
+<a name="wp1054548"> </a><p class="pBody">
+For details, see <a  href="rv_adm34.htm#wp1044190">Subject Gating</a>, and <a  href="rv_adm34.htm#wp1046221">Subject Filtering with Wildcards</a>.
+</p>
+<a name="wp1054549"> </a><h3 class="pHeading2">
+Subject Interest
+</h3>
+<a name="wp1060673"> </a><p class="pBody">
+Import and export gating is not sufficient to start the flow of messages. To receive forwarded messages, programs within the local network must express <em class="cEmphasis">interest</em> in the relevant subject names, by listening for those subjects.
+</p>
+<a name="wp1052867"> </a><p class="pBody">
+Whenever a routing daemon detects interest in a subject within one of its local networks, it cooperates with other routing daemons to forward that subject to that local network. When programs in the network no longer retain interest in a subject, the routing daemons stop forwarding it.
+</p>
+<a name="wp1052835"> </a><p class="pBody">
+For more details, see <a  href="rv_adm34.htm#wp1046275">Routing Daemons Filter Interest to Permitted Subjects</a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

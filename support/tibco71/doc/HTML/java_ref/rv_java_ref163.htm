@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvFtMember()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;8	 Fault Tolerance";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1062937"> </a><h2 class="pNewHTMLPage">
+TibrvFtMember()
+</h2>
+<hr />
+<a name="wp1065852"> </a><p class="pSyntaxType">
+Constructor
+</p>
+<a name="wp1062939"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCodeBold">TibrvFtMember</code>(<a name="wp1063177"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_java_ref98.htm#wp1035245"><code class="cCode">TibrvQueue</code></a> queue,<a name="wp1063191"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_java_ref175.htm#wp1063525"><code style="font-weight: normal" class="cCode">TibrvFtMemberCallback</code></a> callback,<a name="wp1063178"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_java_ref130.htm#wp1038525"><code style="font-weight: normal" class="cCode">TibrvTransport</code></a> transport,<a name="wp1063179"> </a>
+&#160;&#160;&#160;&#160;java.lang.String groupName,<a name="wp1063180"> </a>
+&#160;&#160;&#160;&#160;int weight,<a name="wp1063181"> </a>
+&#160;&#160;&#160;&#160;int activeGoal,<a name="wp1063182"> </a>
+&#160;&#160;&#160;&#160;double heartbeatInterval,<a name="wp1063183"> </a>
+&#160;&#160;&#160;&#160;double preparationInterval,<a name="wp1063184"> </a>
+&#160;&#160;&#160;&#160;double activationInterval,<a name="wp1063185"> </a>
+&#160;&#160;&#160;&#160;java.lang.Object closure)<a name="wp1063186"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1062940"> </a>
+</pre></div>
+<a name="wp1062952"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1062954"> </a><p class="pBody">
+Create a member of a fault tolerance group.
+</p>
+<a name="wp1062955"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1062956"> </a><p class="pBody">
+Upon creating a member object, the program becomes a member of the group.
+</p>
+<a name="wp1081682"> </a><p class="pBody">
+A program may hold simultaneous memberships in several distinct fault tolerance groups. For examples, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts144.htm#wp1057871');" onMouseOver="WWHShowPopup('a', 'rv_concepts144.htm#wp1057871', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Multiple Groups</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+<a name="wp1081686"> </a><p class="pBody">
+Avoid joining the same group twice. It is illegal for a program to maintain more than one membership in any one fault tolerance group. The constructor does not guard against this illegal situation, and results are unpredictable.
+</p>
+<a name="wp1062965"> </a><p class="pBody">
+All arguments are required except for <code class="cCode">preparationInterval</code> (which may be zero) and <code class="cCode">closure</code> (which may be <code class="cCode">null</code>).
+</p>
+<a name="wp1062966"> </a><h4 class="pHeading3">
+Intervals
+</h4>
+<a name="wp1062967"> </a><p class="pBody">
+The heartbeat interval must be less than the activation interval. If the preparation interval is non-zero, it must be greater than the heartbeat interval and less than the activation interval. It is an error to violate these rules.
+</p>
+<a name="wp1062968"> </a><p class="pBody">
+In addition, intervals must be reasonable for the hardware and network conditions. For information and examples, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts155.htm#wp1058304');" onMouseOver="WWHShowPopup('a', 'rv_concepts155.htm#wp1058304', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Step 4: Choose the Intervals</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+<a name="wp1062972"> </a><h4 class="pHeading3">
+Group Name
+</h4>
+<a name="wp1062978"> </a><p class="pBody">
+The group name must be a legal Rendezvous subject name (see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts47.htm#wp1065576');" onMouseOver="WWHShowPopup('a', 'rv_concepts47.htm#wp1065576', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Subject Names</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>). You may use names with several elements; for examples, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts144.htm#wp1057871');" onMouseOver="WWHShowPopup('a', 'rv_concepts144.htm#wp1057871', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Multiple Groups</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+<a name="wp1233507"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1212642"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1212000"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1212002"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1212004"> </a><div class="pCellBody">
+<code class="cCode">queue</code>
+</div>
+</td>
+    <td><a name="wp1212006"> </a><div class="pCellBody">
+Place fault tolerance events for this member on this event queue.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1212008"> </a><div class="pCellBody">
+<code class="cCode">callback</code>
+</div>
+</td>
+    <td><a name="wp1212010"> </a><div class="pCellBody">
+On dispatch, process the event with this callback object.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1212012"> </a><div class="pCellBody">
+<code class="cCode">transport</code>
+</div>
+</td>
+    <td><a name="wp1212014"> </a><div class="pCellBody">
+Use this transport for fault tolerance internal protocol messages (such as heartbeat messages).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1212016"> </a><div class="pCellBody">
+<code class="cCode">groupName</code>
+</div>
+</td>
+    <td><a name="wp1212018"> </a><div class="pCellBody">
+Join the fault tolerant group with this name.
+</div>
+<a name="wp1212019"> </a><div class="pCellBody">
+The group name must conform to the syntax required for Rendezvous subject names. For details, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts47.htm#wp1065576');" onMouseOver="WWHShowPopup('a', 'rv_concepts47.htm#wp1065576', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Subject Names</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1212031"> </a><div class="pCellBody">
+<code class="cCode">weight</code>
+</div>
+</td>
+    <td><a name="wp1212034"> </a><div class="pCellBody">
+Weight represents the ability of this member to fulfill its purpose, relative to other members of the same fault tolerance group. Rendezvous fault tolerance software uses relative weight values to select which members to activate; members with higher weight take precedence over members with lower weight.
+</div>
+<a name="wp1212039"> </a><div class="pCellBody">
+Acceptable values range from 1 to 65535. Zero is a special, reserved value; Rendezvous fault tolerance software assigns zero weight to processes with resource errors, so they only activate when no other members are available.
+</div>
+<a name="wp1212047"> </a><div class="pCellBody">
+For more information, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts134.htm#wp1057331');" onMouseOver="WWHShowPopup('a', 'rv_concepts134.htm#wp1057331', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Rank and Weight</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1212052"> </a><div class="pCellBody">
+<code class="cCode">activeGoal</code>
+</div>
+</td>
+    <td><a name="wp1212057"> </a><div class="pCellBody">
+Rendezvous fault tolerance software sends callback instructions to maintain this number of active members.
+</div>
+<a name="wp1212058"> </a><div class="pCellBody">
+Acceptable values range from 1 to 65535.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1212061"> </a><div class="pCellBody">
+<code class="cCode">heartbeatInterval</code>
+</div>
+</td>
+    <td><a name="wp1212063"> </a><div class="pCellBody">
+When this member is active, it sends heartbeat messages at this interval (in seconds).
+</div>
+<a name="wp1212064"> </a><div class="pCellBody">
+The interval must be positive. To determine the correct value, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts155.htm#wp1058304');" onMouseOver="WWHShowPopup('a', 'rv_concepts155.htm#wp1058304', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Step 4: Choose the Intervals</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1212073"> </a><div class="pCellBody">
+<code class="cCode">preparationInterval</code>
+</div>
+</td>
+    <td><a name="wp1212075"> </a><div class="pCellBody">
+When the heartbeat signal from one or more active members has been silent for this interval (in seconds), Rendezvous fault tolerance software issues an early warning hint (<a  href="rv_java_ref162.htm#wp1062848"><code class="cCode">TibrvFtMember.PREPARE_TO_ACTIVATE</code></a>) to the ranking inactive member. This warning lets the inactive member prepare to activate, for example, by connecting to a database server, or allocating memory.
+</div>
+<a name="wp1212082"> </a><div class="pCellBody">
+The interval must be non-negative. Zero is a special value, indicating that the member does not need advance warning to activate; Rendezvous fault tolerance software never issues a <a  href="rv_java_ref162.htm#wp1062848"><code class="cCode">TibrvFtMember.PREPARE_TO_ACTIVATE</code></a> hint when this value is zero. To determine the correct value, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts155.htm#wp1058304');" onMouseOver="WWHShowPopup('a', 'rv_concepts155.htm#wp1058304', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Step 4: Choose the Intervals</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1212097"> </a><div class="pCellBody">
+<code class="cCode">activationInterval</code>
+</div>
+</td>
+    <td><a name="wp1212099"> </a><div class="pCellBody">
+When the heartbeat signal from one or more active members has been silent for this interval (in seconds), Rendezvous fault tolerance software considers the silent member to be lost, and issues the instruction to activate (<a  href="rv_java_ref162.htm#wp1062859"><code class="cCode">TibrvFtMember.ACTIVATE</code></a>) to the ranking inactive member.
+</div>
+<a name="wp1212109"> </a><div class="pCellBody">
+When a new member joins a group, Rendezvous fault tolerance software identifies the new member to existing members (if any), and then waits for this interval to receive identification from them in return. If, at the end of this interval, it determines that too few members are active, it issues the activate instruction (<a  href="rv_java_ref162.htm#wp1062859"><code class="cCode">TibrvFtMember.ACTIVATE</code></a>) to the new member.
+</div>
+<a name="wp1212113"> </a><div class="pCellBody">
+Then interval must be positive. To determine the correct value, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts155.htm#wp1058304');" onMouseOver="WWHShowPopup('a', 'rv_concepts155.htm#wp1058304', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Step 4: Choose the Intervals</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1212121"> </a><div class="pCellBody">
+<code class="cCode">closure</code>
+</div>
+</td>
+    <td><a name="wp1212123"> </a><div class="pCellBody">
+Store this closure data in the member object.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1063139"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1063143"> </a><p class="pBody">
+<a  href="rv_java_ref162.htm#wp1062294"><code class="cCode">TibrvFtMember</code> </a>.
+</p>
+<a name="wp1063147"> </a><p class="pBody">
+<a  href="rv_java_ref175.htm#wp1063525"><code class="cCode">TibrvFtMemberCallback</code> </a>.
+</p>
+<a name="wp1063508"> </a><p class="pBody">
+<a  href="rv_java_ref164.htm#wp1062646"><code class="cCode">TibrvFtMember.destroy()</code> </a>.
+</p>
+<a name="wp1063159"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts152.htm#wp1058158');" onMouseOver="WWHShowPopup('a', 'rv_concepts152.htm#wp1058158', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Step 1: Choose a Group Name</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+<a name="wp1081569"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts153.htm#wp1058191');" onMouseOver="WWHShowPopup('a', 'rv_concepts153.htm#wp1058191', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Step 2: Choose the Active Goal</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+<a name="wp1081579"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts155.htm#wp1058304');" onMouseOver="WWHShowPopup('a', 'rv_concepts155.htm#wp1058304', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Step 4: Choose the Intervals</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+<a name="wp1081589"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts156.htm#wp1058412');" onMouseOver="WWHShowPopup('a', 'rv_concepts156.htm#wp1058412', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Step 5: Program Start Sequence</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

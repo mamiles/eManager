@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>Message Ownership and Control</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;3	 Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1013256"> </a><h2 class="pNewHTMLPage">
+Message Ownership and Control
+</h2>
+<hr />
+<a name="wp1013308"> </a><p class="pBody">
+When a C program creates a message, the program <em class="cEmphasis">owns</em> that message. The program is responsible for destroying that message when it no longer needs the storage. That is, every <em class="cEmphasis">create</em> message operation must be paired with a <em class="cEmphasis">destroy</em> message operation.
+</p>
+<a name="wp1061819"> </a><p class="pBody">
+In contrast, when Rendezvous software creates a message, then Rendezvous software owns that message. This situation occurs only in the case of inbound messages presented to a callback function; Rendezvous software destroys such messages when the callback function returns, unless the program explicitly detaches the message first. After a detach operation, the program owns the message, and must explicitly destroy it to reclaim the storage.
+</p>
+<a name="wp1046826"> </a><p class="pBody">
+Rendezvous software <em class="cEmphasis">controls</em> the storage in which all messages reside&#151;even messages that the program owns. Programs must not directly modify the storage in which a message resides. Programs may change the contents of a message only by using Rendezvous functions that add, remove or update fields.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Redundant Routing Daemons for Fault Tolerance</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1046197"> </a><h2 class="pNewHTMLPage">
+Redundant Routing Daemons for Fault Tolerance
+</h2>
+<hr />
+<a name="wp1046202"> </a><p class="pBody">
+Rendezvous routing daemons can cooperate for fault-tolerant service. Fault tolerance protects routing daemons against hardware failures, process failures and network segmentation.
+</p>
+<a name="wp1046207"> </a><p class="pBody">
+In <a  href="rv_adm37.htm#wp1174943">Figure&#160;9</a>, two routing daemon processes, <code class="cCode">E.Anet.moo.com</code> and <code class="cCode">F.Anet.moo.com</code>, run on separate host computers, and serve the local client network <code class="cCode">Anet.moo.com</code>; similarly, routing daemons <code class="cCode">G.BNet.moo.com</code> and <code class="cCode">H.BNet.moo.com</code> both serve local client network <code class="cCode">Bnet.moo.com</code>. Neighbor links connect <code class="cCode">E</code> with <code class="cCode">G</code> and <code class="cCode">H</code>, and also <code class="cCode">F</code> with <code class="cCode">G</code> and <code class="cCode">H</code>. Although these neighbor links offer redundant paths from <code class="cCode">Anet</code> to <code class="cCode">Bnet</code>, the routing daemons cooperate to forward each message only once. In failure situations, the routing daemons automatically readjust to continue service smoothly.
+</p>
+<a name="wp1046208"> </a><p class="pBody">
+Except for their router names, each pair of routing daemons specify identical parameter configurations. For example, <code class="cCode">E.Anet.moo.com</code> and <code class="cCode">F.ANet.moo.com</code> are exact duplicates of one another, except for their router names.
+</p>
+<a name="wp1055405"> </a><p class="pBody">
+Notice that <code class="cCode">E</code> and <code class="cCode">F</code> are not neighbors, nor are <code class="cCode">G</code> and <code class="cCode">H</code>. It would be an error for neighbors to serve the same local network (see <a  href="rv_adm39.htm#wp1085471">Common Topology Errors</a>).
+</p>
+<a name="wp1174943"> </a><div class="pFigureTitle">
+Figure&#160;9   Fault Tolerance among Routing Daemons</div><div align="center"><img src="images/rv_adma5.gif" height="204" width="539" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1174944"> </a><h3 class="pHeading2">
+Load Balancing
+</h3>
+<a name="wp1174945"> </a><p class="pBody">
+You can balance network load by directing messages along preferred routes. Routing daemons let you specify preferred routes using two mechanisms:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1174581"> </a><div class="pSmartList1"><li >Path cost</li></div>
+
+<a name="wp1174582"> </a><div class="pSmartList1"><li >Subject import weight</li></div>
+
+</ul></div>
+
+<a name="wp1174835"> </a><h4 class="pHeading3">
+Path Cost
+</h4>
+<a name="wp1174841"> </a><p class="pBody">
+You can specify the one-way path cost of each neighbor link. Routing protocols seek the route with the lowest cost.
+</p>
+<a name="wp1175063"> </a><p class="pBody">
+For example, <a  href="rv_adm37.htm#wp1175006">Figure&#160;10</a> repeats the fault-tolerant configuration from <a  href="rv_adm37.htm#wp1174943">Figure&#160;9</a>&#151;however, the administrator has specified path costs on the neighbor links at <code class="cCode">G</code> and <code class="cCode">H</code>. In particular, the outer links&#151;<code class="cCode">G</code>&#8217;s link to <code class="cCode">E,</code> and <code class="cCode">H</code>&#8217;s link to <code class="cCode">F</code>&#151;each specify a cost of 1 (retaining the default cost). In contrast, the inner crossover links&#151;<code class="cCode">G</code>&#8217;s link to <code class="cCode">F,</code> and <code class="cCode">H</code>&#8217;s link to <code class="cCode">E</code>&#151;each specify a cost of 5. When all the components operate normally, messages flow across the lower cost links. When components fail, messages flow across the lowest cost link that remains operational.
+</p>
+<a name="wp1175006"> </a><div class="pFigureTitle">
+Figure&#160;10   Path Cost and Subject Import Weight</div><div align="center"><img src="images/rv_adma32.gif" height="253" width="403" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1175714"> </a><p class="pBody">
+For routing daemons from release 6, the cost of every path is always 1, and you cannot change this value. You can set a higher value for path costs only when configuring routers from release 7 or later.
+</p>
+<a name="wp1175004"> </a><h4 class="pHeading3">
+Subject Import Weight
+</h4>
+<a name="wp1175122"> </a><p class="pBody">
+You can annotate subject gating for import subjects with weight values. When a message could travel two paths with equal cost, import weights break the tie. Routing protocols seek the path with the greatest weight.
+</p>
+<a name="wp1175148"> </a><p class="pBody">
+For example, in <a  href="rv_adm37.htm#wp1175006">Figure&#160;10</a>, the administrator has specified that <code class="cCode">G</code> imports <code class="cCode">foo.&gt;</code> with weight 1 (retaining the default weight), and <code class="cCode">bar.&gt;</code> with weight 10. Conversely, <code class="cCode">H</code> imports <code class="cCode">foo.&gt;</code> with weight 10, and <code class="cCode">bar.&gt;</code> with weight 1. When all the components operate properly, messages with subjects <code class="cCode">foo.&gt;</code> travel through <code class="cCode">F</code> and <code class="cCode">H</code>, while messages with subjects <code class="cCode">bar.&gt;</code> travel through <code class="cCode">E</code> and <code class="cCode">G</code>. If <code class="cCode">E</code> were to fail, all messages would travel through <code class="cCode">F</code> and <code class="cCode">H</code> (because that route has the lowest path cost).
+</p>
+<a name="wp1175189"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1175265"> </a><p class="pBody">
+To configure path cost between neighbors, see <a  href="rv_adm55.htm#wp1209711">Neighbor Interfaces</a>.
+</p>
+<a name="wp1175272"> </a><p class="pBody">
+To configure path cost from a router instance to a local network, see <a  href="rv_adm53.htm#wp1213002">Local Networks Configuration</a>.
+</p>
+<a name="wp1175273"> </a><p class="pBody">
+To configure subject import weight, see <a  href="rv_adm54.htm#wp1211323">Subject Gating</a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

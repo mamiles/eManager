@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Compatibility with Earlier Releases</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;2	 Architecture";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1021117"> </a><h2 class="pNewHTMLPage">
+Compatibility with Earlier Releases
+</h2>
+<hr />
+<a name="wp1061438"> </a><h3 class="pHeading2">
+Datatypes
+</h3>
+<a name="wp1061439"> </a><p class="pBody">
+In release 6 (and later) messages support several new datatypes in message fields&#151;for example, array types. Release 5 programs cannot interpret these new types, and treat them as <em class="cEmphasis">bad data</em>.
+</p>
+<a name="wp1061450"> </a><p class="pBody">
+Release 6 (and later) supports a different set of numeric types than release 5. When a release 6 (or later) program receives a message with old numeric types from a release 5 program, it automatically converts the old numeric types to the corresponding new numeric types.
+</p>
+<a name="wp1064218"> </a><p class="pBody">
+The datatype <code class="cCode">RVMSG_ENCRYPTED</code> is obsolete.
+</p>
+<a name="wp1061069"> </a><h3 class="pHeading2">
+rvd
+</h3>
+<a name="wp1061097"> </a><p class="pBody">
+In release 6 (and later) <code class="cCode">rvd</code> accepts connections from programs compiled and linked with the Rendezvous release 5 API.
+</p>
+<a name="wp1061084"> </a><p class="pBody">
+Release 5 <code class="cCode">rvd</code> accepts connections from programs compiled and linked with the API of release 6 (or later)&#151;however, for best performance we recommend <code class="cCode">rvd</code> from the most recent release.
+</p>
+<a name="wp1225288"> </a><p class="pBody">
+<code class="cCode">rvd</code> processes from releases 6 (and later) can interoperate on the same network as <code class="cCode">rvd</code> from release 5.
+</p>
+<a name="wp1225289"> </a><p class="pBody">
+Programs compiled and linked with releases 5 and 6 (and later) can interoperate on the same network, except when they use new features or obsolete features.
+</p>
+<a name="wp1061191"> </a><h3 class="pHeading2">
+rvrd
+</h3>
+<div class="pSmartList1"><ul>
+<a name="wp1069471"> </a><div class="pSmartList1"><li >An <code class="cCode">rvrd</code> process from release 5 <em class="cEmphasis">cannot</em> establish a neighbor connection with <code class="cCode">rvrd</code> processes from release 6 (or later).</li></div>
+
+<a name="wp1062276"> </a><div class="pSmartList1"><li ><code class="cCode">rvrd</code> processes from release 5 can coexist in the same network as <code class="cCode">rvrd</code> processes from release 6 (or later).</li></div>
+
+<a name="wp1069484"> </a><p class="pBodyRelative">
+However, you must be careful to avoid duplicate service. For more information, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm39.htm#wp1085471');" onMouseOver="WWHShowPopup('c', 'rv_adm39.htm#wp1085471', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Common Topology Errors</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.
+</p>
+<a name="wp1062162"> </a><div class="pSmartList1"><li ><code class="cCode">rvrd</code> from release 6 (or later) interoperates with <code class="cCode">rvrd</code> from release 5.</li></div>
+
+<a name="wp1062239"> </a><div class="pSmartList1"><li ><code class="cCode">rvrd</code> from release 5 interoperates with <code class="cCode">rvrd</code> from release 6 (or later).</li></div>
+
+</ul></div>
+
+<a name="wp1061203"> </a><h3 class="pHeading2">
+rva
+</h3>
+<div class="pSmartList1"><ul>
+<a name="wp1068283"> </a><div class="pSmartList1"><li ><code class="cCode">rva</code> from release 6 (or later) interoperates with release 5 <code class="cCode">rvd</code>.</li></div>
+
+<a name="wp1068256"> </a><div class="pSmartList1"><li ><code class="cCode">rva</code> from release 6 (or later) interoperates with release 5 Java programs.</li></div>
+
+<a name="wp1068289"> </a><div class="pSmartList1"><li ><code class="cCode">rva</code> from release 5 interoperates with <code class="cCode">rvd</code> from release 6 (or later).</li></div>
+
+<a name="wp1068259"> </a><div class="pSmartList1"><li ><code class="cCode">rva</code> from release 5 <em class="cEmphasis">cannot</em> interoperate with Java programs from release 6 (or later).</li></div>
+
+</ul></div>
+
+<a name="wp1225506"> </a><h3 class="pHeading2">
+rvcache
+</h3>
+<div class="pSmartList1"><ul>
+<a name="wp1225507"> </a><div class="pSmartList1"><li ><code class="cCode">rvcache</code> from release 6 (or later) interoperates with release 5 programs or <code class="cCode">rvd</code>.</li></div>
+
+<a name="wp1225508"> </a><div class="pSmartList1"><li ><code class="cCode">rvcache</code> from release 5 interoperates with programs or <code class="cCode">rvd</code> from release 6 (or later).</li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

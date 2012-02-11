@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvCmTransport.reviewLedger</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;9	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1085196"> </a><h2 class="pNewHTMLPage">
+TibrvCmTransport.reviewLedger
+</h2>
+<hr />
+<a name="wp1085197"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1132603"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+TibrvCmTransport.<code class="cCodeBold">reviewLedger </code>subject, closure<a name="wp1132604"> </a>
+</pre></div>
+<a name="wp1085204"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1085206"> </a><p class="pBody">
+Query the ledger for stored items related to a subject name.
+</p>
+<a name="wp1085207"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1085208"> </a><p class="pBody">
+The callback method receives one message for each matching subject of outbound messages stored in the ledger. For example, when <code class="cCode">FOO.*</code> is the <code class="cCode">subject</code>, <a  href="rv_com_ref198.htm#wp1085196"><code class="cCode">TibrvCmTransport.reviewLedger</code></a> calls its callback method separately for each matching subject&#151;once for <code class="cCode">FOO.BAR</code>, once for <code class="cCode">FOO.BAZ</code>, and once for <code class="cCode">FOO.BOX</code>. 
+</p>
+<a name="wp1085212"> </a><p class="pBody">
+However, if the callback method calls <a  href="rv_com_ref203.htm#wp1145377"><code class="cCode">TibrvCmTransport.stopReview</code></a>, then <a  href="rv_com_ref198.htm#wp1085196"><code class="cCode">TibrvCmTransport.reviewLedger</code></a> returns immediately (without any further callbacks).
+</p>
+<a name="wp1085219"> </a><p class="pBody">
+If the ledger does not contain any matching items, <a  href="rv_com_ref198.htm#wp1085196"><code class="cCode">TibrvCmTransport.reviewLedger</code></a> returns normally without calling the callback method.
+</p>
+<a name="wp1085220"> </a><p class="pBody">
+For information about the content and format of the callback messages, see <a  href="rv_com_ref195.htm#wp1141840"><code class="cCode">TibrvCmTransport_onLedgerMsg</code> </a>.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1085226"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1085231"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1085241"> </a><div class="pCellBody">
+<code class="cCode">subject</code>
+</div>
+</td>
+    <td><a name="wp1085243"> </a><div class="pCellBody">
+<code class="cCode">String</code>
+</div>
+<a name="wp1132617"> </a><div class="pCellBody">
+Query for items related to this subject name.
+</div>
+<a name="wp1085244"> </a><div class="pCellBody">
+If this subject contains wildcard characters (<code class="cCode">&quot;*&quot;</code> or <code class="cCode">&quot;&gt;&quot;</code>), then review all items with matching subject names. The callback method receives a separate message for each matching subject in the ledger.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1085246"> </a><div class="pCellBody">
+<code class="cCode">closure</code>
+</div>
+</td>
+    <td><a name="wp1085248"> </a><div class="pCellBody">
+<code class="cCode">Variant</code>
+</div>
+<a name="wp1132618"> </a><div class="pCellBody">
+Pass this closure data to the review callback method.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1085253"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1085257"> </a><p class="pBody">
+<a  href="rv_com_ref195.htm#wp1141840"><code class="cCode">TibrvCmTransport_onLedgerMsg</code> </a>
+</p>
+<a name="wp1139636"> </a><p class="pBody">
+<a  href="rv_com_ref203.htm#wp1145377"><code class="cCode">TibrvCmTransport.stopReview</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

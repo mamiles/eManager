@@ -1,0 +1,560 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>rva</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;8	 Rendezvous Agent (rva)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1054197"> </a><h2 class="pNewHTMLPage">
+rva
+</h2>
+<hr />
+<a name="wp1054198"> </a><p class="pSyntaxType">
+Command
+</p>
+<a name="wp1054199"> </a><h4 class="pHeading3">
+Syntax
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">rva&#160;</code>&#160;&#160;-store <code class="cCodeItalic">&lt;filename&gt;</code><a name="wp1060107"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;[-http [<code class="cCodeItalic">&lt;ip_address&gt;</code><code class="cCode">:]</code><code class="cCodeItalic">&lt;http_port&gt;</code>]<a name="wp1058280"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;[-https [<code class="cCodeItalic">&lt;ip_address&gt;</code><code class="cCode">:]</code><code class="cCodeItalic">&lt;https_port&gt;</code>]<a name="wp1277858"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;[-http-only]<a name="wp1277859"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;[-no-http]<a name="wp1277860"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;[-idle]<a name="wp1064954"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;[-logfile </code><code class="cCodeItalic">&lt;log_filename&gt;</code><code class="cCode">]</code><a name="wp1067265"> </a>
+&#160;&#160;&#160;<code class="cCode">&#160;&#160;&#160;[-foreground]</code><a name="wp1057618"> </a>
+</pre></div>
+<a name="wp1054208"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1054215"> </a><p class="pBody">
+The command <code class="cCode">rva</code> starts the Rendezvous agent process. The Rendezvous agent is the gateway to the Rendezvous network for remote Java applets.
+</p>
+<a name="wp1054219"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1054223"> </a><p class="pBody">
+Usually, administrators must start the Rendezvous agent (<code class="cCode">rva</code>) process explicitly. A Java applet cannot start <code class="cCode">rva</code>; an applet must connect to an agent that is already running.
+</p>
+<a name="wp1058152"> </a><p class="pBody">
+From the perspective of the Rendezvous <em class="cEmphasis">daemon</em> (<code class="cCode">rvd</code>), the agent process (<code class="cCode">rva</code>) behaves exactly like any other Rendezvous program. The agent&#8217;s <code class="cCode">Service</code>, <code class="cCode">Network</code> and <code class="cCode">Daemon</code> parameters are completely analogous to the corresponding parameters of the transport creation call (because <code class="cCode">rva</code> uses these values to create a transport). In turn, the transport creation call uses these parameters to find or start an appropriate daemon and connect to it.
+</p>
+<a name="wp1058168"> </a><h4 class="pHeading3">
+Licenses
+</h4>
+<a name="wp1058163"> </a><p class="pBody">
+Each <code class="cCode">rva</code> process instance reads the license ticket file (<code class="cCode">tibrv.tkt</code>) when it starts. To put new license tickets into effect, stop and restart <code class="cCode">rva</code>.
+</p>
+<a name="wp1054239"> </a><p class="pBody">
+If <code class="cCode">rvd</code> is not running, then <code class="cCode">rva</code> starts it automatically, and the new <code class="cCode">rvd</code> process instance requires a valid <code class="cCode">rvd</code> license (in addition to the <code class="cCode">rva</code> license).
+</p>
+<a name="wp1054241"> </a><h4 class="pHeading3">
+Subject Gating
+</h4>
+<a name="wp1054242"> </a><p class="pBody">
+For fine-grained control over all the information flowing in or out of your networks, limit communication by subject name.
+</p>
+<a name="wp1054244"> </a><p class="pBody">
+The <code class="cCode">Import</code> and <code class="cCode">Export</code> parameters let system administrators restrict the flow of messages through <code class="cCode">rva</code> based on subject names.
+</p>
+<a name="wp1058194"> </a><p class="pBody">
+Point-to-point messages (<code class="cCode">_INBOX.&gt;</code>) <em class="cEmphasis">always</em> pass through <code class="cCode">rva</code>. They are not restricted by subject gating parameters.
+</p>
+<a name="wp1054256"> </a><p class="pBody">
+For information about restricting with wildcard subjects, see <a  href="rv_adm34.htm#wp1046221">Subject Filtering with Wildcards</a>.</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1301733"> </a><p class="pBody">
+In release 6 (and later), the default behavior for <code class="cCode">rva</code> subject gating is to <em class="cEmphasis">restrict</em> all subjects unless permitted by subject gating parameters.
+</p>
+<a name="wp1301734"> </a><p class="pBody">
+In earlier releases, when gating parameters were not specified, the default behavior was to <em class="cEmphasis">permit</em> all subjects for import and export.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1060338"> </a><h4 class="pHeading3">
+Maximum Clients
+</h4>
+<a name="wp1060494"> </a><p class="pBody">
+<code class="cCode">rva</code> supports approximately 4000 clients through TCP connections, or approximately 1500 clients through HTTP connections. These limits are <em class="cEmphasis">not</em> additive.
+</p>
+<a name="wp1060332"> </a><p class="pBody">
+On UNIX platforms, the operating system limits the maximum number of file descriptors per process, as well as the total number of file descriptors summed over all processes. These limitations in turn affect the maximum number of <code class="cCode">rva</code> clients, because each client uses a file descriptor. Lower file descriptor limits can <em class="cEmphasis">reduce</em> the maximum number of <code class="cCode">rva</code> clients.
+</p>
+<a name="wp1060384"> </a><h4 class="pHeading3">
+Command Line Parameters
+</h4>
+<a name="wp1080813"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1060357"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1060361"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1060363"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1060365"> </a><div class="pCellBody">
+<code class="cCode">-store </code><code class="cCodeItalic">&lt;filename&gt;</code>
+</div>
+</td>
+    <td><a name="wp1060367"> </a><div class="pCellBody">
+This file contains the parameters that configure <code class="cCode">rva</code>.
+</div>
+<a name="wp1060368"> </a><div class="pCellBody">
+<code class="cCode">rva</code> reads this file when the process starts, and writes this file each time you change the configuration using the browser administration interface.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1280034"> </a><div class="pCellBody">
+<code class="cCode">-http </code><code class="cCodeItalic">&lt;ip_address&gt;</code><code class="cCode">:</code><code class="cCodeItalic">&lt;http_port&gt;</code>
+</div>
+<a name="wp1280035"> </a><div class="pCellBody">
+<code class="cCode">-http </code><code class="cCodeItalic">&lt;http_port&gt;</code>
+</div>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;<a name="wp1280036"> </a>
+</pre></div>
+<a name="wp1280037"> </a><div class="pCellBody">
+<code class="cCode">-https </code><code class="cCodeItalic">&lt;ip_address&gt;</code><code class="cCode">:</code><code class="cCodeItalic">&lt;https_port&gt;</code>
+</div>
+<a name="wp1280038"> </a><div class="pCellBody">
+<code class="cCode">-https </code><code class="cCodeItalic">&lt;https_port&gt;</code>
+</div>
+</td>
+    <td><a name="wp1280040"> </a><div class="pCellBody">
+The browser administration interface accepts connections on this HTTP or HTTPS port. Permit administration access only through the network interface specified by this IP address.
+</div>
+<a name="wp1280041"> </a><div class="pCellBody">
+To limit access to a browser on the <code class="cCode">rvsd</code> host computer, specify <code class="cCode">127.0.0.1</code> (the local host address).
+</div>
+<a name="wp1280042"> </a><div class="pCellBody">
+When the IP address is absent, the daemon accepts connections through any network interface on the specified HTTP or HTTPS port.
+</div>
+<a name="wp1280043"> </a><div class="pCellBody">
+If the explicitly specified port is already occupied, the program exits.
+</div>
+<a name="wp1280044"> </a><div class="pCellBody">
+When the <code class="cCode">-http</code> parameter is entirely absent, the default behavior is to accept connections from any computer on HTTP port <code class="cCode">7680</code>; If this default port is unavailable, the operating system assigns an ephemeral port number.
+</div>
+<a name="wp1280045"> </a><div class="pCellBody">
+When the <code class="cCode">-https</code> parameter is entirely absent, the default behavior is to accept secure connections from any computer on an ephemeral HTTPS port.
+</div>
+<a name="wp1280046"> </a><div class="pCellBody">
+In all cases, the program prints (in its start banner) the actual HTTP and HTTPS ports where it accepts browser administration interface connections.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1280048"> </a><div class="pCellBody">
+<code class="cCode">-http-only</code>
+</div>
+</td>
+    <td><a name="wp1280050"> </a><div class="pCellBody">
+Disable HTTPS (secure) connections, leaving only an HTTP (non-secure) connection.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1280052"> </a><div class="pCellBody">
+<code class="cCode">-no-http</code>
+</div>
+</td>
+    <td><a name="wp1280054"> </a><div class="pCellBody">
+Disable <em class="cEmphasis">all</em> HTTP and HTTPS connections, overriding <code class="cCode">-http</code> and <code class="cCode">-https</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1068668"> </a><div class="pCellBody">
+<code class="cCode">-idle</code>
+</div>
+</td>
+    <td><a name="wp1068671"> </a><div class="pCellBody">
+When present, start <code class="cCode">rva</code> in its <em class="cEmphasis">idle</em> state.
+</div>
+<a name="wp1068672"> </a><div class="pCellBody">
+When absent, start <code class="cCode">rva</code> in its <em class="cEmphasis">running</em> state&#151;serving Java clients.
+</div>
+<a name="wp1068673"> </a><div class="pCellBody">
+You can toggle the state at any time using the browser administration interface.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1067277"> </a><div class="pCellBody">
+<code class="cCode">-logfile </code><code class="cCodeItalic">&lt;log_filename&gt;</code>
+</div>
+</td>
+    <td><a name="wp1067279"> </a><div class="pCellBody">
+Send log output to this file.
+</div>
+<a name="wp1067280"> </a><div class="pCellBody">
+When absent, the default is <code class="cCode">stderr</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1060379"> </a><div class="pCellBody">
+<code class="cCode">-foreground</code>
+</div>
+</td>
+    <td><a name="wp1060381"> </a><div class="pCellBody">
+Available only on UNIX platforms.
+</div>
+<a name="wp1060382"> </a><div class="pCellBody">
+If present, <code class="cCode">rva</code> runs as a foreground process.
+</div>
+<a name="wp1060383"> </a><div class="pCellBody">
+If not present, <code class="cCode">rva</code> runs as a background process.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1060489"> </a><h4 class="pHeading3">
+Browser Administration Interface
+</h4>
+<a name="wp1080853"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1061490"> </a><p class="pBody">
+ (Sheet 1 of 5)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1061494"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1061496"> </a><div class="pCellHeading">
+Description	
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1061498"> </a><div class="pMinorHead">
+State
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061502"> </a><div class="pCellBody">
+<code class="cCode">State</code>
+</div>
+</td>
+    <td><a name="wp1061504"> </a><div class="pCellBody">
+Toggle between <code class="cCode">idle</code> and <code class="cCode">running</code>.
+</div>
+<a name="wp1061505"> </a><div class="pCellBody">
+When running, <code class="cCode">rva</code> accepts connections from Java client programs, and permits network communication access on behalf of those client programs.
+</div>
+<a name="wp1061506"> </a><div class="pCellBody">
+When idle, <code class="cCode">rva</code> disconnects all Java client programs, and bars any new connections.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1061508"> </a><div class="pMinorHead">
+Network Connections
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061512"> </a><div class="pCellBody">
+<code class="cCode">Listen Port</code>
+</div>
+</td>
+    <td><a name="wp1061517"> </a><div class="pCellBody">
+The Rendezvous agent creates a TCP socket to establish communication between itself and its Java clients. This parameter specifies the TCP port where the agent listens for client connect requests. This port number corresponds to the <code class="cCode">port</code> parameter of the Java <a  href="javascript:WWHClickedPopup('g', 'rv_java_ref142.htm#wp1071270');" onMouseOver="WWHShowPopup('g', 'rv_java_ref142.htm#wp1071270', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvRvaTransport()</code></a> constructor (they must specify the same TCP socket number).
+</div>
+<a name="wp1061521"> </a><div class="pCellBody">
+The default TCP port is <code class="cCode">7600</code>&#151;corresponding to the default <code class="cCode">port</code> that <a  href="javascript:WWHClickedPopup('g', 'rv_java_ref142.htm#wp1071270');" onMouseOver="WWHShowPopup('g', 'rv_java_ref142.htm#wp1071270', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvRvaTransport()</code></a> uses.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061526"> </a><div class="pCellBody">
+<code class="cCode">Service</code>
+</div>
+</td>
+    <td><a name="wp1061528"> </a><div class="pCellBody">
+When <code class="cCode">rva</code> communicates on behalf of its Java clients, it communicates on this UDP or PGM service. As a result, the Java clients can communicate only with other programs that create transports in this service group.
+</div>
+<a name="wp1061532"> </a><div class="pCellBody">
+The Rendezvous agent uses this parameter to connect to the Rendezvous daemon. This parameter is analogous to the <code class="cCode">service</code> parameter of the transport creation call.
+</div>
+<a name="wp1061536"> </a><div class="pCellBody">
+Each <code class="cCode">rva</code> process can communicate on only one service. To communicate over more than one service, you must start additional <code class="cCode">rva</code> processes.
+</div>
+<a name="wp1061537"> </a><div class="pCellBody">
+You can specify the service in several ways. For details, see <a  href="rv_adm15.htm#wp1019269">Service Selection</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061542"> </a><div class="pCellBody">
+<code class="cCode">Network</code>
+</div>
+</td>
+    <td><a name="wp1061544"> </a><div class="pCellBody">
+On computers with more than one network interface, this parameter instructs the Rendezvous daemon to use a particular network for all communications involving this transport.
+</div>
+<a name="wp1061551"> </a><div class="pCellBody">
+The Rendezvous agent uses this parameter to connect to the Rendezvous daemon. This parameter is analogous to the <code class="cCode">network</code> parameter of the transport creation call.
+</div>
+<a name="wp1061555"> </a><div class="pCellBody">
+Each <code class="cCode">rva</code> process can send outbound broadcast messages to only one network. To communicate over more than one network, you must start additional <code class="cCode">rva</code> processes.
+</div>
+<a name="wp1061556"> </a><div class="pCellBody">
+You can specify the network in several ways. For details, see <a  href="rv_adm16.htm#wp1034613">Constructing the Network Parameter</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061561"> </a><div class="pCellBody">
+<code class="cCode">Daemon</code>
+</div>
+</td>
+    <td><a name="wp1061563"> </a><div class="pCellBody">
+This parameter instructs <code class="cCode">rva</code> to find <code class="cCode">rvd</code> and establish communication on a specific TCP port. The value of this <code class="cCode">rva</code> <em class="cEmphasis">daemon</em> parameter must match the <code class="cCode">rvd</code> <em class="cEmphasis">listen</em> parameter.
+</div>
+<a name="wp1061566"> </a><div class="pCellBody">
+For details, see <a  href="rv_adm17.htm#wp1019451">Daemon Client Socket&#151;Establishing Connections</a>.
+</div>
+<a name="wp1061568"> </a><div class="pCellBody">
+You can specify a daemon on a remote computer. For details, see <a  href="rv_adm17.htm#wp1019505">Remote Daemon</a>. However, <code class="cCode">rva</code> cannot start a remote daemon automatically&#151;you must start it manually on the remote computer.
+</div>
+<a name="wp1061572"> </a><div class="pCellBody">
+With the default value, <code class="cCode">rva</code> finds the local daemon on TCP port <code class="cCode">7500</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1061574"> </a><div class="pMinorHead">
+Subject Gating
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061578"> </a><div class="pCellBody">
+<code class="cCode">Imported Subjects</code>
+</div>
+</td>
+    <td><a name="wp1061580"> </a><div class="pCellBody">
+<code class="cCode">rva</code> imports messages from clients (applets) to the network.
+</div>
+<a name="wp1061581"> </a><div class="pCellBody">
+Only messages with subject names that match these subject names are eligible for import.
+</div>
+<a name="wp1061582"> </a><div class="pCellBody">
+You can remove a subject at any time.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1061584"> </a><div class="pCellBody">
+<code class="cCode">Exported Subjects</code>
+</div>
+</td>
+    <td><a name="wp1061586"> </a><div class="pCellBody">
+<code class="cCode">rva</code> exports messages from the network to clients (applets).
+</div>
+<a name="wp1061587"> </a><div class="pCellBody">
+Only messages with subject names that match these subject names are eligible for export.
+</div>
+<a name="wp1061588"> </a><div class="pCellBody">
+You can remove a subject at any time.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1288971"> </a><div class="pMinorHead">
+HTTP Tunnel
+</div>
+<a name="wp1290079"> </a><div class="pCellBody">
+See also <a  href="rv_adm79.htm#wp1289029">HTTP Tunnel</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1288990"> </a><div class="pCellBody">
+<code class="cCode">Enable</code>
+</div>
+</td>
+    <td><a name="wp1288993"> </a><div class="pCellBody">
+When enabled, <code class="cCode">rva</code> accepts HTTP connections from client transports. To enable HTTP tunneling, check this box.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1289004"> </a><div class="pCellBody">
+<code class="cCode">Port</code>
+</div>
+</td>
+    <td><a name="wp1289006"> </a><div class="pCellBody">
+<code class="cCode">rva</code> accepts HTTP connections from client transports on this this port.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1289752"> </a><div class="pCellBody">
+<code class="cCode">Client Timeout</code>
+</div>
+</td>
+    <td><a name="wp1289754"> </a><div class="pCellBody">
+In some situations, <code class="cCode">rva</code> closes HTTP connections to flush data to clients through intervening proxy servers. Each client transport subsequently reestablishes its connection after a delay (specified in the client program). Meanwhile, <code class="cCode">rva</code> maintains state information for the client. If this timeout expires before the client reconnects, <code class="cCode">rva</code> can discard the state information.
+</div>
+<a name="wp1290030"> </a><div class="pCellBody">
+Ensure that this parameter (in seconds) is much greater than the reconnect delay parameter of every client transport.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1289776"> </a><div class="pCellBody">
+<code class="cCode">Ping Interval</code>
+</div>
+</td>
+    <td><a name="wp1289778"> </a><div class="pCellBody">
+Intervening proxy servers might automatically close client connections to <code class="cCode">rva</code> that appear inactive. To circumvent this feature, <code class="cCode">rva</code> sends <em class="cEmphasis">ping messages</em> to clients when a connection has been idle for this interval (in seconds).
+</div>
+<a name="wp1289967"> </a><div class="pCellBody">
+To disable this feature, supply zero.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1289805"> </a><div class="pCellBody">
+<code class="cCode">Max Client Queue</code>
+</div>
+</td>
+    <td><a name="wp1289972"> </a><div class="pCellBody">
+<code class="cCode">rva</code> limits the <em class="cEmphasis">length</em> of the data queue for each client (data is outbound from <code class="cCode">rva</code>, inbound to the client). When a queue exceeds this number of messages, <code class="cCode">rva</code> discards subsequent messages as they arrive.
+</div>
+<a name="wp1289807"> </a><div class="pCellBody">
+To disable this feature, supply zero.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1289809"> </a><div class="pCellBody">
+<code class="cCode">Max Queue Size</code>
+</div>
+</td>
+    <td><a name="wp1289977"> </a><div class="pCellBody">
+<code class="cCode">rva</code> limits the <em class="cEmphasis">size</em> of the data queue for each client (data is outbound from <code class="cCode">rva</code>, inbound to the client). When a queue exceeds this size (in kilobytes), <code class="cCode">rva</code> discards subsequent messages as they arrive.
+</div>
+<a name="wp1289811"> </a><div class="pCellBody">
+To disable this feature, supply zero.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1289852"> </a><div class="pCellBody">
+<code class="cCode">Active Flush</code>
+</div>
+</td>
+    <td><a name="wp1290454"> </a><div class="pCellBody">
+This parameter limits data latency (in seconds) caused by buffering in intervening proxy servers. If <code class="cCode">rva</code> has directed data to a client, and this time limit has elapsed since <code class="cCode">rva</code> last flushed the data, then <code class="cCode">rva</code> closes the connection to force proxy servers to deliver the data to the client. This action occurs even when <code class="cCode">rva</code> has more data queued for the client (that is, the queue is active).
+</div>
+<a name="wp1290455"> </a><div class="pCellBody">
+If you are certain that no proxy servers intervene between <code class="cCode">rva</code> and the client, set this parameter to zero.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1289864"> </a><div class="pCellBody">
+<code class="cCode">Inactive Flush</code>
+</div>
+</td>
+    <td><a name="wp1290457"> </a><div class="pCellBody">
+This parameter limits data latency (in seconds) caused by buffering in intervening proxy servers. If <code class="cCode">rva</code> has directed data to a client, and does not have more data queued for the client (that is, the queue is inactive), and this time limit has elapsed since <code class="cCode">rva</code> last directed data to the client, then <code class="cCode">rva</code> closes the connection to force proxy servers to deliver the data to the client.
+</div>
+<a name="wp1290458"> </a><div class="pCellBody">
+If you are certain that no proxy servers intervene between <code class="cCode">rva</code> and the client, set this parameter to zero.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1288975"> </a><div class="pCellBody">
+<code class="cCode">Request Flush</code>
+</div>
+</td>
+    <td><a name="wp1290460"> </a><div class="pCellBody">
+This parameter limits data latency (in seconds) for <em class="cEmphasis">reply messages</em>. In some application domains, the client sends a request message, and receives only one small reply message. Setting this parameter smaller than <code class="cCode">inactiveFlush</code> can expedites delivery of such reply messages to the client.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1289944"> </a><div class="pCellBody">
+<code class="cCode">Max Proxy Buffer</code>
+</div>
+</td>
+    <td><a name="wp1290462"> </a><div class="pCellBody">
+This hint estimates the size (in kilobytes) of the largest buffer in intervening proxy servers. Before triggering an active flush, <code class="cCode">rva</code> checks the amount of data it directed to the client since the last flush; if that amount is greater than this value, the proxy server has probably flushed its buffer automatically, so <code class="cCode">rva</code> does not close the connection to flush the data.
+</div>
+<a name="wp1290463"> </a><div class="pCellBody">
+If you are certain that no proxy servers intervene between <code class="cCode">rva</code> and the client, set this parameter to zero.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1290784"> </a><div class="pMinorHead">
+Certificates
+</div>
+<a name="wp1290795"> </a><div class="pCellBody">
+These parameters control the use of certificates as administrator credentials.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1067302"> </a><div class="pMinorHead">
+Security
+</div>
+<a name="wp1067084"> </a><div class="pCellBody">
+These parameters control access to the configuration pages of the <code class="cCode">rva</code> browser administration interface.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

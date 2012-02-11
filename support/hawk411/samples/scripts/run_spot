@@ -1,0 +1,109 @@
+#!/bin/sh
+# ******************************************************************************
+# *
+# * File:    run_spot
+# *
+# * Purpose: TIBCO Hawk Spot demo startup script for Unix.
+# *
+# *        Copyright 2001 TIBCO Software Inc. All rights reserved.
+# ******************************************************************************
+
+# Insure that RV_ROOT has been set.
+if [ -z "$RV_ROOT" ]; then
+ echo "\nPlease set RV_ROOT environment variable to point to TIBCO Rendezvous installation.\n"
+  exit 1
+fi
+
+# Insure that HAWK_ROOT has been set.
+if [ -z "$HAWK_ROOT" ]; then
+  echo "\nPlease set HAWK_ROOT environment variable to point to TIBCO HAWK installation. \n"
+  exit 1
+fi
+
+# Insure that JRE_ROOT has been set.
+if [ -z "$JRE_ROOT" ]; then
+  echo "\nPlease set JRE_ROOT environment variable to point to Java Runtime Environment (JRE) installation. \n"
+  exit 1
+fi
+
+PATH=$PATH:$RV_ROOT/bin
+export PATH
+
+SHLIB_PATH=$RV_ROOT/lib:$SHLIB_PATH
+export SHLIB_PATH
+
+LD_LIBRARY_PATH=$RV_ROOT/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH
+
+LIBPATH=$RV_ROOT/lib:$LIBPATH
+export LIBPATH
+
+# Set defaults.
+THREADS_FLAG=native
+THREADS_TYPE=${THREADS_FLAG:-native}_threads
+NOJIT=
+MS_SETTING=24m
+MX_SETTING=36m
+MSFLAG=
+MXFLAG=
+
+# Set OS dependent arguments.
+OS_TYPE=`uname -a | awk '{print $1}'`
+case $OS_TYPE in
+
+  'Linux')
+           MSFLAG="-ms${MS_SETTING}"
+           MXFLAG="-mx${MX_SETTING}"
+           ;;
+
+  'HP-UX')
+#           NOJIT="-nojit"
+           MSFLAG="-ms${MS_SETTING}"
+           MXFLAG="-mx${MX_SETTING}"
+           ;;
+
+  'AIX')
+#           NOJIT="-nojit"
+           ;;
+
+  *)       ;;
+esac
+
+# Export final thread settings.
+export THREADS_FLAG
+export THREADS_TYPE
+
+# Handle null string arguments.
+for arg
+do
+  case "$arg" in
+    "" ) switches="$switches \"\"" ;;
+    *  ) switches="$switches $arg" ;;
+  esac
+done
+
+# Determine if running Java 1.1 (jre) or Java 1.2 (java).
+JVMEXE="$JRE_ROOT/bin/jre"
+if [ -f "$JRE_ROOT/bin/jre" ]; then
+  JVMEXE="$JRE_ROOT/bin/jre"
+else
+  if [ -f "$JRE_ROOT/jre/sh/java" ]; then
+    JVMEXE="$JRE_ROOT/jre/sh/java"
+  else
+    JVMEXE="$JRE_ROOT/bin/java"
+  fi
+  if [ "$MSFLAG" != "" ]; then
+           MSFLAG="-Xms${MS_SETTING}"
+           MXFLAG="-Xmx${MX_SETTING}"
+  fi
+fi
+
+JARFILES=$HAWK_ROOT/java/spot.jar
+JARFILES=$JARFILES:$HAWK_ROOT/java/utilities.jar
+JARFILES=$JARFILES:$HAWK_ROOT/java/ami.jar
+JARFILES=$JARFILES:$RV_ROOT/lib/tibrvj.jar
+# Add existing CLASSPATH environment variable to class path.
+JARFILES=$JARFILES:$CLASSPATH
+
+$JVMEXE $MSFLAG $MXFLAG $NOJIT -cp $JARFILES Spot $switches &
+

@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Subject-Based Addressing and Message Destinations</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;3	 Fundamentals";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1029645"> </a><h2 class="pNewHTMLPage">
+Subject-Based Addressing and Message Destinations
+</h2>
+<hr />
+<a name="wp1021038"> </a><p class="pBody">
+Rendezvous programs communicate by sending messages. Each message bears a subject name, which simultaneously specifies a delivery mode and the destination of the message:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1021039"> </a><div class="pSmartList1"><li >An <em class="cEmphasis">inbox name</em> specifies <em class="cEmphasis">point-to-point</em> delivery (also called <em class="cEmphasis">unicast</em> delivery) and a unique destination process.</li></div>
+
+<a name="wp1021497"> </a><p class="pBodyRelative">
+The process can receive several copies of the message by creating several listener events that listen to the same inbox name. Two processes cannot share an inbox name.
+</p>
+<a name="wp1021040"> </a><div class="pSmartList1"><li >Any other subject name is called a <em class="cEmphasis">public subject name</em>, and specifies <em class="cEmphasis">multicast</em> (or broadcast) delivery to a destination set. The destination set includes all programs that listen to that subject name; the set can be large, small, or empty, depending upon the number of listeners.</li></div>
+
+<a name="wp1021041"> </a><p class="pBodyRelative">
+Public subject names usually describe the content or subject of the message. The sender need not know which programs are listening when it sends a message&#151;just as a radio disc jockey in a studio does not know who is listening at a particular moment in time.
+</p>
+</ul></div>
+
+<a name="wp1021045"> </a><p class="pBody">
+Whether point-to-point or multicast, Rendezvous communication is always <em class="cEmphasis">anonymous</em>. Senders publish messages addressed to subject names, rather than specific computers, programs or sockets. Receivers subscribe to subject names (and receive all messages addressed to those names), rather than establishing unique communications pathways with senders.
+</p>
+<a name="wp1044666"> </a><p class="pBody">
+Subject naming conventions are a key part of distributed system design in most Rendezvous applications. Subject naming conventions define a uniform name space for messages and their destinations. Subject-based addressing technology helps messages reach their destinations without involving programmers in the details of network addresses, subscription lists, ports and sockets.
+</p>
+<a name="wp1021050"> </a><p class="pBody">
+Both multicast and point-to-point messages can flow over several types of transport mechanisms. For details, see <a  href="rv_concepts70.htm#wp1024835">Transport Scope</a>, and <a  href="rv_concepts73.htm#wp1061549">Constructing the Network Parameter</a>.
+</p>
+<a name="wp1226522"> </a><h4 class="pHeading3">
+Virtual Circuit
+</h4>
+<a name="wp1226517"> </a><p class="pBody">
+Virtual circuits are special, and behave contrary to the general rule. All messages on a virtual circuit travel point-to-point, whether the subject is an inbox name or a public subject name.
+</p>
+<a name="wp1049201"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1049202"> </a><p class="pBody">
+<a  href="rv_concepts47.htm#wp1065576">Subject Names</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

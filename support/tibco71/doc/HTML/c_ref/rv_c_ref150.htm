@@ -1,0 +1,374 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>Chapter&#160;10	Fault Tolerance</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;10	 Fault Tolerance";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1078178"> </a><h2 class="pNewHTMLPageSetChapterTitle">
+Chapter&#160;10	Fault Tolerance
+</h2>
+<hr />
+<a name="wp1078182"> </a><p class="pBody">
+Rendezvous fault tolerance software coordinates a group of redundant processes into a fault-tolerant distributed system. Some processes actively fulfill the tasks of the application, while other processes wait in readiness. When one of the active processes fails, another process rapidly assumes active duty.
+</p>
+<a name="wp1102568"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1078196"> </a><p class="pBody">
+For a complete discussion of concepts and operating principles, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts126.htm#wp1057063');" onMouseOver="WWHShowPopup('a', 'rv_concepts126.htm#wp1057063', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Fault Tolerance Concepts</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+<a name="wp1078115"> </a><p class="pBody">
+For suggestions to help you design programs using fault tolerance features, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts140.htm#wp1057657');" onMouseOver="WWHShowPopup('a', 'rv_concepts140.htm#wp1057657', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Fault Tolerance Programming</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+<a name="wp1078119"> </a><p class="pBody">
+For step-by-step hints for implementing fault-tolerant systems, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts151.htm#wp1058129');" onMouseOver="WWHShowPopup('a', 'rv_concepts151.htm#wp1058129', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Developing Fault-Tolerant Programs</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+<a name="wp1078121"> </a><p class="pBody">
+Fault tolerance software uses advisory messages to inform programs of status changes. For details, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts190.htm#wp1039817');" onMouseOver="WWHShowPopup('a', 'rv_concepts190.htm#wp1039817', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Fault Tolerance (RVFT) Advisory Messages</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+<a name="wp1081776"> </a><p class="pBody">
+If your application distributes fault-tolerant processes across network boundaries, you must configure the Rendezvous routing daemons to exchange <code class="cCode">_RVFT</code> administrative messages. For details, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm127.htm#wp1025010');" onMouseOver="WWHShowPopup('c', 'rv_adm127.htm#wp1025010', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Fault Tolerance</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>, and discuss with your network administrator.
+</p>
+<a name="wp1082022"> </a><h4 class="pHeading3">
+Topics&#160;in Alphabetical Order</h4><div align="left">
+<table border="1">
+  <caption><a name="wp1178920"> </a><p class="pBody">
+ (Sheet 1 of 3)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1178926"> </a><div class="pCellHeading">
+Function or Type
+</div>
+</th>
+    <th><a name="wp1178928"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1178930"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1178935"> </a><div class="pCellBody">
+<a  href="rv_c_ref151.htm#wp1147942"><code class="cCode">tibrvft_Version()</code></a>
+</div>
+</td>
+    <td><a name="wp1178939"> </a><div class="pCellBody">
+<a  href="rv_c_ref151.htm#wp1147948">Identify the fault tolerance API release number.</a>
+</div>
+</td>
+    <td><a name="wp1178945"> </a><div class="pCellBody">
+<a  href="rv_c_ref151.htm#wp1147942">222</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1178950"> </a><div class="pCellBody">
+<a  href="rv_c_ref152.htm#wp1082025"><code class="cCode">tibrvftAction</code></a>
+</div>
+</td>
+    <td><a name="wp1178954"> </a><div class="pCellBody">
+<a  href="rv_c_ref152.htm#wp1078213">Instruct fault tolerance callback functions to react to changing circumstances.</a>
+</div>
+</td>
+    <td><a name="wp1178960"> </a><div class="pCellBody">
+<a  href="rv_c_ref152.htm#wp1082025">223</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1178965"> </a><div class="pCellBody">
+<a  href="rv_c_ref153.htm#wp1133619"><code class="cCode">tibrvftMember</code></a>
+</div>
+</td>
+    <td><a name="wp1178969"> </a><div class="pCellBody">
+<a  href="rv_c_ref153.htm#wp1133624">Member objects represent program membership in a fault tolerance group.</a>
+</div>
+</td>
+    <td><a name="wp1178975"> </a><div class="pCellBody">
+<a  href="rv_c_ref153.htm#wp1133619">224</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1178980"> </a><div class="pCellBody">
+<a  href="rv_c_ref154.htm#wp1078084"><code class="cCode">tibrvftMemberCallback</code></a>
+</div>
+</td>
+    <td><a name="wp1178984"> </a><div class="pCellBody">
+<a  href="rv_c_ref154.htm#wp1078336">Process fault tolerance events for a group member.</a>
+</div>
+</td>
+    <td><a name="wp1178990"> </a><div class="pCellBody">
+<a  href="rv_c_ref154.htm#wp1078084">225</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1178995"> </a><div class="pCellBody">
+<a  href="rv_c_ref155.htm#wp1109987"><code class="cCode">tibrvftMemberOnComplete</code></a>
+</div>
+</td>
+    <td><a name="wp1178999"> </a><div class="pCellBody">
+<a  href="rv_c_ref155.htm#wp1109995">A program can destroy a member object even when its callback function is running in one or more threads. Multi-threaded programs can define functions of this type to discover when all callback functions in progress have completed.</a>
+</div>
+</td>
+    <td><a name="wp1179005"> </a><div class="pCellBody">
+<a  href="rv_c_ref155.htm#wp1109987">227</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1179010"> </a><div class="pCellBody">
+<a  href="rv_c_ref156.htm#wp1078720"><code class="cCode">tibrvftMember_Create()</code></a>
+</div>
+</td>
+    <td><a name="wp1179014"> </a><div class="pCellBody">
+<a  href="rv_c_ref156.htm#wp1078978">Create a member of a fault tolerance group.</a>
+</div>
+</td>
+    <td><a name="wp1179020"> </a><div class="pCellBody">
+<a  href="rv_c_ref156.htm#wp1078720">229</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1179025"> </a><div class="pCellBody">
+<a  href="rv_c_ref157.htm#wp1079378"><code class="cCode">tibrvftMember_Destroy()</code></a>
+</div>
+</td>
+    <td><a name="wp1179029"> </a><div class="pCellBody">
+<a  href="rv_c_ref157.htm#wp1079394">Destroy a member of a fault tolerance group.</a>
+</div>
+</td>
+    <td><a name="wp1179035"> </a><div class="pCellBody">
+<a  href="rv_c_ref157.htm#wp1079378">232</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1179040"> </a><div class="pCellBody">
+<a  href="rv_c_ref158.htm#wp1079854"><code class="cCode">tibrvftMember_GetGroupName()</code></a>
+</div>
+</td>
+    <td><a name="wp1179044"> </a><div class="pCellBody">
+<a  href="rv_c_ref158.htm#wp1079861">Extract the group name of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1179050"> </a><div class="pCellBody">
+<a  href="rv_c_ref158.htm#wp1079854">234</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1179055"> </a><div class="pCellBody">
+<a  href="rv_c_ref159.htm#wp1079788"><code class="cCode">tibrvftMember_GetQueue()</code></a>
+</div>
+</td>
+    <td><a name="wp1179059"> </a><div class="pCellBody">
+<a  href="rv_c_ref159.htm#wp1079795">Extract the event queue of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1179065"> </a><div class="pCellBody">
+<a  href="rv_c_ref159.htm#wp1079788">235</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1179070"> </a><div class="pCellBody">
+<a  href="rv_c_ref160.htm#wp1079907"><code class="cCode">tibrvftMember_GetTransport()</code></a>
+</div>
+</td>
+    <td><a name="wp1179074"> </a><div class="pCellBody">
+<a  href="rv_c_ref160.htm#wp1079914">Extract the transport of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1179080"> </a><div class="pCellBody">
+<a  href="rv_c_ref160.htm#wp1079907">236</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1179085"> </a><div class="pCellBody">
+<a  href="rv_c_ref161.htm#wp1079969"><code class="cCode">tibrvftMember_GetWeight()</code></a>
+</div>
+</td>
+    <td><a name="wp1179089"> </a><div class="pCellBody">
+<a  href="rv_c_ref161.htm#wp1079976">Extract the weight of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1179095"> </a><div class="pCellBody">
+<a  href="rv_c_ref161.htm#wp1079969">237</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1179100"> </a><div class="pCellBody">
+<a  href="rv_c_ref162.htm#wp1079720"><code class="cCode">tibrvftMember_SetWeight()</code></a>
+</div>
+</td>
+    <td><a name="wp1179104"> </a><div class="pCellBody">
+<a  href="rv_c_ref162.htm#wp1079725">Change the weight of a fault tolerance member within its group.</a>
+</div>
+</td>
+    <td><a name="wp1179110"> </a><div class="pCellBody">
+<a  href="rv_c_ref162.htm#wp1079720">238</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1179112"> </a><div class="pMinorHead">
+Monitors
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1179121"> </a><div class="pCellBody">
+<a  href="rv_c_ref163.htm#wp1133673"><code class="cCode">tibrvftMonitor</code></a>
+</div>
+</td>
+    <td><a name="wp1179125"> </a><div class="pCellBody">
+<a  href="rv_c_ref163.htm#wp1133679">Monitor objects express interest in fault tolerance events.</a>
+</div>
+</td>
+    <td><a name="wp1179131"> </a><div class="pCellBody">
+<a  href="rv_c_ref163.htm#wp1133673">239</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1179136"> </a><div class="pCellBody">
+<a  href="rv_c_ref164.htm#wp1081382"><code class="cCode">tibrvftMonitorCallback</code></a>
+</div>
+</td>
+    <td><a name="wp1179140"> </a><div class="pCellBody">
+<a  href="rv_c_ref164.htm#wp1081392">Process fault tolerance events for a monitor.</a>
+</div>
+</td>
+    <td><a name="wp1179146"> </a><div class="pCellBody">
+<a  href="rv_c_ref164.htm#wp1081382">240</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1179151"> </a><div class="pCellBody">
+<a  href="rv_c_ref165.htm#wp1110284"><code class="cCode">tibrvftMonitorOnComplete</code></a>
+</div>
+</td>
+    <td><a name="wp1179155"> </a><div class="pCellBody">
+<a  href="rv_c_ref165.htm#wp1110292">A program can destroy a monitor object even when its callback function is running in one or more threads. Multi-threaded programs can define functions of this type to discover when all callback functions in progress have completed.</a>
+</div>
+</td>
+    <td><a name="wp1179161"> </a><div class="pCellBody">
+<a  href="rv_c_ref165.htm#wp1110284">241</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1179166"> </a><div class="pCellBody">
+<a  href="rv_c_ref166.htm#wp1080118"><code class="cCode">tibrvftMonitor_Create()</code></a>
+</div>
+</td>
+    <td><a name="wp1179171"> </a><div class="pCellBody">
+<a  href="rv_c_ref166.htm#wp1087716">Monitor a fault tolerance group.</a>
+</div>
+</td>
+    <td><a name="wp1179176"> </a><div class="pCellBody">
+<a  href="rv_c_ref166.htm#wp1080118">243</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1179181"> </a><div class="pCellBody">
+<a  href="rv_c_ref167.htm#wp1080627"><code class="cCode">tibrvftMonitor_Destroy()</code></a>
+</div>
+</td>
+    <td><a name="wp1179185"> </a><div class="pCellBody">
+<a  href="rv_c_ref167.htm#wp1080633">Stop monitoring a fault tolerance group, and free associated resources.</a>
+</div>
+</td>
+    <td><a name="wp1179191"> </a><div class="pCellBody">
+<a  href="rv_c_ref167.htm#wp1080627">245</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1179196"> </a><div class="pCellBody">
+<a  href="rv_c_ref168.htm#wp1081489"><code class="cCode">tibrvftMonitor_GetGroupName()</code></a>
+</div>
+</td>
+    <td><a name="wp1179200"> </a><div class="pCellBody">
+<a  href="rv_c_ref168.htm#wp1081497">Extract the group name of a fault tolerance monitor.</a>
+</div>
+</td>
+    <td><a name="wp1179206"> </a><div class="pCellBody">
+<a  href="rv_c_ref168.htm#wp1081489">246</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1179211"> </a><div class="pCellBody">
+<a  href="rv_c_ref169.htm#wp1080711"><code class="cCode">tibrvftMonitor_GetQueue()</code></a>
+</div>
+</td>
+    <td><a name="wp1179215"> </a><div class="pCellBody">
+<a  href="rv_c_ref169.htm#wp1080718">Extract the event queue of a fault tolerance monitor.</a>
+</div>
+</td>
+    <td><a name="wp1179221"> </a><div class="pCellBody">
+<a  href="rv_c_ref169.htm#wp1080711">247</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1179226"> </a><div class="pCellBody">
+<a  href="rv_c_ref170.htm#wp1080771"><code class="cCode">tibrvftMonitor_GetTransport()</code></a>
+</div>
+</td>
+    <td><a name="wp1179230"> </a><div class="pCellBody">
+<a  href="rv_c_ref170.htm#wp1080778">Extract the transport of a fault tolerance monitor.</a>
+</div>
+</td>
+    <td><a name="wp1179236"> </a><div class="pCellBody">
+<a  href="rv_c_ref170.htm#wp1080771">248</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<h4 class="pHeading3">
+</h4>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

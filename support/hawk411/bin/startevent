@@ -1,0 +1,136 @@
+#!/bin/sh
+# $Revision: 19 $
+# Program:	startevent
+# Copyright 1994-2000 TIBCO Software, Inc.
+# ALL RIGHTS RESERVED
+
+if [ $# != 0 -a $# != 2 ]
+then
+        echo "\nUsage: startevent [-file <config file name>]\n"
+        exit 1
+fi
+if [ $# != 0 -a "$1" != "-file" ]
+then
+        echo "\nUsage: startevent [-file <config file name>]\n"
+        exit 1
+fi
+
+
+# Insure that RV_ROOT has been set.
+if [ -z "$RV_ROOT" ]; then
+ echo "\nPlease set RV_ROOT environment variable to point to TIBCO Rendezvous installation.\n"
+  exit 1
+fi
+
+# Insure that HAWK_ROOT has been set.
+if [ -z "$HAWK_ROOT" ]; then
+  echo "\nPlease set HAWK_ROOT environment variable to point to TIBCO HAWK installation. \n"
+  exit 1
+fi
+
+# Insure that JRE_ROOT has been set.
+if [ -z "$JRE_ROOT" ]; then
+  echo "\nPlease set JRE_ROOT environment variable to point to Java Runtime Environment (JRE) installation. \n"
+  exit 1
+fi
+
+# Make sure there is only one copy running.
+OS_TYPE=`uname -a | awk '{print $1}'`
+case $OS_TYPE in
+
+  'Linux')
+           PROC=`/bin/ps awxf | /bin/grep TIBHawk=event | /bin/fgrep -v '\\_' | wc -l`
+           ;;
+  *)
+           PROC=`/usr/bin/ps -ef | /usr/bin/grep TIBHawk=event|/usr/bin/grep -v grep|wc -l`
+           ;;
+esac
+if [ $PROC -gt 0 ]
+then
+    echo "Unable to start TIBCO Hawk Event Service because an instance is already running."
+    exit 1
+fi
+
+
+# Set defaults.
+THREADS_FLAG=native
+THREADS_TYPE=${THREADS_FLAG:-native}_threads
+NOJIT=
+NOHUP=
+CDCMD=cd
+
+# Set OS dependent arguments.
+case $OS_TYPE in
+
+  'HP-UX')
+#           NOJIT="-nojit"
+           NOHUP="nohup"
+           ;;
+
+  'AIX')
+#           NOJIT="-nojit"
+           ;;
+
+  *)       ;;
+esac
+
+# Export final thread settings.
+export THREADS_FLAG
+export THREADS_TYPE
+
+# Add RV and Hawk to PATH.
+PATH=$RV_ROOT/bin:$HAWK_ROOT/bin:$PATH
+export PATH
+
+# Add RV to LD_LIBRARY_PATH and SHLIB_PATH.
+LD_LIBRARY_PATH=$RV_ROOT/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH
+SHLIB_PATH=$RV_ROOT/lib:$SHLIB_PATH
+export SHLIB_PATH
+LIBPATH=$RV_ROOT/lib:$LIBPATH
+export LIBPATH
+
+# Build a class path starting with RV.
+JARFILE="$RV_ROOT/lib/tibrvj.jar"
+
+# Add jar files in $HAWK_ROOT/java directory to class path.
+JARFILE="$JARFILE:$HAWK_ROOT/java"
+for FILE in $HAWK_ROOT/java/*.jar
+do
+  JARFILE="$JARFILE:$FILE"
+done
+
+# Add existing CLASSPATH environment variable to class path.
+JARFILE="$JARFILE:$CLASSPATH"
+
+# Determine if running Java 1.1 (jre) or Java 1.2 (java).
+JVMEXE="$JRE_ROOT/bin/jre"
+if [ -f "$JRE_ROOT/bin/jre" ]; then
+  JVMEXE="$JRE_ROOT/bin/jre"
+else
+  if [ -f "$JRE_ROOT/jre/sh/java" ]; then
+    JVMEXE="$JRE_ROOT/jre/sh/java"
+  else
+    JVMEXE="$JRE_ROOT/bin/java"
+  fi
+fi
+
+if [ $# = 0 ]; then
+  switches="-file ${HAWK_ROOT}/bin/hawkevent.cfg"
+else
+for arg
+do
+  case "$arg" in
+    *  ) switches="$switches $arg" ;;
+  esac
+done
+fi
+
+# Execute TIBCO Hawk Event Service
+$CDCMD $HAWK_ROOT
+if [ -z "$HAWK_TWO" ]; then
+          $JVMEXE -DTIBHawk=event -Dhawk.hawk_root=$HAWK_ROOT $NOJIT -cp $JARFILE COM.TIBCO.hawk.event.HawkEvent $switches &
+else
+   $NOHUP $JVMEXE -DTIBHawk=event -Dhawk.hawk_root=$HAWK_ROOT $NOJIT -cp $JARFILE COM.TIBCO.hawk.event.HawkEvent $switches >/tmp/tibhawkevent.log 2>&1 &
+fi
+

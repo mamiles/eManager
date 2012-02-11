@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvMsg::setSendSubject()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1024145"> </a><h2 class="pNewHTMLPage">
+TibrvMsg::setSendSubject()
+</h2>
+<hr />
+<a name="wp1024146"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1024147"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">setSendSubject</code>(const char* sendSubject);<a name="wp1024148"> </a>
+</pre></div>
+<a name="wp1024150"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1024151"> </a><p class="pBody">
+Set the subject for a message.
+</p>
+<a name="wp1024152"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1024153"> </a><p class="pBody">
+The subject of a message can describe its content, as well as its destination set.
+</p>
+<a name="wp1024157"> </a><p class="pBody">
+Rendezvous routing daemons modify subjects and reply subjects to enable transparent point-to-point communication across network boundaries. This modification does not apply to subject names stored in message data fields; we discourage storing point-to-point subject names in data fields.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1024163"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1024165"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1024167"> </a><div class="pCellBody">
+<code class="cCode">sendSubject</code>
+</div>
+</td>
+    <td><a name="wp1024169"> </a><div class="pCellBody">
+Use this string as the new subject, replacing any existing subject.
+</div>
+<a name="wp1120656"> </a><div class="pCellBody">
+The method copies this string to the message.
+</div>
+<a name="wp1024170"> </a><div class="pCellBody">
+The subject <code class="cCode">NULL</code> removes the previous subject, leaving the message unsendable.
+</div>
+<a name="wp1164879"> </a><div class="pCellBody">
+The empty string is <em class="cEmphasis">not</em> a legal subject name.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1024172"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1108329"> </a><p class="pBody">
+<a  href="rv_cpp_ref59.htm#wp1024242"><code class="cCode">TibrvMsg::getSendSubject()</code> </a>
+</p>
+<a name="wp1024173"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts34.htm#wp1062756');" onMouseOver="WWHShowPopup('a', 'rv_concepts34.htm#wp1062756', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Supplementary Information for Messages</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

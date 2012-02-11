@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>Shared Library Files</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;2	 Programmer&#8217;s Checklist";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1266385"> </a><h2 class="pNewHTMLPage">
+Shared Library Files
+</h2>
+<hr />
+<a name="wp1112802"> </a><p class="pBody">
+Independent Java applications that use <code class="cCode">rvd</code> transports must be able to access Rendezvous shared library files (C libraries). <a  href="rv_java_ref12.htm#wp1112815">Table&#160;3</a> details the environment variables that direct Java applications to the Rendezvous installation directory. The installation directory must contain the required shared library files.
+</p>
+<a name="wp1112839"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1112815"> </a><div class="pTableTitle">
+Table&#160;3   Environment Variables for Shared Library Files&#160;
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1112819"> </a><div class="pCellHeading">
+Platform
+</div>
+</th>
+    <th><a name="wp1112821"> </a><div class="pCellHeading">
+Environment Variable
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1113053"> </a><div class="pCellBody">
+Windows
+</div>
+</td>
+    <td><a name="wp1113055"> </a><div class="pCellBody">
+<code class="cCode">PATH</code> must include <code class="cCode">\</code><code class="cCodeItalic">&lt;install_dir&gt;</code><code class="cCode">\bin</code>
+</div>
+<a name="wp1113076"> </a><div class="pCellBody">
+The installation procedure sets this variable automatically.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1112823"> </a><div class="pCellBody">
+UNIX
+</div>
+<a name="wp1112824"> </a><div class="pCellBody">
+(Except as below)
+</div>
+</td>
+    <td><a name="wp1112826"> </a><div class="pCellBody">
+<code class="cCode">LD_LIBRARY_PATH</code> must include <code class="cCode">/</code><code class="cCodeItalic">&lt;install_dir&gt;</code><code class="cCode">/lib</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1112828"> </a><div class="pCellBody">
+HP/UX
+</div>
+</td>
+    <td><a name="wp1112830"> </a><div class="pCellBody">
+<code class="cCode">SHLIB_PATH</code> must include <code class="cCode">/</code><code class="cCodeItalic">&lt;install_dir&gt;</code><code class="cCode">/lib</code>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

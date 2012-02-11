@@ -1,0 +1,161 @@
+
+(object Petal
+    version    	47
+    _written   	"Rational Rose 2003.06.00"
+    charSet    	0)
+
+(object SubSystem "security"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"3E400C0302EE"
+    physical_models 	(list unit_reference_list
+	(object SubSystem "util"
+	    quid       	"3E400C0302EF"
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3E4011CB00D7"
+		    supplier   	"Component View::java::util::jar"
+		    quidu      	"3E400BFC03B4"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3E4015E20141"
+		    supplier   	"pkcs"
+		    quidu      	"3E400D690318"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3E4017280352"
+		    supplier   	"Component View::sun::misc"
+		    quidu      	"3E400BBB014E"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3E40172803AC"
+		    supplier   	"Component View::java::security::cert"
+		    quidu      	"3E400C0D0188"
+		    supplier_is_subsystem 	TRUE))
+	    physical_models 	(list unit_reference_list
+		(object module "Debug" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"sun\\security\\util\\Debug.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400C94005F"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "ManifestEntryVerifier" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"sun\\security\\util\\ManifestEntryVerifier.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400E6D00C3"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E401728033E"
+			    supplier   	"Component View::sun::security::util::Debug"
+			    quidu      	"3E400C94005F"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E4017280366"
+			    supplier   	"BASE64Decoder"
+			    quidu      	"3E400D300009"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E401728037A"
+			    supplier   	"Component View::java::util::jar::Manifest"
+			    quidu      	"3E400C0402EF"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E401728038E"
+			    supplier   	"Component View::java::util::jar::JarEntry"
+			    quidu      	"3E400CCA00D5"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E40172803B6"
+			    supplier   	"Component View::java::security::cert::Certificate"
+			    quidu      	"3E400C0D0191"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java"))
+	    physical_presentations 	(list unit_reference_list))
+	(object SubSystem "x509"
+	    quid       	"3E400CBE036D"
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3E400CC901C4"
+		    supplier   	"Component View::sun::security::util"
+		    quidu      	"3E400C0302EF"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3E400E90015A"
+		    supplier   	"Component View::java::security"
+		    quidu      	"3E400BE002FF"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3E400E940336"
+		    supplier   	"Component View::java::lang::reflect"
+		    quidu      	"3E400BE002B9"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3E400E940340"
+		    supplier   	"Component View::java::lang"
+		    quidu      	"3E400BBB015B"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3E400F89016C"
+		    supplier   	"Component View::java::util"
+		    quidu      	"3E400BC001EB"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3E40106C01CD"
+		    supplier   	"Component View::javax::security::auth::x500"
+		    quidu      	"3E400E8802A3"
+		    supplier_is_subsystem 	TRUE))
+	    physical_models 	(list unit_reference_list
+		(object module "GeneralNameInterface" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"sun\\security\\x509\\GeneralNameInterface.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400E2F027D"
+		    stereotype 	""
+		    language   	"Java"))
+	    physical_presentations 	(list unit_reference_list)))
+    physical_presentations 	(list unit_reference_list))

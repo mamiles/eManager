@@ -1,0 +1,66 @@
+#*******************************************************************************
+# File:    Makefile.sample
+#
+# Purpose: This is a sample makefile to build the TIBCO Hawk AMI C++ API sample
+#          program AmiSample1. This is only a sample makefile and may require
+#          modifications to build correctly with your platform/environment.
+#*******************************************************************************
+
+#*******************************************************************************
+#                               UNIX Platforms
+#
+# To compile the sample program for UNIX un-comment this section and set
+# HAWK_ROOT, RV_ROOT, and CC accordingly. Then execute:
+#
+#                         make -f Makefile.sample
+#
+#*******************************************************************************
+#
+#HAWK_ROOT=/opt/tibco/hawk
+#RV_ROOT=/opt/tibco/Tibrv
+#
+#CC=/SUNWspro/SC5.0/bin/CC -mt
+#
+## If you have a System V Release 4 system you need these libs as well.
+#SOCKET_LIBS=-lsocket -lgen -lnsl
+## Digital UNIX needs this
+##SOCKET_LIBS=-Ldnet_stub
+#
+#LIBS=-ltibhawkamicpp -ltibhawkami -ltibrvcpp -ltibrv $(SOCKET_LIBS)
+#
+#all:	AmiSample1
+#
+#AmiSample1:
+#	$(CC) -o AmiSample1 -I$(HAWK_ROOT)/include -I$(RV_ROOT)/include \
+#        -L$(HAWK_ROOT)/lib -L$(RV_ROOT)/lib AmiSample1.cpp $(LIBS)
+#
+#*******************************************************************************
+#                 Windows NT / Windows 2000 Using Visual C++
+#
+# To make the sample program for Windows NT un-comment this section and set
+# HAWK_ROOT and RV_ROOT accordingly. Then execute:
+#
+#                         nmake -f Makefile.sample
+#
+#*******************************************************************************
+#
+#HAWK_ROOT = c:\tibco\hawk
+#RV_ROOT   = c:\tibco\Tibrv
+#
+#CPPFLAGS = /MT \
+#           /I$(HAWK_ROOT)\include \
+#           /I$(RV_ROOT)\include
+#
+#LDFLAGS = /DEFAULTLIB:$(HAWK_ROOT)\lib\libtibhawkamicppmt.lib \
+#          /DEFAULTLIB:$(HAWK_ROOT)\lib\libtibhawkamimt.lib \
+#          /DEFAULTLIB:$(RV_ROOT)\lib\libtibrvcpp.lib \
+#          /DEFAULTLIB:$(RV_ROOT)\lib\libtibrv.lib \
+#          /DEFAULTLIB:wsock32.lib \
+#          /DEFAULTLIB:advapi32.lib
+#
+#all: AmiSample1.exe
+#
+#AmiSample1.exe:
+#         $(CPP) $(CPPFLAGS) $*.cpp -link $(LDFLAGS)
+#
+#*******************************************************************************

@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>Implementations</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;1	 Concepts";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1053389"> </a><h2 class="pNewHTMLPage">
+Implementations
+</h2>
+<hr />
+<a name="wp1073791"> </a><p class="pBody">
+Rendezvous Java language interface offers two implementations. <a  href="rv_java_ref2.htm#wp1073794">Table&#160;1</a> summarizes and compares them. To use a specific implementation, see <a  href="rv_java_ref21.htm#wp1020167"><code class="cCode">Tibrv.open()</code> </a>.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1073794"> </a><div class="pTableTitle">
+Table&#160;1   Implementations&#160;
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1073800"> </a><div class="pCellHeading">
+Aspect
+</div>
+</th>
+    <th><a name="wp1073802"> </a><div class="pCellHeading">
+Native (JNI)
+</div>
+</th>
+    <th><a name="wp1073804"> </a><div class="pCellHeading">
+Java
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1073806"> </a><div class="pCellBody">
+Description
+</div>
+</td>
+    <td><a name="wp1073808"> </a><div class="pCellBody">
+A thin Java layer serves as a programming interface to an underlying C implementation.
+</div>
+</td>
+    <td><a name="wp1073810"> </a><div class="pCellBody">
+Implemented in Java.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1117493"> </a><div class="pCellBody">
+Primary Runtime Environment
+</div>
+</td>
+    <td><a name="wp1117495"> </a><div class="pCellBody">
+Independent application or browser applet.
+</div>
+</td>
+    <td><a name="wp1117497"> </a><div class="pCellBody">
+Downloadable browser applet.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1073812"> </a><div class="pCellBody">
+Scope of Functionality
+</div>
+</td>
+    <td><a name="wp1073814"> </a><div class="pCellBody">
+Maximal coverage of C functionality. Exception: I/O events.
+</div>
+</td>
+    <td><a name="wp1073816"> </a><div class="pCellBody">
+Covers core functionality of Rendezvous. Does not include fault tolerance, certified delivery, nor secure daemons.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1073821"> </a><div class="pCellBody">
+Speed
+</div>
+</td>
+    <td><a name="wp1073823"> </a><div class="pCellBody">
+Generally faster than the Java implementation.
+</div>
+</td>
+    <td><a name="wp1073825"> </a><div class="pCellBody">
+Generally not as fast as the native C implementation.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1073827"> </a><div class="pCellBody">
+Transport Scope
+</div>
+</td>
+    <td><a name="wp1073829"> </a><div class="pCellBody">
+<code class="cCode">rvd</code>, <code class="cCode">rva</code>, and intra-process transports.
+</div>
+</td>
+    <td><a name="wp1073831"> </a><div class="pCellBody">
+Only <code class="cCode">rva</code> and intra-process transports. Does not support <code class="cCode">rvd</code> transports.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1073833"> </a><div class="pCellBody">
+Timer Granularity
+</div>
+</td>
+    <td><a name="wp1073835"> </a><div class="pCellBody">
+Supports fine-resolution timers (within operating system limitations).
+</div>
+</td>
+    <td><a name="wp1073838"> </a><div class="pCellBody">
+Timer granularity is limited by JVM to 10 milliseconds.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1073841"> </a><div class="pCellBody">
+Library Requirements
+</div>
+</td>
+    <td><a name="wp1073843"> </a><div class="pCellBody">
+Must load the Rendezvous JNI library.
+</div>
+</td>
+    <td><a name="wp1073848"> </a><div class="pCellBody">
+Does not require the Rendezvous JNI library.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

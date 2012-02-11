@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvEvent</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1047420"> </a><h2 class="pNewHTMLPage">
+TibrvEvent
+</h2>
+<hr />
+<a name="wp1047717"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1168885"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+class com.tibco.tibrv.<code class="cCodeBold">TibrvEvent</code><a name="wp1031014"> </a>
+&#160;&#160;extends java.lang.Object<a name="wp1281168"> </a>
+</pre></div>
+<a name="wp1031015"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1033267"> </a><p class="pBody">
+Event objects represent program interest in events, and event occurrences.
+</p>
+<a name="wp1031017"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1031592"> </a><p class="pBody">
+Programs create instances of event subclasses of <a  href="rv_java_ref77.htm#wp1047420"><code class="cCode">TibrvEvent</code></a>, but not of this superclass.
+</p>
+<a name="wp1033280"> </a><p class="pBody">
+Each call to a Rendezvous event constructor results in a new event object, which represents your program&#8217;s interest in a set of events. Rendezvous software uses the same event object to signal each occurrence of such an event.
+</p>
+<a name="wp1081840"> </a><p class="pBody">
+Destroying an event object cancels the program&#8217;s interest in that event. Destroying the queue or transport of an event automatically destroys the event as well.
+</p>
+<a name="wp1068791"> </a><p class="pBody">
+Although the fault tolerance classes are technically events, they are sufficiently different from listeners and timers that they require separate description. See <a  href="rv_java_ref160.htm#wp1060883">Chapter&#160;8, Fault Tolerance</a>.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1169032"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1169034"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1169036"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1169041"> </a><div class="pCellBody">
+<a  href="rv_java_ref78.htm#wp1068928"><code class="cCode">TibrvEvent.destroy()</code></a>
+</div>
+</td>
+    <td><a name="wp1169046"> </a><div class="pCellBody">
+<a  href="rv_java_ref78.htm#wp1033386">Destroy an event, canceling interest.</a>
+</div>
+</td>
+    <td><a name="wp1169051"> </a><div class="pCellBody">
+<a  href="rv_java_ref78.htm#wp1068928">112</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1169056"> </a><div class="pCellBody">
+<a  href="rv_java_ref79.htm#wp1033576"><code class="cCode">TibrvEvent.getClosure()</code></a>
+</div>
+</td>
+    <td><a name="wp1169061"> </a><div class="pCellBody">
+<a  href="rv_java_ref79.htm#wp1033582">Extract the closure data of an event object.</a>
+</div>
+</td>
+    <td><a name="wp1169066"> </a><div class="pCellBody">
+<a  href="rv_java_ref79.htm#wp1033576">113</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1169071"> </a><div class="pCellBody">
+<a  href="rv_java_ref80.htm#wp1033600"><code class="cCode">TibrvEvent.getQueue()</code></a>
+</div>
+</td>
+    <td><a name="wp1169076"> </a><div class="pCellBody">
+<a  href="rv_java_ref80.htm#wp1033654">Extract the queue of an event object.</a>
+</div>
+</td>
+    <td><a name="wp1169081"> </a><div class="pCellBody">
+<a  href="rv_java_ref80.htm#wp1033600">114</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1169086"> </a><div class="pCellBody">
+<a  href="rv_java_ref81.htm#wp1033426"><code class="cCode">TibrvEvent.isValid()</code></a>
+</div>
+</td>
+    <td><a name="wp1169091"> </a><div class="pCellBody">
+<a  href="rv_java_ref81.htm#wp1033432">Test whether an event has been destroyed.</a>
+</div>
+</td>
+    <td><a name="wp1169096"> </a><div class="pCellBody">
+<a  href="rv_java_ref81.htm#wp1033426">115</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1169145"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1169136"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1169138"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.equals</code>
+</p>
+<a name="wp1169139"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.getClass</code>
+</p>
+<a name="wp1169140"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.hashCode</code>
+</p>
+<a name="wp1169141"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notify</code>
+</p>
+<a name="wp1169142"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notifyAll</code>
+</p>
+<a name="wp1169143"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.toString</code> (override)
+</p>
+<a name="wp1169144"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.wait</code>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1168979"> </a><h4 class="pHeading3">
+Descendants
+</h4>
+<a name="wp1168983"> </a><p class="pBody">
+<a  href="rv_java_ref82.htm#wp1031628"><code class="cCode">TibrvListener</code> </a>
+</p>
+<a name="wp1168987"> </a><p class="pBody">
+<a  href="rv_java_ref185.htm#wp1083717"><code class="cCode">TibrvCmListener</code> </a>
+</p>
+<a name="wp1168991"> </a><p class="pBody">
+<a  href="rv_java_ref88.htm#wp1031969"><code class="cCode">TibrvTimer</code> </a>
+</p>
+<a name="wp1168995"> </a><p class="pBody">
+<a  href="rv_java_ref162.htm#wp1062294"><code class="cCode">TibrvFtMember</code> </a>
+</p>
+<a name="wp1168999"> </a><p class="pBody">
+<a  href="rv_java_ref177.htm#wp1212716"><code class="cCode">TibrvFtMonitor</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,52 @@
+cmlistener.cpp
+
+  Simple CM listener. Listens and confirms certified messages.
+  
+cmqmember.cpp
+
+  Simple certified message queue (CMQ) example. Program will listen
+  for any number of certified messages on a specified set of subjects
+  and print out an informative message each time data is received.
+  Can be used together with cmsender example to demonstrate how 
+  certified message queues (also known as distributed message queues 
+  (DQ)) work. The best demonstration is seen by running 3 or more 
+  instances of this program and using the cmsender to publish data 
+  to the queue.
+
+cmsender.cpp
+
+  Simple sender of certified messages. It can be run in conjuction
+  with the cmlistener example or the cmqmember example. cmsender
+  sends a number of messages and verifies they have been
+  confirmed.
+
+dispatcher.cpp
+
+  Dispatcher, queue and process transport example.  Sets up single
+  publisher, single listener and two dispatchers to process multiple
+  messages placed in a single queue.
+
+priority.cpp
+
+  Queue group and process transport example example.  Sets up two-member 
+  queue group with different queue priorities, publishes multiple
+  messages to two listeners and starts a dispatcher to process the
+  message events.  
+
+tibrvlisten.cpp
+
+  Simple listener example.  Listens for all messages on specified
+  list of subjects.
+
+tibrvsend.cpp
+
+  Simple sender example.   Sends one or more messages on a specified
+  subject.
+
+usertypes.cpp
+
+  Simple program which demonstrates how to encode, decode and convert  
+  custom data types for TibrvMsg.  
+
+
+

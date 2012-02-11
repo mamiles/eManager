@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvCmReviewCallback::onLedgerMsg()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;9	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1090618"> </a><h2 class="pNewHTMLPage">
+TibrvCmReviewCallback::onLedgerMsg()
+</h2>
+<hr />
+<a name="wp1090619"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1141021"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+virtual void* <code class="cCodeBold">onLedgerMsg</code>(<a name="wp1141164"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_cpp_ref226.htm#wp1084243"><code class="cCode">TibrvCmTransport</code></a>* cmTransport,<a name="wp1141165"> </a>
+&#160;&#160;&#160;&#160;const char* subject,<a name="wp1141166"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_cpp_ref26.htm#wp1055151"><code class="cCode">TibrvMsg</code></a>&amp; msg,<a name="wp1141117"> </a>
+&#160;&#160;&#160;&#160;void* closure) = 0;<a name="wp1141177"> </a>
+</pre></div>
+<a name="wp1141178"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1141180"> </a><p class="pBody">
+Programs define this method to process ledger review messages.
+</p>
+<a name="wp1090099"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1090103"> </a><p class="pBody">
+<a  href="rv_cpp_ref244.htm#wp1227157"><code class="cCode">TibrvCmTransport::reviewLedger()</code></a> calls this callback method once for each matching subject stored in the ledger. 
+</p>
+<a name="wp1141184"> </a><p class="pBody">
+To continue reviewing the ledger, return <code class="cCode">NULL</code> from this callback method. To stop reviewing the ledger, return non-<code class="cCode">NULL</code> from this callback method; <a  href="rv_cpp_ref244.htm#wp1227157"><code class="cCode">TibrvCmTransport::reviewLedger()</code></a> cancels the review and returns immediately.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1090110"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1090115"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1090117"> </a><div class="pCellBody">
+<code class="cCode">cmTransport</code>
+</div>
+</td>
+    <td><a name="wp1090119"> </a><div class="pCellBody">
+This parameter receives the transport.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1090121"> </a><div class="pCellBody">
+<code class="cCode">subject</code>
+</div>
+</td>
+    <td><a name="wp1090123"> </a><div class="pCellBody">
+This parameter receives the subject for this ledger item.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1090125"> </a><div class="pCellBody">
+<code class="cCode">msg</code>
+</div>
+</td>
+    <td><a name="wp1090127"> </a><div class="pCellBody">
+This parameter receives a summary message describing the delivery status of messages in the ledger. The table <a  href="rv_cpp_ref251.htm#wp1141268">Message Content</a> describes the fields of the summary message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1090129"> </a><div class="pCellBody">
+<code class="cCode">closure</code>
+</div>
+</td>
+    <td><a name="wp1090131"> </a><div class="pCellBody">
+This parameter receives closure data that the program supplied to <a  href="rv_cpp_ref244.htm#wp1227157"><code class="cCode">TibrvCmTransport::reviewLedger()</code></a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1141268"> </a><h4 class="pHeading3">
+Message Content
+</h4>
+<a name="wp1227579"> </a><p class="pBody">
+This callback method receives ledger summary messages with these fields.<span style="font-weight: bold"></span></p><div align="left">
+<table border="1">
+  <caption><a name="wp1228253"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1228257"> </a><div class="pCellHeading">
+Field Name
+</div>
+</th>
+    <th><a name="wp1228259"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1228261"> </a><div class="pCellBody">
+<code class="cCode">subject</code>
+</div>
+</td>
+    <td><a name="wp1228263"> </a><div class="pCellBody">
+The subject that this message summarizes.
+</div>
+<a name="wp1228267"> </a><div class="pCellBody">
+This field has datatype <a  href="rv_cpp_ref270.htm#wp1231033"><code class="cCode">TIBRVMSG_STRING</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1228269"> </a><div class="pCellBody">
+<code class="cCode">seqno_last_sent</code>
+</div>
+</td>
+    <td><a name="wp1228271"> </a><div class="pCellBody">
+The sequence number of the most recent message sent with this subject name.
+</div>
+<a name="wp1228275"> </a><div class="pCellBody">
+This field has datatype <a  href="rv_cpp_ref270.htm#wp1231102"><code class="cCode">TIBRVMSG_U64</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1228277"> </a><div class="pCellBody">
+<code class="cCode">total_msgs</code>
+</div>
+</td>
+    <td><a name="wp1228279"> </a><div class="pCellBody">
+The total number of messages stored at this subject name.
+</div>
+<a name="wp1228283"> </a><div class="pCellBody">
+This field has datatype <a  href="rv_cpp_ref270.htm#wp1231095"><code class="cCode">TIBRVMSG_U32</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1228285"> </a><div class="pCellBody">
+<code class="cCode">total_size</code>
+</div>
+</td>
+    <td><a name="wp1228287"> </a><div class="pCellBody">
+The total storage (in bytes) occupied by all messages with this subject name.
+</div>
+<a name="wp1228288"> </a><div class="pCellBody">
+If the ledger contains several messages with this subject name, then this field sums the storage space over all of them.
+</div>
+<a name="wp1228292"> </a><div class="pCellBody">
+This field has datatype <a  href="rv_cpp_ref270.htm#wp1231095"><code class="cCode">TIBRVMSG_U32</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1228294"> </a><div class="pCellBody">
+<code class="cCode">listener</code>
+</div>
+</td>
+    <td><a name="wp1228296"> </a><div class="pCellBody">
+Each summary message can contain one or more fields named <code class="cCode">listener</code>. Each <code class="cCode">listener</code> field contains a nested submessage with details about a single registered listener.
+</div>
+<a name="wp1228300"> </a><div class="pCellBody">
+This field has datatype <a  href="rv_cpp_ref270.htm#wp1231006"><code class="cCode">TIBRVMSG_MSG</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1228302"> </a><div class="pCellBody">
+<code class="cCode">listener.</code><code class="cCodeBold">name</code>
+</div>
+</td>
+    <td><a name="wp1228304"> </a><div class="pCellBody">
+Within each <code class="cCode">listener</code> submessage, the <code class="cCode">name</code> field contains the name of the listener transport.
+</div>
+<a name="wp1228308"> </a><div class="pCellBody">
+This field has datatype <a  href="rv_cpp_ref270.htm#wp1231033"><code class="cCode">TIBRVMSG_STRING</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1228310"> </a><div class="pCellBody">
+<code class="cCode">listener.</code><code class="cCodeBold">last_confirmed</code>
+</div>
+</td>
+    <td><a name="wp1228312"> </a><div class="pCellBody">
+Within each <code class="cCode">listener</code> submessage, the <code class="cCode">last_confirmed</code> field contains the sequence number of the last message for which the listener confirmed delivery.
+</div>
+<a name="wp1228316"> </a><div class="pCellBody">
+This field has datatype <a  href="rv_cpp_ref270.htm#wp1231102"><code class="cCode">TIBRVMSG_U64</code></a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody"><span style="font-weight: bold"></span>
+</p>
+<a name="wp1090206"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1090210"> </a><p class="pBody">
+<a  href="rv_cpp_ref244.htm#wp1227157"><code class="cCode">TibrvCmTransport::reviewLedger()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

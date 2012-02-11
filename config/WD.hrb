@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ruleBase>
+	<version>4.0.1</version>
+	<name><![CDATA[_WD_]]></name>
+	<schedule></schedule>
+	<author>eManager team</author>
+	<lastModification>Fri, Dec 5, 2003</lastModification>
+	<comment><![CDATA[]]></comment>
+	<rule>
+		<name><![CDATA[cisco.mgmt.emanager.ps.watchdog:getWDErrorStatus():60]]></name>
+		<schedule></schedule>
+		<overRuling>0</overRuling>
+		<dataSource>
+			<microAgentName><![CDATA[cisco.mgmt.emanager.ps.watchdog]]></microAgentName>
+			<methodName>getWDErrorStatus</methodName>
+			<interval>60000</interval>
+		</dataSource>
+		<test>
+			<name><![CDATA[(Status isFalse )]]></name>
+			<schedule></schedule>
+			<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.IsFalse" >
+				<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.RuleData" >
+					<dataObject class="java.lang.String" ><![CDATA[Status]]></dataObject>
+				</operator>
+			</operator>
+			<consequenceAction>
+				<name><![CDATA[sendAlertHigh(alertMsg= ${Description} )]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertHigh" ><![CDATA[ ${Description} ]]></dataObject>
+				</dataElement>
+				<properties>
+				</properties>
+				<performOnceOnly/>
+				<escalationTime>0</escalationTime>
+			</consequenceAction>
+			<trueConditionPolicy>
+				<trueCountThreshold>1</trueCountThreshold>
+			</trueConditionPolicy>
+			<clearOn>
+				<clearOnFirstFalse/>
+			</clearOn>
+		</test>
+	</rule>
+</ruleBase>

@@ -1,0 +1,403 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>Distributed Queue Transport</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;10	 Distributed Queue";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1108902"> </a><h2 class="pNewHTMLPage">
+Distributed Queue Transport
+</h2>
+<hr />
+<a name="wp1139644"> </a><p class="pBody">
+Each distributed queue member uses a distributed queue transport for communications. A distributed queue transport is a special-case instance of class <a  href="rv_com_ref179.htm#wp1084243"><code class="cCode">TibrvCmTransport</code></a>.
+</p>
+<a name="wp1141788"> </a><p class="pBody">
+Each distributed queue transport object employs a <a  href="rv_com_ref125.htm#wp1123272"><code class="cCode">TibrvTransport</code></a> for network communications. The distributed queue transport adds the accounting and coordination mechanisms needed for one-of-n delivery.
+</p>
+<a name="wp1141789"> </a><h4 class="pHeading3">
+Disabled Methods
+</h4>
+<a name="wp1141793"> </a><p class="pBody">
+Although each distributed queue transport is an instance of <a  href="rv_com_ref179.htm#wp1084243"><code class="cCode">TibrvCmTransport</code></a>, all methods related to <em class="cEmphasis">sending</em> messages are disabled in distributed queue transports. These disabled methods report the error <a  href="rv_com_ref218.htm#wp1189007"><code class="cCode">TIBRVCOM_INVALID_TRANSPORT_OBJECT</code></a>. For a list of legal and disabled methods, see <a  href="rv_com_ref206.htm#wp1188060">Shared Methods</a>. See also <a  href="javascript:WWHClickedPopup('a', 'rv_concepts119.htm#wp1056857');" onMouseOver="WWHShowPopup('a', 'rv_concepts119.htm#wp1056857', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Certified Delivery Behavior in Queue Members</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+<a name="wp1142299"> </a><h4 class="pHeading3">
+Subscriptions
+</h4>
+<a name="wp1142300"> </a><p class="pBody">
+All members of a distributed queue must listen to exactly the same set of subjects. See <a  href="javascript:WWHClickedPopup('a', 'rv_concepts119.htm#wp1056870');" onMouseOver="WWHShowPopup('a', 'rv_concepts119.htm#wp1056870', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Enforcing Identical Subscriptions</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+<a name="wp1142316"> </a><h4 class="pHeading3">
+Certified Task Messages
+</h4>
+<a name="wp1142307"> </a><p class="pBody">
+Scheduler recovery and task rescheduling are available only when the task message is a certified message (that is, a certified delivery agreement is in effect between the task sender and the distributed queue transport scheduler).</p><div align="left">
+<table border="1">
+  <caption><a name="wp1115877"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1108385"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1108387"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1108389"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1146634"> </a><div class="pMinorHead">
+Life Cycle
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146652"> </a><div class="pCellBody">
+<a  href="rv_com_ref207.htm#wp1093285"><code class="cCode">TibrvCmTransport.createDistributedQueue</code></a>
+</div>
+</td>
+    <td><a name="wp1146654"> </a><div class="pCellBody">
+<a  href="rv_com_ref207.htm#wp1086080">Create a transport as a distributed queue member.</a>
+</div>
+</td>
+    <td><a name="wp1146659"> </a><div class="pCellBody">
+<a  href="rv_com_ref207.htm#wp1093285">271</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1108394"> </a><div class="pCellBody">
+<a  href="rv_com_ref211.htm#wp1132994"><code class="cCode">TibrvCmTransport.isDistributed()</code></a>
+</div>
+</td>
+    <td><a name="wp1108396"> </a><div class="pCellBody">
+<a  href="rv_com_ref211.htm#wp1133000">Test whether a CM transport object implements a distributed queue member.</a>
+</div>
+</td>
+    <td><a name="wp1108401"> </a><div class="pCellBody">
+<a  href="rv_com_ref211.htm#wp1132994">277</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1146640"> </a><div class="pMinorHead">
+Accessors
+</div>
+<a name="wp1158244"> </a><div class="pCellBody">
+When called on a CM transport object (which is not initialized as a distributed transport), these methods report the error <a  href="rv_com_ref218.htm#wp1189092"><code class="cCode">TIBRVCOM_NOT_DISTRIBUTED_TRANSPORT</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1108457"> </a><div class="pCellBody">
+<a  href="rv_com_ref208.htm#wp1086227"><code class="cCode">TibrvCmTransport.getCompleteTime()</code></a>
+</div>
+</td>
+    <td><a name="wp1108459"> </a><div class="pCellBody">
+<a  href="rv_com_ref208.htm#wp1086238">Extract the worker complete time limit of a distributed queue member.</a>
+</div>
+</td>
+    <td><a name="wp1108464"> </a><div class="pCellBody">
+<a  href="rv_com_ref208.htm#wp1086227">274</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146616"> </a><div class="pCellBody">
+<a  href="rv_com_ref209.htm#wp1086311"><code class="cCode">TibrvCmTransport.getWorkerTasks()</code></a>
+</div>
+</td>
+    <td><a name="wp1146618"> </a><div class="pCellBody">
+<a  href="rv_com_ref209.htm#wp1086322">Extract the worker task capacity of a distributed queue member.</a>
+</div>
+</td>
+    <td><a name="wp1146623"> </a><div class="pCellBody">
+<a  href="rv_com_ref209.htm#wp1086311">275</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1108478"> </a><div class="pCellBody">
+<a  href="rv_com_ref210.htm#wp1145405"><code class="cCode">TibrvCmTransport.getWorkerWeight()</code></a>
+</div>
+</td>
+    <td><a name="wp1108480"> </a><div class="pCellBody">
+<a  href="rv_com_ref210.htm#wp1145411">Extract the worker weight of a distributed queue member.</a>
+</div>
+</td>
+    <td><a name="wp1108485"> </a><div class="pCellBody">
+<a  href="rv_com_ref210.htm#wp1145405">276</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1108541"> </a><div class="pCellBody">
+<a  href="rv_com_ref212.htm#wp1111703"><code class="cCode">TibrvCmTransport.setCompleteTime</code></a>
+</div>
+</td>
+    <td><a name="wp1108543"> </a><div class="pCellBody">
+<a  href="rv_com_ref212.htm#wp1086409">Set the worker complete time limit of a distributed queue member.</a>
+</div>
+</td>
+    <td><a name="wp1108548"> </a><div class="pCellBody">
+<a  href="rv_com_ref212.htm#wp1111703">278</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146595"> </a><div class="pCellBody">
+<a  href="rv_com_ref213.htm#wp1145453"><code class="cCode">TibrvCmTransport.setWorkerTasks</code></a>
+</div>
+</td>
+    <td><a name="wp1146597"> </a><div class="pCellBody">
+<a  href="rv_com_ref213.htm#wp1145459">Set the worker task capacity of a distributed queue member.</a>
+</div>
+</td>
+    <td><a name="wp1146602"> </a><div class="pCellBody">
+<a  href="rv_com_ref213.htm#wp1145453">279</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1108562"> </a><div class="pCellBody">
+<a  href="rv_com_ref214.htm#wp1086441"><code class="cCode">TibrvCmTransport.setWorkerWeight</code></a>
+</div>
+</td>
+    <td><a name="wp1108564"> </a><div class="pCellBody">
+<a  href="rv_com_ref214.htm#wp1086452">Set the worker weight of a distributed queue member.</a>
+</div>
+</td>
+    <td><a name="wp1108569"> </a><div class="pCellBody">
+<a  href="rv_com_ref214.htm#wp1086441">280</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1188399"> </a><h4 class="pHeading3">
+Constants
+</h4>
+<a name="wp1142276"> </a><p class="pBody">
+The type library defines these constants for use with distributed queue methods.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1091915"> </a><div class="pCellHeading">
+Constant
+</div>
+</th>
+    <th><a name="wp1091917"> </a><div class="pCellHeading">
+Value
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1093322"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_CM_DEFAULT_COMPLETE_TIME</code>
+</div>
+</td>
+    <td><a name="wp1093324"> </a><div class="pCellBody">
+<code class="cCode">0</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1093318"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_CM_DEFAULT_WORKER_WEIGHT</code>
+</div>
+</td>
+    <td><a name="wp1093320"> </a><div class="pCellBody">
+<code class="cCode">1</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1093314"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_CM_DEFAULT_WORKER_TASKS</code>
+</div>
+</td>
+    <td><a name="wp1093316"> </a><div class="pCellBody">
+<code class="cCode">1</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1093310"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_CM_DEFAULT_SCHEDULER_WEIGHT</code>
+</div>
+</td>
+    <td><a name="wp1093312"> </a><div class="pCellBody">
+<code class="cCode">1</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1093306"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_CM_DEFAULT_SCHEDULER_HB</code> (heartbeat)
+</div>
+</td>
+    <td><a name="wp1093308"> </a><div class="pCellBody">
+<code class="cCode">1.0</code>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1192901"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th colspan="2" rowspan="1"><a name="wp1188060"> </a><div class="pCellHeading">
+Shared Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1188064"> </a><p class="pBody">
+Legal Methods
+</p>
+</td>
+    <td><a name="wp1188226"> </a><p class="pBody">
+<a  href="rv_com_ref184.htm#wp1084655"><code class="cCode">TibrvCmTransport.destroy</code></a>
+</p>
+<a name="wp1188230"> </a><p class="pBody">
+<a  href="rv_com_ref189.htm#wp1084905"><code class="cCode">TibrvCmTransport.getName()</code></a>
+</p>
+<a name="wp1188234"> </a><p class="pBody">
+<a  href="rv_com_ref193.htm#wp1085054"><code class="cCode">TibrvCmTransport.getTransport()</code></a>
+</p>
+<a name="wp1188238"> </a><p class="pBody">
+<a  href="rv_com_ref194.htm#wp1131963"><code class="cCode">TibrvCmTransport.isValid()</code></a>
+</p>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1188109"> </a><div class="pCellBody">
+Disabled Methods
+</div>
+</td>
+    <td><a name="wp1188259"> </a><p class="pBody">
+<a  href="rv_com_ref180.htm#wp1084281"><code class="cCode">TibrvCmTransport.addListener</code></a>
+</p>
+<a name="wp1188263"> </a><p class="pBody">
+<a  href="rv_com_ref181.htm#wp1084365"><code class="cCode">TibrvCmTransport.allowListener</code></a>
+</p>
+<a name="wp1188267"> </a><p class="pBody">
+<a  href="rv_com_ref182.htm#wp1186101"><code class="cCode">TibrvCmTransport.connectToRelayAgent</code></a>
+</p>
+<a name="wp1188271"> </a><p class="pBody">
+<a  href="rv_com_ref183.htm#wp1145168"><code class="cCode">TibrvCmTransport.create</code></a>
+</p>
+<a name="wp1188275"> </a><p class="pBody">
+<a  href="rv_com_ref185.htm#wp1084693"><code class="cCode">TibrvCmTransport.disallowListener</code></a>
+</p>
+<a name="wp1188279"> </a><p class="pBody">
+<a  href="rv_com_ref186.htm#wp1084766"><code class="cCode">TibrvCmTransport.disconnectFromRelayAgent</code></a>
+</p>
+<a name="wp1188283"> </a><p class="pBody">
+<a  href="rv_com_ref187.htm#wp1150163"><code class="cCode">TibrvCmTransport.getDefaultTimeLimit()</code></a>
+</p>
+<a name="wp1188287"> </a><p class="pBody">
+<a  href="rv_com_ref188.htm#wp1084868"><code class="cCode">TibrvCmTransport.getLedgerName()</code></a>
+</p>
+<a name="wp1188291"> </a><p class="pBody">
+<a  href="rv_com_ref190.htm#wp1084942"><code class="cCode">TibrvCmTransport.getRelayAgent()</code></a>
+</p>
+<a name="wp1188295"> </a><p class="pBody">
+<a  href="rv_com_ref191.htm#wp1084979"><code class="cCode">TibrvCmTransport.getRequestOld()</code></a>
+</p>
+<a name="wp1188299"> </a><p class="pBody">
+<a  href="rv_com_ref192.htm#wp1085017"><code class="cCode">TibrvCmTransport.getSyncLedger()</code></a>
+</p>
+<a name="wp1188303"> </a><p class="pBody">
+<a  href="rv_com_ref195.htm#wp1141840"><code class="cCode">TibrvCmTransport_onLedgerMsg</code></a>
+</p>
+<a name="wp1188307"> </a><p class="pBody">
+<a  href="rv_com_ref196.htm#wp1085087"><code class="cCode">TibrvCmTransport.removeListener</code></a>
+</p>
+<a name="wp1188311"> </a><p class="pBody">
+<a  href="rv_com_ref197.htm#wp1104483"><code class="cCode">TibrvCmTransport.removeSendState</code></a>
+</p>
+<a name="wp1188315"> </a><p class="pBody">
+<a  href="rv_com_ref198.htm#wp1085196"><code class="cCode">TibrvCmTransport.reviewLedger</code></a>
+</p>
+<a name="wp1188319"> </a><p class="pBody">
+<a  href="rv_com_ref199.htm#wp1085385"><code class="cCode">TibrvCmTransport.send</code></a>
+</p>
+<a name="wp1188323"> </a><p class="pBody">
+<a  href="rv_com_ref200.htm#wp1085443"><code class="cCode">TibrvCmTransport.sendReply</code></a>
+</p>
+<a name="wp1188327"> </a><p class="pBody">
+<a  href="rv_com_ref201.htm#wp1085494"><code class="cCode">TibrvCmTransport.sendRequest()</code></a>
+</p>
+<a name="wp1188331"> </a><p class="pBody">
+<a  href="rv_com_ref202.htm#wp1085565"><code class="cCode">TibrvCmTransport.setDefaultTimeLimit</code></a>
+</p>
+<a name="wp1188335"> </a><p class="pBody">
+<a  href="rv_com_ref203.htm#wp1145377"><code class="cCode">TibrvCmTransport.stopReview</code></a>
+</p>
+<a name="wp1188182"> </a><p class="pBody">
+<a  href="rv_com_ref204.htm#wp1085609"><code class="cCode">TibrvCmTransport.syncLedger</code></a>
+</p>
+<a name="wp1200344"> </a><p class="pBody">
+<a  href="rv_com_ref134.htm#wp1134580"><code class="cCode">TibrvTransport.send</code></a>
+</p>
+<a name="wp1200348"> </a><p class="pBody">
+<a  href="rv_com_ref135.htm#wp1134620"><code class="cCode">TibrvTransport.sendReply</code></a>
+</p>
+<a name="wp1200352"> </a><p class="pBody">
+<a  href="rv_com_ref136.htm#wp1134669"><code class="cCode">TibrvTransport.sendRequest()</code></a>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1158217"> </a><p class="pBody">
+When called on a distributed transport object, the disabled methods report the error <a  href="rv_com_ref218.htm#wp1189098"><code class="cCode">TIBRVCOM_NOT_FOR_DISTRIBUTED_TRANSPORT</code></a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

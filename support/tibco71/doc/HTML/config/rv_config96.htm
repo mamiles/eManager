@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>Router.addSeekAnyInterface()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;4	 Routing Daemon&#151;rvrd";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1954420"> </a><h2 class="pNewHTMLPage">
+Router.addSeekAnyInterface()
+</h2>
+<hr />
+<a name="wp1954421"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1954422"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_config80.htm#wp1953195"><code class="cCode">NeighborInterface</code></a> <code class="cCodeBold">addSeekAnyInterface</code>(<a name="wp2031936"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;remoteHost,<a name="wp2031937"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;remotePort,<a name="wp2031938"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;cost,<a name="wp2031948"> </a>
+&#160;&#160;&#160;&#160;boolean&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;compressed)<a name="wp2031939"> </a>
+&#160;&#160;throws <a  href="rv_config267.htm#wp1963961"><code class="cCode">ConfigurationException</code></a><a name="wp2031943"> </a>
+<a name="wp1954426"> </a>
+<a  href="rv_config80.htm#wp1953195"><code class="cCode">NeighborInterface</code></a> <code class="cCodeBold">addSeekAnyInterface</code>(<a name="wp2031946"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;remoteHost,<a name="wp1954427"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;remotePort,<a name="wp1954428"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;cost)<a name="wp1954429"> </a>
+&#160;&#160;throws <a  href="rv_config267.htm#wp1963961"><code class="cCode">ConfigurationException</code></a><a name="wp1954433"> </a>
+</pre></div>
+<a name="wp2031785"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/note.gif" border="0" /></td>
+    <td><a name="wp2031783"> </a><div class="pCellBody">
+Use the first form when the router is release 7.1 or later.
+</div>
+<a name="wp2031784"> </a><div class="pCellBody">
+Use the second form when the router is release 7.0.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1954434"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1954436"> </a><p class="pBody">
+Specify a neighbor interface that seeks any neighbor.
+</p>
+<a name="wp1954437"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1954438"> </a><p class="pBody">
+Use this method to specify a neighbor interface in which this routing daemon attempts to connect to any remote routing daemon that matches the specification.
+</p>
+<a name="wp1954439"> </a><p class="pBody">
+It is illegal to configure a router name with two or more <em class="cEmphasis">seek any</em> neighbor interfaces with the same remote host.
+</p>
+<a name="wp1954440"> </a><p class="pBody">
+<em class="cEmphasis">Seek any</em> interfaces cannot use SSL neighbor connections.
+</p>
+<a name="wp1954474"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1954443"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1954445"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1954447"> </a><div class="pCellBody">
+<code class="cCode">remoteHost</code>
+</div>
+</td>
+    <td><a name="wp1954449"> </a><div class="pCellBody">
+The local router will seek a neighbor running on this host computer. Supply either a <em class="cEmphasis">DNS</em> hostname that can resolve to more than one IP address, or a <em class="cEmphasis">virtual</em> IP address.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1954451"> </a><div class="pCellBody">
+<code class="cCode">remotePort</code>
+</div>
+</td>
+    <td><a name="wp1954453"> </a><div class="pCellBody">
+The local router will use this TCP port to request a neighbor connection with remote routers. All potential neighbors must listen for neighbor requests on this port. For more information, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm35.htm#wp1229423');" onMouseOver="WWHShowPopup('c', 'rv_adm35.htm#wp1229423', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Remote Connection Information</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1954461"> </a><div class="pCellBody">
+<code class="cCode">cost</code>
+</div>
+</td>
+    <td><a name="wp1954468"> </a><div class="pCellBody">
+The path cost of this neighbor link; see <a  href="javascript:WWHClickedPopup('c', 'rv_adm37.htm#wp1174944');" onMouseOver="WWHShowPopup('c', 'rv_adm37.htm#wp1174944', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Load Balancing</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.
+</div>
+<a name="wp1954473"> </a><div class="pCellBody">
+You may supply the default cost, <a  href="rv_config80.htm#wp1953239"><code class="cCode">NeighborInterface.DEFAULT_COST</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp2031711"> </a><div class="pCellBody">
+<code class="cCode">compressed</code>
+</div>
+</td>
+    <td><a name="wp2031713"> </a><div class="pCellBody">
+When <code class="cCode">true</code>, the new neighbor interface compresses outbound data and uncompresses inbound data.
+</div>
+<a name="wp2031714"> </a><div class="pCellBody">
+When <code class="cCode">false</code>, the new neighbor interface does <em class="cEmphasis">not</em> compress data.
+</div>
+<a name="wp2031715"> </a><div class="pCellBody">
+Notice that it is inconsistent for one neighbor to compress data while the other does not. Neighbors must agree concerning compression, otherwise they cannot establish a connection.
+</div>
+<a name="wp2031719"> </a><div class="pCellBody">
+Rendezvous routing daemons support data compression in release 7.1 and later; earlier releases do not. When the routing daemon does not support data compression, use the form of this method that omits this parameter.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1954475"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp2028123"> </a><p class="pBody">
+<a  href="rv_config80.htm#wp1953195"><code class="cCode">NeighborInterface</code> </a>
+</p>
+<a name="wp1954479"> </a><p class="pBody">
+<a  href="rv_config91.htm#wp1953701"><code class="cCode">Router</code> </a>
+</p>
+<a name="wp1954483"> </a><p class="pBody">
+<a  href="rv_config101.htm#wp1954692"><code class="cCode">Router.getNeighborInterfaces()</code> </a>
+</p>
+<a name="wp1954487"> </a><p class="pBody">
+<a  href="rv_config103.htm#wp1954838"><code class="cCode">Router.removeNeighborInterface()</code> </a>
+</p>
+<a name="wp1954494"> </a><p class="pBody">
+For the corresponding browser pages, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm55.htm#wp1219594');" onMouseOver="WWHShowPopup('c', 'rv_adm55.htm#wp1219594', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Add New Neighbor Interface</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+<a name="wp1954499"> </a><p class="pBody">
+For background information, see these sections:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1954506"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('c', 'rv_adm35.htm#wp1035365');" onMouseOver="WWHShowPopup('c', 'rv_adm35.htm#wp1035365', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Neighbors</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em></li></div>
+
+<a name="wp1954512"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('c', 'rv_adm36.htm#wp1066854');" onMouseOver="WWHShowPopup('c', 'rv_adm36.htm#wp1066854', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Seek Neighbor with Any Name</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em></li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

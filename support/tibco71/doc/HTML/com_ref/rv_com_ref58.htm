@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvMsg.remove</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1111370"> </a><h2 class="pNewHTMLPage">
+TibrvMsg.remove
+</h2>
+<hr />
+<a name="wp1026523"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1026804"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+TibrvMsg.<code class="cCodeBold">remove</code> fieldName, fieldId<a name="wp1119759"> </a>
+</pre></div>
+<a name="wp1026527"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1116179"> </a><p class="pBody">
+Remove a field from a message.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1116186"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1116188"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1119789"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1119791"> </a><div class="pCellBody">
+<code class="cCode">String</code>
+</div>
+<a name="wp1119794"> </a><div class="pCellBody">
+Remove a field with this name. See <a  href="rv_com_ref58.htm#wp1116199">Field Search Algorithm</a>.
+</div>
+<a name="wp1119796"> </a><div class="pCellBody">
+<code class="cCode">vbNullString</code> is a legal field name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1119780"> </a><div class="pCellBody">
+<code class="cCode">fieldId</code>
+</div>
+</td>
+    <td><a name="wp1119782"> </a><div class="pCellBody">
+<code class="cCode">Long</code> optional
+</div>
+<a name="wp1119785"> </a><div class="pCellBody">
+Remove the field with this identifier. See <a  href="rv_com_ref58.htm#wp1116199">Field Search Algorithm</a>.
+</div>
+<a name="wp1155861"> </a><p class="pBody">
+An identifier has the range of a 16-bit unsigned integer, [0,&#160;65535].
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1116199"> </a><h4 class="pHeading3">
+Field Search Algorithm
+</h4>
+<a name="wp1078313"> </a><p class="pBody">
+This method uses this algorithm to find and remove a field within a message, as specified by a field identifier and a field name.
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1078350"> </a><div class="pSmartList1"><li value="1">If the program supplied zero as the identifier, or omitted any identifier, then begin at step 3.</li></div>
+
+<a name="wp1078374"> </a><p class="pBodyRelative">
+If the program supplied a <em class="cEmphasis">non-zero</em> field identifier, then search for the field with that identifier. If the search succeeds, remove the field.
+</p>
+<a name="wp1119822"> </a><p class="pBodyRelative">
+On the search does not find a field, continue to step 2.
+</p>
+<a name="wp1119823"> </a><div class="pSmartList1"><li value="2">If the identifier search (in step 1) fails, and the program supplied a non-null field name, then search for a field with that name.</li></div>
+
+<a name="wp1078382"> </a><p class="pBodyRelative">
+On the search does not find a field, or if the program supplied <code class="cCode">vbNullString</code> as the field name, report the error <a  href="rv_com_ref217.htm#wp1188804"><code class="cCode">TIBRVCOM_NOT_FOUND</code></a>.
+</p>
+<a name="wp1078356"> </a><p class="pBodyRelative">
+If the name search succeeds, but the actual identifier in the field is non-zero (so it does not match the identifier supplied) then report the error <a  href="rv_com_ref217.htm#wp1188816"><code class="cCode">TIBRVCOM_ID_CONFLICT</code></a>.
+</p>
+<a name="wp1078391"> </a><p class="pBodyRelative">
+If the search succeeds, remove the field.
+</p>
+<a name="wp1078364"> </a><div class="pSmartList1"><li value="3">When the program supplied zero as the identifier, or omitted any identifier, then begin here.</li></div>
+
+<a name="wp1078365"> </a><p class="pBodyRelative">
+Search for a field with the specified name&#151;even if that name is <code class="cCode">vbNullString</code>.
+</p>
+<a name="wp1078366"> </a><p class="pBodyRelative">
+If the search succeeds, remove the field.
+</p>
+<a name="wp1078370"> </a><p class="pBodyRelative">
+If the search does not find a field, report the error <a  href="rv_com_ref217.htm#wp1188804"><code class="cCode">TIBRVCOM_NOT_FOUND</code></a>.
+</p>
+</ol></div>
+
+<a name="wp1107588"> </a><p class="pBody">
+If a message contains several fields with the same name, searching by name removes the first instance of the field with that name.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

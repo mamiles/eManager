@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Transport Scope</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;8	 Transport";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1024835"> </a><h2 class="pNewHTMLPage">
+Transport Scope
+</h2>
+<hr />
+<a name="wp1027349"> </a><p class="pBody">
+Rendezvous software distinguishes between two broad classes of transports, each with a different potential scope and a different delivery mechanism.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1027359"> </a><div class="pSmartList1"><li >A <em class="cEmphasis">network transport</em> delivers messages across a network, to processes on one or more hosts. It also can deliver messages to several processes on a single host.</li></div>
+
+<a name="wp1027366"> </a><p class="pBodyRelative">
+All messages pass through a Rendezvous daemon process.
+</p>
+<a name="wp1027406"> </a><p class="pBodyRelative">
+The service, network and daemon parameters of a network transport specify its scope within the network (see <a  href="rv_concepts71.htm#wp1029607">Network Transport Parameters</a>).
+</p>
+<a name="wp1049573"> </a><p class="pBodyRelative">
+Java programs can also use <code class="cCode">rva</code> transports.
+</p>
+<a name="wp1027367"> </a><div class="pSmartList1"><li >An <em class="cEmphasis">intra-process transport</em> delivers messages between program threads within a single process.</li></div>
+
+<a name="wp1027398"> </a><p class="pBodyRelative">
+Intra-process messages do not pass through a Rendezvous daemon process; instead, they remain local within the program process. Intra-process messages are significantly faster than network messages.
+</p>
+<a name="wp1027483"> </a><p class="pBodyRelative">
+Each program contains exactly one intra-process transport; the Rendezvous open call creates it automatically. Its scope is the program process. Any thread can dispatch intra-process events from an appropriate queue.
+</p>
+<a name="wp1029601"> </a><p class="pBodyRelative">
+Programs can use intra-process messages to implement user events. For more information, see <a  href="rv_concepts76.htm#wp1029257">Intra-Process Transport and User Events</a>.
+</p>
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

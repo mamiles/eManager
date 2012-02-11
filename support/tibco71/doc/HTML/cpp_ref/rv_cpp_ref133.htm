@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvQueue::getLimitPolicy()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1131574"> </a><h2 class="pNewHTMLPage">
+TibrvQueue::getLimitPolicy()
+</h2>
+<hr />
+<a name="wp1131340"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1131356"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">getLimitPolicy</code> (<a name="wp1131370"> </a>
+&#160;&#160;&#160;&#160;<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref98.htm#wp1065967');" onMouseOver="WWHShowPopup('e', 'rv_c_ref98.htm#wp1065967', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvQueueLimitPolicy</code></a>&amp; policy,<a name="wp1131371"> </a>
+&#160;&#160;&#160;&#160;tibrv_u32&amp; maxEvents,<a name="wp1131372"> </a>
+&#160;&#160;&#160;&#160;tibrv_u32&amp; discardAmount) const;<a name="wp1036990"> </a>
+</pre></div>
+<a name="wp1036992"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1131485"> </a><p class="pBody">
+Extract the limit properties of a queue.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1131495"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1131497"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1131503"> </a><div class="pCellBody">
+<code class="cCode">policy</code>
+</div>
+</td>
+    <td><a name="wp1131505"> </a><div class="pCellBody">
+Each queue has a policy for discarding events when a new event would cause the queue to exceed its <code class="cCode">maxEvents</code> limit. For an explanation of the policy values, see <a  href="rv_cpp_ref127.htm#wp1035842">Limit Policy</a>.
+</div>
+<a name="wp1131509"> </a><div class="pCellBody">
+The program supplies a variable, and the method stores the limit policy of the queue in that variable.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1131511"> </a><div class="pCellBody">
+<code class="cCode">maxEvents</code>
+</div>
+</td>
+    <td><a name="wp1131513"> </a><div class="pCellBody">
+Programs can limit the number of events that a queue can hold&#151;either to curb queue growth, or implement a specialized dispatch semantics.
+</div>
+<a name="wp1131514"> </a><div class="pCellBody">
+Zero specifies an unlimited number of events.
+</div>
+<a name="wp1131515"> </a><div class="pCellBody">
+The program supplies a variable, and the method stores the maximum event limit of the queue in that variable.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1131517"> </a><div class="pCellBody">
+<code class="cCode">discardAmount</code>
+</div>
+</td>
+    <td><a name="wp1131519"> </a><div class="pCellBody">
+When the queue exceeds its maximum event limit, discard a block of events. This property specifies the number of events to discard.
+</div>
+<a name="wp1131520"> </a><div class="pCellBody">
+The program supplies a variable, and the method stores the discard amount of the queue in that variable.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1036997"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1131473"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref98.htm#wp1065967');" onMouseOver="WWHShowPopup('e', 'rv_c_ref98.htm#wp1065967', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvQueueLimitPolicy</code> </a> in <em class="cEmphasis">TIBCO Rendezvous C Reference</em>
+</p>
+<a name="wp1131477"> </a><p class="pBody">
+<a  href="rv_cpp_ref138.htm#wp1036644"><code class="cCode">TibrvQueue::setLimitPolicy()</code> </a>
+</p>
+<a name="wp1131563"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts167.htm#wp1064290');" onMouseOver="WWHShowPopup('a', 'rv_concepts167.htm#wp1064290', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">QUEUE.LIMIT_EXCEEDED</code> </a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

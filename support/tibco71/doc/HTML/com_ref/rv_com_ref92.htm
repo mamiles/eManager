@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvTimer.destroy</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1122361"> </a><h2 class="pNewHTMLPage">
+TibrvTimer.destroy
+</h2>
+<hr />
+<a name="wp1122362"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1122364"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+TibrvTimer.<code class="cCodeBold">destroy</code><a name="wp1122365"> </a>
+</pre></div>
+<a name="wp1122366"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1140405"> </a><p class="pBody">
+Destroy a timer event.
+</p>
+<a name="wp1140406"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1140410"> </a><p class="pBody">
+This method destroys only the internal structure of the timer object. Rendezvous software automatically destroys a timer (using this method) when program execution leaves the scope of the object, or deletes the object.
+</p>
+<a name="wp1122369"> </a><p class="pBody">
+Destroying a timer object cancels interest in it. Upon return from <a  href="rv_com_ref92.htm#wp1122361"><code class="cCode">TibrvTimer.destroy</code></a>, the destroyed timer is no longer dispatched. However, an active callback method of this timer continues to run and return normally, even though the timer object is invalid.
+</p>
+<a name="wp1122373"> </a><p class="pBody">
+It is legal for a timer callback method to destroy its own timer object.
+</p>
+<a name="wp1122376"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1122380"> </a><p class="pBody">
+<a  href="rv_com_ref96.htm#wp1134092"><code class="cCode">TibrvTimer.isValid()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvQueue.setLimitPolicy()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1036644"> </a><h2 class="pNewHTMLPage">
+TibrvQueue.setLimitPolicy()
+</h2>
+<hr />
+<a name="wp1036645"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1036646"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+void <code class="cCodeBold">setLimitPolicy</code>(<a name="wp1036676"> </a>
+&#160;&#160;&#160;&#160;int limitPolicy,<a name="wp1036740"> </a>
+&#160;&#160;&#160;&#160;int maxEvents,<a name="wp1036677"> </a>
+&#160;&#160;&#160;&#160;int discardAmount)<a name="wp1036678"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1036682"> </a>
+</pre></div>
+<a name="wp1036649"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1036743"> </a><p class="pBody">
+Set the limit properties of a queue.
+</p>
+<a name="wp1036652"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1036747"> </a><p class="pBody">
+This method simultaneously sets three related properties, which together describe the behavior of a queue in overflow situations. Each call must explicitly specify all three properties.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1177064"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1177066"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1177068"> </a><div class="pCellBody">
+<code class="cCode">limitPolicy</code>
+</div>
+</td>
+    <td><a name="wp1177070"> </a><div class="pCellBody">
+Each queue has a policy for discarding events when a new event would cause the queue to exceed its <code class="cCode">maxEvents</code> limit. Choose from the values of <a  href="rv_java_ref98.htm#wp1035842">Limit Policy</a>.
+</div>
+<a name="wp1177074"> </a><div class="pCellBody">
+When <code class="cCode">maxEvents</code> is zero (unlimited), the <code class="cCode">policy</code> must be <a  href="rv_java_ref98.htm#wp1236543"><code class="cCode">TibrvQueue.DISCARD_NONE</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1177079"> </a><div class="pCellBody">
+<code class="cCode">maxEvents</code>
+</div>
+</td>
+    <td><a name="wp1177081"> </a><div class="pCellBody">
+Programs can limit the number of events that a queue can hold&#151;either to curb queue growth, or implement a specialized dispatch semantics.
+</div>
+<a name="wp1177082"> </a><div class="pCellBody">
+Zero specifies an unlimited number of events; in this case, the <code class="cCode">policy</code> must be <a  href="rv_java_ref98.htm#wp1236543"><code class="cCode">TibrvQueue.DISCARD_NONE</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1177087"> </a><div class="pCellBody">
+<code class="cCode">discardAmount</code>
+</div>
+</td>
+    <td><a name="wp1177089"> </a><div class="pCellBody">
+When the queue exceeds its maximum event limit, discard a block of events. This property specifies the number of events to discard.
+</div>
+<a name="wp1177093"> </a><div class="pCellBody">
+When <code class="cCode">discardAmount</code> is zero, the <code class="cCode">policy</code> must be <a  href="rv_java_ref98.htm#wp1236543"><code class="cCode">TibrvQueue.DISCARD_NONE</code></a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1036665"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1037025"> </a><p class="pBody">
+<a  href="rv_java_ref103.htm#wp1069548"><code class="cCode">TibrvQueue.getDiscardAmount()</code> </a>
+</p>
+<a name="wp1037046"> </a><p class="pBody">
+<a  href="rv_java_ref104.htm#wp1036917"><code class="cCode">TibrvQueue.getLimitPolicy()</code> </a>
+</p>
+<a name="wp1037030"> </a><p class="pBody">
+<a  href="rv_java_ref105.htm#wp1036938"><code class="cCode">TibrvQueue.getMaxEvents()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

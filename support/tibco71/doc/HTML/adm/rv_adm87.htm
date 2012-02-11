@@ -1,0 +1,471 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>rvcache</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;9	 Current Value Cache";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1024721"> </a><h2 class="pNewHTMLPage">
+rvcache
+</h2>
+<hr />
+<a name="wp1025896"> </a><p class="pSyntaxType">
+Command
+</p>
+<a name="wp1053369"> </a><h4 class="pHeading3">
+Syntax
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">rvcache&#160;&#160;&#160;-store</code><code class="cCodeItalic"> &lt;filename&gt;</code><a name="wp1058709"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-http [<code class="cCodeItalic">&lt;ip_address&gt;</code><code class="cCode">:]</code><code class="cCodeItalic">&lt;http_port&gt;</code>]<a name="wp1060130"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-https [<code class="cCodeItalic">&lt;ip_address&gt;</code><code class="cCode">:]</code><code class="cCodeItalic">&lt;https_port&gt;</code>]<a name="wp1277890"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-http-only]<a name="wp1277891"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-no-http]<a name="wp1064963"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-idle]</code><a name="wp1053370"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-sync </code><code class="cCodeItalic">&lt;interval&gt;</code><code class="cCode">]</code><a name="wp1053371"> </a>
+</pre></div>
+<a name="wp1025903"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1024740"> </a><p class="pBody">
+The program <code class="cCode">rvcache</code> stores data from recent messages, indexed by subject name, and automatically sends the cached data to new listeners.
+</p>
+<a name="wp1025853"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1024742"> </a><p class="pBody">
+Given a set of one or more subject names, <code class="cCode">rvcache</code> listens for messages addressed to those subjects. Each time it receives such a message, it stores the message&#8217;s data content.
+</p>
+<a name="wp1054085"> </a><p class="pBody">
+When a client program queries for a cached subject, <code class="cCode">rvcache</code> sends a reply message with the current cached value.
+</p>
+<a name="wp1056293"> </a><h4 class="pHeading3">
+Browser Administration Interface
+</h4>
+<a name="wp1056294"> </a><p class="pBody">
+To administer or configure <code class="cCode">rvcache</code>, view <code class="cCode">http://</code><code class="cCodeItalic">&lt;rvcache_host&gt;</code><code class="cCode">:</code><code class="cCodeItalic">&lt;http_port&gt;</code> with a web browser. When the program starts, it prints the actual HTTP administration port.
+</p>
+<a name="wp1054149"> </a><h4 class="pHeading3">
+State
+</h4>
+<a name="wp1054055"> </a><p class="pBody">
+<code class="cCode">rvcache</code> can run in either of two states&#151;running or idle. 
+</p>
+<a name="wp1054018"> </a><p class="pBody">
+When <em class="cEmphasis">running</em>, <code class="cCode">rvcache</code> listens to subjects, caches message values, and responds to queries.
+</p>
+<a name="wp1054011"> </a><p class="pBody">
+When <em class="cEmphasis">idle</em>, <code class="cCode">rvcache</code> does not operate; however, the browser administration interface is available for configuring parameters.
+</p>
+<a name="wp1060295"> </a><h4 class="pHeading3">
+Initial Subject Configuration
+</h4>
+<a name="wp1060298"> </a><p class="pBody">
+The first time you run <code class="cCode">rvcache</code>, you must configure its subjects and change its state to running. After that, <code class="cCode">rvcache</code> reads the subject list from its file.
+</p>
+<a name="wp1054002"> </a><h4 class="pHeading3">
+Replace or Merge
+</h4>
+<a name="wp1024750"> </a><p class="pBody">
+<code class="cCode">rvcache</code> stores message data in either of two ways. For each subject, it can either <em class="cEmphasis">replace</em> all previously stored data with the contents of each new message, or it can <em class="cEmphasis">merge</em> information from the fields of the message into the stored data, overwriting only those fields specified in the new message. Select one of these storage methods each time you add a subject.
+</p>
+<a name="wp1024754"> </a><p class="pBody">
+Data stored in <code class="cCode">rvcache</code> never expires. It remains in the cache until superseded or augmented by data from a new message on the same subject.
+</p>
+<a name="wp1024756"> </a><h4 class="pHeading3">
+Storage
+</h4>
+<a name="wp1030061"> </a><p class="pBody">
+<code class="cCode">rvcache</code> stores the data in program memory and in a disk file. The command line parameter <code class="cCode">-store</code> specifies the name of the disk file; if the file exists when <code class="cCode">rvcache</code> starts, then <code class="cCode">rvcache</code> reads the file to initialize its configuration parameters and to populate its cache in process memory.
+</p>
+<a name="wp1024757"> </a><p class="pBody">
+The command line parameter <code class="cCode">-sync</code> specifies the interval at which to synchronize the file-based store with process-based store.
+</p>
+<a name="wp1025872"> </a><h4 class="pHeading3">
+Command Line Parameters
+</h4>
+<a name="wp1081188"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1065019"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1065023"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1065025"> </a><div class="pCellHeading">
+Description	
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065027"> </a><div class="pCellBody">
+<code class="cCode">-store </code><code class="cCodeItalic">&lt;filename&gt;</code>
+</div>
+</td>
+    <td><a name="wp1065029"> </a><div class="pCellBody">
+Use <code class="cCodeItalic">&lt;filename&gt;</code> to record parameter configuration and for persistent cache storage. For best performance, use a local file system (remote file servers can cause delays and synchronization difficulties).
+</div>
+<a name="wp1065033"> </a><div class="pCellBody">
+For more information, see <a  href="rv_adm87.htm#wp1024756">Storage</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277916"> </a><div class="pCellBody">
+<code class="cCode">-http </code><code class="cCodeItalic">&lt;ip_address&gt;</code><code class="cCode">:</code><code class="cCodeItalic">&lt;http_port&gt;</code>
+</div>
+<a name="wp1277917"> </a><div class="pCellBody">
+<code class="cCode">-http </code><code class="cCodeItalic">&lt;http_port&gt;</code>
+</div>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;<a name="wp1277918"> </a>
+</pre></div>
+<a name="wp1277919"> </a><div class="pCellBody">
+<code class="cCode">-https </code><code class="cCodeItalic">&lt;ip_address&gt;</code><code class="cCode">:</code><code class="cCodeItalic">&lt;https_port&gt;</code>
+</div>
+<a name="wp1277920"> </a><div class="pCellBody">
+<code class="cCode">-https </code><code class="cCodeItalic">&lt;https_port&gt;</code>
+</div>
+</td>
+    <td><a name="wp1277922"> </a><div class="pCellBody">
+The browser administration interface accepts connections on this HTTP or HTTPS port. Permit administration access only through the network interface specified by this IP address.
+</div>
+<a name="wp1277923"> </a><div class="pCellBody">
+To limit access to a browser on the <code class="cCode">rvsd</code> host computer, specify <code class="cCode">127.0.0.1</code> (the local host address).
+</div>
+<a name="wp1277924"> </a><div class="pCellBody">
+When the IP address is absent, the daemon accepts connections through any network interface on the specified HTTP or HTTPS port.
+</div>
+<a name="wp1277925"> </a><div class="pCellBody">
+If the explicitly specified port is already occupied, the program exits.
+</div>
+<a name="wp1277926"> </a><div class="pCellBody">
+When the <code class="cCode">-http</code> parameter is entirely absent, the default behavior is to accept connections from any computer on HTTP port <code class="cCode">7581</code>; If this default port is unavailable, the operating system assigns an ephemeral port number.
+</div>
+<a name="wp1277927"> </a><div class="pCellBody">
+When the <code class="cCode">-https</code> parameter is entirely absent, the default behavior is to accept secure connections from any computer on an ephemeral HTTPS port.
+</div>
+<a name="wp1277928"> </a><div class="pCellBody">
+In all cases, the program prints (in its start banner) the actual HTTP and HTTPS ports where it accepts browser administration interface connections.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277930"> </a><div class="pCellBody">
+<code class="cCode">-http-only</code>
+</div>
+</td>
+    <td><a name="wp1277932"> </a><div class="pCellBody">
+Disable HTTPS (secure) connections, leaving only an HTTP (non-secure) connection.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277934"> </a><div class="pCellBody">
+<code class="cCode">-no-http</code>
+</div>
+</td>
+    <td><a name="wp1277936"> </a><div class="pCellBody">
+Disable <em class="cEmphasis">all</em> HTTP and HTTPS connections, overriding <code class="cCode">-http</code> and <code class="cCode">-https</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065047"> </a><div class="pCellBody">
+<code class="cCode">-idle</code>
+</div>
+</td>
+    <td><a name="wp1065049"> </a><div class="pCellBody">
+When present, start <code class="cCode">rvcache</code> in its <em class="cEmphasis">idle</em> state.
+</div>
+<a name="wp1065050"> </a><div class="pCellBody">
+When absent, start <code class="cCode">rvcache</code> in its <em class="cEmphasis">running</em> state&#151;caching values and responding to queries. However, if subjects are not configured, <code class="cCode">rvcache</code> begins in its <em class="cEmphasis">idle</em> state.
+</div>
+<a name="wp1065051"> </a><div class="pCellBody">
+You can toggle the state at any time using the browser administration interface.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065053"> </a><div class="pCellBody">
+<code class="cCode">-sync </code><code class="cCodeItalic">&lt;interval&gt;</code>
+</div>
+</td>
+    <td><a name="wp1065055"> </a><div class="pCellBody">
+Request that the operating system synchronize the file system at this interval (in seconds).
+</div>
+<a name="wp1065056"> </a><div class="pCellBody">
+When this parameter is absent, the default is synchronize the file system after every message that changes the store.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1081893"> </a><h4 class="pHeading3">
+Browser Administration Interface
+</h4>
+<a name="wp1082008"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1081899"> </a><p class="pBody">
+ (Sheet 1 of 3)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1081903"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1081905"> </a><div class="pCellHeading">
+Description	
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1081907"> </a><div class="pMinorHead">
+State
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1081911"> </a><div class="pCellBody">
+<code class="cCode">State</code>
+</div>
+</td>
+    <td><a name="wp1081913"> </a><div class="pCellBody">
+Toggle between <code class="cCode">idle</code> and <code class="cCode">running</code>.
+</div>
+<a name="wp1081914"> </a><div class="pCellBody">
+When running, <code class="cCode">rvcache</code> listens to its cache subjects, caches values, and responds to queries.
+</div>
+<a name="wp1081915"> </a><div class="pCellBody">
+When idle, <code class="cCode">rvcache</code> does not operate; however, the browser administration interface is available for configuring parameters.
+</div>
+<a name="wp1081916"> </a><div class="pCellBody">
+The program does not store this parameter.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1081918"> </a><div class="pMinorHead">
+Subjects
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1081922"> </a><div class="pCellBody">
+<code class="cCode">Subjects</code>
+</div>
+</td>
+    <td><a name="wp1081924"> </a><div class="pCellBody">
+To see information about a specific subject, click that subject in the current subject list.
+</div>
+<a name="wp1081925"> </a><div class="pCellBody">
+You can add new subjects or remove current subjects at any time.
+</div>
+<a name="wp1081929"> </a><div class="pCellBody">
+For more information, see <a  href="rv_adm87.htm#wp1054002">Replace or Merge</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1081931"> </a><div class="pMinorHead">
+Connection
+</div>
+<a name="wp1081932"> </a><div class="pCellBody">
+<code class="cCode">rvcache</code> uses these parameters to create its network transport object.
+</div>
+<a name="wp1081936"> </a><div class="pCellBody">
+For general explanations, see <a  href="rv_adm13.htm#wp1019197">Chapter&#160;3, Network Details</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1081940"> </a><div class="pCellBody">
+<code class="cCode">Service</code>
+</div>
+</td>
+    <td><a name="wp1081945"> </a><div class="pCellBody">
+See <a  href="rv_adm15.htm#wp1019269">Service Selection</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1081947"> </a><div class="pCellBody">
+<code class="cCode">Network</code>
+</div>
+</td>
+    <td><a name="wp1081952"> </a><div class="pCellBody">
+See <a  href="rv_adm16.htm#wp1019316">Network Selection</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1081954"> </a><div class="pCellBody">
+<code class="cCode">Daemon</code>
+</div>
+</td>
+    <td><a name="wp1081959"> </a><div class="pCellBody">
+See <a  href="rv_adm17.htm#wp1019451">Daemon Client Socket&#151;Establishing Connections</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1081961"> </a><div class="pMinorHead">
+Fault Tolerance
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1081965"> </a><div class="pCellBody">
+<code class="cCode">Enable</code>
+</div>
+</td>
+    <td><a name="wp1081967"> </a><div class="pCellBody">
+Enable or disable fault-tolerant operation.
+</div>
+<a name="wp1081968"> </a><div class="pCellBody">
+The remaining parameters in this group apply only when fault tolerance is enabled.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1081970"> </a><div class="pCellBody">
+<code class="cCode">Service</code>
+</div>
+</td>
+    <td><a name="wp1081972"> </a><div class="pCellBody">
+Use this UDP or PGM service for fault tolerance control messages between <code class="cCode">rvcache</code> member processes.
+</div>
+<a name="wp1081973"> </a><div class="pCellBody">
+The default value is <code class="cCode">rendezvous-ft</code>; if the operating system cannot interpret that service name, then the secondary default is UDP or PGM port <code class="cCode">7504</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1081975"> </a><div class="pCellBody">
+<code class="cCode">Network</code>
+</div>
+</td>
+    <td><a name="wp1081977"> </a><div class="pCellBody">
+Use this network for fault tolerance control messages between <code class="cCode">rvcache</code> member processes.
+</div>
+<a name="wp1081978"> </a><div class="pCellBody">
+The default value is the computer&#8217;s primary network interface.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1081980"> </a><div class="pCellBody">
+<code class="cCode">Group</code>
+</div>
+</td>
+    <td><a name="wp1081982"> </a><div class="pCellBody">
+Use this string as the name of the <code class="cCode">rvcache</code> fault tolerance group.
+</div>
+<a name="wp1081983"> </a><div class="pCellBody">
+Processes with the same group name cooperate to provide fault-tolerant service.
+</div>
+<a name="wp1081984"> </a><div class="pCellBody">
+The default value is <code class="cCode">RVCACHE</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1081986"> </a><div class="pCellBody">
+<code class="cCode">Weight</code>
+</div>
+</td>
+    <td><a name="wp1081988"> </a><div class="pCellBody">
+Set the weight of <em class="cEmphasis">this</em> <code class="cCode">rvcache</code> process.
+</div>
+<a name="wp1081989"> </a><div class="pCellBody">
+Weight specifies relative precedence between fault-tolerant processes. A process with greater weight takes precedence over a process with lesser weight.
+</div>
+<a name="wp1081990"> </a><div class="pCellBody">
+The default value is <code class="cCode">10</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1081992"> </a><div class="pCellBody">
+<code class="cCode">Heartbeat</code>
+</div>
+</td>
+    <td><a name="wp1081994"> </a><div class="pCellBody">
+Use this floating point value (in seconds) as the fault tolerance heartbeat interval.
+</div>
+<a name="wp1081995"> </a><div class="pCellBody">
+Members of a fault tolerance group send status reports at this interval. We recommend that this value be slightly less than one third of the activation interval.
+</div>
+<a name="wp1081996"> </a><div class="pCellBody">
+The default value is <code class="cCode">3</code> seconds.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1081998"> </a><div class="pCellBody">
+<code class="cCode">Activation</code>
+</div>
+</td>
+    <td><a name="wp1082000"> </a><div class="pCellBody">
+Use this floating point value (in seconds) as the fault tolerance activation interval.
+</div>
+<a name="wp1082001"> </a><div class="pCellBody">
+This value represents the longest interruption in service before the partner process activates. It must be the same for all members of a fault tolerance group.
+</div>
+<a name="wp1082002"> </a><div class="pCellBody">
+The default value is <code class="cCode">10</code> seconds.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1082004"> </a><div class="pMinorHead">
+Security
+</div>
+<a name="wp1082005"> </a><div class="pCellBody">
+These parameters control access to the configuration pages of the <code class="cCode">rvcache</code> browser administration interface.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1126996"> </a><p class="pBody">
+
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

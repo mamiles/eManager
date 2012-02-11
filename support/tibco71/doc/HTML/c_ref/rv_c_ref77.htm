@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvEventOnComplete</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;4	 Events";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1177081"> </a><h2 class="pNewHTMLPage">
+tibrvEventOnComplete
+</h2>
+<hr />
+<a name="wp1072455"> </a><p class="pSyntaxType">
+Function Type
+</p>
+<a name="wp1086974"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+typedef void (*<code class="cCodeBold">tibrvEventOnComplete</code>) (<a name="wp1077410"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref75.htm#wp1157970"><code class="cCode">tibrvEvent</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;destroyedEvent,<a name="wp1077411"> </a>
+&#160;&#160;&#160;&#160;void*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;closure);<a name="wp1077412"> </a>
+</pre></div>
+<a name="wp1087445"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1071971"> </a><p class="pBody">
+A program can destroy an event object even when its callback function is running in one or more threads. Multi-threaded programs can define functions of this type to discover when all callback functions in progress have completed.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1071951"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1071953"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1071955"> </a><div class="pCellBody">
+<code class="cCode">destroyedEvent</code>
+</div>
+</td>
+    <td><a name="wp1071957"> </a><div class="pCellBody">
+This parameter receives the event object. This object is identical to the object that the program created to express event interest.
+</div>
+<a name="wp1071958"> </a><div class="pCellBody">
+However, by the time this function runs, the event is already destroyed; this function cannot use the event object in Rendezvous calls.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1071963"> </a><div class="pCellBody">
+<code class="cCode">closure</code>
+</div>
+</td>
+    <td><a name="wp1071965"> </a><div class="pCellBody">
+This parameter receives the closure data, which the program supplied in the call that created the event object.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1087916"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1071839"> </a><p class="pBody">
+This type of function is important in two situations:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1071862"> </a><div class="pSmartList1"><li >An event callback function calls <a  href="rv_c_ref82.htm#wp1118835"><code class="cCode">tibrvEvent_DestroyEx()</code></a> to destroy its event, and the program must do additional processing <em class="cEmphasis">after</em> the rest of the callback function has completed.</li></div>
+
+<a name="wp1136374"> </a><div class="pSmartList1"><li >Several threads dispatch an event (so the event callback function can be running in several threads) and the program must do additional processing after the callback function has completed <em class="cEmphasis">in all threads</em>.</li></div>
+
+</ul></div>
+
+<a name="wp1073094"> </a><p class="pBody">
+Upon return from <a  href="rv_c_ref82.htm#wp1118835"><code class="cCode">tibrvEvent_DestroyEx()</code></a>, the destroyed event&#8217;s callback function can no longer begin to run. However, in each thread where the callback function is already in progress, that callback function does continue to run until complete.
+</p>
+<a name="wp1072548"> </a><p class="pBody">
+<a  href="rv_c_ref82.htm#wp1118835"><code class="cCode">tibrvEvent_DestroyEx()</code></a> accepts a <em class="cEmphasis">completion function</em> argument of type <a  href="rv_c_ref77.htm#wp1177081"><code class="cCode">tibrvEventOnComplete</code></a>. Rendezvous software ensures that the completion function runs when the last callback-in-progress has completed.
+</p>
+<a name="wp1072513"> </a><h4 class="pHeading3">
+Timing and Context
+</h4>
+<a name="wp1072512"> </a><p class="pBody">
+This completion function can run in two situations:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1072516"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref77.htm#wp1071613">Figure&#160;6</a> illustrates a situation in which the program calls <a  href="rv_c_ref82.htm#wp1118835"><code class="cCode">tibrvEvent_DestroyEx()</code></a> while callback functions of the destroyed event are in progress. When the last of those callback functions completes, Rendezvous software runs the completion function immediately, in the same thread as the callback function that completes last.</li></div>
+
+<a name="wp1072580"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref77.htm#wp1072529">Figure&#160;7</a> illustrates a situation in which the program calls <a  href="rv_c_ref82.htm#wp1118835"><code class="cCode">tibrvEvent_DestroyEx()</code></a> when the destroyed event&#8217;s callback function is not running in any thread. In this case, <a  href="rv_c_ref82.htm#wp1118835"><code class="cCode">tibrvEvent_DestroyEx()</code></a> calls the completion function before returning.</li></div>
+
+<a name="wp1072686"> </a><p class="pBodyRelative">
+Notice that in this situation, the completion function runs in the program context, instead of the usual context of a callback function. In rare instances, deadlock can occur, resulting from unintended interactions between mutex operations in the program context before the destroy call, and mutex operations in the program&#8217;s completion function code.
+</p>
+<a name="wp1072811"> </a><p class="pBodyRelative">
+To protect against this type of deadlock, programmers can use a straightforward thought-experiment as a preventive test. Expand the completion function code immediately after the call to <a  href="rv_c_ref82.htm#wp1118835"><code class="cCode">tibrvEvent_DestroyEx()</code></a>&#151;as it would run when the destroyed event&#8217;s callback function is not running in any thread. Trace mutex locking activity within this context to determine whether the resulting code could violate established rules for proper use of mutex locks.
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;&#160;&#160;&#160;...<a name="wp1072846"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;<code class="cCodeItalic">&lt;mutex lock operations&gt;</code><a name="wp1072825"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;...<a name="wp1072854"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;<a  href="rv_c_ref82.htm#wp1118835"><code class="cCode">tibrvEvent_DestroyEx()</code></a><a name="wp1072823"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;<code class="cCodeItalic">&lt;expand completion function code here, and check for violations of mutex rules&gt;</code><a name="wp1072822"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;...<a name="wp1072844"> </a>
+<a name="wp1325313"> </a><p class="pBodyRelative">
+Potential violations and conflicts usually become apparent during this exercise. Remember, it is the programmer&#8217;s responsibility to prevent deadlock.
+</p>
+</pre></div>
+</ul></div>
+
+<a name="wp1160240"> </a><p class="pBody">
+
+</p>
+<a name="wp1071613"> </a><div class="pFigureTitle">
+Figure&#160;6   Completion when Callback Functions are in Progress</div><div align="center"><img src="images/rv_c_refa.gif" height="338" width="528" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1072529"> </a><div class="pFigureTitle">
+Figure&#160;7   Completion when Callback Functions are Not in Progress</div><div align="center"><img src="images/rv_c_refa9.gif" height="220" width="528" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1088298"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1071494"> </a><p class="pBody">
+<a  href="rv_c_ref78.htm#wp1071513"><code class="cCode">tibrvEvent_CreateIO()</code> </a>
+</p>
+<a name="wp1071509"> </a><p class="pBody">
+<a  href="rv_c_ref79.htm#wp1030177"><code class="cCode">tibrvEvent_CreateListener()</code> </a>
+</p>
+<a name="wp1071510"> </a><p class="pBody">
+<a  href="rv_c_ref80.htm#wp1030234"><code class="cCode">tibrvEvent_CreateTimer()</code> </a>
+</p>
+<a name="wp1071519"> </a><p class="pBody">
+<a  href="rv_c_ref82.htm#wp1118835"><code class="cCode">tibrvEvent_DestroyEx()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

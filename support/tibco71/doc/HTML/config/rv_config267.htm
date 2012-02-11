@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>ConfigurationException</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;10	 Exceptions";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1963961"> </a><h2 class="pNewHTMLPage">
+ConfigurationException
+</h2>
+<hr />
+<a name="wp1963962"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1963963"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">class com.tibco.tibrv.config.</code><code class="cCodeBold">ConfigurationException</code><a name="wp1963964"> </a>
+<code class="cCode">&#160;&#160;extends java.lang.Exception</code><a name="wp1963965"> </a>
+</pre></div>
+<a name="wp1963966"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1963967"> </a><p class="pBody">
+Encapsulate errors from the daemon component.
+</p>
+<a name="wp1963968"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1963969"> </a><p class="pBody">
+Configuration methods throw this class of exceptions when the daemon component rejects a parameter or configuration command. The exception&#8217;s message string contains the text of an error message from the daemon component. Programs can extract the message with <code class="cCode">java.lang.Exception.getMessage()</code>.
+</p>
+<a name="wp1963970"> </a><p class="pBody">
+To handle this exception, we recommend that programs log the error message, and display it to the user. When appropriate, the program may offer the user an opportunity to substitute a new parameter or command.
+</p>
+<a name="wp1963992"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1963974"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1963976"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.fillInStackTrace()</code>
+</p>
+<a name="wp1963977"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.getCause()</code>
+</p>
+<a name="wp1963978"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.getLocalizedMessage()</code>
+</p>
+<a name="wp1963979"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.getMessage()</code>
+</p>
+<a name="wp1963980"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.getStackTrace()</code>
+</p>
+<a name="wp1963981"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.initCause</code>
+</p>
+<a name="wp1963982"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.printStackTrace()</code>
+</p>
+<a name="wp1963983"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.setStackTrace()</code>
+</p>
+<a name="wp1963984"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.toString()</code>
+</p>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1963986"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.equals()</code>
+</p>
+<a name="wp1963987"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.getClass()</code>
+</p>
+<a name="wp1963988"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.hashCode()</code>
+</p>
+<a name="wp1963989"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notify()</code>
+</p>
+<a name="wp1963990"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notifyAll()</code>
+</p>
+<a name="wp1963991"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.wait()</code>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

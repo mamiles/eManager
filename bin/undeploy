@@ -1,0 +1,16 @@
+#!/bin/ksh 
+
+export EM_HOME=EMANAGER_HOME
+. $EM_HOME/bin/emenv.ksh
+
+AXIS_LIB=$EM_HOME/tomcat/webapps/emanager/WEB-INF/lib
+
+CLASSPATH=$AXIS_LIB/axis.jar:$AXIS_LIB/commons-logging.jar:$AXIS_LIB/jaxrpc.jar:$AXIS_LIB/saaj.jar:$AXIS_LIB/wsdl4j.jar:$AXIS_LIB/commons-discovery.jar:$AXIS_LIB/crimson.jar
+
+echo "Un-deploying emanager services"
+$JAVA_HOME/bin/java -classpath $CLASSPATH org.apache.axis.client.AdminClient -l http://localhost:9080/emanager/services/AdminService $EM_HOME/config/emanager-undeploy.wsdd
+
+echo "List of emanager services:"
+echo ""
+$JAVA_HOME/bin/java -classpath $CLASSPATH org.apache.axis.client.AdminClient list -l http://localhost:9080/emanager/services/AdminService | grep "<service" | grep "Manager"
+echo ""

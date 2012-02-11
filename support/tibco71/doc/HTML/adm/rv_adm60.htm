@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Users</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;6	 Secure Daemons (rvsd and rvsrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1140653"> </a><h2 class="pNewHTMLPage">
+Users
+</h2>
+<hr />
+<a name="wp1144454"> </a><p class="pBody">
+Each secure daemon instance authorizes a set of trusted <em class="cEmphasis">users</em>:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1161958"> </a><div class="pSmartList1"><li >The secure daemon allows a client transport to connect <em class="cEmphasis">only</em> if the client presents valid identification as an authorized user.</li></div>
+
+<a name="wp1161993"> </a><div class="pSmartList1"><li >User identification can be either a certificate, or a user name and password.</li></div>
+
+</ul></div>
+
+<a name="wp1162006"> </a><p class="pBody">
+To authorize a user, see <a  href="rv_adm70.htm#wp1155858">Users</a>.
+</p>
+<a name="wp1162010"> </a><p class="pBody">
+To connect to a secure daemon as a user, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts46.htm#wp1189191');" onMouseOver="WWHShowPopup('a', 'rv_concepts46.htm#wp1189191', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Secure Daemon</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>, and the appropriate functions or methods in each programming language API.
+</p>
+<a name="wp1243356"> </a><h3 class="pHeading2">
+Certificate Identification
+</h3>
+<a name="wp1243357"> </a><p class="pBody">
+The secure daemon can register zero or more X.509 public key identity certificates per user. The secure daemon limits access to user programs that can sign SSL protocol messages with a corresponding private key.
+</p>
+<a name="wp1243358"> </a><p class="pBody">
+The secure daemon accepts all certificates in either PEM encoding or PKCS #12 format.
+</p>
+<a name="wp1144492"> </a><h3 class="pHeading2">
+User Name and Password Identification
+</h3>
+<a name="wp1241964"> </a><p class="pBody">
+The secure daemon registers at most one password per user. The secure daemon limits access to user programs that supply a correct pair of user name and password strings.
+</p>
+<a name="wp1300753"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/security.gif" border="0" /></td>
+    <td><a name="wp1304537"> </a><p class="pBody">
+For important information about password security, see <a  href="rv_adm62.htm#wp1304588">Security Factors</a>.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1242968"> </a><h4 class="pHeading3">
+Syntax
+</h4>
+<a name="wp1242971"> </a><p class="pBody">
+User name and password strings must conform to these syntax specifications:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1243096"> </a><div class="pSmartList1"><li >The user name must be less than 128 characters. The combined length of the user name and password must be less than 250 characters.</li></div>
+
+<a name="wp1242978"> </a><div class="pSmartList1"><li >These strings must consist of printable characters only, from any character set.</li></div>
+
+<a name="wp1242979"> </a><p class="pBodyRelative">
+Dot (<code class="cCode">.</code>), star (<code class="cCode">*</code>), and greater-than (<code class="cCode">&gt;</code>) characters are permitted. However, we recommend against using them except in legacy situations (for example, where such names are already in use in another security system).
+</p>
+<a name="wp1242992"> </a><div class="pSmartList1"><li >These strings cannot contain two adjacent space characters.</li></div>
+
+<a name="wp1242993"> </a><div class="pSmartList1"><li >The first and last characters must not be spaces.</li></div>
+
+<a name="wp1242994"> </a><div class="pSmartList1"><li >These strings must contain at least one non-space character.</li></div>
+
+<a name="wp1242995"> </a><div class="pSmartList1"><li >These strings cannot contain embedded newline characters (<code class="cCode">\n</code>) or null characters.</li></div>
+
+<a name="wp1242996"> </a><div class="pSmartList1"><li >The null or empty string is not a legal user name nor password.</li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

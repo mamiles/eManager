@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>REGISTRATION.NO_RESPONSE</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Appendix&#160;B	 Certified Message Delivery (RVCM) Advisory Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1070100"> </a><h2 class="pNewHTMLPage">
+REGISTRATION.NO_RESPONSE
+</h2>
+<hr />
+<a name="wp1047230"> </a><p class="pSyntaxType">
+Advisory
+</p>
+<a name="wp1048961"> </a><h4 class="pHeading3">
+Subject Name Syntax
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+_RV.WARN.RVCM.REGISTRATION.NO_RESPONSE.<code class="cCodeItalic">&lt;subject&gt;</code><a name="wp1039461"> </a>
+</pre></div>
+<a name="wp1059622"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1039466"> </a><p class="pBody">
+A listener presents this advisory when Rendezvous software receives no response to a request for certified delivery.
+</p>
+<a name="wp1059768"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1039468"> </a><p class="pBody">
+This advisory indicates a network communication failure in of one of two modes:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1039469"> </a><div class="pSmartList1"><li >The request never reached the sender.</li></div>
+
+<a name="wp1039470"> </a><div class="pSmartList1"><li >The sender received the request, but its response never reached the listener.</li></div>
+
+</ul></div>
+
+<a name="wp1039471"> </a><p class="pBody">
+In either case, delivery is not certified.
+</p>
+<a name="wp1039472"> </a><p class="pBody">
+The listener continues to receive messages on the subject, even though delivery is not certified.
+</p>
+<a name="wp1039473"> </a><p class="pBody">
+After several attempts receive no response, the listener stops requesting registration.
+</p>
+<a name="wp1039474"> </a><p class="pBody">
+The <code class="cCodeItalic">&lt;subject&gt;</code> element is the subject name for which delivery is not certified. The subject often consists of several elements, so the wildcard character <code class="cCode">&quot;&gt;&quot;</code> (rather than <code class="cCode">&quot;*&quot;</code>) is the correct way to match all subjects in this position.
+</p>
+<a name="wp1039493"> </a><h4 class="pHeading3">
+Message Fields
+</h4>
+<a name="wp1097380"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1039477"> </a><div class="pCellHeading">
+Field Name
+</div>
+</th>
+    <th><a name="wp1039482"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1039484"> </a><div class="pCellBody">
+<code class="cCode">subject</code>
+</div>
+</td>
+    <td><a name="wp1039486"> </a><div class="pCellBody">
+The subject name for which delivery is not certified. It is identical to the <code class="cCodeItalic">&lt;subject&gt;</code> element.
+</div>
+<a name="wp1039487"> </a><div class="pCellBody">
+This field has datatype <a  href="rv_concepts54.htm#wp1084160"><code class="cCode">TIBRVMSG_STRING</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1039489"> </a><div class="pCellBody">
+<code class="cCode">sender</code>
+</div>
+</td>
+    <td><a name="wp1039491"> </a><div class="pCellBody">
+The name of the sender that did not respond.
+</div>
+<a name="wp1039492"> </a><div class="pCellBody">
+This field has datatype <a  href="rv_concepts54.htm#wp1084160"><code class="cCode">TIBRVMSG_STRING</code></a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1039494"> </a><h4 class="pHeading3">
+Diagnostics
+</h4>
+<a name="wp1039495"> </a><p class="pBody">
+This advisory can indicate either network glitches, or termination of the sender process.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

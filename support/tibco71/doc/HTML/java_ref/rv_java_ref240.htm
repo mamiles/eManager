@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvMsg.setHandlers()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Appendix&#160;A	 Custom Datatypes";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1106884"> </a><h2 class="pNewHTMLPage">
+TibrvMsg.setHandlers()
+</h2>
+<hr />
+<a name="wp1106885"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1075826"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+static void <code class="cCodeBold">setHandlers</code>(<a name="wp1075869"> </a>
+&#160;&#160;&#160;&#160;short&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;userType,<a name="wp1075952"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_java_ref243.htm#wp1075238"><code style="font-weight: normal" class="cCode">TibrvMsgEncoder</code></a>&#160;&#160;&#160;&#160;encoder,<a name="wp1075951"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_java_ref241.htm#wp1074787"><code style="font-weight: normal" class="cCode">TibrvMsgDecoder</code></a>&#160;&#160;&#160;&#160;decoder)<a name="wp1075829"> </a>
+</pre></div>
+<a name="wp1075830"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1075832"> </a><p class="pBody">
+Define a custom datatype by registering its encoder and decoder interfaces.
+</p>
+<a name="wp1075833"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1076648"> </a><p class="pBody">
+The encoder and decoder must implement inverse operators. That is, when the encoder encodes a Java object as a byte array, and the decoder must decode the byte array to an identical Java object. Conversely, when the decoder decodes the byte array to a Java object, the encoder must encode the Java object as an identical byte array.
+</p>
+<a name="wp1076108"> </a><p class="pBody">
+This method sets (or replaces) both interfaces. Supplying <code class="cCode">null</code> for either the encoder or the decoder, removes that interface. Supplying <code class="cCode">null</code> for both interfaces disables the custom type (by removing both interfaces).</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1075844"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1075846"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1075848"> </a><div class="pCellBody">
+<code class="cCode">userType</code>
+</div>
+</td>
+    <td><a name="wp1076068"> </a><div class="pCellBody">
+Define a custom datatype with this numeric designator.
+</div>
+<a name="wp1076741"> </a><div class="pCellBody">
+This type designator must be in the inclusive range <code class="cCode">[</code><a  href="rv_java_ref31.htm#wp1124161"><code class="cCode">TibrvMsg.USER_FIRST</code></a><code class="cCode">,</code><a  href="rv_java_ref31.htm#wp1124164"><code class="cCode">TibrvMsg.USER_LAST</code></a><code class="cCode">]</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1075995"> </a><div class="pCellBody">
+<code class="cCode">encoder</code>
+</div>
+</td>
+    <td><a name="wp1075997"> </a><div class="pCellBody">
+Register this encoder for the type.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1075852"> </a><div class="pCellBody">
+<code class="cCode">decoder</code>
+</div>
+</td>
+    <td><a name="wp1076100"> </a><div class="pCellBody">
+Register this decoder for the type.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1075857"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1075982"> </a><p class="pBody">
+<a  href="rv_java_ref241.htm#wp1074787"><code class="cCode">TibrvMsgDecoder</code> </a>
+</p>
+<a name="wp1075985"> </a><p class="pBody">
+<a  href="rv_java_ref243.htm#wp1075238"><code class="cCode">TibrvMsgEncoder</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

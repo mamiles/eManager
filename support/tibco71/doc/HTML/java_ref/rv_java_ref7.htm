@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>Network Overview-rva Transports</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;1	 Concepts";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1103705"> </a><h2 class="pNewHTMLPage">
+Network Overview&#151;rva Transports
+</h2>
+<hr />
+<a name="wp1103712"> </a><p class="pBody">
+<a  href="rv_java_ref7.htm#wp1131594">Figure&#160;2</a> illustrates a typical environment for Rendezvous Java programs that communicate using <code class="cCode">rva</code> transports.
+</p>
+<a name="wp1103716"> </a><p class="pBody">
+The top of <a  href="rv_java_ref7.htm#wp1131594">Figure&#160;2</a> depicts an Internet environment, and the bottom depicts a local network environment; at the center (between the two firewalls) is the internet web server host&#151;the bridge between the internal network and the Internet.
+</p>
+<a name="wp1103723"> </a><p class="pBody">
+The bottom of <a  href="rv_java_ref7.htm#wp1131594">Figure&#160;2</a> shows a local network with Rendezvous programs, which communicate with one another through Rendezvous daemon processes (<code class="cCode">rvd</code>). These programs can be Java applets, independent Java applications, and Rendezvous programs written in other languages.
+</p>
+<a name="wp1104683"> </a><p class="pBody">
+Remote browsers (like the one at the top of <a  href="rv_java_ref7.htm#wp1131594">Figure&#160;2</a>) use the Internet to download Rendezvous applets from the web server. Those remote applets connect back to a Rendezvous agent process (<code class="cCode">rva</code>) on the web server host. The <code class="cCode">rva</code> process acts on behalf of the applets, as their intermediary for communications with the internal network (bottom).
+</p>
+<a name="wp1131589"> </a><p class="pBody">
+This indirection (<code class="cCode">rva</code>) adds a layer of security, protecting the web server host and the internal network from unauthorized applets.
+</p>
+<a name="wp1131594"> </a><div class="pFigureTitle">
+Figure&#160;2   Java Programs with rva Transports</div><div align="center"><img src="images/rv_java_refa6.gif" height="586" width="528" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1131616"> </a><p class="pBody">
+
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

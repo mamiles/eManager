@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvIOEvent::create()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1129107"> </a><h2 class="pNewHTMLPage">
+TibrvIOEvent::create()
+</h2>
+<hr />
+<a name="wp1129108"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1129109"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">create</code> (<a name="wp1129113"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_cpp_ref127.htm#wp1035245"><code class="cCode">TibrvQueue</code></a>* queue,<a name="wp1129117"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_cpp_ref98.htm#wp1158877"><code class="cCode">TibrvCallback</code></a>* callback,<a name="wp1129118"> </a>
+&#160;&#160;&#160;&#160;tibrv_i32 socketId,<a name="wp1129510"> </a>
+&#160;&#160;&#160;&#160;<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref92.htm#wp1035129');" onMouseOver="WWHShowPopup('e', 'rv_c_ref92.htm#wp1035129', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvIOType</code></a> ioType,<a name="wp1129121"> </a>
+&#160;&#160;&#160;&#160;const void* closure = NULL);<a name="wp1129514"> </a>
+</pre></div>
+<a name="wp1129122"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1129566"> </a><p class="pBody">
+Wait for specified I/O situations to occur.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1129133"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1129135"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1129137"> </a><div class="pCellBody">
+<code class="cCode">queue</code>
+</div>
+</td>
+    <td><a name="wp1129139"> </a><div class="pCellBody">
+At each time interval, place the event on this event queue.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1129141"> </a><div class="pCellBody">
+<code class="cCode">callback</code>
+</div>
+</td>
+    <td><a name="wp1145769"> </a><div class="pCellBody">
+On dispatch, process the event with this callback object.
+</div>
+<a name="wp1145773"> </a><div class="pCellBody">
+This object can be an instance of class <a  href="rv_cpp_ref118.htm#wp1129245"><code class="cCode">TibrvIOCallback</code></a>, or its superclass <a  href="rv_cpp_ref98.htm#wp1158877"><code class="cCode">TibrvCallback</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1129551"> </a><div class="pCellBody">
+<code class="cCode">socketID</code>
+</div>
+</td>
+    <td><a name="wp1129553"> </a><div class="pCellBody">
+Wait for I/O occurrences on this socket.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1129543"> </a><div class="pCellBody">
+<code class="cCode">ioType</code>
+</div>
+</td>
+    <td><a name="wp1129545"> </a><div class="pCellBody">
+Wait for I/O occurrences of this type.
+</div>
+<a name="wp1129549"> </a><div class="pCellBody">
+See <a  href="javascript:WWHClickedPopup('e', 'rv_c_ref92.htm#wp1035129');" onMouseOver="WWHShowPopup('e', 'rv_c_ref92.htm#wp1035129', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvIOType</code> </a> in <em class="cEmphasis">TIBCO Rendezvous C Reference</em>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1129149"> </a><div class="pCellBody">
+<code class="cCode">closure</code>
+</div>
+</td>
+    <td><a name="wp1129151"> </a><div class="pCellBody">
+Store this closure data in the event object.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1129153"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1129154"> </a><p class="pBody">
+This method creates a C I/O event and stores its handle in the C++ object.
+</p>
+<a name="wp1147523"> </a><p class="pBody">
+All timers are repeating timers. To simulate a once-only timer, code the callback method to destroy the timer.
+</p>
+<a name="wp1129165"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1147532"> </a><p class="pBody">
+<a  href="rv_cpp_ref89.htm#wp1068928"><code class="cCode">TibrvEvent::destroy()</code> </a>
+</p>
+<a name="wp1147536"> </a><p class="pBody">
+<a  href="rv_cpp_ref112.htm#wp1128502"><code class="cCode">TibrvTimerCallback</code> </a>
+</p>
+<a name="wp1147540"> </a><p class="pBody">
+<a  href="rv_cpp_ref113.htm#wp1098711"><code class="cCode">TibrvTimerCallback::onTimer()</code> </a>
+</p>
+<a name="wp1129172"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts66.htm#wp1030356');" onMouseOver="WWHShowPopup('a', 'rv_concepts66.htm#wp1030356', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">I/O Event Semantics</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

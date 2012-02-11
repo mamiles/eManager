@@ -1,0 +1,95 @@
+Logging.Defaults.logFileNumber=2
+Logging.Defaults.logFileSize=2000000
+# Logging.Defaults.logFormatter=java.util.logging.XMLFormatter
+Logging.Defaults.logFormatter=java.util.logging.SimpleFormatter
+Logging.Defaults.logLevel=FINEST
+Logging.Defaults.logLocation=EMGMT_LOGS
+Logging.Servers.watchdog.logLevel=FINEST
+
+DatabaseConnectionUserAccount=DBA
+DatabaseConnectionPassword=SQL
+DatabaseConnectionDatabaseName=emanager
+DatabaseConnectionConnectionPort=2638
+JNDIRegistryBindingName=EmanagerRegistry
+JNDIRegistryPort=10002
+DatabaseConnectionDatabaseHost=MJMATCH-W2K1.amer.cisco.com
+DatabaseConnectionClientAppName=emanager
+DatabaseConnectionUserMetaData=UserMetaDataKey
+DatabaseConnectionUseRepeatRead=yes
+DatabaseConnectionCharsetConverterKey=
+DatabaseConnectionConnectionPoolDescription=Emanager.Connection.Pool
+DatabaseConnectionConnectionPoolSize=10
+
+DisplayEventDebuggerFrames=Y
+DisplayInventoryDebuggerFrames=Y
+DisplayInventoryDebuggerFrames=Y
+DisplayNetworkClientTibcoMsgDebuggerFrames=Y
+
+NumberClientTibcoMsgProcessingWorkers=1
+
+SNMPTrapRecipients=localhost:public:162;chido-u60:public:162
+
+SYSTEM.tibco.port=10000
+SYSTEM.tibco.prefix=com.cisco.eManager.
+SYSTEM.tibhawk.domain=default
+SYSTEM.tibhawk.service=7474
+SYSTEM.tibhawk.network=
+SYSTEM.tibhawk.daemon=tcp:7474
+SYSTEM.tibrv.service=7500
+SYSTEM.tibrv.network=
+SYSTEM.tibrv.daemon=tcp:7500
+SYSTEM.tmpdir=EMGMT_TMP
+SYSTEM.role=master
+
+EM.NBAPI.ProcessManager.URL=http://localhost:8080/axis/services/ProcessManager
+EM.NBAPI.Timeout=180000
+
+watchdog.diskspace.highWatermark=20%
+watchdog.diskspace.lowWatermark=10%
+watchdog.diskspace.sleepInterval=60000
+
+watchdog.heartbeat.period=120000
+watchdog.heartbeat.startDelay=10000
+watchdog.heartbeat.startTimeout=120000
+watchdog.heartbeat.timeout=15000
+
+watchdog.heartbeat.wds.delay=3000
+watchdog.heartbeat.wds.initDelay=1000
+watchdog.heartbeat.wds.maxAllowedMisses=3
+
+watchdog.java.vmtype=-server
+watchdog.logLevel=FINEST
+watchdog.serverStatus.stableTime=60000
+watchdog.waitDelay=3000
+watchdog.nativeLogging=true
+
+processSequencer.logLevel=FINEST
+
+##
+##
+##  Profile servers launched by watchdog using OptimizeIt
+##
+##
+
+## To make scheduler run under optimizeIt
+
+#watchdog.server.scheduler.useOptimizeIt=true 
+
+## To specify whether/where OptimizeIt is available
+
+
+#watchdog.profilers.available=OptimizeIt
+#watchdog.profilers.OptimizeIt.home=/scratch/optit/OptimizeitSuiteDemo
+#watchdog.profilers.OptimizeIt.startPort=60000
+
+## The following settings work for OptimizeIt 4.11 and should not be changed
+
+#watchdog.profilers.OptimizeIt.addonClassPath=OPTIMIZEIT_HOME/lib/optit.jar
+#watchdog.profilers.OptimizeIt.addonLibPath=OPTIMIZEIT_HOME/lib:OPTIMIZEIT_HOME/lib/native
+#watchdog.profilers.OptimizeIt.args=-port AUDIT_PORT  -dllpath OPTIMIZEIT_HOME/lib/native/  -noexit -enableAPI -startCPUprofiler:type=sampler,displayPrecision=method,samplingPeriod=5,onlyCPU=true
+#watchdog.profilers.OptimizeIt.class=intuitive.audit.Audit
+#watchdog.profilers.OptimizeIt.handlerClass=com.cisco.vpnsc.watchdog.ext.OptItHandler
+#watchdog.profilers.OptimizeIt.javaArgs=-Xrunpri: -DAUDIT=jni  -Xbootclasspath/a:OPTIMIZEIT_HOME/lib/oibcp.jar -Xboundthreads  -Xmx256m
+
+## end optimizeIt settings
+

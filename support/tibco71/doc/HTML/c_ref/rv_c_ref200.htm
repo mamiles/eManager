@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvcmTransport_RemoveSendState()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1089871"> </a><h2 class="pNewHTMLPage">
+tibrvcmTransport_RemoveSendState()
+</h2>
+<hr />
+<a name="wp1103364"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1103365"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvcmTransport_RemoveSendState</code>(<a name="wp1103366"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref184.htm#wp1086288"><code class="cCode">tibrvcmTransport</code></a>&#160;&#160;&#160;&#160;cmTransport,<a name="wp1103367"> </a>
+&#160;&#160;&#160;&#160;const char*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;subject);<a name="wp1089966"> </a>
+</pre></div>
+<a name="wp1089878"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1089879"> </a><p class="pBody">
+Reclaim ledger space from obsolete subjects.
+</p>
+<a name="wp1089880"> </a><h4 class="pHeading3">
+Background
+</h4>
+<a name="wp1124480"> </a><p class="pBody">
+In some programs subject names are useful only for a limited time; after that time, they are never used again. For example, consider a server program that sends certified reply messages to client inbox names; it only sends one reply message to each inbox, and after delivery is confirmed and complete, that inbox name is obsolete. Nonetheless, a record for that inbox name remains in the server&#8217;s ledger.
+</p>
+<a name="wp1124531"> </a><p class="pBody">
+As such obsolete records accumulate, the ledger size grows. To counteract this growth, programs can use this function to discard obsolete subject records from the ledger.
+</p>
+<a name="wp1124545"> </a><p class="pBody">
+The <a  href="javascript:WWHClickedPopup('a', 'rv_concepts175.htm#wp1039134');" onMouseOver="WWHShowPopup('a', 'rv_concepts175.htm#wp1039134', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">DELIVERY.COMPLETE</code></a> advisory is a good opportunity to clear the send state of an obsolete subject. Another strategy is to review the ledger periodically, sweeping to detect and remove all obsolete subjects.
+</p>
+<a name="wp1124502"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1201925"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1304137"> </a><p class="pBody">
+Do not use this function to clear subjects that are still in use.
+</p>
+<a name="wp1304138"> </a><p class="pBody">
+As a side-effect, this function resets the sequence numbering for the subject, so the next message sent on the subject would be number 1. In proper usage, this side-effect is never detected, since obsolete subjects are truly obsolete.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1089924"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1089905"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1089910"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1089912"> </a><div class="pCellBody">
+<code class="cCode">cmTransport</code>
+</div>
+</td>
+    <td><a name="wp1089914"> </a><div class="pCellBody">
+Remove send state from the ledger of this certified delivery transport.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1089920"> </a><div class="pCellBody">
+<code class="cCode">subject</code>
+</div>
+</td>
+    <td><a name="wp1089922"> </a><div class="pCellBody">
+Remove send state for this obsolete subject.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1124633"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1124641"> </a><p class="pBody">
+<a  href="rv_c_ref201.htm#wp1093154"><code class="cCode">tibrvcmTransport_ReviewLedger()</code> </a>
+</p>
+<a name="wp1124651"> </a><p class="pBody">
+<a  href="rv_c_ref203.htm#wp1086494"><code class="cCode">tibrvcmTransport_Send()</code> </a>
+</p>
+<a name="wp1124646"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts175.htm#wp1039134');" onMouseOver="WWHShowPopup('a', 'rv_concepts175.htm#wp1039134', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">DELIVERY.COMPLETE</code> </a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

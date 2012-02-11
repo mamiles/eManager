@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvFtMember_onFtAction</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;8	 Fault Tolerance";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1064128"> </a><h2 class="pNewHTMLPage">
+TibrvFtMember_onFtAction
+</h2>
+<hr />
+<a name="wp1064133"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1064134"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+Private Sub <code class="cCodeItalic">&lt;myFtMember&gt;</code>_<code class="cCodeBold">onFtAction</code>(<a name="wp1157449"> </a>
+&#160;&#160;&#160;&#160;ByVal ftMember As TIBRVCOMLib.I<a  href="rv_com_ref147.htm#wp1062294"><code class="cCode">TibrvFtMember</code></a>,<a name="wp1157455"> </a>
+&#160;&#160;&#160;&#160;ByVal groupName As String,<a name="wp1157461"> </a>
+&#160;&#160;&#160;&#160;ByVal action As Long)<a name="wp1157463"> </a>
+</pre></div>
+<a name="wp1130193"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1063536"> </a><p class="pBody">
+Process fault tolerance events for a group member.
+</p>
+<a name="wp1063537"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1148668"> </a><p class="pBody">
+Each member program of a fault tolerance group must implement this method. Declaring a variable of class <a  href="rv_com_ref147.htm#wp1062294"><code class="cCode">TibrvFtMember</code></a> with events triggers VB to automatically define a COM event callback, and a private subroutine callback stub named <code class="cCodeItalic">&lt;var&gt;</code><code class="cCode">_OnFtAction</code>. The program must complete this method for each member object.
+</p>
+<a name="wp1140094"> </a><p class="pBody">
+This method receives its parameters by value, so it cannot delete them.
+</p>
+<a name="wp1140086"> </a><p class="pBody">
+To withdraw from a fault tolerance group, destroy or delete the <em class="cEmphasis">original</em> member object associated with this callback method.
+</p>
+<a name="wp1063545"> </a><p class="pBody">
+Rendezvous fault tolerance software queues a member action event in three situations. In each case, it passes a different <code class="cCode">action</code> argument, instructing the callback method to activate, deactivate, or prepare to activate the program.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1063546"> </a><div class="pSmartList1"><li >When the number of active members drops below the active goal, the fault tolerance callback method (in the ranking inactive member process) receives the token <a  href="rv_com_ref156.htm#wp1152338"><code class="cCode">TIBRVCOM_FT_ACTIVATE</code></a>; the callback method must respond by assuming the duties of an active member.</li></div>
+
+<a name="wp1063550"> </a><div class="pSmartList1"><li >When the number of active members exceeds the active goal, the fault tolerance callback method (in any active member that is outranked by another active member) receives the action token <a  href="rv_com_ref156.htm#wp1152348"><code class="cCode">TIBRVCOM_FT_DEACTIVATE</code></a>; the callback method must respond by switching the program to its inactive state.</li></div>
+
+<a name="wp1063557"> </a><div class="pSmartList1"><li >When the number of active members equals the active goal, and Rendezvous fault tolerance software detects that it might soon decrease below the active goal, the fault tolerance callback method (in the ranking inactive member) receives the action token <a  href="rv_com_ref156.htm#wp1152327"><code class="cCode">TIBRVCOM_FT_PREPARE_TO_ACTIVATE</code></a>; the callback method must respond by making the program ready to activate immediately. For example, preparatory steps might include time-consuming tasks such as connecting to a database. If the callback method subsequently receives the <a  href="rv_com_ref156.htm#wp1152338"><code class="cCode">TIBRVCOM_FT_ACTIVATE</code></a> token, it will be ready to activate without delay.</li></div>
+
+</ul></div>
+
+<a name="wp1063566"> </a><p class="pBody">
+For additional information see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts141.htm#wp1057747');" onMouseOver="WWHShowPopup('a', 'rv_concepts141.htm#wp1057747', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Fault Tolerance Callback Actions</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1063570"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1063575"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1063577"> </a><div class="pCellBody">
+<code class="cCode">ftMember</code>
+</div>
+</td>
+    <td><a name="wp1063579"> </a><div class="pCellBody">
+<a  href="rv_com_ref147.htm#wp1062294"><code class="cCode">TibrvFtMember</code></a>
+</div>
+<a name="wp1130199"> </a><div class="pCellBody">
+This parameter receives the member object.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1063581"> </a><div class="pCellBody">
+<code class="cCode">groupName</code>
+</div>
+</td>
+    <td><a name="wp1063583"> </a><div class="pCellBody">
+<code class="cCode">String</code>
+</div>
+<a name="wp1130200"> </a><div class="pCellBody">
+This parameter receives a string denoting the name of the fault tolerance group.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1063586"> </a><div class="pCellBody">
+<code class="cCode">action</code>
+</div>
+</td>
+    <td><a name="wp1063588"> </a><div class="pCellBody">
+<code class="cCode">Long</code>
+</div>
+<a name="wp1130201"> </a><div class="pCellBody">
+This parameter receives a token that instructs the callback method to activate, deactivate or prepare to activate. See <a  href="rv_com_ref156.htm#wp1152300">Action Tokens</a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1152300"> </a><h4 class="pHeading3">
+Action Tokens
+</h4>
+<a name="wp1152301"> </a><p class="pBody">
+The type library defines constants to represent the fault tolerance actions. Each token designates a command to a fault tolerance callback method. The program&#8217;s callback method receives one of these tokens in a parameter, and interprets it as an instruction from the Rendezvous fault tolerance software as described in this table (see also, <a  href="javascript:WWHClickedPopup('a', 'rv_concepts141.htm#wp1057747');" onMouseOver="WWHShowPopup('a', 'rv_concepts141.htm#wp1057747', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Fault Tolerance Callback Actions</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>).</p><div align="left">
+<table border="1">
+  <caption><a name="wp1152317"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1152321"> </a><div class="pCellHeading">
+Field
+</div>
+</th>
+    <th><a name="wp1152323"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1152327"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_FT_PREPARE_TO_ACTIVATE</code>
+</div>
+</td>
+    <td><a name="wp1152329"> </a><div class="pCellBody">
+Prepare to activate (hint).
+</div>
+<a name="wp1152333"> </a><div class="pCellBody">
+Rendezvous fault tolerance software passes this token to the callback method to instruct the program to make itself ready to activate on short notice&#151;so that if the callback method subsequently receives the instruction to activate, it can do so without delay.
+</div>
+<a name="wp1152334"> </a><div class="pCellBody">
+This token is a hint, indicating that the program might soon receive an instruction to activate. It does not guarantee that an activate instruction will follow, nor that any minimum time will elapse before an activate instruction follows.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1152338"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_FT_ACTIVATE</code>
+</div>
+</td>
+    <td><a name="wp1152340"> </a><div class="pCellBody">
+Activate immediately.
+</div>
+<a name="wp1152344"> </a><div class="pCellBody">
+Rendezvous fault tolerance software passes this token to the callback method to instruct the program to activate.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1152348"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_FT_DEACTIVATE</code>
+</div>
+</td>
+    <td><a name="wp1152350"> </a><div class="pCellBody">
+Deactivate immediately.
+</div>
+<a name="wp1152354"> </a><div class="pCellBody">
+Rendezvous fault tolerance software passes this token to the callback method to instruct the program to deactivate.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1063637"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1063645"> </a><p class="pBody">
+<a  href="rv_com_ref148.htm#wp1062937"><code class="cCode">TibrvFtMember.create</code> </a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Labeled Messages</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1056023"> </a><h2 class="pNewHTMLPage">
+Labeled Messages
+</h2>
+<hr />
+<a name="wp1056027"> </a><p class="pBody">
+A <em class="cEmphasis">labeled message</em> is like an ordinary Rendezvous message, except that it includes supplementary information, which CM transports can use for certified message delivery:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1056028"> </a><div class="pSmartList1"><li >The correspondent name of the CM transport that sent the message.</li></div>
+
+<a name="wp1056029"> </a><div class="pSmartList1"><li >A sequence number assigned by the sending CM transport.</li></div>
+
+<a name="wp1056030"> </a><div class="pSmartList1"><li >A time limit, after which the sending program no longer expects its CM transport to certify delivery of the message.</li></div>
+
+</ul></div>
+
+<a name="wp1056031"> </a><h3 class="pHeading2">
+Sending a Labeled Message
+</h3>
+<a name="wp1056032"> </a><p class="pBody">
+Any CM transport can send a labeled message by using the sending calls in the certified message delivery library layer (see <a  href="rv_concepts105.htm#wp1056042">Table&#160;29</a>).</p><div align="left">
+<table border="1">
+  <caption><a name="wp1056042"> </a><div class="pTableTitle">
+Table&#160;29   CM Send Calls&#160;
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1056046"> </a><div class="pCellBody">
+C
+</div>
+</td>
+    <td><a name="wp1056051"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref203.htm#wp1086494');" onMouseOver="WWHShowPopup('e', 'rv_c_ref203.htm#wp1086494', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvcmTransport_Send()</code></a>
+</div>
+<a name="wp1056055"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref204.htm#wp1086548');" onMouseOver="WWHShowPopup('e', 'rv_c_ref204.htm#wp1086548', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvcmTransport_SendReply()</code></a>
+</div>
+<a name="wp1056059"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref205.htm#wp1086588');" onMouseOver="WWHShowPopup('e', 'rv_c_ref205.htm#wp1086588', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvcmTransport_SendRequest()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056061"> </a><div class="pCellBody">
+C++
+</div>
+</td>
+    <td><a name="wp1072204"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref245.htm#wp1085385');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref245.htm#wp1085385', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport::send()</code></a>
+</div>
+<a name="wp1072211"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref246.htm#wp1140640');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref246.htm#wp1140640', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport::sendReply()</code></a>
+</div>
+<a name="wp1056070"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref247.htm#wp1227481');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref247.htm#wp1227481', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport::sendRequest()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056073"> </a><div class="pCellBody">
+Java
+</div>
+</td>
+    <td><a name="wp1056078"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref209.htm#wp1085385');" onMouseOver="WWHShowPopup('g', 'rv_java_ref209.htm#wp1085385', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport.send()</code></a>
+</div>
+<a name="wp1064646"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref210.htm#wp1085443');" onMouseOver="WWHShowPopup('g', 'rv_java_ref210.htm#wp1085443', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport.sendReply()</code></a>
+</div>
+<a name="wp1064654"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref211.htm#wp1085494');" onMouseOver="WWHShowPopup('g', 'rv_java_ref211.htm#wp1085494', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport.sendRequest()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056084"> </a><div class="pCellBody">
+COM
+</div>
+</td>
+    <td><a name="wp1056093"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref199.htm#wp1085385');" onMouseOver="WWHShowPopup('h', 'rv_com_ref199.htm#wp1085385', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport.send</code></a>
+</div>
+<a name="wp1073216"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref200.htm#wp1085443');" onMouseOver="WWHShowPopup('h', 'rv_com_ref200.htm#wp1085443', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport.sendReply</code></a>
+</div>
+<a name="wp1073224"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref201.htm#wp1085494');" onMouseOver="WWHShowPopup('h', 'rv_com_ref201.htm#wp1085494', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport.sendRequest()</code></a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1056095"> </a><p class="pBody">
+
+</p>
+<a name="wp1084930"> </a><h3 class="pHeading2">
+Receiving a Labeled Message
+</h3>
+<a name="wp1056096"> </a><p class="pBody">
+Two kinds of listening transport can receive labeled messages:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1056097"> </a><div class="pSmartList1"><li >An ordinary transport listens by creating an ordinary listening event.</li></div>
+
+<a name="wp1056098"> </a><div class="pSmartList1"><li >A CM transport listens by creating a CM listening event.</li></div>
+
+</ul></div>
+
+<a name="wp1056099"> </a><h4 class="pHeading3">
+Ordinary Listener Transport
+</h4>
+<a name="wp1056100"> </a><p class="pBody">
+When an ordinary transport receives a labeled message, it presents it to the appropriate callback function as if it were an ordinary message. That is, it ignores the supplementary information that distinguishes a labeled message (the sender&#8217;s correspondent name and sequence number).
+</p>
+<a name="wp1056101"> </a><h4 class="pHeading3">
+CM Listener Transport
+</h4>
+<a name="wp1056102"> </a><p class="pBody">
+When a CM transport receives a labeled message, its behavior depends on context:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1056103"> </a><div class="pSmartList1"><li >If the CM listener transport is registered for certified delivery, it presents the supplementary information to the callback function.</li></div>
+
+<a name="wp1056104"> </a><div class="pSmartList1"><li >If a CM listener transport is <em class="cEmphasis">not</em> registered for certified delivery with the sending CM transport, it presents the sending transport&#8217;s correspondent name to the callback function, but omits the sequence number.</li></div>
+
+<a name="wp1056105"> </a><p class="pBodyRelative">
+In addition, if appropriate, the CM listener transport automatically requests that the sending transport register the listener for certified delivery. (See <a  href="rv_concepts106.htm#wp1056110">Discovery and Registration for Certified Delivery</a>.)
+</p>
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Web Site Considerations</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;8	 Rendezvous Agent (rva)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1054362"> </a><h2 class="pNewHTMLPage">
+Web Site Considerations
+</h2>
+<hr />
+<a name="wp1054366"> </a><p class="pBody">
+The Rendezvous agent (<code class="cCode">rva</code>) is a key component of any web site that distributes Rendezvous applets. A full treatment of web site administration is beyond the scope of this book; this section discusses issues specific to Rendezvous applets and <code class="cCode">rva</code>.
+</p>
+<a name="wp1054373"> </a><h3 class="pHeading2">
+Home Computer and Port
+</h3>
+<a name="wp1054374"> </a><p class="pBody">
+Java applets connect back to an <code class="cCode">rva</code> process on the web server host computer by calling the constructor <a  href="javascript:WWHClickedPopup('g', 'rv_java_ref142.htm#wp1071270');" onMouseOver="WWHShowPopup('g', 'rv_java_ref142.htm#wp1071270', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvRvaTransport()</code></a> with <code class="cCode">hostname</code> and <code class="cCode">port</code> arguments. An <code class="cCode">rva</code> process must be running on the web server host computer, listening for client connections on a specific TCP port. Applet calls to <a  href="javascript:WWHClickedPopup('g', 'rv_java_ref142.htm#wp1071270');" onMouseOver="WWHShowPopup('g', 'rv_java_ref142.htm#wp1071270', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvRvaTransport()</code></a> must use a TCP port that matches the <code class="cCode">-listen</code> parameter of <code class="cCode">rva</code> (both use <code class="cCode">7600</code> as a default port number).
+</p>
+<a name="wp1054381"> </a><p class="pBody">
+Administrators must inform applet developers of the TCP port where <code class="cCode">rva</code> is listening for applet connections, so applet code can supply it as an argument to <a  href="javascript:WWHClickedPopup('g', 'rv_java_ref142.htm#wp1071270');" onMouseOver="WWHShowPopup('g', 'rv_java_ref142.htm#wp1071270', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvRvaTransport()</code></a>. If you reconfigure <code class="cCode">rva</code> to listen on a different port, applets cannot connect until updated to the new port number.
+</p>
+<a name="wp1054385"> </a><h4 class="pHeading3">
+Open a Path through the Firewall
+</h4>
+<a name="wp1054386"> </a><p class="pBody">
+Administrators must configure the firewall so that TCP connection requests can propagate from the applet back to <code class="cCode">rva</code>. Applets can only connect if this path is open.
+</p>
+<a name="wp1054390"> </a><p class="pBody">
+For example, <a  href="rv_adm78.htm#wp1054399">Figure&#160;42</a> illustrates a double firewall configuration. Applet connection requests travel on path A (TCP port <code class="cCode">7600</code>), and <code class="cCode">rva</code> requests connection to the remote <code class="cCode">rvd</code> using path B (TCP port <code class="cCode">7577</code>). Both these paths must be open.
+</p>
+<a name="wp1054399"> </a><div class="pFigureTitle">
+Figure&#160;42   Typical rva Web Site with Double Firewall</div><div align="center"><img src="images/rv_adma9.gif" height="602" width="600" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1054400"> </a><h3 class="pHeading2">
+Isolate External from Internal
+</h3>
+<a name="wp1054404"> </a><p class="pBody">
+In the context of a web site with Rendezvous applets, it is especially important to isolate separate pathways for various programs, to protect internal Rendezvous application programs from external applets.
+</p>
+<a name="wp1054408"> </a><p class="pBody">
+Techniques include using multicast addressing and restricting flow by subject. For more information, see these sections:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1054412"> </a><div class="pSmartList1"><li ><a  href="rv_adm13.htm#wp1019197">Network Details</a></li></div>
+
+<a name="wp1054416"> </a><div class="pSmartList1"><li ><a  href="rv_adm77.htm#wp1054241">Subject Gating</a></li></div>
+
+</ul></div>
+
+<a name="wp1054420"> </a><p class="pBody">
+For example, near the bottom of <a  href="rv_adm78.htm#wp1054399">Figure&#160;42</a>, <code class="cCode">rvd</code> links external applets with internal UDP or PGM service <code class="cCode">7901</code>. All internal Rendezvous programs that use service <code class="cCode">7901</code> can exchange messages with applets across the Internet. In contrast, a private demonstration applet uses service <code class="cCode">7854</code>&#151;it is effectively isolated from the external applets, as well as from internal programs using service <code class="cCode">7901</code>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

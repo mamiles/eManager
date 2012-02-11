@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvMsg::addField()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1121215"> </a><h2 class="pNewHTMLPage">
+TibrvMsg::addField()
+</h2>
+<hr />
+<a name="wp1121216"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1121096"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">addField</code>(const <a  href="rv_cpp_ref76.htm#wp1028876"><code class="cCode">TibrvMsgField</code></a>&amp; field)<a name="wp1121103"> </a>
+</pre></div>
+<a name="wp1121104"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1121106"> </a><p class="pBody">
+Add a field object to a message.
+</p>
+<a name="wp1121107"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1121108"> </a><p class="pBody">
+This method copies the data into the new message field. All related convenience methods behave similarly.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1121118"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1121120"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1121122"> </a><div class="pCellBody">
+<code class="cCode">field</code>
+</div>
+</td>
+    <td><a name="wp1121124"> </a><div class="pCellBody">
+Add this field to the message.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1121126"> </a><h4 class="pHeading3">
+Adding Fields to a Nested Message
+</h4>
+<a name="wp1121130"> </a><p class="pBody">
+Earlier releases of Rendezvous software allowed programs to append fields to a nested submessage under certain conditions. Starting with release 6, Rendezvous software no longer supports this special case convenience. Instead, programs must use this three-step process:
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1121134"> </a><div class="pSmartList1"><li value="1">Extract the nested submessage (see <a  href="rv_cpp_ref49.htm#wp1122536">Get Nested Message</a>).</li></div>
+
+<a name="wp1148992"> </a><div class="pSmartList1"><li value="2">Add the new fields to the extracted submessage, using type-specific convenience methods or this method. The field is added to a snapshot copy of the submessage, and modifies the copy rather than the original parent message.</li></div>
+
+<a name="wp1148993"> </a><div class="pSmartList1"><li value="3">Store the modified submessage back into the field of the parent message (see <a  href="rv_cpp_ref71.htm#wp1124350">Update Nested Message</a>).</li></div>
+
+</ol></div>
+
+<a name="wp1121138"> </a><h4 class="pHeading3">
+Avoiding Common Mistakes
+</h4>
+<a name="wp1121139"> </a><p class="pBody">
+Whenever possible, we recommend storing arrays in message fields using one of the Rendezvous array types. This strategy makes the most efficient use of storage space, processor time, and network bandwidth.
+</p>
+<a name="wp1121143"> </a><p class="pBody">
+If you must store array elements as individual fields, be careful mapping array indices to field identifiers. Zero-based arrays are common in C++ programs, but zero has a special meaning as a field identifier&#151;it represents the absence of an identifier. Do not map the zeroth element of an array (<code class="cCode">myArray[0]</code>) to a field with identifier zero; it is impossible to retrieve such a field by its identifier (because it does not have one).
+</p>
+<a name="wp1121144"> </a><p class="pBody">
+It is illegal to add a field that has both a <code class="cCode">NULL</code> field name, and a non-zero field identifier.
+</p>
+<a name="wp1177363"> </a><h4 class="pHeading3">
+Reserved Field Name
+</h4>
+<a name="wp1237554"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1282603"> </a><p class="pBody">
+The field name <code class="cCode">_data_</code> is reserved. Programs may not add fields with this name.
+</p>
+<a name="wp1282604"> </a><p class="pBody">
+More generally, all fields that begin with the underbar character are reserved.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1121149"> </a><h4 class="pHeading3">
+Field Name Length
+</h4>
+<a name="wp1121150"> </a><p class="pBody">
+The constant <code class="cCode">TIBRVMSG_FIELDNAME_MAX</code> (127) determines the longest possible field name.
+</p>
+<a name="wp1121151"> </a><h4 class="pHeading3">
+Convenience Methods
+</h4>
+<a name="wp1121152"> </a><p class="pBody">
+When the datatype of a field is determined during execution, use this general method. When you can determine the datatype of a field before compile-time, we recommend using type-specific convenience methods instead of this general method. Type-specific methods yield these advantages when adding fields:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1121153"> </a><div class="pSmartList1"><li >Code readability.</li></div>
+
+<a name="wp1121154"> </a><div class="pSmartList1"><li >Type checking.</li></div>
+
+<a name="wp1121155"> </a><div class="pSmartList1"><li >Accept constants and literals directly.</li></div>
+
+</ul></div>
+
+<a name="wp1121156"> </a><p class="pBody">
+(Type-specific methods yield even further advantages when extracting or updating fields.)
+</p>
+<a name="wp1121157"> </a><p class="pBody">
+These categories of type-specific convenience methods add a new field:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1121161"> </a><div class="pSmartList1"><li ><a  href="rv_cpp_ref30.htm#wp1027558">Add Scalar</a>.</li></div>
+
+<a name="wp1121165"> </a><div class="pSmartList1"><li ><a  href="rv_cpp_ref31.htm#wp1121457">Add Array</a>.</li></div>
+
+<a name="wp1121169"> </a><div class="pSmartList1"><li ><a  href="rv_cpp_ref32.htm#wp1121648">Add Nested Message</a>.</li></div>
+
+<a name="wp1121173"> </a><div class="pSmartList1"><li ><a  href="rv_cpp_ref33.htm#wp1121702">Add String</a>.</li></div>
+
+<a name="wp1165394"> </a><div class="pSmartList1"><li ><a  href="rv_cpp_ref34.htm#wp1121759">Add Opaque Byte Sequence</a>.</li></div>
+
+<a name="wp1121177"> </a><div class="pSmartList1"><li ><a  href="rv_cpp_ref35.htm#wp1165301">Add XML Byte Sequence</a>.</li></div>
+
+<a name="wp1121181"> </a><div class="pSmartList1"><li ><a  href="rv_cpp_ref36.htm#wp1121817">Add DateTime</a>.</li></div>
+
+</ul></div>
+
+<a name="wp1121237"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1067530"> </a><p class="pBody">
+<a  href="rv_cpp_ref30.htm#wp1027558">Add Scalar</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

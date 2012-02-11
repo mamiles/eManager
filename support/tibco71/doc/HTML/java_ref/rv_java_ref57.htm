@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvMsgField()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1029195"> </a><h2 class="pNewHTMLPage">
+TibrvMsgField()
+</h2>
+<hr />
+<a name="wp1029196"> </a><p class="pSyntaxType">
+Constructor
+</p>
+<a name="wp1029198"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCodeBold">TibrvMsgField</code>()<a name="wp1125368"> </a>
+<a name="wp1125361"> </a>
+<code class="cCodeBold">TibrvMsgField</code>(<a  href="rv_java_ref56.htm#wp1028876"><code class="cCode">TibrvMsgField</code></a> field)<a name="wp1125375"> </a>
+<a name="wp1125362"> </a>
+<code class="cCodeBold">TibrvMsgField</code>(<a name="wp1125379"> </a>
+&#160;&#160;&#160;&#160;java.lang.String name,<a name="wp1125380"> </a>
+&#160;&#160;&#160;&#160;java.lang.Object data,<a name="wp1125381"> </a>
+&#160;&#160;&#160;&#160;short type,<a name="wp1125382"> </a>
+&#160;&#160;&#160;&#160;int id)<a name="wp1125383"> </a>
+<a name="wp1125363"> </a>
+<code class="cCodeBold">TibrvMsgField</code>(<a name="wp1125387"> </a>
+&#160;&#160;&#160;&#160;java.lang.String name,<a name="wp1125388"> </a>
+&#160;&#160;&#160;&#160;java.lang.Object data,<a name="wp1125389"> </a>
+&#160;&#160;&#160;&#160;short type)<a name="wp1125390"> </a>
+<a name="wp1125364"> </a>
+<code class="cCodeBold">TibrvMsgField</code>(<a name="wp1125394"> </a>
+&#160;&#160;&#160;&#160;java.lang.String name,<a name="wp1125395"> </a>
+&#160;&#160;&#160;&#160;java.lang.Object data)<a name="wp1125396"> </a>
+</pre></div>
+<a name="wp1029200"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1029201"> </a><p class="pBody">
+Create a message field object.
+</p>
+<a name="wp1056626"> </a><h4 class="pHeading3">
+Method Forms
+</h4>
+<a name="wp1056627"> </a><p class="pBody">
+With no arguments, create an empty field (no name, no identifier, no data, no type).
+</p>
+<a name="wp1056628"> </a><p class="pBody">
+With a field argument, create an independent copy of the field.
+</p>
+<a name="wp1056629"> </a><p class="pBody">
+Name, identifier, data and type arguments contribute to the contents of the field object.
+</p>
+<a name="wp1056630"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1056631"> </a><p class="pBody">
+This constructor does not verify that the data and type of the field are consistent. Methods that add the field object into a message verify consistency (for example <a  href="rv_java_ref35.htm#wp1028247"><code class="cCode">TibrvMsg.addField()</code></a> and <a  href="rv_java_ref55.htm#wp1028523"><code class="cCode">TibrvMsg.updateField()</code></a>).</p><div align="left">
+<table border="1">
+  <caption><a name="wp1140664"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1140668"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1140670"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1140672"> </a><div class="pCellBody">
+<code class="cCode">field</code>
+</div>
+</td>
+    <td><a name="wp1140674"> </a><div class="pCellBody">
+Create an independent copy of this field.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1140676"> </a><div class="pCellBody">
+<code class="cCode">name</code>
+</div>
+</td>
+    <td><a name="wp1140678"> </a><div class="pCellBody">
+Create a field with this name.
+</div>
+<a name="wp1140679"> </a><div class="pCellBody">
+To create a field with no name, supply <code class="cCode">null</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1140681"> </a><div class="pCellBody">
+<code class="cCode">id</code>
+</div>
+</td>
+    <td><a name="wp1140683"> </a><div class="pCellBody">
+Create a field with this identifier.
+</div>
+<a name="wp1140684"> </a><div class="pCellBody">
+Identifiers must be in the range [0-65535]; zero is a special value that indicates no identifier.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1140686"> </a><div class="pCellBody">
+<code class="cCode">data</code>
+</div>
+</td>
+    <td><a name="wp1140688"> </a><div class="pCellBody">
+Create a field with this data value.
+</div>
+<a name="wp1140689"> </a><div class="pCellBody">
+The data value must be non-<code class="cCode">null</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1140691"> </a><div class="pCellBody">
+<code class="cCode">type</code>
+</div>
+</td>
+    <td><a name="wp1140693"> </a><div class="pCellBody">
+Create a field with this type.
+</div>
+<a name="wp1140697"> </a><div class="pCellBody">
+For a list of types, see <a  href="rv_java_ref31.htm#wp1056249">Datatype Constants</a>.
+</div>
+<a name="wp1140701"> </a><div class="pCellBody">
+If absent, the default type is <a  href="rv_java_ref31.htm#wp1124092"><code class="cCode">TibrvMsg.DEFAULT</code></a>, which instructs the methods <a  href="rv_java_ref35.htm#wp1028247"><code class="cCode">TibrvMsg.addField()</code></a> and <a  href="rv_java_ref55.htm#wp1028523"><code class="cCode">TibrvMsg.updateField()</code></a> to use the default type corresponding to the data value.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1029885"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1029215"> </a><p class="pBody">
+<a  href="rv_java_ref35.htm#wp1028247"><code class="cCode">TibrvMsg.addField()</code> </a>
+</p>
+<a name="wp1056657"> </a><p class="pBody">
+<a  href="rv_java_ref55.htm#wp1028523"><code class="cCode">TibrvMsg.updateField()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

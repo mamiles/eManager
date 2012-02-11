@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Multicast and Point-to-Point Messages</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;3	 Fundamentals";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1020739"> </a><h2 class="pNewHTMLPage">
+Multicast and Point-to-Point Messages
+</h2>
+<hr />
+<a name="wp1020861"> </a><p class="pBody">
+Rendezvous software uses subject-based addressing to support both <em class="cEmphasis">reliable multicast</em> communications and <em class="cEmphasis">point-to-point</em> communications. These two kinds of messages differ slightly in the syntax of their subject names, but dramatically in their behavior.
+</p>
+<a name="wp1071410"> </a><p class="pBody">
+Both kinds of messages are efficient; in either multicast or point-to-point mode, the message itself traverses the network only once.
+</p>
+<a name="wp1071473"> </a><h3 class="pHeading2">
+Point-to-Point Messages
+</h3>
+<a name="wp1071474"> </a><p class="pBody">
+A <em class="cEmphasis">point-to-point message</em> has at most one recipient program; its destination is an <em class="cEmphasis">inbox</em>&#151;a subject name created dynamically by a specific program process. <a  href="rv_concepts38.htm#wp1071486">Figure&#160;2</a> illustrates this model of message delivery. (One process can receive several copies of the message by listening several times to the same inbox name, but two processes cannot share an inbox name.)
+</p>
+<a name="wp1071481"> </a><p class="pBody">
+All inbox names begin with <code class="cCode">_INBOX</code> as their first element. A Rendezvous function creates inbox names dynamically; programs may not invent inbox names (in contrast to public subject names).
+</p>
+<a name="wp1071486"> </a><div class="pFigureTitle">
+Figure&#160;2   Point-to-Point Message</div><div align="center"><img src="images/rv_conceptsa.gif" height="190" width="528" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1071487"> </a><p class="pBody">
+A point-to-point message is like a telegram sent to one specific person&#151;no other person can receive it. The sender must know the name of the intended recipient. An inbox name is analogous to the address on a telegram. Creating an inbox name establishes a unique address for receiving point-to-point messages. To send a point-to-point message, the sending program must know the inbox name of the destination. (A recipient makes its inbox name known by multicasting it to potential senders using a prearranged subject name.)
+</p>
+<a name="wp1071412"> </a><h3 class="pHeading2">
+Multicast Messages
+</h3>
+<a name="wp1071455"> </a><p class="pBody">
+A <em class="cEmphasis">multicast message</em> is any message with many potential recipients. Potential recipients are called <em class="cEmphasis">subscribers</em>.
+</p>
+<a name="wp1071457"> </a><p class="pBody">
+The <em class="cEmphasis">subject name</em> of the message indirectly determines the message&#8217;s <em class="cEmphasis">destination</em>&#151;the set of subscribers that receive the message. Every subscriber to that subject name receives the message; non-subscribers do not receive it. The set of subscribers can change dynamically, depending on which programs are listening for the subject name. If no subscribers exist, then none receive the message (even though it still travels the network). <a  href="rv_concepts38.htm#wp1020909">Figure&#160;3</a> illustrates this model of message delivery.
+</p>
+<a name="wp1020897"> </a><p class="pBody">
+Rendezvous applications are free to invent public subject names, constrained only by the syntactic and semantic rules in <a  href="rv_concepts47.htm#wp1065576">Subject Names</a>.
+</p>
+<a name="wp1020909"> </a><div class="pFigureTitle">
+Figure&#160;3   Reliable Multicast Message</div><div align="center"><img src="images/rv_conceptsa2.gif" height="192" width="528" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1020790"> </a><p class="pBody">
+Multicast messages are like radio broadcasts; the sender picks a frequency, and any listener who tunes to that frequency receives the broadcast. The public subject name is analogous to a radio frequency; any program that listens for a subject receives all messages bearing that subject name.
+</p>
+<a name="wp1071466"> </a><p class="pBody">
+A multicast message does not imply multicast packet protocols. A multicast message can reach its destination using multicast protocols, broadcast protocols, or even intra-process communications&#151;depending on the transport object that the program uses to send the message.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

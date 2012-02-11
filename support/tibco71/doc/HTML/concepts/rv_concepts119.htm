@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Distributed Queue Members</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;12	 Distributed Queue";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1056854"> </a><h2 class="pNewHTMLPage">
+Distributed Queue Members
+</h2>
+<hr />
+<a name="wp1071807"> </a><p class="pBody">
+A distributed queue is a group of cooperating transport objects, each in a separate process; each transport object is called a member. From the outside, a distributed queue appears as though a single transport object; inside, the group members act in concert to process inbound task messages. Ordinary transports and CM transports can send task messages to the group; notice that the senders are not group members, and do not do anything special to send messages to a group; rather, they send messages to ordinary subject names. Inside the group, the member acting as scheduler assigns each task message to exactly one of the other members (which act as workers); only that worker processes the task message.
+</p>
+<a name="wp1056855"> </a><p class="pBody">
+The members of a distributed queue all share the same reusable correspondent name, indicating that they are members of the distributed queue with that name.
+</p>
+<a name="wp1056856"> </a><p class="pBody">
+Each member of a distributed queue must listen for the same subjects using CM listener objects. Yet even when <em class="cEmphasis">n</em> members listen for each inbound message (or task), only one member processes the message.
+</p>
+<a name="wp1056857"> </a><h3 class="pHeading2">
+Certified Delivery Behavior in Queue Members
+</h3>
+<a name="wp1056858"> </a><p class="pBody">
+Group members support a limited subset of certified delivery calls&#151;members can listen to a subject, override automatic confirmation of delivery, and confirm delivery. Member transports do <em class="cEmphasis">not</em> support calls associated with sending messages.
+</p>
+<a name="wp1072635"> </a><p class="pBody">
+Distributed queues do not use ledger files. Group members automatically require old messages from certified senders.
+</p>
+<a name="wp1072641"> </a><p class="pBody">
+Scheduler recovery and task rescheduling are available only when the task message is a certified message (that is, a certified delivery agreement is in effect between the task sender and the distributed queue transport scheduler).
+</p>
+<a name="wp1072637"> </a><h3 class="pHeading2">
+Member Roles&#151;Worker and Scheduler
+</h3>
+<a name="wp1056864"> </a><p class="pBody">
+Each distributed queue member has two distinct roles&#151;as a worker, and as a potential scheduler.
+</p>
+<a name="wp1056865"> </a><p class="pBody">
+In the <em class="cEmphasis">worker role</em>, members listen for task messages, and process inbound task messages as assigned by the scheduler.
+</p>
+<a name="wp1056869"> </a><p class="pBody">
+Rendezvous fault tolerance software maintains exactly one active scheduler in each distributed queue; if the scheduler process terminates, another member assumes the role of scheduler. The member in the <em class="cEmphasis">scheduler role</em> assigns inbound tasks to workers. (A scheduler can assign tasks to its own worker component, but only does so when all other workers are busy.)
+</p>
+<a name="wp1056870"> </a><h3 class="pHeading2">
+Enforcing Identical Subscriptions
+</h3>
+<a name="wp1056871"> </a><p class="pBody">
+It is important that all members of a distributed queue listen to the same set of subjects, and we recommend that programs enforce this rule among the distributed queue members. The easiest technique for enforcing identical subscriptions is to fix the subscription list within the program code (for example, as a constant).
+</p>
+<a name="wp1056872"> </a><p class="pBody">
+If one member removes a subscription (that is, it destroys a listener), then we recommend that all the members also close that subscription. The easiest technique for enforcing this rule is to avoid removing subscriptions at all.
+</p>
+<a name="wp1072830"> </a><h3 class="pHeading2">
+Fault Tolerance versus Distributed Queues
+</h3>
+<a name="wp1072825"> </a><p class="pBody">
+Fault tolerance usually requires that every member of a fault tolerance group receive each message. In contrast, each message to a distributed queue group is received by exactly one worker in the group. These mutually exclusive semantics cannot co-exist in the same distributed application program. That is, a program cannot simultaneously be a member of a fault tolerance group and a member of a distributed queue.
+</p>
+<a name="wp1072882"> </a><p class="pBody">
+At a lower level, however, distributed queues automatically use fault tolerance software to elect and maintain a scheduler (see <a  href="rv_concepts120.htm#wp1056882">Scheduler Parameters</a>).
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

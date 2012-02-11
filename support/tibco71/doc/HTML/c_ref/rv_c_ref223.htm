@@ -1,0 +1,464 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>Wire Format Datatypes</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;13	 Datatypes";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1128526"> </a><h2 class="pNewHTMLPage">
+Wire Format Datatypes
+</h2>
+<hr />
+<a name="wp1201960"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1193317"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1193323"> </a><div class="pCellHeading">
+Wire Format Type
+</div>
+</th>
+    <th><a name="wp1193325"> </a><div class="pCellHeading">
+Type Description
+</div>
+</th>
+    <th><a name="wp1193327"> </a><div class="pCellHeading">
+Notes
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1193329"> </a><div class="pMinorHead">
+Special Types
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193336"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">MSG</code>
+</div>
+</td>
+    <td><a name="wp1193341"> </a><div class="pCellBody">
+Rendezvous message
+</div>
+</td>
+    <td><a name="wp1193343"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193346"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">DATETIME</code>
+</div>
+</td>
+    <td><a name="wp1193351"> </a><div class="pCellBody">
+Rendezvous datetime
+</div>
+</td>
+    <td><a name="wp1193353"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193356"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">OPAQUE</code>
+</div>
+</td>
+    <td><a name="wp1193358"> </a><div class="pCellBody">
+opaque byte sequence
+</div>
+</td>
+    <td><a name="wp1193360"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193363"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">STRING</code>
+</div>
+</td>
+    <td><a name="wp1193365"> </a><div class="pCellBody">
+ISO 8859-1 character string (also called Latin-1) 
+</div>
+</td>
+    <td><a name="wp1193367"> </a><div class="pCellBody">
+<code class="cCode">NULL</code>-terminated.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193370"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">XML</code>
+</div>
+</td>
+    <td><a name="wp1193372"> </a><div class="pCellBody">
+XML data (byte sequence)
+</div>
+</td>
+    <td><a name="wp1193374"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1193376"> </a><div class="pMinorHead">
+Scalar Types
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193382"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">BOOL</code>
+</div>
+</td>
+    <td><a name="wp1193384"> </a><div class="pCellBody">
+boolean
+</div>
+</td>
+    <td><a name="wp1193386"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_</code><code class="cCodeBold">FALSE</code>, <code class="cCode">TIBRV_</code><code class="cCodeBold">TRUE</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193388"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">I8</code>
+</div>
+</td>
+    <td><a name="wp1193390"> </a><div class="pCellBody">
+8-bit integer
+</div>
+</td>
+    <td><a name="wp1193392"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193394"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">I16</code>
+</div>
+</td>
+    <td><a name="wp1193396"> </a><div class="pCellBody">
+16-bit integer
+</div>
+</td>
+    <td><a name="wp1193398"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193400"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">I32</code>
+</div>
+</td>
+    <td><a name="wp1193402"> </a><div class="pCellBody">
+32-bit integer
+</div>
+</td>
+    <td><a name="wp1193404"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193406"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">I64</code>
+</div>
+</td>
+    <td><a name="wp1193408"> </a><div class="pCellBody">
+64-bit integer
+</div>
+</td>
+    <td><a name="wp1193410"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193412"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">U8</code>
+</div>
+</td>
+    <td><a name="wp1193414"> </a><div class="pCellBody">
+8-bit unsigned integer
+</div>
+</td>
+    <td><a name="wp1193416"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193418"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">U16</code>
+</div>
+</td>
+    <td><a name="wp1193420"> </a><div class="pCellBody">
+16-bit unsigned integer
+</div>
+</td>
+    <td><a name="wp1193422"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193425"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">U32</code>
+</div>
+</td>
+    <td><a name="wp1193427"> </a><div class="pCellBody">
+32-bit unsigned integer
+</div>
+</td>
+    <td><a name="wp1193429"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193432"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">U64</code>
+</div>
+</td>
+    <td><a name="wp1193434"> </a><div class="pCellBody">
+64-bit unsigned integer
+</div>
+</td>
+    <td><a name="wp1193436"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193438"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">F32</code>
+</div>
+</td>
+    <td><a name="wp1193440"> </a><div class="pCellBody">
+32-bit floating point
+</div>
+</td>
+    <td><a name="wp1193442"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193444"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">F64</code>
+</div>
+</td>
+    <td><a name="wp1193446"> </a><div class="pCellBody">
+64-bit floating point
+</div>
+</td>
+    <td><a name="wp1193448"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193451"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">IPADDR32</code>
+</div>
+</td>
+    <td><a name="wp1193453"> </a><div class="pCellBody">
+4-byte IP address
+</div>
+</td>
+    <td><a name="wp1193455"> </a><div class="pCellBody">
+Network byte order.
+</div>
+<a name="wp1193456"> </a><div class="pCellBody">
+String representation is four-part dot-delimited notation.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193466"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">IPPORT16</code>
+</div>
+</td>
+    <td><a name="wp1193468"> </a><div class="pCellBody">
+2-byte IP port
+</div>
+</td>
+    <td><a name="wp1193470"> </a><div class="pCellBody">
+Network byte order.
+</div>
+<a name="wp1193471"> </a><div class="pCellBody">
+String representation is a 16-bit decimal integer.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1193473"> </a><div class="pMinorHead">
+Array Types
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193479"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">I8ARRAY</code>
+</div>
+</td>
+    <td><a name="wp1193481"> </a><div class="pCellBody">
+8-bit integer array
+</div>
+</td>
+    <td colspan="1" rowspan="10"><a name="wp1193483"> </a><div class="pCellBody">
+The <code class="cCode">count</code> property of the field reflects the number of elements in the array.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193485"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">I16ARRAY</code>
+</div>
+</td>
+    <td><a name="wp1193487"> </a><div class="pCellBody">
+16-bit integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193491"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">I32ARRAY</code>
+</div>
+</td>
+    <td><a name="wp1193493"> </a><div class="pCellBody">
+32-bit integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193497"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">I64ARRAY</code>
+</div>
+</td>
+    <td><a name="wp1193499"> </a><div class="pCellBody">
+64-bit integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193503"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">U8ARRAY</code>
+</div>
+</td>
+    <td><a name="wp1193505"> </a><div class="pCellBody">
+8-bit unsigned integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193509"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">U16ARRAY</code>
+</div>
+</td>
+    <td><a name="wp1193511"> </a><div class="pCellBody">
+16-bit unsigned integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193515"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">U32ARRAY</code>
+</div>
+</td>
+    <td><a name="wp1193517"> </a><div class="pCellBody">
+32-bit unsigned integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193521"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">U64ARRAY</code>
+</div>
+</td>
+    <td><a name="wp1193523"> </a><div class="pCellBody">
+64-bit unsigned integer array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193527"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">F32ARRAY</code>
+</div>
+</td>
+    <td><a name="wp1193529"> </a><div class="pCellBody">
+32-bit floating point array 
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193534"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">F64ARRAY</code>
+</div>
+</td>
+    <td><a name="wp1193536"> </a><div class="pCellBody">
+64-bit floating point array
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1193540"> </a><div class="pMinorHead">
+Custom Types
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193547"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">USER_FIRST</code>
+</div>
+</td>
+    <td><a name="wp1193549"> </a><div class="pCellBody">
+First code available for custom datatypes.
+</div>
+</td>
+    <td colspan="1" rowspan="2"><a name="wp1193551"> </a><div class="pCellBody">
+For more information, see <a  href="rv_c_ref229.htm#wp1148811">Appendix&#160;A, Custom Datatypes</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193557"> </a><div class="pCellBody">
+<code class="cCode">TIBRVMSG_</code><code class="cCodeBold">USER_LAST</code>
+</div>
+</td>
+    <td><a name="wp1193559"> </a><div class="pCellBody">
+Last code available for custom datatypes.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvMsg_AddField()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;3	 Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1026733"> </a><h2 class="pNewHTMLPage">
+tibrvMsg_AddField()
+</h2>
+<hr />
+<a name="wp1150650"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1150651"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvMsg_AddField</code>(<a name="wp1150652"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;message, <a name="wp1076059"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref25.htm#wp1129956"><code class="cCode">tibrvMsgField</code></a>*&#160;&#160;&#160;&#160;&#160;&#160;field);<a name="wp1076055"> </a>
+</pre></div>
+<a name="wp1087253"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1019097"> </a><p class="pBody">
+Add a field to a message.
+</p>
+<a name="wp1087748"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1064785"> </a><p class="pBody">
+This function copies the data into the new message field. All related convenience functions behave similarly.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1019103"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1019105"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1019107"> </a><div class="pCellBody">
+<code class="cCode">message</code>
+</div>
+</td>
+    <td><a name="wp1019109"> </a><div class="pCellBody">
+Add the new field to this message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1019111"> </a><div class="pCellBody">
+<code class="cCode">field</code>
+</div>
+</td>
+    <td><a name="wp1019113"> </a><div class="pCellBody">
+Add this field to the message.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1038184"> </a><h4 class="pHeading3">
+Adding Fields to a Nested Message
+</h4>
+<a name="wp1038200"> </a><p class="pBody">
+Earlier releases of Rendezvous software allowed programs to append fields to a nested submessage under certain conditions. Starting with release 6, Rendezvous software no longer supports this special case convenience. Instead, programs must use this three-step process:
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1038191"> </a><div class="pSmartList1"><li value="1">Extract the nested submessage, using <code class="cCode">tibrvMsg_getMsg()</code>.</li></div>
+
+<a name="wp1038192"> </a><div class="pSmartList1"><li value="2">Add the new fields to the extracted submessage, using type-specific convenience functions or this function. The field is added to a snapshot copy of the submessage, and modifies the copy rather than the original parent message.</li></div>
+
+<a name="wp1146942"> </a><div class="pSmartList1"><li value="3">Store the modified submessage back into the field of the parent message, using <code class="cCode">TibrvMsg_UpdateMsg()</code>.</li></div>
+
+</ol></div>
+
+<a name="wp1146943"> </a><h4 class="pHeading3">
+Avoiding Common Mistakes
+</h4>
+<a name="wp1038518"> </a><p class="pBody">
+Whenever possible, we recommend storing arrays in message fields using one of the Rendezvous array types. This strategy makes the most efficient use of storage space, processor time, and network bandwidth.
+</p>
+<a name="wp1038636"> </a><p class="pBody">
+If you must store array elements as individual fields, be careful mapping array indices to field identifiers. Zero-based arrays are common in C programs, but zero has a special meaning as a field identifier&#151;it represents the absence of an identifier. Do not map the zeroth element of an array (<code class="cCode">myArray[0]</code>) to a field with identifier zero; it is impossible to retrieve such a field by its identifier (because it does not have one).
+</p>
+<a name="wp1170939"> </a><p class="pBody">
+It is illegal to add a field that has both a <code class="cCode">NULL</code> field name, and a non-zero field identifier.
+</p>
+<a name="wp1170946"> </a><h4 class="pHeading3">
+Reserved Field Name
+</h4>
+<a name="wp1200673"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1302630"> </a><p class="pBody">
+The field name <code class="cCode">_data_</code> is reserved. Programs may not add fields with this name.
+</p>
+<a name="wp1302631"> </a><p class="pBody">
+More generally, all fields that begin with the underbar character are reserved.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1137109"> </a><h4 class="pHeading3">
+Field Name Length
+</h4>
+<a name="wp1137113"> </a><p class="pBody">
+The constant <code class="cCode">TIBRVMSG_FIELDNAME_MAX</code> (127) determines the longest possible field name.
+</p>
+<a name="wp1038466"> </a><h4 class="pHeading3">
+Convenience Functions
+</h4>
+<a name="wp1043460"> </a><p class="pBody">
+When the datatype of a field is determined during execution, use this general function. When you can determine the datatype of a field before compile-time, we recommend using type-specific convenience functions instead of this general function. Type-specific functions yield these advantages when adding fields:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1019118"> </a><div class="pSmartList1"><li >Code readability.</li></div>
+
+<a name="wp1019119"> </a><div class="pSmartList1"><li >Type checking.</li></div>
+
+<a name="wp1059106"> </a><div class="pSmartList1"><li >Accept constants and literals directly.</li></div>
+
+</ul></div>
+
+<a name="wp1027999"> </a><p class="pBody">
+(Type-specific functions yield even further advantages when extracting or updating fields.)
+</p>
+<a name="wp1040230"> </a><p class="pBody">
+These categories of type-specific convenience functions add a new field:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1028003"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref27.htm#wp1027281">Add Scalar</a>.</li></div>
+
+<a name="wp1043960"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref28.htm#wp1108496">Add Array</a>.</li></div>
+
+<a name="wp1043964"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref29.htm#wp1069564">Add Nested Message</a>.</li></div>
+
+<a name="wp1070670"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref30.htm#wp1043578">Add String</a>.</li></div>
+
+<a name="wp1161248"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref31.htm#wp1043838">Add Opaque Byte Sequence</a>.</li></div>
+
+<a name="wp1074290"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref32.htm#wp1161124">Add XML Byte Sequence</a>.</li></div>
+
+<a name="wp1028011"> </a><div class="pSmartList1"><li ><a  href="rv_c_ref33.htm#wp1074223">Add DateTime</a>.</li></div>
+
+</ul></div>
+
+<a name="wp1083210"> </a><h4 class="pHeading3">
+Extended Functions
+</h4>
+<a name="wp1083108"> </a><p class="pBody">
+Each convenience function has two forms.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1140450"> </a><div class="pSmartList1"><li >The usual form specifies the field to add using a field name.</li></div>
+
+<a name="wp1140451"> </a><div class="pSmartList1"><li >The extended form specifies the field to add using a field name and a field identifier. </li></div>
+
+</ul></div>
+
+<a name="wp1140456"> </a><p class="pBody">
+For example, the function <code class="cCode">tibrvMsg_AddI32()</code> is paired with the extended form <code class="cCode">tibrvMsg_AddI32Ex()</code>.
+</p>
+<a name="wp1108403"> </a><p class="pBody">
+Field identifiers have type <a  href="rv_c_ref224.htm#wp1128797"><code class="cCode">tibrv_u16</code></a>. Zero is a special value that signifies no field identifier. All non-zero field identifiers must be unique within each message. It is illegal to add a field that has both a <code class="cCode">NULL</code> field name, and a non-zero field identifier.
+</p>
+<a name="wp1083618"> </a><p class="pBody">
+For more information, see <a  href="rv_c_ref20.htm#wp1039638">Adding a New Field</a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Security Features</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;2	 Architecture";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1111138"> </a><h2 class="pNewHTMLPage">
+Security Features
+</h2>
+<hr />
+<a name="wp1112401"> </a><p class="pBody">
+Rendezvous release 7 adds security features based on secure socket layer (SSL) protocols. These features affect three areas of communication:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1112412"> </a><div class="pSmartList1"><li >Client to daemon&#151;see <a  href="rv_concepts16.htm#wp1111532">Secure Client Connections</a></li></div>
+
+<a name="wp1112419"> </a><div class="pSmartList1"><li >Between routing daemon neighbors&#151;both <code class="cCode">rvrd</code> and <code class="cCode">rvsrd</code> offer this feature.</li></div>
+
+<a name="wp1112415"> </a><div class="pSmartList1"><li >Browser to daemon&#151;based on HTTPS protocols.</li></div>
+
+</ul></div>
+
+<a name="wp1112680"> </a><h4 class="pHeading3">
+Additional Security Tools
+</h4>
+<a name="wp1112651"> </a><p class="pBody">
+These three areas do not include access control, nor program-level encryption. For flexible access control facilities and an encryption API, use the companion product, TIBCO Rendezvous DataSecurity.
+</p>
+<a name="wp1204843"> </a><h4 class="pHeading3">
+Certificates
+</h4>
+<a name="wp1204845"> </a><p class="pBody">
+X.509 certificates are crucial to these security features. For details, see <a  href="rv_concepts41.htm#wp1203018">Certificates and Security</a>.
+</p>
+<a name="wp1198414"> </a><h3 class="pHeading2">
+Performance
+</h3>
+<a name="wp1198415"> </a><p class="pBody">
+In all three of the communication areas listed above, security features require encryption and decryption computations. In general, these cryptographic computations detract from performance (compared to ordinary, non-secure daemons) for the sake of security.
+</p>
+<a name="wp1216126"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/note.gif" border="0" /></td>
+    <td><a name="wp1245957"> </a><div class="pCellBody">
+Cryptographic computations require a pool of random data. Some operating systems maintain a random pool, and others do not. On operating systems that do not, each process must initialize its own random pool, which can cause delays as the program starts. You might observe such a delay when starting a secure daemon, or any application program that connects to a secure daemon.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

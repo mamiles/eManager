@@ -1,0 +1,628 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvStatus</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;12	 Status and Errors";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1156714"> </a><h2 class="pNewHTMLPage">
+TibrvStatus
+</h2>
+<hr />
+<a name="wp1102974"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1099063"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+class <code class="cCodeBold">TibrvStatus</code><a name="wp1099064"> </a>
+&#160;&#160;TibrvStatus();<a name="wp1145848"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;// Construct empty.<a name="wp1231740"> </a>
+&#160;&#160;TibrvStatus(<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref227.htm#wp1193732');" onMouseOver="WWHShowPopup('e', 'rv_c_ref227.htm#wp1193732', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrv_status</code></a> status);&#160;&#160;// Construct from C status.<a name="wp1145851"> </a>
+&#160;&#160;~TibrvStatus();&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;// Reclaim storage.<a name="wp1231273"> </a>
+</pre></div>
+<a name="wp1231274"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1231275"> </a><p class="pBody">
+Encapsulate status codes.
+</p>
+<a name="wp1143371"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1143372"> </a><p class="pBody">
+Status codes are the enumerated values of <a  href="javascript:WWHClickedPopup('e', 'rv_c_ref227.htm#wp1193732');" onMouseOver="WWHShowPopup('e', 'rv_c_ref227.htm#wp1193732', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrv_status</code></a>.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1153381"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1153383"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1153385"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1153390"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref273.htm#wp1160434"><code class="cCode">TibrvStatus::getCode()</code></a>
+</div>
+</td>
+    <td><a name="wp1153394"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref273.htm#wp1159912">Extract the C status code from a status object.</a>
+</div>
+</td>
+    <td><a name="wp1153400"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref273.htm#wp1160434">360</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1153405"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref274.htm#wp1159915"><code class="cCode">TibrvStatus::getText()</code></a>
+</div>
+</td>
+    <td><a name="wp1153409"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref274.htm#wp1143709">Extract an interpretive string from a status object.</a>
+</div>
+</td>
+    <td><a name="wp1153415"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref274.htm#wp1159915">361</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1143627"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1231570"> </a><p class="pBody">
+ (Sheet 1 of 4)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1231319"> </a><div class="pCellHeading">
+Constant
+</div>
+</th>
+    <th><a name="wp1231321"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231324"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_OK</code>
+</div>
+</td>
+    <td><a name="wp1231326"> </a><div class="pCellBody">
+The method returned without error.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231329"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INIT_FAILURE</code>
+</div>
+</td>
+    <td><a name="wp1231331"> </a><div class="pCellBody">
+Cannot create the network transport.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231334"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INVALID_TRANSPORT</code>
+</div>
+</td>
+    <td><a name="wp1231336"> </a><div class="pCellBody">
+The transport has been destroyed, or is otherwise unusable.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231339"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INVALID_ARG</code>
+</div>
+</td>
+    <td><a name="wp1231341"> </a><div class="pCellBody">
+An argument is invalid. Check arguments other than messages, subject names, transports, events, queues and queue groups (which have separate status codes).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231343"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_NOT_INITIALIZED</code>
+</div>
+</td>
+    <td><a name="wp1231348"> </a><div class="pCellBody">
+The method cannot run because the Rendezvous environment is not initialized (open).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231351"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_ARG_CONFLICT</code>
+</div>
+</td>
+    <td><a name="wp1231353"> </a><div class="pCellBody">
+Two arguments that require a specific relation are in conflict. For example, the upper end of a numeric range is less than the lower end.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231355"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_SERVICE_NOT_FOUND</code>
+</div>
+</td>
+    <td><a name="wp1231360"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref176.htm#wp1044133"><code class="cCode">TibrvNetTransport::create()</code></a> cannot match the service name using <code class="cCode">getservbyname()</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231363"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_NETWORK_NOT_FOUND</code>
+</div>
+</td>
+    <td><a name="wp1231368"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref176.htm#wp1044133"><code class="cCode">TibrvNetTransport::create()</code></a> cannot match the network name using <code class="cCode">getnetbyname()</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231370"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_DAEMON_NOT_FOUND</code>
+</div>
+</td>
+    <td><a name="wp1231375"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref176.htm#wp1044133"><code class="cCode">TibrvNetTransport::create()</code></a> cannot match the daemon port number.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231378"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_NO_MEMORY</code>
+</div>
+</td>
+    <td><a name="wp1231380"> </a><div class="pCellBody">
+The method could not allocate dynamic storage.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231383"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INVALID_SUBJECT</code>
+</div>
+</td>
+    <td><a name="wp1231385"> </a><div class="pCellBody">
+The method received a subject name with incorrect syntax.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231388"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_DAEMON_NOT_CONNECTED</code>
+</div>
+</td>
+    <td><a name="wp1231393"> </a><div class="pCellBody">
+The Rendezvous daemon process (<code class="cCode">rvd</code>) exited, or was never started. This status indicates that the program cannot start the daemon and connect to it.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231395"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_VERSION_MISMATCH</code>
+</div>
+</td>
+    <td><a name="wp1231400"> </a><div class="pCellBody">
+The library, header files and Rendezvous daemon are incompatible.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231402"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_SUBJECT_COLLISION</code>
+</div>
+</td>
+    <td><a name="wp1231404"> </a><div class="pCellBody">
+It is illegal to create two certified listener events with overlapping subjects.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1249375"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_VC_NOT_CONNECTED</code>
+</div>
+</td>
+    <td><a name="wp1249378"> </a><div class="pCellBody">
+A virtual circuit terminal was once complete, but is now irreparably broken.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231407"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_NOT_PERMITTED</code>
+</div>
+</td>
+    <td><a name="wp1231409"> </a><div class="pCellBody">
+The program attempted an illegal operation.
+</div>
+<a name="wp1231410"> </a><div class="pCellBody">
+For example:
+</div>
+<div class="pSmartList1"><ul>
+<a name="wp1231411"> </a><div class="pSmartList1"><li >Cannot create ledger file.</li></div>
+
+<a name="wp1231412"> </a><div class="pSmartList1"><li >Cannot confirm an uncertified message (that is, it has no sequence number).</li></div>
+
+</ul></div>
+
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231414"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INVALID_NAME</code>
+</div>
+</td>
+    <td><a name="wp1231416"> </a><div class="pCellBody">
+The field name is too long; see <a  href="rv_cpp_ref29.htm#wp1121149">Field Name Length</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231419"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INVALID_TYPE</code>
+</div>
+</td>
+    <td><a name="wp1231421"> </a><div class="pCellBody">
+1. The field type is not registered.
+</div>
+<a name="wp1231422"> </a><div class="pCellBody">
+2. Cannot update field to a type that differs from the existing field&#8217;s type.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231424"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INVALID_SIZE</code>
+</div>
+</td>
+    <td><a name="wp1231426"> </a><div class="pCellBody">
+The explicit size in the field does not match its explicit type.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231428"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INVALID_COUNT</code>
+</div>
+</td>
+    <td><a name="wp1231430"> </a><div class="pCellBody">
+The explicit field count does not match its explicit type.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231433"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_NOT_FOUND</code>
+</div>
+</td>
+    <td><a name="wp1231435"> </a><div class="pCellBody">
+The method could not find the specified field in the message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231438"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_ID_IN_USE</code>
+</div>
+</td>
+    <td><a name="wp1231440"> </a><div class="pCellBody">
+Cannot add this field because its identifier is already present in the message; identifiers must be unique.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231443"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_ID_CONFLICT</code>
+</div>
+</td>
+    <td><a name="wp1231445"> </a><div class="pCellBody">
+After field search by identifier fails, search by name succeeds, but the actual identifier in the field is non-<code class="cCode">NULL</code> (so it does not match the identifier supplied).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231448"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_CONVERSION_FAILED</code>
+</div>
+</td>
+    <td><a name="wp1231450"> </a><div class="pCellBody">
+The method found the specified field, but could not convert it to the desired datatype.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231452"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_RESERVED_HANDLER</code>
+</div>
+</td>
+    <td><a name="wp1231457"> </a><div class="pCellBody">
+The datatype handler number is reserved for Rendezvous internal datatype handlers.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231459"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_ENCODER_FAILED</code>
+</div>
+</td>
+    <td><a name="wp1231461"> </a><div class="pCellBody">
+The program&#8217;s datatype encoder failed.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231463"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_DECODER_FAILED</code>
+</div>
+</td>
+    <td><a name="wp1231465"> </a><div class="pCellBody">
+The program&#8217;s datatype decoder failed.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231467"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INVALID_MSG</code>
+</div>
+</td>
+    <td><a name="wp1231469"> </a><div class="pCellBody">
+The method received a message argument that is not a well-formed message; for example, <code class="cCode">NULL</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231471"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INVALID_FIELD</code>
+</div>
+</td>
+    <td><a name="wp1231473"> </a><div class="pCellBody">
+The program supplied an invalid field as an argument.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231475"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INVALID_INSTANCE</code>
+</div>
+</td>
+    <td><a name="wp1231477"> </a><div class="pCellBody">
+The program supplied zero as the field instance number (the first instance is number 1).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231479"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_CORRUPT_MSG</code>
+</div>
+</td>
+    <td><a name="wp1231481"> </a><div class="pCellBody">
+The method detected a corrupt message argument.
+</div>
+<a name="wp1231482"> </a><div class="pCellBody">
+The most common cause is that the program corrupted storage by accessing the message in two threads simultaneously (without proper locking).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231485"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_TIMEOUT</code>
+</div>
+</td>
+    <td><a name="wp1231487"> </a><div class="pCellBody">
+A timed dispatch call returned without dispatching an event.
+</div>
+<a name="wp1257229"> </a><div class="pCellBody">
+A send request call returned without receiving a reply message.
+</div>
+<a name="wp1231488"> </a><div class="pCellBody">
+A virtual circuit terminal is not yet ready for use.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231490"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INTR</code>
+</div>
+</td>
+    <td><a name="wp1231492"> </a><div class="pCellBody">
+Interrupted operation.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231494"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INVALID_DISPATCHABLE</code>
+</div>
+</td>
+    <td><a name="wp1231496"> </a><div class="pCellBody">
+The method received an event queue or queue group that has been destroyed, or is otherwise unusable.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231498"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INVALID_DISPATCHER</code>
+</div>
+</td>
+    <td><a name="wp1231500"> </a><div class="pCellBody">
+The method received a dispatcher that is invalid or has been destroyed.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231502"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INVALID_EVENT</code>
+</div>
+</td>
+    <td><a name="wp1231504"> </a><div class="pCellBody">
+The method received an event that has been destroyed, or is otherwise unusable.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231506"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INVALID_CALLBACK</code>
+</div>
+</td>
+    <td><a name="wp1231508"> </a><div class="pCellBody">
+The method received <code class="cCode">NULL</code> instead of a callback method.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231511"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INVALID_QUEUE</code>
+</div>
+</td>
+    <td><a name="wp1231513"> </a><div class="pCellBody">
+The method received a queue that has been destroyed, or is otherwise unusable.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231515"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INVALID_QUEUE_GROUP</code>
+</div>
+</td>
+    <td><a name="wp1231517"> </a><div class="pCellBody">
+The method received a queue group that has been destroyed, or is otherwise unusable.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231519"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INVALID_TIME_INTERVAL</code>
+</div>
+</td>
+    <td><a name="wp1231521"> </a><div class="pCellBody">
+The method received a negative timer interval.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231523"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INVALID_IO_SOURCE</code>
+</div>
+</td>
+    <td><a name="wp1231525"> </a><div class="pCellBody">
+The method received an invalid I/O source (for this operating system).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231527"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INVALID_IO_CONDITION</code>
+</div>
+</td>
+    <td><a name="wp1231529"> </a><div class="pCellBody">
+The method received an invalid I/O condition (for this operating system).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231531"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_SOCKET_LIMIT</code>
+</div>
+</td>
+    <td><a name="wp1231533"> </a><div class="pCellBody">
+The operation failed because of an operating system socket limitation.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231535"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_OS_ERROR</code>
+</div>
+</td>
+    <td><a name="wp1231540"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref15.htm#wp1119220"><code class="cCode">Tibrv::open()</code></a> encountered an operating system error.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231542"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INSUFFICIENT_BUFFER</code>
+</div>
+</td>
+    <td><a name="wp1231544"> </a><div class="pCellBody">
+The method received a buffer argument that is too small to contain the result.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231546"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_EOF</code>
+</div>
+</td>
+    <td><a name="wp1231548"> </a><div class="pCellBody">
+End of file.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231550"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_INVALID_FILE</code>
+</div>
+</td>
+    <td><a name="wp1231552"> </a><div class="pCellBody">
+Ledger file is not recognizable as such.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231554"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_FILE_NOT_FOUND</code>
+</div>
+</td>
+    <td><a name="wp1231559"> </a><div class="pCellBody">
+Rendezvous software could not find the specified file.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231561"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_NOT_FILE_OWNER</code>
+</div>
+</td>
+    <td><a name="wp1231563"> </a><p class="pBody">
+The program cannot open the specified file because another program owns it.
+</p>
+<a name="wp1231564"> </a><p class="pBody">
+For example, ledger files are associated with correspondent names.
+</p>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1231566"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_IO_FAILED</code>
+</div>
+</td>
+    <td><a name="wp1231568"> </a><div class="pCellBody">
+Cannot write to ledger file.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

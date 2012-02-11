@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvMsg.get()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1024668"> </a><h2 class="pNewHTMLPage">
+TibrvMsg.get()
+</h2>
+<hr />
+<a name="wp1024669"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1024671"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+data = TibrvMsg.<code class="cCodeBold">get</code>(fieldName, tibrvType, fieldId)<a name="wp1119237"> </a>
+</pre></div>
+<a name="wp1077945"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1024753"> </a><p class="pBody">
+Get the value of a specified field from a message.
+</p>
+<a name="wp1024675"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1024757"> </a><p class="pBody">
+Programs specify the field to retrieve using the <code class="cCode">fieldName</code> and <code class="cCode">fieldId</code> parameters.
+</p>
+<a name="wp1099615"> </a><p class="pBody">
+This method returns an independent snapshot copy of the field value. For details, see <a  href="rv_com_ref32.htm#wp1135737">Snapshot Copy</a>.
+</p>
+<a name="wp1111202"> </a><p class="pBody">
+Programs can use a related method to loop through all the fields of a message; to retrieve each field of a message, see <a  href="rv_com_ref45.htm#wp1123999"><code class="cCode">TibrvMsg.getByIndex()</code> </a>.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1108099"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1108101"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1119242"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1119244"> </a><div class="pCellBody">
+<code class="cCode">String</code>
+</div>
+<a name="wp1119256"> </a><div class="pCellBody">
+Get a field with this name. See <a  href="rv_com_ref43.htm#wp1078238">Field Search Algorithm</a>.
+</div>
+<a name="wp1119357"> </a><div class="pCellBody">
+<code class="cCode">vbNullString</code> is a legal field name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1108103"> </a><div class="pCellBody">
+<code class="cCode">tibrvType</code>
+</div>
+</td>
+    <td><a name="wp1108105"> </a><div class="pCellBody">
+<code class="cCode">Byte</code> optional
+</div>
+<a name="wp1119338"> </a><div class="pCellBody">
+Convert the data value to the variant datatype corresponding to this type, if possible. For a list of types, see <a  href="rv_com_ref34.htm#wp1056249">Datatype Constants</a>.
+</div>
+<a name="wp1119278"> </a><div class="pCellBody">
+When absent or zero, automatically convert the data to its homologous type. <a  href="rv_com_ref43.htm#wp1138470">Figure&#160;2</a> indicates default decodings between homologous types.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1119248"> </a><div class="pCellBody">
+<code class="cCode">fieldId</code>
+</div>
+</td>
+    <td><a name="wp1119250"> </a><div class="pCellBody">
+<code class="cCode">Long</code> optional
+</div>
+<a name="wp1119258"> </a><div class="pCellBody">
+Get the field with this identifier. See <a  href="rv_com_ref43.htm#wp1078238">Field Search Algorithm</a>.
+</div>
+<a name="wp1119261"> </a><p class="pBody">
+An identifier has the range of a 16-bit unsigned integer, [0,&#160;65535].
+</p>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1155852"> </a><div class="pCellBody">
+<code class="cCode">data</code>
+</div>
+</td>
+    <td><a name="wp1155854"> </a><div class="pCellBody">
+<code class="cCode">Variant</code>
+</div>
+<a name="wp1155855"> </a><div class="pCellBody">
+Return the data value of the field.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1078238"> </a><h4 class="pHeading3">
+Field Search Algorithm
+</h4>
+<a name="wp1078239"> </a><p class="pBody">
+<a  href="rv_com_ref43.htm#wp1024668"><code class="cCode">TibrvMsg.get()</code></a>, <a  href="rv_com_ref47.htm#wp1144839"><code class="cCode">TibrvMsg.getField()</code></a>, <a  href="rv_com_ref50.htm#wp1151354"><code class="cCode">TibrvMsg.getInstance()</code></a> and <code class="cCode">TibrvMsg.getFieldInstance()</code> use this algorithm to find a field within a message, as specified by a field identifier and a field name.
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1078241"> </a><div class="pSmartList1"><li value="1">If the program supplied zero as the identifier, or omitted any identifier, then begin at step 3.</li></div>
+
+<a name="wp1078288"> </a><p class="pBodyRelative">
+If the program supplied a <em class="cEmphasis">non-zero</em> field identifier, then search for the field with that identifier. 
+</p>
+<a name="wp1078242"> </a><p class="pBodyRelative">
+If the search succeeds, return the field.
+</p>
+<a name="wp1078243"> </a><p class="pBodyRelative">
+On failure, continue to step 2.
+</p>
+<a name="wp1078244"> </a><div class="pSmartList1"><li value="2">If the identifier search (in step 1) fails, and the program supplied a non-null field name, then search for a field with that name.</li></div>
+
+<a name="wp1078245"> </a><p class="pBodyRelative">
+If the name search succeeds, and the identifier in the field is zero, return the field.
+</p>
+<a name="wp1078246"> </a><p class="pBodyRelative">
+If the name search succeeds, but the actual identifier in the field is non-zero (so it does not match the identifier supplied) then report the error <a  href="rv_com_ref217.htm#wp1188816"><code class="cCode">TIBRVCOM_ID_CONFLICT</code></a>.
+</p>
+<a name="wp1078250"> </a><p class="pBodyRelative">
+On failure, or if the program supplied <code class="cCode">vbNullString</code> as the field name, report the error <a  href="rv_com_ref217.htm#wp1188804"><code class="cCode">TIBRVCOM_NOT_FOUND</code></a>.
+</p>
+<a name="wp1078254"> </a><div class="pSmartList1"><li value="3">When the program supplied zero as the identifier, or omitted any identifier, then begin here.</li></div>
+
+<a name="wp1078255"> </a><p class="pBodyRelative">
+Search for a field with the specified name&#151;even if that name is <code class="cCode">vbNullString</code>.
+</p>
+<a name="wp1078256"> </a><p class="pBodyRelative">
+If the search succeeds, return the field.
+</p>
+<a name="wp1078260"> </a><p class="pBodyRelative">
+On failure, report the error <a  href="rv_com_ref217.htm#wp1188804"><code class="cCode">TIBRVCOM_NOT_FOUND</code></a>.
+</p>
+</ol></div>
+
+<a name="wp1109439"> </a><p class="pBody">
+If a message contains several fields with the same name, searching by name finds the first instance of the field with that name.
+</p>
+<a name="wp1155894"> </a><p class="pBody">
+When an error occurs, the method returns an empty variant.
+</p>
+<a name="wp1054342"> </a><h4 class="pHeading3">
+Extracting Fields from a Nested Message
+</h4>
+<a name="wp1119369"> </a><p class="pBody">
+Earlier releases of Rendezvous software allowed programs to get fields from a nested submessage by concatenating field names. Starting with release 6, Rendezvous software no longer supports this special case convenience. Instead, programs must separately extract the nested submessage using <a  href="rv_com_ref43.htm#wp1024668"><code class="cCode">TibrvMsg.get()</code></a> (or a related method), and then get the desired fields from the submessage.
+</p>
+<a name="wp1119387"> </a><h4 class="pHeading3">
+Decoding and Type Conversion
+</h4>
+<a name="wp1119391"> </a><p class="pBody">
+This method automatically decodes the extracted field data from its Rendezvous wire format type to a corresponding VB type. In <a  href="rv_com_ref43.htm#wp1138470">Figure&#160;2</a>, filled circles (as well as <code class="cCode">+</code> and <code class="cCode">-</code> symbols) specify default decodings between homologous types; you can override the default decoding by supplying an explicit <code class="cCode">tibrvType</code> argument (numeric and supported conversions).
+</p>
+<a name="wp1149816"> </a><p class="pBody">
+The default conversion for extracting a <a  href="rv_com_ref34.htm#wp1159117"><code class="cCode">TIBRVCOM_MSG_I8</code></a> yields an <code class="cCode">Integer</code>, with zeroes padding the high 8 bits. (Similarly for <a  href="rv_com_ref34.htm#wp1159150"><code class="cCode">TIBRVCOM_MSG_I8ARRAY</code></a>.)
+</p>
+<a name="wp1149796"> </a><p class="pBody">
+The default conversion for extracting a <a  href="rv_com_ref34.htm#wp1159125"><code class="cCode">TIBRVCOM_MSG_U16</code></a> yields a <code class="cCode">Long</code>, with zeroes padding the high 16 bits. (Similarly for <a  href="rv_com_ref34.htm#wp1159158"><code class="cCode">TIBRVCOM_MSG_U16ARRAY</code></a>.)
+</p>
+<a name="wp1149824"> </a><p class="pBody">
+The default conversion for extracting a <a  href="rv_com_ref34.htm#wp1159131"><code class="cCode">TIBRVCOM_MSG_U32</code></a> yields a <code class="cCode">Long</code>, interpreting the high bit as a sign bit. (Similarly for <a  href="rv_com_ref34.htm#wp1159163"><code class="cCode">TIBRVCOM_MSG_U32ARRAY</code></a>.)
+</p>
+<a name="wp1139071"> </a><p class="pBody">
+When extracting a <a  href="javascript:WWHClickedPopup('a', 'rv_concepts54.htm#wp1084180');" onMouseOver="WWHShowPopup('a', 'rv_concepts54.htm#wp1084180', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TIBRVMSG_BOOL</code></a> as a numeric value, <code class="cCode">False</code> maps to zero, and <code class="cCode">True</code> maps to 1.
+</p>
+<a name="wp1138475"> </a><p class="pBody">
+Extracting a <a  href="rv_com_ref34.htm#wp1159147"><code class="cCode">TIBRVCOM_MSG_IPADDR32</code></a> as a string yields the standard dot notation (<code class="cCode">a.b.c.d</code>).
+</p>
+<a name="wp1155907"> </a><p class="pBody">
+To determine the datatype of the original message field, use <a  href="rv_com_ref47.htm#wp1144839"><code class="cCode">TibrvMsg.getField()</code></a> and <a  href="rv_com_ref71.htm#wp1120699"><code class="cCode">TibrvMsgField.getType()</code></a>.
+</p>
+<a name="wp1204397"> </a><h4 class="pHeading3">
+Decoding XML
+</h4>
+<a name="wp1193256"> </a><p class="pBody">
+As a convenience, Visual Basic lets you extract an XML field as a string value; however, the resulting string is only valid if the XML field uses UTF-16LE encoding. Other language APIs might not support this encoding. For this reason, we discourage programmers from directly extracting an XML field as a string value. Instead, we recommend extracting the XML document as a byte array, and then explicitly converting it to a string using the encoding that corresponds to your locale. For more information, see <a  href="rv_com_ref35.htm#wp1204382">Encoding XML</a>.
+</p>
+<a name="wp1138470"> </a><div class="pFigureTitle">
+Figure&#160;2   Wire Format to VB Datatype Conversion Matrix</div><div align="center"><img src="images/rv_com_refa2.gif" height="632" width="526" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1124216"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1124221"> </a><p class="pBody">
+<a  href="rv_com_ref45.htm#wp1123999"><code class="cCode">TibrvMsg.getByIndex()</code> </a>
+</p>
+<a name="wp1124225"> </a><p class="pBody">
+<a  href="rv_com_ref50.htm#wp1151354"><code class="cCode">TibrvMsg.getInstance()</code> </a>
+</p>
+<a name="wp1124229"> </a><p class="pBody">
+<a  href="rv_com_ref47.htm#wp1144839"><code class="cCode">TibrvMsg.getField()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

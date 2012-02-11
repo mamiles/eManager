@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>Overview</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;11	 Command Line Tool&#151;tibrvcfg";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1964077"> </a><h2 class="pNewHTMLPage">
+Overview
+</h2>
+<hr />
+<a name="wp1964078"> </a><p class="pBody">
+The command line tool (<a  href="rv_config272.htm#wp1964131"><code class="cCode">tibrvcfg</code></a>) lets you configure daemon components without writing Java programs. The tool interacts with a component to execute one configuration command, and outputs the results to <code class="cCode">stdio</code>. Most of the commands parallel methods of the configuration API.
+</p>
+<a name="wp1997157"> </a><h3 class="pHeading2">
+XML
+</h3>
+<a name="wp1997123"> </a><p class="pBody">
+Three commands interact with XML documents:
+</p>
+<a name="wp1997163"> </a><h4 class="pHeading3">
+dumpXML
+</h4>
+<a name="wp1997126"> </a><p class="pBody">
+<code class="cCode">dumpXML</code> extracts the complete set of configuration information from a component, and outputs it as an XML document.
+</p>
+<a name="wp1997166"> </a><h4 class="pHeading3">
+mergeXML<br />matchXML
+</h4>
+<a name="wp1997134"> </a><p class="pBody">
+<code class="cCode">mergeXML</code> and <code class="cCode">matchXML</code> parse an XML file that specifies a configuration, compare it with the current configuration of a component, arrange the minimal set of configuration commands that would implement the specified configuration on the component, and interact with the component to configure it accordingly.
+</p>
+<a name="wp1997162"> </a><h4 class="pHeading3">
+Translation
+</h4>
+<a name="wp1964091"> </a><p class="pBody">
+Rendezvous components do not accept or produce XML directly. Instead, methods of the configuration API act as translators:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1964092"> </a><div class="pSmartList1"><li ><code class="cCode">dumpXML</code> gets current configuration data from a component, and builds an XML document incorporating that data.</li></div>
+
+<a name="wp1964093"> </a><div class="pSmartList1"><li >Conversely, <code class="cCode">mergeXML</code> and <code class="cCode">matchXML</code> read an XML document, and build a set of commands to achieve the specified configuration.</li></div>
+
+</ul></div>
+
+<a name="wp1997206"> </a><h4 class="pHeading3">
+Sensitive Information
+</h4>
+<a name="wp1964094"> </a><p class="pBody">
+<code class="cCode">dumpML</code> does not extract sensitive information from components&#151;for example, passwords or private keys.
+</p>
+<a name="wp1997209"> </a><h4 class="pHeading3">
+DTD
+</h4>
+<a name="wp1964098"> </a><p class="pBody">
+A set of DTD files defines the correct syntax for Rendezvous configuration XML documents. The configuration API verifies XML documents against this definition.
+</p>
+<a name="wp1997193"> </a><p class="pBody">
+You can easily reconfigure a component by editing the output of <code class="cCode">dumpXML</code>, and then supplying the modified file to <code class="cCode">mergeXML</code> or <code class="cCode">matchXML</code>. The edited document must conform to the DTD.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

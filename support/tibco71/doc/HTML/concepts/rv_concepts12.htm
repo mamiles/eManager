@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Rendezvous API Architecture</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;2	 Architecture";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1051692"> </a><h2 class="pNewHTMLPage">
+Rendezvous API Architecture
+</h2>
+<hr />
+<a name="wp1070225"> </a><p class="pBody">
+<a  href="rv_concepts12.htm#wp1070232">Table&#160;4</a> outlines the core architectural elements of Rendezvous programming interfaces.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1070232"> </a><div class="pTableTitle">
+Table&#160;4   Architecture Summary&#160;
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1070236"> </a><div class="pCellHeading">
+Element
+</div>
+</th>
+    <th><a name="wp1070238"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1070240"> </a><div class="pCellBody">
+Message
+</div>
+</td>
+    <td><a name="wp1070242"> </a><div class="pCellBody">
+Messages carry data among program processes or threads.
+</div>
+<a name="wp1070243"> </a><div class="pCellBody">
+Messages contain self-describing data fields. Programs can manipulate message fields, send messages, and receive messages.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1070245"> </a><div class="pCellBody">
+Event
+</div>
+</td>
+    <td><a name="wp1070247"> </a><div class="pCellBody">
+Programs create event objects to register interest in significant conditions. For example, dispatching a listener event notifies the program that a message has arrived; dispatching a timer event notifies the program that its interval has elapsed.
+</div>
+<a name="wp1070248"> </a><div class="pCellBody">
+Programs define event callback functions to process events.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1070250"> </a><div class="pCellBody">
+Event Queue
+</div>
+</td>
+    <td><a name="wp1070252"> </a><div class="pCellBody">
+Programs create event queues to organize events. A queue holds a sequence of event objects that are ready for dispatch.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1070254"> </a><div class="pCellBody">
+Event Queue Group
+</div>
+</td>
+    <td><a name="wp1070256"> </a><div class="pCellBody">
+Programs create event queue groups to prioritize event processing.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1070258"> </a><div class="pCellBody">
+Event Dispatch
+</div>
+</td>
+    <td><a name="wp1070260"> </a><div class="pCellBody">
+Programs dispatch events from queues or queue groups, processing each event with the corresponding callback function.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1070262"> </a><div class="pCellBody">
+Transport
+</div>
+</td>
+    <td><a name="wp1070264"> </a><div class="pCellBody">
+Programs use transport objects to send messages and listen for messages. A transport determines three aspects of message delivery:
+</div>
+<div class="pSmartList1"><ul>
+<a name="wp1070265"> </a><div class="pSmartList1"><li >Delivery scope&#151;the potential range of its messages</li></div>
+
+<a name="wp1070266"> </a><div class="pSmartList1"><li >Delivery mechanism&#151;the path that its messages travel</li></div>
+
+<a name="wp1070267"> </a><div class="pSmartList1"><li >Delivery protocol&#151;the ways in which programs cooperate and share information concerning message delivery</li></div>
+
+</ul></div>
+
+<a name="wp1070268"> </a><div class="pCellBody">
+Transport objects of various types combine these aspects to yield different qualities of service&#151;for example, intra-process delivery, network delivery, reliable delivery, certified delivery, distributed queue delivery.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1070270"> </a><div class="pCellBody">
+Event Driver
+</div>
+</td>
+    <td><a name="wp1070275"> </a><div class="pCellBody">
+Rendezvous software includes an event driver that places events in event queues. (Program code cannot access the event driver.)
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvCmTransport::create()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;9	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1158326"> </a><h2 class="pNewHTMLPage">
+TibrvCmTransport::create()
+</h2>
+<hr />
+<a name="wp1158327"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1158353"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">create</code>(<a name="wp1166056"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_cpp_ref163.htm#wp1146502"><code class="cCode">TibrvTransport</code></a>* transport);<a name="wp1166060"> </a>
+<a name="wp1166049"> </a>
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">create</code>(<a name="wp1166067"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_cpp_ref163.htm#wp1146502"><code class="cCode">TibrvTransport</code></a>* transport,<a name="wp1166071"> </a>
+&#160;&#160;&#160;&#160;const char* cmName,<a name="wp1166072"> </a>
+&#160;&#160;&#160;&#160;tibrv_bool  requestOld,<a name="wp1166073"> </a>
+&#160;&#160;&#160;&#160;const char* ledgerName = NULL,<a name="wp1166074"> </a>
+&#160;&#160;&#160;&#160;tibrv_bool  syncLedger = TIBRV_FALSE,<a name="wp1166075"> </a>
+&#160;&#160;&#160;&#160;const char* relayAgent = NULL);<a name="wp1166076"> </a>
+</pre></div>
+<a name="wp1158354"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1158356"> </a><p class="pBody">
+Create a transport for certified delivery.
+</p>
+<a name="wp1158357"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1158358"> </a><p class="pBody">
+This method creates a C certified delivery transport and stores its handle in the C++ object.
+</p>
+<a name="wp1158359"> </a><p class="pBody">
+The new certified delivery transport must employ a valid transport for network communications.
+</p>
+<a name="wp1232557"> </a><p class="pBody">
+The certified delivery transport remains valid until the program explicitly destroys it.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1232563"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1232567"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1232569"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1232571"> </a><div class="pCellBody">
+<code class="cCode">transport</code>
+</div>
+</td>
+    <td><a name="wp1232576"> </a><div class="pCellBody">
+The new <a  href="rv_cpp_ref226.htm#wp1084243"><code class="cCode">TibrvCmTransport</code></a> employs this transport object for network communications.
+</div>
+<a name="wp1232580"> </a><div class="pCellBody">
+Despite the declaration as a <a  href="rv_cpp_ref163.htm#wp1146502"><code class="cCode">TibrvTransport</code></a>, this object must be an instance of <a  href="rv_cpp_ref175.htm#wp1111502"><code class="cCode">TibrvNetTransport</code></a>. In particular, it cannot be the <a  href="rv_cpp_ref174.htm#wp1041039"><code class="cCode">TibrvProcessTransport</code></a> nor <a  href="rv_cpp_ref182.htm#wp1249443"><code class="cCode">TibrvVcTransport</code></a>.
+</div>
+<a name="wp1232593"> </a><div class="pCellBody">
+Destroying the <a  href="rv_cpp_ref226.htm#wp1084243"><code class="cCode">TibrvCmTransport</code></a> does not affect this <a  href="rv_cpp_ref163.htm#wp1146502"><code class="cCode">TibrvTransport</code></a> object.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1232595"> </a><div class="pCellBody">
+<code class="cCode">cmName</code>
+</div>
+</td>
+    <td><a name="wp1232603"> </a><div class="pCellBody">
+Bind this reusable name to the new <a  href="rv_cpp_ref226.htm#wp1084243"><code class="cCode">TibrvCmTransport</code></a>, so the <a  href="rv_cpp_ref226.htm#wp1084243"><code class="cCode">TibrvCmTransport</code></a> represents a persistent correspondent with this name.
+</div>
+<a name="wp1232607"> </a><div class="pCellBody">
+If non-<code class="cCode">NULL</code>, the name must conform to the syntax rules for Rendezvous subject names. It cannot begin with reserved tokens. It cannot be a non-reusable name generated by another call to <a  href="rv_cpp_ref230.htm#wp1158326"><code class="cCode">TibrvCmTransport::create()</code></a>. It cannot be the empty string.
+</div>
+<a name="wp1232614"> </a><div class="pCellBody">
+If omitted or <code class="cCode">NULL</code>, then <a  href="rv_cpp_ref230.htm#wp1158326"><code class="cCode">TibrvCmTransport::create()</code></a> generates a unique, non-reusable name for the duration of the transport.
+</div>
+<a name="wp1232618"> </a><div class="pCellBody">
+For more information, see <a  href="rv_cpp_ref230.htm#wp1158483">Name</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1232621"> </a><div class="pCellBody">
+<code class="cCode">requestOld</code>
+</div>
+</td>
+    <td><a name="wp1232623"> </a><div class="pCellBody">
+This parameter indicates whether a persistent correspondent requires delivery of messages sent to a previous certified delivery transport with the same name, for which delivery was not confirmed. Its value affects the behavior of other CM sending transports.
+</div>
+<a name="wp1232624"> </a><div class="pCellBody">
+If this parameter is <code class="cCode">TIBRV_TRUE</code> <em class="cEmphasis">and</em> <code class="cCode">cmName</code> is non-<code class="cCode">NULL</code>, then the new <a  href="rv_cpp_ref226.htm#wp1084243"><code class="cCode">TibrvCmTransport</code></a> requires certified senders to retain unacknowledged messages sent to this persistent correspondent. When the new <a  href="rv_cpp_ref226.htm#wp1084243"><code class="cCode">TibrvCmTransport</code></a> begins listening to the appropriate subjects, the senders can complete delivery. (It is an error to supply <code class="cCode">true</code> when <code class="cCode">cmName</code> is <code class="cCode">NULL</code>.)
+</div>
+<a name="wp1232634"> </a><div class="pCellBody">
+If this parameter is <code class="cCode">TIBRV_FALSE</code> (or omitted), then the new <a  href="rv_cpp_ref226.htm#wp1084243"><code class="cCode">TibrvCmTransport</code></a> does not require certified senders to retain unacknowledged messages. Certified senders may delete those messages from their ledgers.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1232637"> </a><div class="pCellBody">
+<code class="cCode">ledgerName</code>
+</div>
+</td>
+    <td><a name="wp1232642"> </a><div class="pCellBody">
+If this argument is non-<code class="cCode">NULL</code>, then the new <a  href="rv_cpp_ref226.htm#wp1084243"><code class="cCode">TibrvCmTransport</code></a> uses a file-based ledger. The argument must represent a valid file name. Actual locations corresponding to relative file names conform to operating system conventions. We strongly discourage using the empty string as a ledger file name.
+</div>
+<a name="wp1232646"> </a><div class="pCellBody">
+If omitted or <code class="cCode">NULL</code>, then the new <a  href="rv_cpp_ref226.htm#wp1084243"><code class="cCode">TibrvCmTransport</code></a> uses a process-based ledger.
+</div>
+<a name="wp1232650"> </a><div class="pCellBody">
+For more information, see <a  href="rv_cpp_ref230.htm#wp1158521">Ledger File</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1232652"> </a><div class="pCellBody">
+<code class="cCode">syncLedger</code>
+</div>
+</td>
+    <td><a name="wp1232654"> </a><div class="pCellBody">
+If this argument is <code class="cCode">TIBRV_TRUE</code>, then operations that update the ledger file do not return until the changes are written to the storage medium.
+</div>
+<a name="wp1232655"> </a><div class="pCellBody">
+If this argument is <code class="cCode">TIBRV_FALSE</code> (or omitted), the operating system writes changes to the storage medium asynchronously.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1232657"> </a><div class="pCellBody">
+<code class="cCode">relayAgent</code>
+</div>
+</td>
+    <td><a name="wp1232662"> </a><div class="pCellBody">
+Designate the <a  href="javascript:WWHClickedPopup('c', 'rv_adm75.htm#wp1024297');" onMouseOver="WWHShowPopup('c', 'rv_adm75.htm#wp1024297', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">rvrad</code></a> process with this name as the new transport&#8217;s relay agent.
+</div>
+<a name="wp1232666"> </a><div class="pCellBody">
+If <code class="cCode">NULL</code> or omitted, the new <a  href="rv_cpp_ref226.htm#wp1084243"><code class="cCode">TibrvCmTransport</code></a> does not use a relay agent.
+</div>
+<a name="wp1232667"> </a><div class="pCellBody">
+If non-<code class="cCode">NULL</code>, the relay agent name must conform to the syntax rules for reusable names. For details, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts114.htm#wp1056478');" onMouseOver="WWHShowPopup('a', 'rv_concepts114.htm#wp1056478', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Reusable Names</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+<a name="wp1232674"> </a><div class="pCellBody">
+It is illegal for a relay agent to have the same name as a CM correspondent.
+</div>
+<a name="wp1232675"> </a><div class="pCellBody">
+We strongly discourage using the empty string as a relay agent name.
+</div>
+<a name="wp1232679"> </a><div class="pCellBody">
+For more information, see <a  href="rv_cpp_ref230.htm#wp1158509">Relay Agent</a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1232681"> </a><h4 class="pHeading3">
+Method Forms
+</h4>
+<a name="wp1158479"> </a><p class="pBody">
+With only a transport, create a transient correspondent, with a unique, non-reusable name. (Supplying <code class="cCode">NULL</code> as the <code class="cCode">cmName</code> has the same effect.)
+</p>
+<a name="wp1158480"> </a><p class="pBody">
+All other parameters are optional, with default values when omitted.
+</p>
+<a name="wp1158483"> </a><h4 class="pHeading3">
+Name
+</h4>
+<a name="wp1158487"> </a><p class="pBody">
+If <code class="cCode">cmName</code> is <code class="cCode">NULL</code>, then <a  href="rv_cpp_ref230.htm#wp1158326"><code class="cCode">TibrvCmTransport::create()</code></a> generates a unique, non-reusable name for the new certified delivery transport.
+</p>
+<a name="wp1158488"> </a><p class="pBody">
+If <code class="cCode">cmName</code> is non-<code class="cCode">NULL</code>, then the new transport binds that name. A correspondent can persist beyond transport destruction only when it has <em class="cEmphasis">both</em> a reusable name <em class="cEmphasis">and</em> a file-based ledger.
+</p>
+<a name="wp1158491"> </a><p class="pBody">
+For more information about the use of reusable names, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts104.htm#wp1055992');" onMouseOver="WWHShowPopup('a', 'rv_concepts104.htm#wp1055992', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">CM Correspondent Name</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>, and <a  href="javascript:WWHClickedPopup('a', 'rv_concepts109.htm#wp1056251');" onMouseOver="WWHShowPopup('a', 'rv_concepts109.htm#wp1056251', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Persistent Correspondents</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>. For details of reusable name syntax, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts114.htm#wp1056478');" onMouseOver="WWHShowPopup('a', 'rv_concepts114.htm#wp1056478', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Reusable Names</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+<a name="wp1158509"> </a><h4 class="pHeading3">
+Relay Agent
+</h4>
+<a name="wp1158513"> </a><p class="pBody">
+<a  href="rv_cpp_ref230.htm#wp1158326"><code class="cCode">TibrvCmTransport::create()</code></a> automatically connects a transport to its designated relay agent upon creation; see <a  href="rv_cpp_ref229.htm#wp1139993"><code class="cCode">TibrvCmTransport::connectToRelayAgent()</code> </a>.
+</p>
+<a name="wp1158521"> </a><h4 class="pHeading3">
+Ledger File
+</h4>
+<a name="wp1158522"> </a><p class="pBody">
+Every certified delivery transport stores the state of its certified communications in a ledger.
+</p>
+<a name="wp1158523"> </a><p class="pBody">
+If <code class="cCode">ledgerFile</code> is <code class="cCode">NULL</code>, then the new transport stores its ledger exclusively in process-based storage. When you destroy the transport or the process terminates, all information in the ledger is lost.
+</p>
+<a name="wp1158524"> </a><p class="pBody">
+If <code class="cCode">ledgerFile</code> specifies a valid file name, then the new transport uses that file for ledger storage. If the transport is destroyed or the process terminates with incomplete certified communications, the ledger file records that state. When a new transport binds the same reusable name, it reads the ledger file and continues certified communications from the state stored in the file.
+</p>
+<a name="wp1158525"> </a><p class="pBody">
+Even though a transport uses a ledger file, it may sometimes replicate parts of the ledger in process-based storage for efficiency; however, programmers cannot rely on this replication.
+</p>
+<a name="wp1158527"> </a><p class="pBody">
+The <code class="cCode">syncLedger</code> parameter determines whether writing to the ledger file is a synchronous operation:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1158528"> </a><div class="pSmartList1"><li >To specify synchronous writing, supply <code class="cCode">TIBRV_TRUE</code>. Each time Rendezvous software writes a ledger item, the call does not return until the data is safely stored in the storage medium.</li></div>
+
+<a name="wp1158532"> </a><div class="pSmartList1"><li >To specify asynchronous writing (the default), supply <code class="cCode">TIBRV_FALSE</code>. Certified delivery calls may return before the data is safely stored in the storage medium, which results in greater speed at the cost of certainty. The ledger file might not accurately reflect program state in cases of hardware or operating system kernel failure (but it is accurate in cases of sudden program failure). Despite this small risk, we strongly recommend this option for maximum performance.</li></div>
+
+</ul></div>
+
+<a name="wp1158533"> </a><div style="color: #000000; font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 5pt; margin-left: 18pt; margin-right: 0pt; margin-top: 2pt; text-align: left; text-decoration: none; text-indent: 0pt; text-transform: none">
+A program that uses an asynchronous ledger file can explicitly synchronize it by calling <a  href="rv_cpp_ref249.htm#wp1085609"><code class="cCode">TibrvCmTransport::syncLedger()</code> </a>.
+</div>
+<a name="wp1258385"> </a><p class="pBody">
+Destroying a transport with a file-based ledger always leaves the ledger file intact; it neither erases nor removes a ledger file.
+</p>
+<a name="wp1158537"> </a><p class="pBody">
+The ledger file must reside on the same host computer as the program that uses it.
+</p>
+<a name="wp1158538"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1158542"> </a><p class="pBody">
+<a  href="rv_cpp_ref232.htm#wp1084655"><code class="cCode">TibrvCmTransport::destroy()</code> </a>
+</p>
+<a name="wp1158546"> </a><p class="pBody">
+<a  href="rv_cpp_ref229.htm#wp1139993"><code class="cCode">TibrvCmTransport::connectToRelayAgent()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

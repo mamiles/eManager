@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>Datatype Conversion</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;13	 Datatypes";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1128933"> </a><h2 class="pNewHTMLPage">
+Datatype Conversion
+</h2>
+<hr />
+<a name="wp1128937"> </a><p class="pBody">
+Rendezvous software converts datatypes in two situations:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1128938"> </a><div class="pSmartList1"><li >As it translates a message to wire format (when sending a message).</li></div>
+
+<a name="wp1128939"> </a><div class="pSmartList1"><li >As it extracts data from a message field.</li></div>
+
+</ul></div>
+
+<a name="wp1128943"> </a><p class="pBody">
+Convenience functions that <em class="cEmphasis">extract</em> a field from a Rendezvous message automatically decode the field&#8217;s data to a homologous C type. <a  href="rv_c_ref225.htm#wp1128980">Figure&#160;11</a> specifies the homologous decodings as well as conversions to other types. See also, <a  href="rv_c_ref45.htm#wp1019366"></a><a  href="rv_c_ref45.htm#wp1019366"><code class="cCode">tibrvMsg_GetField()</code> </a>.
+</p>
+<a name="wp1128956"> </a><p class="pBody">
+Convenience functions that <em class="cEmphasis">add</em> a field to a Rendezvous message or update an existing field severely restrict type encoding. These functions encode only to homologous types (the solid dots along the diagonal of <a  href="rv_c_ref225.htm#wp1128980">Figure&#160;11</a> indicate pairs of homologous types).
+</p>
+<a name="wp1128960"> </a><h3 class="pHeading2">
+General Rules
+</h3>
+<a name="wp1128961"> </a><p class="pBody">
+These general rules govern most conversions.
+</p>
+<a name="wp1128962"> </a><h4 class="pHeading3">
+Supported
+</h4>
+<div class="pSmartList1"><ul>
+<a name="wp1128963"> </a><div class="pSmartList1"><li >All wire format types decode to the homologous C datatypes (in <em class="cEmphasis">get</em> calls), and all C datatypes encode to the homologous wire format types (in <em class="cEmphasis">add</em> and <em class="cEmphasis">update</em> calls).</li></div>
+
+<a name="wp1128964"> </a><div class="pSmartList1"><li >All wire format numeric scalar types convert to all C numeric scalar types.</li></div>
+
+<a name="wp1128965"> </a><div class="pSmartList1"><li >All wire format numeric array types convert to all C numeric array types.</li></div>
+
+</ul></div>
+
+<a name="wp1128966"> </a><h4 class="pHeading3">
+Caution
+</h4>
+<div class="pSmartList1"><ul>
+<a name="wp1128967"> </a><div class="pSmartList1"><li >Converting a wire format opaque or XML byte sequence to a C character string creates a printable string, but the string does not capture any of the data bytes (it captures only the number of bytes).</li></div>
+
+<a name="wp1128968"> </a><div class="pSmartList1"><li >Converting a wire format signed integer to a C unsigned integer discards the sign.</li></div>
+
+<a name="wp1128969"> </a><div class="pSmartList1"><li >Converting a wire format numeric type to a C numeric type with fewer bits risks loss of precision.</li></div>
+
+<a name="wp1128970"> </a><div class="pSmartList1"><li >Converting wire format floating point numbers to C integer types discards the fractional part.</li></div>
+
+<a name="wp1128971"> </a><div class="pSmartList1"><li >Converting large (out-of-range) wire format floating point numbers to C integers results in the maximum integer of the C target size.</li></div>
+
+</ul></div>
+
+<a name="wp1128972"> </a><h4 class="pHeading3">
+Not Supported
+</h4>
+<div class="pSmartList1"><ul>
+<a name="wp1128973"> </a><div class="pSmartList1"><li >Array types do not convert to scalar types.</li></div>
+
+<a name="wp1128974"> </a><div class="pSmartList1"><li >Scalar types do not convert to array types.</li></div>
+
+<a name="wp1128975"> </a><div class="pSmartList1"><li >C types do not convert to non-homologous wire format types (when adding or updating a field).</li></div>
+
+</ul></div>
+
+<a name="wp1128980"> </a><div class="pFigureTitle">
+Figure&#160;11   Wire Format to C Datatype Conversion Matrix</div><div align="center"><img src="images/rv_c_refa10.gif" height="654" width="599" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1193598"> </a><p class="pBody">
+
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

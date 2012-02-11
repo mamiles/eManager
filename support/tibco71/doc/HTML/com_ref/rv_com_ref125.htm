@@ -1,0 +1,351 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvTransport</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;6	 Transports";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1123272"> </a><h2 class="pNewHTMLPage">
+TibrvTransport
+</h2>
+<hr />
+<a name="wp1123273"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1039759"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1039813"> </a><p class="pBody">
+A transport object represents a delivery mechanism for messages.
+</p>
+<a name="wp1038693"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1039843"> </a><p class="pBody">
+A transport describes a carrier for messages&#151;whether across a network, among processes on a single computer, or within a process. Transports manage network connections, and send outbound messages. Listeners (and other objects) use transports for communications.
+</p>
+<a name="wp1112394"> </a><p class="pBody">
+A transport also defines the delivery scope of a message&#151;that is, the set of <em class="cEmphasis">possible</em> destinations for the messages it sends.
+</p>
+<a name="wp1039825"> </a><p class="pBody">
+Destroying a transport object invalidates subsequent send calls on that transport, invalidates any listeners using that transport.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1127913"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1127919"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1127921"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1127923"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1134464"> </a><div class="pMinorHead">
+Life Cycle
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1134473"> </a><div class="pCellBody">
+<a  href="rv_com_ref126.htm#wp1128333"><code class="cCode">TibrvTransport.create</code></a>
+</div>
+</td>
+    <td><a name="wp1134478"> </a><div class="pCellBody">
+<a  href="rv_com_ref126.htm#wp1128340">Create a network transport.</a>
+</div>
+</td>
+    <td><a name="wp1134483"> </a><div class="pCellBody">
+<a  href="rv_com_ref126.htm#wp1128333">160</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1127943"> </a><div class="pCellBody">
+<a  href="rv_com_ref128.htm#wp1039911"><code class="cCode">TibrvTransport.destroy</code></a>
+</div>
+</td>
+    <td><a name="wp1127948"> </a><div class="pCellBody">
+<a  href="rv_com_ref128.htm#wp1040010">Destroy a transport.</a>
+</div>
+</td>
+    <td><a name="wp1127953"> </a><div class="pCellBody">
+<a  href="rv_com_ref128.htm#wp1039911">164</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1142451"> </a><div class="pCellBody">
+<a  href="rv_com_ref133.htm#wp1142390"><code class="cCode">TibrvTransport.isValid()</code></a>
+</div>
+</td>
+    <td><a name="wp1142456"> </a><div class="pCellBody">
+<a  href="rv_com_ref133.htm#wp1142396">Test the validity of a transport.</a>
+</div>
+</td>
+    <td><a name="wp1142461"> </a><div class="pCellBody">
+<a  href="rv_com_ref133.htm#wp1142390">169</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1134500"> </a><div class="pMinorHead">
+Inbox Names
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1134488"> </a><div class="pCellBody">
+<a  href="rv_com_ref127.htm#wp1040342"><code class="cCode">TibrvTransport.createInbox()</code></a>
+</div>
+</td>
+    <td><a name="wp1134492"> </a><div class="pCellBody">
+<a  href="rv_com_ref127.htm#wp1040413">Create a unique inbox subject name.</a>
+</div>
+</td>
+    <td><a name="wp1134498"> </a><div class="pCellBody">
+<a  href="rv_com_ref127.htm#wp1040342">163</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1134539"> </a><div class="pMinorHead">
+Send Messages
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1127988"> </a><div class="pCellBody">
+<a  href="rv_com_ref134.htm#wp1134580"><code class="cCode">TibrvTransport.send</code></a>
+</div>
+</td>
+    <td><a name="wp1127993"> </a><div class="pCellBody">
+<a  href="rv_com_ref134.htm#wp1134586">Send a message.</a>
+</div>
+</td>
+    <td><a name="wp1127998"> </a><div class="pCellBody">
+<a  href="rv_com_ref134.htm#wp1134580">170</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1128003"> </a><div class="pCellBody">
+<a  href="rv_com_ref135.htm#wp1134620"><code class="cCode">TibrvTransport.sendReply</code></a>
+</div>
+</td>
+    <td><a name="wp1128008"> </a><div class="pCellBody">
+<a  href="rv_com_ref135.htm#wp1134626">Send a reply message.</a>
+</div>
+</td>
+    <td><a name="wp1128013"> </a><div class="pCellBody">
+<a  href="rv_com_ref135.htm#wp1134620">171</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1128018"> </a><div class="pCellBody">
+<a  href="rv_com_ref136.htm#wp1134669"><code class="cCode">TibrvTransport.sendRequest()</code></a>
+</div>
+</td>
+    <td><a name="wp1128022"> </a><div class="pCellBody">
+<a  href="rv_com_ref136.htm#wp1134675">Send a request message and wait for a reply.</a>
+</div>
+</td>
+    <td><a name="wp1128028"> </a><div class="pCellBody">
+<a  href="rv_com_ref136.htm#wp1134669">172</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1134548"> </a><div class="pMinorHead">
+Accessors
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1128063"> </a><div class="pCellBody">
+<a  href="rv_com_ref129.htm#wp1134780"><code class="cCode">TibrvTransport.getDaemon()</code></a>
+</div>
+</td>
+    <td><a name="wp1128067"> </a><div class="pCellBody">
+<a  href="rv_com_ref129.htm#wp1134790">Return the TCP socket where this transport connects to the Rendezvous daemon.</a>
+</div>
+</td>
+    <td><a name="wp1128073"> </a><div class="pCellBody">
+<a  href="rv_com_ref129.htm#wp1134780">165</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1134512"> </a><div class="pCellBody">
+<a  href="rv_com_ref130.htm#wp1118664"><code class="cCode">TibrvTransport.getDescription()</code></a>
+</div>
+</td>
+    <td><a name="wp1134516"> </a><div class="pCellBody">
+<a  href="rv_com_ref130.htm#wp1118669">Extract the program description parameter from a transport.</a>
+</div>
+</td>
+    <td><a name="wp1134522"> </a><div class="pCellBody">
+<a  href="rv_com_ref130.htm#wp1118664">166</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1128078"> </a><div class="pCellBody">
+<a  href="rv_com_ref131.htm#wp1044750"><code class="cCode">TibrvTransport.getNetwork()</code></a>
+</div>
+</td>
+    <td><a name="wp1128082"> </a><div class="pCellBody">
+<a  href="rv_com_ref131.htm#wp1194920">Return the network interface that this transport uses for communication.</a>
+</div>
+</td>
+    <td><a name="wp1128088"> </a><div class="pCellBody">
+<a  href="rv_com_ref131.htm#wp1044750">167</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1128093"> </a><div class="pCellBody">
+<a  href="rv_com_ref132.htm#wp1044810"><code class="cCode">TibrvTransport.getService()</code></a>
+</div>
+</td>
+    <td><a name="wp1128097"> </a><div class="pCellBody">
+<a  href="rv_com_ref132.htm#wp1194928">Return the effective service that this transport uses for communication.</a>
+</div>
+</td>
+    <td><a name="wp1128103"> </a><div class="pCellBody">
+<a  href="rv_com_ref132.htm#wp1044810">168</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1134527"> </a><div class="pCellBody">
+<a  href="rv_com_ref138.htm#wp1195010"><code class="cCode">TibrvTransport.setDescription</code></a>
+</div>
+</td>
+    <td><a name="wp1134531"> </a><div class="pCellBody">
+<a  href="rv_com_ref138.htm#wp1134740">Set the program description parameter of a transport.</a>
+</div>
+</td>
+    <td><a name="wp1134537"> </a><div class="pCellBody">
+<a  href="rv_com_ref138.htm#wp1195010">175</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1197376"> </a><div class="pMinorHead">
+Virtual Circuits
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1197430"> </a><div class="pCellBody">
+<a  href="rv_com_ref141.htm#wp1195810"><code class="cCode">TibrvTransport.createAcceptVc()</code></a>
+</div>
+</td>
+    <td><a name="wp1197435"> </a><div class="pCellBody">
+<a  href="rv_com_ref141.htm#wp1195824">Create a virtual circuit accept object.</a>
+</div>
+</td>
+    <td><a name="wp1197440"> </a><div class="pCellBody">
+<a  href="rv_com_ref141.htm#wp1195810">180</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1197415"> </a><div class="pCellBody">
+<a  href="rv_com_ref142.htm#wp1195878"><code class="cCode">TibrvTransport.createConnectVc()</code></a>
+</div>
+</td>
+    <td><a name="wp1197420"> </a><div class="pCellBody">
+<a  href="rv_com_ref142.htm#wp1195892">Create a virtual circuit connect object.</a>
+</div>
+</td>
+    <td><a name="wp1197425"> </a><div class="pCellBody">
+<a  href="rv_com_ref142.htm#wp1195878">181</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1197400"> </a><div class="pCellBody">
+<a  href="rv_com_ref143.htm#wp1196886"><code class="cCode">TibrvTransport.getVcConnectSubject()</code></a>
+</div>
+</td>
+    <td><a name="wp1197404"> </a><div class="pCellBody">
+<a  href="rv_com_ref143.htm#wp1196892">Return the connect subject of an accept terminal.</a>
+</div>
+</td>
+    <td><a name="wp1197410"> </a><div class="pCellBody">
+<a  href="rv_com_ref143.htm#wp1196886">183</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1197385"> </a><div class="pCellBody">
+<a  href="rv_com_ref144.htm#wp1195947"><code class="cCode">TibrvTransport.waitForVcConnection</code></a>
+</div>
+</td>
+    <td><a name="wp1197389"> </a><div class="pCellBody">
+<a  href="rv_com_ref144.htm#wp1195957">Test the connection status of a virtual circuit.</a>
+</div>
+</td>
+    <td><a name="wp1197395"> </a><div class="pCellBody">
+<a  href="rv_com_ref144.htm#wp1195947">184</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1128128"> </a><p class="pBody">
+
+</p>
+<a name="wp1112455"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1112460"> </a><p class="pBody">
+<a  href="rv_com_ref139.htm#wp1195619">Chapter&#160;7, Virtual Circuits</a>
+</p>
+<a name="wp1197443"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts68.htm#wp1052644');" onMouseOver="WWHShowPopup('a', 'rv_concepts68.htm#wp1052644', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Transport</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

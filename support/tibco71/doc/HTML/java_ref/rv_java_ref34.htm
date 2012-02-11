@@ -1,0 +1,376 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>Add Scalar</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1027558"> </a><h2 class="pNewHTMLPage">
+Add Scalar
+</h2>
+<hr />
+<a name="wp1027559"> </a><p class="pSyntaxType">
+Convenience Methods
+</p>
+<a name="wp1125023"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+void <code class="cCodeBold">add</code>(<a name="wp1125068"> </a>
+&#160;&#160;&#160;&#160;java.lang.String fieldName,<a name="wp1125069"> </a>
+&#160;&#160;&#160;&#160;<code class="cCodeItalic">&lt;scalar_type&gt;</code> data)<a name="wp1125070"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125074"> </a>
+<a name="wp1125024"> </a>
+void <code class="cCodeBold">add</code>(<a name="wp1125078"> </a>
+&#160;&#160;&#160;&#160;java.lang.String fieldName,<a name="wp1125079"> </a>
+&#160;&#160;&#160;&#160;<code class="cCodeItalic">&lt;scalar_type&gt;</code> data,<a name="wp1125080"> </a>
+&#160;&#160;&#160;&#160;int fieldId)<a name="wp1125081"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125085"> </a>
+<a name="wp1125025"> </a>
+void <code class="cCodeBold">addU</code><code class="cCodeItalic">&lt;bits&gt;</code>(<a name="wp1125094"> </a>
+&#160;&#160;&#160;&#160;java.lang.String fieldName,<a name="wp1125095"> </a>
+&#160;&#160;&#160;&#160;<code class="cCodeItalic">&lt;scalar_type&gt;</code> data)<a name="wp1125096"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125100"> </a>
+<a name="wp1125092"> </a>
+void <code class="cCodeBold">addU</code><code class="cCodeItalic">&lt;bits&gt;</code>(<a name="wp1125105"> </a>
+&#160;&#160;&#160;&#160;java.lang.String fieldName,<a name="wp1125106"> </a>
+&#160;&#160;&#160;&#160;<code class="cCodeItalic">&lt;scalar_type&gt;</code> data,<a name="wp1125107"> </a>
+&#160;&#160;&#160;&#160;int fieldId)<a name="wp1125108"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125112"> </a>
+</pre></div>
+<a name="wp1125064"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1028294"> </a><p class="pBody">
+Add a field containing a scalar value.
+</p>
+<a name="wp1028148"> </a><h4 class="pHeading3">
+Method Forms
+</h4>
+<a name="wp1028298"> </a><p class="pBody">
+The convenience methods named <code class="cCodeBold">add</code><code class="cCode">()</code> determine the field type from the numeric type of the data.
+</p>
+<a name="wp1028250"> </a><p class="pBody">
+The convenience methods named <code class="cCodeBold">addU</code><code class="cCodeItalic">nn</code><code class="cCode">()</code> add <em class="cEmphasis">unsigned</em> integer fields, <em class="cEmphasis">discarding</em> the sign bit of a Java integer data value.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1115483"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1028151"> </a><div class="pCellHeading">
+Method Name
+</div>
+</th>
+    <th><a name="wp1028153"> </a><div class="pCellHeading">
+Java Data Type
+</div>
+</th>
+    <th><a name="wp1028155"> </a><div class="pCellHeading">
+Field Type
+</div>
+</th>
+    <th><a name="wp1028157"> </a><div class="pCellHeading">
+Type Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1028252"> </a><div class="pCellBody">
+<code class="cCode">add</code>
+</div>
+</td>
+    <td><a name="wp1028161"> </a><div class="pCellBody">
+<code class="cCode">boolean</code>
+</div>
+</td>
+    <td><a name="wp1028163"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.</code><code class="cCodeBold">BOOL</code>
+</div>
+</td>
+    <td><a name="wp1028165"> </a><div class="pCellBody">
+boolean
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1028254"> </a><div class="pCellBody">
+<code class="cCode">add</code>
+</div>
+</td>
+    <td><a name="wp1028169"> </a><div class="pCellBody">
+<code class="cCode">float</code>
+</div>
+</td>
+    <td><a name="wp1028271"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.</code><code class="cCodeBold">F32</code>
+</div>
+</td>
+    <td><a name="wp1028173"> </a><div class="pCellBody">
+32-bit floating point
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1028256"> </a><div class="pCellBody">
+<code class="cCode">add</code>
+</div>
+</td>
+    <td><a name="wp1028177"> </a><div class="pCellBody">
+<code class="cCode">double</code>
+</div>
+</td>
+    <td><a name="wp1028179"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.</code><code class="cCodeBold">F64</code>
+</div>
+</td>
+    <td><a name="wp1028181"> </a><div class="pCellBody">
+64-bit floating point
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1028258"> </a><div class="pCellBody">
+<code class="cCode">add</code>
+</div>
+</td>
+    <td><a name="wp1028185"> </a><div class="pCellBody">
+<code class="cCode">byte</code>
+</div>
+</td>
+    <td><a name="wp1028187"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.</code><code class="cCodeBold">I8</code>
+</div>
+</td>
+    <td><a name="wp1028189"> </a><div class="pCellBody">
+8-bit integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1028260"> </a><div class="pCellBody">
+<code class="cCode">add</code>
+</div>
+</td>
+    <td><a name="wp1028193"> </a><div class="pCellBody">
+<code class="cCode">short</code>
+</div>
+</td>
+    <td><a name="wp1028195"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.</code><code class="cCodeBold">I16</code>
+</div>
+</td>
+    <td><a name="wp1028197"> </a><div class="pCellBody">
+16-bit integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1028262"> </a><div class="pCellBody">
+<code class="cCode">add</code>
+</div>
+</td>
+    <td><a name="wp1028201"> </a><div class="pCellBody">
+<code class="cCode">int</code>
+</div>
+</td>
+    <td><a name="wp1028203"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.</code><code class="cCodeBold">I32</code>
+</div>
+</td>
+    <td><a name="wp1028205"> </a><div class="pCellBody">
+32-bit integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1028264"> </a><div class="pCellBody">
+<code class="cCode">add</code>
+</div>
+</td>
+    <td><a name="wp1028209"> </a><div class="pCellBody">
+<code class="cCode">long</code>
+</div>
+</td>
+    <td><a name="wp1028211"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.</code><code class="cCodeBold">I64</code>
+</div>
+</td>
+    <td><a name="wp1028213"> </a><div class="pCellBody">
+64-bit integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1028215"> </a><div class="pCellBody">
+<code class="cCode">add</code><code class="cCodeBold">U8</code>
+</div>
+</td>
+    <td><a name="wp1028217"> </a><div class="pCellBody">
+<code class="cCode">byte</code>
+</div>
+</td>
+    <td><a name="wp1028219"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.</code><code class="cCodeBold">U8</code>
+</div>
+</td>
+    <td><a name="wp1028221"> </a><div class="pCellBody">
+8-bit unsigned integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1028223"> </a><div class="pCellBody">
+<code class="cCode">add</code><code class="cCodeBold">U16</code>
+</div>
+</td>
+    <td><a name="wp1028225"> </a><div class="pCellBody">
+<code class="cCode">short</code>
+</div>
+</td>
+    <td><a name="wp1028227"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.</code><code class="cCodeBold">U16</code>
+</div>
+</td>
+    <td><a name="wp1028229"> </a><div class="pCellBody">
+16-bit unsigned integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1028231"> </a><div class="pCellBody">
+<code class="cCode">add</code><code class="cCodeBold">U32</code>
+</div>
+</td>
+    <td><a name="wp1028233"> </a><div class="pCellBody">
+<code class="cCode">int</code>
+</div>
+</td>
+    <td><a name="wp1028235"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.</code><code class="cCodeBold">U32</code>
+</div>
+</td>
+    <td><a name="wp1028237"> </a><div class="pCellBody">
+32-bit unsigned integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1028239"> </a><div class="pCellBody">
+<code class="cCode">add</code><code class="cCodeBold">U64</code>
+</div>
+</td>
+    <td><a name="wp1028241"> </a><div class="pCellBody">
+<code class="cCode">long</code>
+</div>
+</td>
+    <td><a name="wp1028243"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.</code><code class="cCodeBold">U64</code>
+</div>
+</td>
+    <td><a name="wp1028245"> </a><div class="pCellBody">
+64-bit unsigned integer
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1081133"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1081103"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1081105"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1081112"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1081114"> </a><div class="pCellBody">
+Add a field with this name.
+</div>
+<a name="wp1081115"> </a><div class="pCellBody">
+<code class="cCode">null</code> is a legal name. However, if <code class="cCode">fieldId</code> is non-zero, then <code class="cCode">fieldName</code> must be non-<code class="cCode">null</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1111833"> </a><div class="pCellBody">
+<code class="cCode">data</code>
+</div>
+</td>
+    <td><a name="wp1111835"> </a><div class="pCellBody">
+Add a field with this data value.
+</div>
+<a name="wp1111836"> </a><div class="pCellBody">
+<code class="cCode">null</code> is illegal.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1081117"> </a><div class="pCellBody">
+<code class="cCode">fieldId</code>
+</div>
+</td>
+    <td><a name="wp1081119"> </a><div class="pCellBody">
+Add a field with this identifier. All field identifiers must be unique within each message.
+</div>
+<a name="wp1081120"> </a><div class="pCellBody">
+When absent, add a field without an identifier.
+</div>
+<a name="wp1081121"> </a><div class="pCellBody">
+Zero is a special value, indicating no identifier. It is illegal to add a field that has both a <code class="cCode">null</code> field name, and a non-zero field identifier.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

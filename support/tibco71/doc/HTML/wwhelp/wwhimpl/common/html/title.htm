@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html>
+ <!-- Copyright (c) 2000-2001 Quadralay Corporation.  All rights reserved. -->
+
+ <head>
+  <title>title.htm</title>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    var  WWHFrame = null;
+
+
+    // Set reference to top level help frame
+    //
+    if ((typeof parent.parent.WWHHelp != "undefined") &&
+        (parent.parent.WWHHelp != null))
+    {
+      WWHFrame = eval("parent.parent");
+    }
+    else if ((typeof parent.parent.parent.WWHHelp != "undefined") &&
+             (parent.parent.parent.WWHHelp != null))
+    {
+      WWHFrame = eval("parent.parent.parent");
+    }
+
+
+    function  WWHTitleFrame_HandleLoad()
+    {
+      if ( ! WWHFrame.WWHHelp.mbInitialized)
+      {
+        WWHFrame.WWHHelp.fControlsLoaded();
+      }
+    }
+   // -->
+  </script>
+
+ <style> p {line-height:1.1}</style>
+
+ </head>
+
+ <body bgcolor="#FFFFFF" background="../images/divider.gif" leftmargin="2" rightmargin="2" topmargin="2" bottommargin="0" marginwidth="2" marginheight="2" onLoad="WWHTitleFrame_HandleLoad();">
+
+ <script language="JavaScript1.2">
+ <!--
+
+  document.write("<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n");
+  document.write("  <tr><td>\n");
+  document.write("     <p><font color=\"#DFDFDF\" face=\"Arial, Verdana, Helvetica, sans-serif\" size=\"-3\"><b>");
+  document.write(WWHFrame.WWHContentFrame.WWHDocumentFrame.BookName);
+  document.write("</b></font></p>\n");
+  document.write("  </td></tr>\n");
+  document.write("  <tr><td>\n");
+  document.write("      <p><font color=\"#DFDFDF\" face=\"Arial, Verdana, Helvetica, sans-serif\" size=\"-3\"><b>");
+  document.write(WWHFrame.WWHContentFrame.WWHDocumentFrame.ChapterTitle);
+  document.write("</b></font></p>\n");
+  document.write("  </td></tr>\n");
+  document.write("</table>\n");
+  document.write("</table>\n");
+ 
+ // -->
+ </script>
+
+ </body>
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvCmTransport</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;9	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1084243"> </a><h2 class="pNewHTMLPage">
+TibrvCmTransport
+</h2>
+<hr />
+<a name="wp1088768"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1084247"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1084249"> </a><p class="pBody">
+A certified delivery transport object implements the CM delivery protocol for messages.
+</p>
+<a name="wp1084250"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1084254"> </a><p class="pBody">
+Each certified delivery transport employs a <a  href="rv_com_ref125.htm#wp1123272"><code class="cCode">TibrvTransport</code></a> for network communications. The <a  href="rv_com_ref179.htm#wp1084243"><code class="cCode">TibrvCmTransport</code></a> adds the accounting mechanisms needed for delivery tracking and certified delivery.
+</p>
+<a name="wp1084264"> </a><p class="pBody">
+Several <a  href="rv_com_ref179.htm#wp1084243"><code class="cCode">TibrvCmTransport</code></a> objects can employ a <a  href="rv_com_ref125.htm#wp1123272"><code class="cCode">TibrvTransport</code></a>, which also remains available for its own ordinary listeners and for sending ordinary messages.
+</p>
+<a name="wp1084265"> </a><p class="pBody">
+We recommend that programs explicitly destroy each certified delivery transport object. Destroying a certified delivery transport object invalidates subsequent certified send calls on that object, and invalidates any certified listeners using that transport (while preserving the certified delivery agreements of those listeners).</p><div align="left">
+<table border="1">
+  <caption><a name="wp1145985"> </a><p class="pBody">
+ (Sheet 1 of 3)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1145991"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1145993"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1145995"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1145997"> </a><div class="pMinorHead">
+Life Cycle
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146006"> </a><div class="pCellBody">
+<a  href="rv_com_ref183.htm#wp1145168"><code class="cCode">TibrvCmTransport.create</code></a>
+</div>
+</td>
+    <td><a name="wp1146011"> </a><div class="pCellBody">
+<a  href="rv_com_ref183.htm#wp1145175">Create a transport for certified delivery.</a>
+</div>
+</td>
+    <td><a name="wp1146016"> </a><div class="pCellBody">
+<a  href="rv_com_ref183.htm#wp1145168">239</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146021"> </a><div class="pCellBody">
+<a  href="rv_com_ref184.htm#wp1084655"><code class="cCode">TibrvCmTransport.destroy</code></a>
+</div>
+</td>
+    <td><a name="wp1146026"> </a><div class="pCellBody">
+<a  href="rv_com_ref184.htm#wp1089692">Destroy a certified delivery transport.</a>
+</div>
+</td>
+    <td><a name="wp1146031"> </a><div class="pCellBody">
+<a  href="rv_com_ref184.htm#wp1084655">243</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146036"> </a><div class="pCellBody">
+<a  href="rv_com_ref194.htm#wp1131963"><code class="cCode">TibrvCmTransport.isValid()</code></a>
+</div>
+</td>
+    <td><a name="wp1146038"> </a><div class="pCellBody">
+<a  href="rv_com_ref194.htm#wp1132002">Test validity of a CM transport object.</a>
+</div>
+</td>
+    <td><a name="wp1146043"> </a><div class="pCellBody">
+<a  href="rv_com_ref194.htm#wp1131963">253</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1146054"> </a><div class="pMinorHead">
+Send Messages
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146063"> </a><div class="pCellBody">
+<a  href="rv_com_ref199.htm#wp1085385"><code class="cCode">TibrvCmTransport.send</code></a>
+</div>
+</td>
+    <td><a name="wp1146068"> </a><div class="pCellBody">
+<a  href="rv_com_ref199.htm#wp1085393">Send a labeled message.</a>
+</div>
+</td>
+    <td><a name="wp1146073"> </a><div class="pCellBody">
+<a  href="rv_com_ref199.htm#wp1085385">260</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146078"> </a><div class="pCellBody">
+<a  href="rv_com_ref200.htm#wp1085443"><code class="cCode">TibrvCmTransport.sendReply</code></a>
+</div>
+</td>
+    <td><a name="wp1146080"> </a><div class="pCellBody">
+<a  href="rv_com_ref200.htm#wp1085452">Send a labeled reply message.</a>
+</div>
+</td>
+    <td><a name="wp1146085"> </a><div class="pCellBody">
+<a  href="rv_com_ref200.htm#wp1085443">261</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1146117"> </a><div class="pMinorHead">
+Certified Delivery Control
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146126"> </a><div class="pCellBody">
+<a  href="rv_com_ref180.htm#wp1084281"><code class="cCode">TibrvCmTransport.addListener</code></a>
+</div>
+</td>
+    <td><a name="wp1146128"> </a><div class="pCellBody">
+<a  href="rv_com_ref180.htm#wp1084290">Pre-register an anticipated listener.</a>
+</div>
+</td>
+    <td><a name="wp1146133"> </a><div class="pCellBody">
+<a  href="rv_com_ref180.htm#wp1084281">235</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146147"> </a><div class="pCellBody">
+<a  href="rv_com_ref181.htm#wp1084365"><code class="cCode">TibrvCmTransport.allowListener</code></a>
+</div>
+</td>
+    <td><a name="wp1146149"> </a><div class="pCellBody">
+<a  href="rv_com_ref181.htm#wp1084373">Invite the named receiver to reinstate certified delivery for its listeners, superseding the effect of any previous disallow calls.</a>
+</div>
+</td>
+    <td><a name="wp1146154"> </a><div class="pCellBody">
+<a  href="rv_com_ref181.htm#wp1084365">236</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146168"> </a><div class="pCellBody">
+<a  href="rv_com_ref182.htm#wp1186101"><code class="cCode">TibrvCmTransport.connectToRelayAgent</code></a>
+</div>
+</td>
+    <td><a name="wp1146170"> </a><div class="pCellBody">
+<a  href="rv_com_ref182.htm#wp1084421">Connect a certified delivery transport to its designated relay agent.</a>
+</div>
+</td>
+    <td><a name="wp1146175"> </a><div class="pCellBody">
+<a  href="rv_com_ref182.htm#wp1186101">237</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146189"> </a><div class="pCellBody">
+<a  href="rv_com_ref185.htm#wp1084693"><code class="cCode">TibrvCmTransport.disallowListener</code></a>
+</div>
+</td>
+    <td><a name="wp1146191"> </a><div class="pCellBody">
+<a  href="rv_com_ref185.htm#wp1084701">Cancel certified delivery to all listeners at a specific correspondent. Deny subsequent certified delivery registration requests from those listeners.</a>
+</div>
+</td>
+    <td><a name="wp1146196"> </a><div class="pCellBody">
+<a  href="rv_com_ref185.htm#wp1084693">244</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146210"> </a><div class="pCellBody">
+<a  href="rv_com_ref186.htm#wp1084766"><code class="cCode">TibrvCmTransport.disconnectFromRelayAgent</code></a>
+</div>
+</td>
+    <td><a name="wp1146212"> </a><div class="pCellBody">
+<a  href="rv_com_ref186.htm#wp1089736">Disconnect a certified delivery transport from its relay agent.</a>
+</div>
+</td>
+    <td><a name="wp1146217"> </a><div class="pCellBody">
+<a  href="rv_com_ref186.htm#wp1084766">245</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146231"> </a><div class="pCellBody">
+<a  href="rv_com_ref196.htm#wp1085087"><code class="cCode">TibrvCmTransport.removeListener</code></a>
+</div>
+</td>
+    <td><a name="wp1146233"> </a><div class="pCellBody">
+<a  href="rv_com_ref196.htm#wp1085096">Unregister a specific listener at a specific correspondent, and free associated storage in the sender&#8217;s ledger.</a>
+</div>
+</td>
+    <td><a name="wp1146238"> </a><div class="pCellBody">
+<a  href="rv_com_ref196.htm#wp1085087">256</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1146249"> </a><div class="pMinorHead">
+Ledger
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146279"> </a><div class="pCellBody">
+<a  href="rv_com_ref197.htm#wp1104483"><code class="cCode">TibrvCmTransport.removeSendState</code></a>
+</div>
+</td>
+    <td><a name="wp1146281"> </a><div class="pCellBody">
+<a  href="rv_com_ref197.htm#wp1104490">Reclaim ledger space from obsolete subjects.</a>
+</div>
+</td>
+    <td><a name="wp1146286"> </a><div class="pCellBody">
+<a  href="rv_com_ref197.htm#wp1104483">258</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146300"> </a><div class="pCellBody">
+<a  href="rv_com_ref198.htm#wp1085196"><code class="cCode">TibrvCmTransport.reviewLedger</code></a>
+</div>
+</td>
+    <td><a name="wp1146302"> </a><div class="pCellBody">
+<a  href="rv_com_ref198.htm#wp1085206">Query the ledger for stored items related to a subject name.</a>
+</div>
+</td>
+    <td><a name="wp1146307"> </a><div class="pCellBody">
+<a  href="rv_com_ref198.htm#wp1085196">259</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146573"> </a><div class="pCellBody">
+<a  href="rv_com_ref195.htm#wp1141840"><code class="cCode">TibrvCmTransport_onLedgerMsg</code></a>
+</div>
+</td>
+    <td><a name="wp1146575"> </a><div class="pCellBody">
+<a  href="rv_com_ref195.htm#wp1141846">Programs define this method to process ledger review messages.</a>
+</div>
+</td>
+    <td><a name="wp1146580"> </a><div class="pCellBody">
+<a  href="rv_com_ref195.htm#wp1141840">254</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146531"> </a><div class="pCellBody">
+<a  href="rv_com_ref203.htm#wp1145377"><code class="cCode">TibrvCmTransport.stopReview</code></a>
+</div>
+</td>
+    <td><a name="wp1146533"> </a><div class="pCellBody">
+<a  href="rv_com_ref203.htm#wp1145383">Stop a ledger review.</a>
+</div>
+</td>
+    <td><a name="wp1146538"> </a><div class="pCellBody">
+<a  href="rv_com_ref203.htm#wp1145377">265</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146552"> </a><div class="pCellBody">
+<a  href="rv_com_ref204.htm#wp1085609"><code class="cCode">TibrvCmTransport.syncLedger</code></a>
+</div>
+</td>
+    <td><a name="wp1146554"> </a><div class="pCellBody">
+<a  href="rv_com_ref204.htm#wp1085616">Synchronize the ledger to its storage medium.</a>
+</div>
+</td>
+    <td><a name="wp1146559"> </a><div class="pCellBody">
+<a  href="rv_com_ref204.htm#wp1085609">266</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1146318"> </a><div class="pMinorHead">
+Accessors
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146327"> </a><div class="pCellBody">
+<a  href="rv_com_ref187.htm#wp1150163"><code class="cCode">TibrvCmTransport.getDefaultTimeLimit()</code></a>
+</div>
+</td>
+    <td><a name="wp1146329"> </a><div class="pCellBody">
+<a  href="rv_com_ref187.htm#wp1084835">Get the default message time limit for all outbound certified messages from a transport.</a>
+</div>
+</td>
+    <td><a name="wp1146334"> </a><div class="pCellBody">
+<a  href="rv_com_ref187.htm#wp1150163">246</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146348"> </a><div class="pCellBody">
+<a  href="rv_com_ref188.htm#wp1084868"><code class="cCode">TibrvCmTransport.getLedgerName()</code></a>
+</div>
+</td>
+    <td><a name="wp1146350"> </a><div class="pCellBody">
+<a  href="rv_com_ref188.htm#wp1084876">Extract the ledger name of a certified delivery transport.</a>
+</div>
+</td>
+    <td><a name="wp1146355"> </a><div class="pCellBody">
+<a  href="rv_com_ref188.htm#wp1084868">247</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146369"> </a><div class="pCellBody">
+<a  href="rv_com_ref189.htm#wp1084905"><code class="cCode">TibrvCmTransport.getName()</code></a>
+</div>
+</td>
+    <td><a name="wp1146373"> </a><div class="pCellBody">
+<a  href="rv_com_ref189.htm#wp1132248">Extract the correspondent name of a certified delivery transport or distributed queue member.</a>
+</div>
+</td>
+    <td><a name="wp1146379"> </a><div class="pCellBody">
+<a  href="rv_com_ref189.htm#wp1084905">248</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146384"> </a><div class="pCellBody">
+<a  href="rv_com_ref190.htm#wp1084942"><code class="cCode">TibrvCmTransport.getRelayAgent()</code></a>
+</div>
+</td>
+    <td><a name="wp1146386"> </a><div class="pCellBody">
+<a  href="rv_com_ref190.htm#wp1132390">Extract the name of the relay agent used by a certified delivery transport.</a>
+</div>
+</td>
+    <td><a name="wp1146391"> </a><div class="pCellBody">
+<a  href="rv_com_ref190.htm#wp1084942">249</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146405"> </a><div class="pCellBody">
+<a  href="rv_com_ref191.htm#wp1084979"><code class="cCode">TibrvCmTransport.getRequestOld()</code></a>
+</div>
+</td>
+    <td><a name="wp1146407"> </a><div class="pCellBody">
+<a  href="rv_com_ref191.htm#wp1084987">Extract the request old messages flag of a certified delivery transport.</a>
+</div>
+</td>
+    <td><a name="wp1146412"> </a><div class="pCellBody">
+<a  href="rv_com_ref191.htm#wp1084979">250</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146426"> </a><div class="pCellBody">
+<a  href="rv_com_ref192.htm#wp1085017"><code class="cCode">TibrvCmTransport.getSyncLedger()</code></a>
+</div>
+</td>
+    <td><a name="wp1146428"> </a><div class="pCellBody">
+<a  href="rv_com_ref192.htm#wp1085025">Extract the sync ledger flag of a certified delivery transport.</a>
+</div>
+</td>
+    <td><a name="wp1146433"> </a><div class="pCellBody">
+<a  href="rv_com_ref192.htm#wp1085017">251</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146447"> </a><div class="pCellBody">
+<a  href="rv_com_ref193.htm#wp1085054"><code class="cCode">TibrvCmTransport.getTransport()</code></a>
+</div>
+</td>
+    <td><a name="wp1146449"> </a><div class="pCellBody">
+<a  href="rv_com_ref193.htm#wp1085062">Extract the transport employed by a certified delivery transport or a distributed queue member.</a>
+</div>
+</td>
+    <td><a name="wp1146454"> </a><div class="pCellBody">
+<a  href="rv_com_ref193.htm#wp1085054">252</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1146468"> </a><div class="pCellBody">
+<a  href="rv_com_ref202.htm#wp1085565"><code class="cCode">TibrvCmTransport.setDefaultTimeLimit</code></a>
+</div>
+</td>
+    <td><a name="wp1146470"> </a><div class="pCellBody">
+<a  href="rv_com_ref202.htm#wp1085576">Set the default message time limit for all outbound certified messages from a transport.</a>
+</div>
+</td>
+    <td><a name="wp1146475"> </a><div class="pCellBody">
+<a  href="rv_com_ref202.htm#wp1085565">264</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

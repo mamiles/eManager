@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvMsg_Detach()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;3	 Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1010998"> </a><h2 class="pNewHTMLPage">
+tibrvMsg_Detach()
+</h2>
+<hr />
+<a name="wp1012322"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1086834"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvMsg_Detach</code>(<a name="wp1076476"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;message);<a name="wp1076478"> </a>
+</pre></div>
+<a name="wp1087305"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1011004"> </a><p class="pBody">
+Detach an inbound message from Rendezvous storage; the program assumes responsibility for destroying the message.
+</p>
+<a name="wp1087780"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1011063"> </a><p class="pBody">
+When Rendezvous software creates a message, it owns that message. This situation occurs only in the case of inbound messages presented to a data callback function; Rendezvous software destroys such messages when the callback function returns, unless the program explicitly detaches the message. After a detach operation, the program owns the message, and must explicitly destroy it to reclaim the storage.
+</p>
+<a name="wp1046231"> </a><p class="pBody">
+Programs can use this function to detach either an entire message, or a submessage. After detaching a submessage, the program owns that submessage, even after the destruction of the surrounding parent message.
+</p>
+<a name="wp1069583"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1303989"> </a><p class="pBody">
+Programs may modify messages <em class="cEmphasis">only</em> with functions that add, remove or update fields. It is illegal to <em class="cEmphasis">directly</em> modify data storage in a message field. Detaching a message does not change this restriction. For further information, see <a  href="rv_c_ref19.htm#wp1069005">Do Not Modify Pointer Snapshots</a>, or more generally, <a  href="rv_c_ref19.htm#wp1041091">Validity of Data Extracted From Message Fields</a>.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1011025"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1011018"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1011020"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1011022"> </a><div class="pCellBody">
+<code class="cCode">message</code>
+</div>
+</td>
+    <td><a name="wp1011024"> </a><div class="pCellBody">
+Detach this message.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1088170"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1011029"> </a><p class="pBody">
+<a  href="rv_c_ref39.htm#wp1010184"><code class="cCode">tibrvMsg_Destroy()</code> </a>
+</p>
+<a name="wp1039111"> </a><p class="pBody">
+<a  href="rv_c_ref76.htm#wp1071267"><code class="cCode">tibrvEventCallback</code> </a>
+</p>
+<a name="wp1112225"> </a><p class="pBody">
+<a  href="rv_c_ref176.htm#wp1159633"><code class="cCode">tibrvcmEventCallback</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

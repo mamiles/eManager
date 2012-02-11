@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Chapter&#160;14	Fault Tolerance Programming</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;14	 Fault Tolerance Programming";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1057657"> </a><h2 class="pNewHTMLPageSetChapterTitle">
+Chapter&#160;14	Fault Tolerance Programming
+</h2>
+<hr />
+<a name="wp1057658"> </a><p class="pBody">
+This chapter describes the practical issues that arise when developing and deploying fault-tolerant distributed programs.
+</p>
+<a name="wp1057659"> </a><h4 class="pHeading3">
+Topics
+</h4>
+<div class="pSmartList1"><ul>
+<a name="wp1057663"> </a><div class="pSmartList1"><li ><a  href="rv_concepts141.htm#wp1057747"><em class="cEmphasis">Fault Tolerance Callback Actions</em></a></li></div>
+
+<a name="wp1057667"> </a><div class="pSmartList1"><li ><a  href="rv_concepts142.htm#wp1057801"><em class="cEmphasis">Program Callback Functions</em></a></li></div>
+
+<a name="wp1057671"> </a><div class="pSmartList1"><li ><a  href="rv_concepts143.htm#wp1057852"><em class="cEmphasis">Ensure Timely Event Processing</em></a></li></div>
+
+<a name="wp1057675"> </a><div class="pSmartList1"><li ><a  href="rv_concepts144.htm#wp1057871"><em class="cEmphasis">Multiple Groups</em></a></li></div>
+
+<a name="wp1057679"> </a><div class="pSmartList1"><li ><a  href="rv_concepts145.htm#wp1057994"><em class="cEmphasis">Longest Service Interruption</em></a></li></div>
+
+<a name="wp1057683"> </a><div class="pSmartList1"><li ><a  href="rv_concepts146.htm#wp1058006"><em class="cEmphasis">Minimizing Response Time</em></a></li></div>
+
+<a name="wp1057687"> </a><div class="pSmartList1"><li ><a  href="rv_concepts147.htm#wp1058037"><em class="cEmphasis">Distribute Members</em></a></li></div>
+
+<a name="wp1057691"> </a><div class="pSmartList1"><li ><a  href="rv_concepts148.htm#wp1058047"><em class="cEmphasis">Member File Access</em></a></li></div>
+
+<a name="wp1057695"> </a><div class="pSmartList1"><li ><a  href="rv_concepts149.htm#wp1058061"><em class="cEmphasis">Disabling a Member</em></a></li></div>
+
+<a name="wp1057699"> </a><div class="pSmartList1"><li ><a  href="rv_concepts150.htm#wp1058079"><em class="cEmphasis">Adjusting Member Weights</em></a></li></div>
+
+</ul></div>
+
+<a name="wp1057700"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1057744"> </a><p class="pBody">
+For details of programming in specific languages, see the documents in <a  href="rv_concepts140.htm#wp1070189">Table&#160;36</a>.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1070189"> </a><div class="pTableTitle">
+Table&#160;36   Fault Tolerance&#160;
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1057711"> </a><div class="pCellBody">
+C
+</div>
+</td>
+    <td><a name="wp1057719"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref150.htm#wp1078178');" onMouseOver="WWHShowPopup('e', 'rv_c_ref150.htm#wp1078178', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Fault Tolerance</a> in <em class="cEmphasis">TIBCO Rendezvous C Reference</em>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1057721"> </a><div class="pCellBody">
+C++
+</div>
+</td>
+    <td><a name="wp1072334"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref186.htm#wp1060883');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref186.htm#wp1060883', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Fault Tolerance</a> in <em class="cEmphasis">TIBCO Rendezvous C++ Reference</em>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1057728"> </a><div class="pCellBody">
+Java
+</div>
+</td>
+    <td><a name="wp1057736"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref160.htm#wp1060883');" onMouseOver="WWHShowPopup('g', 'rv_java_ref160.htm#wp1060883', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Fault Tolerance</a> in <em class="cEmphasis">TIBCO Rendezvous Java Reference</em>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1057738"> </a><div class="pCellBody">
+COM
+</div>
+</td>
+    <td><a name="wp1073320"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref145.htm#wp1060883');" onMouseOver="WWHShowPopup('h', 'rv_com_ref145.htm#wp1060883', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Fault Tolerance</a> in <em class="cEmphasis">TIBCO Rendezvous COM Reference</em>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

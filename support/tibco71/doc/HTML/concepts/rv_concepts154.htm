@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Step 3: Plan Program Behavior</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;15	 Developing Fault-Tolerant Programs";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1058206"> </a><h2 class="pNewHTMLPage">
+Step 3: Plan Program Behavior
+</h2>
+<hr />
+<a name="wp1058207"> </a><p class="pBody">
+Consider these issues early in the design phase of your program.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1058211"> </a><div class="pSmartList1"><li ><a  href="rv_concepts154.htm#wp1058237"><em class="cEmphasis">Parallel Data State</em></a>.</li></div>
+
+<a name="wp1058215"> </a><div class="pSmartList1"><li ><a  href="rv_concepts154.htm#wp1058253"><em class="cEmphasis">Continuity&#151;Track Active Backlog</em></a>.</li></div>
+
+<a name="wp1058219"> </a><div class="pSmartList1"><li ><a  href="rv_concepts154.htm#wp1058269"><em class="cEmphasis">Activation</em></a>.</li></div>
+
+<a name="wp1058223"> </a><div class="pSmartList1"><li ><a  href="rv_concepts154.htm#wp1058283"><em class="cEmphasis">Preparing to Activate</em></a>.</li></div>
+
+<a name="wp1058227"> </a><div class="pSmartList1"><li ><a  href="rv_concepts154.htm#wp1058289"><em class="cEmphasis">Deactivation</em></a>.</li></div>
+
+<a name="wp1058231"> </a><div class="pSmartList1"><li ><a  href="rv_concepts154.htm#wp1058293"><em class="cEmphasis">Serve It Once</em></a>.</li></div>
+
+<a name="wp1058235"> </a><div class="pSmartList1"><li ><a  href="rv_concepts154.htm#wp1058300"><em class="cEmphasis">Send it Once</em></a>.</li></div>
+
+</ul></div>
+
+<a name="wp1058237"> </a><h3 class="pHeading2">
+Parallel Data State
+</h3>
+<a name="wp1058238"> </a><p class="pBody">
+An inactive member must be ready to activate in the same data state as the formerly active member it replaces. In some situations data state is irrelevant. In other situations it is straightforward to duplicate the data state either by copying and reading a state file, or by completing a brief computation. However, in some situations the data state is complex, or the result of cumulative operations, so the best way to maintain readiness is to compute a parallel data state while inactive. 
+</p>
+<a name="wp1058240"> </a><h4 class="pHeading3">
+Example: Current Value Cache
+</h4>
+<a name="wp1058241"> </a><p class="pBody">
+The <code class="cCode">rvcache</code> utility stores the most recent message for each subject name. Whenever a program queries for a cached subject, <code class="cCode">rvcache</code> sends the program the current data corresponding to that subject. (For a more information, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm80.htm#wp1024412');" onMouseOver="WWHShowPopup('c', 'rv_adm80.htm#wp1024412', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Current Value Cache</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.)
+</p>
+<a name="wp1058248"> </a><p class="pBody">
+Two or more <code class="cCode">rvcache</code> processes can cooperate for fault-tolerant operation, with only one active process. All member processes (whether active or inactive) passively collect and store the same data&#151;but only the active process responds by sending the current data when a program sends a query. Every inactive member always has all the cached data it needs to begin active duty; the data state of each inactive member is parallel to that of the active member.
+</p>
+<a name="wp1058249"> </a><p class="pBody">
+Notice that in this application the inactive members are far from idle; they collect and store data just like the active member.
+</p>
+<a name="wp1058250"> </a><p class="pBody">
+Furthermore, when starting a new <code class="cCode">rvcache</code> process, the administrator can copy the store file from another fault-tolerant member, in order to initialize its database to contain the same data as existing member processes.
+</p>
+<a name="wp1058253"> </a><h3 class="pHeading2">
+Continuity&#151;Track Active Backlog
+</h3>
+<a name="wp1058254"> </a><p class="pBody">
+Some applications depend on a continuous stream of data. They must receive all the data&#151;even if they receive it late. For the programs that produce that data, it is essential to maintain continuity of the outbound data stream.
+</p>
+<a name="wp1058258"> </a><p class="pBody">
+Although Rendezvous fault tolerance software quickly restores service, a finite service interruption always exists between the failure of an active member and the activation of an inactive member. When continuity is essential, it is the responsibility of the inactive members to maintain continuity across the service interruption.
+</p>
+<a name="wp1058259"> </a><p class="pBody">
+Inactive members maintain continuity by tracking the <em class="cEmphasis">backlog</em> from the active member. That is, the inactive member retains enough information to reproduce the expected output of the active member during the longest service interruption. When it activates, it produces that backlog output before processing any new data. Although the backlog output is delayed, no holes appear in the output stream.
+</p>
+<a name="wp1058261"> </a><h4 class="pHeading3">
+Example: Data Distribution
+</h4>
+<a name="wp1058262"> </a><p class="pBody">
+Many enterprises require access to prodigious amounts of data, which must flow to decision makers in a timely fashion, without interruption. Many organizations use data distribution software that receives data from a serial port, processes it, and broadcasts it across a network to numerous computer workstations.
+</p>
+<a name="wp1058263"> </a><p class="pBody">
+To ensure continuous service, data distribution software can operate in fault tolerance pairs, with one active member and one inactive member. Each member receives the same data, and each member processes the data, but only the active member broadcasts the data.
+</p>
+<a name="wp1058264"> </a><p class="pBody">
+Once the active member has broadcast a data item, it can discard that data item.
+</p>
+<a name="wp1058265"> </a><p class="pBody">
+However, the inactive member must hold the data until it receives the corresponding broadcast item from the active member. To see why, consider the service interruption between the time that the active member fails and the time that the inactive member activates. During the service interruption data continues to arrive, but neither member is broadcasting that data. When the inactive member activates, it must broadcast that backlog data&#151;filling the gap in the data stream. To support this behavior, the inactive member can discard a data item only after confirming that the active member has broadcast it.
+</p>
+<a name="wp1058266"> </a><p class="pBody">
+Notice that in this application the inactive member does work that the active member does not do; in addition to processing the same set of data items, the inactive member must also retain data, and discard it only at the proper time.
+</p>
+<a name="wp1058269"> </a><h3 class="pHeading2">
+Activation
+</h3>
+<a name="wp1058270"> </a><p class="pBody">
+Consider the actions that your program does to switch from inactive to active.
+</p>
+<a name="wp1058271"> </a><p class="pBody">
+In some programs the state change in the callback function is as straightforward as toggling a flag; functions throughout program code can branch on the flag to determine inactive or active behavior. Other programs must open data files, open communication lines, allocate resources, begin listening to Rendezvous subjects, or set timers to trigger computations.
+</p>
+<a name="wp1058275"> </a><p class="pBody">
+Remember, each step delays activation. Whenever resources permit, we recommend minimizing the steps that wait until activation time; taking these steps at start time results in quicker activation.
+</p>
+<a name="wp1058278"> </a><p class="pBody">
+If the program must maintain continuity after a service interruption, see <a  href="rv_concepts154.htm#wp1058253">Continuity&#151;Track Active Backlog</a>.
+</p>
+<a name="wp1058280"> </a><p class="pBody">
+Arrange for any needed transition steps in the program&#8217;s fault tolerance callback function.
+</p>
+<a name="wp1058283"> </a><h3 class="pHeading2">
+Preparing to Activate
+</h3>
+<a name="wp1058284"> </a><p class="pBody">
+Consider whether any of the activation steps are time-consuming. For example, delays are common when opening an ISDN line or opening a database connection.
+</p>
+<a name="wp1058285"> </a><p class="pBody">
+If such steps might cause unacceptable delays when the program activates, consider separating those preparations from the actual activation sequence. Instead, do them when the fault tolerance callback function receives a prepare-to-activate hint.
+</p>
+<a name="wp1058286"> </a><p class="pBody">
+Consider setting a duration limit for preparations. For example, if the program allocates a large block of storage when preparing to activate, set a timer to expire after two or three activation intervals. If the timer expires before an actual instruction to activate, then deallocate the storage. If the call to activate arrives first, cancel the timer.
+</p>
+<a name="wp1058289"> </a><h3 class="pHeading2">
+Deactivation
+</h3>
+<a name="wp1058290"> </a><p class="pBody">
+Consider the actions that the program does to deactivate. Usually these actions reverse the activation steps, but in some applications it might be more expedient to retain resources (anticipating the need to reactivate).
+</p>
+<a name="wp1058291"> </a><p class="pBody">
+Arrange for any needed transition steps in the program&#8217;s fault tolerance callback function.
+</p>
+<a name="wp1058293"> </a><h3 class="pHeading2">
+Serve It Once
+</h3>
+<a name="wp1058294"> </a><p class="pBody">
+For request server applications, ensure that each request receives service from only one active member. Duplicate service wastes server resources, and could result in incorrect behavior.
+</p>
+<a name="wp1058295"> </a><p class="pBody">
+Consider whether distributed queues might be a better fit for such applications. See <a  href="rv_concepts117.htm#wp1056801">Distributed Queue</a>.
+</p>
+<a name="wp1058300"> </a><h3 class="pHeading2">
+Send it Once
+</h3>
+<a name="wp1058301"> </a><p class="pBody">
+For broadcast producer applications, ensure that members of a fault tolerance group cooperate to send each data item only once. If several processes are can be active simultaneously, they must not send duplicate data.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvQueue.dispatch()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1037052"> </a><h2 class="pNewHTMLPage">
+TibrvQueue.dispatch()
+</h2>
+<hr />
+<a name="wp1037053"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1037055"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+void <code class="cCodeBold">dispatch</code>()<a name="wp1037084"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a>, java.lang.InterruptedException<a name="wp1037085"> </a>
+</pre></div>
+<a name="wp1037057"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1037128"> </a><p class="pBody">
+Dispatch an event; if no event is ready, block.
+</p>
+<a name="wp1037059"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1037132"> </a><p class="pBody">
+If the queue is not empty, then this call dispatches the event at the head of the queue, and then returns. If the queue is empty, then this call blocks indefinitely while waiting for the queue to receive an event.
+</p>
+<a name="wp1110033"> </a><h4 class="pHeading3">
+Interrupting a Dispatch Call
+</h4>
+<a name="wp1110036"> </a><p class="pBody">
+To interrupt an event dispatch thread in the Java implementation (see <a  href="rv_java_ref21.htm#wp1020167"><code class="cCode">Tibrv.open()</code> </a>), use the Java method <code class="cCode">Thread.interrupt()</code>.
+</p>
+<a name="wp1110934"> </a><p class="pBody">
+In the JNI (native) implementation, this call does not throw InterruptedException; instead, programs must explicitly check for interruptions by calling <code class="cCode">Thread.interrupted()</code> before or after <a  href="rv_java_ref101.htm#wp1037052"><code class="cCode">TibrvQueue.dispatch()</code></a>. 
+</p>
+<a name="wp1110074"> </a><p class="pBody">
+The more reliable way to interrupt a JNI event dispatch thread is to destroy the <a  href="rv_java_ref94.htm#wp1059389"><code class="cCode">TibrvDispatchable</code></a> object that the thread dispatches. When the dispatch call encounters the invalid queue or queue group, it throws a <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a> in the event dispatch thread.
+</p>
+<a name="wp1037071"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1081336"> </a><p class="pBody">
+<a  href="rv_java_ref4.htm#wp1107485">Interrupting Event Dispatch Threads</a>
+</p>
+<a name="wp1060004"> </a><p class="pBody">
+<a  href="rv_java_ref94.htm#wp1059389"><code class="cCode">TibrvDispatchable</code> </a>
+</p>
+<a name="wp1060008"> </a><p class="pBody">
+<a  href="rv_java_ref95.htm#wp1059689"><code class="cCode">TibrvDispatchable.dispatch()</code> </a>
+</p>
+<a name="wp1037375"> </a><p class="pBody">
+<a  href="rv_java_ref110.htm#wp1037260"><code class="cCode">TibrvQueue.poll()</code> </a>
+</p>
+<a name="wp1037379"> </a><p class="pBody">
+<a  href="rv_java_ref114.htm#wp1037150"><code class="cCode">TibrvQueue.timedDispatch()</code> </a>
+</p>
+<a name="wp1110091"> </a><p class="pBody">
+<a  href="rv_java_ref127.htm#wp1105035"><code class="cCode">TibrvDispatcher</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

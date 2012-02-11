@@ -1,0 +1,1058 @@
+
+(object Petal
+    version    	47
+    _written   	"Rose 8.0.0303.1400"
+    charSet    	0)
+
+(object SubSystem "common"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"3F4E5C1B02F0"
+    physical_models 	(list unit_reference_list
+	(object SubSystem "event"
+	    is_unit    	TRUE
+	    is_loaded  	FALSE
+	    file_name  	"$CURDIR\\com_cisco_eManager_common_event.sub"
+	    quid       	"3F4E5C1B02FA")
+	(object SubSystem "inventory"
+	    quid       	"3F561DF5011A"
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F60C594019B"
+		    supplier   	"Component View::java::util"
+		    quidu      	"3E400BC001EB"
+		    supplier_is_subsystem 	TRUE))
+	    physical_models 	(list unit_reference_list
+		(object module "Agent" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\Agent.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F561E30017A"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "AppInstance" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\AppInstance.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F561E300333"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "AppType" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\AppType.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F561E3003C9"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Instrumentation" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\Instrumentation.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F561E310009"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "InventoryManager" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\InventoryManager.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F561E3100C7"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F68A00701BF"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE))
+		    language   	"Java")
+		(object module "ManagedObjectId" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\ManagedObjectId.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F561E310172"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "MgmtPolicy" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\MgmtPolicy.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F561E3101D6"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "ViewContainer" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\ViewContainer.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F561E310230"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "MyInventoryManager" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\MyInventoryManager.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F60C5980042"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F61F2D50398"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE))
+		    language   	"Java")
+		(object module "AppInstanceMgmtMode" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\AppInstanceMgmtMode.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F622232032F"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Transport" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\Transport.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F62273002B5"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "ViewId" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\ViewId.java")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"$SRC")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3F68922D0382"
+		    stereotype 	""
+		    language   	"Java")
+		(object SubSystem "skels"
+		    quid       	"3F60C5A400E0"
+		    physical_models 	(list unit_reference_list
+			(object module "Agent" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels\\Agent.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C5A40389"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "AppInstance" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels\\AppInstance.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C5B502F8"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "AppType" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels\\AppType.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C5C100B0"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "Instrumentation" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels\\Instrumentation.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C5D300C1"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "InventoryManager" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels\\InventoryManager.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C5E102F2"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "ManagedObjectKey" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels\\ManagedObjectKey.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C5E50149"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "ViewContainer" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels\\ViewContainer.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C5EB02E2"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "MgmtPolicy" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels\\MgmtPolicy.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C5F30095"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "InventoryManagerService" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels\\InventoryManagerService.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C5F4012D"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "InventoryManagerServiceLocator" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels\\InventoryManagerServiceLocator.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C5F701C7"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "InventoryManagerSoapBindingImpl" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels\\InventoryManagerSoapBindingImpl.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C6030157"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "InventoryManagerSoapBindingStub" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels\\InventoryManagerSoapBindingStub.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C6120018"
+			    stereotype 	""
+			    language   	"Java"))
+		    physical_presentations 	(list unit_reference_list))
+		(object SubSystem "skels2"
+		    quid       	"3F60C63A0157"
+		    physical_models 	(list unit_reference_list
+			(object module "Agent" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels2\\Agent.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C63A0161"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "AppInstance" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels2\\AppInstance.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C64F039C"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "AppType" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels2\\AppType.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C65B0015"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "Instrumentation" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels2\\Instrumentation.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C66700A8"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "InventoryManager" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels2\\InventoryManager.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C66F0385"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "ManagedObjectKey" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels2\\ManagedObjectKey.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C6710067"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "ViewContainer" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels2\\ViewContainer.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C6720375"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "MgmtPolicy" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels2\\MgmtPolicy.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C6760140"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "InventoryManagerService" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels2\\InventoryManagerService.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C6770250"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "InventoryManagerServiceLocator" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels2\\InventoryManagerServiceLocator.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C679036C"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "InventoryManagerSoapBindingImpl" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels2\\InventoryManagerSoapBindingImpl.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C67F018A"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "InventoryManagerSoapBindingStub" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\skels2\\InventoryManagerSoapBindingStub.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C68500B6"
+			    stereotype 	""
+			    language   	"Java"))
+		    physical_presentations 	(list unit_reference_list))
+		(object SubSystem "stubs"
+		    quid       	"3F60C6A003D7"
+		    physical_models 	(list unit_reference_list
+			(object module "Agent" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\stubs\\Agent.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C6A10003"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "AppInstance" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\stubs\\AppInstance.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C6AD0000"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "AppType" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\stubs\\AppType.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C6B60298"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "Instrumentation" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\stubs\\Instrumentation.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C6C10045"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "InventoryManager" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\stubs\\InventoryManager.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C6C9026E"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "ManagedObjectKey" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\stubs\\ManagedObjectKey.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C6CA02A1"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "ViewContainer" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\stubs\\ViewContainer.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C6CD0043"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "MgmtPolicy" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\stubs\\MgmtPolicy.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C6CF0190"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "InventoryManagerService" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\stubs\\InventoryManagerService.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C6D001BA"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "InventoryManagerServiceLocator" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\stubs\\InventoryManagerServiceLocator.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C6D20162"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "InventoryManagerSoapBindingStub" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"$SRC\\com\\cisco\\eManager\\common\\inventory\\stubs\\InventoryManagerSoapBindingStub.java")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"$SRC")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F60C6D70156"
+			    stereotype 	""
+			    language   	"Java"))
+		    physical_presentations 	(list unit_reference_list)))
+	    physical_presentations 	(list unit_reference_list))
+	(object SubSystem "util"
+	    quid       	"3F872BD202C3"
+	    physical_models 	(list unit_reference_list
+		(object module "AppInstanceRegistrationMsg" "NotAModuleType" "NotAModulePart"
+		    quid       	"3F872BD30207"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "AppInstanceReRegistrationMsg" "NotAModuleType" "NotAModulePart"
+		    quid       	"3F872BD801B4"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "AppInstanceDeregistrationMsg" "NotAModuleType" "NotAModulePart"
+		    quid       	"3F872BDC0318"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "SolutionRegistrationMsg" "NotAModuleType" "NotAModulePart"
+		    quid       	"3F872BE301C4"
+		    stereotype 	""
+		    language   	"Java"))
+	    physical_presentations 	(list unit_reference_list)))
+    physical_presentations 	(list unit_reference_list))

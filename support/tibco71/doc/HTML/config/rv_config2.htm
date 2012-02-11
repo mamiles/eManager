@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>Scope of the Tools</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;1	 Overview";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1949266"> </a><h2 class="pNewHTMLPage">
+Scope of the Tools
+</h2>
+<hr />
+<a name="wp1949270"> </a><p class="pBody">
+The Rendezvous configuration tools set consists of three parts:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1949271"> </a><div class="pSmartList1"><li >An API for coding configuration programs.</li></div>
+
+<a name="wp1949272"> </a><div class="pSmartList1"><li >A general configuration tool.</li></div>
+
+<a name="wp1949273"> </a><div class="pSmartList1"><li >An XML syntax for configuration data.</li></div>
+
+</ul></div>
+
+<a name="wp1949274"> </a><h3 class="pHeading2">
+Configuration API
+</h3>
+<a name="wp1949278"> </a><p class="pBody">
+The Rendezvous configuration API consists of a set of Java classes. You can use these classes and their methods to write programs that configure or examine Rendezvous daemons (and other component processes). This book presents the API in depth.
+</p>
+<a name="wp1949282"> </a><p class="pBody">
+The methods can get parameters, set parameters, and get state information&#151;the same set of operations that you do using the daemon&#8217;s browser administration interface.
+</p>
+<a name="wp1949283"> </a><p class="pBody">
+Using Java programs for these operations can speed the distribution of administrative changes to a large number of daemon processes.
+</p>
+<a name="wp2038726"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp2038725"> </a><div class="pCellBody">
+Interacting with a daemon too frequently can degrade the daemon&#8217;s performance (for example, repeatedly polling for statistical information). Use immediate-access methods conservatively.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1949284"> </a><h3 class="pHeading2">
+Command Line Tool
+</h3>
+<a name="wp1971769"> </a><p class="pBody">
+Using the configuration API, we have implemented a command line tool for general use. <a  href="rv_config272.htm#wp1964131"><code class="cCode">tibrvcfg</code></a> interacts with a component to execute one configuration command, and outputs the results to <code class="cCode">stdio</code>.
+</p>
+<a name="wp2020146"> </a><p class="pBody">
+You can use <a  href="rv_config272.htm#wp1964131"><code class="cCode">tibrvcfg</code></a> to dump an XML configuration document reflecting the configuration of a Rendezvous component process. Other commands can load an XML document, so a component conforms to the configuration it specifies.
+</p>
+<a name="wp1949298"> </a><p class="pBody">
+For details, see <a  href="rv_config269.htm#wp1964054">Command Line Tool&#151;tibrvcfg</a>.
+</p>
+<a name="wp1949299"> </a><h3 class="pHeading2">
+XML
+</h3>
+<a name="wp1949303"> </a><p class="pBody">
+DTD files define the syntax of XML configuration documents for Rendezvous components. These definitions guide the command line tools to produce and parse correct XML documents.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

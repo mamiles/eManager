@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>rvsd</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;6	 Secure Daemons (rvsd and rvsrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1142406"> </a><h2 class="pNewHTMLPage">
+rvsd
+</h2>
+<hr />
+<a name="wp1144618"> </a><p class="pSyntaxType">
+Command
+</p>
+<a name="wp1144619"> </a><h4 class="pHeading3">
+Syntax
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+rvsd&#160;&#160;-store <code class="cCodeItalic">&lt;filename&gt;</code><a name="wp1145504"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;[-http [<code class="cCodeItalic">&lt;ip_address&gt;</code><code class="cCode">:]</code><code class="cCodeItalic">&lt;http_port&gt;</code>]<a name="wp1178371"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;[-https [<code class="cCodeItalic">&lt;ip_address&gt;</code><code class="cCode">:]</code><code class="cCodeItalic">&lt;https_port&gt;</code>]<a name="wp1145500"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;[-http-only]<a name="wp1178375"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;[-no-http]<a name="wp1144621"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;[-listen <code class="cCode">[</code><code class="cCodeItalic">&lt;ip_address&gt;</code><code class="cCode">:]</code><code class="cCodeItalic">&lt;tcp_port&gt;</code>]<a name="wp1144622"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;[-reliability </code><code class="cCodeItalic">&lt;time&gt;</code><code class="cCode">]</code><a name="wp1144624"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;[-logfile </code><code class="cCodeItalic">&lt;log_filename&gt;</code><code class="cCode">]</code><a name="wp1144625"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;[-foreground]<a name="wp1144626"> </a>
+</pre></div>
+<a name="wp1144627"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1144634"> </a><p class="pBody">
+The command <code class="cCode">rvsd</code> starts the Rendezvous secure communications daemon process&#151;the secure counterpart to <a  href="rv_adm20.htm#wp1020072"><code class="cCode">rvd</code></a>.
+</p>
+<a name="wp1144638"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1144642"> </a><p class="pBody">
+This section describes only those aspects where <code class="cCode">rvsd</code> differs from <a  href="rv_adm20.htm#wp1020072"><code class="cCode">rvd</code></a>. For details that both daemons share, see <a  href="rv_adm20.htm#wp1020072"><code class="cCode">rvd</code> </a>.
+</p>
+<a name="wp1145398"> </a><p class="pBody">
+Although <code class="cCode">rvd</code> usually starts automatically, administrators must start <code class="cCode">rvsd</code> by explicit command.
+</p>
+<a name="wp1178897"> </a><h4 class="pHeading3">
+Command Line Parameters
+</h4>
+<a name="wp1178977"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1178906"> </a><p class="pBody">
+ (Sheet 1 of 3)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1178910"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1178912"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1178914"> </a><div class="pCellBody">
+<code class="cCode">-store </code><code class="cCodeItalic">&lt;filename&gt;</code>
+</div>
+</td>
+    <td><a name="wp1178916"> </a><div class="pCellBody">
+This file contains the security parameters that configure <code class="cCode">rvsd</code>.
+</div>
+<a name="wp1178917"> </a><div class="pCellBody">
+<code class="cCode">rvsd</code> reads this file when the process starts, and writes this file each time you change the configuration using the browser administration interface.
+</div>
+<a name="wp1242376"> </a><div class="pCellBody">
+The secure daemon store file contains very sensitive information. Store it on the local file system of the secure daemon&#8217;s host computer, with tight file access, in a physically secure environment. Ensure timely backup to secure media.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1178919"> </a><div class="pCellBody">
+<code class="cCode">-http </code><code class="cCodeItalic">&lt;ip_address&gt;</code><code class="cCode">:</code><code class="cCodeItalic">&lt;http_port&gt;</code>
+</div>
+<a name="wp1178920"> </a><div class="pCellBody">
+<code class="cCode">-http </code><code class="cCodeItalic">&lt;http_port&gt;</code>
+</div>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;<a name="wp1178921"> </a>
+</pre></div>
+<a name="wp1178922"> </a><div class="pCellBody">
+<code class="cCode">-https </code><code class="cCodeItalic">&lt;ip_address&gt;</code><code class="cCode">:</code><code class="cCodeItalic">&lt;https_port&gt;</code>
+</div>
+<a name="wp1178923"> </a><div class="pCellBody">
+<code class="cCode">-https </code><code class="cCodeItalic">&lt;https_port&gt;</code>
+</div>
+</td>
+    <td><a name="wp1178925"> </a><div class="pCellBody">
+The browser administration interface accepts connections on this HTTP or HTTPS port. Permit administration access only through the network interface specified by this IP address.
+</div>
+<a name="wp1178926"> </a><div class="pCellBody">
+To limit access to a browser on the <code class="cCode">rvsd</code> host computer, specify <code class="cCode">127.0.0.1</code> (the local host address).
+</div>
+<a name="wp1178927"> </a><div class="pCellBody">
+When the IP address is absent, the daemon accepts connections through any network interface on the specified HTTP or HTTPS port.
+</div>
+<a name="wp1178928"> </a><div class="pCellBody">
+If the explicitly specified port is already occupied, the program exits.
+</div>
+<a name="wp1178929"> </a><div class="pCellBody">
+When the <code class="cCode">-http</code> parameter is entirely absent, the default behavior is to accept connections from any computer on HTTP port <code class="cCode">7580</code>; If this default port is unavailable, the operating system assigns an ephemeral port number.
+</div>
+<a name="wp1178930"> </a><div class="pCellBody">
+When the <code class="cCode">-https</code> parameter is entirely absent, the default behavior is to accept secure connections from any computer on an ephemeral HTTPS port.
+</div>
+<a name="wp1178931"> </a><div class="pCellBody">
+In all cases, the program prints (in its start banner) the actual HTTP and HTTPS ports where it accepts browser administration interface connections.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1178933"> </a><div class="pCellBody">
+<code class="cCode">-http-only</code>
+</div>
+</td>
+    <td><a name="wp1178935"> </a><div class="pCellBody">
+Disable HTTPS (secure) connections, leaving only an HTTP (non-secure) connection.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1178937"> </a><div class="pCellBody">
+<code class="cCode">-no-http</code>
+</div>
+</td>
+    <td><a name="wp1178939"> </a><div class="pCellBody">
+Disable <em class="cEmphasis">all</em> HTTP and HTTPS connections, overriding <code class="cCode">-http</code> and <code class="cCode">-https</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1178941"> </a><div class="pCellBody">
+<code class="cCode">-listen </code><code class="cCodeItalic">&lt;ip_address&gt;</code><code class="cCode">:</code><code class="cCodeItalic">&lt;ssl_port&gt;</code>
+</div>
+<a name="wp1178942"> </a><div class="pCellBody">
+<code class="cCode">-listen </code><code class="cCodeItalic">&lt;ssl_port&gt;</code>
+</div>
+</td>
+    <td><a name="wp1178944"> </a><div class="pCellBody">
+<code class="cCode">rvsd</code> (and by extension, <code class="cCode">rvsrd</code> operating within the local network) opens an SSL client socket to establish communication between itself and its client programs. The <code class="cCode">-listen</code> parameter specifies the SSL port where the Rendezvous daemon listens for connection requests from client programs. This <code class="cCode">-listen</code> parameter of the secure daemon corresponds to the <code class="cCode">daemon</code> parameter of the transport creation call (they must specify the same SSL port number).
+</div>
+<a name="wp1178948"> </a><div class="pCellBody">
+The IP address specifies the network interface through which this daemon accepts SSL connections.
+</div>
+<a name="wp1178949"> </a><div class="pCellBody">
+To bar connections from remote programs, specify IP address <code class="cCode">127.0.0.1</code> (the loopback interface).
+</div>
+<a name="wp1178950"> </a><div class="pCellBody">
+When the IP address is absent, the daemon accepts connections from any computer on the specified SSL port.
+</div>
+<a name="wp1178951"> </a><div class="pCellBody">
+When this parameter is entirely absent, the default behavior is to accept connections from any computer on SSL port 7500.
+</div>
+<a name="wp1178952"> </a><div class="pCellBody">
+For more detail about the choreography that establishes conduits, see <a  href="rv_adm17.htm#wp1019451">Daemon Client Socket&#151;Establishing Connections</a>.
+</div>
+<img src="images/warning.gif" border="0" /><a name="wp1178957"> </a><div class="pCellBody">
+This parameter does <em class="cEmphasis">not</em> correspond to the <code class="cCode">service</code> parameter of the transport creation call&#151;but rather to the <code class="cCode">daemon</code> parameter.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1178959"> </a><div class="pCellBody">
+<code class="cCode">-reliability </code><code class="cCodeItalic">&lt;time&gt;</code>
+</div>
+</td>
+    <td colspan="1" rowspan="3"><a name="wp1178964"> </a><div class="pCellBody">
+These parameters are the same as for <a  href="rv_adm20.htm#wp1020072"><code class="cCode">rvd</code></a>.
+</div>
+<a name="wp1178968"> </a><div class="pCellBody">
+For details, see <a  href="rv_adm20.htm#wp1080895">Command Line Parameters</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1178970"> </a><div class="pCellBody">
+<code class="cCode">-logfile </code><code class="cCodeItalic">&lt;log_filename&gt;</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1178974"> </a><div class="pCellBody">
+<code class="cCode">-foreground</code>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

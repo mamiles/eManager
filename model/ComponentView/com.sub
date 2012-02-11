@@ -1,0 +1,1910 @@
+
+(object Petal
+    version    	47
+    _written   	"Rose 8.0.0303.1400"
+    charSet    	0)
+
+(object SubSystem "com"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"3F0C28C902E7"
+    physical_models 	(list unit_reference_list
+	(object SubSystem "cisco"
+	    is_unit    	TRUE
+	    is_loaded  	FALSE
+	    file_name  	"$CURDIR\\com_cisco.sub"
+	    quid       	"3F0C28FC0197")
+	(object SubSystem "sun"
+	    quid       	"3F0DC17A0192"
+	    physical_models 	(list unit_reference_list
+		(object SubSystem "net"
+		    quid       	"3F0DC17A019C"
+		    physical_models 	(list unit_reference_list
+			(object SubSystem "ssl"
+			    quid       	"3F0DC17A01A6"
+			    physical_models 	(list unit_reference_list
+				(object module "SSLContext" "NotAModuleType" "NotAModulePart"
+				    quid       	"3F0DC17A01B0"
+				    stereotype 	""
+				    language   	"Java")
+				(object module "X509TrustManager" "NotAModuleType" "NotAModulePart"
+				    quid       	"3F0DC23301A7"
+				    stereotype 	""
+				    language   	"Java"))
+			    physical_presentations 	(list unit_reference_list)))
+		    physical_presentations 	(list unit_reference_list)))
+	    physical_presentations 	(list unit_reference_list))
+	(object SubSystem "sybase"
+	    quid       	"3F0F2ACD0195"
+	    physical_models 	(list unit_reference_list
+		(object SubSystem "jdbcx"
+		    quid       	"3F0F2ACE0128"
+		    physical_models 	(list unit_reference_list
+			(object module "SybDriver" "NotAModuleType" "NotAModulePart"
+			    quid       	"3F0F2ACE0236"
+			    stereotype 	""
+			    language   	"Java"))
+		    physical_presentations 	(list unit_reference_list))
+		(object SubSystem "jdbc2"
+		    quid       	"3F0F2AE60136"
+		    physical_models 	(list unit_reference_list
+			(object SubSystem "jdbc"
+			    quid       	"3F0F2AE6038F"
+			    physical_models 	(list unit_reference_list
+				(object module "SybConnectionPoolDataSource" "NotAModuleType" "NotAModulePart"
+				    quid       	"3F0F2AE700AC"
+				    stereotype 	""
+				    language   	"Java"))
+			    physical_presentations 	(list unit_reference_list)))
+		    physical_presentations 	(list unit_reference_list)))
+	    physical_presentations 	(list unit_reference_list))
+	(object SubSystem "tibco"
+	    quid       	"3F5A778102EA"
+	    physical_models 	(list unit_reference_list
+		(object SubSystem "tibrv"
+		    quid       	"3F5A778102F4"
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3F5A7B2D0019"
+			    supplier   	"Component View::java::lang"
+			    quidu      	"3E400BBB015B"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F5A80EF019F"
+			    supplier   	"Component View::java::net"
+			    quidu      	"3E400BBC0394"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3F5A818500FD"
+			    supplier   	"Component View::java::io"
+			    quidu      	"3E400BBB02C0"
+			    supplier_is_subsystem 	TRUE))
+		    physical_models 	(list unit_reference_list
+			(object module "Tibrv" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\Tibrv.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A778102FE"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A77970396"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvQueue"
+				    quidu      	"3F5A778200F7"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A779703B4"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvProcessTransport"
+				    quidu      	"3F5A77830257"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A779703C8"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvImpl"
+				    quidu      	"3F5A778403D5"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A779703E6"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvErrorCallback"
+				    quidu      	"3F5A77860305"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvQueue" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvQueue.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A778200F7"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A79290310"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvImplQueue"
+				    quidu      	"3F5A790D000C"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvProcessTransport" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvProcessTransport.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A77830257"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvImpl" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImpl.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A778403D5"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvErrorCallback" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvErrorCallback.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A77860305"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvException" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvException.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A77880113"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7B2D001A"
+				    supplier   	"Component View::java::lang::Throwable"
+				    quidu      	"3E400BC301E6"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvMsg" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvMsg.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A77BA0080"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvMsgEncoder" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvMsgEncoder.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A77CC01F9"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvMsgDecoder" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvMsgDecoder.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A77CC0235"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvMsgField" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvMsgField.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A77DD02F8"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvImplMsgBuffer" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplMsgBuffer.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A787702B6"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvXml" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvXml.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A788702EC"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvDate" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvDate.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A789100D4"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvEncrypted" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvEncrypted.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A78A90241"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "tibrvj_id" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\tibrvj_id.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A78BF0030"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvTimer" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvTimer.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A78D00342"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvDispatcher" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvDispatcher.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A78D4013F"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7D37025F"
+				    supplier   	"Component View::java::lang::ThreadGroup"
+				    quidu      	"3E400BBB0252"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7D37027D"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvDispatchable"
+				    quidu      	"3F5A790B0230"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvTransport" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvTransport.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A78E30001"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7B170360"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvImplTPort"
+				    quidu      	"3F5A7A2300A8"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvEvent" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvEvent.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A78E30051"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A796203A9"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvQueue"
+				    quidu      	"3F5A778200F7"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvCmMsg" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvCmMsg.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A78EC037F"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvDispatchable" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvDispatchable.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A790B0230"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvImplQueue" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplQueue.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A790D000C"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvQueueGroup" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvQueueGroup.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A792702EF"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7CC403DE"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvImplQGroup"
+				    quidu      	"3F5A7C750194"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvImplEvtData" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplEvtData.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A79270371"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7EBA034A"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvEvent"
+				    quidu      	"3F5A78E30051"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvImplC" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplC.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A792C03BF"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvImplJ" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplJ.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A79720140"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A797F0012"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvImplTimerRun"
+				    quidu      	"3F5A797400CB"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvImplTimerRun" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplTimerRun.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A797400CB"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A806701FB"
+				    supplier   	"Component View::java::lang::Thread"
+				    quidu      	"3E400BBB015C"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A80670219"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvTimer"
+				    quidu      	"3F5A78D00342"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvTimerCallback" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvTimerCallback.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A798402CD"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvStatus" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvStatus.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A798A014F"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvIPPort" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvIPPort.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A798E02B3"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvIPAddr" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvIPAddr.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A799102F4"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvFtMember" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvFtMember.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A79A70219"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A79B2008F"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvTransport"
+				    quidu      	"3F5A78E30001"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvFtMemberCallback" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvFtMemberCallback.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A79AC0090"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvImplRepl" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplRepl.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A79C103B2"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A79C5006E"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvMsg"
+				    quidu      	"3F5A77BA0080"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvListener" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvListener.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A79C200D8"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A79F9034F"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvTransport"
+				    quidu      	"3F5A78E30001"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvMsgCallback" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvMsgCallback.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A79F20223"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvImplTPort" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplTPort.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7A2300A8"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvImplConst" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplConst.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7AAF00C0"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvFtMonitor" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvFtMonitor.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7ACA0119"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7AD401DC"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvTransport"
+				    quidu      	"3F5A78E30001"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvFtMonitorCallback" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvFtMonitorCallback.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7AD0021C"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvCryptFilter" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvCryptFilter.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7B34016E"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvImplQueueC" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplQueueC.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7B580116"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7B910214"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvQueue"
+				    quidu      	"3F5A778200F7"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvImplThread" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplThread.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7BA30075"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvImplQueueJ" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplQueueJ.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7BF6031F"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7C08034E"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvQueue"
+				    quidu      	"3F5A778200F7"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7C080362"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvImplEvtData"
+				    quidu      	"3F5A79270371"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvImplTPortC" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplTPortC.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7C220175"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7C6C015F"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvTransport"
+				    quidu      	"3F5A78E30001"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvImplQGroup" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplQGroup.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7C750194"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvCmListener" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvCmListener.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7C8901D9"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvCmTransport" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvCmTransport.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7C8D0301"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7F3D03AF"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvTransport"
+				    quidu      	"3F5A78E30001"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvImplMsgEnc" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplMsgEnc.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7CEB01C8"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7CEB027C"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvMsgEncoder"
+				    quidu      	"3F5A77CC01F9"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7CEB029A"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvMsgDecoder"
+				    quidu      	"3F5A77CC0235"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvImplWaiter" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplWaiter.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7D060236"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7D0900C7"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvMsg"
+				    quidu      	"3F5A77BA0080"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvListener$SL" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvListener$SL.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7D640247"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7D670291"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvListener"
+				    quidu      	"3F5A79C200D8"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvImplSubject" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplSubject.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7D6E0287"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvImplSubjEnum" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplSubjEnum.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7D700385"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvImplSubjData" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplSubjData.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7D7301C6"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvImplQGroupJ" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplQGroupJ.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7D9101C0"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7DA302B7"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvQueueGroup"
+				    quidu      	"3F5A792702EF"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvImplRvaHttp" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplRvaHttp.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7DF50360"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7E21035B"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvImplTPortRva"
+				    quidu      	"3F5A7DF80044"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7E21036F"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvImplHttpPipeThread"
+				    quidu      	"3F5A7DFA0033"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7E21038D"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvImplHttpReqThread"
+				    quidu      	"3F5A7DFC0306"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7E2103AB"
+				    supplier   	"Component View::java::lang::Class"
+				    quidu      	"3E400BBB0176"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvImplRvaConnect" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplRvaConnect.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7DF503B1"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvImplTPortRva" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplTPortRva.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7DF80044"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A80EF018B"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvRvaTransport"
+				    quidu      	"3F5A800A035D"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A80EF01A9"
+				    supplier   	"Component View::java::net::Socket"
+				    quidu      	"3E400BE301FF"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A80EF01BD"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvImplRvaConnect"
+				    quidu      	"3F5A7DF503B1"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvImplHttpPipeThread" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplHttpPipeThread.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7DFA0033"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A831D02A7"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvImplRvaHttp"
+				    quidu      	"3F5A7DF50360"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvImplHttpReqThread" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplHttpReqThread.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7DFC0306"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A82F3027D"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvImplRvaHttp"
+				    quidu      	"3F5A7DF50360"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvImplMsgUtil" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplMsgUtil.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7E270088"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvImplQGroupC" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplQGroupC.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7E470143"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7E690201"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvQueueGroup"
+				    quidu      	"3F5A792702EF"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvVcTransport" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvVcTransport.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7EC002B2"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvRvdTransport" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvRvdTransport.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7F0603CD"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvCmReviewCallback" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvCmReviewCallback.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7F3B0117"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvImplCmTPortC" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplCmTPortC.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7F58032C"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A7FC700AD"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvCmTransport"
+				    quidu      	"3F5A7C8D0301"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvNetTransport" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvNetTransport.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A7FEE00DC"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvRvaTransport" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvRvaTransport.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A800A035D"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvImplRvaDirect" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplRvaDirect.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A8174017A"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A818500CB"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvImplTPortRva"
+				    quidu      	"3F5A7DF80044"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A818500DF"
+				    supplier   	"Component View::java::net::Socket"
+				    quidu      	"3E400BE301FF"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A818500FE"
+				    supplier   	"Component View::java::io::DataInputStream"
+				    quidu      	"3E400D3F01CD"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A8185011B"
+				    supplier   	"Component View::java::io::DataOutputStream"
+				    quidu      	"3E400D4301BF"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A81850139"
+				    supplier   	"Component View::java::lang::Thread"
+				    quidu      	"3E400BBB015C"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A81850157"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvImplWaiter"
+				    quidu      	"3F5A7D060236"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvImplTPortProcJ" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplTPortProcJ.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A82040289"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A823402E3"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvImplSubject"
+				    quidu      	"3F5A7D6E0287"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A82340301"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvTransport"
+				    quidu      	"3F5A78E30001"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvImplHttpRequest" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplHttpRequest.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A82A401BA"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A82A4030E"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvMsg"
+				    quidu      	"3F5A77BA0080"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A82A40340"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvException"
+				    quidu      	"3F5A77880113"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "TibrvCmQueueTransport" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvCmQueueTransport.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A82BB0163"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TibrvImplRvaHttp$ConnectData" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"com\\tibco\\tibrv\\TibrvImplRvaHttp$ConnectData.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3F5A834C03C7"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A834D00DA"
+				    supplier   	"Component View::java::net::URLConnection"
+				    quidu      	"3E400BBD0237"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3F5A834D00F8"
+				    supplier   	"Component View::com::tibco::tibrv::TibrvImplRvaHttp"
+				    quidu      	"3F5A7DF50360"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java"))
+		    physical_presentations 	(list unit_reference_list)))
+	    physical_presentations 	(list unit_reference_list)))
+    physical_presentations 	(list unit_reference_list))

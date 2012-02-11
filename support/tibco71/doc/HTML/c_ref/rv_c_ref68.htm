@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>Update String</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;3	 Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1045047"> </a><h2 class="pNewHTMLPage">
+Update String
+</h2>
+<hr />
+<a name="wp1045048"> </a><p class="pSyntaxType">
+Convenience Function
+</p>
+<a name="wp1086946"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvMsg_UpdateString</code>(<a name="wp1163058"> </a>
+&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a>&#160;&#160;&#160;&#160;&#160;message,<a name="wp1163062"> </a>
+&#160;&#160;&#160;const char*&#160;&#160;fieldName,<a name="wp1163063"> </a>
+&#160;&#160;&#160;const char*&#160;&#160;value);<a name="wp1163064"> </a>
+<a name="wp1163067"> </a>
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvMsg_UpdateStringEx</code>(<a name="wp1163073"> </a>
+&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a>&#160;&#160;&#160;&#160;&#160;message,<a name="wp1163077"> </a>
+&#160;&#160;&#160;const char*&#160;&#160;fieldName,<a name="wp1163078"> </a>
+&#160;&#160;&#160;const char*&#160;&#160;value,<a name="wp1163079"> </a>
+&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128797"><code class="cCode">tibrv_u16</code></a>&#160;&#160;&#160;&#160;fieldId);<a name="wp1163083"> </a>
+</pre></div>
+<a name="wp1087417"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1045320"> </a><p class="pBody">
+Update a field containing a character string.
+</p>
+<a name="wp1087892"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1045322"> </a><p class="pBody">
+This convenience function locates a field (by name or identifier) and updates its data.
+</p>
+<a name="wp1045339"> </a><p class="pBody">
+The type of the existing field (within the message) and the type of the updating <code class="cCode">value</code> must match. The length of the string can change.
+</p>
+<a name="wp1059532"> </a><p class="pBody">
+Pointer data previously extracted from the field remain valid and unchanged until the message is destroyed; that is, even updating the field&#8217;s value does <em class="cEmphasis">not</em> invalidate pointer data. (See <a  href="rv_c_ref19.htm#wp1092306">Pointer Snapshot</a>.)</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1045109"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1045111"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1045113"> </a><div class="pCellBody">
+<code class="cCode">message</code>
+</div>
+</td>
+    <td><a name="wp1045115"> </a><div class="pCellBody">
+Update the specified field of this message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1045117"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1045119"> </a><div class="pCellBody">
+Update a field with this name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1045125"> </a><div class="pCellBody">
+<code class="cCode">value</code>
+</div>
+</td>
+    <td><a name="wp1045127"> </a><div class="pCellBody">
+Update the message field to this value (which may be a literal or stored in a variable).
+</div>
+<a name="wp1045128"> </a><div class="pCellBody">
+The function <em class="cEmphasis">copies</em> the new value into the existing field.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1109499"> </a><div class="pCellBody">
+<code class="cCode">fieldId</code>
+</div>
+</td>
+    <td><a name="wp1109501"> </a><div class="pCellBody">
+Update the field with this identifier. Zero is a special value that signifies no field identifier. It is illegal to add a field that has both a <code class="cCode">NULL</code> field name, and a non-zero field identifier.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1088274"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1083467"> </a><p class="pBody">
+<a  href="rv_c_ref20.htm#wp1062225">Field Names and Field Identifiers</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

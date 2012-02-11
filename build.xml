@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	If you wish to just compile all the Java code then run "compileAll"
+
+	To compile and package everything then run "devbuild".  This must run on Solaris!!!
+
+	## Official Labeled builds are run with "official". ##
+-->
+<project name="eManagement Buildfile" default="compileAll" basedir=".">
+	<!-- set global properties for this build -->
+	<property name="ISMP_HOME" value="/auto/austin-nms/emgmt/InstallShield/MP50"/>
+	<property name="ISMP_PROJECT_HOME" value="install/project/eManager"/>
+	<property name="ISMP_RELEASE_DIR" value="Release"/>
+	<property name="WEBAPPS_SOURCE_DIR" value="webapps"/>
+	<property name="BUILD_SERVER_WEB" value="webapps/emanager/WEB-INF"/>
+	<property name="JAR_PACKAGE_DIR" value="pkg"/>
+	<property name="OFFICIAL_RELEASE_DIR" value="/auto/austin-nms/emgmt/builds/1.0.0"/>
+	<property name="src.dir" value="src"/>
+	<property name="schema.dir" value="schema"/>
+	<property name="lib.dir" value="lib"/>
+	<property name="BUILD_DEST_DIR" value="classes"/>
+	<property name="dist.dir" value="dist"/>
+	<property name="config.dir" value="config"/>
+	<property name="javadoc.dir" value="doc/javadoc"/>
+	<property name="watchdog.dir" value="c++src/watchdog"/>
+	<property name="redirectIO.dir" value="c++src/RedirectIOJNI"/>
+	<property name="stdlib.dir" value="c++src/StdlibJNI"/>
+	<!-- Current eManager Build Numbers -->
+	<property name="build.major" value="1"/>
+	<property name="build.minor" value="0"/>
+	<property name="build.release" value="0"/>
+	<!-- Main eManager Build CLASSPATH -->
+	<path id="project.class.path">
+		<!-- Castor 0.9.5.2 library -->
+		<pathelement location="lib/castor-0.9.5.2.jar"/>
+		<!-- JConnection 5.5 library -->
+		<pathelement location="support/sybase/jconn2.jar"/>
+		<!-- TibHawk 411 libraries -->
+		<pathelement location="support/hawk411/java/ami.jar"/>
+		<pathelement location="support/hawk411/java/config.jar"/>
+		<pathelement location="support/hawk411/java/console.jar"/>
+		<pathelement location="support/hawk411/java/talon.jar"/>
+		<pathelement location="support/hawk411/java/util.jar"/>
+		<pathelement location="support/hawk411/java/utilities.jar"/>
+		<!-- Axis 1.1 libraries -->
+		<pathelement location="support/axis-1_1/lib/axis-ant.jar"/>
+		<pathelement location="support/axis-1_1/lib/axis.jar"/>
+		<pathelement location="support/axis-1_1/lib/commons-discovery.jar"/>
+		<pathelement location="support/axis-1_1/lib/commons-logging.jar"/>
+		<pathelement location="support/axis-1_1/lib/jaxrpc.jar"/>
+		<pathelement location="support/axis-1_1/lib/log4j-1.2.8.jar"/>
+		<pathelement location="support/axis-1_1/lib/saaj.jar"/>
+		<pathelement location="support/axis-1_1/lib/wsdl4j.jar"/>
+		<!-- SNMP 4.13  libraries -->
+		<pathelement location="support/snmp4_13/snmp4_13.jar"/>
+		<!-- Tibco Rendezvous 7.1 libraries -->
+		<pathelement location="support/tibco71/lib/tibrvj.jar"/>
+		<!-- Tomcat 4.0.6 libraries -->
+		<pathelement location="support/jakarta-tomcat-4.0.6/common/lib/servlet.jar"/>
+                <pathelement location="support/jakarta-tomcat-4.0.6/common/lib/xerces.jar"/>
+                <!-- Java libs (added this for Castor code gen steps) -->
+                <!--pathelement location="C:\JBuilder8\jdk1.4/jre/lib/rt.jar"/ -->
+
+                <!-- eManager Build classes -->
+                <pathelement location="${BUILD_DEST_DIR}"/>
+	</path>
+	<!-- InstallShield package/javabean CLASSPATH -->
+	<path id="ismp.class.path">
+		<pathelement path="${ISMP_HOME}"/>
+		<pathelement location="${ISMP_HOME}/classes"/>
+		<pathelement location="${ISMP_HOME}/ppk/linuxppk.jar"/>
+		<pathelement location="${ISMP_HOME}/ppk/genericunixppk.jar"/>
+		<pathelement location="${ISMP_HOME}/ppk/solarisppk.jar"/>
+		<pathelement location="${ISMP_HOME}/ppk/win32ppk.jar"/>
+		<pathelement location="${ISMP_HOME}/ppk/webppk.jar"/>
+		<pathelement location="${ISMP_HOME}/lib/ide.jar"/>
+		<pathelement location="${ISMP_HOME}/lib/platform.jar"/>
+		<pathelement location="${ISMP_HOME}/lib/wizard.jar"/>
+		<pathelement location="${ISMP_HOME}/lib/product.jar"/>
+		<pathelement location="${ISMP_HOME}/lib/help.jar"/>
+		<pathelement location="${ISMP_HOME}/lib/swing.jar"/>
+		<pathelement location="${ISMP_HOME}/lib/jhall.jar"/>
+		<pathelement location="${ISMP_HOME}/lib/parser.jar"/>
+		<pathelement location="${ISMP_HOME}/lib/xt.jar"/>
+		<pathelement location="${ISMP_HOME}/lib/icebrowserbean.jar"/>
+		<pathelement location="${ISMP_HOME}/lib/icebrowserlitebean.jar"/>
+		<pathelement location="${ISMP_HOME}/i18n"/>
+	</path>
+	<!-- target to create the build directory -->
+	<target name="prepare" description="Prepares for building of project.">
+		<mkdir dir="${BUILD_DEST_DIR}"/>
+		<mkdir dir="${WEBAPPS_SOURCE_DIR}/emanager/WEB-INF/lib"/>
+	</target>
+	<!-- target to remove generated class files -->
+	<target name="clean" depends="prepare" description="Removes all generated files.">
+		<delete dir="${BUILD_DEST_DIR}/com"/>
+		<delete>
+			<fileset dir="${JAR_PACKAGE_DIR}" includes="**"/>
+			<fileset dir="${ISMP_RELEASE_DIR}" includes="**"/>
+			<fileset dir="${WEBAPPS_SOURCE_DIR}/emanager/WEB-INF/lib" includes="**"/>
+                        <fileset dir="${BUILD_DEST_DIR}" excludes="castor.properties"/>
+		</delete>
+	</target>
+
+	<!-- target to compile the common component's java files -->
+	<target name="commonCompile" depends="prepare" description="compile all java files in the common package">
+		<javac srcdir="${src.dir}" destdir="${BUILD_DEST_DIR}" debug="on" deprecation="on">
+			<classpath refid="project.class.path"/>
+			<include name="com/cisco/eManager/common/**"/>
+		</javac>
+	</target>
+
+	<!-- targets to setup SOAP -->
+	<target name="soapClean" description="Removes all SOAP generated files.">
+		<delete>
+			<fileset dir="${src.dir}/com/cisco/eManager/soap/process" excludes="*Interface.java*,*Impl.java" includes="**"/>
+			<fileset dir="${src.dir}/com/cisco/eManager/soap/inventory" excludes="*Interface.java*,*Impl.java" includes="**"/>
+			<fileset dir="${src.dir}/com/cisco/eManager/soap/event" excludes="*Interface.java*,*Impl.java" includes="**"/>
+			<fileset dir="${src.dir}/com/cisco/eManager/soap/admin" excludes="*Interface.java*,*Impl.java" includes="**"/>
+			<fileset dir="${src.dir}/com/cisco/eManager/soap/log" excludes="*Interface.java*,*Impl.java" includes="**"/>
+			<fileset dir="${src.dir}/com/cisco/eManager/soap/auditlog" excludes="*Interface.java*,*Impl.java" includes="**"/>
+		</delete>
+	</target>
+
+	<target name="soapInterfaceCompile" depends="commonCompile" description="compile SOAP Interface classes">
+		<javac srcdir="${src.dir}" destdir="${BUILD_DEST_DIR}" debug="on" deprecation="on">
+			<classpath refid="project.class.path"/>
+			<include name="com/cisco/eManager/soap/*/*Interface.java"/>
+		</javac>
+	</target>
+
+	<target name="soapCleanCompile" depends="soapClean,wsdl2java" description="clean compile all soap related java files">
+		<javac srcdir="${src.dir}" destdir="${BUILD_DEST_DIR}" debug="on" deprecation="on">
+			<classpath refid="project.class.path"/>
+			<include name="com/cisco/eManager/soap/**"/>
+		</javac>
+	</target>
+
+	<target name="soapCompile" depends="prepare" description="compile all soap related java files">
+		<javac srcdir="${src.dir}" destdir="${BUILD_DEST_DIR}" debug="on" deprecation="on">
+			<classpath refid="project.class.path"/>
+			<include name="com/cisco/eManager/soap/**"/>
+		</javac>
+	</target>
+
+	<!-- target to compile the common component's java files -->
+	<target name="eventCompile" depends="prepare" description="compilez all event related java files">
+		<javac srcdir="${src.dir}" destdir="${BUILD_DEST_DIR}" debug="on" deprecation="on">
+			<classpath refid="project.class.path"/>
+			<include name="com/cisco/eManager/common/event/**"/>
+			<include name="com/cisco/eManager/eManager/event/**"/>
+		</javac>
+	</target>
+
+	<target name="inventoryPrecompile" description="generate inventory code">
+    		<delete dir="${src.dir}/com/cisco/eManager/common/inventory2"/>
+		<java classname="org.exolab.castor.builder.SourceGenerator">
+        		<sysproperty key="DEBUG" value="true"/>
+        		<sysproperty key="org.exolab.castor.builder.javaclassmapping" value="type"/>
+        		<classpath refid="project.class.path"/>
+        		<arg line="-i${schema.dir}/inventory.xsd"/>
+        		<arg line="-dest${src.dir}"/>
+        		<arg line="-packagecom.cisco.eManager.common.inventory2"/>
+       	 		<arg line="-line-separatorunix"/>
+    		</java>
+	</target>
+
+	<target name="inventoryCompile" depends="prepare" description="compile all inventory related java files">
+		<javac srcdir="${src.dir}" destdir="${BUILD_DEST_DIR}" debug="on" deprecation="on">
+			<classpath refid="project.class.path"/>
+			<include name="com/cisco/eManager/common/inventory/**"/>
+			<include name="com/cisco/eManager/eManager/event/**"/>
+			<include name="com/cisco/eManager/eManager/inventory/**"/>
+			<include name="com/cisco/eManager/eManager/network/**"/>
+			<include name="com/cisco/eManager/eManager/util/**"/>
+		</javac>
+	</target>
+	<!-- target to compile the java files in the eManager tier -->
+	<target name="emanagerCompile" depends="prepare" description="compile all java files in the eManager tier">
+		<javac srcdir="${src.dir}" destdir="${BUILD_DEST_DIR}" debug="on" deprecation="on">
+			<classpath refid="project.class.path"/>
+			<include name="com/cisco/eManager/eManager/**"/>
+		</javac>
+	</target>
+	<!-- target to compile the java files in the eManager tier -->
+	<target name="processCompile" depends="prepare" description="compile all java files in the processSequencer tier">
+		<javac srcdir="${src.dir}" destdir="${BUILD_DEST_DIR}" debug="on">
+			<classpath refid="project.class.path"/>
+			<include name="com/cisco/eManager/eManager/processSequencer/**"/>
+		</javac>
+	</target>
+	<!-- target to compile the java files in the util package -->
+	<target name="utilCompile" depends="prepare" description="compile all java files in the util package">
+		<javac srcdir="${src.dir}" destdir="${BUILD_DEST_DIR}" debug="on" deprecation="on">
+			<classpath refid="project.class.path"/>
+			<include name="com/cisco/eManager/util/**"/>
+		</javac>
+	</target>
+	<!-- target to compile all application java files -->
+	<target name="compileAll" depends="prepare,soapClean,wsdl2java" description="compile all application java files">
+		<echo message="If compileAll fails to compile SOAP pkg because of missing generated files,"/>
+		<echo message="run ant wsdl2java to generate SOAP files, then rerun compileAll"/>
+		<javac srcdir="${src.dir}" destdir="${BUILD_DEST_DIR}" debug="on" deprecation="on">
+			<classpath refid="project.class.path"/>
+		</javac>
+                <rmic classname="com.cisco.eManager.eManager.process.ProcessManager" base="${BUILD_DEST_DIR}">
+                    <classpath refid="project.class.path"/>
+                </rmic>
+	</target>
+	<!-- target to compile C++ Watchdog Binary and JNI libraries -->
+	<target name="compileWatchdog" description="Compile the Watchdog executible and JNI Libraries">
+		<exec dir="${watchdog.dir}" executable="/usr/local/bin/make" os="SunOS">
+			<arg line="clean"/>
+		</exec>
+		<exec dir="${watchdog.dir}" executable="/usr/local/bin/make" os="SunOS"/>
+		<exec dir="${redirectIO.dir}" executable="/usr/local/bin/make" os="SunOS">
+			<arg line="clean"/>
+		</exec>
+		<exec dir="${redirectIO.dir}" executable="/usr/local/bin/make" os="SunOS"/>
+		<exec dir="${stdlib.dir}" executable="/usr/local/bin/make" os="SunOS">
+			<arg line="clean"/>
+		</exec>
+		<exec dir="${stdlib.dir}" executable="/usr/local/bin/make" os="SunOS"/>
+	</target>
+
+	<!-- You must compile the Classes before generating the WSDL because is is generated from the object -->
+	<!-- code and not the souce code. -->
+
+	<target name="java2wsdl" depends="soapInterfaceCompile" description="Generates WSDL from Java.">
+		<delete dir="wsdl"/>
+		<mkdir dir="wsdl"/>
+
+		<echo message="Generate wsdl/AdminManager.wsdl"/>
+		<java classname="org.apache.axis.wsdl.Java2WSDL" fork="yes">
+			<classpath refid="project.class.path"/>
+			<arg line="--output wsdl/AdminManager.wsdl"/>
+			<arg line="--servicePortName AdminManager"/>
+               		<arg line="--location http://localhost:9080/emanager/services/AdminManager"/>
+               		<arg line="--portTypeName AdminManager"/>
+               		<arg line="--outputWsdlMode ALL"/>
+               		<arg line="--soapAction OPERATION"/>
+               		<arg line="--style RPC"/>
+			<arg line="--typeMappingVersion 1.2"/>
+               		<arg line="com.cisco.eManager.soap.admin.AdminManagerInterface"/>
+		</java>
+
+		<echo message="Generate wsdl/LogManager.wsdl"/>
+		<java classname="org.apache.axis.wsdl.Java2WSDL" fork="yes">
+			<classpath refid="project.class.path"/>
+			<arg line="--output wsdl/LogManager.wsdl"/>
+			<arg line="--servicePortName LogManager"/>
+               		<arg line="--location http://localhost:9080/emanager/services/LogManager"/>
+               		<arg line="--portTypeName LogManager"/>
+               		<arg line="--outputWsdlMode ALL"/>
+               		<arg line="--soapAction OPERATION"/>
+               		<arg line="--style RPC"/>
+			<arg line="--typeMappingVersion 1.2"/>
+               		<arg line="com.cisco.eManager.soap.log.LogManagerInterface"/>
+		</java>
+
+		<echo message="Generate wsdl/AuditLogManager.wsdl"/>
+		<java classname="org.apache.axis.wsdl.Java2WSDL" fork="yes">
+			<classpath refid="project.class.path"/>
+			<arg line="--output wsdl/AuditLogManager.wsdl"/>
+			<arg line="--servicePortName AuditLogManager"/>
+               		<arg line="--location http://localhost:9080/emanager/services/AuditLogManager"/>
+               		<arg line="--portTypeName AuditLogManager"/>
+               		<arg line="--outputWsdlMode ALL"/>
+               		<arg line="--soapAction OPERATION"/>
+               		<arg line="--style RPC"/>
+			<arg line="--typeMappingVersion 1.2"/>
+               		<arg line="com.cisco.eManager.soap.auditlog.AuditLogManagerInterface"/>
+		</java>
+
+		<echo message="Generate wsdl/ProcessManager.wsdl"/>
+		<java classname="org.apache.axis.wsdl.Java2WSDL" fork="yes">
+			<classpath refid="project.class.path"/>
+			<arg line="--output wsdl/ProcessManager.wsdl"/>
+			<arg line="--servicePortName ProcessManager"/>
+               		<arg line="--location http://localhost:9080/emanager/services/ProcessManager"/>
+               		<arg line="--portTypeName ProcessManager"/>
+               		<arg line="--outputWsdlMode ALL"/>
+               		<arg line="--soapAction OPERATION"/>
+               		<arg line="--style RPC"/>
+			<arg line="--typeMappingVersion 1.2"/>
+               		<arg line="com.cisco.eManager.soap.process.ProcessManagerInterface"/>
+		</java>
+
+		<echo message="Generate wsdl/EventManager.wsdl"/>
+		<java classname="org.apache.axis.wsdl.Java2WSDL" fork="yes">
+			<classpath refid="project.class.path"/>
+			<arg line="--output wsdl/EventManager.wsdl"/>
+			<arg line="--servicePortName EventManager"/>
+               		<arg line="--location http://localhost:9080/emanager/services/EventManager"/>
+               		<arg line="--portTypeName EventManager"/>
+               		<arg line="--outputWsdlMode ALL"/>
+               		<arg line="--soapAction OPERATION"/>
+               		<arg line="--style RPC"/>
+			<arg line="--typeMappingVersion 1.2"/>
+               		<arg line="com.cisco.eManager.soap.event.EventManagerInterface"/>
+		</java>
+
+		<echo message="Generate wsdl/InventoryManager.wsdl"/>
+		<java classname="org.apache.axis.wsdl.Java2WSDL" fork="yes">
+			<classpath refid="project.class.path"/>
+			<arg line="--output wsdl/InventoryManager.wsdl"/>
+			<arg line="--servicePortName InventoryManager"/>
+               		<arg line="--location http://localhost:9080/emanager/services/InventoryManager"/>
+               		<arg line="--portTypeName InventoryManager"/>
+               		<arg line="--outputWsdlMode ALL"/>
+               		<arg line="--soapAction OPERATION"/>
+               		<arg line="--style RPC"/>
+			<arg line="--typeMappingVersion 1.2"/>
+               		<arg line="com.cisco.eManager.soap.inventory.InventoryManagerInterface"/>
+		</java>
+	</target>
+
+	<target name="wsdl2java" depends="java2wsdl" description="Generates java from WSDL.">
+
+		<echo message="Generate AdminManager client/server Binding"/>
+		<java classname="org.apache.axis.wsdl.WSDL2Java" fork="yes">
+			<classpath refid="project.class.path"/>
+			<arg line="--output ${src.dir}"/>
+			<arg line="--deployScope Session"/>
+			<arg line="--server-side"/>
+			<arg line="--skeletonDeploy true"/>
+			<arg line="--NStoPkg http://admin.soap.eManager.cisco.com=com.cisco.eManager.soap.admin"/>
+			<arg value="wsdl/AdminManager.wsdl"/>
+		</java>
+
+		<echo message="Generate LogManager client/server Binding"/>
+		<java classname="org.apache.axis.wsdl.WSDL2Java" fork="yes">
+			<classpath refid="project.class.path"/>
+			<arg line="--output ${src.dir}"/>
+			<arg line="--deployScope Session"/>
+			<arg line="--server-side"/>
+			<arg line="--skeletonDeploy true"/>
+			<arg line="--NStoPkg http://log.soap.eManager.cisco.com=com.cisco.eManager.soap.log"/>
+			<arg value="wsdl/LogManager.wsdl"/>
+		</java>
+
+		<echo message="Generate AuditLogManager client/server Binding"/>
+		<java classname="org.apache.axis.wsdl.WSDL2Java" fork="yes">
+			<classpath refid="project.class.path"/>
+			<arg line="--output ${src.dir}"/>
+			<arg line="--deployScope Session"/>
+			<arg line="--server-side"/>
+			<arg line="--skeletonDeploy true"/>
+			<arg line="--NStoPkg http://auditlog.soap.eManager.cisco.com=com.cisco.eManager.soap.auditlog"/>
+			<arg value="wsdl/AuditLogManager.wsdl"/>
+		</java>
+
+		<echo message="Generate ProcessManager client/server Binding"/>
+		<java classname="org.apache.axis.wsdl.WSDL2Java" fork="yes">
+			<classpath refid="project.class.path"/>
+			<arg line="--output ${src.dir}"/>
+			<arg line="--deployScope Session"/>
+			<arg line="--server-side"/>
+			<arg line="--skeletonDeploy true"/>
+			<arg line="--NStoPkg http://process.soap.eManager.cisco.com=com.cisco.eManager.soap.process"/>
+			<arg value="wsdl/ProcessManager.wsdl"/>
+		</java>
+
+		<echo message="Generate EventManager  client/server Binding"/>
+		<java classname="org.apache.axis.wsdl.WSDL2Java" fork="yes">
+			<classpath refid="project.class.path"/>
+			<arg line="--output ${src.dir}"/>
+			<arg line="--deployScope Session"/>
+			<arg line="--server-side"/>
+			<arg line="--skeletonDeploy true"/>
+			<arg line="--NStoPkg http://event.soap.eManager.cisco.com=com.cisco.eManager.soap.event"/>
+			<arg value="wsdl/EventManager.wsdl"/>
+		</java>
+
+		<echo message="Generate InventoryManager client/server Binding"/>
+		<java classname="org.apache.axis.wsdl.WSDL2Java" fork="yes">
+			<classpath refid="project.class.path"/>
+			<arg line="--output ${src.dir}"/>
+			<arg line="--deployScope Session"/>
+			<arg line="--server-side"/>
+			<arg line="--skeletonDeploy true"/>
+			<arg line="--NStoPkg http://inventory.soap.eManager.cisco.com=com.cisco.eManager.soap.inventory"/>
+			<arg value="wsdl/InventoryManager.wsdl"/>
+		</java>
+
+	</target>
+
+
+	<target name="deploy_server" depends="java2wsdl" description="Deploys server WSDD">
+		<java classname="org.apache.axis.utils.Admin" fork="yes">
+			<classpath refid="project.class.path"/>
+			<arg value="server"/>
+			<arg value="${src.dir}/com/cisco/eManager/soap/process/deploy.wsdd"/>
+		</java>
+	</target>
+
+	<target name="warServer" depends="compileAll" description="Creates war file for server">
+		<mkdir dir="${WEBAPPS_SOURCE_DIR}/emanager/WEB-INF/lib"/>
+		<copy todir="${WEBAPPS_SOURCE_DIR}/emanager/WEB-INF/lib" verbose="Yes">
+			<fileset dir="lib">
+				<include name="**/castor-0.9.5.2.jar"/>
+			</fileset>
+			<fileset dir="support/snmp4_13">
+				<include name="**/snmp4_13.jar"/>
+			</fileset>
+			<fileset dir="support/sybase">
+				<include name="**/jconn2.jar"/>
+			</fileset>
+			<fileset dir="support/hawk411/java">
+				<include name="**/*.jar"/>
+			</fileset>
+			<fileset dir="support/tibco71/lib">
+				<include name="**/*.jar"/>
+			</fileset>
+			<fileset dir="support/jakarta-tomcat-4.0.6/common/lib">
+				<include name="**/servlet.jar"/>
+			</fileset>
+		</copy>
+		<war warfile="${JAR_PACKAGE_DIR}/emanager.war" basedir="${WEBAPPS_SOURCE_DIR}/emanager" webxml="${WEBAPPS_SOURCE_DIR}/emanager/WEB-INF/web.xml">
+			<lib dir="support/axis-1_1/lib" includes="*.jar"/>
+			<classes dir="${BUILD_DEST_DIR}" includes="com/**"/>
+			<manifest>
+				<attribute name="Application-Title" value="eManager Server Tomcat Webapp"/>
+				<attribute name="Application-Version" value="${build.major}.${build.minor}(${build.release})-${build.number}"/>
+				<attribute name="Built-By" value="Cisco Systems, Inc."/>
+			</manifest>
+		</war>
+	</target>
+	<!-- target to build the application (not including use of "clean" target) -->
+	<target name="devbuild" depends="clean,compileAll,sdk,compileWatchdog,get_build_number,jar_process_sequencer,warServer,package" description="Development Build of eManager application">
+		<echo message="Development build can be found here:"/>
+		<echo message="  ${ISMP_RELEASE_DIR}/disk1/"/>
+		<echo message=""/>
+		<echo message="To install:"/>
+		<echo message="  # cd ${ISMP_RELEASE_DIR}/disk1/"/>
+		<echo message="  "/>
+		<echo message="  # ./setupsolarisSparc.bin"/>
+		<echo message=""/>
+	</target>
+
+	<target name="sdk" depends="compileAll">
+		<delete dir="sdk/client/wsdl"/>
+		<mkdir dir="sdk/client/wsdl"/>
+		<delete dir="sdk/client/schema"/>
+		<mkdir dir="sdk/client/schema"/>
+		<copy todir="sdk/client/wsdl" verbose="Yes">
+			<fileset dir="wsdl">
+				<include name="**/*.wsdl"/>
+			</fileset>
+		</copy>
+		<copy todir="sdk/client/schema" verbose="Yes">
+			<fileset dir="schema">
+				<include name="**/*.xsd"/>
+			</fileset>
+		</copy>
+	</target>
+	<!-- Jar up Process Sequencer / Watchdog files -->
+	<target name="jar_process_sequencer" depends="compileAll">
+		<copy file="${src.dir}/com/cisco/eManager/eManager/processSequencer/watchdog/WDResources_en.properties" tofile="${BUILD_DEST_DIR}/com/cisco/eManager/eManager/processSequencer/watchdog/WDResources_en.properties"/>
+		<jar destfile="${JAR_PACKAGE_DIR}/emgmt-process-mgt.jar" basedir="${BUILD_DEST_DIR}" includes="com/**">
+			<manifest>
+				<attribute name="Application-Title" value="eManager Process Sequencer / Watchdog"/>
+				<attribute name="Application-Version" value="${build.major}.${build.minor}(${build.release})-${build.number}"/>
+				<attribute name="Built-By" value="Cisco Systems, Inc."/>
+			</manifest>
+		</jar>
+	</target>
+	<target name="update_build_number">
+		<echo message="Updating build number..."/>
+		<exec executable="/usr/atria/bin/cleartool" dir="/vob/emanager/install">
+			<arg line="co -nc build-version.dat"/>
+		</exec>
+		<buildnumber file="/vob/emanager/install/build-version.dat"/>
+                <echo message="Build: eManager v${build.major}.${build.minor}(${build.release})-${build.number} (official build)"/>
+                <echo message="eManager v${build.major}.${build.minor}(${build.release})-${build.number} (official build)" file="/vob/emanager/config/.version"/>
+		<exec executable="/usr/atria/bin/cleartool" dir="/vob/emanager/install">
+			<arg line="ci -nc build-version.dat"/>
+		</exec>
+	</target>
+	<target name="get_build_number">
+		<echo message="getting build number..."/>
+		<exec executable="/usr/atria/bin/cleartool" dir="/vob/emanager/install">
+			<arg line="co -unres -nc build-version.dat"/>
+		</exec>
+		<buildnumber file="/vob/emanager/install/build-version.dat"/>
+		<echo message="Build: eManager v${build.major}.${build.minor}(${build.release})-${build.number} (development build)"/>
+		<echo message="eManager v${build.major}.${build.minor}(${build.release})-${build.number} (development build)" file="/vob/emanager/config/.version"/>
+                <exec executable="/usr/atria/bin/cleartool" dir="/vob/emanager/install">
+			<arg line="unco -rm build-version.dat"/>
+		</exec>
+	</target>
+	<target name="package">
+		<java classname="com.installshield.isje.ISJE" fork="true">
+			<arg value="${ISMP_PROJECT_HOME}/eManager.xml"/>
+			<arg value="-build"/>
+			<classpath refid="ismp.class.path"/>
+		</java>
+	</target>
+	<target name="update_ismp">
+		<echo message="Checking out build files..."/>
+		<exec executable="/usr/atria/bin/cleartool" dir="${ISMP_PROJECT_HOME}">
+			<arg line="co -unres -nc eManager.xml"/>
+		</exec>
+		<replace file="${ISMP_PROJECT_HOME}/eManager.xml" token="DEVBUILD" value="${build.major}.${build.minor}(${build.release})-${build.number}"/>
+	</target>
+	<target name="label">
+		<echo message="Labeling files (EMGMT_${build.major}${build.minor}${build.release}_0${build.number}..."/>
+		<exec executable="/usr/atria/bin/cleartool" dir="/vob/emanager">
+			<arg line="mklbtype -global -nc  EMGMT_${build.major}${build.minor}${build.release}_0${build.number}"/>
+		</exec>
+		<exec executable="/usr/atria/bin/cleartool" dir="/vob/emanager">
+			<arg line="mklabel -recurse -nc  EMGMT_${build.major}${build.minor}${build.release}_0${build.number} /vob/emanager"/>
+		</exec>
+	</target>
+
+	<target name="label_drop">
+		<echo message="Labeling files (EMGMT_${build.major}${build.minor}${build.release}_0${build.number}..."/>
+		<exec executable="/usr/atria/bin/cleartool" dir="/vob/emanager">
+			<arg line="mklbtype -global -nc  EMGMT_DROP_3_VERSION_${build.major}${build.minor}${build.release}_0${build.number}"/>
+		</exec>
+		<exec executable="/usr/atria/bin/cleartool" dir="/vob/emanager">
+			<arg line="mklabel -recurse -nc  EMGMT_DROP_3_VERSION_${build.major}${build.minor}${build.release}_0${build.number} /vob/emanager"/>
+		</exec>
+	</target>
+
+	<target name="unco_ismp">
+		<echo message="Unchecking out build files..."/>
+		<exec executable="/usr/atria/bin/cleartool" dir="${ISMP_PROJECT_HOME}">
+			<arg line="unco -rm eManager.xml"/>
+		</exec>
+	</target>
+	<!-- target to rebuild the application (including use of "clean" target) -->
+	<target name="rebuild" depends="clean,compileAll" description="clean and build application"/>
+	<!-- target to rebuild the application (including use of "clean" target) -->
+	<target name="release" description="package necessary applet file">
+		<delete file="${dist.dir}/applet.jar"/>
+		<delete dir="${dist.dir}/applet"/>
+		<mkdir dir="${dist.dir}/applet"/>
+		<mkdir dir="${dist.dir}/applet/com"/>
+		<mkdir dir="${dist.dir}/applet/RSRC"/>
+		<copy todir="${dist.dir}/applet/com" verbose="Yes">
+			<fileset dir="${BUILD_DEST_DIR}/com" includes="**/*.*"/>
+		</copy>
+		<copy todir="${dist.dir}/applet/RSRC" verbose="Yes">
+			<fileset dir="${BUILD_DEST_DIR}/RSRC" includes="**/*.*"/>
+		</copy>
+		<copy file="${BUILD_DEST_DIR}/eManager.html" todir="${dist.dir}/applet"/>
+		<copy file="${config.dir}/policy.all" todir="${dist.dir}/applet"/>
+		<jar jarfile="${dist.dir}/applet.jar" basedir="${dist.dir}/applet" includes="**/*.*"/>
+	</target>
+	<!-- target to generate javadocs -->
+	<target name="javadoc" description="build eManager code documentation">
+		<javadoc sourcepath="${src.dir}" destdir="${javadocs.dir}" author="true" version="true" windowtitle="eManager API" doctitle="eManager" bottom="Copyright © 2003 Cisco Systems Inc. All Rights Reserved."/>
+	</target>
+	<!-- <to address="emanager_dev@cisco.com"/> -->
+	<target name="final_official">
+		<mail subject="eManager Release Build ${build.number} Complete!">
+			<from name="Release Builder" address="mamiles@cisco.com"/>
+			<to address="emanager_dev@cisco.com"/>
+			<message>
+eManager 1.0(0)-${build.number} is ready for testing.  The distribution
+install binary can be found here:
+  ${OFFICIAL_RELEASE_DIR}/build_0${build.number}
+
+  To install, run the following:
+
+    # ./setupsolarisSparc.bin
+
+  To uninstall, run the following:
+
+    # /opt/CSCOemgmt/_uninst/uninstaller.bin
+
+  To either install or uninstall in console mode, add the '-console' flag
+  to the command.
+
+
+  Label applied to source tree is: EMGMT_${build.major}${build.minor}${build.release}_0${build.number}
+
+
+Let me know if there are any problems with this build by replying to this email.
+
+Regards,
+
+Marvin
+
+--
+       Marvin Miles                    |         |           |
+       Software Engineer               |       .|||.       .|||.
+       Cisco Systems Inc.              |   ..:|||||||:...:|||||||:..
+       (512) 378-1294                  |   C i s c o   S y s t e m s
+</message>
+		</mail>
+	</target>
+
+	<target name="official" depends="clean,compileAll,sdk,compileWatchdog,update_build_number,jar_process_sequencer,warServer,update_ismp,package,unco_ismp,label,final_official">
+		<mkdir dir="${OFFICIAL_RELEASE_DIR}/build_0${build.number}"/>
+		<move todir="${OFFICIAL_RELEASE_DIR}/build_0${build.number}">
+			<fileset dir="${ISMP_RELEASE_DIR}/disk1"/>
+		</move>
+		<chmod file="${OFFICIAL_RELEASE_DIR}/build_0${build.number}/*.bin" perm="ugo+rx"/>
+		<echo message="Distribution for build ${build.number} can be found here:"/>
+		<echo message="  ${OFFICIAL_RELEASE_DIR}/build_0${build.number}/"/>
+		<echo message=""/>
+		<echo message="To install:"/>
+		<echo message="  # cd ${OFFICIAL_RELEASE_DIR}/build_0${build.number}/"/>
+		<echo message=""/>
+		<echo message="  # setupsolarisSparc.bin"/>
+		<echo message=""/>
+	</target>
+
+	<target name="devtest_official">
+		<mail subject="eManager DEVTEST Release Build ${build.number} Complete!">
+			<from name="Release Builder" address="mamiles@cisco.com"/>
+			<to address="emanager_dev@cisco.com"/>
+			<message>
+eManager 1.0(0)-${build.number} is ready for testing.  The distribution
+install binary can be found here:
+  ${OFFICIAL_RELEASE_DIR}/devtest_build_0${build.number}
+
+  To install, run the following:
+
+    # ./setupsolarisSparc.bin
+
+  To uninstall, run the following:
+
+    # /opt/CSCOemgmt/_uninst/uninstaller.bin
+
+  To either install or uninstall in console mode, add the '-console' flag
+  to the command.
+
+
+  Label applied to source tree is: EMGMT_DROP_3_VERSION_${build.major}${build.minor}${build.release}_0${build.number}
+
+
+Let me know if there are any problems with this build by replying to this email.
+
+Regards,
+
+Marvin
+
+--
+       Marvin Miles                    |         |           |
+       Software Engineer               |       .|||.       .|||.
+       Cisco Systems Inc.              |   ..:|||||||:...:|||||||:..
+       (512) 378-1294                  |   C i s c o   S y s t e m s
+</message>
+		</mail>
+	</target>
+
+	<target name="devtest_build" depends="clean,compileAll,sdk,compileWatchdog,update_build_number,jar_process_sequencer,warServer,update_ismp,package,unco_ismp,label_drop,devtest_official">
+		<mkdir dir="${OFFICIAL_RELEASE_DIR}/devtest_build_0${build.number}"/>
+		<move todir="${OFFICIAL_RELEASE_DIR}/devtest_build_0${build.number}">
+			<fileset dir="${ISMP_RELEASE_DIR}/disk1"/>
+		</move>
+		<chmod file="${OFFICIAL_RELEASE_DIR}/devtest_build_0${build.number}/*.bin" perm="ugo+rx"/>
+		<echo message="Distribution for build ${build.number} can be found here:"/>
+		<echo message="  ${OFFICIAL_RELEASE_DIR}/devtest_build_0${build.number}/"/>
+		<echo message=""/>
+		<echo message="To install:"/>
+		<echo message="  # cd ${OFFICIAL_RELEASE_DIR}/devtest_build_0${build.number}/"/>
+		<echo message=""/>
+		<echo message="  # setupsolarisSparc.bin"/>
+		<echo message=""/>
+	</target>
+
+
+</project>
+<!-- <!DOCTYPE project SYSTEM "O:\projects\bac\buildfile.dtd"> -->

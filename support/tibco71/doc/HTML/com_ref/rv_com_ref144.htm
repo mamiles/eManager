@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvTransport.waitForVcConnection</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;7	 Virtual Circuits";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1195947"> </a><h2 class="pNewHTMLPage">
+TibrvTransport.waitForVcConnection
+</h2>
+<hr />
+<a name="wp1195948"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1195949"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_com_ref125.htm#wp1123272"><code class="cCode">TibrvTransport</code></a>.<code class="cCodeBold">waitForVcConnection</code> timeout<a name="wp1195953"> </a>
+</pre></div>
+<a name="wp1195955"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1195957"> </a><p class="pBody">
+Test the connection status of a virtual circuit.
+</p>
+<a name="wp1195958"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1241489"> </a><div class="pCellBody">
+This method tests (and can block) until this virtual circuit transport object has established a connection with its opposite terminal. You may call this method for either an accept terminal or a connect terminal.
+</div>
+<a name="wp1241495"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1241494"> </a><p class="pBody">
+With a non-zero argument, this call blocks all other activity in the program, including automatic dispatch of events and GUI operation. Use with caution.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1241496"> </a><p class="pBody">
+This method produces the same information as the virtual circuit advisory messages&#151;but it produces it synchronously (while advisories are asynchronous). Programs can use this method not only to test the connection, but also to block until the connection is ready to use.
+</p>
+<a name="wp1195961"> </a><p class="pBody">
+For example, a program can create a terminal object, then call this method to wait until the connection completes.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1195967"> </a><p class="pBody">
+&#160;
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1195971"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1195973"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1195975"> </a><div class="pCellBody">
+<code class="cCode">timeout</code>
+</div>
+</td>
+    <td><a name="wp1195977"> </a><div class="pCellBody">
+Double
+</div>
+<a name="wp1196998"> </a><div class="pCellBody">
+This parameter determines the behavior of the call:
+</div>
+<div class="pSmartList1"><ul>
+<a name="wp1195978"> </a><div class="pSmartList1"><li >For an quick test of current connection status, supply the constant <code class="cCode">TIBRVCOM_NO_WAIT</code>. The call returns immediately, without blocking.</li></div>
+
+<a name="wp1195979"> </a><div class="pSmartList1"><li >To wait for a new terminal to establish a connection, supply a reasonable positive value. The call returns either when the connection is complete, or when this time limit elapses.</li></div>
+
+<a name="wp1195980"> </a><div class="pSmartList1"><li >To wait indefinitely for a usable connection, supply the constant <code class="cCode">TIBRVCOM_WAIT_FOREVER</code>. The call returns when the connection is complete. If the connection was already complete and is now broken, the call returns immediately.</li></div>
+
+</ul></div>
+
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1196015"> </a><h4 class="pHeading3">
+Errors
+</h4>
+<a name="wp1197059"> </a><p class="pBody">
+If the connection is complete (ready to use), this call returns without error. Otherwise it produces an error object; the status code in that error object gives more detail about why the connection is not usable.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1195987"> </a><p class="pBody">
+&#160;
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1195991"> </a><div class="pCellHeading">
+Status
+</div>
+</th>
+    <th><a name="wp1195993"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1196005"> </a><div class="pCellBody">
+<a  href="rv_com_ref217.htm#wp1188867"><code style="font-style: normal" class="cCode">TIBRVCOM_TIMEOUT</code></a>
+</div>
+</td>
+    <td><a name="wp1196007"> </a><div class="pCellBody">
+The connection is not yet complete, but the non-negative time limit for waiting has expired.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1196012"> </a><div class="pCellBody">
+<a  href="rv_com_ref217.htm#wp1197454"><code style="font-style: normal" class="cCode">TIBRVCOM_VC_NOT_CONNECTED</code></a>
+</div>
+</td>
+    <td><a name="wp1196014"> </a><div class="pCellBody">
+The connection was formerly complete, but is now irreparably broken.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1196016"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1196020"> </a><p class="pBody">
+<a  href="rv_com_ref141.htm#wp1195810"><code class="cCode">TibrvTransport.createAcceptVc()</code> </a>
+</p>
+<a name="wp1196024"> </a><p class="pBody">
+<a  href="rv_com_ref142.htm#wp1195878"><code class="cCode">TibrvTransport.createConnectVc()</code> </a>
+</p>
+<a name="wp1196031"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts83.htm#wp1187618');" onMouseOver="WWHShowPopup('a', 'rv_concepts83.htm#wp1187618', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Testing the New Connection</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+<a name="wp1200948"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts169.htm#wp1112941');" onMouseOver="WWHShowPopup('a', 'rv_concepts169.htm#wp1112941', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">VC.CONNECTED</code> </a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+<a name="wp1196038"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts170.htm#wp1114062');" onMouseOver="WWHShowPopup('a', 'rv_concepts170.htm#wp1114062', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">VC.DISCONNECTED</code> </a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

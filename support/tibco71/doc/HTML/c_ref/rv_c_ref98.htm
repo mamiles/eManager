@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvQueueLimitPolicy</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;5	 Event Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1065967"> </a><h2 class="pNewHTMLPage">
+tibrvQueueLimitPolicy
+</h2>
+<hr />
+<a name="wp1065968"> </a><p class="pSyntaxType">
+Type
+</p>
+<a name="wp1087042"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+typedef enum {<a name="wp1065970"> </a>
+&#160;&#160;&#160;TIBRVQUEUE_DISCARD_NONE,<a name="wp1075569"> </a>
+&#160;&#160;&#160;TIBRVQUEUE_DISCARD_NEW,<a name="wp1075570"> </a>
+&#160;&#160;&#160;TIBRVQUEUE_DISCARD_FIRST,<a name="wp1075571"> </a>
+&#160;&#160;&#160;TIBRVQUEUE_DISCARD_LAST } <code class="cCodeBold">tibrvQueueLimitPolicy</code>;<a name="wp1065973"> </a>
+</pre></div>
+<a name="wp1087513"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1065977"> </a><p class="pBody">
+Specify a strategy for resolving overflow of queue limit.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1110905"> </a><div class="pCellHeading">
+Value
+</div>
+</th>
+    <th><a name="wp1110907"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1110910"> </a><div class="pCellBody">
+<code class="cCode">TIBRVQUEUE_DISCARD_NONE</code>
+</div>
+</td>
+    <td><a name="wp1110912"> </a><div class="pCellBody">
+Never discard events; use this policy when a queue has no limit on the number of events it can contain.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1110914"> </a><div class="pCellBody">
+<code class="cCode">TIBRVQUEUE_DISCARD_FIRST</code>
+</div>
+</td>
+    <td><a name="wp1110916"> </a><div class="pCellBody">
+Discard the first event in the queue (that is, the oldest event in the queue, which would otherwise be the next event to dispatch).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1110918"> </a><div class="pCellBody">
+<code class="cCode">TIBRVQUEUE_DISCARD_LAST</code>
+</div>
+</td>
+    <td><a name="wp1110920"> </a><div class="pCellBody">
+Discard the last event in the queue (that is, the youngest event in the queue).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1110922"> </a><div class="pCellBody">
+<code class="cCode">TIBRVQUEUE_DISCARD_NEW</code>
+</div>
+</td>
+    <td><a name="wp1110924"> </a><div class="pCellBody">
+Discard the new event (which would otherwise cause the queue to overflow its maximum events limit).
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1110928"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1110954"> </a><p class="pBody">
+<a  href="rv_c_ref100.htm#wp1110932"><code class="cCode">tibrvQueue_Create()</code> </a>
+</p>
+<a name="wp1110929"> </a><p class="pBody">
+<a  href="rv_c_ref105.htm#wp1066180"><code class="cCode">tibrvQueue_GetLimitPolicy()</code> </a>
+</p>
+<a name="wp1110940"> </a><p class="pBody">
+<a  href="rv_c_ref111.htm#wp1066306"><code class="cCode">tibrvQueue_SetLimitPolicy()</code> </a>
+</p>
+<a name="wp1142385"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts167.htm#wp1064290');" onMouseOver="WWHShowPopup('a', 'rv_concepts167.htm#wp1064290', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">QUEUE.LIMIT_EXCEEDED</code> </a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

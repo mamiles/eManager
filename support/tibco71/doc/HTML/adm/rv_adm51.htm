@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Daemon Parameters</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1192989"> </a><h2 class="pNewHTMLPage">
+Daemon Parameters
+</h2>
+<hr />
+<a name="wp1192990"> </a><p class="pBody">
+This page lets you configure parameters that affect overall daemon security.
+</p>
+<a name="wp1192991"> </a><p class="pBody">
+To display this page, click <b class="cBold">Daemon Parameters </b>in the left margin of any page of the <code class="cCode">rvrd</code> browser administration interface.
+</p>
+<a name="wp1251533"> </a><div class="pFigureTitle">
+Figure&#160;23   rvrd Daemon Parameters Page</div><div align="center"><img src="images/rv_adma47.gif" height="341" width="552" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1251534"> </a><p class="pBody">
+
+</p>
+<a name="wp1192999"> </a><h3 class="pHeading2">
+Administrator Password
+</h3>
+<a name="wp1193000"> </a><p class="pBody">
+Only authorized personnel have access to routing daemons.
+</p>
+<a name="wp1193001"> </a><p class="pBody">
+When administrator identification information is <em class="cEmphasis">not</em> set, anyone who can connect to the browser administration interface can examine and reconfigure the daemon. This arrangement can be useful during initial configuration and testing phases. However, during regular operation we recommend limiting access.
+</p>
+<a name="wp1193002"> </a><p class="pBody">
+Once administrator identification information is registered, the browser administration interface is locked against unauthorized access. The daemon prompts the administrator to prove identity by typing a name and password. After providing proper identification, the authorized administrator has complete access. If the administrator does not provide proper identification, the browser displays the <a  href="rv_adm48.htm#wp1189539">General Information</a> page and continues to prompt for a correct name and password.
+</p>
+<a name="wp1193006"> </a><p class="pBody">
+Successful administrator identification remains in effect for the duration of the browser process. Merely closing the browser <em class="cEmphasis">window</em> does not end administrator access&#151;to guard against intruders you must terminate the browser <em class="cEmphasis">process</em> (<em class="cEmphasis">all</em> its windows).
+</p>
+<a name="wp1193039"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1193012"> </a><p class="pBody">
+&#160;
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1193016"> </a><div class="pCellHeading">
+Item
+</div>
+</th>
+    <th><a name="wp1193018"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193020"> </a><div class="pCellBody">
+Name
+</div>
+</td>
+    <td><a name="wp1193022"> </a><div class="pCellBody">
+Type a name string.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193024"> </a><div class="pCellBody">
+Password
+</div>
+</td>
+    <td><a name="wp1193026"> </a><div class="pCellBody">
+Type a password string.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193028"> </a><div class="pCellBody">
+Confirm Password
+</div>
+</td>
+    <td><a name="wp1193030"> </a><div class="pCellBody">
+Type the password again.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193032"> </a><div class="pCellBody">
+Set Administrator
+</div>
+</td>
+    <td><a name="wp1193034"> </a><div class="pCellBody">
+Specify a name and password, then click this button to lock the interface.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1193036"> </a><div class="pCellBody">
+Delete Administrator
+</div>
+</td>
+    <td><a name="wp1193038"> </a><div class="pCellBody">
+Click this button to delete administrator identification information and unlock the interface. (This button appears only when administrator identification has been set.)
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1193041"> </a><h3 class="pHeading2">
+Logging
+</h3>
+<a name="wp1237398"> </a><p class="pBody">
+This panel configures the kind of routing activity that the routing daemon routinely outputs to its log file.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1237433"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1237383"> </a><div class="pCellHeading">
+Item
+</div>
+</th>
+    <th><a name="wp1237385"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1237387"> </a><div class="pCellBody">
+Connections
+</div>
+</td>
+    <td><a name="wp1237389"> </a><div class="pCellBody">
+Log connection activity whenever this routing daemon establishes or closes a connection to a neighbor.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1237391"> </a><div class="pCellBody">
+Subject Interest
+</div>
+</td>
+    <td><a name="wp1237393"> </a><div class="pCellBody">
+Log all subscription requests (notification of listening) that this routing daemon sends to its neighbors or receives from its neighbors.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1237395"> </a><div class="pCellBody">
+Subject Data
+</div>
+</td>
+    <td><a name="wp1237397"> </a><div class="pCellBody">
+Log all messages that this routing daemon forwards to its neighbors or receives from its neighbors.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1237461"> </a><p class="pBody">
+To configure the destination of logging output, see <a  href="rv_adm44.htm#wp1068587">Routing Daemon Logging</a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

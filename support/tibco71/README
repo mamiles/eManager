@@ -1,0 +1,564 @@
+*******************************************************************************
+                  TIBCO Rendezvous Version 7.1 Release Notes
+*******************************************************************************
+
+The TIBCO Rendezvous (TM) group is pleased to announce the release
+Rendezvous Version 7.1.  This is a maintenance release of the
+Rendezvous software.
+
+Rendezvous now includes a Java configuration tool, and a Java class
+library for configuration.  These additions allow programmatic
+configuration of daemons in the product suite.  For more information,
+see the new book, TIBCO Rendezvous Configuration Tools
+(Administration, vol. 2).  Although you can use this API to obtain
+state information from daemons, we strongly caution against continuous
+polling.
+
+The Rendezvous Relay Agent Daemon (RVRAD) has been rewritten to use
+the RV 6 style API objects. This removes the last vestige of the
+obsolete Rendezvous Version 5 code from the Rendezvous codebase.
+
+
+The functional extensions to Rendezvous Version 7.0 include the
+following:
+
+RVD
+---
+
+    Pragmatic General Multicast (PGM) is now supported on the HP
+    Tru64 platform.
+
+    A source code wrapper is supplied to allow RVD running on
+    Microsoft Windows systems to run at a specified (usually
+    higher than normal) priority.
+
+RVRD
+----
+
+    RVRD now supports link compression between neighbors.  This
+    compression is precludes SSL encryption between neighbors.  That
+    is, you cannot use both SSL and link compression simultaneously on
+    the same neighbor link.
+
+    RVRD now checks for user misconfigurations of router names and
+    local network names, and prevents name collisions when possible.
+    If the configuration of new RVRD process instance conflicts with
+    existing routers, the new instance has a faulty configuration
+    and cannot join the routing network.
+
+    RVRD displays additional statistics in its the HTTP administrative
+    interface.  These statistics show link backlog per-neighbor.
+
+RVSD and RVSRD
+--------------
+
+    The secure daemons (RVSD and RVRSD) now support the use of
+    PKCS #12 binary keys.
+
+libtibrv
+--------
+
+    On EBCDIC machines, the RV API now lets you change the code pages
+    that are used to convert from ASCII to EBCDIC.
+
+JAVA
+----
+
+    Support has been added for 64 bit JNI libraries on the
+    HP-UX and Solaris platforms where applicable.  This requires
+    Java 1.4 to be installed.
+
+    Optimizations have been made for performance within the
+    Java libraries.
+
+RVDS
+----
+
+    RVDS (Data Security) programs can now be successfully built
+    with the RV 7 libraries.
+
+rvtrace
+-------
+
+  - Enhanced rvtrace to account for and monitor wildcard publishers.
+
+  - Enhanced rvtrace to read from one capture file and write to another
+    for the purpose of subsetting or filtering a larger capture file.
+
+
+
+Defect corrections from earlier releases:
+
+RVD
+---
+
+  - Fixed a defect which limited the PGM variant of RVD to only one
+    network interface.  The behavior of the PGM variant is now
+    identical to that of the TRDP variant.
+
+
+RVRD
+----
+
+  - Fixed a defect which could cause a large number of short
+    duration internal timers to fire.  The symptom of this is
+    an excessive amount of CPU usage.
+
+  - Fixed a defect in which incoming messages destined for more
+    than one local network interface were delivered to only one of
+    the interfaces.  In the characteristic symptom, the RVRD
+    configuration and logfile indicate correct routing, but
+    message data was sent on only one interface, and not sent 
+    on the other local network(s).  
+
+  - Fixed a defect which caused cancellation of subscriptions managed
+    by a daemon that exits as a result of a POSIX SIGKIL signal.  The
+    subscriptions would not fail over to another RVRD for 60 seconds.
+    The symptom was a 60-second hiatus of multicast data into the
+    affected subnet.
+
+  - Added Netscape specific extensions to the self-generated SSL
+    certificates used in HTTPS, preventing the Netscape browser from
+    "blanking out" when users selected the `Routers' link.
+
+  - Fixed a defect which caused a restarted RVCM application to miss
+    point-to-point confirmations when directly connected to RVRD and
+    using a ledger from a previous process instance.
+
+  - Fixed a defect in rewriting internal point-to-point message headers
+    when these messages transit routing daemons.  In some
+    circumstances, point-to-point (_INBOX based) CM agreements could
+    not be made because point-to-point messages took different paths
+    through multiple RVRDs.  The symptom appeared in the RVCM
+    applications as failure of the CM applications to reach the
+    `Agreement' state.
+
+
+RVRAD
+-----
+
+  - Fixed a race condition in which a CM listener's state in its
+    RVRAD was prematurely overwritten.  The symptom was a sender
+    side delivery failure, even though no `time to live' is applied
+    to the message.
+
+  - Fixed a consistency error in the CM sender's RVRAD CM sequencing.
+    The symptom was that a message already sent from one RVRAD
+    to another would continue to appear present in the sending RVRAD
+    to listening side RVRADs.
+
+
+libtibrv
+--------
+
+  - Fixed a defect under which an application sending data at high 
+    rates could fail and produce a corefile if an RVD was abruptly
+    killed.
+
+  - Fixed defects which caused an error status of "Insufficient
+    Memory" where the underlying error was actually a file write
+    or access failure, not a memory allocation failure.
+
+  - Fixed a defect which cased a "Memory allocation failed" error
+    to be returned when an application set the message subject to
+    an invalid subject name containing two successive "." characters.
+
+  - Removed or guarded against concurrent access of operating system
+    calls which have been identified as non-re-entrant.  Under
+    certain circumstances these could cause indeterminate failures
+    in a multi-threaded application on a multi-CPU host.
+
+  - Fixed a defect in which a reply subject was not properly added to a
+    message, and no error status was returned when a reply subject name
+    was more than 119 characters in length.
+
+
+libtibrvcm
+----------
+
+  - Fixed two defects which appeared to be RVCM defects but were in
+    fact RVRD defects (and corrected in RVRD).  For more details, see
+    the earlier section on RVRD defects.
+
+
+libtibrvft
+----------
+
+  - Fixed a defect which prevented delivery of the RVFT
+    PREPARE_TO_ACTIVATE hint in certain cases.
+
+
+rvtrace
+-------
+
+  - Fixed a defect in which a TRDP retransmission reject packet
+    was incorrectly counted as a "Bad" packet.
+
+Perl
+----
+
+  - Restored missing function definitions in the Perl module.
+
+
+
+*******************************************************************************
+                  TIBCO Rendezvous Version 7.0 Release Notes
+*******************************************************************************
+
+The TIBCO Rendezvous group is pleased to announce the release of
+Rendezvous Version 7.0.
+
+This release incorporates a number of important new functional changes,
+including the following:
+
+    RVRD has been enhanced to support  path costing and import subject
+    weighting.  Path costing allows an administrator to specify the preferred
+    path that data should travel between a source (publisher's) RVRD and a
+    sink (subscriber's) RVRD. Import subject weighting provides a mechanism
+    for specifying which RVRDs should handle specific subjects.
+
+    RVRD has also been enhanced to provide administrators a mechanism for
+    configuring specific neighbor connections for SSL encryption, thus
+    providing a secure mechanism for traversal of Rendezvous messages over
+    insecure (e.g. public) networks.
+
+    The HTTP administrative interfaces for the daemons have been enhanced to
+    provide secure, HTTPS connectivity.  Daemon-side certificates ensure
+    that a connection has been made to the expected daemon; the
+    username/password client authentication originally implemented in RV6 is
+    also carried forward.
+
+    A PGM (Pragmatic General Multicast) implementation of RV based on
+    IETF RFC 3208 is now available.  RV/PGM embodies many of the ideas
+    pioneered in RV's original transport mechanism but also allows network
+    elements (e.g. routers) to assist in protocol execution.  No application
+    changes are required use the PGM daemon.  However, only one version of RV
+    may be installed on a given machine at a time.   Although TRDP-based
+    Rendezvous daemons cannot communicate directly with PGM-based
+    Rendezvous daemons, TRDP-based RV 7 routing daemons can communicate
+    with PGM-based RV 7 routing daemons to provide bridging capabilities
+    between the two protocols.
+
+    Two new communications daemons, RVSD and RVSRD, provide for secure
+    connections between client applications and the communications daemons
+    using SSL.  SSL encapsulation of client connections provides an
+    administratively simpler mechanism for connecting through firewalls than
+    was previously available.  Both RVSD and RVSRD  will require direct client
+    connections to use SSL. Client authentication via username/password
+    or public/private key certificate is provided.  RVSD and RVSRD also
+    provides a mechanism for authorizing access to network/service pairs
+    as well as to send/receive subjects.
+
+    The API has been enhanced to include support for Virtual Circuits which
+    are built on top of the existing transport mechanisms. Virtual Circuits
+    provide an exclusive, monitored connection between two endpoints. Support
+    has also been added for Direct application to application inboxes which
+    do not use the Rendezvous daemon for communication.
+
+    The Rendezvous COM component now supports both the single threaded
+    apartment model (STA) and the multiple threaded apartment model (MTA).
+    GUI applications will continue to function with the STA model, while the
+    MTA model will allow direct access with no synchronization to objects
+    created in and accessed from MTA threads.
+
+    An additional Rendezvous COM component (TibrvsdCOM) provides a
+    mechanism for development of applications which can connect  to the RVSD
+    and RVSRD daemons.
+
+
+Compatibility with earlier releases:
+
+
+    When started via the command line, RVD will no longer exit when there
+    are no connected clients.  Daemons which are started with the 
+-no-permanent
+    flag will exit 2 minutes after the last client disconnects.
+
+    RV 7 applications will not be able to autostart pre-RV 6 daemons.
+
+    A library (libtibrv5util) has been introduced to support applications that
+    can only process incoming "raw" datatypes (e.g. "raw" opaques or "raw"
+    strings) but cannot process incoming RV messages.
+
+    The RV 7 API includes a mechanism which allows the application developer
+    to turn on timer-based batching at the individual transport level for
+    use in those situations where reduced context switching and/or reducing
+    the number of small packets delivered to the network is more important
+    than data latency.
+
+    RV 7 now requires use of WINSOCK2 on Microsoft platforms.  Applications
+    which are statically linked on Microsoft platforms must explicitly link
+    in ws2_32.lib.
+
+    The RV Version 5.3 compatibility libraries are not included in the
+    RV 7 distribution.
+
+
+Supported platforms:
+
+     Hardware       Operating System   OS Version   Notes
+     --------       ----------------   ----------   -----
+     DEC Alpha       Tru64 UNIX        4.0, 5.1 +   Formerly Digital UNIX
+                                                    No PGM.
+
+                     Open VMS           7.2 +       Requires Digital TCP/IP
+                                                    Services V 5.0 +
+
+                                                    No PGM.
+
+      HP 9000        HP/UX              11.0 +
+
+      IBM AS/400     OS400              V4R3M0 +    No PGM, secure daemons,
+                                                    or API support for secure
+                                                    daemons.
+
+      IBM RS/6000    AIX                4.3, 5.1 +
+
+      IBM SYS/390    Linux                          Kernel Version 2.4.6 +
+                                                    glibc 2.2.2 +, gcc 2.95 +
+
+
+      IBM SYS/390    Unix System        V2R6M0      No PGM, secure daemons,
+                     Services (USS)                 or API support for secure
+                                                    daemons.
+
+      Intel IA64     HP/UX              11.2        No secure daemons or API
+                                                    support for secure daemons.
+
+      Intel Pentium  Free BSD           4.2 +
+
+                     Linux                          Kernel Version 2.4.6 +
+                                                    glibc 2.2.2 +, gcc 2.95 +
+
+                     MS Windows NT      4.0 +       Requires SP5 or later
+                                                    Visual C++ V6.0
+                                                    No PGM.
+
+                     MS Windows 2000                Visual C++ V6.0
+
+                     MS Windows XP                  Visual C++ V6.0
+
+                     MS Windows 98                  Visual C++ V6.0
+                                                    No PGM
+
+                     SCO UnixWare          7.1 +    No PGM
+
+                     Solaris               2.7 +    SunWorkshop V6.0
+
+       Sun Sparc     Solaris               2.6 +    SunWorkshop 
+V6.0
+
+
+Examples
+--------
+
+  - Added new C examples:      tibrvvcserver.c, tibrvvcclient.c
+
+  - Added new JAVA examples:   UnicodeSend.java, UnicodeListen.java
+
+  - Updated all examples to remove non-threadsafe calls to localtime()
+
+
+Documentation Changes
+---------------------
+
+   The documentation has been fully updated to reflect the new functionality
+   provided in RV 7.
+
+
+Defect corrections from earlier releases:
+
+RVD
+---
+
+  - Fixed defect which could cause application disconnect when data backed
+    up pending delivery to multiple clients with different subject sets.
+
+  - Fixed defect which would cause receiver to print erroneous "malformed
+    unicast packet" or "malformed ack request"  messages under certain
+    point-point dataloss conditions.
+
+  - Reduced the amount of time required for the daemon to recover resources
+    after the last client on a given service has exited in order to speed
+    up recovery times in certain multi-processing environments.
+
+  - Fixed defect which incorrectly reversed the order of certain parameters
+    when printing out informative messages on transport creation failure.
+
+  - Increased maximum size of UDP send/receive buffers to 1 MByte on OS
+    platforms which support configuration of large send/receive buffers.
+
+  - Modified administrative interface to limit output of Information Alerts
+    to the most recent 50 entries to preclude negative impact on daemon
+    performance.
+
+  - Modified administrative interface to limit the output of Subscription
+    Information to a maximum of 50 subjects to preclude negative impact on
+    daemon performance.  An informative message indicating the total number
+    of subjects is displayed when there are more than 50 subjects.
+
+  - Fixed OS/390 specific defect which would cause Client Detail page
+    of administrative display to incorrectly display "Unknown User"
+    when actual User ID was available.
+
+  - Eliminated unnecessary LISTEN.STOP messages generated when the last
+    client exits.
+
+  - Enhanced memory caching mechanism to improve performance when allocating
+    message memory.
+
+  - Enhanced batching mechanism to support batching of point-point packets.
+
+  - Enhanced client-daemon connection protocol to facilitate connection through
+    proxies (e.g. SOCKS).
+
+  - Reduced the amount of network traffic generated when missing packets are
+    outside the sending daemon's reliability interval.
+
+  - Fixed defect which would occasionally prevent proper operation of the
+    neighbor hypertext link even when actual neighbor connection was valid
+    and operational.
+
+
+  - The -timerBatch flag has been removed.
+
+  - Per HP's recommendation, the daemon will now use the SCHED_RR priority
+    rather than the SCHED_RTPRIO priority on the HP-UX platform.
+
+  - Implemented optimization to prevent excessive memory growth under adverse
+    network conditions on certain OS platforms where concurrent memory access
+    is less efficient.
+
+  - Fixed defect which would incorrectly loop back multicast traffic between
+    applications using identical send and receive addresses when both the
+    listening and sending applications were run on the same machine.
+
+
+RVRD
+----
+
+  - Optimized update processing mechanism to reduce the impact of processing
+    router state updates in environments with a large number of routers or
+    a very large number of subscriptions.
+
+  - Fixed defect which could cause message routing loops when hardware failure
+    causes multicast traffic to be unidirectional.
+
+  - Fixed defect which could cause protocol message looping when a single 
+router
+    is repeatedly shut down and restarted.
+
+  - Modified administrative interface to limit output of Information Alerts
+    to the most recent 50 entries to preclude negative impact on daemon
+    performance.
+
+  - Modified administrative interface to limit the output of Subscription
+    Information to a maximum of 50 subjects to preclude negative impact on
+    daemon performance.  An informative message indicating the total number
+    of subjects is displayed when there are more than 50 subjects.
+
+  - Fixed OS/390 specific defect which would cause Client Detail page
+    of administrative display to incorrectly display "Unknown User"
+    when actual User ID was available.
+
+  - Corrected last case of spurious "Unexpected Listen Stop" message.
+
+
+RVA
+---
+
+  - Enhanced client-daemon connection protocol to facilitate connection through
+    proxies (e.g. SOCKS).
+
+
+RVTRACE
+-------
+
+  - Fixed defect which could cause messages of type  raw opaque to be
+    incorrectly reported as bad data.
+
+  - Added informative error message indicating that subject based information
+    might be inaccurate if the capture file was created with a snapshot size
+    smaller than the full packet size.
+
+  - Added support for capture files larger than 2 GB on those platforms
+    which permit it.
+
+  - Replaced use of non-threadsafe call to localtime() with appropriate
+    threadsafe equivalent.
+
+JAVA
+----
+
+  - The JAVA class files are now built with JAVA 1.3 in order to address
+    serialVersionUID compatibility issues which arose when different versions
+    of the JAVA compiler were used on different platforms. Exceptions to this
+    are the AIX 4.3 and AS/400 platforms, which continue to be built with
+    JAVA 1.1.8.
+
+
+libtibrv
+--------
+
+
+  - Fixed defect which would erroneously cause a field ID collision when using
+    extended tibrvMsg_Add* functions with a field name and field identifier.
+    Problem manifested itself as a memory leak when merging data in rvcache.
+
+  - Fixed defect which failed to clear field IDs when tibrvMsg_Reset() was
+    called.
+
+  - Enhanced memory caching mechanism to improve performance when allocating
+    message memory.
+
+  - Implemented workaround for Windows-specific defect which could cause
+    initialization failures when multiple threads made simultaneous attempts
+    to call tibrv_Open() for the first time.
+
+  - Fixed defect which could cause memory corruption if the last call to
+    tibrv_Close() occurs at precisely the same time as tibrvEvent_Create*()
+    is called in another thread.
+
+  - Eliminated  free-run when system time is moved forward more than 24 hours
+    without restarting RV.
+
+  - Fixed defect which could lead to lost data when continuing to send
+    certified messages after a CM send failure occurs because the filesystem
+    has run out of space.
+
+  - Fixed defect which could cause a crash when queue limits were reached while
+    subscribing to QUEUE.LIMIT_EXCEEDED and DISPATCHER.THREAD_EXITED 
+advisories.
+
+
+libtibrvcm
+----------
+
+  - Fixed defect which would prevent explicit confirmation of subsequent
+    messages if earlier messages expired before being confirmed.
+
+  - DELIVERY.FAILED advisories now include the message which has been expired
+    by the publisher.
+
+  - Added support for ledger files larger than 2 GB on those platforms which
+    permit it.
+
+  - Fixed defect which precluded proper processing of messages acknowledged
+    by a CM listener when the CM sender was using RVRAD.
+
+
+libtibrvft
+----------
+
+  - Replaced use of non-threadsafe call to localtime() with appropriate
+    threadsafe equivalent.
+
+Perl
+----
+
+  - Removed references to deprecated 
+Tibrv::tibrvTransport_SetSendingWaitLimit()
+    and Tibrv::tibrvTransport_GetSendingWaitLimit() functions.
+
+  - Added support for new Virtual Circuit API calls.
+

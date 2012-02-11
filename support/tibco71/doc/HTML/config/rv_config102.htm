@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>Router.removeLocalNetworkInterface()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;4	 Routing Daemon&#151;rvrd";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1954750"> </a><h2 class="pNewHTMLPage">
+Router.removeLocalNetworkInterface()
+</h2>
+<hr />
+<a name="wp1954751"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1954752"> </a><h4 class="pHeading3">
+Related Forms
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+Router.removeLocalNetworkInterfaces()<a name="wp1954754"> </a>
+</pre></div>
+<a name="wp1954755"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_config91.htm#wp1953701"><code class="cCode">Router</code></a> <code class="cCodeBold">removeLocalNetworkInterface</code>(<a name="wp1954759"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;localNetworkName)<a name="wp1954760"> </a>
+&#160;&#160;throws <a  href="rv_config267.htm#wp1963961"><code class="cCode">ConfigurationException</code></a><a name="wp1954764"> </a>
+<a name="wp1954765"> </a>
+<a  href="rv_config91.htm#wp1953701"><code class="cCode">Router</code></a> <code class="cCodeBold">removeLocalNetworkInterfaces</code>(<a name="wp1954769"> </a>
+&#160;&#160;&#160;&#160;java.lang.String[]&#160;&#160;localNetworkNames)<a name="wp1954770"> </a>
+&#160;&#160;throws <a  href="rv_config267.htm#wp1963961"><code class="cCode">ConfigurationException</code></a><a name="wp1954774"> </a>
+</pre></div>
+<a name="wp1954775"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1954777"> </a><p class="pBody">
+Remove local network interfaces from the router.
+</p>
+<a name="wp1954778"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1954779"> </a><p class="pBody">
+When removing more than network interface, the second method is faster than repeatedly calling the first method.
+</p>
+<a name="wp1954783"> </a><p class="pBody">
+These methods return the <a  href="rv_config91.htm#wp1953701"><code class="cCode">Router</code></a> object, so programs can conveniently chain additional method calls to the return value.
+</p>
+<a name="wp1954797"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1954786"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1954788"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1954790"> </a><div class="pCellBody">
+<code class="cCode">localNetworkName</code>
+</div>
+</td>
+    <td><a name="wp1954792"> </a><div class="pCellBody">
+Remove the network interface with this name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1954794"> </a><div class="pCellBody">
+<code class="cCode">localNetworkNames</code>
+</div>
+</td>
+    <td><a name="wp1954796"> </a><div class="pCellBody">
+Remove all the network interfaces named in this array.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1954798"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp2029002"> </a><p class="pBody">
+<a  href="rv_config61.htm#wp1952132"><code class="cCode">LocalNetworkInterface</code> </a>
+</p>
+<a name="wp1954802"> </a><p class="pBody">
+<a  href="rv_config91.htm#wp1953701"><code class="cCode">Router</code> </a>
+</p>
+<a name="wp1954806"> </a><p class="pBody">
+<a  href="rv_config94.htm#wp1954189"><code class="cCode">Router.addLocalNetworkInterface()</code> </a>
+</p>
+<a name="wp1954810"> </a><p class="pBody">
+<a  href="rv_config98.htm#wp1954562"><code class="cCode">Router.getLocalNetworkInterfaces()</code> </a>
+</p>
+<a name="wp1954817"> </a><p class="pBody">
+For the corresponding browser page, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm53.htm#wp1213002');" onMouseOver="WWHShowPopup('c', 'rv_adm53.htm#wp1213002', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Local Networks Configuration</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+<a name="wp1954822"> </a><p class="pBody">
+For background information, see these sections:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1954829"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('c', 'rv_adm33.htm#wp1053162');" onMouseOver="WWHShowPopup('c', 'rv_adm33.htm#wp1053162', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Routing Table Entry</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em></li></div>
+
+<a name="wp1954836"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('c', 'rv_adm34.htm#wp1047084');" onMouseOver="WWHShowPopup('c', 'rv_adm34.htm#wp1047084', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Local Network</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em></li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

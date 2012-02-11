@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>Field Names and Field Identifiers</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1114359"> </a><h2 class="pNewHTMLPage">
+Field Names and Field Identifiers
+</h2>
+<hr />
+<a name="wp1114363"> </a><p class="pBody">
+In Rendezvous 5 and earlier releases, programs would specify fields within a message using a field name. In Rendezvous 6 and later releases, programs can specify fields in two ways:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1114367"> </a><div class="pSmartList1"><li >A <em class="cEmphasis">field name</em> is a character string. Each field can have at most one name. Several fields can have the same name.</li></div>
+
+<a name="wp1114368"> </a><div class="pSmartList1"><li >A <em class="cEmphasis">field identifier</em> is a 16-bit unsigned integer, which must be unique within the message. That is, two fields in the same message cannot have the same identifier. However, a nested submessage is considered a separate identifier space from its enclosing parent message and any sibling submessages.</li></div>
+
+<a name="wp1123896"> </a><p class="pBodyRelative">
+An identifier has the range of a 16-bit unsigned integer, [0,&#160;65535]. We represent identifiers with <code class="cCode">Long</code> values (32-bit signed integers) in this range.
+</p>
+</ul></div>
+
+<a name="wp1114490"> </a><p class="pBody">
+Message methods specify fields using a combination of a field name and a unique field identifier. When absent, the default field identifier is zero.
+</p>
+<a name="wp1114493"> </a><p class="pBody">
+To compare the speed and space characteristics of these two options, see <a  href="rv_com_ref33.htm#wp1114416">Search Characteristics</a>.
+</p>
+<a name="wp1114374"> </a><h4 class="pHeading3">
+Rules and Restrictions
+</h4>
+<a name="wp1114375"> </a><p class="pBody">
+It is illegal for a field to have <em class="cEmphasis">both</em> a null field name (<code class="cCode">vbNullString</code>) <em class="cEmphasis">and</em> a non-zero identifier.
+</p>
+<a name="wp1114394"> </a><h4 class="pHeading3">
+Adding a New Field
+</h4>
+<a name="wp1114395"> </a><p class="pBody">
+When a program adds a new field to a message, it can specify a field name, a field identifier, or both. If the program supplies an identifier, Rendezvous software checks that it is unique within the message; if the identifier is already in use, the operation fails and reports the error <a  href="rv_com_ref217.htm#wp1188810"><code class="cCode">TIBRVCOM_ID_IN_USE</code></a>.
+</p>
+<a name="wp1114416"> </a><h4 class="pHeading3">
+Search Characteristics
+</h4>
+<a name="wp1114417"> </a><p class="pBody">
+In general, an identifier search completes in constant time. In contrast, a name search completes in linear time proportional to the number of fields in the message. Name search is quite fast for messages with 16 fields or fewer; for messages with more than 16 fields, identifier search is faster.
+</p>
+<a name="wp1114418"> </a><h4 class="pHeading3">
+Space Characteristics
+</h4>
+<a name="wp1114419"> </a><p class="pBody">
+The smallest field name is a one-character string, which occupies three bytes in Rendezvous wire format. That one ASCII character yields a name space of 127 possible field names; a larger range requires additional characters.
+</p>
+<a name="wp1114426"> </a><p class="pBody">
+Field identifiers are 16 bits, which also occupy three bytes in Rendezvous wire format. However, those 16 bits yield a space of 65535 possible field identifiers; that range is fixed, and cannot be extended.
+</p>
+<a name="wp1114427"> </a><h3 class="pHeading2">
+Finding a Field Instance
+</h3>
+<a name="wp1114428"> </a><p class="pBody">
+When a message contains several field instances with the same field name, these methods find a specific instance by name and number (they do not use field identifiers):
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1114432"> </a><div class="pSmartList1"><li ><a  href="rv_com_ref50.htm#wp1151354"><code class="cCode">TibrvMsg.getInstance()</code> </a></li></div>
+
+<a name="wp1146848"> </a><div class="pSmartList1"><li ><a  href="rv_com_ref59.htm#wp1026709"><code class="cCode">TibrvMsg.removeInstance</code> </a></li></div>
+
+</ul></div>
+
+<a name="wp1156328"> </a><h3 class="pHeading2">
+Release 5 Interaction
+</h3>
+<a name="wp1156332"> </a><p class="pBody">
+Rendezvous 5 (and earlier) did not support array datatypes. Some older programs circumvented this limitation by using several fields with the same name to simulate arrays. This work-around is no longer necessary, since release 6 (and later) supports one-dimensional array datatypes within message fields. The method <a  href="rv_com_ref50.htm#wp1151354"><code class="cCode">TibrvMsg.getInstance()</code></a> ensures backward compatibility, so new programs can still receive and manipulate messages sent from older programs. Nonetheless, we encourage programmers to use array types as appropriate, and we discourage storing several fields with the same name in a message.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

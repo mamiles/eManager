@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Fault Tolerance</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;9	 Current Value Cache";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1024692"> </a><h2 class="pNewHTMLPage">
+Fault Tolerance
+</h2>
+<hr />
+<a name="wp1024693"> </a><p class="pBody">
+Multiple process instances of <code class="cCode">rvcache</code> can cooperate for fault-tolerant service.
+</p>
+<a name="wp1024694"> </a><p class="pBody">
+Fault tolerance protects <code class="cCode">rvcache</code> service against hardware failures, process termination and segmentation of the local network.
+</p>
+<a name="wp1024695"> </a><p class="pBody">
+In this configuration, two or more <code class="cCode">rvcache</code> processes run on separate computers&#151;usually on separate network segments. All cooperating processes listen for the same set of subjects, and store the current values of those subjects. Only one process (called the <em class="cEmphasis">primary active </em>process) actively sends the current values to new listeners. The remaining processes (called <em class="cEmphasis">inactive backup</em> processes) are inactive&#151;unless they detect that the primary active process has failed. If the primary fails, one of the backup process activates in its place, restoring service automatically.
+</p>
+<a name="wp1024696"> </a><p class="pBody">
+These chapters describe fault tolerance concepts and parameters in detail:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1043780"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('a', 'rv_concepts126.htm#wp1057063');" onMouseOver="WWHShowPopup('a', 'rv_concepts126.htm#wp1057063', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Fault Tolerance Concepts</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.</li></div>
+
+<a name="wp1043791"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('a', 'rv_concepts140.htm#wp1057657');" onMouseOver="WWHShowPopup('a', 'rv_concepts140.htm#wp1057657', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Fault Tolerance Programming</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.</li></div>
+
+<a name="wp1043783"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('a', 'rv_concepts151.htm#wp1058129');" onMouseOver="WWHShowPopup('a', 'rv_concepts151.htm#wp1058129', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Developing Fault-Tolerant Programs</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.</li></div>
+
+</ul></div>
+
+<a name="wp1024712"> </a><p class="pBody">
+For administrative details, see <a  href="rv_adm127.htm#wp1025010">Fault Tolerance</a>.
+</p>
+<a name="wp1024713"> </a><h3 class="pHeading2">
+Usage
+</h3>
+<a name="wp1024714"> </a><p class="pBody">
+To run <code class="cCode">rvcache</code> as a fault-tolerant service, start two or more <code class="cCode">rvcache</code> processes. It is essential that all processes use identical parameters&#151;with only one exception:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1024715"> </a><div class="pSmartList1"><li >The <code class="cCode">-store</code> parameter specifies a file for persistent storage of the cache and configuration parameters. Member processes <em class="cEmphasis">must not</em> share this file. Each member must keep its own distinct cache file (we recommend storing it on a local disk).</li></div>
+
+</ul></div>
+
+<a name="wp1024718"> </a><h4 class="pHeading3">
+Duplicating the Cache State
+</h4>
+<a name="wp1024719"> </a><p class="pBody">
+To duplicate the cache state, copy the cache file (so each process starts with an identical copy). Avoid file inconsistencies that can arise when copying the file while <code class="cCode">rvcache</code> is running.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

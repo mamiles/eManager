@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Forward Administrative Messages across Network Boundaries</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;15	 Distributed Queues ";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1025082"> </a><h2 class="pNewHTMLPage">
+Forward Administrative Messages across Network Boundaries
+</h2>
+<hr />
+<a name="wp1025086"> </a><p class="pBody">
+Rendezvous distributed queue software depends on administrative announcements (as well as point-to-point messages) between distributed member transports.
+</p>
+<a name="wp1025087"> </a><p class="pBody">
+These messages travel freely within a single network segment. However, if your network consists of several segments connected by Rendezvous routing daemons, then you must instruct the routing daemons to forward the subjects in <a  href="rv_adm131.htm#wp1025101">Table&#160;15</a>.
+</p>
+<a name="wp1303353"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1303360"> </a><p class="pBody">
+We do <em class="cEmphasis">not recommend</em> sending messages across network boundaries to a distributed queue, nor distributing queue members across network boundaries. However, when crossing network boundaries in either of these ways, you <em class="cEmphasis">must</em> configure the Rendezvous routing daemons to exchange <code class="cCode">_RVCM</code> and <code class="cCode">_RVCMQ</code> administrative messages.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1025094"> </a><p class="pBody">
+Routing daemons must forward the subjects in <a  href="rv_adm131.htm#wp1025101">Table&#160;15</a> in <em class="cEmphasis">both</em> directions&#151;import and export.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1025101"> </a><div class="pTableTitle">
+Table&#160;15   Critical Subjects for Distributed Queues (Sheet 1 of 2)
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1025105"> </a><div class="pCellHeading">
+Subject
+</div>
+</th>
+    <th><a name="wp1025107"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1025110"> </a><div class="pCellBody">
+<code class="cCode">_RVCMQ.&gt;</code>
+</div>
+</td>
+    <td><a name="wp1025116"> </a><div class="pCellBody">
+Rendezvous distributed queue software uses administrative messages with these subjects.
+</div>
+<a name="wp1025117"> </a><div class="pCellBody">
+Whenever <em class="cEmphasis">potential scheduler members </em>run in one network, and <em class="cEmphasis">potential listener members</em> of the same distributed queue run in a second network, then routing daemons must forward these subjects in both directions between the two networks.
+</div>
+<a name="wp1025118"> </a><div class="pCellBody">
+Similarly, whenever <em class="cEmphasis">potential listener members </em>of the same distributed queue run in two separate networks, then routing daemons must forward these subjects in both directions between the two networks.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1025121"> </a><div class="pCellBody">
+<code class="cCode">_RVCM.&gt;</code>
+</div>
+</td>
+    <td><a name="wp1025126"> </a><div class="pCellBody">
+Rendezvous distributed queue software uses administrative messages with these subjects.
+</div>
+<a name="wp1025127"> </a><div class="pCellBody">
+Whenever a process in one network <em class="cEmphasis">sends</em> task messages to <em class="cEmphasis">potential scheduler members </em>in a second network, then routing daemons must forward these subjects in both directions between the two networks.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1025130"> </a><div class="pCellBody">
+<code class="cCode">_RVFT.&gt;</code>
+</div>
+</td>
+    <td><a name="wp1025135"> </a><div class="pCellBody">
+Rendezvous distributed queue software uses administrative messages with these subjects.
+</div>
+<a name="wp1025136"> </a><div class="pCellBody">
+Whenever <em class="cEmphasis">potential scheduler members </em>of the same distributed queue run in two separate networks, then routing daemons must forward these subjects in both directions between the two networks.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

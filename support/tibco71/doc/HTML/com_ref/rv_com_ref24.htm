@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvSdContext</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;3	 Rendezvous Environment";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1201166"> </a><h2 class="pNewHTMLPage">
+TibrvSdContext
+</h2>
+<hr />
+<a name="wp1201167"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1201174"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1201178"> </a><p class="pBody">
+This class defines static methods for interacting with secure Rendezvous daemons.
+</p>
+<a name="wp1201179"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1201183"> </a><p class="pBody">
+Each program creates only one instance of <a  href="rv_com_ref24.htm#wp1201166"><code class="cCode">TibrvSdContext</code></a>, and uses its static methods to configure user names, passwords and certificates, and to register trust in daemon certificates.
+</p>
+<a name="wp1237133"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/tip.gif" border="0" /></td>
+    <td><a name="wp1237143"> </a><p class="pBody">
+Before using any methods of this class, ensure that your programming environment reference the <em class="cEmphasis">secure daemon</em> <code class="cCode">TibrvsdCOM</code> component; see <a  href="rv_com_ref13.htm#wp1158669">Referencing the Rendezvous COM Component</a>.
+</p>
+<a name="wp1237147"> </a><p class="pBody">
+Programs that use methods of this class must also use the type library <code class="cCode">Secure&#160;Daemon&#160;TIBRVSDCOMLib</code> (rather than <code class="cCode">TIBRVCOMLib</code>) when defining callback methods.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1203780"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1202638"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1202640"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1202642"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1202647"> </a><div class="pCellBody">
+<a  href="rv_com_ref25.htm#wp1201238"><code class="cCode">TibrvSdContext.setDaemonCert()</code></a>
+</div>
+</td>
+    <td><a name="wp1202652"> </a><div class="pCellBody">
+<a  href="rv_com_ref25.htm#wp1201251">Register trust in a secure daemon.</a>
+</div>
+</td>
+    <td><a name="wp1202657"> </a><div class="pCellBody">
+<a  href="rv_com_ref25.htm#wp1201238">27</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1244112"> </a><div class="pCellBody">
+<a  href="rv_com_ref26.htm#wp1201292"><code class="cCode">TibrvSdContext.setUserCertWithKey()</code></a>
+</div>
+</td>
+    <td><a name="wp1244116"> </a><div class="pCellBody">
+<a  href="rv_com_ref26.htm#wp1201304">Register a (PEM) certificate with private key for identification to secure daemons.</a>
+</div>
+</td>
+    <td><a name="wp1244122"> </a><div class="pCellBody">
+<a  href="rv_com_ref26.htm#wp1201292">29</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1202662"> </a><div class="pCellBody">
+<a  href="rv_com_ref27.htm#wp1242813"><code class="cCode">TibrvSdContext.setUserCertWithKeyBin()</code></a>
+</div>
+</td>
+    <td><a name="wp1202666"> </a><div class="pCellBody">
+<a  href="rv_com_ref27.htm#wp1242821">Register a (PKCS #12) certificate with private key for identification to secure daemons.</a>
+</div>
+</td>
+    <td><a name="wp1202672"> </a><div class="pCellBody">
+<a  href="rv_com_ref27.htm#wp1242813">30</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1202677"> </a><div class="pCellBody">
+<a  href="rv_com_ref28.htm#wp1241653"><code class="cCode">TibrvSdContext.setUserNameWithPassword()</code></a>
+</div>
+</td>
+    <td><a name="wp1202681"> </a><div class="pCellBody">
+<a  href="rv_com_ref28.htm#wp1202936">Register a user name with password for identification to secure daemons.</a>
+</div>
+</td>
+    <td><a name="wp1202687"> </a><div class="pCellBody">
+<a  href="rv_com_ref28.htm#wp1241653">31</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

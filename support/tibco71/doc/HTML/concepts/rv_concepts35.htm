@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Self-Describing Data</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;3	 Fundamentals";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1021264"> </a><h2 class="pNewHTMLPage">
+Self-Describing Data
+</h2>
+<hr />
+<a name="wp1021265"> </a><p class="pBody">
+<em class="cEmphasis">Self-describing data</em> is data that has been annotated by the producer, so all consumers can interpret and use the data properly. Every message and every message field consists of self-describing data. <a  href="rv_concepts35.htm#wp1028234">Table&#160;6</a> presents the annotations that augment data so it is self-describing.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1028234"> </a><div class="pTableTitle">
+Table&#160;6   Self-Describing Data&#160;
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1028238"> </a><div class="pCellHeading">
+Element
+</div>
+</th>
+    <th><a name="wp1028240"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1028242"> </a><div class="pMinorHead">
+Field Annotations
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1028246"> </a><div class="pCellBody">
+type
+</div>
+</td>
+    <td><a name="wp1028248"> </a><div class="pCellBody">
+Producers must designate the type of every message field. Rendezvous software uses a set of wire-format datatype designations to characterize data by type and size. For example, the type <code class="cCode">TIBRVMSG_I32ARRAY</code> denotes an array of 32-bit integers.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1028265"> </a><div class="pCellBody">
+count (number of elements)
+</div>
+</td>
+    <td><a name="wp1028267"> </a><div class="pCellBody">
+Producers must specify the length of all array data&#151;that is, the number of elements in an array.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1028270"> </a><div class="pCellBody">
+field name
+</div>
+</td>
+    <td><a name="wp1028272"> </a><div class="pCellBody">
+Producers can label the fields of a message with names. Consumers use field names to select specific fields from messages.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1028274"> </a><div class="pCellBody">
+field identifier
+</div>
+</td>
+    <td><a name="wp1028276"> </a><div class="pCellBody">
+Producers can label the fields of a message with numeric identifiers. Consumers can use field identifiers to select specific fields from messages. All field identifiers in a message must be unique within that message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1028278"> </a><div class="pMinorHead">
+Message Annotations
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1028282"> </a><div class="pCellBody">
+subject name
+</div>
+</td>
+    <td><a name="wp1028284"> </a><div class="pCellBody">
+Producers must label every outbound message with a send subject name (also called the <em class="cEmphasis">send subject name)</em>, which describes its content and destination set.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1028286"> </a><div class="pCellBody">
+reply subject name
+</div>
+</td>
+    <td><a name="wp1028288"> </a><div class="pCellBody">
+Producers can label an outbound message with a reply subject name, to which consumers can send reply messages.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1021305"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1021306"> </a><p class="pBody">
+<a  href="rv_concepts52.htm#wp1065843">Data</a>
+</p>
+<a name="wp1052558"> </a><p class="pBody">
+<a  href="rv_concepts47.htm#wp1065576">Subject Names</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

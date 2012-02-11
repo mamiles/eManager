@@ -1,0 +1,381 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head>
+<!-- /*
+ * NAME
+ *      $RCSfile: faq.html,v $
+ * DESCRIPTION
+ *      [given below]
+ * DELTA
+ *      $Revision: 1.4 $
+ *      $Author: birgit $
+ * CREATED
+ *      $Date: 2002/11/11 15:25:43 $
+ * COPYRIGHT
+ *      Westhawk Ltd
+ * TO DO
+ *
+ */ -->
+  <title>FAQ on Westhawk's SNMP stack</title>
+  <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+  <meta name="author" content="Birgit Arkesteijn">
+  <style type="text/css">
+            .green {color: green; font-weight: bold}
+            .red   {color: red}
+  </style></head><body>
+
+<h1>FAQ on Westhawk's SNMP stack</h1>
+
+<p>This file is part of the stack's distribution and is available online
+as well. The links in this document should work in the former case, but not
+necessarily in the later case.</p>
+
+<hr width="100%" size="2">
+
+<h3><a href="#basic">Basic questions:</a></h3>
+<p>
+<a href="#download">Where can I download the stack from?</a><br>
+<a href="#information">Where can I get more information on how to use your stack?</a><br>
+<a href="#examples">Where can I find examples on how to use the stack?</a><br>
+<a href="#compile">How do I compile the stack?</a><br>
+<a href="#jdk">Which version of the JDK should I use?</a><br>
+</p>
+
+<h3><a href="#usage">Usage questions:</a></h3>
+<p>
+<a href="#functionality">What functionality does the stack offer?</a><br>
+<a href="#agent">Can I write an agent with your stack?</a><br>
+<a href="#mib">Does the stack have any MIB browser functionality?</a><br>
+<a href="#ipaddress">How do I create an ASN.1 IP Address object?</a><br>
+<a href="#timeout">How can I set the timeout and the number of retries of a request?</a><br>
+</p>
+
+<h3><a href="#problem">Problem solving:</a></h3>
+<p>
+<a href="#threads">Why doesn't the number of threads reduce?</a><br>
+<a href="#badtype">I get errors like <code>AsnObject.AsnMakeMe(): Bad Type 0xA6</code>. What do they mean?</a><br>
+<a href="#ui_hangs">My user interface seems to hang. Any idea?</a><br>
+</p>
+
+<h3><a href="#general">General information:</a></h3>
+<p>
+<a href="#test">How did you test your stack?</a><br>
+<a href="#vulnerable">Is the stack vulnerable to malformed requests?</a><br>
+<a href="#SNMP_information">Where can I find more information on SNMP?</a><br>
+<a href="#license">What about copyright, license and costs?</a><br>
+<a href="#companies">Which companies are using this stack?</a><br>
+</p>
+
+<hr width="100%" size="2">
+
+<h3><a name="basic"></a>Basic questions:<br></h3>
+
+<p style="font-weight: bold;"><a name="download"></a>Where can I download the stack from?</p>
+
+<p>The latest version is available from our 
+<a href="http://www.westhawk.co.uk/resources/snmp/index.html">website</a>.</p>
+
+<p style="font-weight: bold;"><a name="information"></a>Where can I get more information on how to use your stack?</p>
+
+<p>Please read this FAQ, the <a href="StackUsage.html">Stack Usage</a> 
+document, the <a href="javadoc/index.html">javadoc</a> and have a look at 
+the examples that are distributed with the stack.</p>
+
+<p>We do not have a mailing list, a buglist, nor do we have a todo
+list. We are thinking about realising all of these, but have not done so
+yet.<br>
+</p>
+
+<p>If your question is not answered by any of our documentation, you can contact us at 
+<a href="mailto:snmp@westhawk.co.uk">snmp@westhawk.co.uk</a>. We will answer when our resources permit us to do so. 
+When emailing us, please consider the following:<br>
+</p>
+
+<ul>
+<li><span style="font-weight: bold;">Useful Subject.</span> Please give your email a useful subject. <em>Help</em> or <em>Question</em> do not tell us the nature of your problem or request.&nbsp;</li>
+<li><span style="font-weight: bold;">Be Precise.</span> Please tell us precisely what you are doing, and precisely what is happening. Please mention:</li>
+<ul>
+    <li>any error messages or exception trace</li>
+    <li>JDK version, Platform, Stack version</li>
+</ul>
+<li><span style="font-weight: bold;">Be Polite.</span> The stack is free, 
+so please realise we have no obligation to answer your questions. Aggressive 
+language, excessive use of capitals, and multiple exclamation points or 
+question marks are all considered rude and are not appreciated.</li>
+<li><span style="font-weight: bold;">Tell Us Your Name.</span> It feels good 
+to know who we are talking to.</li>
+</ul>
+
+<p style="font-weight: bold;"><a name="examples"></a>Where can I find examples on how to use the stack?</p>
+
+<p>The packages uk.co.westhawk.examplev1, uk.co.westhawk.examplev2c and 
+uk.co.westhawk.examplev3 contain examples. The 
+<a href="StackUsage.html">Stack Usage</a> document explains how to configure 
+and run them.</p>
+
+<p style="font-weight: bold;"><a name="compile"></a>How do I compile the stack?</p>
+
+<p>Unless you want to change our code, there is no need to compile the 
+whole stack. All the <code>uk.westhawk.snmp.XX</code> packages are bundled in 
+the <code>snmp&lt;version&gt;.jar</code> file. You will have to compile the 
+examples, if you want to run them.
+</p>
+
+<p>The stack comes with Makefiles. We use <code>make</code> on Linux to 
+compile the stack. <code>make</code> will work on Linux, (hopefully) on 
+other UNIX flavours and maybe under cygwin as well. 
+</p>
+
+<p>However, the best thing to do is to import the package(s) and/or
+example(s) into your favourite IDE, like JBuilder or Forte, and take it from
+there. You should be able to add the <code>snmp&lt;version&gt;.jar</code> file 
+to the library of your IDE.
+</p>
+
+<p><a name="jdk" style="font-weight: bold;"></a><span style="font-weight: bold;">Which version of the JDK should I use?</span>
+</p>
+
+<p>You will be fine with every version of the 
+Java<sup><font size="-2">TM</font></sup> 2 Platform. The stack is compiled 
+with JDK 1.3.0, except for the packages uk.co.westhawk.nothread.oscar and 
+uk.co.westhawk.nothread.trap. These two packages use JDK 1.2.2.</p>
+
+<hr width="100%" size="2">
+
+<h3><a name="usage"></a>Usage questions:<br></h3>
+
+<p style="font-weight: bold;"><a name="functionality"></a>What functionality does the stack offer?</p>
+
+<p>The stack provides manager functionality for SNMPv1, SNMPv2c and SNMPv3
+(both authentication and privacy). It is capable of sending and receiving 
+traps, but has <span style="text-decoration: underline;">no other agent</span> 
+functionality.
+</p>
+
+<p>
+<table cellpadding="1" cellspacing="1" border="1" style="text-align: left; width: 95%; margin-left: auto; margin-right: auto;">
+    <tbody><tr>
+        <td style="text-align: center;">PDU type</td>
+        <td style="text-align: center;">Sending</td>
+        <td style="text-align: center;">Receiving</td>
+    </tr>
+    <tr>
+        <td>Get Request</td>
+        <td style="text-align: center;"><span class="green">Yes</span></td>
+        <td style="text-align: center;"><span class="red">No</span></td>
+    </tr>
+    <tr>
+        <td>GetNext Request</td>
+        <td style="text-align: center;"><span class="green">Yes</span></td>
+        <td style="text-align: center;"><span class="red">No</span></td>
+    </tr>
+    <tr>
+        <td>Set Request</td>
+        <td style="text-align: center;"><span class="green">Yes</span></td>
+        <td style="text-align: center;"><span class="red">No</span></td>
+    </tr>
+    <tr>
+        <td>GetBulk Request</td>
+        <td style="text-align: center;"><span class="green">Yes</span></td>
+        <td style="text-align: center;"><span class="red">No</span></td>
+    </tr>
+    <tr>
+        <td>Inform Request</td>
+        <td style="text-align: center;"><span class="green">Yes</span></td>
+        <td style="text-align: center;"><span class="red">No</span></td>
+    </tr>
+    <tr>
+        <td>Response</td>
+        <td style="text-align: center;"><span class="red">No</span></td>
+        <td style="text-align: center;"><span class="green">Yes</span></td>
+    </tr>
+    <tr>
+        <td>Trap v1</td>
+        <td style="text-align: center;"><span class="green">Yes</span></td>
+        <td style="text-align: center;"><span class="green">Yes</span></td>
+    </tr>
+    <tr>
+        <td>Trap v2</td>
+        <td style="text-align: center;"><span class="green">Yes</span></td>
+        <td style="text-align: center;"><span class="green">Yes</span></td>
+    </tr>
+    <tr>
+        <td>Report</td>
+        <td style="text-align: center;"><span class="red">No</span></td>
+        <td style="text-align: center;"><span class="red">No</span></td>
+    </tr>
+</tbody></table>
+</p>
+
+<p style="font-weight: bold;"><a name="agent"></a>Can I write an agent with your stack?</p>
+
+<p>There are two bits to doing an agent framework:</p>
+
+<ol>
+  <li>The protocol stuff</li>
+  <li>The MIB stuff</li>
+</ol>
+
+<ol>
+  <li>is relatively easy - we are about half way there, in that we already
+have most of the bits (TrapListener, PDU, decoder, encoder etc.). They would
+just need to be put together.</li>
+  <li>is much more tricky - for a 'generic' agent framework you want a tool
+that takes a MIB and creates a heap of java that will return the right types
+for a given OID. It also needs to generate stub methods which are then 
+implemented (i.e. go off and get the real value from the correct hardware 
+register or whatever).</li>
+</ol>
+
+<p style="font-weight: bold;"><a name="mib"></a>Does the stack have any MIB browser functionality?</p>
+
+<p>No. The idea is to write dedicated PDUs or beans that gather specific 
+MIB information, i.e. the OID (Object Identifier) is hard coded.</p>
+
+<p>We use <a href="http://wwwhome.cs.utwente.nl/~schoenw/scotty/">Scotty</a>, 
+that is based on Tk/Tcl. We have experimented with auto generating a Java 
+source file of a PDU or bean out off a MIB file, using smidump 
+(<a href="http://www.ibr.cs.tu-bs.de/projects/libsmi/">libsmi</a>), the 
+<a href="http://xml.apache.org/xalan-j/">Xalan XSLT</a> and 
+<a href="http://alphaworks.ibm.com/tech/xml4j">Xerces</a>. You can find this 
+in the <code>stubs</code> directory.
+</p>
+
+<p style="font-weight: bold;"><a name="ipaddress"></a>How do I create an ASN.1 IP Address object?</p>
+
+<p>You can use one of the following two AsnOctets constructors:</p>
+
+<ol>
+  <li>AsnOctets(byte[] s, byte t), where t = SnmpConstants.IPADDRESS</li>
+  <li>AsnOctets(java.net.InetAddress iad)</li>
+</ol>
+
+<p style="font-weight: bold;"><a name="timeout"></a>How can I set the timeout and the number of retries of a request?</p>
+
+<p>You can set both with the method <a href="javadoc/uk/co/westhawk/snmp/stack/Pdu.html#setRetryIntervals(int[])">Pdu.setRetryIntervals(int[])</a>.</p>
+
+<hr width="100%" size="2">
+
+<h3><a name="problem"></a>Problem solving:<br></h3>
+
+<p style="font-weight: bold;"><a name="threads"></a>Why doesn't the number of threads reduce?</p>
+
+<p>Make sure you call 
+<a href="./javadoc/uk/co/westhawk/snmp/stack/AbstractSnmpContext.html#destroy()"><code>AbstractSnmpContext.destroy()</code></a> when you are finished with 
+a context. The method 
+<a href="./javadoc/uk/co/westhawk/snmp/stack/AbstractSnmpContext.html#getDebugString()"><code>AbstractSnmpContext.getDebugString()</code></a> returns the 
+thread usage of the context.
+</p>
+
+<p><a name="badtype" style="font-weight: bold;"></a><span style="font-weight: bold;">I get errors like </span><code style="font-weight: bold;">AsnObject.AsnMakeMe(): Bad Type 0xA6</code><span style="font-weight: bold;">. What do they mean?</span>
+</p>
+
+<p>This means that the PDU packet is malformed. Either the engine sent a
+malformed packet or the stack did not read in the whole message. The later
+can be tuned with the method <a href="javadoc/uk/co/westhawk/snmp/stack/AbstractSnmpContext.html#setMaxRecvSize(int)"><code>AbstractSnmpContext.setMaxRecvSize(int no)</code></a>.
+</p>
+
+<p style="font-weight: bold;"><a name="ui_hangs"></a>My user interface seems to hang. Any idea?</p>
+
+<p>If you are using Swing and you are changing your user interface in the
+<code>update()</code> or <code>propertyChange()</code> method, you should do 
+this via <code>Swing.InvokeLater()</code> to make sure the update is done on 
+the Swing thread. See AnnexModemStatusBean.java for an example.</p>
+
+<hr width="100%" size="2">
+
+<h3><a name="general"></a>General information:<br></h3>
+
+<p style="font-weight: bold;"><a name="test"></a>How did you test your stack?</p>
+
+<p>We have tested the v3 implementation against MG-SOFT's agent and NET-SNMP
+(formerly known as UCD-SNMP). Our users have used it against many other agents.
+As far as we know there is no standards body that tests SNMPv3 compliance.
+</p>
+
+<p>The test matrices on our last version is included in the distribution 
+file, see 
+<a href="./uk/co/westhawk/test/test.html">test.html</a> and 
+<a href="./uk/co/westhawk/test/trap.html">trap.html</a>. 
+More information on how the test works can be found in the javadoc.
+</p>
+
+<p style="font-weight: bold;"><a name="vulnerable"></a>Is the stack vulnerable to malformed requests?</p>
+
+<p>Since the stack is written in Java and Java is immune to most types of
+buffer overrun, we are far better off than the C-based stacks.</p>
+
+<p>We did run the <a href="http://www.ee.oulu.fi/research/ouspg/protos/testing/c06/snmpv1/index.html">PROTOS</a> test suite against our stack. This caused 
+some problems whilst decoding the packets. 
+The worse one caused the stack to throw ClassCastExceptions, killing the
+receive thread. We amended the stack (version 4_12) so it catches all 
+exceptions. Other packets only produced error messages.</p>
+
+
+<p>The bulk of the vulnerabilities are against agents, our stack is only
+a manager. If we ever extend the stack to become an agent, we will run the
+test suite again.</p>
+
+<p style="font-weight: bold;"><a name="SNMP_information"></a>Where can I find more information on SNMP?</p>
+
+<p>Please read the section in the <a href="./StackUsage.html">Stack Usage</a> 
+document.</p>
+
+
+<p style="font-weight: bold;"><a name="license"></a>What about copyright, license and costs?</p>
+
+<p>Please read the section in the <a href="./StackUsage.html">Stack Usage</a> 
+document.</p>
+
+<p style="font-weight: bold;"><a name="companies"></a>Which companies are using this stack?</p>
+
+<p>That is a little hard to say, since many use it for internal purposes 
+(or indeed in products) without informing us. Here are some links to
+companies we 
+<span style="text-decoration: underline;">know</span> have used it:
+</p>
+
+<ul>
+<li><a href="http://www.adherent.com">Adherent</a>, now part of 
+<a href="http://www.tek.com/Measurement/programs/cambridge/">Tektronix Cambridge</a></li>
+<li><a href="http://www.advent-comm.co.uk">Advent Communications</a></li>
+<li><a href="http://www.barman.ch/rig/">Arsin</a></li>
+<li><a href="http://www.aspect.com">Aspect</a></li>
+<li><a href="http://www.avitech.de">Avitech</a></li>
+<li><a href="http://www.bbn.com">BBN Technologies</a></li>
+<li><a href="http://www1.bell-labs.com/project/CorbaSnmp/">Bell Labs</a></li>
+<li><a
+href="http://www.cisco.com/univercd/cc/td/doc/product/vpn/monitor/rel_1_1/user_gd/v3bcpl.htm">Cisco Systems</a></li>
+<li><a href="http://www.cygsoft.com">Cygsoft</a></li>
+<li><a href="http://www.erggroup.com">ERG Group</a></li>
+<li><a href="http://www.greenpacket.com">Greenpacket</a></li>
+<li><a href="http://www.imaginebroadband.com">Imagine Broadband</a></li>
+<li><a href="http://www.intel.com">Intel</a></li>
+<li><a href="http://www.iskratel.si">Iskratel</a></li>
+<li><a href="http://www.memiq.com">memIQ</a></li>
+<li><a href="http://www.net2s.com">NET2S</a></li>
+<li><a href="http://www.netopia.com">Netopia</a></li>
+<li><a href="http://www.newbreak.com">New Break</a></li>
+<li><a href="http://www.phonologies.com">Phonologies</a></li>
+<li><a href="http://www.provisionsoft.com">ProvisionSoft</a></li>
+<li><a href="http://www.regulussoft.com">RegulusSoft</a></li>
+<li><a href="http://www.reuters.com">Reuters</a></li>
+<li><a href="http://www.riftware.com">Riftware Development</a></li>
+<li><a href="http://www.siemens.de">Siemens</a></li>
+<li><a href="http://www.nosc.mil">Spawar</a></li>
+<li><a href="http://www.stercomm.com">Sterling Commerce</a></li>
+<li><a href="http://www.tcom.ch/Projets/ENMP/SNMP.html">TCOM</a></li>
+<li><a href="http://www.travelocity.com">Travelocity</a></li>
+<li><a href="http://www.tripwire.com">Tripwire</a></li>
+<li><a href="http://www.virtc.com">Virtual Technology</a></li>
+<li><a href="http://www.visionael.com">Visionael</a></li>
+<li><a href="http://www.voip.com.au">VoIP</a></li>
+<li><a href="http://www.westpoint.ltd.uk">Westpoint</a></li>
+<li><a href="http://www.zumanetworks.com">Zuma Networks</a></li>
+</ul>
+
+<hr>
+<small>
+<p>
+11 Nov 2002
+</p>
+
+</body></html>

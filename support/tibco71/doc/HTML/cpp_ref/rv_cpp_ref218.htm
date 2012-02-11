@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvCmListener</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;9	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1138427"> </a><h2 class="pNewHTMLPage">
+TibrvCmListener
+</h2>
+<hr />
+<a name="wp1138639"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1083719"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+class <code class="cCodeBold">TibrvCmListener</code> : <a  href="rv_cpp_ref88.htm#wp1047420"><code class="cCode">TibrvEvent</code></a><a name="wp1138646"> </a>
+&#160;&#160;&#160;&#160;TibrvCmListener();&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;// Create empty.<a name="wp1148042"> </a>
+&#160;&#160;&#160;&#160;virtual ~TibrvCmListener();&#160;&#160;&#160;&#160;// Destroy and reclaim storage.<a name="wp1148043"> </a>
+</pre></div>
+<a name="wp1138648"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1083723"> </a><p class="pBody">
+A certified delivery listener object listens for labeled messages and certified messages.
+</p>
+<a name="wp1138672"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1138676"> </a><p class="pBody">
+The constructor creates a hollow object; <a  href="rv_cpp_ref220.htm#wp1139060"><code class="cCode">TibrvCmListener::create()</code></a> makes it operational&#151;starting a C certified delivery listener, which represents your program&#8217;s listening interest in a stream of labeled messages and certified messages. Rendezvous software uses the same listener object to signal each occurrence of such an event.
+</p>
+<a name="wp1148090"> </a><p class="pBody">
+We recommend that programs explicitly destroy each certified delivery listener object using <a  href="rv_cpp_ref221.htm#wp1158275"><code class="cCode">TibrvCmListener::destroy()</code></a>. Destroying a certified listener object cancels the program&#8217;s immediate interest in that event, and frees its storage; nonetheless, a parameter to the destroy call determines whether certified delivery agreements continue to persist beyond the destroy call.
+</p>
+<a name="wp1148094"> </a><p class="pBody">
+The destructor calls the <code class="cCode">destroy()</code> method, unless the C object is already destroyed.
+</p>
+<a name="wp1151191"> </a><p class="pBody">
+Destroying the queue, the certified delivery transport, or the transport of a listener object automatically invalidates the listener as well (but certified delivery agreements continue to persist).</p><div align="left">
+<table border="1">
+  <caption><a name="wp1237524"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1138703"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1138705"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1138707"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1156460"> </a><div class="pMinorHead">
+Life Cycle
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1156528"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref220.htm#wp1139060"><code class="cCode">TibrvCmListener::create()</code></a>
+</div>
+</td>
+    <td><a name="wp1156530"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref220.htm#wp1087311">Listen for messages that match the subject, and request certified delivery when available.</a>
+</div>
+</td>
+    <td><a name="wp1156535"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref220.htm#wp1139060">283</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1156549"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref221.htm#wp1158275"><code class="cCode">TibrvCmListener::destroy()</code></a>
+</div>
+</td>
+    <td><a name="wp1156554"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref221.htm#wp1158286">Destroy a certified delivery listener.</a>
+</div>
+</td>
+    <td><a name="wp1156559"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref221.htm#wp1158275">284</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1138733"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref224.htm#wp1139579"><code class="cCode">TibrvCmListener::isValid()</code></a>
+</div>
+</td>
+    <td><a name="wp1138738"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref224.htm#wp1139585">Test whether a certified delivery listener has been destroyed.</a>
+</div>
+</td>
+    <td><a name="wp1138743"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref224.htm#wp1139579">287</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1156634"> </a><div class="pMinorHead">
+Confirmation
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1156643"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref219.htm#wp1222836"><code class="cCode">TibrvCmListener::confirmMsg()</code></a>
+</div>
+</td>
+    <td><a name="wp1156645"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref219.htm#wp1158218">Explicitly confirm delivery of a certified message.</a>
+</div>
+</td>
+    <td><a name="wp1156650"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref219.htm#wp1222836">282</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1156685"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref225.htm#wp1084196"><code class="cCode">TibrvCmListener::setExplicitConfirm()</code></a>
+</div>
+</td>
+    <td><a name="wp1156687"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref225.htm#wp1139423">Override automatic confirmation of delivery for this listener.</a>
+</div>
+</td>
+    <td><a name="wp1156692"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref225.htm#wp1084196">288</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1156626"> </a><div class="pMinorHead">
+Properties
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1156587"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref222.htm#wp1149995"><code class="cCode">TibrvCmListener::getSubject()</code></a>
+</div>
+</td>
+    <td><a name="wp1156589"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref222.htm#wp1139437">Extract the subject from a certified delivery listener.</a>
+</div>
+</td>
+    <td><a name="wp1156594"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref222.htm#wp1149995">285</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1156608"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref223.htm#wp1139493"><code class="cCode">TibrvCmListener::getTransport()</code></a>
+</div>
+</td>
+    <td><a name="wp1156610"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref223.htm#wp1139503">Extract the transport from a certified delivery listener.</a>
+</div>
+</td>
+    <td><a name="wp1156615"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref223.htm#wp1139493">286</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1223170"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1223181"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1223231"> </a><p class="pBody">
+<a  href="rv_cpp_ref89.htm#wp1068928"><code class="cCode">TibrvEvent::destroy()</code></a>
+</p>
+<a name="wp1223235"> </a><p class="pBody">
+<a  href="rv_cpp_ref90.htm#wp1033576"><code class="cCode">TibrvEvent::getClosure()</code></a>
+</p>
+<a name="wp1223239"> </a><p class="pBody">
+<a  href="rv_cpp_ref91.htm#wp1161898"><code class="cCode">TibrvEvent::getHandle()</code></a>
+</p>
+<a name="wp1223243"> </a><p class="pBody">
+<a  href="rv_cpp_ref92.htm#wp1161920"><code class="cCode">TibrvEvent::getType()</code></a>
+</p>
+<a name="wp1223247"> </a><p class="pBody">
+<a  href="rv_cpp_ref93.htm#wp1033600"><code class="cCode">TibrvEvent::getQueue()</code></a>
+</p>
+<a name="wp1223251"> </a><p class="pBody">
+<a  href="rv_cpp_ref97.htm#wp1158019"><code class="cCode">TibrvEvent::isValid()</code></a>
+</p>
+<a name="wp1223255"> </a><p class="pBody">
+<a  href="rv_cpp_ref95.htm#wp1154430"><code class="cCode">TibrvEvent::isListener()</code></a>
+</p>
+<a name="wp1223259"> </a><p class="pBody">
+<a  href="rv_cpp_ref96.htm#wp1144031"><code class="cCode">TibrvEvent::isTimer()</code></a>
+</p>
+<a name="wp1223263"> </a><p class="pBody">
+<a  href="rv_cpp_ref94.htm#wp1158043"><code class="cCode">TibrvEvent::isIOEvent()</code></a>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1222825"> </a><h4 class="pHeading3">
+Related Classes
+</h4>
+<a name="wp1222829"> </a><p class="pBody">
+<a  href="rv_cpp_ref88.htm#wp1047420"><code class="cCode">TibrvEvent</code> </a>
+</p>
+<a name="wp1222833"> </a><p class="pBody">
+<a  href="rv_cpp_ref102.htm#wp1031628"><code class="cCode">TibrvListener</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

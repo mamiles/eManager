@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>Convenience Functions</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Appendix&#160;A	 Custom Datatypes";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1152820"> </a><h2 class="pNewHTMLPage">
+Convenience Functions
+</h2>
+<hr />
+<a name="wp1154958"> </a><p class="pBody">
+When defining custom datatypes, programs have the option to also define convenience functions for the new type. In general, layer 4 convenience functions rely on layer 3 generic field functions to do most of their work, packing or unpacking the field structure as appropriate. You can choose to implement up to three convenience functions:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1155340"> </a><div class="pSmartList1"><li ><em class="cEmphasis">Get</em> a value of the custom datatype from a message.</li></div>
+
+<a name="wp1155356"> </a><div class="pSmartList1"><li ><em class="cEmphasis">Add</em> a value of the custom datatype to a message.</li></div>
+
+<a name="wp1155362"> </a><div class="pSmartList1"><li ><em class="cEmphasis">Update</em> an existing field in a message with a new value of the custom datatype.</li></div>
+
+</ul></div>
+
+<a name="wp1152942"> </a><h3 class="pHeading2">
+Get
+</h3>
+<a name="wp1154935"> </a><p class="pBody">
+The get function must fulfill these responsibilities:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1155392"> </a><div class="pSmartList1"><li >Call <a  href="rv_c_ref45.htm#wp1019366"><code class="cCode">tibrvMsg_GetField()</code></a> to find the field in the message.</li></div>
+
+<a name="wp1155396"> </a><div class="pSmartList1"><li >Check that <a  href="rv_c_ref45.htm#wp1019366"><code class="cCode">tibrvMsg_GetField()</code></a> did not return an error code.</li></div>
+
+<a name="wp1155400"> </a><div class="pSmartList1"><li >Check that the <a  href="rv_c_ref25.htm#wp1130007"><code class="cCode">type</code></a> of the field matches the target datatype of the convenience function.</li></div>
+
+<div class="pSmartList2"><ul>
+<a name="wp1155496"> </a><div class="pSmartList2"><li >If the conversion is illegal, return an error code.</li></div>
+<a name="wp1155486"> </a><div class="pSmartList2"><li >If it matches, then return, passing back the <a  href="rv_c_ref25.htm#wp1129999"><code class="cCode">data</code></a> directly.</li></div>
+<a name="wp1155487"> </a><div class="pSmartList2"><li >Otherwise, convert the data to the target datatype. Pass back the converted <a  href="rv_c_ref25.htm#wp1129999"><code class="cCode">data</code></a>. (In most cases, converter functions associated with the actual datatype are unable to convert it to a custom type, so either the convenience function must convert it, or declare the conversion illegal.)</li></div>
+</ul></div>
+
+</ul></div>
+
+<a name="wp1154945"> </a><h3 class="pHeading2">
+Add and Update
+</h3>
+<a name="wp1155429"> </a><p class="pBody">
+The add and update functions must fulfill these responsibilities:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1155430"> </a><div class="pSmartList1"><li >Validate the integrity of the data.</li></div>
+
+<a name="wp1155431"> </a><div class="pSmartList1"><li >Create a field object (<a  href="rv_c_ref25.htm#wp1129956"><code class="cCode">tibrvMsgField</code></a>) on the stack, and set all six of its parts to describe the data.</li></div>
+
+<a name="wp1155439"> </a><div class="pSmartList1"><li >Store it in the message:</li></div>
+
+<div class="pSmartList2"><ul>
+<a name="wp1155457"> </a><div class="pSmartList2"><li >Add calls <a  href="rv_c_ref26.htm#wp1026733"><code class="cCode">tibrvMsg_AddField()</code></a> to add the field object to the message.</li></div>
+<a name="wp1155458"> </a><div class="pSmartList2"><li >Update calls <a  href="rv_c_ref64.htm#wp1019909"><code class="cCode">tibrvMsg_UpdateField()</code></a> to update an existing field in the message with the data from the new field object.</li></div>
+</ul></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

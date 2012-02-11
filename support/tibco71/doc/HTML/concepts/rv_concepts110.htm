@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Anticipating a Listener</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1056268"> </a><h2 class="pNewHTMLPage">
+Anticipating a Listener
+</h2>
+<hr />
+<a name="wp1056269"> </a><p class="pBody">
+In some situations, a sending CM transport can anticipate the request for certified delivery from a (listener) persistent correspondent that has not yet registered.
+</p>
+<a name="wp1056270"> </a><p class="pBody">
+Consider an example in which a database program (<code class="cCode">DB</code>) records all messages with the subject <code class="cCode">STORE.THIS</code>. The program <code class="cCode">DB</code> creates a CM transport that instantiates a persistent correspondent named <code class="cCode">DB_PER</code>. All programs that send messages with the subject <code class="cCode">STORE.THIS</code> depend on this storage mechanism.
+</p>
+<a name="wp1056271"> </a><p class="pBody">
+One such sending program is <code class="cCode">JAN</code>. Whenever <code class="cCode">JAN</code> starts, it can anticipate that <code class="cCode">DB_PER</code> will request certified delivery of the subject <code class="cCode">STORE.THIS</code>. Suppose that <code class="cCode">JAN</code> starts, but <code class="cCode">DB</code> is not running, or a network disconnect has isolated <code class="cCode">JAN</code> from <code class="cCode">DB</code>. Anticipating that it will eventually receive a registration request for <code class="cCode">STORE.THIS</code> from <code class="cCode">DB_PER</code>, <code class="cCode">JAN</code> makes an add listener call. The effect is that the sending CM transport in <code class="cCode">JAN</code> behaves as if it has a certified delivery agreement with <code class="cCode">DB_PER</code> for the subject <code class="cCode">STORE.THIS</code>; it stores outbound messages (on that subject) in its ledger. When <code class="cCode">DB</code> restarts, or the network reconnects, the sender CM transport in <code class="cCode">JAN</code> automatically retransmits all the stored messages to <code class="cCode">DB_PER</code>.
+</p>
+<a name="wp1056272"> </a><p class="pBody">
+It is not sufficient for a sender to anticipate listeners; the anticipated listening programs must also require old messages when they create their CM transports.
+</p>
+<a name="wp1105099"> </a><p class="pBody">
+The sending transport must be available to process the registration request and redeliver stored messages (if necessary).
+</p>
+<a name="wp1056310"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1056278"> </a><div class="pTableTitle">
+Table&#160;31   Add Listener Calls&#160;
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1056282"> </a><div class="pCellBody">
+C
+</div>
+</td>
+    <td><a name="wp1056287"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref185.htm#wp1089437');" onMouseOver="WWHShowPopup('e', 'rv_c_ref185.htm#wp1089437', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvcmTransport_AddListener()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056289"> </a><div class="pCellBody">
+C++
+</div>
+</td>
+    <td><a name="wp1056294"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref227.htm#wp1084281');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref227.htm#wp1084281', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport::addListener()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056297"> </a><div class="pCellBody">
+Java
+</div>
+</td>
+    <td><a name="wp1056302"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref193.htm#wp1084281');" onMouseOver="WWHShowPopup('g', 'rv_java_ref193.htm#wp1084281', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport.addListener()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056304"> </a><div class="pCellBody">
+COM
+</div>
+</td>
+    <td><a name="wp1056309"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref180.htm#wp1084281');" onMouseOver="WWHShowPopup('h', 'rv_com_ref180.htm#wp1084281', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport.addListener</code></a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

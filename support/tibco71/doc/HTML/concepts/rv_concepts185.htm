@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>REGISTRATION.MOVED</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Appendix&#160;B	 Certified Message Delivery (RVCM) Advisory Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1039600"> </a><h2 class="pNewHTMLPage">
+REGISTRATION.MOVED
+</h2>
+<hr />
+<a name="wp1047248"> </a><p class="pSyntaxType">
+Advisory
+</p>
+<a name="wp1048976"> </a><h4 class="pHeading3">
+Subject Name Syntax
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+_RV.INFO.RVCM.REGISTRATION.MOVED.<code class="cCodeItalic">&lt;name&gt;</code><a name="wp1039602"> </a>
+</pre></div>
+<a name="wp1059637"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1039604"> </a><p class="pBody">
+A CM transport presents this advisory when it processes any communication from a persistent correspondent with a familiar name, but an unfamiliar address.
+</p>
+<a name="wp1059783"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1039606"> </a><p class="pBody">
+The combination of a familiar name with an unfamiliar address implies that a cooperating persistent correspondent has moved&#151;that is, the name has moved to a new transport object (possibly in a new process, or even on a different host computer). The receiving correspondent automatically updates its ledger to reflect the new address of the sending correspondent that moved.
+</p>
+<a name="wp1039607"> </a><p class="pBody">
+The <code class="cCodeItalic">&lt;name&gt;</code> element is the reusable name of the relocated correspondent. The name may consist of several elements, so the wildcard character <code class="cCode">&quot;&gt;&quot;</code> (rather than <code class="cCode">&quot;*&quot;</code>) is the correct way to match all subjects in this position.
+</p>
+<a name="wp1039621"> </a><h4 class="pHeading3">
+Message Fields
+</h4>
+<a name="wp1098004"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1039610"> </a><div class="pCellHeading">
+Field Name
+</div>
+</th>
+    <th><a name="wp1039615"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1039617"> </a><div class="pCellBody">
+<code class="cCode">name</code>
+</div>
+</td>
+    <td><a name="wp1039619"> </a><div class="pCellBody">
+The reusable name of the correspondent that moved. It is identical to the <code class="cCodeItalic">&lt;name&gt;</code> element.
+</div>
+<a name="wp1039620"> </a><div class="pCellBody">
+This field has datatype <a  href="rv_concepts54.htm#wp1084160"><code class="cCode">TIBRVMSG_STRING</code></a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1039622"> </a><h4 class="pHeading3">
+Diagnostics
+</h4>
+<a name="wp1039623"> </a><p class="pBody">
+Several <code class="cCode">REGISTRATION.MOVED</code> advisories in rapid succession might indicate a name collision (two or more correspondents that claim the same name). This situation can cause thrashing, which defeats the benefit of certified message delivery.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

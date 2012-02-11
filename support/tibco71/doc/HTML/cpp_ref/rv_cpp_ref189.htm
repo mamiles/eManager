@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvFtMember</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;8	 Fault Tolerance";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1062294"> </a><h2 class="pNewHTMLPage">
+TibrvFtMember
+</h2>
+<hr />
+<a name="wp1062591"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1135795"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+class <code class="cCodeBold">TibrvFtMember</code><a name="wp1135808"> </a>
+&#160;&#160;&#160;&#160;TibrvFtMember();&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;// Create empty.<a name="wp1148006"> </a>
+&#160;&#160;&#160;&#160;virtual ~TibrvFtMember();&#160;&#160;&#160;&#160;// Destroy and reclaim storage.<a name="wp1148001"> </a>
+</pre></div>
+<a name="wp1135810"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1062595"> </a><p class="pBody">
+Represent membership in a fault tolerance group.
+</p>
+<a name="wp1062596"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1138828"> </a><p class="pBody">
+The constructor creates a hollow object; <a  href="rv_cpp_ref190.htm#wp1062937"><code class="cCode">TibrvFtMember::create()</code></a> makes it operational and joins a fault tolerance group.
+</p>
+<a name="wp1158741"> </a><p class="pBody">
+By destroying a member object, the program withdraws its membership in the fault tolerance group. The destructor calls the <code class="cCode">destroy</code> method, unless the C object is already destroyed.
+</p>
+<a name="wp1138829"> </a><p class="pBody">
+Destroying the queue or transport of a member object invalidates the member object, but does not destroy it. Programs must explicitly destroy the member to reclaim storage.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1221111"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1221117"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1221119"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1221121"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1221123"> </a><div class="pMinorHead">
+Life Cycle
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1221132"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref190.htm#wp1062937"><code class="cCode">TibrvFtMember::create()</code></a>
+</div>
+</td>
+    <td><a name="wp1221136"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref190.htm#wp1062954">Create a member of a fault tolerance group.</a>
+</div>
+</td>
+    <td><a name="wp1221142"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref190.htm#wp1062937">246</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1221147"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref191.htm#wp1062646"><code class="cCode">TibrvFtMember::destroy()</code></a>
+</div>
+</td>
+    <td><a name="wp1221151"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref191.htm#wp1062802">Destroy a member of a fault tolerance group.</a>
+</div>
+</td>
+    <td><a name="wp1221157"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref191.htm#wp1062646">249</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1221162"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref194.htm#wp1136648"><code class="cCode">TibrvFtMember::getHandle()</code></a>
+</div>
+</td>
+    <td><a name="wp1221166"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref194.htm#wp1136683">Extract the C handle of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1221172"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref194.htm#wp1136648">252</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1221177"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref198.htm#wp1113963"><code class="cCode">TibrvFtMember::isValid()</code></a>
+</div>
+</td>
+    <td><a name="wp1221181"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref198.htm#wp1064092">Test validity of a fault tolerance member object.</a>
+</div>
+</td>
+    <td><a name="wp1221187"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref198.htm#wp1113963">256</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1221189"> </a><div class="pMinorHead">
+Properties
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1221198"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref192.htm#wp1063922"><code class="cCode">TibrvFtMember::getClosure()</code></a>
+</div>
+</td>
+    <td><a name="wp1221202"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref192.htm#wp1063929">Extract the closure data of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1221208"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref192.htm#wp1063922">250</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1221213"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref193.htm#wp1061649"><code class="cCode">TibrvFtMember::getGroupName()</code></a>
+</div>
+</td>
+    <td><a name="wp1221217"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref193.htm#wp1061657">Extract the group name of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1221223"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref193.htm#wp1061649">251</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1221228"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref195.htm#wp1061680"><code class="cCode">TibrvFtMember::getQueue()</code></a>
+</div>
+</td>
+    <td><a name="wp1221232"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref195.htm#wp1061688">Extract the event queue of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1221238"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref195.htm#wp1061680">253</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1221243"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref196.htm#wp1136505"><code class="cCode">TibrvFtMember::getTransport()</code></a>
+</div>
+</td>
+    <td><a name="wp1221247"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref196.htm#wp1061718">Extract the transport of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1221253"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref196.htm#wp1136505">254</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1221258"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref197.htm#wp1061740"><code class="cCode">TibrvFtMember::getWeight()</code></a>
+</div>
+</td>
+    <td><a name="wp1221262"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref197.htm#wp1061748">Extract the weight of a fault tolerance member.</a>
+</div>
+</td>
+    <td><a name="wp1221268"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref197.htm#wp1061740">255</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1221273"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref199.htm#wp1061770"><code class="cCode">TibrvFtMember::setWeight()</code></a>
+</div>
+</td>
+    <td><a name="wp1221277"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref199.htm#wp1061779">Change the weight of a fault tolerance member within its group.</a>
+</div>
+</td>
+    <td><a name="wp1221283"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref199.htm#wp1061770">257</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1139036"> </a><h4 class="pHeading3">
+Related Classes
+</h4>
+<a name="wp1221075"> </a><p class="pBody">
+<a  href="rv_cpp_ref204.htm#wp1061908"><code class="cCode">TibrvFtMonitor</code> </a>
+</p>
+<a name="wp1221076"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1139040"> </a><p class="pBody">
+<a  href="rv_cpp_ref200.htm#wp1136709"><code class="cCode">TibrvFtMemberCallback</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>NeighborInterface.isCompressed()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;4	 Routing Daemon&#151;rvrd";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp2030054"> </a><h2 class="pNewHTMLPage">
+NeighborInterface.isCompressed()
+</h2>
+<hr />
+<a name="wp2030055"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp2030056"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+boolean <code class="cCodeBold">isCompressed</code>()<a name="wp2030057"> </a>
+&#160;&#160;throws java.lang.UnsupportedOperationException<a name="wp2037029"> </a>
+</pre></div>
+<a name="wp2030058"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp2030060"> </a><p class="pBody">
+Get the data compression flag of the neighbor interface.
+</p>
+<a name="wp2030061"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp2030062"> </a><p class="pBody">
+This method returns a value that reflects communications between the local router and its neighbor (which the <a  href="rv_config80.htm#wp1953195"><code class="cCode">NeighborInterface</code></a> object describes):
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp2032905"> </a><div class="pSmartList1"><li ><code class="cCode">true</code> indicates that this neighbor interface compresses outbound data and uncompresses inbound data.</li></div>
+
+<a name="wp2032906"> </a><div class="pSmartList1"><li ><code class="cCode">false</code> indicates that this neighbor interface does <em class="cEmphasis">not</em> compress data.</li></div>
+
+</ul></div>
+
+<a name="wp2036987"> </a><div class="pCellBody">
+Notice that it is inconsistent for one neighbor to compress data while the other does not. Neighbors must agree concerning compression, otherwise they cannot establish a connection.
+</div>
+<a name="wp2030290"> </a><p class="pBody">
+Rendezvous routing daemons support data compression in release 7.1 and later; earlier releases do not. When the routing daemon does not support data compression (as with <code class="cCode">rvrd</code> from release 7.0), this method throws java.lang.UnsupportedOperationException.
+</p>
+<a name="wp2030229"> </a><p class="pBody">
+
+</p>
+<a name="wp2030068"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp2030072"> </a><p class="pBody">
+<a  href="rv_config80.htm#wp1953195"><code class="cCode">NeighborInterface</code> </a>
+</p>
+<a name="wp2030362"> </a><p class="pBody">
+<a  href="rv_config92.htm#wp1953972"><code class="cCode">Router.addAcceptAnyInterface()</code> </a>
+</p>
+<a name="wp2030370"> </a><p class="pBody">
+<a  href="rv_config93.htm#wp1954062"><code class="cCode">Router.addActiveInterface()</code> </a>
+</p>
+<a name="wp2030080"> </a><p class="pBody">
+<a  href="rv_config95.htm#wp1954315"><code class="cCode">Router.addPassiveInterface()</code> </a>
+</p>
+<a name="wp2030381"> </a><p class="pBody">
+<a  href="rv_config96.htm#wp1954420"><code class="cCode">Router.addSeekAnyInterface()</code> </a>
+</p>
+<a name="wp2030084"> </a><p class="pBody">
+For the corresponding browser page, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm55.htm#wp1209711');" onMouseOver="WWHShowPopup('c', 'rv_adm55.htm#wp1209711', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Neighbor Interfaces</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+<a name="wp2030091"> </a><p class="pBody">
+For background information, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm35.htm#wp1306782');" onMouseOver="WWHShowPopup('c', 'rv_adm35.htm#wp1306782', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Data Compression</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

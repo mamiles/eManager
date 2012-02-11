@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>DaemonManager()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;2	 Daemon Manager";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1949738"> </a><h2 class="pNewHTMLPage">
+DaemonManager()
+</h2>
+<hr />
+<a name="wp1949739"> </a><p class="pSyntaxType">
+Constructor
+</p>
+<a name="wp1949740"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCodeBold">DaemonManager</code>(java.lang.String url)<a name="wp1949741"> </a>
+&#160;&#160;throws <a  href="rv_config267.htm#wp1963961"><code class="cCode">ConfigurationException</code></a><a name="wp1949745"> </a>
+</pre></div>
+<a name="wp1949746"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1949748"> </a><p class="pBody">
+Create a daemon manager and initialize its connection to a daemon process.
+</p>
+<a name="wp1949749"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1949750"> </a><p class="pBody">
+Each instance connects to <em class="cEmphasis">one</em> process instance of a daemon. The URL parameter specifies the location of the browser administration interface for that process.
+</p>
+<a name="wp1949751"> </a><p class="pBody">
+This constructor automatically creates a proxy instance (<code class="cCode">java.lang.reflect.Proxy</code>) within the <a  href="rv_config8.htm#wp1949616"><code class="cCode">DaemonManager</code></a> object. The proxy serves as the program&#8217;s command interface to the daemon component. Programs extract the proxy instance using <a  href="rv_config11.htm#wp1949789"><code class="cCode">DaemonManager.getDaemonProxy()</code></a>, and cast it to the appropriate proxy interfaces to access the corresponding daemon or component.
+</p>
+<a name="wp1949770"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1949760"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1949762"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1949764"> </a><div class="pCellBody">
+<code class="cCode">url</code>
+</div>
+</td>
+    <td><a name="wp1949766"> </a><div class="pCellBody">
+Connect to a daemon at this URL.
+</div>
+<a name="wp1949767"> </a><div class="pCellBody">
+For example:
+</div>
+<div class="pSmartList1"><ul>
+<a name="wp1949768"> </a><div class="pSmartList1"><li ><code class="cCode">http://localhost:7580</code></li></div>
+
+<a name="wp1949769"> </a><div class="pSmartList1"><li ><code class="cCode">http://rvaHostName:7680</code></li></div>
+
+</ul></div>
+
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

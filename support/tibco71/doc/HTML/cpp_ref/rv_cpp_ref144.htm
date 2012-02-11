@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvQueueGroup</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1037388"> </a><h2 class="pNewHTMLPage">
+TibrvQueueGroup
+</h2>
+<hr />
+<a name="wp1037550"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1132435"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+class <code class="cCodeBold">TibrvQueueGroup</code> : public <a  href="rv_cpp_ref120.htm#wp1059389"><code class="cCode">TibrvDispatchable</code></a><a name="wp1132450"> </a>
+&#160;&#160;&#160;&#160;TibrvQueueGroup();&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;// Create empty.<a name="wp1147937"> </a>
+&#160;&#160;&#160;&#160;virtual ~TibrvQueueGroup();&#160;&#160;&#160;&#160;// Destroy and reclaim storage.<a name="wp1147935"> </a>
+</pre></div>
+<a name="wp1132451"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1132452"> </a><p class="pBody">
+Prioritized dispatch of several queues with one call.
+</p>
+<a name="wp1037556"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1132457"> </a><p class="pBody">
+Queue groups add flexibility and fine-grained control to the event queue dispatch mechanism. Programs can create groups of queues and dispatch them according to their queue priorities.
+</p>
+<a name="wp1146373"> </a><p class="pBody">
+The constructor creates a hollow object; <a  href="rv_cpp_ref146.htm#wp1158136"><code class="cCode">TibrvQueueGroup::create()</code></a> makes it operational.
+</p>
+<a name="wp1146376"> </a><p class="pBody">
+The destructor calls the <code class="cCode">destroy</code> method, unless the C object is already destroyed.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1213790"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1213796"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1213798"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1213800"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1213802"> </a><div class="pMinorHead">
+Life Cycle
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1213811"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref146.htm#wp1158136"><code class="cCode">TibrvQueueGroup::create()</code></a>
+</div>
+</td>
+    <td><a name="wp1213816"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref146.htm#wp1158144">Create an event queue group.</a>
+</div>
+</td>
+    <td><a name="wp1213821"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref146.htm#wp1158136">190</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1213826"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref147.htm#wp1037813"><code class="cCode">TibrvQueueGroup::destroy()</code></a>
+</div>
+</td>
+    <td><a name="wp1213831"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref147.htm#wp1037846">Destroy an event queue group.</a>
+</div>
+</td>
+    <td><a name="wp1213836"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref147.htm#wp1037813">191</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1213841"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref149.htm#wp1164216"><code class="cCode">TibrvQueueGroup::getHandle()</code></a>
+</div>
+</td>
+    <td><a name="wp1213846"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref149.htm#wp1164225">Extract the C handle of this queue group.</a>
+</div>
+</td>
+    <td><a name="wp1213851"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref149.htm#wp1164216">193</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1213856"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref150.htm#wp1133052"><code class="cCode">TibrvQueueGroup::isValid()</code></a>
+</div>
+</td>
+    <td><a name="wp1213861"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref150.htm#wp1037790">Test validity of a queue group.</a>
+</div>
+</td>
+    <td><a name="wp1213866"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref150.htm#wp1133052">194</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1213868"> </a><div class="pMinorHead">
+Dispatch
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1213877"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref148.htm#wp1133021"><code class="cCode">TibrvQueueGroup::dispatch()</code></a>
+</div>
+</td>
+    <td><a name="wp1213881"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref148.htm#wp1038299">Dispatch an event from a queue group; if no event is ready, block.</a>
+</div>
+</td>
+    <td><a name="wp1213887"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref148.htm#wp1133021">192</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1213892"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref151.htm#wp1133104"><code class="cCode">TibrvQueueGroup::poll()</code></a>
+</div>
+</td>
+    <td><a name="wp1213896"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref151.htm#wp1038495">Dispatch an event, but if no event is ready to dispatch, return immediately (without blocking).</a>
+</div>
+</td>
+    <td><a name="wp1213902"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref151.htm#wp1133104">195</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1213907"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref153.htm#wp1038451"><code class="cCode">TibrvQueueGroup::timedDispatch()</code></a>
+</div>
+</td>
+    <td><a name="wp1213911"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref153.htm#wp1038458">Dispatch an event, but if no event is ready to dispatch, limit the time that this call blocks while waiting for an event.</a>
+</div>
+</td>
+    <td><a name="wp1213917"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref153.htm#wp1038451">197</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1213919"> </a><div class="pMinorHead">
+Queues
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1213928"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref145.htm#wp1132920"><code class="cCode">TibrvQueueGroup::add()</code></a>
+</div>
+</td>
+    <td><a name="wp1213933"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref145.htm#wp1037940">Add an event queue to a queue group.</a>
+</div>
+</td>
+    <td><a name="wp1213938"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref145.htm#wp1132920">189</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1213943"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref152.htm#wp1037972"><code class="cCode">TibrvQueueGroup::remove()</code></a>
+</div>
+</td>
+    <td><a name="wp1213947"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref152.htm#wp1133194">Remove an event queue from a queue group.</a>
+</div>
+</td>
+    <td><a name="wp1213953"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref152.htm#wp1037972">196</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1132747"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1214617"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1214674"> </a><p class="pBody">
+<a  href="rv_cpp_ref123.htm#wp1158075"><code class="cCode">TibrvDispatchable::getDispatchable()</code></a>
+</p>
+<a name="wp1214678"> </a><p class="pBody">
+<a  href="rv_cpp_ref121.htm#wp1130837"><code class="cCode">TibrvDispatchable::destroy()</code></a>
+</p>
+<a name="wp1214682"> </a><p class="pBody">
+<a  href="rv_cpp_ref122.htm#wp1130743"><code class="cCode">TibrvDispatchable::dispatch()</code></a>
+</p>
+<a name="wp1214686"> </a><p class="pBody">
+<a  href="rv_cpp_ref124.htm#wp1130399"><code class="cCode">TibrvDispatchable::isValid()</code></a>
+</p>
+<a name="wp1214690"> </a><p class="pBody">
+<a  href="rv_cpp_ref125.htm#wp1130553"><code class="cCode">TibrvDispatchable::poll()</code></a>
+</p>
+<a name="wp1214694"> </a><p class="pBody">
+<a  href="rv_cpp_ref126.htm#wp1059825"><code class="cCode">TibrvDispatchable::timedDispatch()</code></a>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1213758"> </a><h4 class="pHeading3">
+Related Classes
+</h4>
+<a name="wp1213762"> </a><p class="pBody">
+<a  href="rv_cpp_ref120.htm#wp1059389"><code class="cCode">TibrvDispatchable</code> </a>
+</p>
+<a name="wp1219566"> </a><p class="pBody">
+<a  href="rv_cpp_ref127.htm#wp1035245"><code class="cCode">TibrvQueue</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

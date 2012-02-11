@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvIOEvent</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1128602"> </a><h2 class="pNewHTMLPage">
+TibrvIOEvent
+</h2>
+<hr />
+<a name="wp1147419"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1147476"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+class <code class="cCodeBold">TibrvIOEvent</code> : public <a  href="rv_cpp_ref88.htm#wp1047420"><code class="cCode">TibrvEvent</code></a><a name="wp1147498"> </a>
+&#160;&#160;&#160;&#160;TibrvI0Event();&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;// Create empty.<a name="wp1147504"> </a>
+&#160;&#160;&#160;&#160;virtual ~TibrvI0Event();&#160;&#160;&#160;&#160;// Destroy and reclaim storage.<a name="wp1147499"> </a>
+</pre></div>
+<a name="wp1147500"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1128913"> </a><p class="pBody">
+I/O event.
+</p>
+<a name="wp1147511"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1147512"> </a><p class="pBody">
+The constructor creates a hollow object; <a  href="rv_cpp_ref115.htm#wp1129107"><code class="cCode">TibrvIOEvent::create()</code></a> makes it operational.
+</p>
+<a name="wp1147520"> </a><p class="pBody">
+The destructor calls the <code class="cCode">destroy</code> method, unless the C object is already destroyed.
+</p>
+<a name="wp1158633"> </a><p class="pBody">
+Destroying the queue of an I/O event automatically destroys the I/O event as well.
+</p>
+<a name="wp1129452"> </a><h4 class="pHeading3">
+Activation and Dispatch
+</h4>
+<a name="wp1129453"> </a><p class="pBody">
+The method <a  href="rv_cpp_ref115.htm#wp1129107"><code class="cCode">TibrvIOEvent::create()</code></a> creates an event object that describes an I/O situation, and <em class="cEmphasis">activates</em> the event&#151;that is, it requests notification from the operating system when that I/O situation occurs. When the situation occurs, Rendezvous software deactivates the event, and places the event object on its event queue. Dispatch removes the event object from the queue, and runs the callback method to process the event. When the callback method returns, Rendezvous software automatically reactivates the event. (To stop the cycle, destroy the event object; see <a  href="rv_cpp_ref89.htm#wp1068928"><code class="cCode">TibrvEvent::destroy()</code> </a>.)
+</p>
+<a name="wp1129469"> </a><p class="pBody">
+<a  href="rv_cpp_ref114.htm#wp1129474">Figure&#160;10</a> illustrates that Rendezvous software temporarily deactivates the I/O event from the time it enters the queue until its callback method returns. Consequently, an I/O object can cause at most one event at a time.
+</p>
+<a name="wp1129474"> </a><div class="pFigureTitle">
+Figure&#160;10   I/O Event Activation and Dispatch</div><div align="center"><img src="images/rv_cpp_refa11.gif" height="306" width="531" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1129475"> </a><h4 class="pHeading3">
+Semantics of I/O Events
+</h4>
+<a name="wp1129476"> </a><p class="pBody">
+The semantics of all I/O conditions depend on the underlying operating system and event manager. Rendezvous software does not change those semantics.
+</p>
+<a name="wp1129480"> </a><p class="pBody">
+I/O events trigger when the operating system <em class="cEmphasis">reports</em> that an I/O condition on a monitored socket would succeed (that is, transfer at least one byte without blocking). Nonetheless, Rendezvous software cannot guarantee that a subsequent I/O call will not block.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1202500"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1202502"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1202504"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1202509"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref115.htm#wp1129107"><code class="cCode">TibrvIOEvent::create()</code></a>
+</div>
+</td>
+    <td><a name="wp1202513"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref115.htm#wp1129566">Wait for specified I/O situations to occur.</a>
+</div>
+</td>
+    <td><a name="wp1202519"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref115.htm#wp1129107">156</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1202524"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref116.htm#wp1129175"><code class="cCode">TibrvIOEvent::getIOSource()</code></a>
+</div>
+</td>
+    <td><a name="wp1202528"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref116.htm#wp1129576">Extract the source (socket ID) from an I/O event object.</a>
+</div>
+</td>
+    <td><a name="wp1202534"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref116.htm#wp1129175">157</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1202539"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref117.htm#wp1129626"><code class="cCode">TibrvIOEvent::getIOType()</code></a>
+</div>
+</td>
+    <td><a name="wp1202543"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref117.htm#wp1129694">Extract the I/O type from an I/O event object.</a>
+</div>
+</td>
+    <td><a name="wp1202549"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref117.htm#wp1129626">158</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1202563"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1203222"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1205255"> </a><p class="pBody">
+<a  href="rv_cpp_ref89.htm#wp1068928"><code class="cCode">TibrvEvent::destroy()</code></a>
+</p>
+<a name="wp1205259"> </a><p class="pBody">
+<a  href="rv_cpp_ref90.htm#wp1033576"><code class="cCode">TibrvEvent::getClosure()</code></a>
+</p>
+<a name="wp1205263"> </a><p class="pBody">
+<a  href="rv_cpp_ref91.htm#wp1161898"><code class="cCode">TibrvEvent::getHandle()</code></a>
+</p>
+<a name="wp1205267"> </a><p class="pBody">
+<a  href="rv_cpp_ref92.htm#wp1161920"><code class="cCode">TibrvEvent::getType()</code></a>
+</p>
+<a name="wp1205271"> </a><p class="pBody">
+<a  href="rv_cpp_ref93.htm#wp1033600"><code class="cCode">TibrvEvent::getQueue()</code></a>
+</p>
+<a name="wp1205275"> </a><p class="pBody">
+<a  href="rv_cpp_ref97.htm#wp1158019"><code class="cCode">TibrvEvent::isValid()</code></a>
+</p>
+<a name="wp1205279"> </a><p class="pBody">
+<a  href="rv_cpp_ref95.htm#wp1154430"><code class="cCode">TibrvEvent::isListener()</code></a>
+</p>
+<a name="wp1205283"> </a><p class="pBody">
+<a  href="rv_cpp_ref96.htm#wp1144031"><code class="cCode">TibrvEvent::isTimer()</code></a>
+</p>
+<a name="wp1205287"> </a><p class="pBody">
+<a  href="rv_cpp_ref94.htm#wp1158043"><code class="cCode">TibrvEvent::isIOEvent()</code></a>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1219523"> </a><h4 class="pHeading3">
+Related Classes
+</h4>
+<a name="wp1219528"> </a><p class="pBody">
+<a  href="rv_cpp_ref88.htm#wp1047420"><code class="cCode">TibrvEvent</code> </a>
+</p>
+<a name="wp1152078"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1152079"> </a><p class="pBody">
+<a  href="rv_cpp_ref118.htm#wp1129245"><code class="cCode">TibrvIOCallback</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

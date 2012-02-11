@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvTransport</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;6	 Transports";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1146502"> </a><h2 class="pNewHTMLPage">
+TibrvTransport
+</h2>
+<hr />
+<a name="wp1146761"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1039757"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+class <code class="cCodeBold">TibrvTransport</code><a name="wp1039764"> </a>
+&#160;&#160;&#160;&#160;virtual ~TibrvTransport();&#160;&#160;&#160;&#160;// Destroy and reclaim storage.<a name="wp1146358"> </a>
+</pre></div>
+<a name="wp1039759"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1039813"> </a><p class="pBody">
+A transport object represents a delivery mechanism for messages.
+</p>
+<a name="wp1038693"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1146359"> </a><p class="pBody">
+A transport describes a carrier for messages&#151;whether across a network, among processes on a single computer, or within a process. Transports manage network connections, and send outbound messages.
+</p>
+<a name="wp1163215"> </a><p class="pBody">
+A transport also defines the delivery scope of a message&#151;that is, the set of <em class="cEmphasis">possible</em> destinations for the messages it sends.
+</p>
+<a name="wp1163216"> </a><p class="pBody">
+Destroying a transport object invalidates subsequent send calls on that transport, and invalidates any listeners using that transport. The destructor calls the <code class="cCode">destroy</code> method, unless the C object is already destroyed.
+</p>
+<a name="wp1039836"> </a><p class="pBody">
+This class is the superclass of all other transport classes. Methods defined by this class are implemented by all transport subclasses (except <a  href="rv_cpp_ref260.htm#wp1108902"><code class="cCode">TibrvCmQueueTransport</code></a>, for which some methods do not apply).
+</p>
+<a name="wp1134446"> </a><h4 class="pHeading3">
+Intra-Process Transport
+</h4>
+<a name="wp1134451"> </a><p class="pBody">
+Each process has exactly one intra-process transport; the call <a  href="rv_cpp_ref15.htm#wp1119220"><code class="cCode">Tibrv::open()</code></a> automatically creates it, and the call <a  href="rv_cpp_ref16.htm#wp1053428"><code class="cCode">Tibrv::processTransport()</code></a> extracts it. Programs must not destroy the intra-process transport.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1218508"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1218514"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1218516"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1218518"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1218523"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref164.htm#wp1040342"><code class="cCode">TibrvTransport::createInbox()</code></a>
+</div>
+</td>
+    <td><a name="wp1218528"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref164.htm#wp1040413">Create a unique inbox subject name.</a>
+</div>
+</td>
+    <td><a name="wp1218533"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref164.htm#wp1040342">210</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1218538"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref165.htm#wp1039911"><code class="cCode">TibrvTransport::destroy()</code></a>
+</div>
+</td>
+    <td><a name="wp1218543"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref165.htm#wp1040010">Destroy a transport.</a>
+</div>
+</td>
+    <td><a name="wp1218548"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref165.htm#wp1039911">212</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1218553"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref168.htm#wp1070914"><code class="cCode">TibrvTransport::isValid()</code></a>
+</div>
+</td>
+    <td><a name="wp1218558"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref168.htm#wp1039885">Test validity of a transport.</a>
+</div>
+</td>
+    <td><a name="wp1218563"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref168.htm#wp1070914">215</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1218568"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref166.htm#wp1158165"><code class="cCode">TibrvTransport::getDescription()</code></a>
+</div>
+</td>
+    <td><a name="wp1218572"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref166.htm#wp1158175">Extract the program description parameter from a transport.</a>
+</div>
+</td>
+    <td><a name="wp1218578"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref166.htm#wp1158165">213</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1218583"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref167.htm#wp1158191"><code class="cCode">TibrvTransport::getHandle()</code></a>
+</div>
+</td>
+    <td><a name="wp1218588"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref167.htm#wp1158197">Extract the C handle of this transport object.</a>
+</div>
+</td>
+    <td><a name="wp1218593"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref167.htm#wp1158191">214</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1218598"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref169.htm#wp1040046"><code class="cCode">TibrvTransport::send()</code></a>
+</div>
+</td>
+    <td><a name="wp1218603"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref169.htm#wp1040095">Send a message.</a>
+</div>
+</td>
+    <td><a name="wp1218608"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref169.htm#wp1040046">216</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1218613"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref170.htm#wp1040235"><code class="cCode">TibrvTransport::sendReply()</code></a>
+</div>
+</td>
+    <td><a name="wp1218618"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref170.htm#wp1040321">Send a reply message.</a>
+</div>
+</td>
+    <td><a name="wp1218623"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref170.htm#wp1040235">217</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1218628"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref171.htm#wp1040108"><code class="cCode">TibrvTransport::sendRequest()</code></a>
+</div>
+</td>
+    <td><a name="wp1218633"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref171.htm#wp1040182">Send a request message and wait for a reply.</a>
+</div>
+</td>
+    <td><a name="wp1218638"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref171.htm#wp1040108">218</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1218643"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref172.htm#wp1118418"><code class="cCode">TibrvTransport::setDescription()</code></a>
+</div>
+</td>
+    <td><a name="wp1218647"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref172.htm#wp1118479">Set the program description parameter of a transport.</a>
+</div>
+</td>
+    <td><a name="wp1218653"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref172.htm#wp1118418">220</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1112455"> </a><h4 class="pHeading3">
+Descendants
+</h4>
+<a name="wp1218461"> </a><p class="pBody">
+<a  href="rv_cpp_ref174.htm#wp1041039"><code class="cCode">TibrvProcessTransport</code> </a>
+</p>
+<a name="wp1218467"> </a><p class="pBody">
+<a  href="rv_cpp_ref175.htm#wp1111502"><code class="cCode">TibrvNetTransport</code> </a>
+</p>
+<a name="wp1253108"> </a><p class="pBody">
+<a  href="rv_cpp_ref182.htm#wp1249443"><code class="cCode">TibrvVcTransport</code> </a>
+</p>
+<a name="wp1218471"> </a><p class="pBody">
+<a  href="rv_cpp_ref226.htm#wp1084243"><code class="cCode">TibrvCmTransport</code> </a>
+</p>
+<a name="wp1218475"> </a><p class="pBody">
+<a  href="rv_cpp_ref260.htm#wp1108902"><code class="cCode">TibrvCmQueueTransport</code> </a>
+</p>
+<a name="wp1218460"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1112460"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts68.htm#wp1052644');" onMouseOver="WWHShowPopup('a', 'rv_concepts68.htm#wp1052644', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Transport</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

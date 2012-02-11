@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvCmTransport.removeSendState()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;9	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1104483"> </a><h2 class="pNewHTMLPage">
+TibrvCmTransport.removeSendState()
+</h2>
+<hr />
+<a name="wp1104484"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1104485"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+void <code class="cCodeBold">removeSendState</code>(<a name="wp1104573"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;&#160;&#160;subject)<a name="wp1104574"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1104575"> </a>
+</pre></div>
+<a name="wp1104489"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1104490"> </a><p class="pBody">
+Reclaim ledger space from obsolete subjects.
+</p>
+<a name="wp1104491"> </a><h4 class="pHeading3">
+Background
+</h4>
+<a name="wp1104492"> </a><p class="pBody">
+In some programs subject names are useful only for a limited time; after that time, they are never used again. For example, consider a server program that sends certified reply messages to client inbox names; it only sends one reply message to each inbox, and after delivery is confirmed and complete, that inbox name is obsolete. Nonetheless, a record for that inbox name remains in the server&#8217;s ledger.
+</p>
+<a name="wp1104493"> </a><p class="pBody">
+As such obsolete records accumulate, the ledger size grows. To counteract this growth, programs can use this method to discard obsolete subject records from the ledger.
+</p>
+<a name="wp1104497"> </a><p class="pBody">
+The <a  href="javascript:WWHClickedPopup('a', 'rv_concepts175.htm#wp1039134');" onMouseOver="WWHShowPopup('a', 'rv_concepts175.htm#wp1039134', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">DELIVERY.COMPLETE</code></a> advisory is a good opportunity to clear the send state of an obsolete subject. Another strategy is to review the ledger periodically, sweeping to detect and remove all obsolete subjects.
+</p>
+<a name="wp1290075"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1290085"> </a><p class="pBody">
+Do not use this method to clear subjects that are still in use.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1104518"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1104504"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1104509"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1104515"> </a><div class="pCellBody">
+<code class="cCode">subject</code>
+</div>
+</td>
+    <td><a name="wp1104517"> </a><div class="pCellBody">
+Remove send state for this obsolete subject.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1104617"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1104618"> </a><p class="pBody">
+As a side-effect, this method resets the sequence numbering for the subject, so the next message sent on the subject would be number 1. In proper usage, this side-effect is never detected, since obsolete subjects are truly obsolete.
+</p>
+<a name="wp1220077"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1220081"> </a><p class="pBody">
+<a  href="rv_java_ref208.htm#wp1220095"><code class="cCode">TibrvCmTransport.reviewLedger()</code> </a>
+</p>
+<a name="wp1220085"> </a><p class="pBody">
+<a  href="rv_java_ref209.htm#wp1085385"><code class="cCode">TibrvCmTransport.send()</code> </a>
+</p>
+<a name="wp1220092"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts175.htm#wp1039134');" onMouseOver="WWHShowPopup('a', 'rv_concepts175.htm#wp1039134', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">DELIVERY.COMPLETE</code> </a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html>
+ <!-- Copyright (c) 2000-2001 Quadralay Corporation.  All rights reserved. -->
+
+ <head>
+  <meta http-equiv="content-type" content="text/html">
+  <meta http-equiv="charset"      content="UTF-8">
+
+  <title>default.htm</title>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    var  WWHFrame = null;
+
+    var BookName = " ";
+    var ChapterTitle = " ";
+
+    // Set reference to top level help frame
+    //
+    if ((typeof parent.WWHHelp != "undefined") &&
+        (parent.WWHHelp != null))
+    {
+      WWHFrame = eval("parent");
+    }
+    else if ((typeof parent.parent.WWHHelp != "undefined") &&
+             (parent.parent.WWHHelp != null))
+    {
+      WWHFrame = eval("parent.parent");
+    }
+
+    function  WWHUpdate()
+    {
+      if (WWHFrame != null)
+      {
+        WWHFrame.WWHHelp.fUpdate(location.href);
+      }
+    }
+   // -->
+  </script>
+ </head>
+
+ <body onLoad="WWHUpdate();" bgcolor="#FFFFFF" background="../images/splash.gif">
+
+ <h1>TIBCO Rendezvous</h1>
+<br />
+<br />
+
+<em> <br />
+Software Release 7.1 <br />
+October 2002</em>
+<br />
+<br />
+<br />
+<br />
+<br />
+<small>  
+If the table of contents does not appear in the frame to 
+the left, please right-click inside of that frame and choose 
+Refresh or Reload Frame from the popup menu.
+</small>
+<br />
+<br />
+<small><strong>For Windows 2000 users:</strong> Online documentation is best viewed
+with Internet Explorer or Netscape 6.1 or greater. 
+</small>
+<br />
+<br />
+<small><em>
+<a href="copyrigh.htm">Copyright &#169; TIBCO Software Inc. All rights reserved</a> <br />
+<a href="license.htm">License Agreement</a>
+</em></small>
+
+
+ </body>
+</html>

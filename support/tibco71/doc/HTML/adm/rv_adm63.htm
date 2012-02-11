@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Behavioral Differences</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;6	 Secure Daemons (rvsd and rvsrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1141828"> </a><h2 class="pNewHTMLPage">
+Behavioral Differences
+</h2>
+<hr />
+<a name="wp1164625"> </a><p class="pBody">
+Secure daemons exhibit slight differences in behavior from their non-secure counterparts. This section summarizes those differences.
+</p>
+<a name="wp1164633"> </a><h3 class="pHeading2">
+Automatic Start and Stop
+</h3>
+<a name="wp1168091"> </a><p class="pBody">
+<code class="cCode">rvd</code> can start either automatically or by explicit command. In contrast, administrators must start <code class="cCode">rvsd</code> by explicit command.
+</p>
+<a name="wp1168057"> </a><p class="pBody">
+<code class="cCode">rvd</code> can stop automatically after an interval in which it has no clients (see <a  href="rv_adm20.htm#wp1020072"><code class="cCode">rvd</code> </a>, and <a  href="rv_adm20.htm#wp1285963"><code class="cCode">-no-permanent</code> </a>). In contrast, <code class="cCode">rvsd</code> does <em class="cEmphasis">not</em> stop automatically.
+</p>
+<a name="wp1167950"> </a><h3 class="pHeading2">
+Subject Gating
+</h3>
+<a name="wp1164663"> </a><p class="pBody">
+Secure daemons are silent when subject gating parameters preclude send or listen operations:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1164627"> </a><div class="pSmartList1"><li >Subjects authorized for <em class="cEmphasis">sending</em> can flow from client transports out to local networks.</li></div>
+
+<a name="wp1164628"> </a><p class="pBodyRelative">
+A client transport that sends a message with an unauthorized subject does not receive any error indication; instead, the secure daemon silently discards the message.
+</p>
+<a name="wp1164629"> </a><div class="pSmartList1"><li >Subjects authorized for <em class="cEmphasis">listening</em> can flow to client transports from local networks.</li></div>
+
+<a name="wp1164630"> </a><p class="pBodyRelative">
+A client transport that creates a listener with an unauthorized subject does not receive any error indication&#151;but the resulting listener object never receives any messages.
+</p>
+</ul></div>
+
+<a name="wp1152427"> </a><h3 class="pHeading2">
+Default Network and Service
+</h3>
+<a name="wp1155731"> </a><p class="pBody">
+Secure daemons and non-secure daemons behave differently when a client transport specifies a default value (that is, null) for its network or service parameter. Non-secure daemons use external defaults; see <a  href="rv_adm15.htm#wp1288869">Specifying the UDP or PGM Service</a> and <a  href="rv_adm16.htm#wp1034613">Constructing the Network Parameter</a>. In contrast, secure daemons use internal defaults&#151;which you can configure using the browser administration interface; see <a  href="rv_adm69.htm#wp1155416">Default Network and Service</a>.
+</p>
+<a name="wp1178992"> </a><h3 class="pHeading2">
+Browser Connections
+</h3>
+<a name="wp1179038"> </a><p class="pBody">
+Secure daemons automatically open both HTTP and HTTPS ports for browser administration interface connections&#151;unless you specify otherwise. When an HTTPS connection is available, the daemon uses it; that is, whenever possible, it transfers non-secure HTTP communication over to its secure HTTPS connection.
+</p>
+<a name="wp1179039"> </a><p class="pBody">
+You can block the secure HTTPS connection by specifying <code class="cCode">-http-only</code>, which leaves only the non-secure HTTP connection.
+</p>
+<a name="wp1179047"> </a><p class="pBody">
+You can block all browser administration interface connections by specifying <code class="cCode">-no-http</code>.
+</p>
+<a name="wp1155727"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1141825"> </a><p class="pBody">
+<a  href="rv_adm61.htm#wp1162302">Network and Service Authorization</a>
+</p>
+<a name="wp1164724"> </a><p class="pBody">
+<a  href="rv_adm69.htm#wp1155416">Default Network and Service</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

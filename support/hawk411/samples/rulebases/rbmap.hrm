@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<RuleBaseMap>
+	<version>4.1.0</version>
+	<Properties>
+		<Author>TIBCO Hawk 4.1.0 Release</Author>
+		<LastModification></LastModification>
+		<Comment><![CDATA[]]></Comment>
+		<Script></Script>
+		<Custom>false</Custom>
+		<UseGroupCommand>false</UseGroupCommand>
+		<CustomAndMap>true</CustomAndMap>
+	</Properties>
+	<Hosts>
+	</Hosts>
+	<Groups>
+		<Group Name="++Windows NT" >
+			<RuleBase Name="WinNT" />
+			<RuleBase Name="Rendezvous" />
+		</Group>
+		<Group Name="++Solaris" >
+			<RuleBase Name="Solaris2x" />
+			<RuleBase Name="Rendezvous" />
+		</Group>
+	</Groups>
+	<RuleBases>
+		<RuleBase Name="Solaris2x" >
+			<Member>++Solaris</Member>
+		</RuleBase>
+		<RuleBase Name="WinNT" >
+			<Member>++Windows NT</Member>
+		</RuleBase>
+		<RuleBase Name="Rendezvous" >
+			<Member>++Windows NT</Member>
+			<Member>++Solaris</Member>
+		</RuleBase>
+	</RuleBases>
+	<Commands>
+	</Commands>
+</RuleBaseMap>

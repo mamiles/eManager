@@ -1,0 +1,459 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvDate</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1044828"> </a><h2 class="pNewHTMLPage">
+TibrvDate
+</h2>
+<hr />
+<a name="wp1044990"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1044992"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+class com.tibco.tibrv.<code class="cCodeBold">TibrvDate</code><a name="wp1044993"> </a>
+&#160;&#160;extends java.util.Date<a name="wp1281142"> </a>
+</pre></div>
+<a name="wp1044994"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1068297"> </a><p class="pBody">
+Represent date and time.
+</p>
+<a name="wp1107601"> </a><p class="pBody">
+This object relies on the method <code class="cCode">java.util.Date.toString()</code> to convert a value to a string.
+</p>
+<a name="wp1112274"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1112275"> </a><p class="pBody">
+This class has no <code class="cCode">destroy()</code> method. Instead, the Java garbage collector reclaims storage automatically.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1068339"> </a><div class="pCellHeading">
+Constant
+</div>
+</th>
+    <th><a name="wp1068341"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1068344"> </a><div class="pCellBody">
+<code class="cCode">TibrvDate.MAX_SECONDS</code>
+</div>
+</td>
+    <td><a name="wp1068346"> </a><div class="pCellBody">
+Maximum date (in seconds) that this class can represent.
+</div>
+<a name="wp1068347"> </a><div class="pCellBody">
+The value is 549,755,813,887 (the maximum value of a 40-bit signed integer), which is approximately 17,432 years after the year 1970.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1068350"> </a><div class="pCellBody">
+<code class="cCode">TibrvDate.MIN_SECONDS</code>
+</div>
+</td>
+    <td><a name="wp1068352"> </a><div class="pCellBody">
+Minimum date (in seconds) that this class can represent.
+</div>
+<a name="wp1068353"> </a><div class="pCellBody">
+The value is -549,755,813,888 (the minimum value of a 40-bit signed integer), which is approximately 17,432 years before the year 1970.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1068408"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1140875"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1140877"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1140879"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1140884"> </a><div class="pCellBody">
+<a  href="rv_java_ref60.htm#wp1045251"><code class="cCode">TibrvDate()</code></a>
+</div>
+</td>
+    <td><a name="wp1140889"> </a><div class="pCellBody">
+<a  href="rv_java_ref60.htm#wp1045294">Create a Rendezvous date object.</a>
+</div>
+</td>
+    <td><a name="wp1140894"> </a><div class="pCellBody">
+<a  href="rv_java_ref60.htm#wp1045251">93</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1140899"> </a><div class="pCellBody">
+<a  href="rv_java_ref61.htm#wp1151052"><code class="cCode">TibrvDate.getTimeNanoseconds()</code></a>
+</div>
+</td>
+    <td><a name="wp1140903"> </a><div class="pCellBody">
+<a  href="rv_java_ref61.htm#wp1046770">Extract the modifying value (in nanoseconds) of a date object.</a>
+</div>
+</td>
+    <td><a name="wp1140909"> </a><div class="pCellBody">
+<a  href="rv_java_ref61.htm#wp1151052">94</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1140914"> </a><div class="pCellBody">
+<a  href="rv_java_ref62.htm#wp1045768"><code class="cCode">TibrvDate.getTimeSeconds()</code></a>
+</div>
+</td>
+    <td><a name="wp1140918"> </a><div class="pCellBody">
+<a  href="rv_java_ref62.htm#wp1045776">Extract the partial value (in whole seconds) of a date object.</a>
+</div>
+</td>
+    <td><a name="wp1140924"> </a><div class="pCellBody">
+<a  href="rv_java_ref62.htm#wp1045768">95</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1140929"> </a><div class="pCellBody">
+<a  href="rv_java_ref63.htm#wp1046707"><code class="cCode">TibrvDate.setTime()</code></a>
+</div>
+</td>
+    <td><a name="wp1140934"> </a><div class="pCellBody">
+<a  href="rv_java_ref63.htm#wp1046723">Change the value of a date object.</a>
+</div>
+</td>
+    <td><a name="wp1140939"> </a><div class="pCellBody">
+<a  href="rv_java_ref63.htm#wp1046707">96</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1140983"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1140975"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1141001"> </a><p class="pBody">
+<code class="cCode">java.util.Date.after</code>
+</p>
+<a name="wp1141002"> </a><p class="pBody">
+<code class="cCode">java.util.Date.before</code>
+</p>
+<a name="wp1141003"> </a><p class="pBody">
+<code class="cCode">java.util.Date.clone</code>
+</p>
+<a name="wp1141004"> </a><p class="pBody">
+<code class="cCode">java.util.Date.compareTo</code>
+</p>
+<a name="wp1141005"> </a><p class="pBody">
+<code class="cCode">java.util.Date.getDate</code>
+</p>
+<a name="wp1141006"> </a><p class="pBody">
+<code class="cCode">java.util.Date.getDay</code>
+</p>
+<a name="wp1141007"> </a><p class="pBody">
+<code class="cCode">java.util.Date.getHours</code>
+</p>
+<a name="wp1141008"> </a><p class="pBody">
+<code class="cCode">java.util.Date.getMinutes</code>
+</p>
+<a name="wp1141009"> </a><p class="pBody">
+<code class="cCode">java.util.Date.getMonth</code>
+</p>
+<a name="wp1141010"> </a><p class="pBody">
+<code class="cCode">java.util.Date.getSeconds</code>
+</p>
+<a name="wp1141011"> </a><p class="pBody">
+<code class="cCode">java.util.Date.getTime</code>
+</p>
+<a name="wp1141012"> </a><p class="pBody">
+<code class="cCode">java.util.Date.getTimezoneOffset</code>
+</p>
+<a name="wp1141175"> </a><p class="pBody">
+<code class="cCode">java.util.Date.getYear</code>
+</p>
+<a name="wp1141176"> </a><p class="pBody">
+<code class="cCode">java.util.Date.hashCode</code>
+</p>
+<a name="wp1141177"> </a><p class="pBody">
+<code class="cCode">java.util.Date.parse</code>
+</p>
+<a name="wp1141178"> </a><p class="pBody">
+<code class="cCode">java.util.Date.setDate</code>
+</p>
+<a name="wp1141179"> </a><p class="pBody">
+<code class="cCode">java.util.Date.setHours</code>
+</p>
+<a name="wp1141180"> </a><p class="pBody">
+<code class="cCode">java.util.Date.setMinutes</code>
+</p>
+<a name="wp1141181"> </a><p class="pBody">
+<code class="cCode">java.util.Date.setMonth</code>
+</p>
+<a name="wp1141182"> </a><p class="pBody">
+<code class="cCode">java.util.Date.setSeconds</code>
+</p>
+<a name="wp1141183"> </a><p class="pBody">
+<code class="cCode">java.util.Date.setYear</code>
+</p>
+<a name="wp1141184"> </a><p class="pBody">
+<code class="cCode">java.util.Date.toGMTString</code>
+</p>
+<a name="wp1141185"> </a><p class="pBody">
+<code class="cCode">java.util.Date.toLocaleString</code>
+</p>
+<a name="wp1141186"> </a><p class="pBody">
+<code class="cCode">java.util.Date.toString</code>
+</p>
+<a name="wp1141187"> </a><p class="pBody">
+<code class="cCode">java.util.Date.UTC</code>
+</p>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1140977"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.equals</code>
+</p>
+<a name="wp1140978"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.getClass</code>
+</p>
+<a name="wp1140979"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.hashCode</code>
+</p>
+<a name="wp1140980"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notify</code>
+</p>
+<a name="wp1140981"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notifyAll</code>
+</p>
+<a name="wp1140982"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.wait</code>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1059060"> </a><h4 class="pHeading3">
+Representations
+</h4>
+<a name="wp1058916"> </a><p class="pBody">
+In all three representations, zero denotes the epoch, 12:00 midnight, January 1st, 1970. Range limits in this table denote the extreme value on either side of that center. Bold type indicates the primary unit of measurement for each representation.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1290605"> </a><div class="pTableTitle">
+Table&#160;5   Date and Time Representations (Sheet 1 of 2)
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1290611"> </a><div class="pCellHeading">
+Representation
+</div>
+</th>
+    <th colspan="2" rowspan="1"><a name="wp1290613"> </a><div class="pCellHeading">
+Details
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td colspan="1" rowspan="4"><a name="wp1290617"> </a><div class="pCellBody">
+<code class="cCode">java.util.Date</code>
+</div>
+</td>
+    <td colspan="2" rowspan="1"><a name="wp1290619"> </a><div class="pCellBody">
+Milliseconds as a 64-bit signed integer.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1290625"> </a><div class="pCellBody">
+range in years
+</div>
+</td>
+    <td><a name="wp1290627"> </a><div class="pCellBody">
+<code class="cCode">292,471,208</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1290631"> </a><div class="pCellBody">
+range in seconds
+</div>
+</td>
+    <td><a name="wp1290633"> </a><div class="pCellBody">
+<code class="cCode">9,223,372,036,854,775</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1290637"> </a><div class="pCellBody">
+<b class="cBold">range in milliseconds</b>
+</div>
+</td>
+    <td><a name="wp1290639"> </a><div class="pCellBody">
+<code class="cCodeBold">9,223,372,036,854,775,807</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td colspan="1" rowspan="5"><a name="wp1290644"> </a><div class="pCellBody">
+<a  href="rv_java_ref59.htm#wp1044828"><code class="cCode">TibrvDate</code></a>
+</div>
+</td>
+    <td colspan="2" rowspan="1"><a name="wp1290646"> </a><div class="pCellBody">
+Seconds as a 64-bit signed integer, plus nanoseconds as a 32-bit unsigned integer.
+</div>
+<a name="wp1290647"> </a><div class="pCellBody">
+However, values are restricted to the range and granularity supported by Rendezvous wire format. Forcing larger or finer values into this representation causes an exception.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1290656"> </a><div class="pCellBody">
+range in years
+</div>
+</td>
+    <td><a name="wp1290658"> </a><div class="pCellBody">
+<code class="cCode">292,471,208,677</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1290662"> </a><div class="pCellBody">
+<b class="cBold">range in seconds</b>
+</div>
+</td>
+    <td><a name="wp1290664"> </a><div class="pCellBody">
+<code class="cCodeBold">9,223,372,036,854,775,807</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1290668"> </a><div class="pCellBody">
+restricted range in seconds
+</div>
+</td>
+    <td><a name="wp1290670"> </a><div class="pCellBody">
+<code class="cCode">549,755,813,887</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1290674"> </a><div class="pCellBody">
+restricted range in millisecs
+</div>
+</td>
+    <td><a name="wp1290676"> </a><div class="pCellBody">
+<code class="cCode">549,755,813,887,000</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td colspan="1" rowspan="4"><a name="wp1290681"> </a><div class="pCellBody">
+Rendezvous wire format
+</div>
+</td>
+    <td colspan="2" rowspan="1"><a name="wp1290683"> </a><div class="pCellBody">
+Seconds as a 40-bit signed integer, plus microseconds as a 24-bit unsigned integer.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1290689"> </a><div class="pCellBody">
+range in years
+</div>
+</td>
+    <td><a name="wp1290691"> </a><div class="pCellBody">
+<code class="cCode">17,432</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1290695"> </a><div class="pCellBody">
+<b class="cBold">range in seconds</b>
+</div>
+</td>
+    <td><a name="wp1290697"> </a><div class="pCellBody">
+<code class="cCodeBold">549,755,813,887</code>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1290701"> </a><div class="pCellBody">
+range in milliseconds
+</div>
+</td>
+    <td><a name="wp1290703"> </a><div class="pCellBody">
+<code class="cCode">549,755,813,887,000 </code>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1045028"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1045032"> </a><p class="pBody">
+<a  href="rv_java_ref36.htm#wp1024668"><code class="cCode">TibrvMsg.get()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

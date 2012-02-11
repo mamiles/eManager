@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>RvaProxy.setHttpTunnelParams()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;7	 Rendezvous Agent&#151;rva";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1960198"> </a><h2 class="pNewHTMLPage">
+RvaProxy.setHttpTunnelParams()
+</h2>
+<hr />
+<a name="wp1960199"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1960202"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_config167.htm#wp1959123"><code class="cCode">RvaProxy</code></a> <code class="cCodeBold">setHttpTunnelParams</code>(<a name="wp1960206"> </a>
+&#160;&#160;&#160;&#160;boolean&#160;&#160;enableHttpTunneling,<a name="wp1960207"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;tunnelPort,<a name="wp1960208"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;clientTimeout,<a name="wp1960209"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;pingInterval,<a name="wp1960210"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;maxClientQueue,<a name="wp1960211"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;maxQueueSize,<a name="wp1960212"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;activeFlush,<a name="wp1960213"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;inactiveFlush,<a name="wp1960214"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;requestFlush,<a name="wp1960215"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;maxProxyBuffer)<a name="wp1960216"> </a>
+&#160;&#160;throws <a  href="rv_config267.htm#wp1963961"><code class="cCode">ConfigurationException</code></a><a name="wp1960220"> </a>
+</pre></div>
+<a name="wp1960221"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1960223"> </a><p class="pBody">
+Set the agent&#8217;s HTTP tunnel parameters.
+</p>
+<a name="wp1960224"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1960228"> </a><p class="pBody">
+This method returns the <a  href="rv_config167.htm#wp1959123"><code class="cCode">RvaProxy</code></a> object, so programs can conveniently chain additional method calls to the return value.
+</p>
+<a name="wp1960229"> </a><p class="pBody">
+For an overview of HTTP tunneling, see these sections:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1960236"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('g', 'rv_java_ref8.htm#wp1110819');" onMouseOver="WWHShowPopup('g', 'rv_java_ref8.htm#wp1110819', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">HTTP Tunneling</a> in <em class="cEmphasis">TIBCO Rendezvous Java Reference</em></li></div>
+
+<a name="wp1960243"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('c', 'rv_adm79.htm#wp1289029');" onMouseOver="WWHShowPopup('c', 'rv_adm79.htm#wp1289029', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">HTTP Tunnel</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em></li></div>
+
+<a name="wp1960250"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('g', 'rv_java_ref141.htm#wp1038873');" onMouseOver="WWHShowPopup('g', 'rv_java_ref141.htm#wp1038873', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvRvaTransport</code> </a> in <em class="cEmphasis">TIBCO Rendezvous Java Reference</em></li></div>
+
+</ul></div>
+
+<a name="wp1960310"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1960256"> </a><p class="pBody">
+ (Sheet 1 of 3)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1960260"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1960262"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1960264"> </a><div class="pCellBody">
+<code class="cCode">enableHttpTunneling</code>
+</div>
+</td>
+    <td><a name="wp1960266"> </a><div class="pCellBody">
+When enabled, <code class="cCode">rva</code> accepts HTTP connections from client transports. To enable HTTP tunneling, check this box.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1960268"> </a><div class="pCellBody">
+<code class="cCode">tunnelPort</code>
+</div>
+</td>
+    <td><a name="wp1960270"> </a><div class="pCellBody">
+<code class="cCode">rva</code> accepts HTTP connections from client transports on this this port.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1960272"> </a><div class="pCellBody">
+<code class="cCode">clientTimeout</code>
+</div>
+</td>
+    <td><a name="wp1960274"> </a><div class="pCellBody">
+In some situations, <code class="cCode">rva</code> closes HTTP connections to flush data to clients through intervening proxy servers. Each client transport subsequently reestablishes its connection after a delay (specified in the client program). Meanwhile, <code class="cCode">rva</code> maintains state information for the client. If this timeout expires before the client reconnects, <code class="cCode">rva</code> can discard the state information.
+</div>
+<a name="wp1960275"> </a><div class="pCellBody">
+Ensure that this parameter (in seconds) is much greater than the reconnect delay parameter of every client transport.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1960277"> </a><div class="pCellBody">
+<code class="cCode">pingInterval</code>
+</div>
+</td>
+    <td><a name="wp1960279"> </a><div class="pCellBody">
+Intervening proxy servers might automatically close client connections to <code class="cCode">rva</code> that appear inactive. To circumvent this feature, <code class="cCode">rva</code> sends <em class="cEmphasis">ping messages</em> to clients when a connection has been idle for this interval (in seconds).
+</div>
+<a name="wp1960280"> </a><div class="pCellBody">
+To disable this feature, supply zero.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1960282"> </a><div class="pCellBody">
+<code class="cCode">maxClientQueue</code>
+</div>
+</td>
+    <td><a name="wp1960284"> </a><div class="pCellBody">
+<code class="cCode">rva</code> limits the <em class="cEmphasis">length</em> of the data queue for each client (data is outbound from <code class="cCode">rva</code>, inbound to the client). When a queue exceeds this number of messages, <code class="cCode">rva</code> discards subsequent messages as they arrive.
+</div>
+<a name="wp1960285"> </a><div class="pCellBody">
+To disable this feature, supply zero.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1960287"> </a><div class="pCellBody">
+<code class="cCode">maxQueueSize</code>
+</div>
+</td>
+    <td><a name="wp1960289"> </a><div class="pCellBody">
+<code class="cCode">rva</code> limits the <em class="cEmphasis">size</em> of the data queue for each client (data is outbound from <code class="cCode">rva</code>, inbound to the client). When a queue exceeds this size (in kilobytes), <code class="cCode">rva</code> discards subsequent messages as they arrive.
+</div>
+<a name="wp1960290"> </a><div class="pCellBody">
+To disable this feature, supply zero.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1960292"> </a><div class="pCellBody">
+<code class="cCode">activeFlush</code>
+</div>
+</td>
+    <td><a name="wp1960294"> </a><div class="pCellBody">
+This parameter limits data latency (in seconds) caused by buffering in intervening proxy servers. If <code class="cCode">rva</code> has directed data to a client, and this time limit has elapsed since <code class="cCode">rva</code> last flushed the data, then <code class="cCode">rva</code> closes the connection to force proxy servers to deliver the data to the client. This action occurs even when <code class="cCode">rva</code> has more data queued for the client (that is, the queue is active).
+</div>
+<a name="wp1960295"> </a><div class="pCellBody">
+If you are certain that no proxy servers intervene between <code class="cCode">rva</code> and the client, set this parameter to zero.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1960297"> </a><div class="pCellBody">
+<code class="cCode">inactiveFlush</code>
+</div>
+</td>
+    <td><a name="wp1960299"> </a><div class="pCellBody">
+This parameter limits data latency (in seconds) caused by buffering in intervening proxy servers. If <code class="cCode">rva</code> has directed data to a client, and does not have more data queued for the client (that is, the queue is inactive), and this time limit has elapsed since <code class="cCode">rva</code> last directed data to the client, then <code class="cCode">rva</code> closes the connection to force proxy servers to deliver the data to the client.
+</div>
+<a name="wp1960300"> </a><div class="pCellBody">
+If you are certain that no proxy servers intervene between <code class="cCode">rva</code> and the client, set this parameter to zero.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1960302"> </a><div class="pCellBody">
+<code class="cCode">requestFlush</code>
+</div>
+</td>
+    <td><a name="wp1960304"> </a><div class="pCellBody">
+This parameter limits data latency (in seconds) for <em class="cEmphasis">reply messages</em>. In some application domains, the client sends a request message, and receives only one small reply message. Setting this parameter smaller than <code class="cCode">inactiveFlush</code> can expedites delivery of such reply messages to the client.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1960306"> </a><div class="pCellBody">
+<code class="cCode">maxProxyBuffer</code>
+</div>
+</td>
+    <td><a name="wp1960308"> </a><div class="pCellBody">
+This hint estimates the size of the largest buffer (in kilobytes) in intervening proxy servers. Before triggering an active flush, <code class="cCode">rva</code> checks the amount of data it directed to the client since the last flush; if that amount is greater than this value, the proxy server has probably flushed its buffer automatically, so <code class="cCode">rva</code> does not close the connection to flush the data.
+</div>
+<a name="wp1960309"> </a><div class="pCellBody">
+If you are certain that no proxy servers intervene between <code class="cCode">rva</code> and the client, set this parameter to zero.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1960311"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1960315"> </a><p class="pBody">
+<a  href="rv_config167.htm#wp1959123"><code class="cCode">RvaProxy</code> </a>
+</p>
+<a name="wp1960319"> </a><p class="pBody">
+<a  href="rv_config173.htm#wp1959828"><code class="cCode">RvaProxy.getHttpTunnelParams()</code> </a>
+</p>
+<a name="wp1960323"> </a><p class="pBody">
+For background information, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm77.htm#wp1060489');" onMouseOver="WWHShowPopup('c', 'rv_adm77.htm#wp1060489', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Browser Administration Interface</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

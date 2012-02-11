@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Chapter&#160;5	Routing Daemon (rvrd)</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1029490"> </a><h2 class="pNewHTMLPageSetChapterTitle">
+Chapter&#160;5	Routing Daemon (rvrd)
+</h2>
+<hr />
+<a name="wp1298869"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1303489"> </a><div class="pCellBody">
+Proper configuration of <code class="cCode">rvrd</code> is one of the more complex administration tasks, and it is critically important for enterprises that use Rendezvous routing daemons. We recommend that network administrators give special attention to this chapter.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1031203"> </a><h4 class="pHeading3">
+Topics
+</h4>
+<div class="pSmartList1"><ul>
+<a name="wp1235202"> </a><div class="pSmartList1"><li ><a  href="rv_adm28.htm#wp1034470"><em class="cEmphasis">Routing Daemon Overview</em></a></li></div>
+
+<a name="wp1048865"> </a><div class="pSmartList1"><li ><a  href="rv_adm29.htm#wp1020282"><em class="cEmphasis">Concepts</em></a></li></div>
+
+<a name="wp1048869"> </a><div class="pSmartList1"><li ><a  href="rv_adm30.htm#wp1048099"><em class="cEmphasis">Requirements</em></a></li></div>
+
+<a name="wp1055037"> </a><div class="pSmartList1"><li ><a  href="rv_adm31.htm#wp1054980"><em class="cEmphasis">Restricting Message Flow</em></a></li></div>
+
+<a name="wp1045825"> </a><div class="pSmartList1"><li ><a  href="rv_adm32.htm#wp1054609"><em class="cEmphasis">rvrd Process</em></a></li></div>
+
+<a name="wp1045832"> </a><div class="pSmartList1"><li ><a  href="rv_adm33.htm#wp1053162"><em class="cEmphasis">Routing Table Entry</em></a></li></div>
+
+<a name="wp1234411"> </a><div class="pSmartList1"><li ><a  href="rv_adm34.htm#wp1047084"><em class="cEmphasis">Local Network</em></a></li></div>
+
+<a name="wp1043936"> </a><div class="pSmartList1"><li ><a  href="rv_adm35.htm#wp1035365"><em class="cEmphasis">Neighbors</em></a></li></div>
+
+<a name="wp1235039"> </a><div class="pSmartList1"><li ><a  href="rv_adm36.htm#wp1066666"><em class="cEmphasis">Adding Neighbor Interfaces</em></a></li></div>
+
+<a name="wp1055053"> </a><div class="pSmartList1"><li ><a  href="rv_adm37.htm#wp1046197"><em class="cEmphasis">Redundant Routing Daemons for Fault Tolerance</em></a></li></div>
+
+<a name="wp1040657"> </a><div class="pSmartList1"><li ><a  href="rv_adm37.htm#wp1046197"></a><a  href="rv_adm38.htm#wp1175151"><em class="cEmphasis">Independent Routing Table Entries in One Process</em></a></li></div>
+
+<a name="wp1055056"> </a><div class="pSmartList1"><li ><a  href="rv_adm39.htm#wp1085471"><em class="cEmphasis">Common Topology Errors</em></a></li></div>
+
+<a name="wp1055046"> </a><div class="pSmartList1"><li ><a  href="rv_adm40.htm#wp1021559"><em class="cEmphasis">Security and Firewalls</em></a></li></div>
+
+<a name="wp1174547"> </a><div class="pSmartList1"><li ><a  href="rv_adm41.htm#wp1170453"><em class="cEmphasis">Connecting PGM and TRDP Networks with Routing Daemons</em></a></li></div>
+
+<a name="wp1174552"> </a><div class="pSmartList1"><li ><a  href="rv_adm42.htm#wp1045976"><em class="cEmphasis">Backlog Protection</em></a></li></div>
+
+<a name="wp1174556"> </a><div class="pSmartList1"><li ><a  href="rv_adm43.htm#wp1219586"><em class="cEmphasis">Idle</em></a></li></div>
+
+<a name="wp1031167"> </a><div class="pSmartList1"><li ><a  href="rv_adm44.htm#wp1068587"><em class="cEmphasis">Routing Daemon Logging</em></a></li></div>
+
+<a name="wp1031199"> </a><div class="pSmartList1"><li ><a  href="rv_adm45.htm#wp1066458"><em class="cEmphasis">rvrd</em></a></li></div>
+
+<a name="wp1174561"> </a><div class="pSmartList1"><li ><a  href="rv_adm46.htm#wp1151056"><em class="cEmphasis">Browser Administration Interface&#151;rvrd</em></a></li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

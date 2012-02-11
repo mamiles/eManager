@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvTransport</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;8	 Transport";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1066635"> </a><h2 class="pNewHTMLPage">
+tibrvTransport
+</h2>
+<hr />
+<a name="wp1066636"> </a><p class="pSyntaxType">
+Type
+</p>
+<a name="wp1087122"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+typedef tibrvId <code class="cCodeBold">tibrvTransport</code>;<a name="wp1066638"> </a>
+</pre></div>
+<a name="wp1087601"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1066640"> </a><p class="pBody">
+A transport object represents a delivery mechanism for messages.
+</p>
+<a name="wp1088048"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1066642"> </a><p class="pBody">
+A transport describes a carrier mechanism for messages&#151;whether across a network, among processes on a single computer, or within a process.
+</p>
+<a name="wp1138513"> </a><p class="pBody">
+A transport also defines the delivery scope of a message&#151;that is, the set of <em class="cEmphasis">possible</em> destinations for the messages it sends.
+</p>
+<a name="wp1066644"> </a><p class="pBody">
+Programs must explicitly destroy each transport object. Destroying a transport object invalidates subsequent send calls on that transport, invalidates any listeners using that transport, and frees its storage.
+</p>
+<a name="wp1066645"> </a><h4 class="pHeading3">
+Intra-Process Transport
+</h4>
+<a name="wp1066649"> </a><p class="pBody">
+Each process has exactly one intra-process transport; the call <a  href="rv_c_ref8.htm#wp1057434"><code class="cCode">tibrv_Open()</code></a> automatically creates it, and arranges the constant <code class="cCode">TIBRV_PROCESS_TRANSPORT</code> to refer to it. Programs must not destroy the intra-process transport.
+</p>
+<a name="wp1088446"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1066656"> </a><p class="pBody">
+<a  href="rv_c_ref134.htm#wp1066667"><code class="cCode">tibrvTransport_Create()</code> </a>
+</p>
+<a name="wp1066660"> </a><p class="pBody">
+<a  href="rv_c_ref136.htm#wp1066967"><code class="cCode">tibrvTransport_Destroy()</code> </a>
+</p>
+<a name="wp1066664"> </a><p class="pBody">
+<a  href="rv_c_ref141.htm#wp1067146"><code class="cCode">tibrvTransport_Send()</code> </a>
+</p>
+<a name="wp1138516"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts68.htm#wp1052644');" onMouseOver="WWHShowPopup('a', 'rv_concepts68.htm#wp1052644', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Transport</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+<a name="wp1133079"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts76.htm#wp1029257');" onMouseOver="WWHShowPopup('a', 'rv_concepts76.htm#wp1029257', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Intra-Process Transport and User Events</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvCmListener</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;9	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1083717"> </a><h2 class="pNewHTMLPage">
+TibrvCmListener
+</h2>
+<hr />
+<a name="wp1087173"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1083721"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1083723"> </a><p class="pBody">
+A certified delivery listener object listens for labeled messages and certified messages.
+</p>
+<a name="wp1083724"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1083728"> </a><p class="pBody">
+Each call to the method <a  href="rv_com_ref170.htm#wp1096047"><code class="cCode">TibrvCmListener.create</code></a> results in a new certified delivery listener, which represents your program&#8217;s listening interest in a stream of labeled messages and certified messages. Rendezvous software uses the same listener object to signal each occurrence of such an event.
+</p>
+<a name="wp1083733"> </a><p class="pBody">
+We recommend that programs explicitly destroy each certified delivery listener object using <a  href="rv_com_ref171.htm#wp1131439"><code class="cCode">TibrvCmListener.destroy</code></a>. Destroying or deleting a certified listener object cancels the program&#8217;s immediate interest in that event, and frees its storage; nonetheless, a parameter to the destroy call determines whether certified delivery agreements continue to persist beyond the destroy call.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1115777"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1095211"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1095213"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1095215"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1131213"> </a><div class="pMinorHead">
+Life Cycle
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1095981"> </a><div class="pCellBody">
+<a  href="rv_com_ref170.htm#wp1096047"><code class="cCode">TibrvCmListener.create</code></a>
+</div>
+</td>
+    <td><a name="wp1095986"> </a><div class="pCellBody">
+<a  href="rv_com_ref170.htm#wp1087311">Listen for messages that match the subject, and request certified delivery when available.</a>
+</div>
+</td>
+    <td><a name="wp1095991"> </a><div class="pCellBody">
+<a  href="rv_com_ref170.htm#wp1096047">221</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1131274"> </a><div class="pCellBody">
+<a  href="rv_com_ref171.htm#wp1131439"><code class="cCode">TibrvCmListener.destroy</code></a>
+</div>
+</td>
+    <td><a name="wp1131279"> </a><div class="pCellBody">
+<a  href="rv_com_ref171.htm#wp1131445">Destroy a certified delivery listener.</a>
+</div>
+</td>
+    <td><a name="wp1131284"> </a><div class="pCellBody">
+<a  href="rv_com_ref171.htm#wp1131439">223</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1131259"> </a><div class="pCellBody">
+<a  href="rv_com_ref176.htm#wp1131571"><code class="cCode">TibrvCmListener.isValid()</code></a>
+</div>
+</td>
+    <td><a name="wp1131264"> </a><div class="pCellBody">
+<a  href="rv_com_ref176.htm#wp1131577">Test validity of a CM listener object.</a>
+</div>
+</td>
+    <td><a name="wp1131269"> </a><div class="pCellBody">
+<a  href="rv_com_ref176.htm#wp1131571">228</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1145650"> </a><div class="pMinorHead">
+Callback Method
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1145659"> </a><div class="pCellBody">
+<a  href="rv_com_ref177.htm#wp1145678"><code class="cCode">TibrvCmListener_onCmMsg</code></a>
+</div>
+</td>
+    <td><a name="wp1145663"> </a><div class="pCellBody">
+<a  href="rv_com_ref177.htm#wp1145684">Process inbound messages (CM listener events).</a>
+</div>
+</td>
+    <td><a name="wp1145669"> </a><div class="pCellBody">
+<a  href="rv_com_ref177.htm#wp1145678">229</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1131219"> </a><div class="pMinorHead">
+Confirm
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1131331"> </a><div class="pCellBody">
+<a  href="rv_com_ref169.htm#wp1145105"><code class="cCode">TibrvCmListener.confirmMsg</code></a>
+</div>
+</td>
+    <td><a name="wp1131336"> </a><div class="pCellBody">
+<a  href="rv_com_ref169.htm#wp1145111">Explicitly confirm delivery of a certified message.</a>
+</div>
+</td>
+    <td><a name="wp1131341"> </a><div class="pCellBody">
+<a  href="rv_com_ref169.htm#wp1145105">220</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1096005"> </a><div class="pCellBody">
+<a  href="rv_com_ref178.htm#wp1131485"><code class="cCode">TibrvCmListener.setExplicitConfirm</code></a>
+</div>
+</td>
+    <td><a name="wp1096007"> </a><div class="pCellBody">
+<a  href="rv_com_ref178.htm#wp1131494">Override automatic confirmation of delivery for this listener.</a>
+</div>
+</td>
+    <td><a name="wp1096012"> </a><div class="pCellBody">
+<a  href="rv_com_ref178.htm#wp1131485">231</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1131227"> </a><div class="pMinorHead">
+Accessors
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1131183"> </a><div class="pCellBody">
+<a  href="rv_com_ref172.htm#wp1131531"><code class="cCode">TibrvCmListener.getClosure()</code></a>
+</div>
+</td>
+    <td><a name="wp1131185"> </a><div class="pCellBody">
+<a  href="rv_com_ref172.htm#wp1131537">Extract the closure of a CM listener.</a>
+</div>
+</td>
+    <td><a name="wp1131190"> </a><div class="pCellBody">
+<a  href="rv_com_ref172.htm#wp1131531">224</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1131204"> </a><div class="pCellBody">
+<a  href="rv_com_ref173.htm#wp1131610"><code class="cCode">TibrvCmListener.getCmTransport()</code></a>
+</div>
+</td>
+    <td><a name="wp1131206"> </a><div class="pCellBody">
+<a  href="rv_com_ref173.htm#wp1131616">Extract the CM transport of a CM listener.</a>
+</div>
+</td>
+    <td><a name="wp1131211"> </a><div class="pCellBody">
+<a  href="rv_com_ref173.htm#wp1131610">225</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1131388"> </a><div class="pCellBody">
+<a  href="rv_com_ref174.htm#wp1130802"><code class="cCode">TibrvCmListener.getQueue()</code></a>
+</div>
+</td>
+    <td><a name="wp1131393"> </a><div class="pCellBody">
+<a  href="rv_com_ref174.htm#wp1130808">Extract the event queue of a CM listener.</a>
+</div>
+</td>
+    <td><a name="wp1131399"> </a><div class="pCellBody">
+<a  href="rv_com_ref174.htm#wp1130802">226</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1131049"> </a><div class="pCellBody">
+<a  href="rv_com_ref175.htm#wp1130967"><code class="cCode">TibrvCmListener.getSubject()</code></a>
+</div>
+</td>
+    <td><a name="wp1131051"> </a><div class="pCellBody">
+<a  href="rv_com_ref175.htm#wp1130972">Extract the subject of a CM listener.</a>
+</div>
+</td>
+    <td><a name="wp1131056"> </a><div class="pCellBody">
+<a  href="rv_com_ref175.htm#wp1130967">227</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

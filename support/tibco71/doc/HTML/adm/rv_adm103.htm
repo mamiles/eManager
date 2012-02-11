@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Very Large Messages</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;10	 Performance Assessment (rvperf)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1069463"> </a><h2 class="pNewHTMLPage">
+Very Large Messages
+</h2>
+<hr />
+<a name="wp1069467"> </a><p class="pBody">
+Rendezvous software can transport very large messages; it divides them into small packets, and places them on the network as quickly as the network can accept them. In some situations, this behavior can overwhelm network capacity; applications can achieve higher throughput by dividing large messages into smaller chunks and regulating the rate at which it sends those chunks. You can use the performance tool to evaluate chunk sizes and send rates for optimal throughput.
+</p>
+<a name="wp1069471"> </a><p class="pBody">
+This example, sends one message consisting of ten million bytes. Rendezvous software automatically divides the message into packets and sends them. However, this burst of packets might exceed network capacity, resulting in poor throughput:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;&#160;sender&gt; <code class="cCodeBold">rvperfm -size 10000000 -messages 1</code><a name="wp1069472"> </a>
+<a name="wp1069473"> </a>
+</pre></div>
+<a name="wp1069474"> </a><p class="pBody">
+In this second example, the application divides the ten million bytes into one thousand smaller messages of ten thousand bytes each, and automatically determines the batch size and interval to regulate the flow for optimal throughput:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;&#160;sender&gt; <code class="cCodeBold">rvperfm -size 10000 -messages 1000 -auto</code><a name="wp1069475"> </a>
+<a name="wp1069476"> </a>
+</pre></div>
+<a name="wp1069477"> </a><p class="pBody">
+By varying the <code class="cCode">-messages</code> and <code class="cCode">-size</code> parameters, you can determine the optimal message size for your applications in a specific network. Application developers can use this information to regulate sending rates for improved performance.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

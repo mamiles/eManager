@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvCmTransport.send()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;9	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1085385"> </a><h2 class="pNewHTMLPage">
+TibrvCmTransport.send()
+</h2>
+<hr />
+<a name="wp1085386"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1085387"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+void <code class="cCodeBold">send</code>(<a name="wp1090218"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_java_ref31.htm#wp1055151"><code class="cCode">TibrvMsg</code></a>&#160;&#160;&#160;&#160;msg)<a name="wp1090222"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1085390"> </a>
+</pre></div>
+<a name="wp1085391"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1085393"> </a><p class="pBody">
+Send a labeled message.
+</p>
+<a name="wp1085394"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1085395"> </a><p class="pBody">
+This method sends the message, along with its certified delivery protocol information: the correspondent name of the <a  href="rv_java_ref191.htm#wp1084243"><code class="cCode">TibrvCmTransport</code></a>, a sequence number, and a time limit. The protocol information remains on the message within the sending program, and also travels with the message to all receiving programs.
+</p>
+<a name="wp1085401"> </a><p class="pBody">
+Programs can explicitly set the message time limit; see <a  href="rv_java_ref220.htm#wp1085793"><code class="cCode">TibrvCmMsg.setTimeLimit()</code> </a>. If a time limit is not already set for the outbound message, this method sets it to the transport&#8217;s default time limit (see <a  href="rv_java_ref212.htm#wp1085565"><code class="cCode">TibrvCmTransport.setDefaultTimeLimit()</code> </a>); if that default is not set for the transport, the default time limit is zero (no time limit).</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1085408"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1085413"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1085419"> </a><div class="pCellBody">
+<code class="cCode">msg</code>
+</div>
+</td>
+    <td><a name="wp1085421"> </a><div class="pCellBody">
+Send this message.
+</div>
+<a name="wp1085422"> </a><div class="pCellBody">
+Wildcard subjects are illegal.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1085424"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1085428"> </a><p class="pBody">
+<a  href="rv_java_ref210.htm#wp1085443"><code class="cCode">TibrvCmTransport.sendReply()</code> </a>
+</p>
+<a name="wp1085432"> </a><p class="pBody">
+<a  href="rv_java_ref211.htm#wp1085494"><code class="cCode">TibrvCmTransport.sendRequest()</code> </a>
+</p>
+<a name="wp1085436"> </a><p class="pBody">
+<a  href="rv_java_ref212.htm#wp1085565"><code class="cCode">TibrvCmTransport.setDefaultTimeLimit()</code> </a>
+</p>
+<a name="wp1085440"> </a><p class="pBody">
+<a  href="rv_java_ref220.htm#wp1085793"><code class="cCode">TibrvCmMsg.setTimeLimit()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

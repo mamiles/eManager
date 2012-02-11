@@ -1,0 +1,1229 @@
+
+(object Petal
+    version    	47
+    _written   	"Rational Rose 2003.06.00"
+    charSet    	0)
+
+(object SubSystem "security"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"3E400E3E02CF"
+    physical_models 	(list unit_reference_list
+	(object SubSystem "auth"
+	    quid       	"3E400E3E02D9"
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3E400EB203D0"
+		    supplier   	"Component View::java::lang"
+		    quidu      	"3E400BBB015B"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3E400F3600E0"
+		    supplier   	"Component View::java::util"
+		    quidu      	"3E400BC001EB"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3E4016360173"
+		    supplier   	"Component View::java::io"
+		    quidu      	"3E400BBB02C0"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3E4018D50327"
+		    supplier   	"Component View::java::security"
+		    quidu      	"3E400BE002FF"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3E4018D5034F"
+		    supplier   	"Component View::sun::security::util"
+		    quidu      	"3E400C0302EF"
+		    supplier_is_subsystem 	TRUE))
+	    physical_models 	(list unit_reference_list
+		(object module "Subject" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\security\\auth\\Subject.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400E3E02DA"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E400F3600E1"
+			    supplier   	"Component View::java::util::Set"
+			    quidu      	"3E400BC101C4"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E400F3600FE"
+			    supplier   	"Component View::java::lang::Class"
+			    quidu      	"3E400BBB0176"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "Policy" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\security\\auth\\Policy.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400EB202FD"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E400EB203D1"
+			    supplier   	"Component View::java::lang::ClassLoader"
+			    quidu      	"3E400BE10026"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E400EB203DA"
+			    supplier   	"Component View::java::lang::Class"
+			    quidu      	"3E400BBB0176"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "Refreshable" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\security\\auth\\Refreshable.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E4011880185"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "RefreshFailedException" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\security\\auth\\RefreshFailedException.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E40118801B7"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Destroyable" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\security\\auth\\Destroyable.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E40118A012E"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "DestroyFailedException" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\security\\auth\\DestroyFailedException.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E40118A0156"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "AuthPermission" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\security\\auth\\AuthPermission.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E4013F802E1"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Subject$ClassSet" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\security\\auth\\Subject$ClassSet.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E40151A02AB"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E40151A03CE"
+			    supplier   	"Component View::java::util::Set"
+			    quidu      	"3E400BC101C4"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E40151A03E2"
+			    supplier   	"Component View::java::lang::Class"
+			    quidu      	"3E400BBB0176"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E40151B000E"
+			    supplier   	"Component View::javax::security::auth::Subject"
+			    quidu      	"3E400E3E02DA"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "Subject$SecureSet" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\security\\auth\\Subject$SecureSet.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E40163503B7"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E401636017D"
+			    supplier   	"Component View::java::io::ObjectStreamField"
+			    quidu      	"3E400BE00377"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E4016360191"
+			    supplier   	"Component View::javax::security::auth::Subject"
+			    quidu      	"3E400E3E02DA"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "SubjectDomainCombiner" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\security\\auth\\SubjectDomainCombiner.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E4018D50024"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E4018D502E1"
+			    supplier   	"Component View::javax::security::auth::Subject"
+			    quidu      	"3E400E3E02DA"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E4018D502F5"
+			    supplier   	"Component View::java::util::Map"
+			    quidu      	"3E400BC001EC"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E4018D50309"
+			    supplier   	"Component View::java::util::Set"
+			    quidu      	"3E400BC101C4"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E4018D50328"
+			    supplier   	"Component View::java::security::Principal"
+			    quidu      	"3E400CC20246"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E4018D5033B"
+			    supplier   	"Component View::java::security::AllPermission"
+			    quidu      	"3E400E6000ED"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E4018D50359"
+			    supplier   	"Component View::sun::security::util::Debug"
+			    quidu      	"3E400C94005F"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "PrivateCredentialPermission" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\security\\auth\\PrivateCredentialPermission.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E401C6A0131"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E401C6A0325"
+			    supplier   	"Component View::java::util::Set"
+			    quidu      	"3E400BC101C4"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "PrivateCredentialPermission$CredOwner" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\security\\auth\\PrivateCredentialPermission$CredOwner.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E401FD302B3"
+		    stereotype 	""
+		    language   	"Java")
+		(object SubSystem "x500"
+		    quid       	"3E400E8802A3"
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E4016F703CA"
+			    supplier   	"Component View::sun::security::x509"
+			    quidu      	"3E400CBE036D"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E401C1601A8"
+			    supplier   	"Component View::java::security::cert"
+			    quidu      	"3E400C0D0188"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E401C1601D0"
+			    supplier   	"Component View::java::security"
+			    quidu      	"3E400BE002FF"
+			    supplier_is_subsystem 	TRUE))
+		    physical_models 	(list unit_reference_list
+			(object module "X500Principal" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\x500\\X500Principal.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E400E8802A4"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3E4016F703CB"
+				    supplier   	"X500Name"
+				    quidu      	"3E400D6A0284"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "X500PrivateCredential" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\x500\\X500PrivateCredential.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E401C160040"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3E401C1601B2"
+				    supplier   	"Component View::java::security::cert::X509Certificate"
+				    quidu      	"3E400D690386"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3E401C1601D1"
+				    supplier   	"Component View::java::security::PrivateKey"
+				    quidu      	"3E400C8B01C5"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java"))
+		    physical_presentations 	(list unit_reference_list))
+		(object SubSystem "login"
+		    quid       	"3E4010D000B8"
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E4016DB027F"
+			    supplier   	"Component View::javax::security::auth"
+			    quidu      	"3E400E3E02D9"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E4016DB0293"
+			    supplier   	"Component View::javax::security::auth::callback"
+			    quidu      	"3E40145F0176"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E4016DB02A7"
+			    supplier   	"Component View::java::util"
+			    quidu      	"3E400BC001EB"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E4016DB02ED"
+			    supplier   	"Component View::java::lang"
+			    quidu      	"3E400BBB015B"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E4016DB0315"
+			    supplier   	"Component View::sun::security::util"
+			    quidu      	"3E400C0302EF"
+			    supplier_is_subsystem 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E40209C02A8"
+			    supplier   	"Component View::java::security"
+			    quidu      	"3E400BE002FF"
+			    supplier_is_subsystem 	TRUE))
+		    physical_models 	(list unit_reference_list
+			(object module "LoginException" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\login\\LoginException.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E4010D000B9"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "Configuration" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\login\\Configuration.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E4016860060"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3E40173E0213"
+				    supplier   	"Component View::java::lang::ClassLoader"
+				    quidu      	"3E400BE10026"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "AppConfigurationEntry" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\login\\AppConfigurationEntry.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E401686011E"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3E401C6C01FC"
+				    supplier   	"Component View::javax::security::auth::login::AppConfigurationEntry$LoginModuleControlFlag"
+				    quidu      	"3E401C6C01D4"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3E401C6C021A"
+				    supplier   	"Component View::java::util::Map"
+				    quidu      	"3E400BC001EC"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "LoginContext" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\login\\LoginContext.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E4016DA02D8"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3E4016DB0280"
+				    supplier   	"Component View::javax::security::auth::Subject"
+				    quidu      	"3E400E3E02DA"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3E4016DB0294"
+				    supplier   	"Component View::javax::security::auth::callback::CallbackHandler"
+				    quidu      	"3E40145F018A"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3E4016DB02A8"
+				    supplier   	"Component View::java::util::Map"
+				    quidu      	"3E400BC001EC"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3E4016DB02C5"
+				    supplier   	"Component View::javax::security::auth::login::Configuration"
+				    quidu      	"3E4016860060"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3E4016DB02D9"
+				    supplier   	"Component View::javax::security::auth::login::LoginContext$ModuleInfo"
+				    quidu      	"3E4016DB0261"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3E4016DB02EE"
+				    supplier   	"Component View::java::lang::ClassLoader"
+				    quidu      	"3E400BE10026"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3E4016DB0301"
+				    supplier   	"Component View::java::lang::Class"
+				    quidu      	"3E400BBB0176"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3E4016DB0316"
+				    supplier   	"Component View::sun::security::util::Debug"
+				    quidu      	"3E400C94005F"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "LoginContext$ModuleInfo" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\login\\LoginContext$ModuleInfo.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E4016DB0261"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3E401D4B035B"
+				    supplier   	"Component View::javax::security::auth::login::AppConfigurationEntry"
+				    quidu      	"3E401686011E"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "FailedLoginException" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\login\\FailedLoginException.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E401C1B0368"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "AppConfigurationEntry$LoginModuleControlFlag" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\login\\AppConfigurationEntry$LoginModuleControlFlag.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E401C6C01D4"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "AccountExpiredException" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\login\\AccountExpiredException.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E401D4602F0"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "CredentialExpiredException" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\login\\CredentialExpiredException.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E401E8103E3"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "LoginContext$SecureCallbackHandler" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\login\\LoginContext$SecureCallbackHandler.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E40209C012B"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3E40209C02A9"
+				    supplier   	"Component View::java::security::AccessControlContext"
+				    quidu      	"3E400BE90081"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3E40209C02D0"
+				    supplier   	"Component View::javax::security::auth::callback::CallbackHandler"
+				    quidu      	"3E40145F018A"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java"))
+		    physical_presentations 	(list unit_reference_list))
+		(object SubSystem "spi"
+		    quid       	"3E40145F0126"
+		    physical_models 	(list unit_reference_list
+			(object module "LoginModule" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\spi\\LoginModule.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E40145F0130"
+			    stereotype 	""
+			    language   	"Java"))
+		    physical_presentations 	(list unit_reference_list))
+		(object SubSystem "callback"
+		    quid       	"3E40145F0176"
+		    physical_models 	(list unit_reference_list
+			(object module "CallbackHandler" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\callback\\CallbackHandler.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E40145F018A"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "Callback" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\callback\\Callback.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E4015F902A2"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "NameCallback" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\callback\\NameCallback.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E4018D303C4"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "ChoiceCallback" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\callback\\ChoiceCallback.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E401A28027A"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "UnsupportedCallbackException" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\callback\\UnsupportedCallbackException.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E401A9D0029"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3E401FF6037B"
+				    supplier   	"Component View::javax::security::auth::callback::Callback"
+				    quidu      	"3E4015F902A2"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "LanguageCallback" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\callback\\LanguageCallback.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E401B8903C2"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "PasswordCallback" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\callback\\PasswordCallback.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E401B8D01D3"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TextInputCallback" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\callback\\TextInputCallback.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E401BF402FE"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "TextOutputCallback" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\callback\\TextOutputCallback.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E401C79009C"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "ConfirmationCallback" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\callback\\ConfirmationCallback.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E401D030109"
+			    stereotype 	""
+			    language   	"Java"))
+		    physical_presentations 	(list unit_reference_list))
+		(object SubSystem "kerberos"
+		    quid       	"3E40156002A2"
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E4019F00071"
+			    supplier   	"Component View::java::net"
+			    quidu      	"3E400BBC0394"
+			    supplier_is_subsystem 	TRUE))
+		    physical_models 	(list unit_reference_list
+			(object module "KeyImpl" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\kerberos\\KeyImpl.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E40156002AC"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "KerberosPrincipal" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\kerberos\\KerberosPrincipal.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E4015600338"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "KerberosKey" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\kerberos\\KerberosKey.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E40180002A8"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3E40180003D5"
+				    supplier   	"Component View::javax::security::auth::kerberos::KerberosPrincipal"
+				    quidu      	"3E4015600338"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3E4018010001"
+				    supplier   	"Component View::javax::security::auth::kerberos::KeyImpl"
+				    quidu      	"3E40156002AC"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "KerberosTicket" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\kerberos\\KerberosTicket.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E4018D6031E"
+			    stereotype 	""
+			    visible_modules 	(list dependency_list
+				(object Module_Visibility_Relationship
+				    quid       	"3E4019F00021"
+				    supplier   	"Component View::javax::security::auth::kerberos::KeyImpl"
+				    quidu      	"3E40156002AC"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3E4019F0003F"
+				    supplier   	"Component View::javax::security::auth::kerberos::KerberosPrincipal"
+				    quidu      	"3E4015600338"
+				    supplier_is_spec 	TRUE)
+				(object Module_Visibility_Relationship
+				    quid       	"3E4019F00072"
+				    supplier   	"Component View::java::net::InetAddress"
+				    quidu      	"3E400BBC03D2"
+				    supplier_is_spec 	TRUE))
+			    language   	"Java")
+			(object module "ServicePermission" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\kerberos\\ServicePermission.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E401BF80187"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "DelegationPermission" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\kerberos\\DelegationPermission.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E401D47005C"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "KrbServicePermissionCollection" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\kerberos\\KrbServicePermissionCollection.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E402059011B"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "KrbDelegationPermissionCollection" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\security\\auth\\kerberos\\KrbDelegationPermissionCollection.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E4020CC0008"
+			    stereotype 	""
+			    language   	"Java"))
+		    physical_presentations 	(list unit_reference_list)))
+	    physical_presentations 	(list unit_reference_list)))
+    physical_presentations 	(list unit_reference_list))

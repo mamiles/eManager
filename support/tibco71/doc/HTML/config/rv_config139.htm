@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>SecureDaemonProxy.setDefaultNetworkAndService()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;6	 Secure Daemons&#151;rvsd &amp; rvsrd";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1957613"> </a><h2 class="pNewHTMLPage">
+SecureDaemonProxy.setDefaultNetworkAndService()
+</h2>
+<hr />
+<a name="wp1957614"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1957615"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_config123.htm#wp1956040"><code class="cCode">SecureDaemonProxy</code></a> <code class="cCodeBold">setDefaultNetworkAndService</code>(<a name="wp1957619"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;networkSpecification,<a name="wp1957620"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;servicePort)<a name="wp1957621"> </a>
+&#160;&#160;throws <a  href="rv_config267.htm#wp1963961"><code class="cCode">ConfigurationException</code></a><a name="wp1957625"> </a>
+</pre></div>
+<a name="wp1957626"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1957628"> </a><p class="pBody">
+Set the default network and service pair of the secure daemon.
+</p>
+<a name="wp1957629"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1957630"> </a><p class="pBody">
+When a client transport does not specify particular network and service parameters, it automatically communicates over this default network and service. For example, when the client program supplies null values for either of these parameters, the secure daemon supplies this pair as a default.
+</p>
+<a name="wp1957634"> </a><p class="pBody">
+This method returns the <a  href="rv_config123.htm#wp1956040"><code class="cCode">SecureDaemonProxy</code></a> object, so programs can conveniently chain additional method calls to the return value.
+</p>
+<a name="wp1957658"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1957640"> </a><p class="pBody">
+&#160;
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1957644"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1957646"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1957648"> </a><div class="pCellBody">
+<code class="cCode">networkSpecification</code>
+</div>
+</td>
+    <td><a name="wp1957650"> </a><div class="pCellBody">
+Use this network as the default.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1957652"> </a><div class="pCellBody">
+<code class="cCode">servicePort</code>
+</div>
+</td>
+    <td><a name="wp1957657"> </a><div class="pCellBody">
+Use this UDP or PGM service as the default.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1957659"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1957663"> </a><p class="pBody">
+<a  href="rv_config123.htm#wp1956040"><code class="cCode">SecureDaemonProxy</code> </a>
+</p>
+<a name="wp1957667"> </a><p class="pBody">
+<a  href="rv_config129.htm#wp1956876"><code class="cCode">SecureDaemonProxy.getDefaultNetworkAndService()</code> </a>
+</p>
+<a name="wp1957671"> </a><p class="pBody">
+<a  href="rv_config140.htm#wp1957687"><code class="cCode">NetworkServicePair</code> </a>
+</p>
+<a name="wp1957674"> </a><p class="pBody">
+For the corresponding browser pages, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm63.htm#wp1152427');" onMouseOver="WWHShowPopup('c', 'rv_adm63.htm#wp1152427', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Default Network and Service</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+<a name="wp1957682"> </a><p class="pBody">
+For background information, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm61.htm#wp1162302');" onMouseOver="WWHShowPopup('c', 'rv_adm61.htm#wp1162302', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Network and Service Authorization</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvMsg::updateField()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1028315"> </a><h2 class="pNewHTMLPage">
+TibrvMsg::updateField()
+</h2>
+<hr />
+<a name="wp1028316"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1028317"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">updateField</code>(<a name="wp1123802"> </a>
+&#160;&#160;&#160;&#160;const <a  href="rv_cpp_ref76.htm#wp1028876"><code class="cCode">TibrvMsgField</code></a>&amp;&#160;&#160;&#160;&#160;field);<a name="wp1123804"> </a>
+</pre></div>
+<a name="wp1123805"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1123807"> </a><p class="pBody">
+Update a field within a message.
+</p>
+<a name="wp1123808"> </a><p class="pBody">
+For most programs, we recommend type-specific convenience methods instead of this generic method. However, translation engine programs can require generic <a  href="rv_cpp_ref68.htm#wp1028315"><code class="cCode">TibrvMsg::updateField()</code></a>, and would use it in conjunction with generic <a  href="rv_cpp_ref46.htm#wp1122057"><code class="cCode">TibrvMsg::getField()</code></a>. In this paradigm, modify the field returned from <a  href="rv_cpp_ref46.htm#wp1122057"><code class="cCode">TibrvMsg::getField()</code></a> by replacing its <code class="cCode">field.value</code>, and supply it as the <code class="cCode">field</code> argument to <a  href="rv_cpp_ref68.htm#wp1028315"><code class="cCode">TibrvMsg::updateField()</code></a>. 
+</p>
+<a name="wp1123821"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1123822"> </a><p class="pBody">
+This method locates a field within the message by matching the name and identifier of <code class="cCode">field</code>. Then it updates the message field using the <code class="cCode">field</code> argument. (Notice that the program may not supply a field object with a different field name, field identifier, or datatype.)
+</p>
+<a name="wp1123823"> </a><p class="pBody">
+If no existing field matches the specifications in the <code class="cCode">field</code> argument, then this method adds the field to the message. Update convenience methods also add the field if it is not present.
+</p>
+<a name="wp1123824"> </a><p class="pBody">
+The type of the existing field (within the message) and the type of the updating <code class="cCode">field</code> argument must be identical; otherwise, the method returns the error status code <a  href="rv_cpp_ref272.htm#wp1231419"><code class="cCode">TIBRV_INVALID_TYPE</code></a>. However, when updating array or vector fields, the count (number of elements) can change.
+</p>
+<a name="wp1123828"> </a><p class="pBody">
+Pointer data (such as strings, arrays, submessages, XML data, or opaque byte sequences) previously extracted from the field remain valid and unchanged until the message is destroyed; that is, even updating the field&#8217;s value does <em class="cEmphasis">not</em> invalidate pointer data.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1123838"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1123840"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1123846"> </a><div class="pCellBody">
+<code class="cCode">field</code>
+</div>
+</td>
+    <td><a name="wp1123848"> </a><div class="pCellBody">
+Update the existing message field using this field.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1123850"> </a><h4 class="pHeading3">
+Field Search Algorithm
+</h4>
+<a name="wp1123851"> </a><p class="pBody">
+This method, and related methods that <em class="cEmphasis">update</em> message fields, all use this algorithm to find and update a field within a message, as specified by a field identifier and a field name.
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1123852"> </a><div class="pSmartList1"><li value="1">If the identifier is zero, skip to step 3.</li></div>
+
+<a name="wp1123854"> </a><p class="pBodyRelative">
+If the program supplied a <em class="cEmphasis">non-zero</em> field identifier, then search for the field with that identifier.
+</p>
+<a name="wp1123855"> </a><p class="pBodyRelative">
+If the search succeeds, then update that field.
+</p>
+<a name="wp1123856"> </a><p class="pBodyRelative">
+On failure, continue to step 2.
+</p>
+<a name="wp1123857"> </a><div class="pSmartList1"><li value="2">If the identifier search (in step 1) fails, and the program supplied a non-<code class="cCode">NULL</code> field name, then search for a field with that name. </li></div>
+
+<a name="wp1123858"> </a><p class="pBodyRelative">
+If the program supplied <code class="cCode">NULL</code> as the field name, return the status code <a  href="rv_cpp_ref272.htm#wp1231433"><code class="cCode">TIBRV_NOT_FOUND</code></a>.
+</p>
+<a name="wp1123862"> </a><p class="pBodyRelative">
+If the name search succeeds, but the actual identifier in the field is non-<code class="cCode">NULL</code> (so it does not match the identifier supplied) then return the status code <a  href="rv_cpp_ref272.htm#wp1231443"><code class="cCode">TIBRV_ID_CONFLICT</code></a>.
+</p>
+<a name="wp1123866"> </a><p class="pBodyRelative">
+If the search fails, <em class="cEmphasis">add</em> the field as specified (with name and identifier).
+</p>
+<a name="wp1123867"> </a><div class="pSmartList1"><li value="3">When the program supplied <em class="cEmphasis">zero</em> as the identifier, search for a field with the specified name&#151;even if that name is <code class="cCode">NULL</code>.</li></div>
+
+<a name="wp1123869"> </a><p class="pBodyRelative">
+If the search fails, <em class="cEmphasis">add</em> the field as specified (with name and identifier).
+</p>
+</ol></div>
+
+<a name="wp1123989"> </a><p class="pBody">
+If a message contains several fields with the same name, searching by name finds the first instance of the field with that name.
+</p>
+<a name="wp1187440"> </a><h4 class="pHeading3">
+Reserved Field Name
+</h4>
+<a name="wp1237615"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1282675"> </a><p class="pBody">
+The field name <code class="cCode">_data_</code> is reserved. Programs may not add fields with this name.
+</p>
+<a name="wp1282676"> </a><p class="pBody">
+More generally, all fields that begin with the underbar character are reserved.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1123875"> </a><h4 class="pHeading3">
+Field Name Length
+</h4>
+<a name="wp1123876"> </a><p class="pBody">
+The constant <code class="cCode">TIBRVMSG_FIELDNAME_MAX</code> determines the longest possible field name.
+</p>
+<a name="wp1123877"> </a><h4 class="pHeading3">
+Convenience Methods
+</h4>
+<a name="wp1123878"> </a><p class="pBody">
+When the datatype of a field is determined during execution, use this general method. When you can determine the datatype of a field before compile-time, we recommend using type-specific convenience methods instead of this general method. Type-specific methods yield these advantages when updating fields:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1123879"> </a><div class="pSmartList1"><li >Code readability.</li></div>
+
+<a name="wp1123880"> </a><div class="pSmartList1"><li >Type checking.</li></div>
+
+<a name="wp1123881"> </a><div class="pSmartList1"><li >Automatic type conversion.</li></div>
+
+</ul></div>
+
+<a name="wp1123882"> </a><p class="pBody">
+These categories of type-specific convenience methods find a field and update its data:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1123886"> </a><div class="pSmartList1"><li ><a  href="rv_cpp_ref69.htm#wp1028381">Update Scalar</a>.</li></div>
+
+<a name="wp1123890"> </a><div class="pSmartList1"><li ><a  href="rv_cpp_ref70.htm#wp1124217">Update Array</a>.</li></div>
+
+<a name="wp1123894"> </a><div class="pSmartList1"><li ><a  href="rv_cpp_ref71.htm#wp1124350">Update Nested Message</a>.</li></div>
+
+<a name="wp1123898"> </a><div class="pSmartList1"><li ><a  href="rv_cpp_ref72.htm#wp1124413">Update String</a>.</li></div>
+
+<a name="wp1123902"> </a><div class="pSmartList1"><li ><a  href="rv_cpp_ref73.htm#wp1124475">Update Opaque Byte Sequence</a></li></div>
+
+<a name="wp1123906"> </a><div class="pSmartList1"><li ><a  href="rv_cpp_ref75.htm#wp1124543">Update DateTime</a></li></div>
+
+</ul></div>
+
+<a name="wp1108256"> </a><h4 class="pHeading3">
+Nested Message
+</h4>
+<a name="wp1108257"> </a><p class="pBody">
+When the new value is a message object, this method uses only the data portion of the nested message (<code class="cCode">data</code>); it does not include any address information or certified delivery information.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

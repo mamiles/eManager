@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:10:06" />
+  <title>Post-Installation Instructions</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Installation";
+    var ChapterTitle = "Chapter&#160;5	 AS/400";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp33576884"> </a><h2 class="pNewHTMLPage">
+Post-Installation Instructions
+</h2>
+<hr />
+<div class="pSmartList1"><ol type="1">
+<a name="wp33576921"> </a><div class="pSmartList1"><li value="1">The initial library list must contain the Rendezvous library (<code class="cCode">TIBRV</code> is the default library name). Edit all relevant job descriptions to include it.</li></div>
+
+<a name="wp33577248"> </a><div class="pSmartList1"><li value="2">Rendezvous software requires multi-threading. Edit all relevant job descriptions to enable multiple threads.<div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/tip.gif" border="0" /></td>
+    <td><a name="wp33582282"> </a><p class="pBody">
+The example job description <code class="cCode">TIBRV/TIBRV</code> illustrates items <a  href="rv_install34.htm#wp33576921">1</a> and <a  href="rv_install34.htm#wp33577248">2</a>.
+</p>
+</td>
+</tr>
+</table>
+</div>
+</li></div>
+
+<a name="wp33577249"> </a><div class="pSmartList1"><li value="3">If AS/400 is configured with a fully-qualified domain name, ensure that the host table entry for your system contains the full name of the computer. For example, if your domain name is <code class="cCode">mycompany.com</code>, and the machine name is <code class="cCode">mymachine</code>, then put <code class="cCode">mymachine.mycompany.com</code> in the host table.</li></div>
+
+<a name="wp33576936"> </a><div class="pSmartList1"><li value="4">For Java programs, set the <code class="cCode">CLASSPATH</code> environment variable to include the <code class="cCode">/usr/tibco/tibrv/lib/tibrvj.jar</code>.</li></div>
+
+<a name="wp33582305"> </a><div class="pSmartList1"><li value="5">To run Rendezvous programs using <code class="cCodeBold">qsh</code>, you must first set the environment variable <code class="cCode">QIBM_MULTI_THREADED</code> to the value <code class="cCode">Y</code> (before starting <code class="cCode">qsh</code>).<div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/tip.gif" border="0" /></td>
+    <td><a name="wp33582344"> </a><p class="pBody">
+To set the values of items <a  href="rv_install34.htm#wp33576936">4</a> and <a  href="rv_install34.htm#wp33582305">5</a> automatically, create a <code class="cCode">CL</code> program similar to this example, and set the <code class="cCode">INLPGM</code> parameter in the user profile to run it automatically when the user logs in.
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;&#160;PGM&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;/* start it */<a name="wp33582345"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;/* For Java with qsh, set these vars */<a name="wp33582346"> </a>
+&#160;&#160;&#160;&#160;ADDENVVAR&#160;&#160;ENVVAR(QIBM_MULTI_THREADED) VALUE(Y)<a name="wp33582347"> </a>
+&#160;&#160;&#160;&#160;ADDENVVAR&#160;&#160;ENVVAR(CLASSPATH) +<a name="wp33582348"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;VALUE(&#8217;/usr/tibco/tibrv/libtibrvj.jar&#8217;)<a name="wp33582349"> </a>
+&#160;<a name="wp33582350"> </a>
+</pre></div>
+<a name="wp33582351"> </a><p class="pBody">
+Whether you set the variables manually or automatically, their values persists until logout.
+</p>
+</td>
+</tr>
+</table>
+</div>
+</li></div>
+
+<a name="wp33582324"> </a><div class="pSmartList1"><li value="6">IBM imposes limitations on multi-threaded programs. Remember that all Rendezvous programs are inherently multi-threaded.</li></div>
+
+<a name="wp33577493"> </a><p class="pBodyRelative">
+You must run multithreaded programs either in <em class="cEmphasis">batch</em> or <em class="cEmphasis">interactive batch</em> subsystems&#151;<em class="cEmphasis">not</em> in the interactive subsystem. When submitting jobs using <code class="cCode">SBMJOB</code>, set the <code class="cCode">ALWMLTTHD</code> parameter to <code class="cCode">(*YES)</code>.
+</p>
+<a name="wp33576993"> </a><p class="pBodyRelative">
+You cannot run multi-threaded programs in the interactive environment. In other words, you cannot use <code class="cCode">CALL</code> from a terminal to start a program that uses Rendezvous.<div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/tip.gif" border="0" /></td>
+    <td><a name="wp33582409"> </a><p class="pBodyRelative">
+Error messages stating that <code class="cCode">pthread_create</code> failed indicate that you have not set <code class="cCode">QIBM_MULTI_THREADED</code>, or you have used the <code class="cCode">CALL</code> command to start a Rendezvous program.
+</p>
+</td>
+</tr>
+</table>
+</div>
+
+</p>
+<a name="wp33577156"> </a><div class="pSmartList1"><li value="7">When updating license ticket files, you can either update the member supplied in <code class="cCode">TIBRV</code>, or create a new source physical file named <code class="cCode">TIBRV</code> elsewhere. The second method prevents accidental removal of the ticket files when you next upgrade Rendezvous. In either method, put the license in a member named <code class="cCode">tkt</code>.</li></div>
+
+<a name="wp33577201"> </a><p class="pBodyRelative">
+Rendezvous searches for <code class="cCode">TIBRV(TKT)</code> in your library list, and uses the first license file that it finds. If you create a new file for licenses, ensure that it is earlier in the library list than <code class="cCode">TIBRV</code>.
+</p>
+</ol></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Installation <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

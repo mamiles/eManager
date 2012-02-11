@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvCmTransport.disconnectFromRelayAgent()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;9	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1084766"> </a><h2 class="pNewHTMLPage">
+TibrvCmTransport.disconnectFromRelayAgent()
+</h2>
+<hr />
+<a name="wp1084767"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1089731"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+void <code class="cCodeBold">disconnectFromRelayAgent</code>()<a name="wp1089740"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1089733"> </a>
+</pre></div>
+<a name="wp1089734"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1089736"> </a><p class="pBody">
+Disconnect a certified delivery transport from its relay agent.
+</p>
+<a name="wp1084787"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1084788"> </a><p class="pBody">
+Disconnect calls are non-blocking; they immediately return control to the program, and asynchronously proceed with these clean-up tasks:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1084789"> </a><div class="pSmartList1"><li >If the client transport is a CM <em class="cEmphasis">listener</em>, the relay agent attempts to synchronize its listening state with the transport (to assure that the relay agent adequately represents the listening interest of the client).</li></div>
+
+<a name="wp1084790"> </a><div class="pSmartList1"><li >The transport stops communicating with the relay agent.</li></div>
+
+<a name="wp1084791"> </a><div class="pSmartList1"><li >The transport stores subsequent outbound events&#151;including data messages and protocol state changes. If the transport is a certified <em class="cEmphasis">sender</em>, it cancels its request for delivery confirmation of outstanding unconfirmed messages. (See also, <a  href="javascript:WWHClickedPopup('a', 'rv_concepts107.htm#wp1056232');" onMouseOver="WWHShowPopup('a', 'rv_concepts107.htm#wp1056232', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Requesting Confirmation</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.)</li></div>
+
+<a name="wp1084798"> </a><div class="pSmartList1"><li >The relay agent stores subsequent inbound events for the transport&#151;including data messages and protocol state changes.</li></div>
+
+<a name="wp1084799"> </a><div class="pSmartList1"><li >A transport that explicitly disconnects without terminating receives a <a  href="javascript:WWHClickedPopup('a', 'rv_concepts188.htm#wp1039704');" onMouseOver="WWHShowPopup('a', 'rv_concepts188.htm#wp1039704', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">RELAY.DISCONNECTED</code></a> advisory, informing it that is safe to sever the physical network connection. (Terminating transports never receive this advisory; instead, it is safe to sever the connection when the destroy call returns.)</li></div>
+
+</ul></div>
+
+<a name="wp1084806"> </a><p class="pBody">
+<a  href="rv_java_ref196.htm#wp1084655"><code class="cCode">TibrvCmTransport.destroy()</code></a> automatically disconnects a CM transport from its relay agent before termination.
+</p>
+<a name="wp1123091"> </a><h4 class="pHeading3">
+Errors
+</h4>
+<a name="wp1123095"> </a><p class="pBody">
+The error code <a  href="rv_java_ref234.htm#wp1238109"><code class="cCode">TibrvStatus.INVALID_ARG</code></a> can indicate that the transport does not have a relay agent.
+</p>
+<a name="wp1084807"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1084811"> </a><p class="pBody">
+<a  href="rv_java_ref195.htm#wp1084414"><code class="cCode">TibrvCmTransport.connectToRelayAgent()</code> </a>
+</p>
+<a name="wp1084815"> </a><p class="pBody">
+<a  href="rv_java_ref196.htm#wp1084655"><code class="cCode">TibrvCmTransport.destroy()</code> </a>
+</p>
+<a name="wp1084822"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts116.htm#wp1056518');" onMouseOver="WWHShowPopup('a', 'rv_concepts116.htm#wp1056518', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Relay Agent</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

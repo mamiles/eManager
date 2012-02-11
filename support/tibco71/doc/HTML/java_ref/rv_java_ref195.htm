@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvCmTransport.connectToRelayAgent()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;9	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1084414"> </a><h2 class="pNewHTMLPage">
+TibrvCmTransport.connectToRelayAgent()
+</h2>
+<hr />
+<a name="wp1084415"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1084416"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+void <code class="cCodeBold">connectToRelayAgent</code>()<a name="wp1089250"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1089267"> </a>
+</pre></div>
+<a name="wp1084419"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1084421"> </a><p class="pBody">
+Connect a certified delivery transport to its designated relay agent.
+</p>
+<a name="wp1084435"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1123577"> </a><p class="pBody">
+Programs may specify a relay agent when creating a CM transport object.
+</p>
+<a name="wp1084436"> </a><p class="pBody">
+Connect calls are non-blocking; they immediately return control to the program, and asynchronously attempt to connect to the relay agent (continuing until they succeed, or until the program makes a disconnect call).
+</p>
+<a name="wp1084440"> </a><p class="pBody">
+When a transport attempts to connect to a relay agent, Rendezvous software automatically locates the relay agent process (if it exists). When the program successfully connects to the relay agent, they synchronize:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1084444"> </a><div class="pSmartList1"><li >The transport receives a <a  href="javascript:WWHClickedPopup('a', 'rv_concepts187.htm#wp1039667');" onMouseOver="WWHShowPopup('a', 'rv_concepts187.htm#wp1039667', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">RELAY.CONNECTED</code></a> advisory, informing it of successful contact with the relay agent. (Listen for all advisory messages on the ordinary <a  href="rv_java_ref130.htm#wp1038525"><code class="cCode">TibrvTransport</code></a> that the <a  href="rv_java_ref191.htm#wp1084243"><code class="cCode">TibrvCmTransport</code></a> employs.)</li></div>
+
+<a name="wp1084451"> </a><p class="pBodyRelative">
+(When a program cannot locate its relay agent, certified delivery software produces <a  href="javascript:WWHClickedPopup('a', 'rv_concepts176.htm#wp1039175');" onMouseOver="WWHShowPopup('a', 'rv_concepts176.htm#wp1039175', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">DELIVERY.NO_RESPONSE</code></a> advisories; however, we recommend against designing programs to rely on this side effect.)
+</p>
+<a name="wp1084455"> </a><div class="pSmartList1"><li >If the client transport is a CM <em class="cEmphasis">listener</em>, the relay agent listens to the same set of subjects on behalf of the client. The relay agent also updates its confirmation state to reflect the state of the transport.</li></div>
+
+<a name="wp1084456"> </a><div class="pSmartList1"><li >If the client transport is a CM <em class="cEmphasis">sender</em>, the relay agent updates its acceptance state to reflect the state of the transport. The sending client updates its confirmation state to reflect the state of the relay agent.</li></div>
+
+<a name="wp1084457"> </a><div class="pSmartList1"><li >The transport and relay agent exchange the CM data messages that they have been storing during the time they were disconnected.</li></div>
+
+</ul></div>
+
+<a name="wp1084458"> </a><p class="pBody">
+We recommend that programs remain connected for a minimum of two minutes, to allow time for this synchronization to complete. (Two minutes is a generous estimate, which is sufficient for most situations. Actual time synchronization time can be much shorter, and varies with the number of stored messages and the degree to which protocol state has changed.)
+</p>
+<a name="wp1084459"> </a><p class="pBody">
+If the transport is already connected to its relay agent, then this method returns normally, and does not trigger a <a  href="javascript:WWHClickedPopup('a', 'rv_concepts187.htm#wp1039667');" onMouseOver="WWHShowPopup('a', 'rv_concepts187.htm#wp1039667', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">RELAY.CONNECTED</code></a> advisory.
+</p>
+<a name="wp1084469"> </a><p class="pBody">
+<a  href="rv_java_ref192.htm#wp1097723"><code class="cCode">TibrvCmTransport()</code></a> automatically connects a transport to its designated relay agent upon creation.
+</p>
+<a name="wp1123081"> </a><h4 class="pHeading3">
+Errors
+</h4>
+<a name="wp1123085"> </a><p class="pBody">
+The error code <a  href="rv_java_ref234.htm#wp1238109"><code class="cCode">TibrvStatus.INVALID_ARG</code></a> can indicate that the transport does not have a relay agent.
+</p>
+<a name="wp1084470"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1084474"> </a><p class="pBody">
+<a  href="rv_java_ref192.htm#wp1097723"><code class="cCode">TibrvCmTransport()</code> </a>
+</p>
+<a name="wp1084478"> </a><p class="pBody">
+<a  href="rv_java_ref198.htm#wp1084766"><code class="cCode">TibrvCmTransport.disconnectFromRelayAgent()</code> </a>
+</p>
+<a name="wp1084485"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts116.htm#wp1056518');" onMouseOver="WWHShowPopup('a', 'rv_concepts116.htm#wp1056518', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Relay Agent</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

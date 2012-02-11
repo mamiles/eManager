@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Automatic Mode-Binary Search</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;10	 Performance Assessment (rvperf)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1068892"> </a><h2 class="pNewHTMLPage">
+Automatic Mode&#151;Binary Search
+</h2>
+<hr />
+<a name="wp1068893"> </a><p class="pBody">
+In automatic mode, <code class="cCode">rvperfm</code> uses a binary search algorithm to adjust its batch size and interval parameters between runs. These rules control <code class="cCode">rvperfm</code> as it empirically determines the maximum throughput:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1068894"> </a><div class="pSmartList1"><li >For the first run, <code class="cCode">rvperfm</code> determines the batch size and interval from command parameters or default values.</li></div>
+
+<a name="wp1129932"> </a><div class="pSmartList1"><li >If <code class="cCode">rvperfm</code> loses data, it aborts the run immediately, and adjusts parameters to decrease the send rate for the next run.</li></div>
+
+<a name="wp1068896"> </a><div class="pSmartList1"><li >If even one of the <code class="cCode">rvperfs</code> processes lost data during the run, then the send rate exceeds the maximum network throughput. In this case, <code class="cCode">rvperfm</code> aborts the run, records the upper bound on maximum throughput, and adjusts the parameters to decrease the send rate for the next run.</li></div>
+
+<a name="wp1068897"> </a><div class="pSmartList1"><li >If all active <code class="cCode">rvperfs</code> processes keep pace without lagging behind, and receive all the messages without losing data&#151;then the send rate is lower than the maximum throughput. In this case, <code class="cCode">rvperfm</code> records the lower bound on maximum throughput, and adjusts the parameters to increase the send rate for the next run.</li></div>
+
+<a name="wp1068898"> </a><div class="pSmartList1"><li >After a finite number of runs, the upper and lower bounds converge at the maximum throughput. When <code class="cCode">rvperfm</code> exits, the report of the last run indicates the batch size and interval parameters that yield the maximum network throughput.</li></div>
+
+<a name="wp1068899"> </a><p class="pBodyRelative">
+If no <code class="cCode">rvperfs</code> processes are active, the parameters of the last run yield the maximum send rate for <code class="cCode">rvperfm</code> on its host computer (with the prevailing network conditions).
+</p>
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

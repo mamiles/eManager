@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvMsg.add</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1026879"> </a><h2 class="pNewHTMLPage">
+TibrvMsg.add
+</h2>
+<hr />
+<a name="wp1026880"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1026914"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+TibrvMsg.<code class="cCodeBold">add</code> fieldName, data, tibrvType, fieldId<a name="wp1118875"> </a>
+</pre></div>
+<a name="wp1027203"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1026885"> </a><p class="pBody">
+Add a field to a message.
+</p>
+<a name="wp1026886"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1026887"> </a><p class="pBody">
+This method copies the information into the new message field. Subsequent changes to the arguments do not affect the field in the message object.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1171177"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1171179"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1171181"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1171183"> </a><div class="pCellBody">
+<code class="cCode">String</code>
+</div>
+<a name="wp1171184"> </a><div class="pCellBody">
+Add a field with this name.
+</div>
+<a name="wp1171185"> </a><div class="pCellBody">
+<code class="cCode">vbNullString</code> is a legal name. However, if <code class="cCode">fieldId</code> is non-zero, then <code class="cCode">fieldName</code> must be non-null.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1171187"> </a><div class="pCellBody">
+<code class="cCode">data</code>
+</div>
+</td>
+    <td><a name="wp1171189"> </a><div class="pCellBody">
+<code class="cCode">Variant</code>
+</div>
+<a name="wp1171190"> </a><div class="pCellBody">
+Add a field with this data value.
+</div>
+<a name="wp1171194"> </a><div class="pCellBody">
+Pass the data as any VB type or Rendezvous object type.
+</div>
+<a name="wp1171198"> </a><div class="pCellBody">
+When this parameter is a <a  href="rv_com_ref67.htm#wp1028876"><code class="cCode">TibrvMsgField</code></a> object, this method cannot convert it to another type. The <code class="cCode">tibrvType</code> parameter must be zero (or omitted).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1171200"> </a><div class="pCellBody">
+<code class="cCode">tibrvType</code>
+</div>
+</td>
+    <td><a name="wp1171202"> </a><div class="pCellBody">
+<code class="cCode">Byte</code> optional
+</div>
+<a name="wp1171203"> </a><div class="pCellBody">
+When absent or zero, determine the field&#8217;s type from the type of the variant <code class="cCode">data</code>. In <a  href="rv_com_ref35.htm#wp1119232">Figure&#160;1</a>, filled dots indicate default encodings between homologous types.
+</div>
+<a name="wp1171207"> </a><div class="pCellBody">
+When present, explicitly convert the data to this type. For a list of types, see <a  href="rv_com_ref34.htm#wp1056249">Datatype Constants</a>. <a  href="rv_com_ref35.htm#wp1119232">Figure&#160;1</a> indicates permissible conversions.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1171215"> </a><div class="pCellBody">
+<code class="cCode">fieldId</code>
+</div>
+</td>
+    <td><a name="wp1171217"> </a><div class="pCellBody">
+<code class="cCode">Long</code> optional
+</div>
+<a name="wp1171218"> </a><p class="pBody">
+Add a field with this identifier. All field identifiers must be unique within each message.
+</p>
+<a name="wp1171219"> </a><p class="pBody">
+An identifier has the numeric range of a 16-bit unsigned integer, [0,&#160;65535].
+</p>
+<a name="wp1171220"> </a><div class="pCellBody">
+When absent or zero, add a field without an identifier.
+</div>
+<a name="wp1171221"> </a><div class="pCellBody">
+Zero is a special value, indicating no identifier. It is illegal to add a field that has both a null field name <em class="cEmphasis">and</em> a non-zero field identifier.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1118930"> </a><h4 class="pHeading3">
+Encoding and Type Conversion
+</h4>
+<a name="wp1118934"> </a><p class="pBody">
+This method automatically converts VB data to its corresponding Rendezvous wire format type. <a  href="rv_com_ref35.htm#wp1119232">Figure&#160;1</a> specifies default encodings with filled circles; you can override the default encoding by supplying an explicit <code class="cCode">tibrvType</code> argument (numeric and supported conversions). This feature lets you add fields with datatypes that the programming language does not directly support (for example, a signed byte or an unsigned integer.
+</p>
+<a name="wp1147819"> </a><p class="pBody">
+When adding a numeric value as a <code class="cCode">TIBRVMSG_BOOL</code>, zero maps to <code class="cCode">False</code>, and all non-zero values map to <code class="cCode">True</code>.
+</p>
+<a name="wp1147825"> </a><p class="pBody">
+When adding a boolean value as a numeric scalar type, <code class="cCode">False</code> maps to zero, and <code class="cCode">True</code> maps to 1.
+</p>
+<a name="wp1147842"> </a><p class="pBody">
+When adding an unsigned value as a signed type, this method interprets the high bit as a sign bit. When adding a numeric value as a type with lesser precision, this method discards bits of precision without warning. When adding a numeric value as a type with smaller range, this method checks the range and reports an error if the target type cannot accommodate the value.
+</p>
+<a name="wp1204382"> </a><h4 class="pHeading3">
+Encoding XML
+</h4>
+<a name="wp1193243"> </a><p class="pBody">
+As a convenience, Visual Basic lets you add a string value as an XML field; the resulting XML is encoded as UTF-16LE (16-bit Unicode, little-endian byte order). However, other language APIs might not support this encoding. For this reason, we discourage programmers from directly adding string values as XML fields. Instead, we recommend converting the XML document string to a byte sequence, using the encoding that corresponds to your locale. This practice ensures that all receivers can easily parse the resulting XML document. For more information, see <a  href="rv_com_ref43.htm#wp1204397">Decoding XML</a>.
+</p>
+<a name="wp1147821"> </a><h4 class="pHeading3">
+Nested Message
+</h4>
+<a name="wp1244540"> </a><p class="pBody">
+When the <code class="cCode">data</code> argument is a message object, this method adds only the data portion of the nested message; it does not include any address information or certified delivery information.
+</p>
+<a name="wp1244542"> </a><h4 class="pHeading3">
+Field Name Length
+</h4>
+<a name="wp1119226"> </a><p class="pBody">
+The the longest possible field name is 127 bytes.
+</p>
+<a name="wp1119232"> </a><div class="pFigureTitle">
+Figure&#160;1   VB to Wire Format Datatype Conversion Matrix</div><div align="center"><img src="images/rv_com_refa3.gif" height="646" width="525" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1119233"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1026900"> </a><p class="pBody">
+<a  href="rv_com_ref36.htm#wp1028247"><code class="cCode">TibrvMsg.addField</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

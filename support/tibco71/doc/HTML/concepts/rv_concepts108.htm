@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Sequencing and Retransmission</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1056240"> </a><h2 class="pNewHTMLPage">
+Sequencing and Retransmission
+</h2>
+<hr />
+<a name="wp1056241"> </a><p class="pBody">
+Each sending CM transport assigns sequence numbers serially for each outbound subject, so the sequence numbers reflect the order of messages from the sending transport on a specific subject.
+</p>
+<a name="wp1056242"> </a><p class="pBody">
+Certified messages always enter the event queue in order by sequence number.
+</p>
+<a name="wp1056243"> </a><p class="pBody">
+For example, a certified listening transport is receiving certified delivery of the subject <code class="cCode">FOO</code> from a certified sender named <code class="cCode">BAZ</code>. After receiving and queuing message number <code class="cCode">32</code>, the next message to arrive is message <code class="cCode">35</code>. Certified delivery software holds message <code class="cCode">35</code> until it can first queue messages <code class="cCode">33</code> and <code class="cCode">34</code>; once these messages arrive, the listening transport queues events for each of the three messages in the proper order.
+</p>
+<a name="wp1056244"> </a><p class="pBody">
+Meanwhile, the certified listening transport automatically requests retransmission of messages <code class="cCode">33</code> and <code class="cCode">34</code> from <code class="cCode">BAZ</code>. In a case where the time limit on those messages has expired&#151;so <code class="cCode">BAZ</code> no longer has them in its ledger&#151;the certified listener transport presents a <a  href="rv_concepts178.htm#wp1039269"><code class="cCode">DELIVERY.UNAVAILABLE</code></a> advisory, indicating that messages <code class="cCode">33</code> and <code class="cCode">34</code> are no longer available. Then it queues an event for message <code class="cCode">35</code>.
+</p>
+<a name="wp1056248"> </a><p class="pBody">
+Notice that although certified messages always enter the queue in order of sequence number, it is still possible that a program might process them out of order. For example, if a program dispatches the queue from several threads, the thread processing number <code class="cCode">43</code> might return from its callback function before the thread processing number <code class="cCode">42</code>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

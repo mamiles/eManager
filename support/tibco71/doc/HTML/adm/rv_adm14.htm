@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Transport Parameters</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;3	 Network Details";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1019210"> </a><h2 class="pNewHTMLPage">
+Transport Parameters
+</h2>
+<hr />
+<a name="wp1019215"> </a><p class="pBody">
+Network transport creation calls accept three parameters that govern the behavior of the Rendezvous daemon: <code class="cCode">service</code>, <code class="cCode">network</code> and <code class="cCode">daemon</code>. In simple networking environments, the default values of these parameters are sufficient (in C, the program can supply <code class="cCode">NULL</code> for all three).
+</p>
+<a name="wp1019222"> </a><p class="pBody">
+Most programmers will use default values for these parameters unless advised otherwise by their network administrator. To determine whether your environment requires special treatment, consider whether any of these conditions apply:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1019223"> </a><div class="pSmartList1"><li >Several independent distributed applications run on the same network, and you must isolate them from one another (<code class="cCode">service</code> parameter).</li></div>
+
+<a name="wp1019227"> </a><div class="pSmartList1"><li >Programs use the Rendezvous routing daemon, <code class="cCode">rvrd</code>, to cooperate across a WAN with programs that belong to a particular service group, and the local programs must join the same service group (<code class="cCode">service</code> parameter).</li></div>
+
+<a name="wp1019231"> </a><div class="pSmartList1"><li >A Rendezvous program runs on a computer with more than one network interface, and you must choose a specific network for Rendezvous communications (<code class="cCode">network</code> parameter).</li></div>
+
+<a name="wp1019235"> </a><div class="pSmartList1"><li >Computers on the network use multicast addressing to achieve even higher efficiency, and programs must specify a set of multicast groups to join (<code class="cCode">Network</code> parameter).</li></div>
+
+<a name="wp1019239"> </a><div class="pSmartList1"><li >A program runs on one computer, but connects with a Rendezvous daemon process running on a different computer, and you must specify the remote daemon to support network communications (<code class="cCode">daemon</code> parameter).</li></div>
+
+<a name="wp1257460"> </a><div class="pSmartList1"><li >Two programs use direct communication. Both programs must enable this feature and specify its service (<code class="cCode">service</code> parameter).</li></div>
+
+</ul></div>
+
+<a name="wp1019250"> </a><p class="pBody">
+If none of these conditions apply, then programmers can use default values for the transport parameters.
+</p>
+<a name="wp1019251"> </a><p class="pBody">
+If your network environment requires special treatment for any these parameters, please notify applications programmers developing software for your environment. If your organization runs Rendezvous programs developed by a third party, consult the third-party documentation for information about network and service configuration.
+</p>
+<a name="wp1019258"> </a><p class="pBody">
+In addition, certain components of Rendezvous software, local programs and third-party programs may also require special configuration:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1019262"> </a><div class="pSmartList1"><li >The Rendezvous routing daemon, <code class="cCode">rvrd</code>, must specify the service and network for each local network. Exchange this information with the network administrators at each remote site.</li></div>
+
+<a name="wp1257494"> </a><div class="pSmartList1"><li >The Rendezvous secure daemon limits clients to communication on a set of authorized network and service pairs.</li></div>
+
+<a name="wp1019263"> </a><div class="pSmartList1"><li >The current value cache, <code class="cCode">rvcache</code>, accepts all three transport parameters. When you configure this program, include any special values as needed.</li></div>
+
+<a name="wp1019267"> </a><div class="pSmartList1"><li >Many Rendezvous programs accept transport parameters on their command lines. Inform all users of any special values that apply.</li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

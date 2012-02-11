@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvcmEventCallback</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1159633"> </a><h2 class="pNewHTMLPage">
+tibrvcmEventCallback
+</h2>
+<hr />
+<a name="wp1159634"> </a><p class="pSyntaxType">
+Function Type
+</p>
+<a name="wp1091050"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+typedef void (*<code class="cCodeBold">tibrvcmEventCallback</code>) (<a name="wp1091089"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref175.htm#wp1101352"><code class="cCode">tibrvcmEvent</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;cmListener,<a name="wp1091124"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;message,<a name="wp1091125"> </a>
+&#160;&#160;&#160;&#160;void*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;closure);<a name="wp1091126"> </a>
+</pre></div>
+<a name="wp1091055"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1091057"> </a><p class="pBody">
+Programs define functions of this type to process inbound certified or labeled messages.
+</p>
+<a name="wp1091058"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1091059"> </a><p class="pBody">
+This callback function must also be able to process uncertified and unlabeled messages.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1091062"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1091064"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091066"> </a><div class="pCellBody">
+<code class="cCode">cmListener</code>
+</div>
+</td>
+    <td><a name="wp1091068"> </a><div class="pCellBody">
+This parameter receives the listener object. This object is identical to the certified listener object that the program created to begin listening.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091070"> </a><div class="pCellBody">
+<code class="cCode">message</code>
+</div>
+</td>
+    <td><a name="wp1091072"> </a><div class="pCellBody">
+The callback receives the inbound message in this parameter. If the inbound message is empty, this parameter receives a message that has no fields.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1091075"> </a><div class="pCellBody">
+<code class="cCode">closure</code>
+</div>
+</td>
+    <td><a name="wp1091077"> </a><div class="pCellBody">
+This parameter receives the closure data, which the program supplied in the call that created the event object.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1104019"> </a><h4 class="pHeading3">
+CM Label Information
+</h4>
+<a name="wp1104024"> </a><p class="pBody">
+CM callback functions can use CM label information to discriminate these situations:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1104025"> </a><div class="pSmartList1"><li >If <a  href="rv_c_ref208.htm#wp1093736"><code class="cCode">tibrvMsg_GetCMSender()</code></a> returns status code <a  href="rv_c_ref227.htm#wp1129168"><code class="cCode">TIBRV_NOT_FOUND</code></a>, then the message uses the reliable protocol (that is, it was sent from an ordinary transport).</li></div>
+
+<a name="wp1104038"> </a><div class="pSmartList1"><li >If <a  href="rv_c_ref208.htm#wp1093736"><code class="cCode">tibrvMsg_GetCMSender()</code></a> returns <a  href="rv_c_ref227.htm#wp1129060"><code class="cCode">TIBRV_OK</code></a>, then the message uses the certified delivery protocol (that is, it is a labeled message, sent from a CM transport).</li></div>
+
+<a name="wp1104049"> </a><p class="pBodyRelative">
+Once the CM callback function determines that the message uses the certified delivery protocol, it can discriminate further:
+</p>
+<div class="pSmartList2"><ul>
+<a name="wp1104058"> </a><div class="pSmartList2"><li >If <a  href="rv_c_ref209.htm#wp1093766"><code class="cCode">tibrvMsg_GetCMSequence()</code></a> returns status code <a  href="rv_c_ref227.htm#wp1129168"><code class="cCode">TIBRV_NOT_FOUND</code></a>, then the listener is <em class="cEmphasis">not registered</em> for certified delivery from the sender.</li></div>
+<a name="wp1104076"> </a><div class="pSmartList2"><li >If <a  href="rv_c_ref209.htm#wp1093766"><code class="cCode">tibrvMsg_GetCMSequence()</code></a> returns <a  href="rv_c_ref227.htm#wp1129060"><code class="cCode">TIBRV_OK</code></a>, then a certified delivery agreement is in effect for this subject with the sender.</li></div>
+</ul></div>
+
+</ul></div>
+
+<a name="wp1091085"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1101343"> </a><p class="pBody">
+<a  href="rv_c_ref178.htm#wp1147227"><code class="cCode">tibrvcmEvent_CreateListener()</code> </a>
+</p>
+<a name="wp1102889"> </a><p class="pBody">
+<a  href="rv_c_ref208.htm#wp1093736"><code class="cCode">tibrvMsg_GetCMSender()</code> </a>
+</p>
+<a name="wp1102893"> </a><p class="pBody">
+<a  href="rv_c_ref209.htm#wp1093766"><code class="cCode">tibrvMsg_GetCMSequence()</code> </a>
+</p>
+<a name="wp1102897"> </a><p class="pBody">
+<a  href="rv_c_ref210.htm#wp1160570"><code class="cCode">tibrvMsg_GetCMTimeLimit()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

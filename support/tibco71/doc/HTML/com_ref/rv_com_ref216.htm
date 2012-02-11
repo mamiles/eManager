@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>Error Overview</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;11	 Errors";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1150782"> </a><h2 class="pNewHTMLPage">
+Error Overview
+</h2>
+<hr />
+<a name="wp1150787"> </a><p class="pBody">
+All Rendezvous COM objects support detailed error information.
+</p>
+<a name="wp1150794"> </a><p class="pBody">
+VB programmers can see a list of codes in the object browser, in the category <code class="cCode">tibrvcom_errorCodes</code>. Programmers using other languages can browse the type library to see these definitions.
+</p>
+<a name="wp1151040"> </a><p class="pBody">
+Rendezvous COM methods return errors as <code class="cCode">HRESULT</code> values&#151;32-bit integers with hex representations 0x8004nnnn. These values divide into two ranges:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1154390"> </a><div class="pSmartList1"><li >Values in the range [0x80040200, 0x80040fff] represent errors from the <code class="cCode">TIBRVCOM</code> implementation. For details, see <a  href="rv_com_ref218.htm#wp1140983">Component Error Codes</a>.</li></div>
+
+<a name="wp1154376"> </a><div class="pSmartList1"><li >Values in the range [0x80048001, 0x80048fff] represent errors from the Rendezvous API. For details, see <a  href="rv_com_ref217.htm#wp1099061">Rendezvous Error Codes</a>.</li></div>
+
+</ul></div>
+
+<a name="wp1151035"> </a><h3 class="pHeading2">
+VB
+</h3>
+<a name="wp1151036"> </a><p class="pBody">
+When VB reports an error, it populates an <code class="cCode">Err</code> object.
+</p>
+<a name="wp1150809"> </a><p class="pBody">
+VB programmers can write error handlers to process such errors. <code class="cCode">Err.Number</code> extracts the error status code. <code class="cCode">Err.Source</code> identifies the object that reported the error. <code class="cCode">Err.Description</code> interprets the error code as a descriptive string.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1150891"> </a><div class="pSmartList1"><li ><code class="cCode">Err.Number</code> extracts the <code class="cCode">HRESULT</code> numeric error code.</li></div>
+
+<a name="wp1150892"> </a><div class="pSmartList1"><li ><code class="cCode">Err.Source</code> identifies the object that reported the error.</li></div>
+
+<a name="wp1150893"> </a><div class="pSmartList1"><li ><code class="cCode">Err.Description</code> interprets the error code as a descriptive string.</li></div>
+
+</ul></div>
+
+<a name="wp1150825"> </a><h3 class="pHeading2">
+C++
+</h3>
+<a name="wp1154419"> </a><p class="pBody">
+C++ programs must test the <code class="cCode">HRESULT</code> status code after each method call. Microsoft Visual C++ defines these convenient macros:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;&#160;#define FAILED(Status)&#160;&#160;&#160; ((HRESULT)(Status) &lt;0)<a name="wp1150836"> </a>
+&#160;&#160;&#160;&#160;#define SUCCEEDED(Status) ((HRESULT)(Status)&gt;=0)<a name="wp1150834"> </a>
+<a name="wp1150839"> </a>
+</pre></div>
+<a name="wp1150829"> </a><p class="pBody">
+C++ COM programmers can use the <code class="cCode">IErrorInfo</code> interface to extract more detail from an object that returns an <code class="cCode">HRESULT</code> indicating an error:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1150860"> </a><div class="pSmartList1"><li ><code class="cCode">GetErrorInfo()</code> returns the error object.</li></div>
+
+<a name="wp1150864"> </a><div class="pSmartList1"><li ><code class="cCode">GetErrorSource()</code> identifies the object that reported the error.</li></div>
+
+<a name="wp1150858"> </a><div class="pSmartList1"><li ><code class="cCode">GetErrorDescription()</code> interprets the error code as a descriptive string.</li></div>
+
+</ul></div>
+
+<a name="wp1154787"> </a><h3 class="pHeading2">
+Continuing after Errors
+</h3>
+<a name="wp1155168"> </a><p class="pBody">
+Although continuing after an error is not generally considered a good programming practice, it is sometimes necessary. When you must continue after an error, consider these guidelines.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1155179"> </a><div class="pSmartList1"><li >A method that usually returns an object instead returns an uninitialized object.</li></div>
+
+<a name="wp1155185"> </a><div class="pSmartList1"><li >A method that usually returns a value instead returns zero.</li></div>
+
+<a name="wp1155186"> </a><div class="pSmartList1"><li >When an error results from incorrect assignment syntax, the program may call the method again with the correct syntax. Consider these two examples:</li></div>
+
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;&#160;&#160;&#160;On Error Resume Next<a name="wp1155187"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;value = msg.getByIndex(i)<a name="wp1155188"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;If IsEmpty(value) then<a name="wp1155189"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;Set value = msg.getByIndex(i)<a name="wp1155190"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;End If<a name="wp1155191"> </a>
+<a name="wp1155199"> </a>
+<a name="wp1155202"> </a>
+&#160;&#160;&#160;&#160;&#160;For i=0 To msg.getNumFields<a name="wp1155210"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;On Error Resume Next<a name="wp1155211"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;var = msg.getByIndex(i)&#160;&#160;&#160;&#160;&#160;&#8217;This won&#8217;t work for objects.<a name="wp1155212"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;If (IsArray(var)) Then<a name="wp1155215"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;For j=LBound(var) To UBound(var)<a name="wp1155217"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Write #1, &quot;Array element &quot; &amp; CStr(j) &amp; &quot;: &quot; &amp; CStr(var(j))<a name="wp1155218"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;Next j<a name="wp1155219"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;Else&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#8217;It&#8217;s not an array.<a name="wp1155220"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;If Not IsEmpty(var) Then&#160;&#160;&#160;&#8217;Perhaps it&#8217;s an scalar.<a name="wp1155224"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Write #1, CStr(var)<a name="wp1155225"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;End If<a name="wp1155226"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;End If<a name="wp1155227"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;If IsEmpty(var)<a name="wp1155228"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;Set var = msg.getByIndex(i)&#160;&#8217;Try to extract it as an object.<a name="wp1155229"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;Write #1, &quot;Extracted &quot; &amp; TypeName(var) &amp; &quot; object from 
+message&quot;<a name="wp1155236"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;If TypeName(var) = &quot;ITIBRVMSG&quot; Then&#160;&#160;&#8217;It is an object.<a name="wp1155237"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Write #1, var.toString&#160;&#160;&#160;&#160;&#160;&#8217;Write the object.<a name="wp1155239"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;End If<a name="wp1155240"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;If TypeName(var) = &quot;ITibrvInt64&quot; Then<a name="wp1155241"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Write #1, var.getAsString<a name="wp1155242"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Write #1, &quot; or as unsigned &quot; &amp; var.getAsUnsignedString<a name="wp1155243"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Write #1, Cstr(var.getHighOrderPart) &amp; &quot;, &quot; &amp; _<a name="wp1155247"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CStr(var.getLowOrderPart)<a name="wp1155254"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;End If<a name="wp1155248"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;End If<a name="wp1155249"> </a>
+</pre></div>
+</ul></div>
+
+<a name="wp1155163"> </a><h3 class="pHeading2">
+Constants
+</h3>
+<a name="wp1154788"> </a><p class="pBody">
+The interface defines these useful constants.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1154796"> </a><div class="pTableTitle">
+Table&#160;4   Base Constants for HRESULT Computations&#160;
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1154800"> </a><div class="pCellHeading">
+Constant
+</div>
+<a name="wp1154801"> </a><div class="pCellHeading">
+Hex Code
+</div>
+</th>
+    <th><a name="wp1154803"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1155092"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_ERROR_ITF</code>
+</div>
+<a name="wp1155093"> </a><div class="pCellBody">
+<code class="cCode">0x80040000</code>
+</div>
+</td>
+    <td><a name="wp1155095"> </a><div class="pCellBody">
+Base of all <code class="cCode">HRESULT</code> codes from the <code class="cCode">TIBRVCOM</code> interface.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1155145"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_ERROR_TIBRVCOM</code>
+</div>
+<a name="wp1155146"> </a><div class="pCellBody">
+<code class="cCode">0x80040200</code>
+</div>
+</td>
+    <td><a name="wp1155148"> </a><div class="pCellBody">
+Base of <code class="cCode">HRESULT</code> codes from the <code class="cCode">TIBRVCOM</code> implementation. See <a  href="rv_com_ref218.htm#wp1140983">Component Error Codes</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1155097"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_ERROR_TIBRV</code>
+</div>
+<a name="wp1155098"> </a><div class="pCellBody">
+<code class="cCode">0x80048000</code>
+</div>
+</td>
+    <td><a name="wp1155100"> </a><div class="pCellBody">
+Base of <code class="cCode">HRESULT</code> codes from Rendezvous API. See <a  href="rv_com_ref217.htm#wp1099061">Rendezvous Error Codes</a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

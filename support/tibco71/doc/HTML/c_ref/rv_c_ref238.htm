@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvMsgData_Converter</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Appendix&#160;A	 Custom Datatypes";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1148872"> </a><h2 class="pNewHTMLPage">
+tibrvMsgData_Converter
+</h2>
+<hr />
+<a name="wp1148876"> </a><p class="pSyntaxType">
+Function Type
+</p>
+<a name="wp1148877"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+typedef <a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> (*<code class="cCodeBold">tibrvMsgData_Converter</code>)(<a name="wp1148878"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref25.htm#wp1129956"><code class="cCode">tibrvMsgField</code></a>*&#160;&#160;&#160;&#160;&#160;&#160;&#160;field,<a name="wp1148879"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128791"><code class="cCode">tibrv_u8</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;destination_type,<a name="wp1148880"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref236.htm#wp1148824"><code class="cCode">tibrvMsgDataType</code></a>*&#160;&#160;&#160;&#160;converted_type);<a name="wp1148881"> </a>
+</pre></div>
+<a name="wp1148882"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1148883"> </a><p class="pBody">
+Convert a message field to another local datatype.
+</p>
+<a name="wp1148884"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1152465"> </a><p class="pBody">
+Programs define converters for custom datatypes. Layer 2 converter functions augment the <a  href="rv_c_ref225.htm#wp1128980">Wire Format to C Datatype Conversion Matrix</a>.
+</p>
+<a name="wp1149760"> </a><p class="pBody">
+Each converter function receives a message field, and replaces information within it.
+</p>
+<a name="wp1152440"> </a><p class="pBody">
+Each converter must fulfill these responsibilities:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1152572"> </a><div class="pSmartList1"><li >For disallowed conversions, return the status code <a  href="rv_c_ref227.htm#wp1129183"><code class="cCode">TIBRV_CONVERSION_FAILED</code></a>.</li></div>
+
+<a name="wp1152585"> </a><div class="pSmartList1"><li >Convert the field&#8217;s <a  href="rv_c_ref25.htm#wp1129999"><code class="cCode">data</code></a> to the <code class="cCode">destination_type</code>, and store the new <a  href="rv_c_ref25.htm#wp1129999"><code class="cCode">data</code></a> back into the field.</li></div>
+
+<a name="wp1152521"> </a><div class="pSmartList1"><li >Set the field&#8217;s <a  href="rv_c_ref25.htm#wp1129982"><code class="cCode">size</code></a> part to reflect the new size of the converted data.</li></div>
+
+<a name="wp1152537"> </a><div class="pSmartList1"><li >Set the field&#8217;s <a  href="rv_c_ref25.htm#wp1129993"><code class="cCode">count</code></a> part to reflect the new element count of the converted data.</li></div>
+
+<a name="wp1152513"> </a><div class="pSmartList1"><li >Set the field&#8217;s <a  href="rv_c_ref25.htm#wp1130007"><code class="cCode">type</code></a> part to reflect the <code class="cCode">destination_type</code>.</li></div>
+
+<a name="wp1152581"> </a><div class="pSmartList1"><li >Store the low-level type of the new reference in <code class="cCode">*converted_type</code>.<div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1148893"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1148895"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1148897"> </a><div class="pCellBody">
+<code class="cCode">field</code>
+</div>
+</td>
+    <td><a name="wp1148899"> </a><div class="pCellBody">
+This parameter receives the location of a message field. The converter function modifies that field to effect the conversion.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1148902"> </a><div class="pCellBody">
+<code class="cCode">destination_type</code>
+</div>
+</td>
+    <td><a name="wp1148904"> </a><div class="pCellBody">
+This parameter receives the type identifier representing the datatype of the resulting field. This parameter instructs the converter function to convert the field to this datatype.
+</div>
+<a name="wp1149826"> </a><div class="pCellBody">
+The parameter can be any of the predefined datatypes listed in <a  href="rv_c_ref223.htm#wp1128526">Wire Format Datatypes</a>, as well as any custom datatypes that the program defines.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1148906"> </a><div class="pCellBody">
+<code class="cCode">converted_type</code>
+</div>
+</td>
+    <td><a name="wp1149811"> </a><div class="pCellBody">
+This parameter receives a location. The converter function must store the low-level type of the new data reference in that location.
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li></div>
+
+</ul></div>
+
+<a name="wp1148910"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1160795"> </a><p class="pBody">
+<a  href="rv_c_ref25.htm#wp1129956"><code class="cCode">tibrvMsgField</code> </a>
+</p>
+<a name="wp1160808"> </a><p class="pBody">
+<a  href="rv_c_ref236.htm#wp1148824"><code class="cCode">tibrvMsgDataType</code> </a>
+</p>
+<a name="wp1160812"> </a><p class="pBody">
+<a  href="rv_c_ref242.htm#wp1151924"><code class="cCode">tibrvMsgData_GetBytes()</code> </a>
+</p>
+<a name="wp1160816"> </a><p class="pBody">
+<a  href="rv_c_ref243.htm#wp1149370"><code class="cCode">tibrvMsgData_GetSize()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

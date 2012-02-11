@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>rvrad</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;7	 Relay Agent";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1024297"> </a><h2 class="pNewHTMLPage">
+rvrad
+</h2>
+<hr />
+<a name="wp1025898"> </a><p class="pSyntaxType">
+Command
+</p>
+<a name="wp1024298"> </a><h4 class="pHeading3">
+Syntax
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">rvrad&#160;&#160;-name </code><code class="cCodeItalic">&lt;name&gt;</code><a name="wp1024299"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;&#160;-store </code><code class="cCodeItalic">&lt;filename&gt;</code><a name="wp1024300"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;[-service </code><code class="cCodeItalic">&lt;service&gt;</code><code class="cCode">]</code><a name="wp1024301"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;[-network </code><code class="cCodeItalic">&lt;network&gt;</code><code class="cCode">]</code><a name="wp1025741"> </a>
+<code class="cCode">&#160;&#160;&#160;&#160;&#160;&#160;[-daemon </code><code class="cCodeItalic">&lt;daemon&gt;</code><code class="cCode">]</code><a name="wp1025742"> </a>
+</pre></div>
+<a name="wp1025743"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1024308"> </a><p class="pBody">
+The command <code class="cCode">rvrad</code> starts a Rendezvous relay agent process. The relay agent is a process that stores certified messages (and associated protocol messages) for program processes that connect to the network intermittently. For an overview, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts116.htm#wp1056518');" onMouseOver="WWHShowPopup('a', 'rv_concepts116.htm#wp1056518', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Relay Agent</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+<a name="wp1025848"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1024313"> </a><p class="pBody">
+System administrators must start relay agent (<code class="cCode">rvrad</code>) processes explicitly, and keep it running at all times. That is, the relay agent must be running whenever disconnected program processes reconnect to the network, and must remain running continuously to collect inbound messages on behalf of their client programs.
+</p>
+<a name="wp1024314"> </a><p class="pBody">
+A relay agent process requires resources in proportion to the number of certified delivery client programs that it serves.
+</p>
+<a name="wp1024318"> </a><p class="pBody">
+From the perspective of the Rendezvous <em class="cEmphasis">daemon</em> (<code class="cCode">rvd</code>), the relay agent process (<code class="cCode">rvrad</code>) behaves exactly like any other Rendezvous program. The relay agent&#8217;s <code class="cCode">-service</code>, <code class="cCode">-network</code> and <code class="cCode">-daemon</code> parameters are completely analogous to the corresponding parameters of the transport creation call; <code class="cCode">rvrad</code> uses these values to create a transport that it uses to communicate both with certified delivery client programs and with other relay agents.
+</p>
+<a name="wp1024325"> </a><p class="pBody">
+When relay agents or their client programs operate across routing daemons, see <a  href="rv_adm125.htm#wp1024969">Forward RVCM Administrative Messages across Network Boundaries</a>.
+</p>
+<a name="wp1024329"> </a><p class="pBody">
+On UNIX computers, the relay agent runs as a background process.
+</p>
+<a name="wp1056557"> </a><p class="pBody">
+The relay agent does <em class="cEmphasis">not</em> use a browser administration interface.
+</p>
+<a name="wp1080861"> </a><h4 class="pHeading3">
+Command Line Parameters
+</h4>
+<a name="wp1025867"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1080481"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1080485"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1080487"> </a><div class="pCellHeading">
+Description	
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1080489"> </a><div class="pCellBody">
+<code class="cCode">-name </code><code class="cCodeItalic">&lt;name&gt;</code>
+</div>
+</td>
+    <td><a name="wp1080491"> </a><div class="pCellBody">
+Bind this reusable name to the relay agent process.
+</div>
+<a name="wp1080492"> </a><div class="pCellBody">
+CM transports designate and locate their relay agents by name.
+</div>
+<a name="wp1080493"> </a><div class="pCellBody">
+Relay agent names must be unique. It is illegal to run two or more relay agents with the same name simultaneously. It is illegal for a relay agent to have the same name as a CM correspondent.
+</div>
+<a name="wp1080494"> </a><div class="pCellBody">
+We strongly discourage using the empty string as a relay agent name.
+</div>
+<a name="wp1080495"> </a><div class="pCellBody">
+The name must conform to the syntax rules for reusable names. For details, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts114.htm#wp1056478');" onMouseOver="WWHShowPopup('a', 'rv_concepts114.htm#wp1056478', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Reusable Names</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1080503"> </a><div class="pCellBody">
+<code class="cCode">-store </code><code class="cCodeItalic">&lt;filename&gt;</code>
+</div>
+</td>
+    <td><a name="wp1080505"> </a><div class="pCellBody">
+Use this file to store relay agent state.
+</div>
+<a name="wp1080506"> </a><div class="pCellBody">
+The argument must represent a valid file name. Actual locations corresponding to relative file names conform to operating system conventions.
+</div>
+<a name="wp1080507"> </a><div class="pCellBody">
+The relay agent synchronizes the file to disk on a periodic schedule.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1080509"> </a><div class="pCellBody">
+<code class="cCode">-service </code><code class="cCodeItalic">&lt;service&gt;</code>
+</div>
+</td>
+    <td><a name="wp1080511"> </a><div class="pCellBody">
+The relay agent creates a transport on this service, which it uses to communicate both with its clients and with other relay agents. Clients that communicate with this relay agent must use the same service and network.
+</div>
+<a name="wp1080512"> </a><div class="pCellBody">
+You can specify the service in several ways. For details, see <a  href="rv_adm15.htm#wp1019269">Service Selection</a>.
+</div>
+<a name="wp1080516"> </a><div class="pCellBody">
+<code class="cCode">NULL</code> specifies the default <code class="cCode">rendezvous</code> service.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1080518"> </a><div class="pCellBody">
+<code class="cCode">-network </code><code class="cCodeItalic">&lt;network&gt;</code>
+</div>
+</td>
+    <td><a name="wp1080520"> </a><div class="pCellBody">
+On computers with more than one network interface, the <code class="cCode">-network</code> parameter instructs the Rendezvous daemon to use a particular network for communications involving this transport.
+</div>
+<a name="wp1080524"> </a><div class="pCellBody">
+The relay agent creates a transport on this network, which it uses to communicate both with its certified delivery client programs and with other relay agents. Clients that communicate with this relay agent must use the same service and network.
+</div>
+<a name="wp1080525"> </a><div class="pCellBody">
+You can specify the network in several ways. For details, see <a  href="rv_adm16.htm#wp1034613">Constructing the Network Parameter</a>.
+</div>
+<a name="wp1080529"> </a><div class="pCellBody">
+<code class="cCode">NULL</code> specifies the primary network interface for the host computer.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1080531"> </a><div class="pCellBody">
+<code class="cCode">-daemon </code><code class="cCodeItalic">&lt;daemon&gt;</code>
+</div>
+</td>
+    <td><a name="wp1080533"> </a><div class="pCellBody">
+The <code class="cCode">-daemon</code> parameter instructs <code class="cCode">rvrad</code> about how and where to find <code class="cCode">rvd</code> and establish communication. The value of the <code class="cCode">rvrad</code> <code class="cCode">-daemon</code> parameter must match the <code class="cCode">rvd</code> <code class="cCode">-listen</code> parameter.
+</div>
+<a name="wp1080536"> </a><div class="pCellBody">
+For details, see <a  href="rv_adm17.htm#wp1019451">Daemon Client Socket&#151;Establishing Connections</a>.
+</div>
+<a name="wp1080538"> </a><div class="pCellBody">
+You can specify a daemon on a remote computer. For details, see <a  href="rv_adm17.htm#wp1019505">Remote Daemon</a>. However, <code class="cCode">rvrad</code> cannot start a remote <code class="cCode">rvd</code> automatically; it must be already running on the remote computer.
+</div>
+<a name="wp1080542"> </a><div class="pCellBody">
+If <code class="cCode">-daemon</code> is not present, <code class="cCode">rvrad</code> finds the local daemon on TCP socket <code class="cCode">7500</code>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1025888"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1024400"> </a><p class="pBody">
+<a  href="rv_adm125.htm#wp1024969">Forward RVCM Administrative Messages across Network Boundaries</a>.
+</p>
+<a name="wp1024405"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts116.htm#wp1056518');" onMouseOver="WWHShowPopup('a', 'rv_concepts116.htm#wp1056518', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Relay Agent</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+<a name="wp1024407"> </a><p class="pBody">
+&#160;&#160;
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

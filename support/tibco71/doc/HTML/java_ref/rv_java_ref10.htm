@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>Chapter&#160;2	Programmer&#8217;s Checklist</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;2	 Programmer&#8217;s Checklist";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1112615"> </a><h2 class="pNewHTMLPageSetChapterTitle">
+Chapter&#160;2	Programmer&#8217;s Checklist
+</h2>
+<hr />
+<a name="wp1117543"> </a><p class="pBody">
+Developers of Rendezvous programs can use this checklist during the four phases of the development cycle: installing Rendezvous software, coding your Java program, compiling your Java program, and running your program as either an independent application or as a browser applet.
+</p>
+<a name="wp1117548"> </a><h3 class="pHeading2">
+Install
+</h3>
+<div class="pSmartList1"><ul>
+<a name="wp1112628"> </a><div class="pSmartList1"><li >Install the Rendezvous software release, which automatically includes the Java archive files in the <code class="cCode">lib</code> subdirectory.</li></div>
+
+<a name="wp1112629"> </a><div class="pSmartList1"><li >The <code class="cCode">CLASSPATH</code> variable must include an archive file that contains the Rendezvous classes.</li></div>
+
+<a name="wp1112635"> </a><p class="pBodyRelative">
+On UNIX platforms, include the appropriate archive file from <a  href="rv_java_ref11.htm#wp1266325">Table&#160;2, Archive Files</a>.
+</p>
+<a name="wp1112637"> </a><p class="pBodyRelative">
+On other supported platforms, this step is automatic.
+</p>
+</ul></div>
+
+<a name="wp1112638"> </a><h3 class="pHeading2">
+Code
+</h3>
+<div class="pSmartList1"><ul>
+<a name="wp1112642"> </a><div class="pSmartList1"><li >Import the correct Rendezvous package.</li></div>
+
+<a name="wp1112644"> </a><p class="pBodyRelative">
+Import <code class="cCode">com.tibco.tibrv.*</code>
+</p>
+</ul></div>
+
+<a name="wp1112647"> </a><h3 class="pHeading2">
+Compile
+</h3>
+<div class="pSmartList1"><ul>
+<a name="wp1112648"> </a><div class="pSmartList1"><li >The <code class="cCode">CLASSPATH</code> variable must include an archive file that contains the Rendezvous classes. Include the appropriate archive file from <a  href="rv_java_ref11.htm#wp1266325">Table&#160;2, Archive Files</a>.</li></div>
+
+</ul></div>
+
+<a name="wp1112655"> </a><h3 class="pHeading2">
+Run
+</h3>
+<div class="pSmartList1"><ul>
+<a name="wp1112656"> </a><div class="pSmartList1"><li >Both <code class="cCode">rvd</code> and <code class="cCode">rva</code> require valid licensing.</li></div>
+
+<a name="wp1112660"> </a><p class="pBodyRelative">
+See <a  href="javascript:WWHClickedPopup('c', 'rv_adm9.htm#wp1018938');" onMouseOver="WWHShowPopup('c', 'rv_adm9.htm#wp1018938', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Licensing Information</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.
+</p>
+</ul></div>
+
+<a name="wp1112661"> </a><h4 class="pHeading3">
+Run as Independent Application
+</h4>
+<div class="pSmartList1"><ul>
+<a name="wp1112665"> </a><div class="pSmartList1"><li >Rendezvous software must be properly installed, so that the application can access shared library files. For details, see <a  href="rv_java_ref12.htm#wp1266385">Shared Library Files</a>.</li></div>
+
+<a name="wp1112672"> </a><div class="pSmartList1"><li >The <code class="cCode">CLASSPATH</code> variable must include the location of the Rendezvous classes. Include the appropriate archive file from <a  href="rv_java_ref11.htm#wp1266325">Table&#160;2, Archive Files</a>.</li></div>
+
+<a name="wp1112685"> </a><div class="pSmartList1"><li >The application must be able to connect to a Rendezvous daemon process (<code class="cCode">rvd</code>).</li></div>
+
+</ul></div>
+
+<a name="wp1112686"> </a><h4 class="pHeading3">
+Run as Applet Using rva Transport
+</h4>
+<div class="pSmartList1"><ul>
+<a name="wp1112690"> </a><div class="pSmartList1"><li >Applets running in a browser automatically download Rendezvous classes as needed. The Rendezvous classes must be located at the applet&#8217;s code base (the URL from which the browser obtains the applet code).</li></div>
+
+<a name="wp1112694"> </a><p class="pBodyRelative">
+For example, if the applet code (compiled with Java 1.1) is in <br /><code class="cCode">http://demo/myapp.class</code>, then that location must also contain <br /><code class="cCode">http://demo/com.tibco.tibrv/*.class</code> in a series of subdirectories. For details, see <a  href="rv_java_ref8.htm#wp1131597">Internet Web Site Considerations</a>.
+</p>
+<a name="wp1112698"> </a><p class="pBodyRelative">
+Some browsers can download classes from archive files. For details, consult the documentation for those browser products. Select the correct archive file from the <a  href="rv_java_ref202.htm#wp1084950"><span style="font-weight: bold">Web</span></a> column of <a  href="rv_java_ref11.htm#wp1266325">Table&#160;2, Archive Files</a>.
+</p>
+<a name="wp1112708"> </a><div class="pSmartList1"><li >The Rendezvous agent (<code class="cCode">rva</code>) must be properly installed at the web server host computer (the code base specifies its host name).</li></div>
+
+<a name="wp1112712"> </a><p class="pBodyRelative">
+The Rendezvous agent process must already be running before the applet attempts to connect.
+</p>
+<a name="wp1112713"> </a><p class="pBodyRelative">
+If the applet overrides the default values, the <code class="cCode">port</code> parameter of its <a  href="rv_java_ref141.htm#wp1038873"><code class="cCode">TibrvRvaTransport</code></a> must match the <code class="cCode">Listen</code> parameter of <code class="cCode">rva</code>. (See <a  href="rv_java_ref142.htm#wp1071270"><code class="cCode">TibrvRvaTransport()</code> </a>.)
+</p>
+<a name="wp1112723"> </a><div class="pSmartList1"><li >The Rendezvous agent must be able to connect to a Rendezvous daemon process (<code class="cCode">rvd</code>).</li></div>
+
+</ul></div>
+
+<a name="wp1112724"> </a><h4 class="pHeading3">
+Run&#151;Applets Using rvd Transports
+</h4>
+<div class="pSmartList1"><ul>
+<a name="wp1112728"> </a><div class="pSmartList1"><li >Rendezvous software must be properly installed on the computer on which the applet is running, so that the application can access shared library files.</li></div>
+
+<a name="wp1112732"> </a><div class="pSmartList1"><li >Applets running in a browser gain speed when the Rendezvous package is installed locally. To take advantage of this efficiency, the <code class="cCode">CLASSPATH</code> variable (as read when the browser starts) must include the appropriate archive file from <a  href="rv_java_ref11.htm#wp1266325">Table&#160;2, Archive Files</a>.</li></div>
+
+<a name="wp1112745"> </a><div class="pSmartList1"><li >The applet must be able to connect to a Rendezvous daemon process (<code class="cCode">rvd</code>). If the browser does not permit the applet to connect to <code class="cCode">rvd</code>, adjust the browser&#8217;s security settings to permit TCP connections to the <code class="cCode">rvd</code> client connection socket (the <code class="cCode">daemon</code> parameter of <a  href="rv_java_ref142.htm#wp1071270"><code class="cCode">TibrvRvaTransport()</code></a> specifies this socket).</li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

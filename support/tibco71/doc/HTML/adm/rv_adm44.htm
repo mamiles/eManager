@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Routing Daemon Logging</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1068587"> </a><h2 class="pNewHTMLPage">
+Routing Daemon Logging
+</h2>
+<hr />
+<a name="wp1045978"> </a><p class="pBody">
+A routing daemon process can output a running log of its activity. System administrators can use the resulting log files to monitor neighbor connections, subject interest and message flow.
+</p>
+<a name="wp1061096"> </a><p class="pBody">
+The <code class="cCode">-logfile</code> parameter determines the destination for logging output; its <code class="cCodeItalic">&lt;filename&gt;</code> argument must resolve to a valid file name. If the <code class="cCode">-logfile</code> parameter is absent, the default destination is <code class="cCode">stdout</code>. The routing daemon also directs <em class="cEmphasis">all error messages</em> to this file (when present); when absent, it directs error messages to <code class="cCode">stderr</code>. Trim or delete the log file regularly to preclude unbounded growth.
+</p>
+<a name="wp1237364"> </a><p class="pBody">
+To configure the kinds of normal activity to log, see <a  href="rv_adm51.htm#wp1193041">Logging</a>.
+</p>
+<a name="wp1300662"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/obsolete.gif" border="0" /></td>
+    <td><a name="wp1304439"> </a><p class="pBody">
+The command line parameter <code class="cCode">-log</code> is obsolete in release 6 (and later). Use the browser administration interface to configure <code class="cCode">rvrd</code> logging categories.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1046022"> </a><h3 class="pHeading2">
+Interpreting Log Output
+</h3>
+<a name="wp1271222"> </a><p class="pBody">
+Each line in the log file describes a significant event in the operation of a routing daemon. A time stamp indicates the date and time of the interaction. The remainder of the line is a string describing the event.
+</p>
+<a name="wp1271243"> </a><p class="pBody">
+The log file begins with events in the routing daemon&#8217;s start sequence. First, it discovers its hardware and software operating environment:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a name="wp1270244"> </a>
+2002-04-22 10:07:46 ./rvrd: Hostname: bigdog.rv.tibco.com<a name="wp1271451"> </a>
+2002-04-22 10:07:46 ./rvrd: Hostname IP address: 10.101.2.35<a name="wp1270245"> </a>
+<a name="wp1270247"> </a>
+2002-04-22 10:07:46 ./rvrd: Detected IP interface: 127.0.0.1 (lo)<a name="wp1270248"> </a>
+2002-04-22 10:07:46 ./rvrd: Detected IP interface: 10.101.2.35 (eth0)<a name="wp1270249"> </a>
+2002-04-22 10:07:46 ./rvrd: Detected IP interface: 10.101.4.35 (eth2)<a name="wp1270250"> </a>
+<a name="wp1270252"> </a>
+2002-04-22 10:07:47 ./rvrd: Using ticket file /rv/src/dev/btools/minclude/tibrv.tkt<a name="wp1270253"> </a>
+<a name="wp1270255"> </a>
+2002-04-22 10:07:47 ./rvrd: Using store file 20020419.1.rvrd.str<a name="wp1270256"> </a>
+<a name="wp1270258"> </a>
+2002-04-22 10:07:47 ./rvrd: Initializing random pool...<a name="wp1270259"> </a>
+<a name="wp1271252"> </a>
+</pre></div>
+<a name="wp1270261"> </a><p class="pBody">
+Next, the routing daemon reads its configuration from its store file. In this example, it defines a router (routing table entry) named <code class="cCode">bigdog-r1</code>, with an <em class="cEmphasis">accept any neighbor</em> interface.
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a name="wp1270262"> </a>
+2002-04-22 10:07:47 ./rvrd: [bigdog-r1]: Defined.<a name="wp1271253"> </a>
+2002-04-22 10:07:47 ./rvrd: [bigdog-r1]: Any neighbor is allowed to connect to local 
+port 9666. Link cost: 1.<a name="wp1270263"> </a>
+<a name="wp1271289"> </a>
+</pre></div>
+<a name="wp1271290"> </a><p class="pBody">
+The example continues by defining that a local network interface (for router <code class="cCode">bigdog-r1</code>), and subject gating for that local network.
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a name="wp1271291"> </a>
+2002-04-22 10:07:47 ./rvrd: [bigdog-r1]: Local network sunfire-bigdog-n1 defined. 
+Interface: 10.101.2.35. Service UDP port: 7666, Service spec: 7666, Network spec: 
+;224.9.9.9. Link cost: 1.<a name="wp1270269"> </a>
+<a name="wp1270271"> </a>
+2002-04-22 10:07:47 ./rvrd: [bigdog-r1]: Export subject [&gt;] from local network 
+sunfire-bigdog-n1.<a name="wp1270276"> </a>
+2002-04-22 10:07:47 ./rvrd: [bigdog-r1]: Import subject [&gt;] with weight 10 for local 
+network sunfire-bigdog-n1.<a name="wp1270281"> </a>
+<a name="wp1270283"> </a>
+</pre></div>
+<a name="wp1271279"> </a><p class="pBody">
+The routing daemon finishes its start sequence by reporting the URL bindings of its browser administration interfaces.
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a name="wp1271280"> </a>
+2002-04-22 10:07:47 ./rvrd: Http interface - http://bigdog.rv.tibco.com:7680/<a name="wp1270284"> </a>
+2002-04-22 10:07:47 ./rvrd: Https interface - https://bigdog.rv.tibco.com:36145/<a name="wp1270285"> </a>
+<a name="wp1270287"> </a>
+</pre></div>
+<a name="wp1271317"> </a><p class="pBody">
+Now the routing daemon begins normal operations. The administrator sets the logging parameters for normal activity. After that, log items reflect neighbor connections to other routers (<code class="cCode">viggen-r1</code>), exchange of subscription interest information, and forwarding of message data.
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a name="wp1271318"> </a>
+2002-04-22 10:08:35 ./rvrd: Logging: [Connections - On], [Subject Interest - On], 
+[Subject Data - On].<a name="wp1270288"> </a>
+<a name="wp1270290"> </a>
+2002-04-22 10:13:26 ./rvrd: [bigdog-r1]: Connected to viggen-r1.<a name="wp1270291"> </a>
+<a name="wp1270292"> </a>
+2002-04-22 10:15:40 ./rvrd: [bigdog-r1]: Sending subscription for [TEST] to 
+viggen-r1 for source 0A65023F/hpux11-viggen-n1.<a name="wp1270294"> </a>
+2002-04-22 10:16:30 ./rvrd: [bigdog-r1]: Received data on [TEST] from neighbor 
+viggen-r1.<a name="wp1270295"> </a>
+<a name="wp1270302"> </a>
+2002-04-22 10:18:03 ./rvrd: [bigdog-r1]: Sending cancel for [TEST] to viggen-r1 for 
+source 0A65023F/hpux11-viggen-n1.<a name="wp1270303"> </a>
+<a name="wp1270305"> </a>
+2002-04-22 10:19:31 ./rvrd: [bigdog-r1]: Disconnected from viggen-r1 (4).<a name="wp1270313"> </a>
+<a name="wp1270315"> </a>
+</pre></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

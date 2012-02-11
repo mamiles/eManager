@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Understand Sockets</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;10	 Guidelines for Programming";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1061023"> </a><h2 class="pNewHTMLPage">
+Understand Sockets
+</h2>
+<hr />
+<a name="wp1061025"> </a><p class="pBody">
+Transport creation calls accept two parameters that direct the transport to open <em class="cEmphasis">two different </em>kinds of sockets:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1061032"> </a><div class="pSmartList1"><li >The <code class="cCode">service</code> parameter specifies a UDP or PGM service (also commonly called a UDP or PGM <em class="cEmphasis">port</em>); the transport opens a UDP or PGM socket to that network service.</li></div>
+
+<a name="wp1061349"> </a><p class="pBodyRelative">
+Rendezvous daemon processes uses the UDP or PGM service for communication with other Rendezvous daemon processes across the network.
+</p>
+<a name="wp1061034"> </a><div class="pSmartList1"><li >The <code class="cCode">daemon</code> parameter specifies a TCP port number; the transport opens a TCP socket to that port.</li></div>
+
+<a name="wp1061377"> </a><p class="pBodyRelative">
+Transport objects use the TCP port for communication between a client program and its Rendezvous daemon (usually on the same host computer).
+</p>
+<a name="wp1061408"> </a><p class="pBodyRelative">
+This parameter corresponds to the <code class="cCode">-listen</code> parameter of <code class="cCode">rvd</code>.
+</p>
+</ul></div>
+
+<a name="wp1061035"> </a><p class="pBody">
+These two types of socket are <em class="cEmphasis">not</em> interchangeable; confusing the two leads to programming errors that are difficult to diagnose and repair.
+</p>
+<a name="wp1061038"> </a><p class="pBody">
+One source of this confusion is that the default <code class="cCode">rendezvous</code> service (for TRPD daemons) is UDP service <code class="cCode">7500</code>, and the default <code class="cCode">daemon</code> parameter is TCP socket <code class="cCode">7500</code>. Although these two numbers are the same, they specify different items.
+</p>
+<a name="wp1061340"> </a><p class="pBody">
+&#160;&#160;
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

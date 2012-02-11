@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvTimer()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1171593"> </a><h2 class="pNewHTMLPage">
+TibrvTimer()
+</h2>
+<hr />
+<a name="wp1171594"> </a><p class="pSyntaxType">
+Constructor
+</p>
+<a name="wp1034920"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCodeBold">TibrvTimer</code>(<a name="wp1125556"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_java_ref98.htm#wp1035245"><code class="cCode">TibrvQueue</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;queue,<a name="wp1125560"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_java_ref92.htm#wp1098604"><code class="cCode">TibrvTimerCallback</code></a>&#160;&#160;&#160;callback,<a name="wp1125564"> </a>
+&#160;&#160;&#160;&#160;double&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;interval,<a name="wp1125565"> </a>
+&#160;&#160;&#160;&#160;java.lang.Object&#160;&#160;&#160;&#160;&#160;closure)<a name="wp1125566"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125570"> </a>
+</pre></div>
+<a name="wp1034872"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1035027"> </a><p class="pBody">
+Start a timer.
+</p>
+<a name="wp1034874"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1035085"> </a><p class="pBody">
+All timers are repeating timers. To simulate a once-only timer, code the callback method to destroy the timer.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1035035"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1035037"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1035039"> </a><div class="pCellBody">
+<code class="cCode">queue</code>
+</div>
+</td>
+    <td><a name="wp1035066"> </a><div class="pCellBody">
+At each time interval, place the event on this event queue.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1035043"> </a><div class="pCellBody">
+<code class="cCode">callback</code>
+</div>
+</td>
+    <td><a name="wp1035045"> </a><div class="pCellBody">
+On dispatch, process the event with this interface implementation.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1035047"> </a><div class="pCellBody">
+<code class="cCode">interval</code>
+</div>
+</td>
+    <td><a name="wp1035068"> </a><div class="pCellBody">
+The timer triggers its callback method at this repeating interval (in seconds).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1035055"> </a><div class="pCellBody">
+<code class="cCode">closure</code>
+</div>
+</td>
+    <td><a name="wp1035057"> </a><div class="pCellBody">
+Store this closure data in the event object.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1035072"> </a><h4 class="pHeading3">
+Timer Granularity
+</h4>
+<a name="wp1035073"> </a><p class="pBody">
+Express the timer interval (in seconds) as a double (64-bit floating point number). This representation allows microsecond granularity for intervals for over 100 years. The actual granularity of intervals depends on Java implementation constraints, as well as hardware and operating system constraints.
+</p>
+<a name="wp1060369"> </a><p class="pBody">
+The JNI implementation supports fine-resolution timers through the underlying C layer. Most releases of the JVM limit the Java implementation to 10 millisecond resolution.
+</p>
+<a name="wp1059330"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1059334"> </a><p class="pBody">
+<a  href="rv_java_ref78.htm#wp1068928"><code class="cCode">TibrvEvent.destroy()</code> </a>
+</p>
+<a name="wp1059346"> </a><p class="pBody">
+<a  href="rv_java_ref92.htm#wp1098604"><code class="cCode">TibrvTimerCallback</code> </a>
+</p>
+<a name="wp1059350"> </a><p class="pBody">
+<a  href="rv_java_ref93.htm#wp1098711"><code class="cCode">TibrvTimerCallback.onTimer()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

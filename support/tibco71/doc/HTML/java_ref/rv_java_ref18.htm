@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>Tibrv.getVersion()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;3	 Rendezvous Environment";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1119478"> </a><h2 class="pNewHTMLPage">
+Tibrv.getVersion()
+</h2>
+<hr />
+<a name="wp1119479"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1119480"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+static String <code class="cCodeBold">getVersion</code>()<a name="wp1122154"> </a>
+static String <code class="cCodeBold">getCmVersion</code>()<a name="wp1122158"> </a>
+static String <code class="cCodeBold">getFtVersion</code>()<a name="wp1122138"> </a>
+<a name="wp1122161"> </a>
+static int&#160;&#160;&#160;&#160;<code class="cCodeBold">getMajorVersion</code>()<a name="wp1122264"> </a>
+static int<code class="cCodeBold">&#160;&#160;&#160;&#160;getMinorVersion</code>()<a name="wp1122265"> </a>
+static int&#160;&#160;&#160;&#160;<code class="cCodeBold">getUpdateVersion</code>()<a name="wp1122266"> </a>
+<a name="wp1122262"> </a>
+static String <code class="cCodeBold">getVersionString</code>()&#160;&#160;&#160;&#160;&#160;// This method is deprecated 
+//<a name="wp1119518"> </a>
+</pre></div>
+<a name="wp1119482"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1119484"> </a><p class="pBody">
+Return the version string or one of its components.
+</p>
+<a name="wp1122162"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1122232"> </a><p class="pBody">
+<code class="cCode">getVersion()</code> returns the version number of the Java package (whether using machinery from <a  href="rv_java_ref21.htm#wp1021513"><code class="cCode">Tibrv.IMPL_JAVA</code></a> or <a  href="rv_java_ref21.htm#wp1021518"><code class="cCode">Tibrv.IMPL_NATIVE</code></a>). 
+</p>
+<a name="wp1122236"> </a><p class="pBody">
+<code class="cCode">getCmVersion()</code> returns the version number of the underlying C implementation of the certified delivery library (<a  href="rv_java_ref21.htm#wp1021518"><code class="cCode">Tibrv.IMPL_NATIVE</code></a> only). 
+</p>
+<a name="wp1122177"> </a><p class="pBody">
+<code class="cCode">getFtVersion()</code> returns the version number of the underlying C implementation of the fault tolerance library (<a  href="rv_java_ref21.htm#wp1021518"><code class="cCode">Tibrv.IMPL_NATIVE</code></a> only).
+</p>
+<a name="wp1122270"> </a><p class="pBody">
+<code class="cCode">getMajorVersion()</code>, <code class="cCode">getMinorVersion()</code> and <code class="cCode">getUpdateVersion()</code> return the three segments of the complete version number that <code class="cCode">getVersion()</code> returns (it formats these three segments into a string).
+</p>
+<a name="wp1122255"> </a><p class="pBody">
+The method <code class="cCode">getVersionString()</code> is deprecated (though not yet obsolete), starting with release 6.2. We encourage programmers to migrate to <code class="cCode">getVersion()</code> instead.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

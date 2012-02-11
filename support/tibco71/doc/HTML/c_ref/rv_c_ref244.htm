@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvMsgData_Malloc()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Appendix&#160;A	 Custom Datatypes";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1149614"> </a><h2 class="pNewHTMLPage">
+tibrvMsgData_Malloc()
+</h2>
+<hr />
+<a name="wp1149615"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1149616"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+void* <code class="cCodeBold">tibrvMsgData_Malloc</code>(<a name="wp1149617"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128803"><code class="cCode">tibrv_u32</code></a>&#160;&#160;&#160;&#160;size);<a name="wp1149618"> </a>
+</pre></div>
+<a name="wp1152218"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1152220"> </a><p class="pBody">
+Allocate process storage for decoders and converters.
+</p>
+<a name="wp1152222"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1150990"> </a><p class="pBody">
+Decoders and converters must use this layer 1 function to allocate storage for extracted data. Do not use ordinary <code class="cCode">malloc</code>.
+</p>
+<a name="wp1152227"> </a><p class="pBody">
+The function returns a pointer to the storage. The storage remains associated with the message, and persists until the message is destroyed. Programmers need not free this storage; instead, the message automatically frees the storage at the appropriate time.
+</p>
+<a name="wp1150994"> </a><p class="pBody">
+Decoders and converters that allocate storage using this function must pass back the type <a  href="rv_c_ref236.htm#wp1148854"><code class="cCode">tibrvMsgData_MallocBlock</code></a>.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1149630"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1149632"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1149634"> </a><div class="pCellBody">
+<code class="cCode">size</code>
+</div>
+</td>
+    <td><a name="wp1149636"> </a><div class="pCellBody">
+Allocate a storage block of this size (in bytes).
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1149639"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1152232"> </a><p class="pBody">
+<a  href="rv_c_ref236.htm#wp1148824"><code class="cCode">tibrvMsgDataType</code> </a>
+</p>
+<a name="wp1152239"> </a><p class="pBody">
+<a  href="rv_c_ref238.htm#wp1148872"><code class="cCode">tibrvMsgData_Converter</code> </a>
+</p>
+<a name="wp1152235"> </a><p class="pBody">
+<a  href="rv_c_ref240.htm#wp1150007"><code class="cCode">tibrvMsgData_Decoder</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

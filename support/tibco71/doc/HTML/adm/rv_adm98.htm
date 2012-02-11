@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Interpreting the Report</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;10	 Performance Assessment (rvperf)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1069245"> </a><h2 class="pNewHTMLPage">
+Interpreting the Report
+</h2>
+<hr />
+<a name="wp1069246"> </a><p class="pBody">
+This section describes the output from <code class="cCode">rvperfm</code>.
+</p>
+<a name="wp1069247"> </a><p class="pBody">
+First, <code class="cCode">rvperfm</code> outputs a header, version information, and a summary of its configuration parameters.
+</p>
+<a name="wp1069248"> </a><p class="pBody">
+Next it polls the network to discover existing <code class="cCode">rvperfs</code> processes. Each <code class="cCode">rvperfs</code> process resets itself and signals its readiness to participate in a new run. When <code class="cCode">rvperfm</code> receives the ready signals, it prints an identifier for each participating <code class="cCode">rvperfs</code>.
+</p>
+<a name="wp1069249"> </a><p class="pBody">
+<code class="cCode">rvperfm</code> prints a brief string as it begins sending the run of messages, and another when it finishes sending the run. Then it outputs its run report:
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1069250"> </a><div class="pSmartList1"><li value="1">Statistics that <code class="cCode">rvperfm</code> collects while sending the messages.</li></div>
+
+<a name="wp1069251"> </a><div class="pSmartList1"><li value="2">Statistics that each <code class="cCode">rvperfs</code> process collects while receiving messages. Each group of statistics represents the performance of one <code class="cCode">rvperfs</code> process.</li></div>
+
+</ol></div>
+
+<a name="wp1069252"> </a><h4 class="pHeading3">
+rvperfm Example Report
+</h4>
+<a name="wp1069256"> </a><p class="pBody">
+The annotated <code class="cCode">rvperfm</code> transcript in <a  href="rv_adm98.htm#wp1085359">Figure&#160;45</a> shows the result of a run with one <code class="cCode">rvperfs</code> process receiving the messages.
+</p>
+<a name="wp1085359"> </a><div class="pFigureTitle">
+Figure&#160;45   Report from rvperfm</div><div align="center"><img src="images/rv_adma11.gif" height="703" width="600" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1085122"> </a><h4 class="pHeading3">
+rvperfs Example Report
+</h4>
+<a name="wp1085126"> </a><p class="pBody">
+The excerpt in <a  href="rv_adm98.htm#wp1084844">Figure&#160;46</a> illustrates the output of <code class="cCode">rvperfs</code>. First, the <code class="cCode">rvperfs</code> process reports its configuration parameters. Next it outputs its globally unique inbox name, by which you can identify it in <code class="cCode">rvperfm</code> reports.
+</p>
+<a name="wp1085154"> </a><p class="pBody">
+Then <code class="cCode">rvperfs</code> reports a reset message from <code class="cCode">rvperfm</code>, signaling the start of a run. At the end of the run, <code class="cCode">rvperfs</code> reports its statistics.
+</p>
+<a name="wp1084844"> </a><div class="pFigureTitle">
+Figure&#160;46   Report from rvperfs</div><div align="center"><img src="images/rv_adma12.gif" height="334" width="600" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1069308"> </a><h3 class="pHeading2">
+Certified Delivery Agreements
+</h3>
+<a name="wp1069309"> </a><p class="pBody">
+When the performance programs use certified message delivery, <code class="cCode">rvperfm</code> prints information about registration requests in its output; for example:
+</p>
+<a name="wp1133400"> </a><h4 class="pHeading3">
+rvperfm
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+Resetting receivers<a name="wp1133397"> </a>
+ Reset acknowledgment received from 
+_INBOX.0A65034A.DEA3B32324F8085470.2<a name="wp1133343"> </a>
+<code class="cCodeBold"> CM registration request received from rvperfs</code><a name="wp1133344"> </a>
+<a name="wp1133345"> </a>
+ Number of receivers 1<a name="wp1133360"> </a>
+<a name="wp1133361"> </a>
+</pre></div>
+<a name="wp1133362"> </a><p class="pBody">
+Similarly, <code class="cCode">rvperfs</code> prints information about certified delivery registration in its output:
+</p>
+<a name="wp1133404"> </a><h4 class="pHeading3">
+rvperfs
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+Ready... <a name="wp1133420"> </a>
+Reset received from _INBOX.0A6503F6.11D3B3241239116F0.2 <a name="wp1133421"> </a>
+<code class="cCodeBold">CM registration received from rvperfm</code> <a name="wp1133422"> </a>
+Test message received <a name="wp1133423"> </a>
+Run beginning...<a name="wp1069323"> </a>
+</pre></div>
+<a name="wp1133435"> </a><h3 class="pHeading2">
+Elapsed Time
+</h3>
+<a name="wp1069324"> </a><p class="pBody">
+Both programs in the performance tool report the <em class="cEmphasis">total</em> time that elapsed in each complete run. The speed at which the Rendezvous daemon can deliver messages to the network depends on the network itself, the network interface card (and other hardware parameters), and the host operating system. If <code class="cCode">rvperfm</code> sends at a faster rate than the network can accept, <code class="cCode">rvperfm</code> retains messages in its outbound queue until the network can accept them.
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a name="wp1069329"> </a>
+Sending complete<a name="wp1069330"> </a>
+ Elapsed time:               9.737 seconds<a name="wp1069331"> </a>
+<a name="wp1069333"> </a>
+</pre></div>
+<a name="wp1069334"> </a><p class="pBody">
+In this example, 9.737 seconds elapsed from the time that <code class="cCode">rvperfm</code> sent the first message of the run, until the time that the daemon transmitted the last message of the run to the network. 
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Creating a CM Transport</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1055951"> </a><h2 class="pNewHTMLPage">
+Creating a CM Transport
+</h2>
+<hr />
+<a name="wp1073429"> </a><p class="pBody">
+To send or receive messages using certified delivery features, a program must first create a <em class="cEmphasis">CM transport</em> (also called a delivery-tracking transport). Each CM transport employs an ordinary transport for network communications. The CM transport adds information so that it can participate in certified delivery protocols; the additional information includes a name and a ledger.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1055958"> </a><div class="pTableTitle">
+Table&#160;28   CM Transport Creation Calls&#160;
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1055962"> </a><div class="pCellBody">
+C
+</div>
+</td>
+    <td><a name="wp1055967"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref188.htm#wp1120127');" onMouseOver="WWHShowPopup('e', 'rv_c_ref188.htm#wp1120127', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvcmTransport_Create()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1055969"> </a><div class="pCellBody">
+C++
+</div>
+</td>
+    <td><a name="wp1055974"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref230.htm#wp1158326');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref230.htm#wp1158326', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport::create()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1055977"> </a><div class="pCellBody">
+Java
+</div>
+</td>
+    <td><a name="wp1064630"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref192.htm#wp1097723');" onMouseOver="WWHShowPopup('g', 'rv_java_ref192.htm#wp1097723', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1055984"> </a><div class="pCellBody">
+COM
+</div>
+</td>
+    <td><a name="wp1055989"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref183.htm#wp1145168');" onMouseOver="WWHShowPopup('h', 'rv_com_ref183.htm#wp1145168', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport.create</code></a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1055992"> </a><h3 class="pHeading2">
+CM Correspondent Name
+</h3>
+<a name="wp1055993"> </a><p class="pBody">
+Each CM transport has a name&#151;which may be reusable, or non-reusable. The name identifies the CM transport to other CM transports, and is part of the CM label that identifies outbound messages from the CM transport.
+</p>
+<a name="wp1055994"> </a><p class="pBody">
+A name is <em class="cEmphasis">reusable</em> when a program supplies it explicitly to the CM transport creation call. When a CM transport with a reusable name also has a file-based ledger, it operates as an instance of a <em class="cEmphasis">persistent correspondent</em>&#151;which allows continuity of certified delivery beyond transport invalidation and program restarts (for more information, see <a  href="rv_concepts109.htm#wp1056251">Persistent Correspondents</a>).
+</p>
+<a name="wp1055998"> </a><p class="pBody">
+Two CM transports must not bind the same reusable name&#151;that is, at any moment in time, each reusable name must be unique throughout the network. CM transports may reuse a name <em class="cEmphasis">sequentially</em>, but <em class="cEmphasis">not simultaneously</em>. Violating this rule can significantly obstruct certified delivery.
+</p>
+<a name="wp1055999"> </a><p class="pBody">
+Programs may omit the name from the CM transport creation call&#151;in which case the call generates a unique, <em class="cEmphasis">non-reusable</em> name for the CM transport. No other CM transport on any computer can <em class="cEmphasis">ever</em> have the same name. As a result, a CM transport with a non-reusable name operates as a <em class="cEmphasis">transient correspondent</em>&#151;no subsequent CM transport can continue the certified delivery behavior of a transient CM transport.
+</p>
+<a name="wp1056003"> </a><p class="pBody">
+Correspondent names have the same syntax as Rendezvous subject names. For more information about the syntax of reusable names, and practical advice on selecting a reusable name, see <a  href="rv_concepts114.htm#wp1056478">Reusable Names</a>. For further details about the syntax of Rendezvous subject names, see <a  href="rv_concepts47.htm#wp1065576">Subject Names</a>.
+</p>
+<a name="wp1056015"> </a><h3 class="pHeading2">
+Ledger
+</h3>
+<a name="wp1056016"> </a><p class="pBody">
+Each CM transport keeps a <em class="cEmphasis">ledger</em>, in which it records information about every unresolved outbound certified message, every subject for which this CM transport receives (inbound) certified messages, and other cooperating CM transports.
+</p>
+<a name="wp1056017"> </a><p class="pBody">
+Programs may store the ledger in a <em class="cEmphasis">ledger file</em>, or in process-based storage within the running program. (Even when a CM transport uses a ledger file, it may sometimes replicate parts of the ledger in process-based storage for efficiency; however, programmers cannot rely on this replication.)
+</p>
+<a name="wp1056018"> </a><p class="pBody">
+Ledger files must be unique. That is, two CM transports must not use the same ledger file (concurrently).
+</p>
+<a name="wp1056020"> </a><p class="pBody">
+A CM transport with a file-based ledger and a reusable name qualifies as a <em class="cEmphasis">persistent correspondent</em>, with certified delivery behavior that can extend beyond CM transport destruction.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

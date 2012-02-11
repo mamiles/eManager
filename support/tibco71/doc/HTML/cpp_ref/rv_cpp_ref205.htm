@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvFtMonitor::create()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;8	 Fault Tolerance";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1064949"> </a><h2 class="pNewHTMLPage">
+TibrvFtMonitor::create()
+</h2>
+<hr />
+<a name="wp1061909"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1137327"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">create</code>(<a name="wp1137333"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_cpp_ref127.htm#wp1035245"><code class="cCode">TibrvQueue</code></a>* queue,<a name="wp1137347"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_cpp_ref213.htm#wp1064776"><code class="cCode">TibrvFtMonitorCallback</code></a>* callback,<a name="wp1137439"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_cpp_ref163.htm#wp1146502"><code class="cCode">TibrvTransport</code></a>* transport,<a name="wp1137440"> </a>
+&#160;&#160;&#160;&#160;const char* groupName,<a name="wp1137441"> </a>
+&#160;&#160;&#160;&#160;tibrv_f64  lostInterval,<a name="wp1137337"> </a>
+&#160;&#160;&#160;&#160;const void* closure = NULL);<a name="wp1137568"> </a>
+</pre></div>
+<a name="wp1137569"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1137571"> </a><p class="pBody">
+Monitor a fault tolerance group.
+</p>
+<a name="wp1061922"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1061928"> </a><p class="pBody">
+The monitor callback method receives the number of active members as an argument.
+</p>
+<a name="wp1061929"> </a><p class="pBody">
+The group need not have any members at the time of this create call.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1065811"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1065816"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065818"> </a><div class="pCellBody">
+<code class="cCode">queue</code>
+</div>
+</td>
+    <td><a name="wp1065820"> </a><div class="pCellBody">
+Place events for this monitor on this event queue.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065822"> </a><div class="pCellBody">
+<code class="cCode">callback</code>
+</div>
+</td>
+    <td><a name="wp1065824"> </a><div class="pCellBody">
+On dispatch, process the event with this callback method.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065826"> </a><div class="pCellBody">
+<code class="cCode">transport</code>
+</div>
+</td>
+    <td><a name="wp1065828"> </a><div class="pCellBody">
+Listen on this transport for fault tolerance internal protocol messages (such as heartbeat messages).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065856"> </a><div class="pCellBody">
+<code class="cCode">groupName</code>
+</div>
+</td>
+    <td><a name="wp1065896"> </a><div class="pCellBody">
+Monitor the fault tolerant group with this name.
+</div>
+<a name="wp1065900"> </a><div class="pCellBody">
+The group name must conform to the syntax required for Rendezvous subject names. For details, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts47.htm#wp1065576');" onMouseOver="WWHShowPopup('a', 'rv_concepts47.htm#wp1065576', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Subject Names</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+<a name="wp1065875"> </a><div class="pCellBody">
+See also, <a  href="rv_cpp_ref205.htm#wp1061934">Group Name</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065830"> </a><div class="pCellBody">
+<code class="cCode">lostInterval</code>
+</div>
+</td>
+    <td><a name="wp1065832"> </a><div class="pCellBody">
+When the heartbeat signal from an active member has been silent for this interval (in seconds), Rendezvous fault tolerance software considers that member lost, and queues a monitor event.
+</div>
+<a name="wp1065836"> </a><div class="pCellBody">
+The interval must be positive. To determine the correct value, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts155.htm#wp1058304');" onMouseOver="WWHShowPopup('a', 'rv_concepts155.htm#wp1058304', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Step 4: Choose the Intervals</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+<a name="wp1065865"> </a><div class="pCellBody">
+See also, <a  href="rv_cpp_ref205.htm#wp1061931">Lost Interval</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065841"> </a><div class="pCellBody">
+<code class="cCode">closure</code>
+</div>
+</td>
+    <td><a name="wp1065843"> </a><div class="pCellBody">
+Store this closure data in the monitor object.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1061931"> </a><h4 class="pHeading3">
+Lost Interval
+</h4>
+<a name="wp1061932"> </a><p class="pBody">
+The monitor uses the <code class="cCode">lostInterval</code> to determine whether a member is still active. When the heartbeat signal from an active member has been silent for this interval (in seconds), the monitor considers that member lost, and queues a monitor event.
+</p>
+<a name="wp1061933"> </a><p class="pBody">
+We recommend setting the <code class="cCode">lostInterval</code> identical to the group&#8217;s <code class="cCode">activationInterval</code>, so the monitor accurately reflects the behavior of the group members.
+</p>
+<a name="wp1061934"> </a><h4 class="pHeading3">
+Group Name
+</h4>
+<a name="wp1061940"> </a><p class="pBody">
+The group name must be a legal Rendezvous subject name (see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts47.htm#wp1065576');" onMouseOver="WWHShowPopup('a', 'rv_concepts47.htm#wp1065576', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Subject Names</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>). You may use names with several elements; for examples, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts144.htm#wp1057871');" onMouseOver="WWHShowPopup('a', 'rv_concepts144.htm#wp1057871', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Multiple Groups</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+<a name="wp1222454"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1222458"> </a><p class="pBody">
+<a  href="rv_cpp_ref213.htm#wp1064776"><code class="cCode">TibrvFtMonitorCallback</code> </a>.
+</p>
+<a name="wp1222462"> </a><p class="pBody">
+<a  href="rv_cpp_ref206.htm#wp1222465"><code class="cCode">TibrvFtMonitor::destroy()</code> </a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

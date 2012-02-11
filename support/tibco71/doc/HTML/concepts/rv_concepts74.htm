@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Daemon Parameter</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;8	 Transport";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1028683"> </a><h2 class="pNewHTMLPage">
+Daemon Parameter
+</h2>
+<hr />
+<a name="wp1028684"> </a><p class="pBody">
+The <code class="cCode">daemon</code> parameter instructs the transport creation function about how and where to find the Rendezvous daemon and establish communication.
+</p>
+<a name="wp1028691"> </a><p class="pBody">
+Each Rendezvous transport establishes a communication conduit with the Rendezvous daemon, as the following steps describe:
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1028695"> </a><div class="pSmartList1"><li value="1">The daemon process opens a (TCP) <em class="cEmphasis">client socket</em>, and waits for a client to request a connection.</li></div>
+
+<a name="wp1028699"> </a><p class="pBodyRelative">
+The <code class="cCode">-listen</code> option of the Rendezvous daemon (<code class="cCode">rvd</code>) specifies the socket where the Rendezvous daemon should listen for new client program connections. 
+</p>
+<a name="wp1028703"> </a><div class="pSmartList1"><li value="2">The program calls the transport creation function, which contacts the daemon at the client socket specified in its <code class="cCode">daemon</code> parameter.</li></div>
+
+<a name="wp1028704"> </a><p class="pBodyRelative">
+The <code class="cCode">daemon</code> parameter of the transport creation function must correspond to the <code class="cCode">-listen</code> option of daemon process; that is, they must specify the same communication type and socket number.
+</p>
+<a name="wp1029179"> </a><p class="pBodyRelative">
+If no daemon process is listening on the specified client socket, then the transport creation call automatically starts a new daemon process (which listens on the specified client socket), and then attempts to connect to it.
+</p>
+<a name="wp1029180"> </a><div class="pSmartList1"><li value="3">The daemon process opens a conduit for private communication with the new transport object in the program. All future communication uses that conduit.</li></div>
+
+<a name="wp1029181"> </a><p class="pBodyRelative">
+The request socket is now free for additional requests from other client transports.
+</p>
+</ol></div>
+
+<a name="wp1028894"> </a><h3 class="pHeading2">
+Specifying a Local Daemon
+</h3>
+<a name="wp1028895"> </a><p class="pBody">
+Specify the daemon&#8217;s client socket as a character string with components separated by colons.
+</p>
+<a name="wp1028717"> </a><p class="pBody">
+For <em class="cEmphasis">local</em> daemons, specify the transport creation function&#8216;s <code class="cCode">daemon</code> parameter and the <code class="cCode">-listen</code> option to the daemon process as a (TCP) socket number; for example: <code class="cCode">&quot;6555&quot;</code>
+</p>
+<a name="wp1028721"> </a><p class="pBody">
+To use the default client socket, supply <code class="cCode">NULL</code> as the <code class="cCode">daemon</code> argument to the transport creation function, and omit the <code class="cCode">-listen</code> option to the daemon process.
+</p>
+<a name="wp1028724"> </a><h3 class="pHeading2">
+Remote Daemon
+</h3>
+<a name="wp1028725"> </a><p class="pBody">
+In most cases, programs connect to a local daemon, running on the same host as the program. Certain situations require a remote daemon, for example:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1028726"> </a><div class="pSmartList1"><li >The program runs on a laptop computer that is not directly connected to the network. Instead, the laptop connects to a workstation on the network, and the daemon runs on that workstation.</li></div>
+
+<a name="wp1028727"> </a><div class="pSmartList1"><li >The program connects to a network at a remote site.</li></div>
+
+</ul></div>
+
+<a name="wp1084739"> </a><p class="pBody">
+For <em class="cEmphasis">remote</em> daemons, specify two parts (introducing the remote host name as the first part):
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1147900"> </a><div class="pSmartList1"><li >Remote host name</li></div>
+
+<a name="wp1147901"> </a><div class="pSmartList1"><li >Socket number</li></div>
+
+</ul></div>
+
+<a name="wp1028732"> </a><p class="pBody">
+For example:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">&#160;&#160;&#160;&#160;&quot;purple_host:6555&quot;</code><a name="wp1028733"> </a>
+<a name="wp1147905"> </a>
+</pre></div>
+<a name="wp1147910"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/note.gif" border="0" /></td>
+    <td><a name="wp1245850"> </a><div class="pCellBody">
+Direct communication is not available when connecting to a remote daemon (see <a  href="rv_concepts78.htm#wp1144571">Direct Communication</a>).
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1061944"> </a><h3 class="pHeading2">
+Suppress Daemon Auto-Start
+</h3>
+<a name="wp1061952"> </a><p class="pBody">
+The policy that a transport cannot automatically start a remote daemon also results in a convenient way to suppress the auto-start feature of a local daemon. To do so, specify the local daemon with a two-part parameter, as if it were a remote daemon. For the first part (the host) supply either the local computer&#8217;s loopback address, <code class="cCode">127.0.0.1</code>, or the local host name (if the host does not support a loopback address). For example:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;&#160;127.0.0.1:7500<a name="wp1061953"> </a>
+&#160;&#160;&#160;&#160;my_host_name:7500<a name="wp1061954"> </a>
+</pre></div>
+<a name="wp1061956"> </a><p class="pBody">
+&#160;&#160;
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

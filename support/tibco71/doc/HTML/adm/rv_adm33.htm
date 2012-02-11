@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Routing Table Entry</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1053162"> </a><h2 class="pNewHTMLPage">
+Routing Table Entry
+</h2>
+<hr />
+<a name="wp1047938"> </a><p class="pBody">
+Routing table entries are the basic building blocks of a Rendezvous routing system. In most situations, each routing daemon process embodies a single routing table entry, which denotes that daemon throughout the WAN, and describes its operation.
+</p>
+<a name="wp1047957"> </a><p class="pBody">
+In rare situations one routing daemon process can embody several routing table entries. Each entry defines a separate and independent software router, but without the cost associated with process switching. For more information, see <a  href="rv_adm38.htm#wp1175151">Independent Routing Table Entries in One Process</a>.
+</p>
+<a name="wp1055653"> </a><p class="pBody">
+Combining all the routing table entries of all the routing daemons produces the global routing table. Each routing daemon uses its copy of the global routing table to forward messages efficiently to other routing daemons and their networks.
+</p>
+<a name="wp1047911"> </a><h3 class="pHeading2">
+Router Name
+</h3>
+<a name="wp1047912"> </a><p class="pBody">
+Each routing table entry has a name. Routing daemons use these names to identify one another&#151;so names must be unique throughout the entire WAN. 
+</p>
+<a name="wp1046940"> </a><p class="pBody">
+One convenient way to ensure unique names is to use the fully-qualified DNS names of the <code class="cCode">rvrd</code> host computers; for example, <code class="cCode">frobitz.yellowNet.baz.com</code>. (When one process embodies several routing table entries, you can use a prefix to create unique names; for example,<code class="cCode"> 1.frobitz.yellowNet.baz.com</code>).
+</p>
+<a name="wp1048049"> </a><p class="pBody">
+Other naming conventions are acceptable, as long as the names are unique.
+</p>
+<a name="wp1046126"> </a><p class="pBody">
+The name is a string of alphanumeric, dot, and dash characters. The maximum total length of the string is 64 characters (including the dot separators).
+</p>
+<a name="wp1044318"> </a><h3 class="pHeading2">
+Local Networks
+</h3>
+<a name="wp1044425"> </a><p class="pBody">
+Each routing daemon can serve zero or more local networks. For details, see <a  href="rv_adm34.htm#wp1047084">Local Network</a>.
+</p>
+<a name="wp1054571"> </a><p class="pBody">
+Notice that a routing daemon need not serve any local networks. In this configuration, it operates as a <em class="cEmphasis">way station</em>, forwarding message traffic between other routing daemons&#151;for example, to cross a firewall. For an illustration of this role, see <a  href="rv_adm40.htm#wp1021559">Security and Firewalls</a>.
+</p>
+<a name="wp1044424"> </a><h3 class="pHeading2">
+Neighbors
+</h3>
+<a name="wp1044353"> </a><p class="pBody">
+Each routing daemon can connect to zero or more neighbors (routing daemons on other networks). For details, see <a  href="rv_adm35.htm#wp1035365">Neighbors</a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

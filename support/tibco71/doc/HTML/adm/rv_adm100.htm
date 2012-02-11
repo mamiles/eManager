@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Hardware Capabilities</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;10	 Performance Assessment (rvperf)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1069354"> </a><h2 class="pNewHTMLPage">
+Hardware Capabilities
+</h2>
+<hr />
+<a name="wp1069355"> </a><p class="pBody">
+In this group of examples, the performance assessment tool measures the speed of specific computers&#151;individually or in a group.
+</p>
+<a name="wp1069357"> </a><h3 class="pHeading2">
+Maximum Sustained Send Rate
+</h3>
+<a name="wp1069358"> </a><p class="pBody">
+What is the maximum sustained rate at which a specific computer can <em class="cEmphasis">send</em> a stream of messages?
+</p>
+<a name="wp1069359"> </a><p class="pBody">
+To answer this question, run <code class="cCode">rvperfm</code> in automatic mode on the sending computer, without any <code class="cCode">rvperfs</code> processes to receive the messages; select a message size that reflects the messages that your application will send when deployed.
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;&#160;sender&gt; <code class="cCodeBold">rvperfm -auto -size 1000</code><a name="wp1069360"> </a>
+<a name="wp1070025"> </a>
+</pre></div>
+<a name="wp1069361"> </a><p class="pBody">
+After <code class="cCode">rvperfm</code> experiments with its parameters, the final run indicates the values that yield the maximum send rate for the sending computer under prevailing network conditions.
+</p>
+<a name="wp1069363"> </a><h3 class="pHeading2">
+Optimal Sustained Receive Rate
+</h3>
+<a name="wp1069364"> </a><p class="pBody">
+What is the maximum rate at which a specific computer can <em class="cEmphasis">receive</em> a stream of messages?
+</p>
+<a name="wp1069365"> </a><p class="pBody">
+To answer this question, run <code class="cCode">rvperfs</code> on the receiving computer. Then run <code class="cCode">rvperfm</code> in automatic mode on another computer; select a message size that reflects the messages that your application will send when deployed.
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;&#160;receiver&gt; <code class="cCodeBold">rvperfs</code><a name="wp1069366"> </a>
+<a name="wp1069367"> </a>
+&#160;&#160;&#160;&#160;sender&gt; <code class="cCodeBold">rvperfm -auto -size 1000</code><a name="wp1069368"> </a>
+<a name="wp1070026"> </a>
+</pre></div>
+<a name="wp1069369"> </a><p class="pBody">
+After <code class="cCode">rvperfm</code> experiments with its parameters, the final run indicates the values that yield the optimal receive rate for the receiving computer under prevailing network conditions.
+</p>
+<a name="wp1069370"> </a><p class="pBody">
+To validate this receive rate, check that it is strictly less than the maximum send rate of the sender. If <code class="cCode">rvperfm</code> on the sending computer has successfully sent a run of messages at a rate greater than the optimal receive rate, then the receive rate is valid. If not, the sender might be limiting the receive rate. To test the sender, see <a  href="rv_adm100.htm#wp1069357">Maximum Sustained Send Rate</a>.
+</p>
+<a name="wp1069374"> </a><p class="pBody">
+A similar test with several receivers determines the optimal rate of the slowest receiver.
+</p>
+<a name="wp1069375"> </a><h3 class="pHeading2">
+Fixed Receive Rate
+</h3>
+<a name="wp1069376"> </a><p class="pBody">
+Can all computers on this network receive 2000-byte messages at a sustained rate of approximately 5 batches per second, with 10 messages per batch?
+</p>
+<a name="wp1069377"> </a><p class="pBody">
+To answer this question, run <code class="cCode">rvperfs</code> on each of the receiving computers. Then run <code class="cCode">rvperfm</code> in single mode on another computer.
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a name="wp1071678"> </a>
+&#160;&#160;&#160;&#160;receiver1&gt; <code class="cCodeBold">rvperfs</code><a name="wp1071679"> </a>
+<a name="wp1071680"> </a>
+&#160;&#160;&#160;&#160;receiver2&gt; <code class="cCodeBold">rvperfs</code><a name="wp1069381"> </a>
+<a name="wp1069382"> </a>
+&#160;&#160;&#160;&#160;...<a name="wp1069383"> </a>
+&#160;&#160;&#160;&#160;receiver42&gt; <code class="cCodeBold">rvperfs</code><a name="wp1069384"> </a>
+<a name="wp1069385"> </a>
+&#160;&#160;&#160;&#160;sender&gt; <code class="cCodeBold">rvperfm -size 2000 -batch 10 -interval .2</code><a name="wp1069386"> </a>
+<a name="wp1070031"> </a>
+</pre></div>
+<a name="wp1069387"> </a><p class="pBody">
+The run report indicates whether the receivers keep pace with the sender under prevailing network conditions.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>Service</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;3	 Communications Daemon&#151;rvd";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1950835"> </a><h2 class="pNewHTMLPage">
+Service
+</h2>
+<hr />
+<a name="wp1950836"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1950837"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">class com.tibco.tibrv.config.</code><code class="cCodeBold">Service</code><a name="wp1950838"> </a>
+<code class="cCode">&#160;&#160;extends java.lang.Object</code><a name="wp1950839"> </a>
+</pre></div>
+<a name="wp1950840"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1950844"> </a><p class="pBody">
+Represent a UDP or PGM service of a Rendezvous communications daemon.
+</p>
+<a name="wp1950845"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1950846"> </a><p class="pBody">
+This object represents a communications daemon&#8217;s activity on a specific network service&#151;that is, a physical network combined with a UDP or PGM service.
+</p>
+<a name="wp2038448"> </a><p class="pBody">
+The method <a  href="rv_config21.htm#wp1950250"><code class="cCode">RvdProxy.getServices()</code></a> returns objects of this class.
+</p>
+<a name="wp2038665"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp2038459"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp2038465"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp2038467"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp2038469"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp2038474"> </a><div class="pCellBody">
+<a  href="rv_config38.htm#wp1951076"><code class="cCode">Service.getClientCount()</code></a>
+</div>
+</td>
+    <td><a name="wp2038478"> </a><div class="pCellBody">
+<a  href="rv_config38.htm#wp1951082">Get the number of client transports that use this service.</a>
+</div>
+</td>
+    <td><a name="wp2038484"> </a><div class="pCellBody">
+<a  href="rv_config38.htm#wp1951076">42</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp2038489"> </a><div class="pCellBody">
+<a  href="rv_config39.htm#wp2021150"><code class="cCode">Service.getClientTransports()</code></a>
+</div>
+</td>
+    <td><a name="wp2038494"> </a><div class="pCellBody">
+<a  href="rv_config39.htm#wp1951113">Get the client transports that use this service.</a>
+</div>
+</td>
+    <td><a name="wp2038499"> </a><div class="pCellBody">
+<a  href="rv_config39.htm#wp2021150">43</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp2038504"> </a><div class="pCellBody">
+<a  href="rv_config40.htm#wp1951148"><code class="cCode">Service.getDetails()</code></a>
+</div>
+</td>
+    <td><a name="wp2038508"> </a><div class="pCellBody">
+<a  href="rv_config40.htm#wp1951154">Get detailed information about the network service.</a>
+</div>
+</td>
+    <td><a name="wp2038514"> </a><div class="pCellBody">
+<a  href="rv_config40.htm#wp1951148">44</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp2038519"> </a><div class="pCellBody">
+<a  href="rv_config41.htm#wp1951168"><code class="cCode">Service.getHostCount()</code></a>
+</div>
+</td>
+    <td><a name="wp2038523"> </a><div class="pCellBody">
+<a  href="rv_config41.htm#wp1951174">Get the number of other host computers with daemons that communicate on this network and service.</a>
+</div>
+</td>
+    <td><a name="wp2038529"> </a><div class="pCellBody">
+<a  href="rv_config41.htm#wp1951168">45</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp2038534"> </a><div class="pCellBody">
+<a  href="rv_config42.htm#wp1951203"><code class="cCode">Service.getHosts()</code></a>
+</div>
+</td>
+    <td><a name="wp2038538"> </a><div class="pCellBody">
+<a  href="rv_config42.htm#wp1951212">Get the other host computers with daemons that communicate on this network and service.</a>
+</div>
+</td>
+    <td><a name="wp2038544"> </a><div class="pCellBody">
+<a  href="rv_config42.htm#wp1951203">46</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp2038549"> </a><div class="pCellBody">
+<a  href="rv_config43.htm#wp1951246"><code class="cCode">Service.getInboundRates()</code></a>
+</div>
+</td>
+    <td><a name="wp2038553"> </a><div class="pCellBody">
+<a  href="rv_config43.htm#wp1951252">Get recent statistics about inbound data on this service.</a>
+</div>
+</td>
+    <td><a name="wp2038559"> </a><div class="pCellBody">
+<a  href="rv_config43.htm#wp1951246">47</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp2038564"> </a><div class="pCellBody">
+<a  href="rv_config44.htm#wp1951276"><code class="cCode">Service.getInboundTotals()</code></a>
+</div>
+</td>
+    <td><a name="wp2038569"> </a><div class="pCellBody">
+<a  href="rv_config44.htm#wp1951282">Get cumulative statistics about inbound data.</a>
+</div>
+</td>
+    <td><a name="wp2038574"> </a><div class="pCellBody">
+<a  href="rv_config44.htm#wp1951276">48</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp2038579"> </a><div class="pCellBody">
+<a  href="rv_config45.htm#wp1951309"><code class="cCode">Service.getNetwork()</code></a>
+</div>
+</td>
+    <td><a name="wp2038584"> </a><div class="pCellBody">
+<a  href="rv_config45.htm#wp1951315">Get the network number.</a>
+</div>
+</td>
+    <td><a name="wp2038589"> </a><div class="pCellBody">
+<a  href="rv_config45.htm#wp1951309">49</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp2038594"> </a><div class="pCellBody">
+<a  href="rv_config46.htm#wp1951329"><code class="cCode">Service.getOutboundRates()</code></a>
+</div>
+</td>
+    <td><a name="wp2038598"> </a><div class="pCellBody">
+<a  href="rv_config46.htm#wp1951335">Get recent statistics about outbound data on this service.</a>
+</div>
+</td>
+    <td><a name="wp2038604"> </a><div class="pCellBody">
+<a  href="rv_config46.htm#wp1951329">50</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp2038609"> </a><div class="pCellBody">
+<a  href="rv_config47.htm#wp1951359"><code class="cCode">Service.getOutboundTotals()</code></a>
+</div>
+</td>
+    <td><a name="wp2038613"> </a><div class="pCellBody">
+<a  href="rv_config47.htm#wp1951365">Get cumulative statistics about outbound data.</a>
+</div>
+</td>
+    <td><a name="wp2038619"> </a><div class="pCellBody">
+<a  href="rv_config47.htm#wp1951359">51</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp2038624"> </a><div class="pCellBody">
+<a  href="rv_config48.htm#wp1951392"><code class="cCode">Service.getPortNumber()</code></a>
+</div>
+</td>
+    <td><a name="wp2038629"> </a><div class="pCellBody">
+<a  href="rv_config48.htm#wp1951398">Get the UDP or PGM service number.</a>
+</div>
+</td>
+    <td><a name="wp2038634"> </a><div class="pCellBody">
+<a  href="rv_config48.htm#wp1951392">52</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp2038639"> </a><div class="pCellBody">
+<a  href="rv_config49.htm#wp1951412"><code class="cCode">Service.getSubscriptions()</code></a>
+</div>
+</td>
+    <td><a name="wp2038643"> </a><div class="pCellBody">
+<a  href="rv_config49.htm#wp1951418">Get the client subscriptions registered with this daemon on the network service.</a>
+</div>
+</td>
+    <td><a name="wp2038649"> </a><div class="pCellBody">
+<a  href="rv_config49.htm#wp1951412">53</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp2038654"> </a><div class="pCellBody">
+<a  href="rv_config50.htm#wp1951435"><code class="cCode">Service.toXml()</code></a>
+</div>
+</td>
+    <td><a name="wp2038658"> </a><div class="pCellBody">
+<a  href="rv_config50.htm#wp1951441">Format the service information as an XML document.</a>
+</div>
+</td>
+    <td><a name="wp2038664"> </a><div class="pCellBody">
+<a  href="rv_config50.htm#wp1951435">54</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp2038666"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp2038670"> </a><p class="pBody">
+<a  href="rv_config21.htm#wp1950250"><code class="cCode">RvdProxy.getServices()</code> </a>
+</p>
+<a name="wp1951073"> </a><p class="pBody">
+For the corresponding browser page, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm26.htm#wp1180385');" onMouseOver="WWHShowPopup('c', 'rv_adm26.htm#wp1180385', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Services</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

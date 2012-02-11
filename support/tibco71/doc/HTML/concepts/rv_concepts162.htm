@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>CLIENT.NOMEMORY</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Appendix&#160;A	 System Advisory Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1047104"> </a><h2 class="pNewHTMLPage">
+CLIENT.NOMEMORY
+</h2>
+<hr />
+<a name="wp1048864"> </a><p class="pSyntaxType">
+Advisory
+</p>
+<a name="wp1048871"> </a><h4 class="pHeading3">
+Subject Name Syntax
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+_RV.ERROR.SYSTEM.CLIENT.NOMEMORY<a name="wp1048866"> </a>
+</pre></div>
+<a name="wp1059552"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1038326"> </a><p class="pBody">
+A program receives this advisory when it cannot allocate sufficient process storage.
+</p>
+<a name="wp1059698"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1038328"> </a><p class="pBody">
+Only the specific client receives this advisory.
+</p>
+<a name="wp1038329"> </a><p class="pBody">
+When a program cannot allocate storage within a Rendezvous API call, the call returns the status code <a  href="javascript:WWHClickedPopup('e', 'rv_c_ref227.htm#wp1129113');" onMouseOver="WWHShowPopup('e', 'rv_c_ref227.htm#wp1129113', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TIBRV_NO_MEMORY</code></a>. In asynchronous situations, the program presents this advisory instead.
+</p>
+<a name="wp1063717"> </a><p class="pBody">
+This advisory always indicates an error. Either data is lost, or the client program cannot continue.
+</p>
+<a name="wp1038330"> </a><h4 class="pHeading3">
+Diagnosis
+</h4>
+<a name="wp1038331"> </a><p class="pBody">
+<code class="cCode">NOMEMORY</code> advisories can indicate several asynchronous situations in which the program cannot allocate storage; for example:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1038332"> </a><div class="pSmartList1"><li >The client program cannot allocate memory to receive an inbound messages from the Rendezvous daemon.</li></div>
+
+<a name="wp1038336"> </a><p class="pBodyRelative">
+After presenting this advisory, the client program disconnects its transport from the daemon, discarding all queued data. The client then attempts to reconnect to the daemon.
+</p>
+<a name="wp1038337"> </a><div class="pSmartList1"><li >The client program cannot allocate memory to create the timer it needs to reconnect to the daemon.</li></div>
+
+<a name="wp1038338"> </a><p class="pBodyRelative">
+After presenting this advisory, the client program sleeps, and attempts to reconnect later.
+</p>
+</ul></div>
+
+<a name="wp1038339"> </a><p class="pBody">
+In either of these situations, the system administrator or programmer must determine the reason that the program exhausted its process storage, and remedy the problem at its source.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

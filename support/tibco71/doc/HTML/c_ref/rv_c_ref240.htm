@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvMsgData_Decoder</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Appendix&#160;A	 Custom Datatypes";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1150007"> </a><h2 class="pNewHTMLPage">
+tibrvMsgData_Decoder
+</h2>
+<hr />
+<a name="wp1150011"> </a><p class="pSyntaxType">
+Function Type
+</p>
+<a name="wp1148922"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+typedef <a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> (*<code class="cCodeBold">tibrvMsgData_Decoder</code>)(<a name="wp1148923"> </a>
+&#160;&#160;&#160;&#160;char**&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;wire_buffer, <a name="wp1148924"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref25.htm#wp1129956"><code class="cCode">tibrvMsgField</code></a>*&#160;&#160;&#160;&#160;&#160;&#160;&#160;field,<a name="wp1148925"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref236.htm#wp1148824"><code class="cCode">tibrvMsgDataType</code></a>*&#160;&#160;&#160;&#160;decoded_type);<a name="wp1148926"> </a>
+</pre></div>
+<a name="wp1148927"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1148928"> </a><p class="pBody">
+Decode a wire format field to a local datatype.
+</p>
+<a name="wp1148929"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1151769"> </a><p class="pBody">
+Programs define decoders for custom datatypes. Layer 2 decoder functions augment the <a  href="rv_c_ref225.htm#wp1128980">Wire Format to C Datatype Conversion Matrix</a>.
+</p>
+<a name="wp1151709"> </a><p class="pBody">
+Each decoder must fulfill these responsibilities:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1151710"> </a><div class="pSmartList1"><li >Set the <a  href="rv_c_ref25.htm#wp1129982"><code class="cCode">size</code></a>, <a  href="rv_c_ref25.htm#wp1129993"><code class="cCode">count</code></a> and <a  href="rv_c_ref25.htm#wp1129999"><code class="cCode">data</code></a> parts of the destination field struct. (The layer 3 function sets the <a  href="rv_c_ref25.htm#wp1129977"><code class="cCode">name</code></a>, <a  href="rv_c_ref25.htm#wp1130003"><code class="cCode">id</code></a> and <a  href="rv_c_ref25.htm#wp1130007"><code class="cCode">type</code></a>.)</li></div>
+
+<a name="wp1151734"> </a><div class="pSmartList1"><li >Advance <code class="cCode">*wire_buffer</code> to the end the source data (in the message). <a  href="rv_c_ref242.htm#wp1151924"><code class="cCode">tibrvMsgData_GetBytes()</code></a> automatically advances this buffer pointer.</li></div>
+
+<a name="wp1151792"> </a><div class="pSmartList1"><li >Store the low-level type of the new data reference in <code class="cCode">*decoded_type</code>.</li></div>
+
+<a name="wp1151746"> </a><div class="pSmartList1"><li >Check consistency, and properly address byte order and <em class="cEmphasis">endian</em> issues.<div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1148938"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1148940"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1148942"> </a><div class="pCellBody">
+<code class="cCode">wire_buffer</code>
+</div>
+</td>
+    <td><a name="wp1148944"> </a><div class="pCellBody">
+This parameter receives the location of an address within the wire buffer of the source message. The source data starts at that address.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1148946"> </a><div class="pCellBody">
+<code class="cCode">field</code>
+</div>
+</td>
+    <td><a name="wp1148948"> </a><div class="pCellBody">
+This parameter receives the location of a destination field object. The decoder function must set the parts of this field with the source data, its size and count.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1148951"> </a><div class="pCellBody">
+<code class="cCode">decoded_type</code>
+</div>
+</td>
+    <td><a name="wp1151538"> </a><div class="pCellBody">
+This parameter receives a location. The decoder function must store the low-level type of the new data reference in that location.
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li></div>
+
+</ul></div>
+
+<a name="wp1148955"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1148959"> </a><p class="pBody">
+<a  href="rv_c_ref25.htm#wp1129956"><code class="cCode">tibrvMsgField</code> </a>
+</p>
+<a name="wp1151797"> </a><p class="pBody">
+<a  href="rv_c_ref236.htm#wp1148824"><code class="cCode">tibrvMsgDataType</code> </a>
+</p>
+<a name="wp1149875"> </a><p class="pBody">
+<a  href="rv_c_ref242.htm#wp1151924"><code class="cCode">tibrvMsgData_GetBytes()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

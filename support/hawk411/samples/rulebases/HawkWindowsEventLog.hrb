@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ruleBase>
+	<version>4.1.0</version>
+	<name><![CDATA[HawkWindowsEventLog]]></name>
+	<schedule></schedule>
+	<author>"TIBCO Hawk 4.1.0 Release"</author>
+	<lastModification></lastModification>
+	<comment><![CDATA[]]></comment>
+	<rule>
+		<name><![CDATA[COM.TIBCO.hawk.hma.EventLog:onApplicationEvent(Source=TIBCO Hawk Agent)]]></name>
+		<schedule></schedule>
+		<overRuling>0</overRuling>
+		<dataSource>
+			<microAgentName><![CDATA[COM.TIBCO.hawk.hma.EventLog]]></microAgentName>
+			<methodName>onApplicationEvent</methodName>
+			<dataElement name="Source">
+				<dataObject class="java.lang.String" ><![CDATA[TIBCO Hawk Agent]]></dataObject>
+			</dataElement>
+			<interval>0</interval>
+		</dataSource>
+		<test>
+			<name><![CDATA[(Type Equals Warning)]]></name>
+			<schedule></schedule>
+			<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.EqualsObject" >
+				<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.RuleData" >
+					<dataObject class="java.lang.String" ><![CDATA[Type]]></dataObject>
+				</operator>
+				<dataObject class="java.lang.String" ><![CDATA[Warning]]></dataObject>
+			</operator>
+			<consequenceAction>
+				<name><![CDATA[sendAlertLow(alertMsg=Hawk Agent Warning : ${Text} )]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertLow" ><![CDATA[Hawk Agent Warning : ${Text} ]]></dataObject>
+				</dataElement>
+				<performOnceOnly/>
+				<escalationTime>0</escalationTime>
+			</consequenceAction>
+			<trueConditionPolicy>
+				<trueCountThreshold>1</trueCountThreshold>
+			</trueConditionPolicy>
+			<clearOn>
+				<clearTimer>
+					<second>900</second>
+				</clearTimer>
+			</clearOn>
+		</test>
+		<test>
+			<name><![CDATA[(Type Equals Error)]]></name>
+			<schedule></schedule>
+			<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.EqualsObject" >
+				<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.RuleData" >
+					<dataObject class="java.lang.String" ><![CDATA[Type]]></dataObject>
+				</operator>
+				<dataObject class="java.lang.String" ><![CDATA[Error]]></dataObject>
+			</operator>
+			<consequenceAction>
+				<name><![CDATA[sendAlertMedium(alertMsg=Hawk Agent Error: ${Text} )]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertMedium" ><![CDATA[Hawk Agent Error: ${Text} ]]></dataObject>
+				</dataElement>
+				<performOnceOnly/>
+				<escalationTime>0</escalationTime>
+			</consequenceAction>
+			<trueConditionPolicy>
+				<trueCountThreshold>1</trueCountThreshold>
+			</trueConditionPolicy>
+			<clearOn>
+				<clearTimer>
+					<second>900</second>
+				</clearTimer>
+			</clearOn>
+		</test>
+	</rule>
+	<rule>
+		<name><![CDATA[COM.TIBCO.hawk.hma.EventLog:onApplicationEvent(Source=TIBCO Hawk HMA)]]></name>
+		<schedule></schedule>
+		<overRuling>0</overRuling>
+		<dataSource>
+			<microAgentName><![CDATA[COM.TIBCO.hawk.hma.EventLog]]></microAgentName>
+			<methodName>onApplicationEvent</methodName>
+			<dataElement name="Source">
+				<dataObject class="java.lang.String" ><![CDATA[TIBCO Hawk HMA]]></dataObject>
+			</dataElement>
+			<interval>0</interval>
+		</dataSource>
+		<test>
+			<name><![CDATA[(Type Equals Warning)]]></name>
+			<schedule></schedule>
+			<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.EqualsObject" >
+				<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.RuleData" >
+					<dataObject class="java.lang.String" ><![CDATA[Type]]></dataObject>
+				</operator>
+				<dataObject class="java.lang.String" ><![CDATA[Warning]]></dataObject>
+			</operator>
+			<consequenceAction>
+				<name><![CDATA[sendAlertLow(alertMsg=Hawk HMA Warning : ${Text} )]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertLow" ><![CDATA[Hawk HMA Warning : ${Text} ]]></dataObject>
+				</dataElement>
+				<performOnceOnly/>
+				<escalationTime>0</escalationTime>
+			</consequenceAction>
+			<trueConditionPolicy>
+				<trueCountThreshold>1</trueCountThreshold>
+			</trueConditionPolicy>
+			<clearOn>
+				<clearTimer>
+					<second>900</second>
+				</clearTimer>
+			</clearOn>
+		</test>
+		<test>
+			<name><![CDATA[(Type Equals Error)]]></name>
+			<schedule></schedule>
+			<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.EqualsObject" >
+				<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.RuleData" >
+					<dataObject class="java.lang.String" ><![CDATA[Type]]></dataObject>
+				</operator>
+				<dataObject class="java.lang.String" ><![CDATA[Error]]></dataObject>
+			</operator>
+			<consequenceAction>
+				<name><![CDATA[sendAlertMedium(alertMsg=Hawk HMA Error : ${Text} )]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertMedium" ><![CDATA[Hawk HMA Error : ${Text} ]]></dataObject>
+				</dataElement>
+				<performOnceOnly/>
+				<escalationTime>0</escalationTime>
+			</consequenceAction>
+			<trueConditionPolicy>
+				<trueCountThreshold>1</trueCountThreshold>
+			</trueConditionPolicy>
+			<clearOn>
+				<clearTimer>
+					<second>900</second>
+				</clearTimer>
+			</clearOn>
+		</test>
+	</rule>
+	<rule>
+		<name><![CDATA[COM.TIBCO.hawk.hma.EventLog:onApplicationEvent(Source=TIBCO Hawk Event)]]></name>
+		<schedule></schedule>
+		<overRuling>0</overRuling>
+		<dataSource>
+			<microAgentName><![CDATA[COM.TIBCO.hawk.hma.EventLog]]></microAgentName>
+			<methodName>onApplicationEvent</methodName>
+			<dataElement name="Source">
+				<dataObject class="java.lang.String" ><![CDATA[TIBCO Hawk Event]]></dataObject>
+			</dataElement>
+			<interval>0</interval>
+		</dataSource>
+		<test>
+			<name><![CDATA[(Type Equals Warning)]]></name>
+			<schedule></schedule>
+			<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.EqualsObject" >
+				<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.RuleData" >
+					<dataObject class="java.lang.String" ><![CDATA[Type]]></dataObject>
+				</operator>
+				<dataObject class="java.lang.String" ><![CDATA[Warning]]></dataObject>
+			</operator>
+			<consequenceAction>
+				<name><![CDATA[sendAlertLow(alertMsg=Hawk Event Warning : ${Text} )]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertLow" ><![CDATA[Hawk Event Warning : ${Text} ]]></dataObject>
+				</dataElement>
+				<performOnceOnly/>
+				<escalationTime>0</escalationTime>
+			</consequenceAction>
+			<trueConditionPolicy>
+				<trueCountThreshold>1</trueCountThreshold>
+			</trueConditionPolicy>
+			<clearOn>
+				<clearTimer>
+					<second>900</second>
+				</clearTimer>
+			</clearOn>
+		</test>
+		<test>
+			<name><![CDATA[(Type Equals Error)]]></name>
+			<schedule></schedule>
+			<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.EqualsObject" >
+				<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.RuleData" >
+					<dataObject class="java.lang.String" ><![CDATA[Type]]></dataObject>
+				</operator>
+				<dataObject class="java.lang.String" ><![CDATA[Error]]></dataObject>
+			</operator>
+			<consequenceAction>
+				<name><![CDATA[sendAlertMedium(alertMsg=Hawk Event Error : ${Text} )]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertMedium" ><![CDATA[Hawk Event Error : ${Text} ]]></dataObject>
+				</dataElement>
+				<performOnceOnly/>
+				<escalationTime>0</escalationTime>
+			</consequenceAction>
+			<trueConditionPolicy>
+				<trueCountThreshold>1</trueCountThreshold>
+			</trueConditionPolicy>
+			<clearOn>
+				<clearTimer>
+					<second>900</second>
+				</clearTimer>
+			</clearOn>
+		</test>
+	</rule>
+</ruleBase>

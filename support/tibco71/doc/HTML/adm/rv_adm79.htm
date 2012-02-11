@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>HTTP Tunnel</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;8	 Rendezvous Agent (rva)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1289029"> </a><h2 class="pNewHTMLPage">
+HTTP Tunnel
+</h2>
+<hr />
+<a name="wp1289518"> </a><p class="pBody">
+Java programmers can specify HTTP tunneling for communication between a client transport and <code class="cCode">rva</code>. Administrators can configure <code class="cCode">rva</code> parameters that affect this type of communication.
+</p>
+<a name="wp1289549"> </a><p class="pBody">
+This section describes the general operation of this feature, and the <code class="cCode">rva</code> parameters that affect it.
+</p>
+<a name="wp1289521"> </a><h4 class="pHeading3">
+Overview
+</h4>
+<a name="wp1289561"> </a><p class="pBody">
+For an overview of HTTP tunneling, see these sections:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1289570"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('g', 'rv_java_ref8.htm#wp1110819');" onMouseOver="WWHShowPopup('g', 'rv_java_ref8.htm#wp1110819', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">HTTP Tunneling</a> in <em class="cEmphasis">TIBCO Rendezvous Java Reference</em></li></div>
+
+<a name="wp1289574"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('g', 'rv_java_ref141.htm#wp1038873');" onMouseOver="WWHShowPopup('g', 'rv_java_ref141.htm#wp1038873', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvRvaTransport</code> </a> in <em class="cEmphasis">TIBCO Rendezvous Java Reference</em></li></div>
+
+</ul></div>
+
+<a name="wp1289528"> </a><h4 class="pHeading3">
+Operation
+</h4>
+<a name="wp1289606"> </a><p class="pBody">
+When <code class="cCode">rva</code> enables HTTP tunneling, it accepts client connection requests on an HTTP port. Client transports connect to <code class="cCode">rva</code> at that port.
+</p>
+<a name="wp1289611"> </a><p class="pBody">
+<code class="cCode">rva</code> maintains state information for each client, as well as a queue of data for the client (data is outbound from <code class="cCode">rva</code>, inbound to the client).
+</p>
+<a name="wp1290468"> </a><p class="pBody">
+For efficiency, <code class="cCode">rva</code> accumulates several messages in a queue before directing them to a client.
+</p>
+<a name="wp1290469"> </a><p class="pBody">
+HTTP proxy servers might intervene between <code class="cCode">rva</code> and the client. Proxy servers are usually transparent to both clients and <code class="cCode">rva</code>. However, some intervening proxy servers might buffer data at a low level, causing delays in data delivery to clients. To limit data latency, <code class="cCode">rva</code> can force proxy servers to flush their buffers by closing the client connection; several parameters affect this flushing action. Client transports automatically reestablish the connection, after a time delay specified in the client program. <code class="cCode">rva</code> maintains client state (for a limited time) while waiting for the client to reconnect.
+</p>
+<a name="wp1289705"> </a><h4 class="pHeading3">
+Parameters
+</h4>
+<a name="wp1289717"> </a><p class="pBody">
+For a list of <code class="cCode">rva</code> parameters that affect this feature, see <a  href="rv_adm77.htm#wp1288971">HTTP Tunnel</a>.
+</p>
+<a name="wp1289707"> </a><p class="pBody">
+
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvDispatchable::timedDispatch()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1059825"> </a><h2 class="pNewHTMLPage">
+TibrvDispatchable::timedDispatch()
+</h2>
+<hr />
+<a name="wp1059826"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1059827"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+virtual <a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> timedDispatch(tibrv_f64 timeout) = 0;<a name="wp1059828"> </a>
+</pre></div>
+<a name="wp1059831"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1059833"> </a><p class="pBody">
+Dispatch an event, but if no event is ready to dispatch, limit the time that this call blocks while waiting for an event.
+</p>
+<a name="wp1059834"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1059887"> </a><p class="pBody">
+If an event is ready to dispatch, then this call dispatches it, and then returns. If no events are waiting, this call waits for an event to arrive. If an event arrives before the waiting time elapses, then it dispatches the event and returns. If the waiting time elapses first, then the call returns without dispatching an event.
+</p>
+<a name="wp1130305"> </a><p class="pBody">
+When the call dispatches an event, it returns the status code <a  href="javascript:WWHClickedPopup('e', 'rv_c_ref227.htm#wp1129060');" onMouseOver="WWHShowPopup('e', 'rv_c_ref227.htm#wp1129060', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TIBRV_OK</code></a>. When the call does not dispatch an event, it returns the status code <a  href="javascript:WWHClickedPopup('e', 'rv_c_ref157.htm#wp1079394');" onMouseOver="WWHShowPopup('e', 'rv_c_ref157.htm#wp1079394', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TIBRV_TIMEOUT</code></a>.
+</p>
+<a name="wp1130315"> </a><p class="pBody">
+Both <a  href="rv_cpp_ref127.htm#wp1035245"><code class="cCode">TibrvQueue</code></a> and <a  href="rv_cpp_ref144.htm#wp1037388"><code class="cCode">TibrvQueueGroup</code></a> implement this method.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1059839"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1059841"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1059843"> </a><div class="pCellBody">
+<code class="cCode">timeout</code>
+</div>
+</td>
+    <td><a name="wp1059845"> </a><div class="pCellBody">
+Maximum time (in seconds) that this call can block while waiting for an event to arrive.
+</div>
+<a name="wp1162646"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_NO_WAIT</code> (zero) indicates no blocking (immediate timeout).
+</div>
+<a name="wp1162647"> </a><div class="pCellBody">
+<code class="cCode">TIBRV_WAIT_FOREVER</code> (-1) indicates no timeout.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1059848"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1059899"> </a><p class="pBody">
+<a  href="rv_cpp_ref120.htm#wp1059389"><code class="cCode">TibrvDispatchable</code> </a>
+</p>
+<a name="wp1059903"> </a><p class="pBody">
+<a  href="rv_cpp_ref141.htm#wp1037150"><code class="cCode">TibrvQueue::timedDispatch()</code> </a>
+</p>
+<a name="wp1059907"> </a><p class="pBody">
+<a  href="rv_cpp_ref153.htm#wp1038451"><code class="cCode">TibrvQueueGroup::timedDispatch()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

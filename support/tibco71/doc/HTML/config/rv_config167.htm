@@ -1,0 +1,467 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>RvaProxy</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;7	 Rendezvous Agent&#151;rva";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1959123"> </a><h2 class="pNewHTMLPage">
+RvaProxy
+</h2>
+<hr />
+<a name="wp1959124"> </a><p class="pSyntaxType">
+Interface
+</p>
+<a name="wp1959125"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">interface com.tibco.tibrv.config.</code><code class="cCodeBold">RvaProxy</code><a name="wp1959126"> </a>
+<code class="cCode">&#160;&#160;extends </code><a  href="rv_config12.htm#wp1949843"><code class="cCode">DaemonProxy</code></a><code class="cCode"></code><a name="wp1959130"> </a>
+</pre></div>
+<a name="wp1959131"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1959135"> </a><p class="pBody">
+Define methods for Rendezvous agents.
+</p>
+<a name="wp1959259"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1959141"> </a><p class="pBody">
+&#160;
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1959145"> </a><div class="pCellHeading">
+Constant
+</div>
+</th>
+    <th><a name="wp1959147"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959152"> </a><div class="pCellBody">
+<a  href="rv_config167.htm#wp1959123"><code class="cCode">RvaProxy</code></a><code class="cCode">.DEFAULT_ACTIVE_FLUSH</code>
+</div>
+</td>
+    <td><a name="wp1959154"> </a><div class="pCellBody">
+Default value, 3 seconds.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959159"> </a><div class="pCellBody">
+<a  href="rv_config167.htm#wp1959123"><code class="cCode">RvaProxy</code></a><code class="cCode">.DEFAULT_CLIENT_TIMEOUT</code>
+</div>
+</td>
+    <td><a name="wp1959161"> </a><div class="pCellBody">
+Default value, 120 seconds.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959166"> </a><div class="pCellBody">
+<a  href="rv_config167.htm#wp1959123"><code class="cCode">RvaProxy</code></a><code class="cCode">.DEFAULT_INACTIVE_FLUSH</code>
+</div>
+</td>
+    <td><a name="wp1959168"> </a><div class="pCellBody">
+Default value, 3 seconds.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959173"> </a><div class="pCellBody">
+<a  href="rv_config167.htm#wp1959123"><code class="cCode">RvaProxy</code></a><code class="cCode">.DEFAULT_MAX_CLIENT_QUEUE</code>
+</div>
+</td>
+    <td><a name="wp1959175"> </a><div class="pCellBody">
+Default value, 500 messages.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959180"> </a><div class="pCellBody">
+<a  href="rv_config167.htm#wp1959123"><code class="cCode">RvaProxy</code></a><code class="cCode">.DEFAULT_MAX_PROXY_BUFFER</code>
+</div>
+</td>
+    <td><a name="wp1959182"> </a><div class="pCellBody">
+Default value, 8 kilobytes.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959187"> </a><div class="pCellBody">
+<a  href="rv_config167.htm#wp1959123"><code class="cCode">RvaProxy</code></a><code class="cCode">.DEFAULT_MAX_QUEUE_SIZE</code>
+</div>
+</td>
+    <td><a name="wp1959189"> </a><div class="pCellBody">
+Default value, 0 (no limit).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959194"> </a><div class="pCellBody">
+<a  href="rv_config167.htm#wp1959123"><code class="cCode">RvaProxy</code></a><code class="cCode">.DEFAULT_PING_INTERVAL</code>
+</div>
+</td>
+    <td><a name="wp1959196"> </a><div class="pCellBody">
+Default value, 120 seconds.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959201"> </a><div class="pCellBody">
+<a  href="rv_config167.htm#wp1959123"><code class="cCode">RvaProxy</code></a><code class="cCode">.DEFAULT_REQUEST_FLUSH</code>
+</div>
+</td>
+    <td><a name="wp1959203"> </a><div class="pCellBody">
+Default value, 3 seconds.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959208"> </a><div class="pCellBody">
+<a  href="rv_config167.htm#wp1959123"><code class="cCode">RvaProxy</code></a><code class="cCode">.DEFAULT_TUNNEL_PORT</code>
+</div>
+</td>
+    <td><a name="wp1959210"> </a><div class="pCellBody">
+Default value, 80.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959224"> </a><div class="pCellBody">
+<a  href="rv_config167.htm#wp1959123"><code class="cCode">RvaProxy</code></a><code class="cCode">.IDLE_STATE</code>
+</div>
+</td>
+    <td><a name="wp1959226"> </a><div class="pCellBody">
+Represent the idle state of <code class="cCode">rva</code>.
+</div>
+<a name="wp1959230"> </a><div class="pCellBody">
+Supply this constant to <a  href="rv_config171.htm#wp1959694"><code class="cCode">RvaProxy.changeState()</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959244"> </a><div class="pCellBody">
+<a  href="rv_config167.htm#wp1959123"><code class="cCode">RvaProxy</code></a><code class="cCode">.RUNNING_STATE</code>
+</div>
+</td>
+    <td><a name="wp1959246"> </a><div class="pCellBody">
+Represent the running state of <code class="cCode">rva</code>.
+</div>
+<a name="wp1959250"> </a><div class="pCellBody">
+Supply this constant to <a  href="rv_config171.htm#wp1959694"><code class="cCode">RvaProxy.changeState()</code></a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1959499"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1959265"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1959271"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1959273"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1959275"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959280"> </a><div class="pCellBody">
+<a  href="rv_config168.htm#wp1959541"><code class="cCode">RvaProxy.addExportSubject()</code></a>
+</div>
+</td>
+    <td><a name="wp1959285"> </a><div class="pCellBody">
+<a  href="rv_config168.htm#wp1959555">Add a subject for export.</a>
+</div>
+</td>
+    <td><a name="wp1959290"> </a><div class="pCellBody">
+<a  href="rv_config168.htm#wp1959541">193</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959295"> </a><div class="pCellBody">
+<a  href="rv_config170.htm#wp1959643"><code class="cCode">RvaProxy.addSubject()</code></a>
+</div>
+</td>
+    <td><a name="wp1959300"> </a><div class="pCellBody">
+<a  href="rv_config170.htm#wp1959657">Add a subject for import and export.</a>
+</div>
+</td>
+    <td><a name="wp1959305"> </a><div class="pCellBody">
+<a  href="rv_config170.htm#wp1959643">195</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959310"> </a><div class="pCellBody">
+<a  href="rv_config169.htm#wp1959592"><code class="cCode">RvaProxy.addImportSubject()</code></a>
+</div>
+</td>
+    <td><a name="wp1959315"> </a><div class="pCellBody">
+<a  href="rv_config169.htm#wp1959606">Add a subject for import.</a>
+</div>
+</td>
+    <td><a name="wp1959320"> </a><div class="pCellBody">
+<a  href="rv_config169.htm#wp1959592">194</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959325"> </a><div class="pCellBody">
+<a  href="rv_config171.htm#wp1959694"><code class="cCode">RvaProxy.changeState()</code></a>
+</div>
+</td>
+    <td><a name="wp1959329"> </a><div class="pCellBody">
+<a  href="rv_config171.htm#wp1959720">Change the state of a Rendezvous agent process.</a>
+</div>
+</td>
+    <td><a name="wp1959335"> </a><div class="pCellBody">
+<a  href="rv_config171.htm#wp1959694">196</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959355"> </a><div class="pCellBody">
+<a  href="rv_config172.htm#wp1959802"><code class="cCode">RvaProxy.getExportSubjects()</code></a>
+</div>
+</td>
+    <td><a name="wp1959360"> </a><div class="pCellBody">
+<a  href="rv_config172.htm#wp1959812">Get export subjects.</a>
+</div>
+</td>
+    <td><a name="wp1959365"> </a><div class="pCellBody">
+<a  href="rv_config172.htm#wp1959802">197</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959370"> </a><div class="pCellBody">
+<a  href="rv_config173.htm#wp1959828"><code class="cCode">RvaProxy.getHttpTunnelParams()</code></a>
+</div>
+</td>
+    <td><a name="wp1959374"> </a><div class="pCellBody">
+<a  href="rv_config173.htm#wp1959841">Get the agent&#8217;s HTTP tunnel parameters.</a>
+</div>
+</td>
+    <td><a name="wp1959380"> </a><div class="pCellBody">
+<a  href="rv_config173.htm#wp1959828">198</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959385"> </a><div class="pCellBody">
+<a  href="rv_config174.htm#wp1959859"><code class="cCode">RvaProxy.getImportSubjects()</code></a>
+</div>
+</td>
+    <td><a name="wp1959390"> </a><div class="pCellBody">
+<a  href="rv_config174.htm#wp1959869">Get import subjects.</a>
+</div>
+</td>
+    <td><a name="wp1959395"> </a><div class="pCellBody">
+<a  href="rv_config174.htm#wp1959859">199</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1976648"> </a><div class="pCellBody">
+<a  href="rv_config175.htm#wp1976578"><code class="cCode">RvaProxy.getNetworkParams()</code></a>
+</div>
+</td>
+    <td><a name="wp1976652"> </a><div class="pCellBody">
+<a  href="rv_config175.htm#wp1976592">Get parameters that specify the agent&#8217;s network connections.</a>
+</div>
+</td>
+    <td><a name="wp1976658"> </a><div class="pCellBody">
+<a  href="rv_config175.htm#wp1976578">200</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959400"> </a><div class="pCellBody">
+<a  href="rv_config176.htm#wp1959885"><code class="cCode">RvaProxy.isRunning()</code></a>
+</div>
+</td>
+    <td><a name="wp1959404"> </a><div class="pCellBody">
+<a  href="rv_config176.htm#wp1959895">Determine the state of rva&#151;running or idle.</a>
+</div>
+</td>
+    <td><a name="wp1959410"> </a><div class="pCellBody">
+<a  href="rv_config176.htm#wp1959885">201</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959415"> </a><div class="pCellBody">
+<a  href="rv_config177.htm#wp1959911"><code class="cCode">RvaProxy.removeExportSubject()</code></a>
+</div>
+<a name="wp1959419"> </a><div class="pCellBody">
+<a  href="rv_config177.htm#wp1959915"><code class="cCode">RvaProxy.removeExportSubjects()</code></a>
+</div>
+</td>
+    <td><a name="wp1959424"> </a><div class="pCellBody">
+<a  href="rv_config177.htm#wp1959938">Remove a subject for export.</a>
+</div>
+</td>
+    <td><a name="wp1959429"> </a><div class="pCellBody">
+<a  href="rv_config177.htm#wp1959911">202</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959434"> </a><div class="pCellBody">
+<a  href="rv_config178.htm#wp2022376"><code class="cCode">RvaProxy.removeImportSubject()</code></a>
+</div>
+<a name="wp1959438"> </a><div class="pCellBody">
+<a  href="rv_config178.htm#wp1959984"><code class="cCode">RvaProxy.removeImportSubjects()</code></a>
+</div>
+</td>
+    <td><a name="wp1959443"> </a><div class="pCellBody">
+<a  href="rv_config178.htm#wp1960007">Remove a subject for import.</a>
+</div>
+</td>
+    <td><a name="wp1959448"> </a><div class="pCellBody">
+<a  href="rv_config178.htm#wp2022376">203</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959453"> </a><div class="pCellBody">
+<a  href="rv_config179.htm#wp1960049"><code class="cCode">RvaProxy.removeSubject()</code></a>
+</div>
+<a name="wp1959457"> </a><div class="pCellBody">
+<a  href="rv_config179.htm#wp1960053"><code class="cCode">RvaProxy.removeSubjects()</code></a>
+</div>
+</td>
+    <td><a name="wp1959462"> </a><div class="pCellBody">
+<a  href="rv_config179.htm#wp1960076">Remove a subject for import and export.</a>
+</div>
+</td>
+    <td><a name="wp1959467"> </a><div class="pCellBody">
+<a  href="rv_config179.htm#wp1960049">204</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1976833"> </a><div class="pCellBody">
+<a  href="rv_config180.htm#wp1960198"><code class="cCode">RvaProxy.setHttpTunnelParams()</code></a>
+</div>
+</td>
+    <td><a name="wp1976837"> </a><div class="pCellBody">
+<a  href="rv_config180.htm#wp1960223">Set the agent&#8217;s HTTP tunnel parameters.</a>
+</div>
+</td>
+    <td><a name="wp1976843"> </a><div class="pCellBody">
+<a  href="rv_config180.htm#wp1960198">205</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959472"> </a><div class="pCellBody">
+<a  href="rv_config181.htm#wp1976686"><code class="cCode">RvaProxy.setNetworkParams()</code></a>
+</div>
+</td>
+    <td><a name="wp1959477"> </a><div class="pCellBody">
+<a  href="rv_config181.htm#wp1976705">Set parameters that specify the agent&#8217;s network connections.</a>
+</div>
+</td>
+    <td><a name="wp1959483"> </a><div class="pCellBody">
+<a  href="rv_config181.htm#wp1976686">208</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1959521"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1959502"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959507"> </a><p class="pBody">
+<a  href="rv_config13.htm#wp1949946"><code class="cCode">DaemonProxy.getComponentName()</code></a>
+</p>
+<a name="wp1959511"> </a><p class="pBody">
+<a  href="rv_config14.htm#wp1949960"><code class="cCode">DaemonProxy.getComponentInformation()</code></a>
+</p>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1959516"> </a><p class="pBody">
+<a  href="rv_config16.htm#wp1950057"><code class="cCode">XmlSerializable.printXml()</code></a>
+</p>
+<a name="wp1959520"> </a><p class="pBody">
+<a  href="rv_config17.htm#wp1950083"><code class="cCode">XmlSerializable.toXml()</code></a>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1959522"> </a><h4 class="pHeading3">
+Components
+</h4>
+<a name="wp1959523"> </a><p class="pBody">
+The component <code class="cCode">rva</code> supports this interface.
+</p>
+<a name="wp1959524"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1959525"> </a><p class="pBody">
+For information about the parameters that this interface can access, see these sections:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1959532"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('c', 'rv_adm76.htm#wp1054163');" onMouseOver="WWHShowPopup('c', 'rv_adm76.htm#wp1054163', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Rendezvous Agent (rva)</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em></li></div>
+
+<a name="wp1959538"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('c', 'rv_adm77.htm#wp1060489');" onMouseOver="WWHShowPopup('c', 'rv_adm77.htm#wp1060489', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Browser Administration Interface</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em></li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

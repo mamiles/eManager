@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>Strings and Character Encodings</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;1	 Concepts";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1073860"> </a><h2 class="pNewHTMLPage">
+Strings and Character Encodings
+</h2>
+<hr />
+<a name="wp1077356"> </a><p class="pBody">
+Rendezvous software uses strings in several roles:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1077357"> </a><div class="pSmartList1"><li >String data inside message fields</li></div>
+
+<a name="wp1077358"> </a><div class="pSmartList1"><li >Field names</li></div>
+
+<a name="wp1120046"> </a><div class="pSmartList1"><li >Subject names (and other <em class="cEmphasis">associated</em> strings that are not strictly <em class="cEmphasis">inside</em> the message)</li></div>
+
+<a name="wp1120047"> </a><div class="pSmartList1"><li >Certified delivery (CM) correspondent names</li></div>
+
+<a name="wp1120048"> </a><div class="pSmartList1"><li >Group names (fault tolerance)</li></div>
+
+</ul></div>
+
+<a name="wp1077364"> </a><p class="pBody">
+Java programs represent all these strings in the Unicode 2-byte character set. Before sending a message, Rendezvous software translates these strings into the character encoding appropriate to the ISO locale. Conversely, when extracting these strings from inbound messages, Rendezvous software translates these strings into Unicode, <em class="cEmphasis">as if</em> they used the encoding appropriate to the ISO locale.
+</p>
+<a name="wp1077297"> </a><p class="pBody">
+For example, the United States is locale <code class="cCode">en_US</code>, and uses the Latin-1 character encoding (also called ISO 8859-1); Japan is locale <code class="cCode">ja_JP</code>, and uses the Shift-JIS character encoding. 
+</p>
+<a name="wp1077321"> </a><p class="pBody">
+When two programs exchange messages within the same locale, the translation is correct. However, when a message sender and receiver use different character encodings, the receiving program must retranslate between encodings as needed.
+</p>
+<a name="wp1107249"> </a><p class="pBody">
+The default translation depends on the locale where Java is running. That is, the locale determines the value of the Java system property <code class="cCode">file.encoding</code>, which in turn determines the translation scheme. When this property is inaccessible, the default encoding is <code class="cCode">8859-1</code> (Latin-1). Programs can override this system property; for details, see <a  href="rv_java_ref51.htm#wp1117988"><code class="cCode">TibrvMsg.setStringEncoding()</code> </a>.
+</p>
+<a name="wp1286350"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/note.gif" border="0" /></td>
+    <td><a name="wp1286369"> </a><p class="pBody">
+Some browsers (for example, Microsoft Internet Explorer) do not permit programs to access the system property <code class="cCode">file.encoding</code>. When programs attempt to access it, the browser throws a SecurityException. Although this is normal, and the program continues to run, the browser may nonetheless print a stack trace, indicating that the program cannot access that system property.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1107251"> </a><h4 class="pHeading3">
+Outbound Translation
+</h4>
+<a name="wp1107252"> </a><p class="pBody">
+Outbound translation from Unicode to the locale-specific encoding occurs when the program sends the message (for example, using <a  href="rv_java_ref135.htm#wp1040046"><code class="cCode">TibrvTransport.send()</code></a> or a related method), or converts the message to a byte array.
+</p>
+<a name="wp1077402"> </a><p class="pBody">
+As a result, it is possible to use strings containing exotic characters (that is, Unicode characters outside the local character set), but only within the program. For example, a program might add field names with exotic characters, or add a field with string data that uses exotic characters; the program can get those fields out of the message again; however, attempting to <em class="cEmphasis">send</em> that message causes undefined behavior.
+</p>
+<a name="wp1107482"> </a><h4 class="pHeading3">
+Inbound Translation
+</h4>
+<a name="wp1107483"> </a><p class="pBody">
+Inbound translation occurs before the program receives the data.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

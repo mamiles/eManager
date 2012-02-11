@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>Router.removeNeighborInterface()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;4	 Routing Daemon&#151;rvrd";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1954838"> </a><h2 class="pNewHTMLPage">
+Router.removeNeighborInterface()
+</h2>
+<hr />
+<a name="wp1954839"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1954840"> </a><h4 class="pHeading3">
+Related Forms
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+Router.removeNeighborInterfaces()<a name="wp1954842"> </a>
+</pre></div>
+<a name="wp1954843"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_config91.htm#wp1953701"><code class="cCode">Router</code></a> <code class="cCodeBold">removeNeighborInterface</code>(<a name="wp1954847"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;interfaceId)<a name="wp1954848"> </a>
+&#160;&#160;throws <a  href="rv_config267.htm#wp1963961"><code class="cCode">ConfigurationException</code></a><a name="wp1954852"> </a>
+<a name="wp1954853"> </a>
+<a  href="rv_config91.htm#wp1953701"><code class="cCode">Router</code></a> <code class="cCodeBold">removeNeighborInterfaces</code>(<a name="wp1954857"> </a>
+&#160;&#160;&#160;&#160;java.lang.String[]&#160;&#160;interfaceIds)<a name="wp1954858"> </a>
+&#160;&#160;throws <a  href="rv_config267.htm#wp1963961"><code class="cCode">ConfigurationException</code></a><a name="wp1954862"> </a>
+</pre></div>
+<a name="wp1954863"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1954865"> </a><p class="pBody">
+Remove neighbor interfaces from the router.
+</p>
+<a name="wp1954866"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1954867"> </a><p class="pBody">
+When removing more than neighbor interface, the second method is faster than repeatedly calling the first method.
+</p>
+<a name="wp1954871"> </a><p class="pBody">
+These methods return the <a  href="rv_config91.htm#wp1953701"><code class="cCode">Router</code></a> object, so programs can conveniently chain additional method calls to the return value.
+</p>
+<a name="wp1954885"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1954874"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1954876"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1954878"> </a><div class="pCellBody">
+<code class="cCode">interfaceId</code>
+</div>
+</td>
+    <td><a name="wp1954880"> </a><div class="pCellBody">
+Remove the neighbor interface with this ID.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1954882"> </a><div class="pCellBody">
+<code class="cCode">interfaceIds</code>
+</div>
+</td>
+    <td><a name="wp1954884"> </a><div class="pCellBody">
+Remove all the neighbor interfaces specified in this array.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1954886"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp2029012"> </a><p class="pBody">
+<a  href="rv_config61.htm#wp1952132"><code class="cCode">LocalNetworkInterface</code> </a>
+</p>
+<a name="wp1954890"> </a><p class="pBody">
+<a  href="rv_config91.htm#wp1953701"><code class="cCode">Router</code> </a>
+</p>
+<a name="wp1954894"> </a><p class="pBody">
+<a  href="rv_config92.htm#wp1953972"><code class="cCode">Router.addAcceptAnyInterface()</code> </a>
+</p>
+<a name="wp1954898"> </a><p class="pBody">
+<a  href="rv_config93.htm#wp1954062"><code class="cCode">Router.addActiveInterface()</code> </a>
+</p>
+<a name="wp1954902"> </a><p class="pBody">
+<a  href="rv_config95.htm#wp1954315"><code class="cCode">Router.addPassiveInterface()</code> </a>
+</p>
+<a name="wp1954906"> </a><p class="pBody">
+<a  href="rv_config96.htm#wp1954420"><code class="cCode">Router.addSeekAnyInterface()</code> </a>
+</p>
+<a name="wp1954910"> </a><p class="pBody">
+<a  href="rv_config101.htm#wp1954692"><code class="cCode">Router.getNeighborInterfaces()</code> </a>
+</p>
+<a name="wp1954918"> </a><p class="pBody">
+For the corresponding browser page, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm55.htm#wp1209711');" onMouseOver="WWHShowPopup('c', 'rv_adm55.htm#wp1209711', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Neighbor Interfaces</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+<a name="wp1954927"> </a><p class="pBody">
+For background information, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm35.htm#wp1035365');" onMouseOver="WWHShowPopup('c', 'rv_adm35.htm#wp1035365', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Neighbors</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvErrorCallback.onError()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;11	 Exceptions and Errors";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1099426"> </a><h2 class="pNewHTMLPage">
+TibrvErrorCallback.onError()
+</h2>
+<hr />
+<a name="wp1099427"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1099428"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+void <code class="cCodeBold">onError</code>(<a name="wp1099429"> </a>
+&#160;&#160;&#160;&#160;java.lang.Object tibrvObject,<a name="wp1099430"> </a>
+&#160;&#160;&#160;&#160;int errorCode,<a name="wp1099431"> </a>
+&#160;&#160;&#160;&#160;java.lang.String message,<a name="wp1099432"> </a>
+&#160;&#160;&#160;&#160;java.lang.Throwable internal)<a name="wp1099433"> </a>
+</pre></div>
+<a name="wp1099434"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1099436"> </a><p class="pBody">
+Process asynchronous errors.
+</p>
+<a name="wp1099437"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1099441"> </a><p class="pBody">
+Rendezvous software calls this method in two asynchronous error situations:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1099445"> </a><div class="pSmartList1"><li >The connection to the Rendezvous agent has broken.</li></div>
+
+<a name="wp1107034"> </a><p class="pBodyRelative">
+In this situation, the <code class="cCode">tibrvObject</code> parameter receives the broken <a  href="rv_java_ref141.htm#wp1038873"><code class="cCode">TibrvRvaTransport</code></a> object. All listener objects associated with the broken transport are invalid.
+</p>
+<a name="wp1099450"> </a><div class="pSmartList1"><li >A subscription (listener) request failed.</li></div>
+
+<a name="wp1099454"> </a><p class="pBodyRelative">
+In this situation, the <code class="cCode">tibrvObject</code> parameter receives the <a  href="rv_java_ref82.htm#wp1031628"><code class="cCode">TibrvListener</code></a> object representing the failed subscription. This situation is rare.
+</p>
+</ul></div>
+
+<a name="wp1099456"> </a><p class="pBody">
+Programs need not respond the these errors. Programs that <em class="cEmphasis">do</em> respond to these errors usually inform the user of the problem.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1099459"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1099461"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1099463"> </a><div class="pCellBody">
+<code class="cCode">tibrvObject</code>
+</div>
+</td>
+    <td><a name="wp1099465"> </a><div class="pCellBody">
+This parameter receives the object that is the locus of the error&#151;either a <a  href="rv_java_ref141.htm#wp1038873"><code class="cCode">TibrvRvaTransport</code></a>, or a <a  href="rv_java_ref82.htm#wp1031628"><code class="cCode">TibrvListener</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1099473"> </a><div class="pCellBody">
+<code class="cCode">errorCode</code>
+</div>
+</td>
+    <td><a name="wp1099475"> </a><div class="pCellBody">
+This parameter receives a status code indicating the error. See <a  href="rv_java_ref234.htm#wp1126268"><code class="cCode">TibrvStatus</code> </a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1099480"> </a><div class="pCellBody">
+<code class="cCode">message</code>
+</div>
+</td>
+    <td><a name="wp1099482"> </a><div class="pCellBody">
+This parameter receives a printable string describing the error. In some cases, this message yields more information than the error code alone.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1099484"> </a><div class="pCellBody">
+<code class="cCode">internal</code>
+</div>
+</td>
+    <td><a name="wp1099486"> </a><div class="pCellBody">
+In some cases this parameter receives a Java exception, which can yield additional information about the cause of the error. When no further information is available, this parameter receives <code class="cCode">null</code>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

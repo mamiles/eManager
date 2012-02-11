@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Chapter&#160;9	Current Value Cache</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;9	 Current Value Cache";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1024412"> </a><h2 class="pNewHTMLPageSetChapterTitle">
+Chapter&#160;9	Current Value Cache
+</h2>
+<hr />
+<a name="wp1024413"> </a><p class="pBody">
+In many distributed applications new processes can join the system at any time. Often these new processes need access to the current information state of the system in order to function properly. In many cases a straightforward cache program can fill that need.
+</p>
+<a name="wp1024417"> </a><p class="pBody">
+The Rendezvous distribution includes a utility program called <code class="cCode">rvcache</code>, which caches the data from messages sent to each subject name. Whenever a Rendezvous program begins listening to a subject name, it can query <code class="cCode">rvcache</code> to send it the current data for that subject.
+</p>
+<a name="wp1024421"> </a><p class="pBody">
+The data cached for a subject can be either the most recent whole message on that subject, or a composite set containing the most recent value of each field sent on that subject.
+</p>
+<a name="wp1024422"> </a><p class="pBody">
+Although <code class="cCode">rvcache</code> resembles a simple database program in some respects, it differs in an important way. Namely, updates are implicit; that is, <code class="cCode">rvcache</code> monitors message activity and automatically caches the data. Application components query for data by subject.
+</p>
+<a name="wp1024423"> </a><p class="pBody">
+We recommend that administrators arrange for correct operation of <code class="cCode">rvcache</code>. This chapter describes administrative considerations; for a command summary, see <a  href="rv_adm87.htm#wp1024721"><code class="cCode">rvcache</code> </a>.
+</p>
+<a name="wp1031281"> </a><h4 class="pHeading3">
+Topics
+</h4>
+<div class="pSmartList1"><ul>
+<a name="wp1031285"> </a><div class="pSmartList1"><li ><a  href="rv_adm81.htm#wp1024432"><em class="cEmphasis">Operation</em></a></li></div>
+
+<a name="wp1031289"> </a><div class="pSmartList1"><li ><a  href="rv_adm82.htm#wp1024508"><em class="cEmphasis">Resource Requirements</em></a></li></div>
+
+<a name="wp1031290"> </a><div class="pSmartList1"><li ><a  href="rv_adm83.htm#wp1024516"><em class="cEmphasis">Avoid Duplicates</em></a></li></div>
+
+<a name="wp1031298"> </a><div class="pSmartList1"><li ><a  href="rv_adm84.htm#wp1024530"><em class="cEmphasis">Ensure Continuous Service</em></a></li></div>
+
+<a name="wp1031307"> </a><div class="pSmartList1"><li ><a  href="rv_adm85.htm#wp1024602"><em class="cEmphasis">Crossing Network Boundaries</em></a></li></div>
+
+<a name="wp1031312"> </a><div class="pSmartList1"><li ><a  href="rv_adm86.htm#wp1024692"><em class="cEmphasis">Fault Tolerance</em></a></li></div>
+
+<a name="wp1031316"> </a><div class="pSmartList1"><li ><a  href="rv_adm87.htm#wp1024721"><em class="cEmphasis">rvcache</em></a></li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

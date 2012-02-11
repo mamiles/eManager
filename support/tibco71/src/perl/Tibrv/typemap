@@ -1,0 +1,51 @@
+#
+# Copyright (c) 1999-2000 TIBCO Software Inc.
+# ALL RIGHTS RESERVED.
+# TIB/Rendezvous is protected under US Patent No. 5,187,787.
+# For more information, please contact:
+# TIBCO Software Inc., Palo Alto, California, USA
+#
+# @(#)typemap	1.2
+#
+
+tibrv_status					T_ENUM
+const char *					T_PV
+#
+# TIB/RV types
+#
+tibrv_bool					T_IV
+tibrv_i8					T_IV
+tibrv_u8					T_UV
+tibrv_i16					T_IV
+tibrv_u16					T_UV
+tibrv_i32					T_IV
+tibrv_u32					T_UV
+tibrv_i64					T_IV
+tibrv_u64                                       T_UV
+tibrv_ipaddr32					T_IV
+tibrv_ipport16					T_IV
+tibrv_f32					T_FLOAT
+tibrv_f64					T_DOUBLE
+tibrvQueueLimitPolicy				T_IV
+#
+tibrvMsg					T_PTR
+#
+# this is a packed scalar in the format of
+# "lL"
+#tibrvMsgDateTime                                T_SV
+
+
+# event/transport types
+#
+tibrvQueue					T_IV
+tibrvQueueGroup					T_IV
+tibrvTransport					T_IV
+
+tibrvEvent					T_IV
+plEvent                                         T_PTR
+tibrvEventType					T_IV
+tibrvIOType					T_ENUM
+tibrvMsgHandler_Decoder				T_PTR
+tibrvMsgField 					T_PTR
+tibrvDispatcher                                 T_UV
+tibrvDispatchable                               T_UV

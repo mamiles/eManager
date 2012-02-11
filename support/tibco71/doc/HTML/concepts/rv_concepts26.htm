@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Blocking Changes</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;2	 Architecture";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1067186"> </a><h2 class="pNewHTMLPage">
+Blocking Changes
+</h2>
+<hr />
+<a name="wp1067189"> </a><h3 class="pHeading2">
+Sleep and Select
+</h3>
+<a name="wp1103791"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/obsolete.gif" border="0" /></td>
+    <td><a name="wp1241007"> </a><p class="pBody">
+In releases 5 and earlier, we warned programmers against using calls that block, such as the operating system calls <code class="cCode">sleep()</code> and <code class="cCode">select()</code>. Release 6 (and later) removes this restriction. Programmers can use these calls as needed, without adverse effects to Rendezvous software.
+</p>
+<a name="wp1241011"> </a><p class="pBody">
+Because the event driver of release 6 (and later) is independent of program threads, operating system calls that block cannot obstruct the flow of events to queues. Nonetheless, programs must continue to dispatch queues appropriately, even when some program threads block.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1067197"> </a><h3 class="pHeading2">
+Prompt Return
+</h3>
+<a name="wp1103796"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/obsolete.gif" border="0" /></td>
+    <td><a name="wp1241024"> </a><p class="pBody">
+In releases 5 and earlier, we warned programmers to ensure that callback functions return promptly and do not block. Callback functions that did not observe these precautions would obstruct important internal mechanisms of Rendezvous software.
+</p>
+<a name="wp1241028"> </a><p class="pBody">
+Because the event driver of release 6 (and later) is independent of program threads, blocking and long-running callback functions cannot interfere with Rendezvous internal mechanisms.
+</p>
+<a name="wp1241022"> </a><div class="pCellBody">
+However, programmers must recognize that blocking and longing-running callback functions can affect program responsiveness. For most programs, we still recommend avoiding these behaviors. When callback functions must block, or must run for long periods of time, we recommend dispatching from several threads to ensure prompt processing of all events.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

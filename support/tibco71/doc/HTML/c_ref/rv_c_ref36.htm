@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvMsg_Create()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;3	 Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1064846"> </a><h2 class="pNewHTMLPage">
+tibrvMsg_Create()
+</h2>
+<hr />
+<a name="wp1064850"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1086818"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvMsg_Create</code>(<a name="wp1162499"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a>*&#160;&#160;&#160;&#160;message);<a name="wp1162503"> </a>
+<a name="wp1162508"> </a>
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvMsg_CreateEx</code>(<a name="wp1162514"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a>*&#160;&#160;&#160;&#160;message,<a name="wp1162518"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128803"><code class="cCode">tibrv_u32</code></a>&#160;&#160;&#160;&#160;initialStorage);<a name="wp1162522"> </a>
+</pre></div>
+<a name="wp1087289"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1004099"> </a><p class="pBody">
+Allocate storage and initialize it as a new message.
+</p>
+<a name="wp1087764"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1004101"> </a><p class="pBody">
+This function allocates storage for the new message. A program owns the messages that it creates, and must destroy them to reclaim the storage. That is, each call to this function must be paired with a call to <a  href="rv_c_ref39.htm#wp1010184"><code class="cCode">tibrvMsg_Destroy()</code> </a>.
+</p>
+<a name="wp1058207"> </a><p class="pBody">
+Programs can add address information to the message using <a  href="rv_c_ref63.htm#wp1005928"><code class="cCode">tibrvMsg_SetSendSubject()</code> </a>, and <a  href="rv_c_ref62.htm#wp1019042"><code class="cCode">tibrvMsg_SetReplySubject()</code> </a>.
+</p>
+<a name="wp1004357"> </a><h4 class="pHeading3">
+Message Size
+</h4>
+<a name="wp1004600"> </a><p class="pBody">
+When adding data to a message would overflow the allocated space, the message automatically expands by allocating additional storage. However, when creating messages that contain many small fields, you can optimize program performance by pre-allocating sufficient storage initially.
+</p>
+<a name="wp1004116"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1004105"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1004107"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1004109"> </a><div class="pCellBody">
+<code class="cCode">message</code>
+</div>
+</td>
+    <td><a name="wp1004111"> </a><div class="pCellBody">
+The function stores a pointer to the new message in this location.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1004113"> </a><div class="pCellBody">
+<code class="cCode">initialStorage</code>
+</div>
+</td>
+    <td><a name="wp1004115"> </a><div class="pCellBody">
+Initial space (in bytes) to allocate for the message.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1088154"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1004642"> </a><p class="pBody">
+<a  href="rv_c_ref39.htm#wp1010184"><code class="cCode">tibrvMsg_Destroy()</code> </a>
+</p>
+<a name="wp1010195"> </a><p class="pBody">
+<a  href="rv_c_ref41.htm#wp1004195"><code class="cCode">tibrvMsg_Expand()</code> </a>
+</p>
+<a name="wp1082856"> </a><p class="pBody">
+<a  href="rv_c_ref62.htm#wp1019042"><code class="cCode">tibrvMsg_SetReplySubject()</code> </a>
+</p>
+<a name="wp1082860"> </a><p class="pBody">
+<a  href="rv_c_ref63.htm#wp1005928"><code class="cCode">tibrvMsg_SetSendSubject()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

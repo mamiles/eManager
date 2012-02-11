@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvMsg()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1023389"> </a><h2 class="pNewHTMLPage">
+TibrvMsg()
+</h2>
+<hr />
+<a name="wp1023390"> </a><p class="pSyntaxType">
+Constructor
+</p>
+<a name="wp1023392"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCodeBold">TibrvMsg</code>()<a name="wp1023393"> </a>
+<a name="wp1023424"> </a>
+<code class="cCodeBold">TibrvMsg</code>(<a  href="rv_java_ref31.htm#wp1055151"><code class="cCode">TibrvMsg</code></a> msg) throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1024604"> </a>
+<a name="wp1024615"> </a>
+<code class="cCodeBold">TibrvMsg</code>(byte[] bytes) throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1024616"> </a>
+</pre></div>
+<a name="wp1024617"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1023395"> </a><p class="pBody">
+Create a message object.
+</p>
+<a name="wp1023396"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1111631"> </a><p class="pBody">
+None of these constructors place address information on the new message object.
+</p>
+<a name="wp1111632"> </a><p class="pBody">
+This class has no <code class="cCode">destroy()</code> method. Instead, the Java garbage collector reclaims storage automatically.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1111635"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1111637"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1111639"> </a><div class="pCellBody">
+<code class="cCode">msg</code>
+</div>
+</td>
+    <td><a name="wp1111641"> </a><div class="pCellBody">
+Create an independent copy of this message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1111643"> </a><div class="pCellBody">
+<code class="cCode">bytes</code>
+</div>
+</td>
+    <td><a name="wp1111645"> </a><div class="pCellBody">
+Create a message with fields populated from this byte array.
+</div>
+<a name="wp1111646"> </a><div class="pCellBody">
+For example, programs can create such byte arrays from messages using the method <a  href="rv_java_ref38.htm#wp1023508"><code class="cCode">TibrvMsg.getAsBytes()</code></a>, and store them in files; after reading them from such files, programs can reconstruct a message from its byte array.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1111651"> </a><h4 class="pHeading3">
+Method Forms
+</h4>
+<a name="wp1023468"> </a><p class="pBody">
+With no argument, create an empty message (with no fields).
+</p>
+<a name="wp1023469"> </a><p class="pBody">
+With a <a  href="rv_java_ref31.htm#wp1055151"><code class="cCode">TibrvMsg</code></a> argument, create an independent copy of that message, copying all its fields (field values are also independent copies).
+</p>
+<a name="wp1023483"> </a><p class="pBody">
+With a byte array argument, create a message with fields populated from the byte array.
+</p>
+<a name="wp1023548"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1023409"> </a><p class="pBody">
+<a  href="rv_java_ref38.htm#wp1023508"><code class="cCode">TibrvMsg.getAsBytes()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvMsgData_SetSize()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Appendix&#160;A	 Custom Datatypes";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1149186"> </a><h2 class="pNewHTMLPage">
+tibrvMsgData_SetSize()
+</h2>
+<hr />
+<a name="wp1149187"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1149188"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvMsgData_SetSize</code>(<a name="wp1149189"> </a>
+&#160;&#160;&#160;&#160;char**&#160;&#160;&#160;&#160;&#160;&#160;&#160;buffer, <a name="wp1149190"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128803"><code class="cCode">tibrv_u32</code></a>&#160;&#160;&#160;&#160;size);<a name="wp1149191"> </a>
+</pre></div>
+<a name="wp1149192"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1150060"> </a><p class="pBody">
+Write the size of data into a wire buffer for an encoder.
+</p>
+<a name="wp1150062"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1152281"> </a><p class="pBody">
+This layer 1 function helps encoders write size information to a message&#8217;s wire buffer. It does only part of the work that <a  href="rv_c_ref239.htm#wp1149570"><code class="cCode">tibrvMsgData_CopyBytes()</code></a> does (see <a  href="rv_c_ref245.htm#wp1152253">Figure&#160;17</a>):
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1152288"> </a><div class="pSmartList1"><li value="1">Write the size information into the wire buffer, starting at the position <code class="cCode">*buffer</code>.</li></div>
+
+<a name="wp1152289"> </a><div class="pSmartList1"><li value="2">Advance <code class="cCode">*buffer</code> to point to the end of the size information, which will become the start of the actual data.</li></div>
+
+<a name="wp1152290"> </a><div class="pSmartList1"><li value="3">Return.</li></div>
+
+</ol></div>
+
+<a name="wp1152294"> </a><p class="pBody">
+After <a  href="rv_c_ref245.htm#wp1149186"><code class="cCode">tibrvMsgData_SetSize()</code></a> returns, the encoder can continue by writing the data starting at the (advanced) position <code class="cCode">*buffer</code>. We recommend using the more complete function <a  href="rv_c_ref239.htm#wp1149570"><code class="cCode">tibrvMsgData_CopyBytes()</code></a> to write the size and data with one call; when finer control is required, programmers can use this function instead, with corresponding responsibility.
+</p>
+<a name="wp1152380"> </a><p class="pBody">
+When using this function, the encoder must first use <a  href="rv_c_ref237.htm#wp1149538"><code class="cCode">tibrvMsgData_ByteSize()</code></a> to measure the wire size from the data length.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1149203"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1149205"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1149207"> </a><div class="pCellBody">
+<code class="cCode">buffer</code>
+</div>
+</td>
+    <td><a name="wp1151008"> </a><div class="pCellBody">
+The encoder supplies the address of a location within the message&#8217;s wire buffer. This function writes the <code class="cCode">size</code> into the destination message, and advances this buffer pointer.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1149211"> </a><div class="pCellBody">
+<code class="cCode">size</code>
+</div>
+</td>
+    <td><a name="wp1149213"> </a><div class="pCellBody">
+Size to copy into the wire buffer.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1152253"> </a><div class="pFigureTitle">
+Figure&#160;17   tibrvMsgData_SetSize</div><div align="center"><img src="images/rv_c_refa14.gif" height="254" width="527" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1149216"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1152390"> </a><p class="pBody">
+<a  href="rv_c_ref237.htm#wp1149538"><code class="cCode">tibrvMsgData_ByteSize()</code> </a>
+</p>
+<a name="wp1152328"> </a><p class="pBody">
+<a  href="rv_c_ref239.htm#wp1149570"><code class="cCode">tibrvMsgData_CopyBytes()</code> </a>
+</p>
+<a name="wp1152332"> </a><p class="pBody">
+<a  href="rv_c_ref241.htm#wp1148962"><code class="cCode">tibrvMsgData_Encoder</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

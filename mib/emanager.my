@@ -1,0 +1,196 @@
+-- *****************************************************************
+-- CISCO-EMANAGER.my:  CISCO Emanager MIB file
+--
+-- October 2003 Marco J. Matchefts
+--
+-- Copyright (c) 2003 by cisco Systems, Inc.
+-- All rights reserved.
+-- 
+-- *****************************************************************
+--
+CISCO-EMANAGER-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+        MODULE-IDENTITY,
+        OBJECT-TYPE,
+        NOTIFICATION-TYPE
+                FROM SNMPv2-SMI
+        TEXTUAL-CONVENTION,
+        DateAndTime
+                FROM SNMPv2-TC
+        MODULE-COMPLIANCE,
+        OBJECT-GROUP,
+        NOTIFICATION-GROUP
+                FROM SNMPv2-CONF
+        ciscoMgmt
+                FROM CISCO-SMI;
+
+
+ciscoEmanagerMIB MODULE-IDENTITY
+        LAST-UPDATED    "200310010000Z"
+        ORGANIZATION    "Cisco Systems, Inc."
+        CONTACT-INFO
+                "       Cisco Systems
+                        Customer Service
+
+                Postal: 170 W Tasman Drive
+                        San Jose, CA  95134
+                        USA
+
+                   Tel: +1 800 553-NETS
+
+                E-mail: cs-snmp@cisco.com"
+        DESCRIPTION
+                "The MIB module to describe the traps supported by the 
+                Emanager application."
+        REVISION        "200310010000Z"
+        DESCRIPTION
+                "Initial Revision."
+
+        ::= { ciscoMgmt 993 }
+
+CiscoEmanagerEventType ::= TEXTUAL-CONVENTION
+        STATUS  current
+        DESCRIPTION
+                "Represents the type of the Emanager event.
+                 Valid values are:
+
+                 retransmitted(0):  the event is a retransmission of a 
+                                    previous event.
+
+                 post(1):           the event is a new event.
+
+                 clear(2):          the event is a clear indication of a
+                                    previous post event.
+                "
+        SYNTAX  INTEGER {
+                        retransmission(0),
+                        post(1),
+                        clear(2)
+                }
+
+CiscoEmanagerEventSeverityType  ::= TEXTUAL-CONVENTION
+        STATUS  current
+        DESCRIPTION
+                "Represents the severity of the Emanager event.
+                 Valid values are:
+
+                 informational(0):  an informational event.
+
+                 low(1):            a low severity level event.
+
+                 medium(2):         a medium severity level event.
+
+                 high(3):           a high severity level event.
+                "
+        SYNTAX  INTEGER {
+                        informational(0),
+                        low(1),
+                        medium(2),
+                        low(3)
+                }
+
+ciscoEmanagerMIBObjects OBJECT IDENTIFIER ::= {ciscoEmanagerMIB 1 }
+ciscoEmanagerMIBNotificationPrefix OBJECT IDENTIFIER ::= 
+	{ ciscoEmanagerMIB 2 }
+ciscoEmanagerMIBNotifications OBJECT IDENTIFIER ::= 
+	{ ciscoEmanagerMIBNotificationPrefix 0 }
+
+ciscoEmanagerEventType OBJECT-TYPE
+	SYNTAX     CiscoEmanagerEventType
+	MAX-ACCESS read-only
+	STATUS     current
+	DESCRIPTION
+		"The type of the event."
+	::= { ciscoEmanagerMIBObjects 1 }
+
+ciscoEmanagerEventTime OBJECT-TYPE
+	SYNTAX     DateAndTime
+	MAX-ACCESS read-only
+	STATUS     current
+	DESCRIPTION
+		"The time, at the source, of event generation."
+	::= { ciscoEmanagerMIBObjects 2 }
+
+ciscoEmanagerEventId OBJECT-TYPE
+	SYNTAX     INTEGER
+	MAX-ACCESS read-only
+	STATUS     current
+	DESCRIPTION
+		"The event unique identifier."
+	::= { ciscoEmanagerMIBObjects 3 }
+
+ciscoEmanagerEventSeverity OBJECT-TYPE
+	SYNTAX     CiscoEmanagerEventSeverityType
+	MAX-ACCESS read-only
+	STATUS     current
+	DESCRIPTION
+		"The event severity."
+	::= { ciscoEmanagerMIBObjects 4 }
+
+ciscoEmanagerManagedObject OBJECT-TYPE
+	SYNTAX     OCTET STRING (SIZE (0..65535))
+	MAX-ACCESS read-only
+	STATUS     current
+	DESCRIPTION
+                "The field contains the fully qualified path, from
+                 the physical view, to the managed object associated
+                 with the event."
+	::= { ciscoEmanagerMIBObjects 5 }
+
+ciscoEmanagerEventText OBJECT-TYPE
+	SYNTAX     OCTET STRING (SIZE (0..65535))
+	MAX-ACCESS read-only
+	STATUS     current
+	DESCRIPTION
+                "The field contains a textual description of the
+                 event."
+	::= { ciscoEmanagerMIBObjects 6 }
+
+ciscoEmanagerEventNotification NOTIFICATION-TYPE
+	OBJECTS {
+		ciscoEmanagerEventType,
+		ciscoEmanagerEventTime,
+		ciscoEmanagerEventId,
+		ciscoEmanagerEventSeverity,
+		ciscoEmanagerManagedObject,
+		ciscoEmanagerEventText
+		}
+	STATUS  current
+	DESCRIPTION
+		"A notification is sent as events are
+		generated against managed objects in
+		the eManager network."
+	::= { ciscoEmanagerMIBNotifications 1}
+
+-- conformance information
+
+ciscoEmanagerMIBConformance OBJECT IDENTIFIER ::= { ciscoEmanagerMIB 3 }
+ciscoEmanagerMIBCompliances OBJECT IDENTIFIER ::= 
+	{ ciscoEmanagerMIBConformance 1 }
+ciscoEmanagerMIBGroups      OBJECT IDENTIFIER ::= 
+	{ ciscoEmanagerMIBConformance 2 }
+
+-- compliance statements
+
+ciscoEnvMonMIBCompliance MODULE-COMPLIANCE
+        STATUS  current
+        DESCRIPTION
+                "The compliance statement for entities which implement
+                the Cisco Emanager MIB"
+        MODULE  -- this module
+                MANDATORY-GROUPS { ciscoEmanagerMIBNotifGroup }
+        ::= { ciscoEmanagerMIBCompliances 1 }
+
+-- units of conformance
+
+ciscoEmanagerMIBNotifGroup NOTIFICATION-GROUP
+        NOTIFICATIONS  {
+                ciscoEmanagerEventNotification
+        }
+        STATUS current
+        DESCRIPTION
+                "A collection of notifications. "
+        ::= { ciscoEmanagerMIBGroups 1 }
+
+END 

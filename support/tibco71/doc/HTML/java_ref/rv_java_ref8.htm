@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>Internet Web Site Considerations</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;1	 Concepts";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1131597"> </a><h2 class="pNewHTMLPage">
+Internet Web Site Considerations
+</h2>
+<hr />
+<a name="wp1104823"> </a><p class="pBody">
+When you design Java applets that connect to an Internet web site, pay special attention to these issues.
+</p>
+<a name="wp1104828"> </a><h3 class="pHeading2">
+Rendezvous Files
+</h3>
+<a name="wp1104832"> </a><p class="pBody">
+For correct download and operation of your applet, Rendezvous files must be available in the applet&#8217;s code base directory.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1104836"> </a><div class="pSmartList1"><li >Place the <code class="cCode">jar</code> archive file in the code base directory. The <code class="cCode">jar</code> file is named <code class="cCode">tibrvjweb.jar</code>.</li></div>
+
+<a name="wp1104846"> </a><div class="pSmartList1"><li >Embed the applet in a web page. In the HTML source file, use the <code class="cCode">&lt;APPLET&gt;</code> tag, and specify the <code class="cCode">ARCHIVE</code> argument:</li></div>
+
+<a name="wp1104852"> </a><p class="pBodyRelative">
+<code class="cCode">ARCHIVE=</code><code class="cCodeItalic">&lt;codebase_dir&gt;</code><code class="cCode">/tibrvjweb.jar</code>
+</p>
+<a name="wp1104853"> </a><p class="pBodyRelative">
+The <code class="cCode">ARCHIVE</code> argument tells browsers where to find the supporting Rendezvous package, compressed as a <code class="cCode">jar</code> file.
+</p>
+</ul></div>
+
+<a name="wp1104857"> </a><h3 class="pHeading2">
+Home Computer and Port
+</h3>
+<a name="wp1104858"> </a><p class="pBody">
+Applets connect back to an <code class="cCode">rva</code> process on the web server host computer by creating a <a  href="rv_java_ref141.htm#wp1038873"><code class="cCode">TibrvRvaTransport</code></a>. This code fragment illustrates a typical applet calling sequence:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_java_ref141.htm#wp1038873"><code style="font-weight: normal" class="cCode">TibrvRvaTransport</code></a> myTransport = new <a  href="rv_java_ref141.htm#wp1038873"><code style="font-weight: normal" class="cCode">TibrvRvaTransport</code></a>(<a name="wp1104859"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;getCodeBase().getHost(),<a name="wp1104927"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;portNum,<a name="wp1104929"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;true);<a name="wp1104935"> </a>
+</pre></div>
+<a name="wp1104860"> </a><p class="pBody">
+An <code class="cCode">rva</code> process on the home computer must be listening for client connections on the correct TCP port. Be sure that your calls to <code class="cCode">Rv</code><a  href="rv_java_ref142.htm#wp1071270"><code class="cCode">TibrvRvaTransport()</code></a> use a TCP port that matches the <code class="cCode">-listen</code> parameter of <code class="cCode">rva</code>.
+</p>
+<a name="wp1104861"> </a><h4 class="pHeading3">
+Open a Path through the Firewall
+</h4>
+<a name="wp1110809"> </a><p class="pBody">
+Request that the system administrator configure the server-side firewall so that TCP connection requests or HTTP GET and POST requests can propagate from the applet back to <code class="cCode">rva</code>. Applets can only connect if this path is open.
+</p>
+<a name="wp1110817"> </a><p class="pBody">
+See also, <a  href="javascript:WWHClickedPopup('c', 'rv_adm76.htm#wp1054163');" onMouseOver="WWHShowPopup('c', 'rv_adm76.htm#wp1054163', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Rendezvous Agent (rva)</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.
+</p>
+<a name="wp1110819"> </a><h3 class="pHeading2">
+HTTP Tunneling
+</h3>
+<a name="wp1109483"> </a><p class="pBody">
+Direct TCP connections to <code class="cCode">rva</code> yield the best performance. However, intervening firewalls and proxy servers usually prevent applets from establishing direct TCP connections to <code class="cCode">rva</code>.
+</p>
+<a name="wp1110626"> </a><p class="pBody">
+To alleviate this restriction in some situations, <code class="cCode">rva</code> can use a technique called HTTP tunneling, in which it communicates with its client applets through a TCP port using the (slower) HTTP protocol.
+</p>
+<a name="wp1110629"> </a><p class="pBody">
+This solution works in two situations:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1110828"> </a><div class="pSmartList1"><li ><a  href="rv_java_ref8.htm#wp1110824">Tunnel to the Web Server Host</a></li></div>
+
+<a name="wp1110833"> </a><div class="pSmartList1"><li ><a  href="rv_java_ref8.htm#wp1110851">Signed Applets</a></li></div>
+
+</ul></div>
+
+<a name="wp1110824"> </a><h4 class="pHeading3">
+Tunnel to the Web Server Host
+</h4>
+<a name="wp1110841"> </a><p class="pBody">
+Most web servers communicate using the default HTTP port, which is port 80. If the client-side firewall allows HTTP GET and POST requests on an HTTP port other than 80, then rva can listen for connections on that other port, and client applets can contact <code class="cCode">rva</code> on that port. The server-side firewall must also allow HTTP GET and POST requests on the same port. <a  href="rv_java_ref8.htm#wp1110480">Figure&#160;3</a> illustrates this situation.
+</p>
+<a name="wp1110480"> </a><div class="pFigureTitle">
+Figure&#160;3   HTTP Tunneling to the Web Server Host</div><div align="center"><img src="images/rv_java_refa7.gif" height="282" width="506" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1110851"> </a><h4 class="pHeading3">
+Signed Applets
+</h4>
+<a name="wp1110852"> </a><p class="pBody">
+Most browsers allow <em class="cEmphasis">signed</em> applets to connect to computers other than the web server host. If <code class="cCode">rva</code> runs on a host computer other than the web server host, then <code class="cCode">rva</code> can listen on HTTP port 80, and signed applet clients can contact it. <a  href="rv_java_ref8.htm#wp1110502">Figure&#160;4</a> illustrates this situation. However, <em class="cEmphasis">unsigned</em> applets can connect only to the web server host; browsers prevent unsigned applets from connecting to any other computer.
+</p>
+<a name="wp1110502"> </a><div class="pFigureTitle">
+Figure&#160;4   HTTP Tunneling to a Separate rva Host</div><div align="center"><img src="images/rv_java_refa8.gif" height="283" width="530" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1110895"> </a><h3 class="pHeading2">
+Isolate External from Internal
+</h3>
+<a name="wp1110899"> </a><p class="pBody">
+The book <em class="cEmphasis">TIBCO Rendezvous Administration</em> discusses strategies for isolating separate pathways for various application programs. These strategies are even more important in the context of Java applets, so you can protect your internal network and its Rendezvous programs from external applets.
+</p>
+<a name="wp1110903"> </a><p class="pBody">
+Techniques include using separate UDP or PGM services and multicast addressing. For more information, see <a  href="javascript:WWHClickedPopup('c', 'rv_adm13.htm#wp1019197');" onMouseOver="WWHShowPopup('c', 'rv_adm13.htm#wp1019197', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Network Details</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

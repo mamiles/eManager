@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvTimer::create()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1128172"> </a><h2 class="pNewHTMLPage">
+TibrvTimer::create()
+</h2>
+<hr />
+<a name="wp1128173"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1128174"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">create</code> (<a name="wp1128279"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_cpp_ref127.htm#wp1035245"><code class="cCode">TibrvQueue</code></a>* queue,<a name="wp1128289"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_cpp_ref98.htm#wp1158877"><code class="cCode">TibrvCallback</code></a>* callback,<a name="wp1144679"> </a>
+&#160;&#160;&#160;&#160;tibrv_f64 interval,<a name="wp1144680"> </a>
+&#160;&#160;&#160;&#160;const void* closure = NULL);<a name="wp1144681"> </a>
+</pre></div>
+<a name="wp1128181"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1128183"> </a><p class="pBody">
+Start a timer.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1128193"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1128195"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1128203"> </a><div class="pCellBody">
+<code class="cCode">queue</code>
+</div>
+</td>
+    <td><a name="wp1128205"> </a><div class="pCellBody">
+At each time interval, place the event on this event queue.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1128207"> </a><div class="pCellBody">
+<code class="cCode">callback</code>
+</div>
+</td>
+    <td><a name="wp1128209"> </a><div class="pCellBody">
+On dispatch, process the event with this callback object.
+</div>
+<a name="wp1144686"> </a><div class="pCellBody">
+This object can be an instance of class <a  href="rv_cpp_ref112.htm#wp1128502"><code class="cCode">TibrvTimerCallback</code></a>, or its superclass <a  href="rv_cpp_ref98.htm#wp1158877"><code class="cCode">TibrvCallback</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1128211"> </a><div class="pCellBody">
+<code class="cCode">interval</code>
+</div>
+</td>
+    <td><a name="wp1128213"> </a><div class="pCellBody">
+The timer triggers its callback method at this repeating interval (in seconds).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1128215"> </a><div class="pCellBody">
+<code class="cCode">closure</code>
+</div>
+</td>
+    <td><a name="wp1128217"> </a><div class="pCellBody">
+Store this closure data in the event object.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1128219"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1128373"> </a><p class="pBody">
+This method creates a C timer, activates it, and stores its handle in the C++ object.
+</p>
+<a name="wp1128244"> </a><h4 class="pHeading3">
+Timer Granularity
+</h4>
+<a name="wp1128245"> </a><p class="pBody">
+Express the timer interval (in seconds) as a 64-bit floating point number. This representation allows microsecond granularity for intervals for over 100 years. The actual granularity of intervals depends on hardware and operating system constraints.
+</p>
+<a name="wp1128246"> </a><h4 class="pHeading3">
+Zero as Interval
+</h4>
+<a name="wp1128247"> </a><p class="pBody">
+Many programmers traditionally implement user events as timers with interval zero. Instead, we recommend implementing user events as messages on the intra-process transport. For more information, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts76.htm#wp1029257');" onMouseOver="WWHShowPopup('a', 'rv_concepts76.htm#wp1029257', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Intra-Process Transport and User Events</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</p>
+<a name="wp1200192"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1200199"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts67.htm#wp1024765');" onMouseOver="WWHShowPopup('a', 'rv_concepts67.htm#wp1024765', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Timer Event Semantics</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+<a name="wp1200203"> </a><p class="pBody">
+<a  href="rv_cpp_ref89.htm#wp1068928"><code class="cCode">TibrvEvent::destroy()</code> </a>
+</p>
+<a name="wp1200207"> </a><p class="pBody">
+<a  href="rv_cpp_ref112.htm#wp1128502"><code class="cCode">TibrvTimerCallback</code> </a>
+</p>
+<a name="wp1200211"> </a><p class="pBody">
+<a  href="rv_cpp_ref113.htm#wp1098711"><code class="cCode">TibrvTimerCallback::onTimer()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

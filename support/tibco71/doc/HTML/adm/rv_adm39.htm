@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Common Topology Errors</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1085471"> </a><h2 class="pNewHTMLPage">
+Common Topology Errors
+</h2>
+<hr />
+<a name="wp1067327"> </a><p class="pBody">
+This section describes two variants of an erroneous routing configuration.
+</p>
+<a name="wp1067317"> </a><h3 class="pHeading2">
+Neighbors on the Same Network
+</h3>
+<a name="wp1067318"> </a><p class="pBody">
+It is an error to configure two neighbors to serve the same logical local network (network and service).
+</p>
+<a name="wp1045629"> </a><p class="pBody">
+Since no gain could possibly result from forwarding messages from a network to the same network, it might seem that this error is rather rare. Nonetheless, in actual practice this error occurs rather frequently as an oversight.
+</p>
+<a name="wp1045645"> </a><p class="pBody">
+Consider the situation in <a  href="rv_adm39.htm#wp1037645">Figure&#160;14</a>. In the desired outcome, neighbors on computers <code class="cCode">gemini</code> and <code class="cCode">taurus</code> exchange messages on UDP or PGM service <code class="cCode">7500</code> between the two networks, <code class="cCode">Castor.star.com</code> and <code class="cCode">Pollux.star.com</code>. Because computer <code class="cCode">gemini</code> has two network interfaces, the administrator attempts to limit <code class="cCode">rvrd</code> operation to only <code class="cCode">Castor.star.com</code>. Nonetheless, the routing daemon on <code class="cCode">gemini</code> still receives messages from <code class="cCode">Pollux.star.com</code> through its other interface (to understand the reason for this behavior, see <a  href="rv_adm16.htm#wp1019374">Limitation on Computers with Multiple Network Interfaces</a>). Because the two neighbors both serve the same network, <code class="cCode">Pollux.star.com</code>, erroneous behavior results.
+</p>
+<a name="wp1037639"> </a><p class="pBody">
+If <code class="cCode">gemini</code> had only one network interface, <code class="cCode">Castor.star.com</code>, the routing daemons would operate correctly.
+</p>
+<a name="wp1054686"> </a><p class="pBody">
+When the routing daemon detects a topology error of this kind, it outputs an error message. Administrators must correct this situation immediately.
+</p>
+<a name="wp1037645"> </a><div class="pFigureTitle">
+Figure&#160;14   Erroneous Neighbors on the Same Network</div><div align="center"><img src="images/rv_adma2.gif" height="364" width="529" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1020778"> </a><h3 class="pHeading2">
+Duplicating Effort
+</h3>
+<a name="wp1020779"> </a><p class="pBody">
+It is an error to use routing daemons to duplicate the effort of another forwarding mechanism (for example, a hardware router, or another pair of routing daemon neighbors. (This error is actually a variation of the error described in <a  href="rv_adm39.htm#wp1067317">Neighbors on the Same Network</a>.)
+</p>
+<a name="wp1020786"> </a><p class="pBody">
+Consider the situation in <a  href="rv_adm39.htm#wp1023016">Figure&#160;15</a>. Two mechanisms forward messages between the two networks&#151;the hardware router and a pair of routing daemons (<code class="cCode">A.a.bad.com</code> and <code class="cCode">B.b.bad.com</code>). When a program on network <code class="cCode">a.bad.com</code> sends a message, routing daemon <code class="cCode">A</code> forwards it to its neighbor <code class="cCode">B</code>, which redistributes it on network <code class="cCode">b.bad.com</code>. When the hardware router receives the redistributed message, it forwards it back to network <code class="cCode">a.bad.com</code>, where <code class="cCode">A</code> detects the duplication and produces an error message.
+</p>
+<a name="wp1020787"> </a><p class="pBody">
+This kind of error can occur in either broadcast or multicast situations. However, it is especially common in environments where hardware routers enable multicast routing. Upgrading a hardware router can trigger this error.
+</p>
+<a name="wp1059591"> </a><p class="pBody">
+Upgrading <code class="cCode">rvrd</code> from release 5 to release 6 (or later) provides another fertile environment for this error. When both routing daemons run concurrently in the same network, be careful to avoid duplicate service.
+</p>
+<a name="wp1067328"> </a><p class="pBody">
+To repair the situation, remove one of the routing daemons, or disable hardware multicast routing.
+</p>
+<a name="wp1023016"> </a><div class="pFigureTitle">
+Figure&#160;15   Routing Daemons and Duplication</div><div align="center"><img src="images/rv_adma10.gif" height="463" width="529" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

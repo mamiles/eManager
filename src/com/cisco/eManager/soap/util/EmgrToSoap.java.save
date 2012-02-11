@@ -1,0 +1,126 @@
+package com.cisco.eManager.soap.common;
+
+public class EmgrToSoap
+{
+	private static EmgrToSoap _instance = null;
+	
+	private EmgrToSoap()
+	{
+	}
+
+	public static EmgrToSoap instance()
+	{
+		if (_instance == null)
+			_instance = new EmgrToSoap();
+		return _instance;
+	}
+
+	///////////////////////////////////////////////////////////////////
+	// conversion routine for ProcessManager
+	//
+	///////////////////////////////////////////////////////////////////
+	
+	public static com.cisco.eManager.soap.common.process.ProcessInfoObj getProcessInfoObj(
+		com.cisco.eManager.common.process.ProcessInfoObj e_obj)
+	{
+		if (e_obj == null) 
+			return null;
+
+		com.cisco.eManager.soap.common.process.ProcessInfoObj s_obj = 
+			new com.cisco.eManager.soap.common.process.ProcessInfoObj();
+
+		// s_obj.setExecTime(e_obj.getExecTime());
+    		s_obj.setHeartbeatResult(e_obj.getHeartbeatResult());
+		s_obj.setHostname(e_obj.getHostname());
+		s_obj.setIsMonitor(e_obj.getIsMonitor());
+		s_obj.setMissedHeartbeats(e_obj.getMissedHeartbeats());
+		s_obj.setProcessId(e_obj.getProcessId());
+		s_obj.setProcessName(e_obj.getProcessName());
+		s_obj.setStartGeneration(e_obj.getStartGeneration());
+		s_obj.setState(e_obj.getState());
+		s_obj.setSuccessfulHeartbeats(e_obj.getSuccessfulHeartbeats());
+		s_obj.setUsesNativeLogging(e_obj.getUsesNativeLogging());
+		s_obj.setValid(e_obj.isValid());
+
+		return s_obj;
+	}
+	
+	public static com.cisco.eManager.soap.common.process.ProcessInfoObj[] getProcessInfoObjs(
+		com.cisco.eManager.common.process.ProcessInfoObj [] e_objs)
+	{
+		com.cisco.eManager.soap.common.process.ProcessInfoObj[] s_objs = new com.cisco.eManager.soap.common.process.ProcessInfoObj[e_objs.length];
+		for (int i=0; i<e_objs.length; i++)
+			s_objs[i] = getProcessInfoObj(e_objs[i]);
+		return s_objs;
+	}
+
+	public static com.cisco.eManager.soap.common.process.ProcessInfoRec getProcessInfoRec(
+		com.cisco.eManager.common.process.ProcessInfoRec e_obj)
+	{
+		if (e_obj == null)
+			return null;
+
+		com.cisco.eManager.soap.common.process.ProcessInfoRec s_obj = new com.cisco.eManager.soap.common.process.ProcessInfoRec();
+		// s_obj.setExecTime(e_obj.getExecTime());
+    		s_obj.setHeartbeatResult(e_obj.getHeartbeatResult());
+		s_obj.setHostname(e_obj.getHostname());
+		s_obj.setIsMonitor(e_obj.getIsMonitor());
+		s_obj.setMissedHeartbeats(e_obj.getMissedHeartbeats());
+		s_obj.setProcessId(e_obj.getProcessId());
+		s_obj.setProcessName(e_obj.getProcessName());
+		s_obj.setStartGeneration(e_obj.getStartGeneration());
+		s_obj.setState(e_obj.getState());
+		s_obj.setSuccessfulHeartbeats(e_obj.getSuccessfulHeartbeats());
+		s_obj.setUsesNativeLogging(e_obj.getUsesNativeLogging());
+		s_obj.setValid(e_obj.isValid());
+	
+		return s_obj;
+	}
+		 
+
+	public static com.cisco.eManager.soap.common.process.SolutionStatusInfoObj getSolutionStatusInfoObj(
+		com.cisco.eManager.common.process.SolutionStatusInfoObj e_obj)
+	{
+		if (e_obj == null)
+			return null;
+
+		com.cisco.eManager.soap.common.process.SolutionStatusInfoObj s_obj = new com.cisco.eManager.soap.common.process.SolutionStatusInfoObj();
+		s_obj.setAppInstance(e_obj.getAppInstance());
+		s_obj.setAppType(e_obj.getAppType());
+		s_obj.setSolutionName(e_obj.getSolutionName());
+		s_obj.setState(e_obj.getState());
+		s_obj.setValid(e_obj.isValid());
+
+		return s_obj;
+	}
+
+	public static com.cisco.eManager.soap.common.process.SolutionStatusInfoObj[] getSolutionStatusInfoObjs(
+		com.cisco.eManager.common.process.SolutionStatusInfoObj[] e_objs)
+	{
+		com.cisco.eManager.soap.common.process.SolutionStatusInfoObj[] s_objs = new com.cisco.eManager.soap.common.process.SolutionStatusInfoObj[e_objs.length];
+		
+		for (int i=0; i<e_objs.length; i++)
+			s_objs[i] = getSolutionStatusInfoObj(e_objs[i]);
+		
+		return s_objs;
+	}
+	
+	public static com.cisco.eManager.soap.common.inventory.LogLevel getLogLevel(
+		com.cisco.eManager.common.inventory.LogLevel e_obj)
+	{
+		if (e_obj == null)
+			return null; 
+		com.cisco.eManager.soap.common.inventory.LogLevel s_obj = new com.cisco.eManager.soap.common.inventory.LogLevel();
+		s_obj.setConfig(e_obj.isConfig());
+		s_obj.setFine(e_obj.isFine());
+		s_obj.setFiner(e_obj.isFiner());
+		s_obj.setFinest(e_obj.isFinest());
+		s_obj.setInfo(e_obj.isInfo());
+		s_obj.setSevere(e_obj.isSevere());
+		s_obj.setWarning(e_obj.isWarning());
+
+		return s_obj;
+	}
+
+}
+			

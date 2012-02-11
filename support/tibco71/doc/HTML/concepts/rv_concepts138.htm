@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Prepare-to-Activate Hints</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;13	 Fault Tolerance Concepts";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1057458"> </a><h2 class="pNewHTMLPage">
+Prepare-to-Activate Hints
+</h2>
+<hr />
+<a name="wp1057459"> </a><p class="pBody">
+Before becoming active, some programs might need to do one or more time-consuming steps, such as opening an ISDN line or opening a database connection. Such programs need time to prepare before they can activate. They can request that Rendezvous fault tolerance software issue a <em class="cEmphasis">prepare-to-activate</em> hint&#151;an early warning that an activate instruction might soon arrive.
+</p>
+<a name="wp1057464"> </a><h3 class="pHeading2">
+Requesting Hints
+</h3>
+<a name="wp1057465"> </a><p class="pBody">
+When a process joins a fault tolerance group, it may specify a <em class="cEmphasis">preparation interval</em> as a parameter.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1057466"> </a><div class="pSmartList1"><li >A zero value indicates that the program does not need advance warning before it can activate. Rendezvous fault tolerance software does not issue prepare-to-activate hints.</li></div>
+
+<a name="wp1057473"> </a><div class="pSmartList1"><li >Any non-zero value is a request for advance warning. Rendezvous fault tolerance software issues a prepare-to-activate hint before an instruction to activate.</li></div>
+
+</ul></div>
+
+<a name="wp1057474"> </a><h3 class="pHeading2">
+Timing of Hints
+</h3>
+<a name="wp1057478"> </a><p class="pBody">
+When a member requests advance warning, Rendezvous fault tolerance software <em class="cEmphasis">always</em> issues a prepare-to-activate hint before each instruction to activate. The ranking inactive member always receives them in the correct order, but cannot rely on the time between them. The intervening time may equal the difference between the activation interval and the preparation interval, or it may be less; however, it is never greater than this difference.
+</p>
+<a name="wp1057479"> </a><h3 class="pHeading2">
+Hints Do Not Imply Subsequent Activation
+</h3>
+<a name="wp1057480"> </a><p class="pBody">
+A prepare-to-activate hint is just that&#151;a hint. This hint does not necessarily imply that the member will definitely need to activate. It is possible for a member to receive several such hints without an instruction to activate.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Multicast Data Statistics</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;11	 Protocol Monitor (rvtrace)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1097600"> </a><h2 class="pNewHTMLPage">
+Multicast Data Statistics
+</h2>
+<hr />
+<a name="wp1102143"> </a><p class="pBody">
+<a  href="rv_adm115.htm#wp1102154">Figure&#160;49</a> shows a multicast data table (from <code class="cCode">rvtrace -addrinfo</code>). The text below introduces important concepts. <a  href="rv_adm115.htm#wp1128355">Table&#160;9</a> describes the columns in detail.
+</p>
+<a name="wp1102154"> </a><div class="pFigureTitle">
+Figure&#160;49   Multicast and Broadcast Data Statistics</div><div align="center"><img src="images/rv_adma15.gif" height="219" width="599" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1102228"> </a><p class="pBody">
+Notice that the rows divide visually into four groups, as indicated by a number in the <a  href="rv_adm115.htm#wp1128365"><code class="cCode">Port</code></a> column and an asterisk (<code class="cCode">*</code>).
+</p>
+<a name="wp1100731"> </a><h4 class="pHeading3">
+Network Total Row
+</h4>
+<a name="wp1102040"> </a><p class="pBody">
+The first row (immediately after the table and column headings, and before the four groups) is a <em class="cEmphasis">network total row;</em> the word <code class="cCode">Totals</code> in the <code class="cCode">Address</code> column is a visual cue. This row shows the grand total of multicast and broadcast packets on the network during the interval. For example, the <a  href="rv_adm115.htm#wp1128388"><code class="cCode">Data</code></a> column shows the total number of data packets that <code class="cCode">rvtrace</code> detected on the network during the interval.
+</p>
+<a name="wp1107565"> </a><p class="pBody">
+The remaining rows display more fine-grained information about those packets&#151;grouping them by UDP service, destination address, and source address.
+</p>
+<a name="wp1102042"> </a><h4 class="pHeading3">
+Subtotal Groups
+</h4>
+<a name="wp1100786"> </a><p class="pBody">
+A number in the <a  href="rv_adm115.htm#wp1128365"><code class="cCode">Port</code></a> column indicates the UDP service for its row, and the group of rows that follow it. A blank in this column means that the row has the same port as the row above, and is part of the same subtotal group. Notice how the pattern of numbers and blanks in the <a  href="rv_adm115.htm#wp1128365"><code class="cCode">Port</code></a> column visually indicates the subtotal groups.
+</p>
+<a name="wp1100588"> </a><h4 class="pHeading3">
+Destination Row
+</h4>
+<a name="wp1102051"> </a><p class="pBody">
+<code class="cCode">*</code> flags a row as a <em class="cEmphasis">destination subtotal row</em>. A blank (space character) in this column flags a row as a <em class="cEmphasis">source</em> row. Each group begins with a destination subtotal row, followed by one or more source rows.
+</p>
+<a name="wp1265249"> </a><p class="pBody">
+Each destination subtotal row is the heading and subtotal for the source rows that follow it. For example, consider the destination row with <code class="cCode">5090</code> in the <code class="cCode">Port</code> column, and <code class="cCode">224.1.2.5</code> in the <a  href="rv_adm115.htm#wp1128380"><code class="cCode">Address</code></a> column. The <a  href="rv_adm115.htm#wp1128388"><code class="cCode">Data</code></a> column indicates 10 packets on UDP service <code class="cCode">5090</code> sent to the multicast group <code class="cCode">224.1.2.5</code>. The two subsequent source rows indicate that those 10 packets came from two sources&#151;<code class="cCode">10.101.2.57</code> sent 2 packets, while <code class="cCode">10.101.2.72</code> sent 8 packets. The subtotal 10 in turn contributes to the grand total 25 in the first row.
+</p>
+<a name="wp1104460"> </a><p class="pBody">
+A destination subtotal row <em class="cEmphasis">governs</em> the source rows below it (until the next destination subtotal row). That is, the UDP service (port) and address in the <em class="cEmphasis">governing row</em> apply to those source rows. Similarly, the governing row address implies either multicast or broadcast protocol, and this protocol also applies to the statistics in the source rows that it governs. (Naturally, all of this information also applies to the governing row itself.)
+</p>
+<a name="wp1102080"> </a><h4 class="pHeading3">
+Source Row
+</h4>
+<a name="wp1102083"> </a><p class="pBody">
+Each <em class="cEmphasis">source row</em> shows a very narrow subset of packet activity during the interval&#151;packets on a specific UDP service (port), with a specific destination address, and <em class="cEmphasis">originating</em> at a specific source (IP address). The <a  href="rv_adm115.htm#wp1128380"><code class="cCode">Address</code></a> column shows the source; the UDP service and destination address are specified in the governing row (that is, the nearest preceding destination subtotal row).
+</p>
+<a name="wp1107950"> </a><h4 class="pHeading3">
+Statistics
+</h4>
+<a name="wp1107955"> </a><p class="pBody">
+In <em class="cEmphasis">destination rows</em> numbers in statistics columns count packets with the destination specified in the <a  href="rv_adm115.htm#wp1128380"><code class="cCode">Address</code></a> column.
+</p>
+<a name="wp1107959"> </a><p class="pBody">
+In <em class="cEmphasis">source rows</em> numbers in statistics columns count packets originating from the IP address in the <a  href="rv_adm115.htm#wp1128380"><code class="cCode">Address</code></a> column.
+</p>
+<a name="wp1107963"> </a><p class="pBody">
+In <em class="cEmphasis">network total rows</em>, numbers in statistics columns represent the packet totals for the network during the interval.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1128355"> </a><div class="pTableTitle">
+Table&#160;9   Multicast Data Statistics&#151;Column Headings (Sheet 1 of 3)
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1128359"> </a><div class="pCellHeading">
+Column
+</div>
+</th>
+    <th><a name="wp1128361"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1128365"> </a><div class="pCellBody">
+<code class="cCode">Port</code>
+</div>
+</td>
+    <td><a name="wp1128367"> </a><div class="pCellBody">
+In <em class="cEmphasis">destination subtotal rows,</em> this column contains a UDP port number indicating the Rendezvous service for the group of rows that it begins.
+</div>
+<a name="wp1128371"> </a><div class="pCellBody">
+In <em class="cEmphasis">source rows</em> this column is blank; the service in the nearest preceding destination row also applies to the source row.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1128373"> </a><div class="pCellBody">
+*
+</div>
+</td>
+    <td><a name="wp1128375"> </a><div class="pCellBody">
+Asterisk (<code class="cCode">*</code>) in this unlabeled column indicates a destination subtotal row.
+</div>
+<a name="wp1128376"> </a><div class="pCellBody">
+Blank in this column indicates a source row.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1128380"> </a><div class="pCellBody">
+<code class="cCode">Address</code>
+</div>
+</td>
+    <td><a name="wp1128382"> </a><div class="pCellBody">
+In <em class="cEmphasis">destination rows</em> this column shows the destination address shared among a group of packets. It can be an IP address or a multicast group.
+</div>
+<a name="wp1128383"> </a><div class="pCellBody">
+In <em class="cEmphasis">source rows</em> this column shows the IP address from which group of packets originate.
+</div>
+<a name="wp1128384"> </a><div class="pCellBody">
+In <em class="cEmphasis">network total rows</em>, this column contains the word <code class="cCode">Totals</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1128388"> </a><div class="pCellBody">
+<code class="cCode">Data</code>
+</div>
+</td>
+    <td><a name="wp1128390"> </a><div class="pCellBody">
+Data packets.
+</div>
+<a name="wp1128391"> </a><div class="pCellBody">
+This column shows the number of multicast or broadcast data packets.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1128395"> </a><div class="pCellBody">
+<code class="cCode">Bytes</code>
+</div>
+</td>
+    <td><a name="wp1128397"> </a><div class="pCellBody">
+Data bytes.
+</div>
+<a name="wp1128398"> </a><div class="pCellBody">
+This column sums the number of payload bytes over the data packets (as counted in the <a  href="rv_adm115.htm#wp1128388"><code class="cCode">Data</code></a> column).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1128404"> </a><div class="pCellBody">
+<code class="cCode">Null</code>
+</div>
+</td>
+    <td><a name="wp1128406"> </a><div class="pCellBody">
+Null packets.
+</div>
+<a name="wp1128411"> </a><div class="pCellBody">
+When a Rendezvous daemon has no data packets to transmit, it periodically sends <em class="cEmphasis">null packets</em> to maintain continuity. This column displays the number of null packets that <code class="cCode">rvtrace</code> detected.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1128415"> </a><div class="pCellBody">
+<code class="cCode">Rdata</code>
+</div>
+</td>
+    <td><a name="wp1128417"> </a><div class="pCellBody">
+Retransmitted data packets.
+</div>
+<a name="wp1128418"> </a><div class="pCellBody">
+<code class="cCode">rvtrace</code> counts retransmitted packets separately from first-time data packets. This column displays the number <em class="cEmphasis">retransmitted</em> data packets during the interval. Semantics of this column are otherwise analogous to the <a  href="rv_adm115.htm#wp1128388"><code class="cCode">Data</code></a> column.
+</div>
+<a name="wp1128424"> </a><div class="pCellBody">
+For statistics concerning retransmission requests and rejections, see <a  href="rv_adm116.htm#wp1107281">Multicast Retransmit Statistics</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1128429"> </a><div class="pCellBody">
+<code class="cCode">Rbytes</code>
+</div>
+</td>
+    <td><a name="wp1128431"> </a><div class="pCellBody">
+Retransmitted bytes.
+</div>
+<a name="wp1128432"> </a><div class="pCellBody">
+This column sums the number of payload bytes over the retransmitted data packets (as counted in the <a  href="rv_adm115.htm#wp1128415"><code class="cCode">Rdata</code></a> column).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1128439"> </a><div class="pCellBody">
+<code class="cCode">Gaps</code>
+</div>
+</td>
+    <td><a name="wp1128441"> </a><div class="pCellBody">
+Sequence gaps.
+</div>
+<a name="wp1128448"> </a><p class="pBody">
+<code class="cCode">rvtrace</code> tracks the serial numbers of Rendezvous packets. The <a  href="rv_adm115.htm#wp1128439"><code class="cCode">Gaps</code></a> column counts the missing packets in each sequence of multicast or broadcast data packets.
+</p>
+<a name="wp1128452"> </a><div class="pCellBody">
+For more information, see <a  href="rv_adm115.htm#wp1117882">Gaps Diagnoses</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1128455"> </a><div class="pCellBody">
+<code class="cCode">Bad</code>
+</div>
+</td>
+    <td><a name="wp1128457"> </a><div class="pCellBody">
+Bad packets.
+</div>
+<a name="wp1128458"> </a><div class="pCellBody">
+This column shows the number of packets that lack UDP checksums, or are corrupt in some other way.
+</div>
+<img src="images/warning.gif" border="0" /><a name="wp1128463"> </a><div class="pCellBody">
+<em class="cEmphasis">Any</em> non-zero value in this column reflects a severe misconfiguration or network problem. Remedy the situation immediately.
+</div>
+<a name="wp1128666"> </a><div class="pCellBody">
+<b class="cBold">Note: </b>Checksums are crucial to correct operation of Rendezvous software; see <a  href="rv_adm6.htm#wp1059798">Enable Packet Checksums</a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1117882"> </a><h3 class="pHeading2">
+Gaps Diagnoses
+</h3>
+<a name="wp1117885"> </a><p class="pBody">
+A sequence gap can occur in two situations:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1117886"> </a><div class="pSmartList1"><li ><code class="cCode">rvtrace</code> misses one or more packets; that is, the hardware or operating system on which <code class="cCode">rvtrace</code> is running drops one or more packets.</li></div>
+
+<a name="wp1117887"> </a><div class="pSmartList1"><li >The network infrastructure drops one or more packets between their source and <code class="cCode">rvtrace</code>.</li></div>
+
+</ul></div>
+
+<a name="wp1117891"> </a><p class="pBody">
+To determine which of these two situations has actually occurred, check the <a  href="rv_adm115.htm#wp1128415"><code class="cCode">Rdata</code></a> values within the interval and in subsequent intervals. If <code class="cCode">Rdata</code> remains at zero, then it is likely that <code class="cCode">rvtrace</code> alone is missing packets. If <code class="cCode">Rdata</code> is non-zero, then it is likely that the network infrastructure is dropping packets (<code class="cCode">Rdata</code> is non-zero because other daemons on the network are requesting retransmission of the missing packets).
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

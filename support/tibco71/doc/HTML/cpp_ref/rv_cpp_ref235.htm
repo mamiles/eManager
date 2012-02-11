@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvCmTransport::getDefaultTimeLimit()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;9	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1084825"> </a><h2 class="pNewHTMLPage">
+TibrvCmTransport::getDefaultTimeLimit()
+</h2>
+<hr />
+<a name="wp1084829"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1084830"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">getDefaultTimeLimit</code>(<a name="wp1140078"> </a>
+&#160;&#160;&#160;&#160;tibrv_f64&amp; timeLimit) const;<a name="wp1140088"> </a>
+</pre></div>
+<a name="wp1084834"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1084835"> </a><p class="pBody">
+Get the default message time limit for all outbound certified messages from a transport.
+</p>
+<a name="wp1084836"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1084837"> </a><p class="pBody">
+Every labeled message has a time limit, after which the sender no longer certifies delivery.
+</p>
+<a name="wp1084838"> </a><p class="pBody">
+Sending programs can explicitly set the time limit on a message (see <a  href="rv_cpp_ref256.htm#wp1085793"><code class="cCode">TibrvCmMsg::setTimeLimit()</code> </a>). If a time limit is not already set for the outbound message, the transport sets it to the transport&#8217;s default time limit (extractable with this method); if this default is not set for the transport (nor for the message), the default time limit is zero (no time limit).
+</p>
+<a name="wp1084842"> </a><p class="pBody">
+Time limits represent the minimum time that certified delivery is in effect.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1140116"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1140121"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1140123"> </a><div class="pCellBody">
+<code class="cCode">timeLimit</code>
+</div>
+</td>
+    <td><a name="wp1140125"> </a><div class="pCellBody">
+The program supplies a variable, and the method stores the time limit in that variable.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1084857"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1084861"> </a><p class="pBody">
+<a  href="rv_cpp_ref248.htm#wp1227529"><code class="cCode">TibrvCmTransport::setDefaultTimeLimit()</code> </a>
+</p>
+<a name="wp1084865"> </a><p class="pBody">
+<a  href="rv_cpp_ref256.htm#wp1085793"><code class="cCode">TibrvCmMsg::setTimeLimit()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

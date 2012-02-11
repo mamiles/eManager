@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>Data Accessors</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;1	 Overview";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1949520"> </a><h2 class="pNewHTMLPage">
+Data Accessors
+</h2>
+<hr />
+<a name="wp1949521"> </a><h3 class="pHeading2">
+Immediate Access
+</h3>
+<a name="wp1949522"> </a><p class="pBody">
+Proxy interfaces and immediate-access data structure classes define methods that access data within component processes. These methods access data <em class="cEmphasis">immediately</em> (though indirectly):
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1949523"> </a><div class="pSmartList1"><li >Methods that <em class="cEmphasis">get</em> data from the component always fetch new data with each call (they do not return stored data from earlier calls).</li></div>
+
+<a name="wp1949524"> </a><div class="pSmartList1"><li >Methods that <em class="cEmphasis">set</em> values in the component immediately store the new values (they do not hold values while waiting for another call). If the component rejects a value, the method throws an exception.</li></div>
+
+</ul></div>
+
+<a name="wp2004020"> </a><p class="pBody">
+This immediate-access paradigm ensures that configuration programs and daemon components always remain synchronized throughout their interactions.
+</p>
+<a name="wp2004035"> </a><h4 class="pHeading3">
+Program Credentials</h4><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/note.gif" border="0" /></td>
+    <td><a name="wp2011117"> </a><div class="pCellBody">
+An important exception to this rule is <a  href="rv_config113.htm#wp1955532"><code class="cCode">SecurityProxy.useCredentials()</code></a>, which is not a data access method. Instead, this method records an administrator name and password within the program (not within the daemon). A private method of <a  href="rv_config107.htm#wp1955023"><code class="cCode">SecurityProxy</code></a> automatically supplies these credentials whenever the daemon requests them. For details see, <a  href="rv_config113.htm#wp1955532"><code class="cCode">SecurityProxy.useCredentials()</code> </a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<h4 class="pHeading3">
+</h4>
+<a name="wp2004037"> </a><h3 class="pHeading2">
+Read-Only Objects
+</h3>
+<a name="wp1949544"> </a><p class="pBody">
+Each proxy interface defines a method that gets general information from the component. These methods return an instance of a subclass of <a  href="rv_config239.htm#wp1962823"><code class="cCode">ComponentInformation</code></a>. All of these instances are read-only:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1949548"> </a><div class="pSmartList1"><li >Methods that <em class="cEmphasis">get</em> data from these objects do <em class="cEmphasis">not</em> interact with the component.</li></div>
+
+<a name="wp1949549"> </a><div class="pSmartList1"><li >Programs cannot construct these objects; they exist only because <code class="cCode">getComponentInformation()</code> methods return them.</li></div>
+
+<a name="wp1949550"> </a><div class="pSmartList1"><li >Programs cannot modify these objects.</li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Operation</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;9	 Current Value Cache";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1024432"> </a><h2 class="pNewHTMLPage">
+Operation
+</h2>
+<hr />
+<a name="wp1024433"> </a><p class="pBody">
+Although many distributed system components may depend upon <code class="cCode">rvcache</code>, its caching operation remains transparent to them. 
+</p>
+<a name="wp1024434"> </a><p class="pBody">
+Other application programs do not send update messages specifically to <code class="cCode">rvcache</code>. Instead, <code class="cCode">rvcache</code> listens for a set of subjects, silently receiving messages and caching the most recent data on each subject as it arrives, as in <a  href="rv_adm81.htm#wp1024462">Figure&#160;43</a>.
+</p>
+<a name="wp1024462"> </a><div class="pFigureTitle">
+Figure&#160;43   Transparent Caching by rvcache</div><div align="center"><img src="images/rv_adma34.gif" height="251" width="509" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1081164"> </a><p class="pBody">
+
+</p>
+<a name="wp1176804"> </a><p class="pBody">
+However, other application programs <em class="cEmphasis">do</em> send query requests to <code class="cCode">rvcache</code>. <a  href="rv_adm81.htm#wp1024507">Figure&#160;44</a> illustrates this phase of <code class="cCode">rvcache</code> operation:
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1032019"> </a><div class="pSmartList1"><li value="1"><code class="cCode">rvcache</code> listens to the subject <code class="cCode">_SNAP.&gt;</code> for query messages.</li></div>
+
+<a name="wp1032020"> </a><div class="pSmartList1"><li value="2">A program submits a query for the cached value of <code class="cCode">foo.bar</code> by sending an empty message to the subject <code class="cCode">_SNAP.foo.bar</code> (more generally, build the query subject on the template <code class="cCode">_SNAP.</code><code class="cCodeItalic">&lt;cached_subject&gt;</code>).</li></div>
+
+<a name="wp1032033"> </a><div class="pSmartList1"><li value="3"><code class="cCode">rvcache</code> receives the query, and extracts the cache subject from the query subject name. It sends the cached value for that subject to the reply subject of the query message.</li></div>
+
+</ol></div>
+
+<a name="wp1024507"> </a><div class="pFigureTitle">
+Figure&#160;44   Query and Response with rvcache</div><div align="center"><img src="images/rv_adma19.gif" height="248" width="512" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1176797"> </a><p class="pBody">
+
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

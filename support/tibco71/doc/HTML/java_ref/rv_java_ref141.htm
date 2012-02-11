@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvRvaTransport</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;6	 Transports";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1038873"> </a><h2 class="pNewHTMLPage">
+TibrvRvaTransport
+</h2>
+<hr />
+<a name="wp1039740"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1043178"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+class com.tibco.tibrv.<code class="cCodeBold">TibrvRvaTransport</code><a name="wp1043179"> </a>
+&#160;&#160;extends <a  href="rv_java_ref140.htm#wp1111502"><code style="font-weight: normal" class="cCode">TibrvNetTransport</code></a><span style="font-weight: bold"></span><a name="wp1280381"> </a>
+</pre></div>
+<a name="wp1043167"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1043168"> </a><p class="pBody">
+Deliver network messages through a Rendezvous agent (<code class="cCode">rva</code>).
+</p>
+<a name="wp1039126"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1066929"> </a><p class="pBody">
+For most Java applets running in a secure browser environment, <a  href="rv_java_ref141.htm#wp1038873"><code class="cCode">TibrvRvaTransport</code></a> is the only way to connect to a network. <a  href="rv_java_ref141.htm#wp1038873"><code class="cCode">TibrvRvaTransport</code></a> in turn connects to an <code class="cCode">rva</code> process running on the web server where the applet originates.
+</p>
+<a name="wp1043331"> </a><p class="pBody">
+<a  href="rv_java_ref141.htm#wp1038873"><code class="cCode">TibrvRvaTransport</code></a> can operate through a firewall using the HTTP protocol.
+</p>
+<a name="wp1043470"> </a><p class="pBody">
+<a  href="rv_java_ref141.htm#wp1038873"><code class="cCode">TibrvRvaTransport</code></a> can operate in either an <a  href="rv_java_ref21.htm#wp1021518"><code class="cCode">Tibrv.IMPL_NATIVE</code></a> environment, or an <a  href="rv_java_ref21.htm#wp1021513"><code class="cCode">Tibrv.IMPL_JAVA</code></a> environment (that is, it does not require the JNI library).
+</p>
+<a name="wp1043474"> </a><p class="pBody">
+A <a  href="rv_java_ref141.htm#wp1038873"><code class="cCode">TibrvRvaTransport</code></a> can connect to the Rendezvous agent through either of two ports:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1043487"> </a><div class="pSmartList1"><li >The <code class="cCode">rva</code> TCP port. Use this technique for programs running on intranets.</li></div>
+
+<a name="wp1043488"> </a><div class="pSmartList1"><li >The HTTP port, using <em class="cEmphasis">HTTP tunneling</em>. Use this technique for remote access, when it is not possible to open the <code class="cCode">rva</code> port through a firewall. For more information, see <a  href="rv_java_ref8.htm#wp1110819">HTTP Tunneling</a>.</li></div>
+
+</ul></div>
+
+<a name="wp1112093"> </a><p class="pBody">
+Programs must explicitly destroy instances of this class using <a  href="rv_java_ref132.htm#wp1039911"><code class="cCode">TibrvTransport.destroy()</code></a>. Rendezvous software keeps internal references to these objects, so the Java garbage collector does not delete them automatically.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1194444"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1194348"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1194350"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1194352"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1194357"> </a><div class="pCellBody">
+<a  href="rv_java_ref142.htm#wp1071270"><code class="cCode">TibrvRvaTransport()</code></a>
+</div>
+</td>
+    <td><a name="wp1194361"> </a><div class="pCellBody">
+<a  href="rv_java_ref142.htm#wp1043571">Create a transport that connects through the Rendezvous agent.</a>
+</div>
+</td>
+    <td><a name="wp1194367"> </a><div class="pCellBody">
+<a  href="rv_java_ref142.htm#wp1071270">188</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1194372"> </a><div class="pCellBody">
+<a  href="rv_java_ref143.htm#wp1043908"><code class="cCode">TibrvRvaTransport.getHostName()</code></a>
+</div>
+</td>
+    <td><a name="wp1194376"> </a><div class="pCellBody">
+<a  href="rv_java_ref143.htm#wp1043913">Return the host name of the computer where this transport connects to the Rendezvous agent.</a>
+</div>
+</td>
+    <td><a name="wp1194382"> </a><div class="pCellBody">
+<a  href="rv_java_ref143.htm#wp1043908">191</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1194387"> </a><div class="pCellBody">
+<a  href="rv_java_ref144.htm#wp1122482"><code class="cCode">TibrvRvaTransport.getHttpReconnectDelay()</code></a>
+</div>
+</td>
+    <td><a name="wp1194391"> </a><div class="pCellBody">
+<a  href="rv_java_ref144.htm#wp1122488">Return the delay time (in seconds) before the transport reopens a connection to the Rendezvous agent.</a>
+</div>
+</td>
+    <td><a name="wp1194397"> </a><div class="pCellBody">
+<a  href="rv_java_ref144.htm#wp1122482">192</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1194402"> </a><div class="pCellBody">
+<a  href="rv_java_ref145.htm#wp1043947"><code class="cCode">TibrvRvaTransport.getPort()</code></a>
+</div>
+</td>
+    <td><a name="wp1194406"> </a><div class="pCellBody">
+<a  href="rv_java_ref145.htm#wp1043952">Return the port number through which this transport connects to the Rendezvous agent.</a>
+</div>
+</td>
+    <td><a name="wp1194412"> </a><div class="pCellBody">
+<a  href="rv_java_ref145.htm#wp1043947">193</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1194417"> </a><div class="pCellBody">
+<a  href="rv_java_ref146.htm#wp1043844"><code class="cCode">TibrvRvaTransport.isHttpTunneling()</code></a>
+</div>
+</td>
+    <td><a name="wp1194421"> </a><div class="pCellBody">
+<a  href="rv_java_ref146.htm#wp1043985">Determine whether this transport connects to the Rendezvous agent using HTTP protocol.</a>
+</div>
+</td>
+    <td><a name="wp1194427"> </a><div class="pCellBody">
+<a  href="rv_java_ref146.htm#wp1043844">194</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1194432"> </a><div class="pCellBody">
+<a  href="rv_java_ref147.htm#wp1122515"><code class="cCode">TibrvRvaTransport.setHttpReconnectDelay()</code></a>
+</div>
+</td>
+    <td><a name="wp1194436"> </a><div class="pCellBody">
+<a  href="rv_java_ref147.htm#wp1122520">Set the delay time (in seconds) before the transport reopens a connection to the Rendezvous agent.</a>
+</div>
+</td>
+    <td><a name="wp1194442"> </a><div class="pCellBody">
+<a  href="rv_java_ref147.htm#wp1122515">195</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1079541"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1194532"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1194537"> </a><p class="pBody">
+<a  href="rv_java_ref131.htm#wp1040342"><code class="cCode">TibrvTransport.createInbox()</code></a>
+</p>
+<a name="wp1194541"> </a><p class="pBody">
+<a  href="rv_java_ref132.htm#wp1039911"><code class="cCode">TibrvTransport.destroy()</code></a>
+</p>
+<a name="wp1194545"> </a><p class="pBody">
+<a  href="rv_java_ref133.htm#wp1070914"><code class="cCode">TibrvTransport.isValid()</code></a>
+</p>
+<a name="wp1194549"> </a><p class="pBody">
+<a  href="rv_java_ref135.htm#wp1040046"><code class="cCode">TibrvTransport.send()</code></a>
+</p>
+<a name="wp1194553"> </a><p class="pBody">
+<a  href="rv_java_ref136.htm#wp1040235"><code class="cCode">TibrvTransport.sendReply()</code></a>
+</p>
+<a name="wp1194557"> </a><p class="pBody">
+<a  href="rv_java_ref137.htm#wp1040108"><code class="cCode">TibrvTransport.sendRequest()</code></a>
+</p>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1194559"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.equals</code>
+</p>
+<a name="wp1194560"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.getClass</code>
+</p>
+<a name="wp1194561"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.hashCode</code>
+</p>
+<a name="wp1194562"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notify</code>
+</p>
+<a name="wp1194563"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notifyAll</code>
+</p>
+<a name="wp1194564"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.toString</code> (override)
+</p>
+<a name="wp1194565"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.wait</code>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1193881"> </a><h4 class="pHeading3">
+Related Classes
+</h4>
+<a name="wp1193885"> </a><p class="pBody">
+<a  href="rv_java_ref130.htm#wp1038525"><code class="cCode">TibrvTransport</code> </a>
+</p>
+<a name="wp1193893"> </a><p class="pBody">
+<a  href="rv_java_ref140.htm#wp1111502"><code class="cCode">TibrvNetTransport</code> </a>
+</p>
+<a name="wp1193897"> </a><p class="pBody">
+<a  href="rv_java_ref148.htm#wp1039175"><code class="cCode">TibrvRvdTransport</code> </a>
+</p>
+<a name="wp1071264"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1071275"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('c', 'rv_adm76.htm#wp1054163');" onMouseOver="WWHShowPopup('c', 'rv_adm76.htm#wp1054163', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Rendezvous Agent (rva)</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

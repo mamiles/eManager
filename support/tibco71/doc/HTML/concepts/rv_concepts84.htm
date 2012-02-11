@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Virtual Circuit API</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;9	 Virtual Circuits";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1129547"> </a><h2 class="pNewHTMLPage">
+Virtual Circuit API
+</h2>
+<hr />
+<a name="wp1129548"> </a><p class="pBody">
+The virtual circuit API consists of three calls (see <a  href="rv_concepts84.htm#wp1167872">Table&#160;24</a>) and two advisory messages.
+</p>
+<a name="wp1129439"> </a><h4 class="pHeading3">
+Create Terminals
+</h4>
+<a name="wp1129444"> </a><p class="pBody">
+Two calls create the terminal objects&#151;one call for the terminal that <em class="cEmphasis">accepts</em> connections, and one for the terminal that subsequently <em class="cEmphasis">connects</em> to it.
+</p>
+<a name="wp1129445"> </a><p class="pBody">
+The two types of terminal play complementary protocol roles as they attempt to establish a connection. However, this difference soon evaporates. After the connection is complete, the two terminals behave identically.
+</p>
+<a name="wp1129525"> </a><h4 class="pHeading3">
+Testing the Connection
+</h4>
+<a name="wp1132647"> </a><p class="pBody">
+A third call tests the current status of the connection. Programmers can arrange for this call to return immediately, or block until the connection is complete (wait for connection).
+</p>
+<a name="wp1132714"> </a><h4 class="pHeading3">
+Other Transport Calls
+</h4>
+<a name="wp1167865"> </a><p class="pBody">
+Programs send messages, create inbox names, and create listeners using the same calls as for ordinary transports.
+</p>
+<a name="wp1167936"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1167872"> </a><div class="pTableTitle">
+Table&#160;24   Virtual Circuit Calls (Sheet 1 of 2)
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1167876"> </a><div class="pCellBody">
+C
+</div>
+</td>
+    <td><a name="wp1167881"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref147.htm#wp1213448');" onMouseOver="WWHShowPopup('e', 'rv_c_ref147.htm#wp1213448', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvTransport_CreateAcceptVc()</code></a>
+</div>
+<a name="wp1167885"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref148.htm#wp1214331');" onMouseOver="WWHShowPopup('e', 'rv_c_ref148.htm#wp1214331', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvTransport_CreateConnectVc()</code></a>
+</div>
+<a name="wp1167889"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref149.htm#wp1217469');" onMouseOver="WWHShowPopup('e', 'rv_c_ref149.htm#wp1217469', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvTransport_WaitForVcConnection()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1167891"> </a><div class="pCellBody">
+C++
+</div>
+</td>
+    <td><a name="wp1167896"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref182.htm#wp1249443');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref182.htm#wp1249443', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvVcTransport</code></a>
+</div>
+<a name="wp1167900"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref183.htm#wp1248257');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref183.htm#wp1248257', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvVcTransport::createAcceptVc()</code></a>
+</div>
+<a name="wp1167904"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref184.htm#wp1248374');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref184.htm#wp1248374', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvVcTransport::createConnectVc()</code></a>
+</div>
+<a name="wp1167908"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref185.htm#wp1248492');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref185.htm#wp1248492', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvVcTransport::waitForVcConnection()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1167910"> </a><div class="pCellBody">
+Java
+</div>
+</td>
+    <td><a name="wp1167915"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref155.htm#wp1239085');" onMouseOver="WWHShowPopup('g', 'rv_java_ref155.htm#wp1239085', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvVcTransport</code></a>
+</div>
+<a name="wp1167919"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref156.htm#wp1240207');" onMouseOver="WWHShowPopup('g', 'rv_java_ref156.htm#wp1240207', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvVcTransport.createAcceptVc()</code></a>
+</div>
+<a name="wp1167923"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref157.htm#wp1239278');" onMouseOver="WWHShowPopup('g', 'rv_java_ref157.htm#wp1239278', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvVcTransport.createConnectVc()</code></a>
+</div>
+<a name="wp1167927"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref159.htm#wp1239347');" onMouseOver="WWHShowPopup('g', 'rv_java_ref159.htm#wp1239347', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvVcTransport.waitForVcConnection()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1167929"> </a><div class="pCellBody">
+COM
+</div>
+</td>
+    <td><a name="wp1167935"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref141.htm#wp1195810');" onMouseOver="WWHShowPopup('h', 'rv_com_ref141.htm#wp1195810', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvTransport.createAcceptVc()</code></a>
+</div>
+<a name="wp1169415"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref142.htm#wp1195878');" onMouseOver="WWHShowPopup('h', 'rv_com_ref142.htm#wp1195878', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvTransport.createConnectVc()</code></a>
+</div>
+<a name="wp1169422"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref144.htm#wp1195947');" onMouseOver="WWHShowPopup('h', 'rv_com_ref144.htm#wp1195947', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvTransport.waitForVcConnection</code></a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1167937"> </a><h4 class="pHeading3">
+Advisories
+</h4>
+<a name="wp1132702"> </a><p class="pBody">
+Advisory messages report connection status changes asynchronously; see <a  href="rv_concepts169.htm#wp1112941"><code class="cCode">VC.CONNECTED</code> </a>, and <a  href="rv_concepts170.htm#wp1114062"><code class="cCode">VC.DISCONNECTED</code> </a>.
+</p>
+<a name="wp1129420"> </a><p class="pBody">
+
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

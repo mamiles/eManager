@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>TOO_MANY_ACTIVE</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Appendix&#160;C	 Fault Tolerance (RVFT) Advisory Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1068446"> </a><h2 class="pNewHTMLPage">
+TOO_MANY_ACTIVE
+</h2>
+<hr />
+<a name="wp1047305"> </a><p class="pSyntaxType">
+Advisory
+</p>
+<a name="wp1049016"> </a><h4 class="pHeading3">
+Subject Name Syntax
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+_RV.WARN.RVFT.TOO_MANY_ACTIVE.<code class="cCodeItalic">&lt;group&gt;</code><a name="wp1040051"> </a>
+</pre></div>
+<a name="wp1059677"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1055489"> </a><p class="pBody">
+A fault tolerance member presents this warning advisory message when it detects that too many group members are active. This situation is usually transient, and resolves itself quickly without intervention. However, if the situation persists, it might indicate problems that require attention.
+</p>
+<a name="wp1059818"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1040061"> </a><p class="pBody">
+Rendezvous fault tolerance software detects the situation when it receives a heartbeat message from a member that was not already known to be active.
+</p>
+<a name="wp1040062"> </a><p class="pBody">
+This warning indicates that the following conditions <em class="cEmphasis">all</em> hold simultaneously:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1040063"> </a><div class="pSmartList1"><li >The number of members broadcasting heartbeat messages is greater than the active goal parameter.</li></div>
+
+<a name="wp1040064"> </a><div class="pSmartList1"><li >This member is active.</li></div>
+
+<a name="wp1040065"> </a><div class="pSmartList1"><li >This member will not deactivate (that is, its rank indicates it should remain active).</li></div>
+
+</ul></div>
+
+<a name="wp1040066"> </a><p class="pBody">
+The conclusion is that one or more other members are active that should not be active. In most cases those members quickly detect the anomaly, and deactivate. Normally the situation resolves itself within one activation interval.
+</p>
+<a name="wp1040067"> </a><p class="pBody">
+Notice that a member does not receive this advisory if it is either inactive or about to deactivate.
+</p>
+<a name="wp1040068"> </a><h4 class="pHeading3">
+Diagnosis
+</h4>
+<a name="wp1040069"> </a><p class="pBody">
+This warning can indicate any of several situations:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1040070"> </a><div class="pSmartList1"><li >A network separates into two or more disconnected parts, and then reconnects.</li></div>
+
+<a name="wp1040074"> </a><p class="pBodyRelative">
+Rendezvous fault tolerance software arranges for the correct number of active members on each disconnected part of the network. When the parts reconnect, the active members with the lowest rank become extraneous, and quickly deactivate. This warning indicates that a network problem occurred.
+</p>
+<a name="wp1040075"> </a><div class="pSmartList1"><li >Members have different active goal parameters.</li></div>
+
+<a name="wp1040076"> </a><p class="pBodyRelative">
+If member A has an active goal of one member, and B has an active goal of two members, then A and B will both become active, and A receives this complaint that too many members are active. (Both A and B also receive the <code class="cCode">PARAM_MISMATCH</code> error advisory, with <code class="cCode">Active goal differs</code> in the <code class="cCode">RVADV_DESC</code> field.)
+</p>
+<a name="wp1040080"> </a><div class="pSmartList1"><li >Interval parameters to Rendezvous fault tolerance software are too short compared to the speed of the hardware clock and operating system services.</li></div>
+
+<a name="wp1040084"> </a><p class="pBodyRelative">
+See <a  href="rv_concepts155.htm#wp1058304">Step 4: Choose the Intervals</a>.
+</p>
+<a name="wp1040085"> </a><div class="pSmartList1"><li >The active member did not send timely heartbeat messages. For example, a callback function blocked, or did not return promptly, delaying the heartbeat messages.</li></div>
+
+<a name="wp1040089"> </a><p class="pBodyRelative">
+See <a  href="rv_concepts143.htm#wp1057852">Ensure Timely Event Processing</a>.
+</p>
+</ul></div>
+
+<a name="wp1040106"> </a><h4 class="pHeading3">
+Message Fields
+</h4>
+<a name="wp1098470"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1040092"> </a><div class="pCellHeading">
+Field Name
+</div>
+</th>
+    <th><a name="wp1040097"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1040099"> </a><div class="pCellBody">
+<code class="cCode">RVADV_DESC</code>
+</div>
+</td>
+    <td><a name="wp1040101"> </a><div class="pCellBody">
+A string describing the specific situation of this advisory.
+</div>
+<a name="wp1040105"> </a><div class="pCellBody">
+This field has datatype <a  href="rv_concepts54.htm#wp1084160"><code class="cCode">TIBRVMSG_STRING</code></a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1044214"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1069863"> </a><p class="pBody">
+<a  href="rv_concepts126.htm#wp1057063">Fault Tolerance Concepts</a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

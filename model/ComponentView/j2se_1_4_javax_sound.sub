@@ -1,0 +1,1598 @@
+
+(object Petal
+    version    	47
+    _written   	"Rational Rose 2003.06.00"
+    charSet    	0)
+
+(object SubSystem "sound"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"3E400C590220"
+    physical_models 	(list unit_reference_list
+	(object SubSystem "sampled"
+	    quid       	"3E400C590227"
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3E400FFA0241"
+		    supplier   	"Component View::java::lang"
+		    quidu      	"3E400BBB015B"
+		    supplier_is_subsystem 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3E40154700A7"
+		    supplier   	"Component View::java::io"
+		    quidu      	"3E400BBB02C0"
+		    supplier_is_subsystem 	TRUE))
+	    physical_models 	(list unit_reference_list
+		(object module "AudioFormat" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\AudioFormat.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400C590228"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E4011740032"
+			    supplier   	"Component View::javax::sound::sampled::AudioFormat$Encoding"
+			    quidu      	"3E400FAA0296"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "AudioInputStream" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\AudioInputStream.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400C9B0037"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E40154700B1"
+			    supplier   	"Component View::java::io::PushbackInputStream"
+			    quidu      	"3E400C1C017F"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E40154700C5"
+			    supplier   	"Component View::javax::sound::sampled::AudioFormat"
+			    quidu      	"3E400C590228"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "Mixer" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\Mixer.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400CBB0142"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "LineUnavailableException" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\LineUnavailableException.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400CBB017F"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "UnsupportedAudioFileException" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\UnsupportedAudioFileException.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400CBB019C"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Port" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\Port.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400D990277"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Line" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\Line.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400D99028B"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Clip" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\Clip.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400D9903E0"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "DataLine" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\DataLine.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400D9A000C"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Control" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\Control.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400D9B0270"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E400F480265"
+			    supplier   	"Component View::javax::sound::sampled::Control$Type"
+			    quidu      	"3E400F480259"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "LineListener" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\LineListener.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400D9B02AC"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Control$Type" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\Control$Type.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400F480259"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "AudioFormat$Encoding" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\AudioFormat$Encoding.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400FAA0296"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Line$Info" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\Line$Info.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400FFA01DD"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E400FFA024B"
+			    supplier   	"Component View::java::lang::Class"
+			    quidu      	"3E400BBB0176"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "LineEvent" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\LineEvent.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400FFB00EE"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E400FFB0198"
+			    supplier   	"Component View::javax::sound::sampled::LineEvent$Type"
+			    quidu      	"3E400FFB018E"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "LineEvent$Type" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\LineEvent$Type.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400FFB018E"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Port$Info" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\Port$Info.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400FFD023B"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "ReverbType" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\ReverbType.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E4010DD0107"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Mixer$Info" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\Mixer$Info.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E4010DD02A1"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "SourceDataLine" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\SourceDataLine.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E4010E80008"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "AudioSystem" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\AudioSystem.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E4011720039"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E4011730120"
+			    supplier   	"Component View::java::lang::Class"
+			    quidu      	"3E400BBB0176"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "AudioFileFormat" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\AudioFileFormat.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E401172020F"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E4014260138"
+			    supplier   	"Component View::javax::sound::sampled::AudioFileFormat$Type"
+			    quidu      	"3E401225013A"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E4014260142"
+			    supplier   	"Component View::javax::sound::sampled::AudioFormat"
+			    quidu      	"3E400C590228"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "EnumControl" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\EnumControl.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E4011790101"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "AudioFileFormat$Type" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\AudioFileFormat$Type.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E401225013A"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "FloatControl" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\FloatControl.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E40128D02A2"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "DataLine$Info" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\DataLine$Info.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E401336025F"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E4013360332"
+			    supplier   	"Component View::javax::sound::sampled::AudioFormat"
+			    quidu      	"3E400C590228"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "TargetDataLine" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\TargetDataLine.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E4013F601B1"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "BooleanControl" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\BooleanControl.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E4014060331"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "AudioPermission" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\AudioPermission.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E40142902AF"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "CompoundControl" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\CompoundControl.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E40144B0055"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E40144B00FF"
+			    supplier   	"Component View::javax::sound::sampled::Control"
+			    quidu      	"3E400D9B0270"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "EnumControl$Type" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\EnumControl$Type.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E4015530018"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "FloatControl$Type" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\FloatControl$Type.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E4015B8033F"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "BooleanControl$Type" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\BooleanControl$Type.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E4017A70200"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "CompoundControl$Type" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\CompoundControl$Type.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E40182E0327"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "AudioInputStream$TargetDataLineInputStream" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\sampled\\AudioInputStream$TargetDataLineInputStream.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E4020CB016F"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E4020CB0309"
+			    supplier   	"Component View::javax::sound::sampled::TargetDataLine"
+			    quidu      	"3E4013F601B1"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E4020CB0331"
+			    supplier   	"Component View::javax::sound::sampled::AudioInputStream"
+			    quidu      	"3E400C9B0037"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object SubSystem "spi"
+		    quid       	"3E400FAA012D"
+		    physical_models 	(list unit_reference_list
+			(object module "FormatConversionProvider" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\sound\\sampled\\spi\\FormatConversionProvider.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E400FAA0137"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "AudioFileReader" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\sound\\sampled\\spi\\AudioFileReader.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E4011730094"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "AudioFileWriter" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\sound\\sampled\\spi\\AudioFileWriter.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E40117300BC"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "MixerProvider" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\sound\\sampled\\spi\\MixerProvider.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E4015D00113"
+			    stereotype 	""
+			    language   	"Java"))
+		    physical_presentations 	(list unit_reference_list)))
+	    physical_presentations 	(list unit_reference_list))
+	(object SubSystem "midi"
+	    quid       	"3E400C9B005F"
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3E400F46026A"
+		    supplier   	"Component View::java::lang"
+		    quidu      	"3E400BBB015B"
+		    supplier_is_subsystem 	TRUE))
+	    physical_models 	(list unit_reference_list
+		(object module "MidiFileFormat" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\MidiFileFormat.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400C9B0060"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "MidiUnavailableException" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\MidiUnavailableException.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400CBB01C4"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "InvalidMidiDataException" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\InvalidMidiDataException.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400CBB01D8"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Track" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\Track.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400D1903DC"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "MidiEvent" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\MidiEvent.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400D1A0012"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E400E9E0132"
+			    supplier   	"Component View::javax::sound::midi::MidiMessage"
+			    quidu      	"3E400E7F03A4"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "Patch" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\Patch.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400D340362"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Sequence" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\Sequence.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400E6C00C2"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Receiver" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\Receiver.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400E7F0386"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "MidiMessage" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\MidiMessage.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400E7F03A4"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Soundbank" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\Soundbank.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400EA10190"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "SoundbankResource" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\SoundbankResource.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400EA101C2"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E4013F202D8"
+			    supplier   	"Component View::javax::sound::midi::Soundbank"
+			    quidu      	"3E400EA10190"
+			    supplier_is_spec 	TRUE)
+			(object Module_Visibility_Relationship
+			    quid       	"3E4013F202E2"
+			    supplier   	"Component View::java::lang::Class"
+			    quidu      	"3E400BBB0176"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "Instrument" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\Instrument.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400EA101D7"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E400F44013B"
+			    supplier   	"Component View::javax::sound::midi::Patch"
+			    quidu      	"3E400D340362"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "Sequencer" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\Sequencer.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400EB30164"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "MidiDevice" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\MidiDevice.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400EB30178"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "MetaEventListener" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\MetaEventListener.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400EB302EB"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "ControllerEventListener" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\ControllerEventListener.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400EB3031D"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "MidiSystem" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\MidiSystem.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400F45022C"
+		    stereotype 	""
+		    visible_modules 	(list dependency_list
+			(object Module_Visibility_Relationship
+			    quid       	"3E400F46026B"
+			    supplier   	"Component View::java::lang::Class"
+			    quidu      	"3E400BBB0176"
+			    supplier_is_spec 	TRUE))
+		    language   	"Java")
+		(object module "Transmitter" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\Transmitter.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400F450381"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Synthesizer" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\Synthesizer.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400F45039F"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "MidiChannel" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\MidiChannel.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400F9C01D7"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "MetaMessage" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\MetaMessage.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400F9C02E6"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "VoiceStatus" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\VoiceStatus.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400F9E036B"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "SysexMessage" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\SysexMessage.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400FFB01F2"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "ShortMessage" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\ShortMessage.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E400FFC01B7"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "MidiDevice$Info" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\MidiDevice$Info.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E401257036D"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Sequencer$SyncMode" "NotAModuleType" "NotAModulePart"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"FileName"
+			    value      	"javax\\sound\\midi\\Sequencer$SyncMode.class")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"RootPath"
+			    value      	"")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CmIdentification"
+			    value      	(value Text ""))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"CopyrightNotice"
+			    value      	(value Text "")))
+		    quid       	"3E4013E801E5"
+		    stereotype 	""
+		    language   	"Java")
+		(object SubSystem "spi"
+		    quid       	"3E400F4601AC"
+		    physical_models 	(list unit_reference_list
+			(object module "MidiFileWriter" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\sound\\midi\\spi\\MidiFileWriter.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E400F4601AD"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "MidiFileReader" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\sound\\midi\\spi\\MidiFileReader.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E400F4601CA"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "SoundbankReader" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\sound\\midi\\spi\\SoundbankReader.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E401080015D"
+			    stereotype 	""
+			    language   	"Java")
+			(object module "MidiDeviceProvider" "NotAModuleType" "NotAModulePart"
+			    attributes 	(list Attribute_Set
+				(object Attribute
+				    tool       	"Java"
+				    name       	"FileName"
+				    value      	"javax\\sound\\midi\\spi\\MidiDeviceProvider.class")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"RootPath"
+				    value      	"")
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CmIdentification"
+				    value      	(value Text ""))
+				(object Attribute
+				    tool       	"Java"
+				    name       	"CopyrightNotice"
+				    value      	(value Text "")))
+			    quid       	"3E4016FC002E"
+			    stereotype 	""
+			    language   	"Java"))
+		    physical_presentations 	(list unit_reference_list)))
+	    physical_presentations 	(list unit_reference_list)))
+    physical_presentations 	(list unit_reference_list))

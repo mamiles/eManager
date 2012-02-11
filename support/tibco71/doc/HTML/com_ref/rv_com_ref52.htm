@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvMsg.getProperty()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1133115"> </a><h2 class="pNewHTMLPage">
+TibrvMsg.getProperty()
+</h2>
+<hr />
+<a name="wp1133116"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1133117"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+value = TibrvMsg.<code class="cCodeBold">getProperty</code>(name)<a name="wp1133118"> </a>
+</pre></div>
+<a name="wp1133119"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1133121"> </a><p class="pBody">
+Extract a property from a message.
+</p>
+<a name="wp1133122"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1133123"> </a><p class="pBody">
+Properties are supplementary information&#151;they are <em class="cEmphasis">not</em> part of the message itself.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1133134"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1133136"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1133138"> </a><div class="pCellBody">
+<code class="cCode">name</code>
+</div>
+</td>
+    <td><a name="wp1133140"> </a><div class="pCellBody">
+<code class="cCode">String</code>
+</div>
+<a name="wp1133141"> </a><div class="pCellBody">
+Extract the property with this name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1133178"> </a><div class="pCellBody">
+<code class="cCode">value</code>
+</div>
+</td>
+    <td><a name="wp1133180"> </a><div class="pCellBody">
+<code class="cCode">Variant</code>
+</div>
+<a name="wp1133181"> </a><div class="pCellBody">
+Return this property value.
+</div>
+<a name="wp1141374"> </a><div class="pCellBody">
+If the property is not set, this method reports an error, and the variant is empty.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody"></p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1175582"> </a><div class="pCellHeading">
+Property
+</div>
+</th>
+    <th><a name="wp1175584"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1175586"> </a><div class="pCellBody">
+<code class="cCode">cmSender</code>
+</div>
+</td>
+    <td><a name="wp1175588"> </a><div class="pCellBody">
+<code class="cCode">String</code>
+</div>
+<a name="wp1175589"> </a><div class="pCellBody">
+The correspondent name of the CM transport that sent a labeled message.
+</div>
+<a name="wp1175590"> </a><div class="pCellBody">
+When the message is not labeled with this CM property, the method reports the error <a  href="rv_com_ref217.htm#wp1188804"><code class="cCode">TIBRVCOM_NOT_FOUND</code></a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1175595"> </a><div class="pCellBody">
+<code class="cCode">cmSequenceNumber</code>
+</div>
+<a name="wp1175596"> </a><div class="pCellBody">
+<code class="cCode">cmSequence</code>
+</div>
+<a name="wp1175597"> </a><div class="pCellBody">
+(either name extracts the same property)
+</div>
+</td>
+    <td><a name="wp1175602"> </a><div class="pCellBody">
+<a  href="rv_com_ref73.htm#wp1126548"><code class="cCode">TibrvInt64</code></a>
+</div>
+<a name="wp1175603"> </a><div class="pCellBody">
+The sequence number of labeled message.
+</div>
+<a name="wp1175604"> </a><div class="pCellBody">
+When the message is not labeled with this CM property, the method reports the error <a  href="rv_com_ref217.htm#wp1188804"><code class="cCode">TIBRVCOM_NOT_FOUND</code></a>, and the <a  href="rv_com_ref73.htm#wp1126548"><code class="cCode">TibrvInt64</code></a> contains zero.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1175612"> </a><div class="pCellBody">
+<code class="cCode">cmTimeLimit</code>
+</div>
+</td>
+    <td><a name="wp1175614"> </a><div class="pCellBody">
+<code class="cCode">Double</code>
+</div>
+<a name="wp1175615"> </a><div class="pCellBody">
+The CM time limit of a labeled message.
+</div>
+<a name="wp1175616"> </a><div class="pCellBody">
+If the message is not labeled, the value is zero.
+</div>
+<a name="wp1175617"> </a><div class="pCellBody">
+This value is always a positive integer.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1176537"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1176947"> </a><p class="pBody">
+<a  href="rv_com_ref61.htm#wp1138958"><code class="cCode">TibrvMsg.setProperty</code> </a>
+</p>
+<a name="wp1176951"> </a><p class="pBody">
+<a  href="rv_com_ref177.htm#wp1145719">CM Label Information</a>
+</p>
+<a name="wp1176935"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts34.htm#wp1062756');" onMouseOver="WWHShowPopup('a', 'rv_concepts34.htm#wp1062756', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Supplementary Information for Messages</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

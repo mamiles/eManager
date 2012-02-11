@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvRvdTransport()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;6	 Transports";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1044133"> </a><h2 class="pNewHTMLPage">
+TibrvRvdTransport()
+</h2>
+<hr />
+<a name="wp1044134"> </a><p class="pSyntaxType">
+Constructor
+</p>
+<a name="wp1044159"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCodeBold">TibrvRvdTransport</code>()<a name="wp1125706"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125710"> </a>
+<a name="wp1125703"> </a>
+<code class="cCodeBold">TibrvRvdTransport</code>(<a name="wp1125715"> </a>
+&#160;&#160;&#160;&#160;java.lang.String service,<a name="wp1125716"> </a>
+&#160;&#160;&#160;&#160;java.lang.String network,<a name="wp1125717"> </a>
+&#160;&#160;&#160;&#160;java.lang.String daemon)<a name="wp1125718"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125722"> </a>
+<a name="wp1207451"> </a>
+<code class="cCodeBold">TibrvRvdTransport</code>(<a name="wp1207457"> </a>
+&#160;&#160;&#160;&#160;java.lang.String service,<a name="wp1207458"> </a>
+&#160;&#160;&#160;&#160;java.lang.String network,<a name="wp1207459"> </a>
+&#160;&#160;&#160;&#160;java.lang.String daemon,<a name="wp1207460"> </a>
+&#160;&#160;&#160;&#160;java.lang.String licenseTicket)<a name="wp1207461"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1207465"> </a>
+</pre></div>
+<a name="wp1044160"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1044161"> </a><p class="pBody">
+Create a transport that connects to a Rendezvous daemon.
+</p>
+<a name="wp1044567"> </a><h4 class="pHeading3">
+Method Forms
+</h4>
+<a name="wp1044568"> </a><p class="pBody">
+With no arguments, connect to <code class="cCode">rvd</code> on the local computer using default values the <code class="cCode">service</code>, <code class="cCode">network</code>, and <code class="cCode">daemon</code> parameters.
+</p>
+<a name="wp1044569"> </a><p class="pBody">
+All arguments specify options for connecting to <code class="cCode">rvd</code>.
+</p>
+<a name="wp1044621"> </a><h4 class="pHeading3">
+Connecting to the Rendezvous Daemon
+</h4>
+<a name="wp1044625"> </a><p class="pBody">
+Rendezvous daemon processes do the work of moving messages across a network. Every <a  href="rv_java_ref148.htm#wp1039175"><code class="cCode">TibrvRvdTransport</code></a> must connect to a Rendezvous daemon.
+</p>
+<a name="wp1044632"> </a><p class="pBody">
+If a Rendezvous daemon process with a corresponding <code class="cCode">daemon</code> parameter is already running, the transport connects to it.
+</p>
+<a name="wp1044636"> </a><p class="pBody">
+If an appropriate Rendezvous local daemon is <em class="cEmphasis">not</em> running, the transport tries to start it. However, the transport does not attempt to start a <em class="cEmphasis">remote</em> daemon when none is running.
+</p>
+<a name="wp1044640"> </a><p class="pBody">
+If the transport cannot connect to the Rendezvous daemon, the constructor throws an exception with the status code <a  href="rv_java_ref234.htm#wp1238135"><code class="cCode">TibrvStatus.DAEMON_NOT_FOUND</code></a>.
+</p>
+<a name="wp1044647"> </a><p class="pBody">
+The first time a program successfully connects to the Rendezvous daemon process, <code class="cCode">rvd</code> starts the clock ticking for temporary license tickets. (See <a  href="javascript:WWHClickedPopup('c', 'rv_adm9.htm#wp1018938');" onMouseOver="WWHShowPopup('c', 'rv_adm9.htm#wp1018938', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Licensing Information</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em>.)
+</p>
+<a name="wp1124934"> </a><h4 class="pHeading3">
+Description String
+</h4>
+<a name="wp1124935"> </a><p class="pBody">
+As a debugging aid, we recommend setting a unique description string for each transport. Use a string that distinguishes both the application and the role of the transport within it. See <a  href="rv_java_ref138.htm#wp1118418"><code class="cCode">TibrvTransport.setDescription()</code> </a>.
+</p>
+<a name="wp1233472"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1044164"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1044166"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1044168"> </a><div class="pCellBody">
+<code class="cCode">service</code>
+</div>
+</td>
+    <td><a name="wp1044330"> </a><div class="pCellBody">
+The Rendezvous daemon divides the network into logical partitions. Each <a  href="rv_java_ref148.htm#wp1039175"><code class="cCode">TibrvRvdTransport</code></a> communicates on a single service; a transport can communicate only with other transports on the same service.
+</div>
+<a name="wp1044331"> </a><div class="pCellBody">
+To communicate on more than one service, a program must create more than one transport&#151;one transport for each service.
+</div>
+<a name="wp1044332"> </a><div class="pCellBody">
+You can specify the service in several ways. For details, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts72.htm#wp1028578');" onMouseOver="WWHShowPopup('a', 'rv_concepts72.htm#wp1028578', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Service Parameter</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+<a name="wp1044336"> </a><div class="pCellBody">
+<code class="cCode">null</code> specifies the default <code class="cCode">rendezvous</code> service.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1044173"> </a><div class="pCellBody">
+<code class="cCode">network</code>
+</div>
+</td>
+    <td><a name="wp1044338"> </a><div class="pCellBody">
+Every network transport communicates with other transports over a single network interface. On computers with more than one network interface, the <code class="cCode">network</code> parameter instructs the Rendezvous daemon to use a particular network for all outbound messages from this transport.
+</div>
+<a name="wp1044342"> </a><div class="pCellBody">
+To communicate over more than one network, programs must create more than one transport.
+</div>
+<a name="wp1044343"> </a><div class="pCellBody">
+You can specify the network in several ways. For details, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts73.htm#wp1029059');" onMouseOver="WWHShowPopup('a', 'rv_concepts73.htm#wp1029059', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Network Parameter</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+<a name="wp1044351"> </a><div class="pCellBody">
+<code class="cCode">null</code> specifies the primary network interface for the host computer.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1044178"> </a><div class="pCellBody">
+<code class="cCode">daemon</code>
+</div>
+</td>
+    <td><a name="wp1044353"> </a><div class="pCellBody">
+The daemon parameter instructs the transport object about how and where to find the Rendezvous daemon and establish communication.
+</div>
+<a name="wp1044360"> </a><div class="pCellBody">
+For details, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts74.htm#wp1028683');" onMouseOver="WWHShowPopup('a', 'rv_concepts74.htm#wp1028683', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Daemon Parameter</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+<a name="wp1044361"> </a><div class="pCellBody">
+You can specify a daemon on a remote computer. For details, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts74.htm#wp1028724');" onMouseOver="WWHShowPopup('a', 'rv_concepts74.htm#wp1028724', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Remote Daemon</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+<a name="wp1044365"> </a><div class="pCellBody">
+<code class="cCode">null</code> specifies the default&#151;find the local daemon on TCP socket <code class="cCode">7500</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1207471"> </a><div class="pCellBody">
+<code class="cCode">licenseTicket</code>
+</div>
+</td>
+    <td><a name="wp1235965"> </a><div class="pCellBody">
+Embed this special license ticket in the transport object. When a licensed transport connects to <code class="cCode">rvd</code>, it presents this special ticket to validate its connection (<code class="cCode">rvd</code> uses the longest-running ticket available, which can be either this special ticket, or a ticket from the ticket file, <code class="cCode">tibrv.tkt</code>).
+</div>
+<a name="wp1235838"> </a><div class="pCellBody">
+Ordinary license tickets are <em class="cEmphasis">not</em> valid for this parameter; see also, <a  href="rv_java_ref149.htm#wp1118725">Embedded License</a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1118725"> </a><h4 class="pHeading3">
+Embedded License
+</h4>
+<a name="wp1118784"> </a><p class="pBody">
+Specially-licensed third-party developers can use the third form of this method. To use this alternate form, a developer must first purchase a special license ticket. This call embeds the special ticket in the program, so that end-users do not need to purchase Rendezvous to use the program.
+</p>
+<a name="wp1118788"> </a><p class="pBody">
+To purchase an embedded license, contact TIBCO Software Inc.
+</p>
+<a name="wp1113892"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1113893"> </a><p class="pBody">
+<a  href="rv_java_ref150.htm#wp1044772"><code class="cCode">TibrvRvdTransport.getDaemon()</code> </a>
+</p>
+<a name="wp1113897"> </a><p class="pBody">
+<a  href="rv_java_ref151.htm#wp1044750"><code class="cCode">TibrvRvdTransport.getNetwork()</code> </a>
+</p>
+<a name="wp1113905"> </a><p class="pBody">
+<a  href="rv_java_ref152.htm#wp1044810"><code class="cCode">TibrvRvdTransport.getService()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

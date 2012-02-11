@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Self-Describing Data</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;6	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1065867"> </a><h2 class="pNewHTMLPage">
+Self-Describing Data
+</h2>
+<hr />
+<a name="wp1101346"> </a><p class="pBody">
+Rendezvous programs exchange self-describing data. Each item of <em class="cEmphasis">self-describing data</em> consists of up to six parts:
+</p>
+<a name="wp1101372"> </a><p class="pBody">
+</p><div align="left">
+<table border="0">
+  <caption></caption>
+  <tr align="left" valign="top">    <td><div class="pSmartList1"><ul>
+<a name="wp1101349"> </a><div class="pSmartList1"><li ><em class="cEmphasis">Data</em></li></div>
+
+</ul></div>
+
+</td>
+    <td><a name="wp1101351"> </a><div class="pCellBody">
+The data itself.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><div class="pSmartList1"><ul>
+<a name="wp1101353"> </a><div class="pSmartList1"><li ><em class="cEmphasis">Type</em></li></div>
+
+</ul></div>
+
+</td>
+    <td><a name="wp1101355"> </a><div class="pCellBody">
+An indicator to manipulate and interpret the data as an integer, a string, a composite message, or other datatype.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><div class="pSmartList1"><ul>
+<a name="wp1101357"> </a><div class="pSmartList1"><li ><em class="cEmphasis">Size</em></li></div>
+
+</ul></div>
+
+</td>
+    <td><a name="wp1101359"> </a><div class="pCellBody">
+The number of bytes that the data occupies.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><div class="pSmartList1"><ul>
+<a name="wp1101361"> </a><div class="pSmartList1"><li ><em class="cEmphasis">Name</em></li></div>
+
+</ul></div>
+
+</td>
+    <td><a name="wp1101363"> </a><div class="pCellBody">
+The subject name of the message, or the name of a field within a message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><div class="pSmartList1"><ul>
+<a name="wp1101365"> </a><div class="pSmartList1"><li ><em class="cEmphasis">Identifier</em></li></div>
+
+</ul></div>
+
+</td>
+    <td><a name="wp1101367"> </a><div class="pCellBody">
+An optional integer that uniquely identifies a field within a message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><div class="pSmartList1"><ul>
+<a name="wp1101369"> </a><div class="pSmartList1"><li ><em class="cEmphasis">Count</em></li></div>
+
+</ul></div>
+
+</td>
+    <td><a name="wp1101371"> </a><div class="pCellBody">
+The number of elements in an array datatype.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1083987"> </a><p class="pBody">
+Between sender and listener, Rendezvous software uses this descriptive information to automatically convert messages between the <em class="cEmphasis">local data format</em> and Rendezvous <em class="cEmphasis">wire format</em>&#151;a universal format that is independent of hardware, operating system, and programming language architectures. The universal wire format provides a common language to connect diverse programs. For details see <a  href="rv_concepts54.htm#wp1065893">Rendezvous Datatypes</a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvListener</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1145524"> </a><h2 class="pNewHTMLPage">
+TibrvListener
+</h2>
+<hr />
+<a name="wp1145525"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1031922"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1031923"> </a><p class="pBody">
+Listen for inbound messages.
+</p>
+<a name="wp1031924"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1077783"> </a><p class="pBody">
+A listener object continues listening for messages until the program destroys or deletes it.
+</p>
+<a name="wp1081845"> </a><p class="pBody">
+Destroying the queue or transport of a listener automatically destroys the listener as well, but does not delete the COM listener object.
+</p>
+<a name="wp1069007"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1068942"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1068944"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1068946"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1134014"> </a><div class="pMinorHead">
+Life Cycle
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1068951"> </a><div class="pCellBody">
+<a  href="rv_com_ref82.htm#wp1033788"><code class="cCode">TibrvListener.create</code></a>
+</div>
+</td>
+    <td><a name="wp1068956"> </a><div class="pCellBody">
+<a  href="rv_com_ref82.htm#wp1033794">Create a listener object to listen for inbound messages.</a>
+</div>
+</td>
+    <td><a name="wp1068961"> </a><div class="pCellBody">
+<a  href="rv_com_ref82.htm#wp1033788">106</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1133938"> </a><div class="pCellBody">
+<a  href="rv_com_ref83.htm#wp1122253"><code class="cCode">TibrvListener.destroy</code></a>
+</div>
+</td>
+    <td><a name="wp1133942"> </a><div class="pCellBody">
+<a  href="rv_com_ref83.htm#wp1122259">Destroy the internal structure of a listener, canceling interest in its inbound messages.</a>
+</div>
+</td>
+    <td><a name="wp1133948"> </a><div class="pCellBody">
+<a  href="rv_com_ref83.htm#wp1122253">108</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1134023"> </a><div class="pCellBody">
+<a  href="rv_com_ref88.htm#wp1133852"><code class="cCode">TibrvListener.isValid()</code></a>
+</div>
+</td>
+    <td><a name="wp1134028"> </a><div class="pCellBody">
+<a  href="rv_com_ref88.htm#wp1133858">Test the validity of a listener.</a>
+</div>
+</td>
+    <td><a name="wp1134033"> </a><div class="pCellBody">
+<a  href="rv_com_ref88.htm#wp1133852">113</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1134043"> </a><div class="pMinorHead">
+Callback Method
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1134054"> </a><div class="pCellBody">
+<a  href="rv_com_ref89.htm#wp1126926"><code class="cCode">TibrvListener_onMsg</code></a>
+</div>
+</td>
+    <td><a name="wp1134058"> </a><div class="pCellBody">
+<a  href="rv_com_ref89.htm#wp1126935">Process inbound messages (listener events).</a>
+</div>
+</td>
+    <td><a name="wp1134064"> </a><div class="pCellBody">
+<a  href="rv_com_ref89.htm#wp1126926">114</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1134035"> </a><div class="pMinorHead">
+Properties
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1134160"> </a><div class="pCellBody">
+<a  href="rv_com_ref84.htm#wp1122165"><code class="cCode">TibrvListener.getClosure()</code></a>
+</div>
+</td>
+    <td><a name="wp1134164"> </a><div class="pCellBody">
+<a  href="rv_com_ref84.htm#wp1122172">Extract the closure from a listener object.</a>
+</div>
+</td>
+    <td><a name="wp1134170"> </a><div class="pCellBody">
+<a  href="rv_com_ref84.htm#wp1122165">109</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1133954"> </a><div class="pCellBody">
+<a  href="rv_com_ref85.htm#wp1134188"><code class="cCode">TibrvListener.getQueue()</code></a>
+</div>
+</td>
+    <td><a name="wp1133958"> </a><div class="pCellBody">
+<a  href="rv_com_ref85.htm#wp1134194">Extract the queue from a listener object.</a>
+</div>
+</td>
+    <td><a name="wp1133964"> </a><div class="pCellBody">
+<a  href="rv_com_ref85.htm#wp1134188">110</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1068966"> </a><div class="pCellBody">
+<a  href="rv_com_ref86.htm#wp1034287"><code class="cCode">TibrvListener.getSubject()</code></a>
+</div>
+</td>
+    <td><a name="wp1068971"> </a><div class="pCellBody">
+<a  href="rv_com_ref86.htm#wp1034324">Extract the subject from a listener object.</a>
+</div>
+</td>
+    <td><a name="wp1068976"> </a><div class="pCellBody">
+<a  href="rv_com_ref86.htm#wp1034287">111</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1068981"> </a><div class="pCellBody">
+<a  href="rv_com_ref87.htm#wp1034332"><code class="cCode">TibrvListener.getTransport()</code></a>
+</div>
+</td>
+    <td><a name="wp1068986"> </a><div class="pCellBody">
+<a  href="rv_com_ref87.htm#wp1034353">Extract the transport from a listener object.</a>
+</div>
+</td>
+    <td><a name="wp1068991"> </a><div class="pCellBody">
+<a  href="rv_com_ref87.htm#wp1034332">112</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1087731"> </a><h4 class="pHeading3">
+Activation and Dispatch
+</h4>
+<a name="wp1087732"> </a><p class="pBody">
+Inbound messages on the transport that match the subject trigger the event.
+</p>
+<a name="wp1087733"> </a><p class="pBody">
+<a  href="rv_com_ref82.htm#wp1033788"><code class="cCode">TibrvListener.create</code></a> creates the internal structure of a listener object, and <em class="cEmphasis">activates</em> event processing&#151;that is, it begins listening for all inbound messages with matching subjects. When a message arrives, Rendezvous software places the listener object and message on its queue. Dispatch removes the listener object from the queue, and runs the callback method to process the message. (To stop receiving inbound messages on the subject, destroy or delete the listener object; this action cancels all messages already queued for the listener; see also <a  href="rv_com_ref83.htm#wp1122253"><code class="cCode">TibrvListener.destroy</code> </a>.)
+</p>
+<a name="wp1087746"> </a><p class="pBody">
+<a  href="rv_com_ref81.htm#wp1087751">Figure&#160;4</a> illustrates that messages can continue to accumulate in the queue, even while the callback method is processing.
+</p>
+<a name="wp1087751"> </a><div class="pFigureTitle">
+Figure&#160;4   Listener Activation and Dispatch</div><div align="center"><img src="images/rv_com_refa4.gif" height="438" width="538" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

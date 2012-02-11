@@ -1,0 +1,213 @@
+#!/bin/sh
+# $Revision: 32 $
+# Program: startagent
+# Copyright 1994-2000 TIBCO software Inc.
+# ALL RIGHTS RESERVED
+
+if [ $# != 0 -a $# != 2 ]
+then
+        echo "\nUsage: startagent [-file <config file name>]\n"
+        exit 1
+fi
+if [ $# != 0 -a "$1" != "-file" ]
+then
+        echo "\nUsage: startagent [-file <config file name>]\n"
+        exit 1
+fi
+
+# Insure that RV_ROOT has been set.
+if [ -z "$RV_ROOT" ]; then
+ echo "\nPlease set RV_ROOT environment variable to point to TIBCO Rendezvous installation.\n"
+  exit 1
+fi
+
+# Insure that HAWK_ROOT has been set.
+if [ -z "$HAWK_ROOT" ]; then
+  echo "\nPlease set HAWK_ROOT environment variable to point to TIBCO HAWK installation. \n"
+  exit 1
+fi
+
+# Insure that JRE_ROOT has been set.
+if [ -z "$JRE_ROOT" ]; then
+  echo "\nPlease set JRE_ROOT environment variable to point to Java Runtime Environment (JRE) installation. \n"
+  exit 1
+fi
+
+# Pick up host name.
+HOSTNAME=`hostname`
+if [ "$HOSTNAME" = "" ]
+then
+  HOSTNAME=`uname -n`
+fi
+
+# Set defaults.
+THREADS_FLAG=native
+THREADS_TYPE=${THREADS_FLAG:-native}_threads
+NOJIT=
+NOHUP=
+MS_SETTING=24m
+MX_SETTING=36m
+MSFLAG="-ms${MS_SETTING}"
+MXFLAG="-mx${MX_SETTING}"
+DOMAIN=none
+DOMAIN_STR="domain"
+DOMAINNAME_EXE=/usr/bin/domainname
+CDCMD=cd
+
+# Set OS dependent arguments.
+OS_TYPE=`uname -a | awk '{print $1}'`
+case $OS_TYPE in
+
+  'Linux')
+           IP_ADDRESS=`cat /etc/hosts | grep $HOSTNAME | awk '{print $1}'`
+           if [ "${IP_ADDRESS}" = "" ]; then
+            echo "Fatal error: Unable to determine host's IP address"; exit 1
+           fi
+           NETWORK=`netstat -rn|grep -v "Destination"|grep -v "Kernel" |\
+                      grep -v "127.0.0.0"| head -1 | awk '{print $1}'`
+
+           DSTR_TST=`grep -v \^\# /etc/resolv.conf|grep search`
+           if [ ! -z "$DSTR_TST" ]; then
+               DOMAIN_STR="search"
+           fi
+           DOMAINNAME_EXE=/bin/domainname
+           ;;
+
+   'OSF1')
+           IP_ADDRESS=`cat /etc/hosts | grep $HOSTNAME | awk '{print $1}'`
+           if [ "${IP_ADDRESS}" = "" ]; then
+            echo "Fatal error: Unable to determine host's IP address"; exit 1
+           fi
+           NETWORK=`netstat -in|grep -w $IP_ADDRESS| head -1| awk '{print $3}' `
+           F4=`echo $NETWORK | cut -d"/" -f1`
+           if [ "$F4" != "" ]; then
+             NETWORK=$F4.0
+           fi
+           ;;
+
+  'SunOS')
+           IP_ADDRESS=`getent hosts $HOSTNAME | awk '{print $1}'`
+           if [ "${IP_ADDRESS}" = "" ]; then
+            echo "Fatal error: Unable to determine host's IP address"; exit 1
+           fi
+           if [ `uname -r` = "5.4" ]; then
+             NETWORK=`netstat -rn|grep -w $IP_ADDRESS|grep -vw "224.0.0.0" |\
+                      head -1 | awk '{print $1}'`
+           else
+             NETWORK=`netstat -in|grep -w $IP_ADDRESS|head -1|awk '{print $3}'`
+           fi
+           ;;
+
+  'HP-UX')
+           if [ -s /etc/rc.config.d/netconf ]; then
+            . /etc/rc.config.d/netconf
+           fi
+           if [ "${IP_ADDRESS}" = "" ]; then
+             echo "Fatal error: Unable to determine host's IP address"; exit 1
+           fi
+
+           NETWORK=`netstat -in | grep $IP_ADDRESS | grep -v "127.0.0." \
+                                 | awk '{print $3}'`
+           NOHUP="nohup"
+           ;;
+
+  'AIX')
+           IP_ADDRESS=`grep -v \^\# /etc/hosts | grep -w $HOSTNAME \
+                       | tr "\t" " " | egrep $HOSTNAME'( |$)' \
+                       |head -1 | awk '{print $1}' `
+           if [ "${IP_ADDRESS}" = "" ]; then
+            echo "Fatal error: Unable to determine host's IP address"; exit 1
+           fi
+           NETWORK=`netstat -in | grep -w $IP_ADDRESS| head -1 | awk '{print $3}' `
+           # IBM AIX doesn't return complete network number
+
+           F4=`echo $NETWORK | cut -d"." -f4`
+           if [ "$F4" = "" ]; then
+             NETWORK=$NETWORK.0
+           fi
+
+           ;;
+
+  *)       echo "Unknown OS type "; exit 1
+esac
+
+# Export final thread settings.
+export THREADS_FLAG
+export THREADS_TYPE
+
+# Look for DNS domain first.
+if [ -s /etc/resolv.conf ]; then
+ DOMAIN="`egrep -v ';|#' /etc/resolv.conf|grep -i $DOMAIN_STR | awk '{print $2}'` "
+else
+   # Next try using NIS domain
+   DOMAIN=`$DOMAINNAME_EXE`
+   # Then try getent
+   if [ "$DOMAIN" = "" -a -x /bin/getent -a "$HOSTNAME" != "" ]; then
+     DOMAIN=`getent hosts $HOSTNAME | awk '{print $2}' | cut -d. -f2-`
+   fi
+fi
+if [ "$DOMAIN" = "" -o "$DOMAIN" = " " ]; then
+  echo "\nWarning: Unable to resolve host domain, 'none' is used.\n"
+  DOMAIN=none
+fi
+
+# Add RV and Hawk to PATH.
+PATH=$RV_ROOT/bin:$HAWK_ROOT/bin:$PATH
+export PATH
+
+# Add RV to LD_LIBRARY_PATH and SHLIB_PATH.
+LD_LIBRARY_PATH=$RV_ROOT/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH
+SHLIB_PATH=$RV_ROOT/lib:$SHLIB_PATH
+export SHLIB_PATH
+LIBPATH=$RV_ROOT/lib:$LIBPATH
+export LIBPATH
+
+# Build a class path starting with RV.
+JARFILE="$RV_ROOT/lib/tibrvj.jar"
+
+# Add jar files in $HAWK_ROOT/java directory to class path.
+JARFILE="$JARFILE:$HAWK_ROOT/java"
+for FILE in $HAWK_ROOT/java/*.jar
+do
+  JARFILE="$JARFILE:$FILE"
+done
+
+# Add existing CLASSPATH environment variable to class path.
+JARFILE="$JARFILE:$CLASSPATH"
+
+# Determine if running Java 1.1 (jre) or Java 1.2 (java).
+JVMEXE="$JRE_ROOT/bin/jre"
+if [ -f "$JRE_ROOT/bin/jre" ]; then
+  JVMEXE="$JRE_ROOT/bin/jre"
+else
+  if [ -f "$JRE_ROOT/jre/sh/java" ]; then
+    JVMEXE="$JRE_ROOT/jre/sh/java"
+  else
+    JVMEXE="$JRE_ROOT/bin/java"
+  fi
+  if [ "$MSFLAG" != "" ]; then
+           MSFLAG="-Xms${MS_SETTING}"
+           MXFLAG="-Xmx${MX_SETTING}"
+  fi
+fi
+
+if [ $# = 0 ]; then
+  switches="-file ${HAWK_ROOT}/bin/hawkagent.cfg"
+else
+for arg
+do
+  case "$arg" in
+    *  ) switches="$switches $arg" ;;
+  esac
+done
+fi
+
+# Execute Java Agent
+$CDCMD $HAWK_ROOT
+if [ -z "$HAWK_TWO" ]; then
+       $JVMEXE -DTIBHawk=agent -Dhawk.hawk_root=$HAWK_ROOT -Dhawk.cluster=$NETWORK -Dhawk.agent_domain=$DOMAIN $MSFLAG $MXFLAG $NOJIT -cp $JARFILE COM.TIBCO.hawk.agent.HawkAgent $switches &
+else
+$NOHUP $JVMEXE -DTIBHawk=agent -Dhawk.hawk_root=$HAWK_ROOT -Dhawk.cluster=$NETWORK -Dhawk.agent_domain=$DOMAIN $MSFLAG $MXFLAG $NOJIT -cp $JARFILE COM.TIBCO.hawk.agent.HawkAgent $switches >/tmp/tibhawkagent.log 2>&1 &
+fi
+

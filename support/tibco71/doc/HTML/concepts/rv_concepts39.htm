@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Messages Mediate Interactions Between Programs</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;3	 Fundamentals";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1022161"> </a><h2 class="pNewHTMLPage">
+Messages Mediate Interactions Between Programs
+</h2>
+<hr />
+<a name="wp1022165"> </a><p class="pBody">
+Three distinct kinds of interactions occur between programs in the Rendezvous environment:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1021679"> </a><div class="pSmartList1"><li >Publish/subscribe interactions, such as distribution of information to multiple recipients.</li></div>
+
+<a name="wp1021680"> </a><div class="pSmartList1"><li >Request/reply interactions, such as queries or transactions to individual services.</li></div>
+
+<a name="wp1021681"> </a><div class="pSmartList1"><li >Multicast request/reply interactions, such as queries to one or more anonymous services.</li></div>
+
+</ul></div>
+
+<a name="wp1021683"> </a><h3 class="pHeading2">
+Publish/Subscribe Interactions
+</h3>
+<a name="wp1021684"> </a><p class="pBody">
+<em class="cEmphasis">Publish/subscribe</em> interactions are driven by events (usually the arrival or creation of data)&#151;a publisher makes information available for general distribution. Communication is in one direction (publisher to subscribers), and often one-to-many as shown in <a  href="rv_concepts39.htm#wp1022209">Figure&#160;4</a>. The complete interaction consists of one multicast message, published once, and received by all subscribers.
+</p>
+<a name="wp1022209"> </a><div class="pFigureTitle">
+Figure&#160;4   Event-Driven Publish/Subscribe Interaction
+</div>
+<a name="wp1021717"> </a><p class="pBody">
+</p><div align="center"><img src="images/rv_conceptsa3.gif" height="161" width="527" border="0" hspace="0" vspace="0"/>
+</div><p class="pBody">
+</p>
+<a name="wp1021718"> </a><p class="pBody">
+Example applications:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1021719"> </a><div class="pSmartList1"><li >Securities data feed handlers publish the latest stock prices to hundreds of traders on a trading floor simultaneously.</li></div>
+
+<a name="wp1021720"> </a><div class="pSmartList1"><li >Materials movement systems distribute data to various materials handlers, controllers and tracking systems on a factory floor.</li></div>
+
+<a name="wp1021721"> </a><div class="pSmartList1"><li >Inventory levels flow continuously to accounting, purchasing, marketing and other departments in a retail store.</li></div>
+
+<a name="wp1021722"> </a><div class="pSmartList1"><li >A bug-tracking database immediately sends bug reports and updates to all personnel interested in a particular project.</li></div>
+
+<a name="wp1021723"> </a><div class="pSmartList1"><li >A master database publishes updates to a set of internet mirrors.</li></div>
+
+</ul></div>
+
+<a name="wp1021724"> </a><p class="pBody">
+In publish/subscribe interactions, data producers are decoupled from data consumers&#151;they do not coordinate data transmission with each other, except by using the same subject name. Producers publish data to the network at large.
+</p>
+<a name="wp1021725"> </a><p class="pBody">
+Consumers place a standing request for data by subscribing. Consumers can listen for messages on any subject(s) on the network; a subscription is a request for messages.
+</p>
+<a name="wp1021729"> </a><p class="pBody">
+Rendezvous software supports publish/subscribe interactions with multicast communication.
+</p>
+<a name="wp1021731"> </a><h3 class="pHeading2">
+Request/Reply Interactions
+</h3>
+<a name="wp1021732"> </a><p class="pBody">
+Demand for data drives <em class="cEmphasis">request/reply</em> interactions. A client requests data from a server; the server computes an individual response and returns it to the client. Communication flows in both directions, as in <a  href="rv_concepts39.htm#wp1022229">Figure&#160;5</a>. The complete interaction consist of two point-to-point messages&#151;a request and a reply.
+</p>
+<a name="wp1022229"> </a><div class="pFigureTitle">
+Figure&#160;5   Demand-Driven Request/Reply Interaction</div><div align="center"><img src="images/rv_conceptsa5.gif" height="113" width="529" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1021758"> </a><p class="pBody">
+Demand driven computing is well-suited for distributed applications such as these examples:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1021759"> </a><div class="pSmartList1"><li >Transaction processing (as in ATM banking).</li></div>
+
+<a name="wp1021760"> </a><div class="pSmartList1"><li >Database query (with a remote DBMS).</li></div>
+
+<a name="wp1021761"> </a><div class="pSmartList1"><li >Factory equipment control.</li></div>
+
+</ul></div>
+
+<a name="wp1021762"> </a><p class="pBody">
+In request/reply interactions, data producers coordinate closely with data consumers. A producer does not send data until a consumer makes a request. Each program sends its message to a specific inbox name within the other program.
+</p>
+<a name="wp1021763"> </a><p class="pBody">
+The server sends replies specifically to the client that requested the data. The requesting client listens until it receives the reply, and then stops listening (unless it expects further installments of information).
+</p>
+<a name="wp1021767"> </a><p class="pBody">
+Rendezvous software supports request/reply interactions with point-to-point communication.
+</p>
+<a name="wp1021769"> </a><h3 class="pHeading2">
+Multicast Request/Reply Interactions
+</h3>
+<a name="wp1021770"> </a><p class="pBody">
+Like request/reply interactions, <em class="cEmphasis">multicast request/reply</em> interactions are driven by demand for data. While traditional request/reply interactions involve one requestor and one server, in multicast request/reply interactions multiple servers can receive the request and respond as appropriate. Communication flows in both directions, and only some servers respond to the client request, as in <a  href="rv_concepts39.htm#wp1022255">Figure&#160;6</a>. The complete interaction consists of one multicast request message, and any number of point-to-point reply messages.
+</p>
+<a name="wp1022255"> </a><div class="pFigureTitle">
+Figure&#160;6   Multicast Request/Reply Interaction
+</div>
+<a name="wp1021807"> </a><p class="pBody">
+</p><div align="center"><img src="images/rv_conceptsa6.gif" height="223" width="533" border="0" hspace="0" vspace="0"/>
+</div><p class="pBody">
+</p>
+<a name="wp1021808"> </a><p class="pBody">
+Example applications:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1021809"> </a><div class="pSmartList1"><li >Database query with multiple servers.</li></div>
+
+<a name="wp1021810"> </a><div class="pSmartList1"><li >Distribution of computing sub-tasks to the first available server.</li></div>
+
+<a name="wp1021811"> </a><div class="pSmartList1"><li >Network management applications that multicast requests for test information.</li></div>
+
+</ul></div>
+
+<a name="wp1022288"> </a><p class="pBody">
+In multicast request/reply interactions, data producers coordinate closely with data consumers. A server does not send data until a client requests it. Servers send point-to-point replies to the specific client program.
+</p>
+<a name="wp1022289"> </a><p class="pBody">
+If a server has the information the consumer requested, it sends a reply. The requesting client listens until it receives one or more replies. The client stops listening by destroying the reply inbox listener.
+</p>
+<a name="wp1021817"> </a><p class="pBody">
+Rendezvous software supports multicast request/reply interactions with a combination of multicast and point-to-point communication.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,85 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from AdminManagerService WSDL service -->
+
+  <service name="AdminManager" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="http://admin.soap.eManager.cisco.com"/>
+      <parameter name="wsdlServiceElement" value="AdminManagerService"/>
+      <parameter name="wsdlServicePort" value="AdminManager"/>
+      <parameter name="className" value="com.cisco.eManager.soap.admin.AdminManagerSoapBindingSkeleton"/>
+      <parameter name="wsdlPortType" value="AdminManager"/>
+      <parameter name="allowedMethods" value="*"/>
+      <parameter name="scope" value="Session"/>
+  </service>
+  
+  <!-- Services from AuditLogManagerService WSDL service -->
+
+  <service name="AuditLogManager" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="http://auditlog.soap.eManager.cisco.com"/>
+      <parameter name="wsdlServiceElement" value="AuditLogManagerService"/>
+      <parameter name="wsdlServicePort" value="AuditLogManager"/>
+      <parameter name="className" value="com.cisco.eManager.soap.auditlog.AuditLogManagerSoapBindingSkeleton"/>
+      <parameter name="wsdlPortType" value="AuditLogManager"/>
+      <parameter name="allowedMethods" value="*"/>
+      <parameter name="scope" value="Session"/>
+  </service>
+
+  <!-- Services from EventManagerService WSDL service -->
+
+  <service name="EventManager" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="http://event.soap.eManager.cisco.com"/>
+      <parameter name="wsdlServiceElement" value="EventManagerService"/>
+      <parameter name="wsdlServicePort" value="EventManager"/>
+      <parameter name="className" value="com.cisco.eManager.soap.event.EventManagerSoapBindingSkeleton"/>
+      <parameter name="wsdlPortType" value="EventManager"/>
+      <parameter name="allowedMethods" value="*"/>
+      <parameter name="scope" value="Session"/>
+  </service>
+
+  <!-- Services from InventoryManagerService WSDL service -->
+
+  <service name="InventoryManager" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="http://inventory.soap.eManager.cisco.com"/>
+      <parameter name="wsdlServiceElement" value="InventoryManagerService"/>
+      <parameter name="wsdlServicePort" value="InventoryManager"/>
+      <parameter name="className" value="com.cisco.eManager.soap.inventory.InventoryManagerSoapBindingSkeleton"/>
+      <parameter name="wsdlPortType" value="InventoryManager"/>
+      <parameter name="allowedMethods" value="*"/>
+      <parameter name="scope" value="Session"/>
+  </service>
+
+  <!-- Services from LogManagerService WSDL service -->
+
+  <service name="LogManager" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="http://log.soap.eManager.cisco.com"/>
+      <parameter name="wsdlServiceElement" value="LogManagerService"/>
+      <parameter name="wsdlServicePort" value="LogManager"/>
+      <parameter name="className" value="com.cisco.eManager.soap.log.LogManagerSoapBindingSkeleton"/>
+      <parameter name="wsdlPortType" value="LogManager"/>
+      <parameter name="allowedMethods" value="*"/>
+      <parameter name="scope" value="Session"/>
+  </service>
+
+  <!-- Services from ProcessManagerService WSDL service -->
+
+  <service name="ProcessManager" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="http://process.soap.eManager.cisco.com"/>
+      <parameter name="wsdlServiceElement" value="ProcessManagerService"/>
+      <parameter name="wsdlServicePort" value="ProcessManager"/>
+      <parameter name="className" value="com.cisco.eManager.soap.process.ProcessManagerSoapBindingSkeleton"/>
+      <parameter name="wsdlPortType" value="ProcessManager"/>
+      <parameter name="allowedMethods" value="*"/>
+      <parameter name="scope" value="Session"/>
+  </service>
+  
+</deployment>

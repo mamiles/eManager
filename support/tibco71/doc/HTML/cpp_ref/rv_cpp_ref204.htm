@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvFtMonitor</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;8	 Fault Tolerance";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1061908"> </a><h2 class="pNewHTMLPage">
+TibrvFtMonitor
+</h2>
+<hr />
+<a name="wp1065255"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1137300"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+class <code class="cCodeBold">TibrvFtMonitor</code><a name="wp1137301"> </a>
+&#160;&#160;&#160;&#160;TibrvFtmonitor();&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;// Create empty.<a name="wp1148027"> </a>
+&#160;&#160;&#160;&#160;virtual ~TibrvFtmonitor();&#160;&#160;&#160;&#160;// Destroy and reclaim storage.<a name="wp1148028"> </a>
+</pre></div>
+<a name="wp1137302"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1065259"> </a><p class="pBody">
+Monitor a fault tolerance group.
+</p>
+<a name="wp1065260"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1065261"> </a><p class="pBody">
+The constructor creates a hollow object; <a  href="rv_cpp_ref205.htm#wp1064949"><code class="cCode">TibrvFtMonitor::create()</code></a> makes it operational, and monitors a fault tolerance group.
+</p>
+<a name="wp1065682"> </a><p class="pBody">
+Monitors are passive&#151;they do not affect the group members in any way.
+</p>
+<a name="wp1065686"> </a><p class="pBody">
+Rendezvous fault tolerance software queues a monitor event whenever the number of active members in the group changes&#151;either it detects a new heartbeat, or it detects that the heartbeat from a previously active member is now silent, or it receives a message from the fault tolerance component of an active member indicating deactivation or termination.
+</p>
+<a name="wp1065687"> </a><p class="pBody">
+The monitor callback method receives the number of active members as an argument.
+</p>
+<a name="wp1158745"> </a><p class="pBody">
+By destroying a monitor object, the program stops monitoring the fault tolerance group. The destructor calls the <code class="cCode">destroy</code> method, unless the C object is already destroyed.
+</p>
+<a name="wp1222077"> </a><p class="pBody">
+Destroying the queue or transport of a monitor automatically destroys the monitor as well.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1222240"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1222246"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1222248"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1222250"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1222252"> </a><div class="pMinorHead">
+Life Cycle
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1222261"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref205.htm#wp1064949"><code class="cCode">TibrvFtMonitor::create()</code></a>
+</div>
+</td>
+    <td><a name="wp1222266"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref205.htm#wp1137571">Monitor a fault tolerance group.</a>
+</div>
+</td>
+    <td><a name="wp1222271"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref205.htm#wp1064949">265</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1222276"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref206.htm#wp1222465"><code class="cCode">TibrvFtMonitor::destroy()</code></a>
+</div>
+</td>
+    <td><a name="wp1222280"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref206.htm#wp1062043">Stop monitoring a fault tolerance group, and free associated resources.</a>
+</div>
+</td>
+    <td><a name="wp1222286"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref206.htm#wp1222465">267</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1222291"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref209.htm#wp1137997"><code class="cCode">TibrvFtMonitor::getHandle()</code></a>
+</div>
+</td>
+    <td><a name="wp1222295"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref209.htm#wp1138005">Extract the C handle of a fault tolerance monitor.</a>
+</div>
+</td>
+    <td><a name="wp1222301"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref209.htm#wp1137997">270</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1222306"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref212.htm#wp1138027"><code class="cCode">TibrvFtMonitor::isValid()</code></a>
+</div>
+</td>
+    <td><a name="wp1222310"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref212.htm#wp1138032">Test validity of a fault tolerance monitor object.</a>
+</div>
+</td>
+    <td><a name="wp1222316"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref212.htm#wp1138027">273</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="3" rowspan="1"><a name="wp1222318"> </a><div class="pMinorHead">
+Properties
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1222327"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref207.htm#wp1137967"><code class="cCode">TibrvFtMonitor::getClosure()</code></a>
+</div>
+</td>
+    <td><a name="wp1222331"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref207.htm#wp1137973">Extract the closure data of a fault tolerance monitor.</a>
+</div>
+</td>
+    <td><a name="wp1222337"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref207.htm#wp1137967">268</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1222342"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref208.htm#wp1062068"><code class="cCode">TibrvFtMonitor::getGroupName()</code></a>
+</div>
+</td>
+    <td><a name="wp1222346"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref208.htm#wp1062076">Extract the group name of a fault tolerance monitor.</a>
+</div>
+</td>
+    <td><a name="wp1222352"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref208.htm#wp1062068">269</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1222357"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref210.htm#wp1137935"><code class="cCode">TibrvFtMonitor::getQueue()</code></a>
+</div>
+</td>
+    <td><a name="wp1222361"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref210.htm#wp1137944">Extract the event queue of a fault tolerance monitor.</a>
+</div>
+</td>
+    <td><a name="wp1222367"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref210.htm#wp1137935">271</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1222372"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref211.htm#wp1062129"><code class="cCode">TibrvFtMonitor::getTransport()</code></a>
+</div>
+</td>
+    <td><a name="wp1222376"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref211.htm#wp1066027">Extract the transport of a fault tolerance monitor.</a>
+</div>
+</td>
+    <td><a name="wp1222382"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref211.htm#wp1062129">272</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1222227"> </a><h4 class="pHeading3">
+Related Classes
+</h4>
+<a name="wp1222065"> </a><p class="pBody">
+<a  href="rv_cpp_ref189.htm#wp1062294"><code class="cCode">TibrvFtMember</code> </a>
+</p>
+<a name="wp1222064"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1065479"> </a><p class="pBody">
+<a  href="rv_cpp_ref213.htm#wp1064776"><code class="cCode">TibrvFtMonitorCallback</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

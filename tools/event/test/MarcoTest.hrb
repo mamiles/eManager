@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ruleBase>
+	<version>4.0.1</version>
+	<name><![CDATA[MarcoTest]]></name>
+	<schedule></schedule>
+	<author>mjmatch on host MJMATCH-W2K1(64.101.181.239) at 09:56 Wed, Jun 25, 2003</author>
+	<lastModification>mjmatch on host mjmatch-u60.cisco.com(64.101.181.62) at 10:30 Thu, Dec 11, 2003</lastModification>
+	<comment><![CDATA[]]></comment>
+	<command>dir c:\Temp\setup.log</command>
+	<rule>
+		<name><![CDATA[COM.TIBCO.hawk.hma.FileStat:getFileStatus(Directory=c:\Temp, File Name=setup.log):15]]></name>
+		<schedule></schedule>
+		<overRuling>0</overRuling>
+		<dataSource>
+			<microAgentName><![CDATA[COM.TIBCO.hawk.hma.FileStat]]></microAgentName>
+			<methodName>getFileStatus</methodName>
+			<dataElement name="Directory">
+				<dataObject class="java.lang.String" ><![CDATA[c:\Temp]]></dataObject>
+			</dataElement>
+			<dataElement name="File Name">
+				<dataObject class="java.lang.String" ><![CDATA[setup.log]]></dataObject>
+			</dataElement>
+			<interval>15000</interval>
+		</dataSource>
+		<test>
+			<name><![CDATA[(File Name Contains setup.log)]]></name>
+			<schedule></schedule>
+			<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.Contains" >
+				<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.RuleData" >
+					<dataObject class="java.lang.String" ><![CDATA[File Name]]></dataObject>
+				</operator>
+				<dataObject class="java.lang.String" ><![CDATA[setup.log]]></dataObject>
+			</operator>
+			<consequenceAction>
+				<name><![CDATA[[After 10 seconds ] sendAlertLow(alertMsg=Setup file found.)]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertLow" ><![CDATA[Setup file found.]]></dataObject>
+				</dataElement>
+				<properties>
+				</properties>
+				<performCountOnInterval>
+					<count>8</count>
+					<interval>80</interval>
+				</performCountOnInterval>
+				<escalationTime>10</escalationTime>
+			</consequenceAction>
+			<consequenceAction>
+				<name><![CDATA[[After 30 seconds ] sendAlertMedium(alertMsg=Setup file still found.)]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertMedium" ><![CDATA[Setup file still found.]]></dataObject>
+				</dataElement>
+				<properties>
+				</properties>
+				<performOnceOnly/>
+				<escalationTime>30</escalationTime>
+			</consequenceAction>
+			<consequenceAction>
+				<name><![CDATA[[After 60 seconds ] sendAlertHigh(alertMsg=Setup file still still found.)]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertHigh" ><![CDATA[Setup file still still found.]]></dataObject>
+				</dataElement>
+				<properties>
+				</properties>
+				<performOnceOnly/>
+				<escalationTime>60</escalationTime>
+			</consequenceAction>
+			<consequenceAction>
+				<name><![CDATA[sendNotification(alertMsg=setup file.)]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.Notification" ><![CDATA[setup file.]]></dataObject>
+				</dataElement>
+				<properties>
+				</properties>
+				<performCountOnInterval>
+					<count>3</count>
+					<interval>15</interval>
+				</performCountOnInterval>
+				<escalationTime>0</escalationTime>
+			</consequenceAction>
+			<trueConditionPolicy>
+				<trueCountThreshold>1</trueCountThreshold>
+			</trueConditionPolicy>
+			<clearOn>
+				<clearOnFirstFalse/>
+			</clearOn>
+		</test>
+	</rule>
+	<rule>
+		<name><![CDATA[COM.TIBCO.hawk.hma.FileStat:getFileStatus(File Name=/vob/emanager):15]]></name>
+		<schedule></schedule>
+		<overRuling>0</overRuling>
+		<dataSource>
+			<microAgentName><![CDATA[COM.TIBCO.hawk.hma.FileStat]]></microAgentName>
+			<methodName>getFileStatus</methodName>
+			<dataElement name="File Name">
+				<dataObject class="java.lang.String" ><![CDATA[/vob/emanager]]></dataObject>
+			</dataElement>
+			<interval>15000</interval>
+		</dataSource>
+		<test>
+			<name><![CDATA[(File Name Contains emanager)]]></name>
+			<schedule></schedule>
+			<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.Contains" >
+				<operator class="COM.TIBCO.hawk.config.rbengine.rulebase.operators.RuleData" >
+					<dataObject class="java.lang.String" ><![CDATA[File Name]]></dataObject>
+				</operator>
+				<dataObject class="java.lang.String" ><![CDATA[emanager]]></dataObject>
+			</operator>
+			<consequenceAction>
+				<name><![CDATA[sendNotification(alertMsg=emanager directory found)]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.Notification" ><![CDATA[emanager directory found]]></dataObject>
+				</dataElement>
+				<properties>
+				</properties>
+				<performCountOnInterval>
+					<count>8</count>
+					<interval>10</interval>
+				</performCountOnInterval>
+				<escalationTime>0</escalationTime>
+			</consequenceAction>
+			<consequenceAction>
+				<name><![CDATA[[After 10 seconds ] sendAlertLow(alertMsg=Yes, emanager was found.)]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertLow" ><![CDATA[Yes, emanager was found.]]></dataObject>
+				</dataElement>
+				<properties>
+				</properties>
+				<performCountOnInterval>
+					<count>8</count>
+					<interval>15</interval>
+				</performCountOnInterval>
+				<escalationTime>10</escalationTime>
+			</consequenceAction>
+			<consequenceAction>
+				<name><![CDATA[[After 30 seconds ] sendAlertMedium(alertMsg=Yikes, emanager was found.)]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertMedium" ><![CDATA[Yikes, emanager was found.]]></dataObject>
+				</dataElement>
+				<properties>
+				</properties>
+				<performOnceOnly/>
+				<escalationTime>30</escalationTime>
+			</consequenceAction>
+			<consequenceAction>
+				<name><![CDATA[[After 60 seconds ] sendAlertHigh(alertMsg=Eeeegaaaads.  Emanager was found.)]]></name>
+				<schedule></schedule>
+				<microAgentName>COM.TIBCO.hawk.microagent.RuleBaseEngine</microAgentName>
+				<methodName>sendAlertMessage</methodName>
+				<dataElement name="message">
+					<dataObject class="COM.TIBCO.hawk.config.rbengine.rulebase.util.AlertHigh" ><![CDATA[Eeeegaaaads.  Emanager was found.]]></dataObject>
+				</dataElement>
+				<properties>
+				</properties>
+				<performOnceOnly/>
+				<escalationTime>60</escalationTime>
+			</consequenceAction>
+			<trueConditionPolicy>
+				<trueCountThreshold>1</trueCountThreshold>
+			</trueConditionPolicy>
+			<clearOn>
+				<clearOnFirstFalse/>
+			</clearOn>
+		</test>
+	</rule>
+</ruleBase>

@@ -1,0 +1,63 @@
+
+(object Petal
+    version    	47
+    _written   	"Rose 8.0.0303.1400"
+    charSet    	0)
+
+(object SubSystem "util"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"3F0C2956002F"
+    visible_modules 	(list dependency_list
+	(object Module_Visibility_Relationship
+	    quid       	"3F60C73B0039"
+	    supplier   	"Component View::java::lang"
+	    quidu      	"3F68EBED0310"
+	    supplier_is_subsystem 	TRUE)
+	(object Module_Visibility_Relationship
+	    quid       	"3F60C73B0093"
+	    supplier   	"Component View::java::util"
+	    quidu      	"3F68EBC90281"
+	    supplier_is_subsystem 	TRUE))
+    physical_models 	(list unit_reference_list
+	(object module "GlobalProperties" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"$SRC\\com\\cisco\\eManager\\eManager\\util\\GlobalProperties.java")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"RootPath"
+		    value      	"$SRC")
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CmIdentification"
+		    value      	(value Text ""))
+		(object Attribute
+		    tool       	"Java"
+		    name       	"CopyrightNotice"
+		    value      	(value Text "")))
+	    quid       	"3F54D87901C4"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Module_Visibility_Relationship
+		    quid       	"3F68EFE00291"
+		    supplier   	"Component View::java::lang::System"
+		    quidu      	"3F68EFDF0312"
+		    supplier_is_spec 	TRUE)
+		(object Module_Visibility_Relationship
+		    quid       	"3F68EFE0031D"
+		    supplier   	"Component View::java::util::Properties"
+		    quidu      	"3F68EFDF02B8"
+		    supplier_is_spec 	TRUE))
+	    language   	"Java")
+	(object SubSystem "db"
+	    is_unit    	TRUE
+	    is_loaded  	FALSE
+	    quid       	"3F0C2971004D")
+	(object SubSystem "log"
+	    is_unit    	TRUE
+	    is_loaded  	FALSE
+	    quid       	"3F0C29760249"))
+    physical_presentations 	(list unit_reference_list))

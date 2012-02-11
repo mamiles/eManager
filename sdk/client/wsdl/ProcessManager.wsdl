@@ -1,0 +1,1277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://process.soap.eManager.cisco.com" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://process.soap.eManager.cisco.com" xmlns:intf="http://process.soap.eManager.cisco.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns2="http://process.common.eManager.cisco.com" xmlns:tns3="http://common.eManager.cisco.com" xmlns:tns4="http://inventory.common.eManager.cisco.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ <wsdl:types>
+  <schema targetNamespace="http://process.common.eManager.cisco.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType abstract="true" name="ProcessInfo">
+    <sequence>
+     <element name="execTime" nillable="true" type="xsd:dateTime"/>
+     <element name="heartbeatResult" nillable="true" type="soapenc:string"/>
+     <element name="hostname" nillable="true" type="soapenc:string"/>
+     <element name="isMonitor" type="xsd:boolean"/>
+     <element name="missedHeartbeats" type="xsd:int"/>
+     <element name="processId" type="xsd:long"/>
+     <element name="processName" nillable="true" type="soapenc:string"/>
+     <element name="startGeneration" type="xsd:int"/>
+     <element name="state" nillable="true" type="soapenc:string"/>
+     <element name="successfulHeartbeats" type="xsd:int"/>
+     <element name="usesNativeLogging" nillable="true" type="soapenc:string"/>
+     <element name="valid" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+   <complexType name="ProcessInfoObj">
+    <complexContent>
+     <extension base="tns2:ProcessInfo">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="EmanagerProcessException">
+    <complexContent>
+     <extension base="tns3:EmanagerException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ProcessInfoRec">
+    <complexContent>
+     <extension base="tns2:ProcessInfo">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType abstract="true" name="SolutionStatusInfo">
+    <sequence>
+     <element name="appInstance" nillable="true" type="soapenc:string"/>
+     <element name="appType" nillable="true" type="soapenc:string"/>
+     <element name="solutionName" nillable="true" type="soapenc:string"/>
+     <element name="state" nillable="true" type="soapenc:string"/>
+     <element name="valid" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+   <complexType name="SolutionStatusInfoObj">
+    <complexContent>
+     <extension base="tns2:SolutionStatusInfo">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://process.soap.eManager.cisco.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ArrayOf_tns2_ProcessInfoObj">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns2:ProcessInfoObj[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_SolutionStatusInfoObj">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns2:SolutionStatusInfoObj[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_soapenc_string">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="soapenc:string[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://common.eManager.cisco.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType abstract="true" name="EmanagerStatusCode">
+    <sequence>
+     <element name="statusCodeDescription" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType abstract="true" name="EmanagerException">
+    <sequence>
+     <element name="statusCode" nillable="true" type="tns3:EmanagerStatusCode"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://inventory.common.eManager.cisco.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="LogLevel">
+    <sequence>
+     <element name="config" type="xsd:boolean"/>
+     <element name="fine" type="xsd:boolean"/>
+     <element name="finer" type="xsd:boolean"/>
+     <element name="finest" type="xsd:boolean"/>
+     <element name="info" type="xsd:boolean"/>
+     <element name="severe" type="xsd:boolean"/>
+     <element name="warning" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getHealthResponse">
+
+      <wsdl:part name="getHealthReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getGroupStateResponse">
+
+      <wsdl:part name="getGroupStateReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="stopGroupRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+      <wsdl:part name="in2" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="startSolutionRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getSolutionHealthRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getLogLevelResponse">
+
+      <wsdl:part name="getLogLevelReturn" type="tns4:LogLevel"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getProcessesForGroupResponse">
+
+      <wsdl:part name="getProcessesForGroupReturn" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="restartGroupResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="restartCommandRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+      <wsdl:part name="in2" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllGroupNamesResponse">
+
+      <wsdl:part name="getAllGroupNamesReturn" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="startProcessResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="startProcessRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+      <wsdl:part name="in2" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="startApplicationResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="getSolutionStatusResponse">
+
+      <wsdl:part name="getSolutionStatusReturn" type="impl:ArrayOf_tns2_SolutionStatusInfoObj"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="xmlMessageResponse">
+
+      <wsdl:part name="xmlMessageReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="xmlMessageRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="startApplicationRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="restartProcessResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="startGroupRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+      <wsdl:part name="in2" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="EmanagerProcessException">
+
+      <wsdl:part name="fault" type="tns2:EmanagerProcessException"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="stopProcessRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+      <wsdl:part name="in2" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="stopCommandResponse">
+
+      <wsdl:part name="stopCommandReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="stopGroupResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="setLogLevelRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+      <wsdl:part name="in2" type="tns4:LogLevel"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="restartGroupRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+      <wsdl:part name="in2" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getHealthRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getSolutionHealthResponse">
+
+      <wsdl:part name="getSolutionHealthReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getProcessesForGroupRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+      <wsdl:part name="in2" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="restartCommandResponse">
+
+      <wsdl:part name="restartCommandReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="stopCommandRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+      <wsdl:part name="in2" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="startSolutionResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="stopApplicationRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="startCommandResponse">
+
+      <wsdl:part name="startCommandReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="setLogLevelResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="stopProcessResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="restartProcessRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+      <wsdl:part name="in2" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="startCommandRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+      <wsdl:part name="in2" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="stopApplicationResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="stopSolutionResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="getSolutionStatusRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllGroupNamesRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getProcessStatusResponse">
+
+      <wsdl:part name="getProcessStatusReturn" type="impl:ArrayOf_tns2_ProcessInfoObj"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="startGroupResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="getProcessStatusForResponse">
+
+      <wsdl:part name="getProcessStatusForReturn" type="tns2:ProcessInfoRec"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getGroupStateRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+      <wsdl:part name="in2" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getProcessStatusRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getProcessStatusForRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+      <wsdl:part name="in2" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getLogLevelRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+      <wsdl:part name="in1" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="stopSolutionRequest">
+
+      <wsdl:part name="in0" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ProcessManager">
+
+      <wsdl:operation name="xmlMessage" parameterOrder="in0">
+
+         <wsdl:input message="impl:xmlMessageRequest" name="xmlMessageRequest"/>
+
+         <wsdl:output message="impl:xmlMessageResponse" name="xmlMessageResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getProcessStatus" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:getProcessStatusRequest" name="getProcessStatusRequest"/>
+
+         <wsdl:output message="impl:getProcessStatusResponse" name="getProcessStatusResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getProcessStatusFor" parameterOrder="in0 in1 in2">
+
+         <wsdl:input message="impl:getProcessStatusForRequest" name="getProcessStatusForRequest"/>
+
+         <wsdl:output message="impl:getProcessStatusForResponse" name="getProcessStatusForResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getGroupState" parameterOrder="in0 in1 in2">
+
+         <wsdl:input message="impl:getGroupStateRequest" name="getGroupStateRequest"/>
+
+         <wsdl:output message="impl:getGroupStateResponse" name="getGroupStateResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getSolutionStatus" parameterOrder="in0">
+
+         <wsdl:input message="impl:getSolutionStatusRequest" name="getSolutionStatusRequest"/>
+
+         <wsdl:output message="impl:getSolutionStatusResponse" name="getSolutionStatusResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllGroupNames" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:getAllGroupNamesRequest" name="getAllGroupNamesRequest"/>
+
+         <wsdl:output message="impl:getAllGroupNamesResponse" name="getAllGroupNamesResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getProcessesForGroup" parameterOrder="in0 in1 in2">
+
+         <wsdl:input message="impl:getProcessesForGroupRequest" name="getProcessesForGroupRequest"/>
+
+         <wsdl:output message="impl:getProcessesForGroupResponse" name="getProcessesForGroupResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getHealth" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:getHealthRequest" name="getHealthRequest"/>
+
+         <wsdl:output message="impl:getHealthResponse" name="getHealthResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getSolutionHealth" parameterOrder="in0">
+
+         <wsdl:input message="impl:getSolutionHealthRequest" name="getSolutionHealthRequest"/>
+
+         <wsdl:output message="impl:getSolutionHealthResponse" name="getSolutionHealthResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="startProcess" parameterOrder="in0 in1 in2">
+
+         <wsdl:input message="impl:startProcessRequest" name="startProcessRequest"/>
+
+         <wsdl:output message="impl:startProcessResponse" name="startProcessResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="startCommand" parameterOrder="in0 in1 in2">
+
+         <wsdl:input message="impl:startCommandRequest" name="startCommandRequest"/>
+
+         <wsdl:output message="impl:startCommandResponse" name="startCommandResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="startGroup" parameterOrder="in0 in1 in2">
+
+         <wsdl:input message="impl:startGroupRequest" name="startGroupRequest"/>
+
+         <wsdl:output message="impl:startGroupResponse" name="startGroupResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="stopProcess" parameterOrder="in0 in1 in2">
+
+         <wsdl:input message="impl:stopProcessRequest" name="stopProcessRequest"/>
+
+         <wsdl:output message="impl:stopProcessResponse" name="stopProcessResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="stopCommand" parameterOrder="in0 in1 in2">
+
+         <wsdl:input message="impl:stopCommandRequest" name="stopCommandRequest"/>
+
+         <wsdl:output message="impl:stopCommandResponse" name="stopCommandResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="stopGroup" parameterOrder="in0 in1 in2">
+
+         <wsdl:input message="impl:stopGroupRequest" name="stopGroupRequest"/>
+
+         <wsdl:output message="impl:stopGroupResponse" name="stopGroupResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="restartProcess" parameterOrder="in0 in1 in2">
+
+         <wsdl:input message="impl:restartProcessRequest" name="restartProcessRequest"/>
+
+         <wsdl:output message="impl:restartProcessResponse" name="restartProcessResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="restartGroup" parameterOrder="in0 in1 in2">
+
+         <wsdl:input message="impl:restartGroupRequest" name="restartGroupRequest"/>
+
+         <wsdl:output message="impl:restartGroupResponse" name="restartGroupResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="restartCommand" parameterOrder="in0 in1 in2">
+
+         <wsdl:input message="impl:restartCommandRequest" name="restartCommandRequest"/>
+
+         <wsdl:output message="impl:restartCommandResponse" name="restartCommandResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getLogLevel" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:getLogLevelRequest" name="getLogLevelRequest"/>
+
+         <wsdl:output message="impl:getLogLevelResponse" name="getLogLevelResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setLogLevel" parameterOrder="in0 in1 in2">
+
+         <wsdl:input message="impl:setLogLevelRequest" name="setLogLevelRequest"/>
+
+         <wsdl:output message="impl:setLogLevelResponse" name="setLogLevelResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="startApplication" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:startApplicationRequest" name="startApplicationRequest"/>
+
+         <wsdl:output message="impl:startApplicationResponse" name="startApplicationResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="startSolution" parameterOrder="in0">
+
+         <wsdl:input message="impl:startSolutionRequest" name="startSolutionRequest"/>
+
+         <wsdl:output message="impl:startSolutionResponse" name="startSolutionResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="stopApplication" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:stopApplicationRequest" name="stopApplicationRequest"/>
+
+         <wsdl:output message="impl:stopApplicationResponse" name="stopApplicationResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="stopSolution" parameterOrder="in0">
+
+         <wsdl:input message="impl:stopSolutionRequest" name="stopSolutionRequest"/>
+
+         <wsdl:output message="impl:stopSolutionResponse" name="stopSolutionResponse"/>
+
+         <wsdl:fault message="impl:EmanagerProcessException" name="EmanagerProcessException"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ProcessManagerSoapBinding" type="impl:ProcessManager">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="xmlMessage">
+
+         <wsdlsoap:operation soapAction="xmlMessage"/>
+
+         <wsdl:input name="xmlMessageRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="xmlMessageResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getProcessStatus">
+
+         <wsdlsoap:operation soapAction="getProcessStatus"/>
+
+         <wsdl:input name="getProcessStatusRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getProcessStatusResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getProcessStatusFor">
+
+         <wsdlsoap:operation soapAction="getProcessStatusFor"/>
+
+         <wsdl:input name="getProcessStatusForRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getProcessStatusForResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getGroupState">
+
+         <wsdlsoap:operation soapAction="getGroupState"/>
+
+         <wsdl:input name="getGroupStateRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getGroupStateResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getSolutionStatus">
+
+         <wsdlsoap:operation soapAction="getSolutionStatus"/>
+
+         <wsdl:input name="getSolutionStatusRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getSolutionStatusResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllGroupNames">
+
+         <wsdlsoap:operation soapAction="getAllGroupNames"/>
+
+         <wsdl:input name="getAllGroupNamesRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllGroupNamesResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getProcessesForGroup">
+
+         <wsdlsoap:operation soapAction="getProcessesForGroup"/>
+
+         <wsdl:input name="getProcessesForGroupRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getProcessesForGroupResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getHealth">
+
+         <wsdlsoap:operation soapAction="getHealth"/>
+
+         <wsdl:input name="getHealthRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getHealthResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getSolutionHealth">
+
+         <wsdlsoap:operation soapAction="getSolutionHealth"/>
+
+         <wsdl:input name="getSolutionHealthRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getSolutionHealthResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="startProcess">
+
+         <wsdlsoap:operation soapAction="startProcess"/>
+
+         <wsdl:input name="startProcessRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="startProcessResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="startCommand">
+
+         <wsdlsoap:operation soapAction="startCommand"/>
+
+         <wsdl:input name="startCommandRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="startCommandResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="startGroup">
+
+         <wsdlsoap:operation soapAction="startGroup"/>
+
+         <wsdl:input name="startGroupRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="startGroupResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="stopProcess">
+
+         <wsdlsoap:operation soapAction="stopProcess"/>
+
+         <wsdl:input name="stopProcessRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="stopProcessResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="stopCommand">
+
+         <wsdlsoap:operation soapAction="stopCommand"/>
+
+         <wsdl:input name="stopCommandRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="stopCommandResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="stopGroup">
+
+         <wsdlsoap:operation soapAction="stopGroup"/>
+
+         <wsdl:input name="stopGroupRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="stopGroupResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="restartProcess">
+
+         <wsdlsoap:operation soapAction="restartProcess"/>
+
+         <wsdl:input name="restartProcessRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="restartProcessResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="restartGroup">
+
+         <wsdlsoap:operation soapAction="restartGroup"/>
+
+         <wsdl:input name="restartGroupRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="restartGroupResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="restartCommand">
+
+         <wsdlsoap:operation soapAction="restartCommand"/>
+
+         <wsdl:input name="restartCommandRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="restartCommandResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getLogLevel">
+
+         <wsdlsoap:operation soapAction="getLogLevel"/>
+
+         <wsdl:input name="getLogLevelRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getLogLevelResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setLogLevel">
+
+         <wsdlsoap:operation soapAction="setLogLevel"/>
+
+         <wsdl:input name="setLogLevelRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="setLogLevelResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="startApplication">
+
+         <wsdlsoap:operation soapAction="startApplication"/>
+
+         <wsdl:input name="startApplicationRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="startApplicationResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="startSolution">
+
+         <wsdlsoap:operation soapAction="startSolution"/>
+
+         <wsdl:input name="startSolutionRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="startSolutionResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="stopApplication">
+
+         <wsdlsoap:operation soapAction="stopApplication"/>
+
+         <wsdl:input name="stopApplicationRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="stopApplicationResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="stopSolution">
+
+         <wsdlsoap:operation soapAction="stopSolution"/>
+
+         <wsdl:input name="stopSolutionRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="stopSolutionResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EmanagerProcessException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://process.soap.eManager.cisco.com" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ProcessManagerService">
+
+      <wsdl:port binding="impl:ProcessManagerSoapBinding" name="ProcessManager">
+
+         <wsdlsoap:address location="http://localhost:8080/axis/services/ProcessManager"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

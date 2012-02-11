@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvMsg_CreateFromBytes()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;3	 Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1020022"> </a><h2 class="pNewHTMLPage">
+tibrvMsg_CreateFromBytes()
+</h2>
+<hr />
+<a name="wp1020026"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1086826"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvMsg_CreateFromBytes</code>(<a name="wp1076449"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a>*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;message,<a name="wp1076451"> </a>
+&#160;&#160;&#160;&#160;const void*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bytes);<a name="wp1112117"> </a>
+</pre></div>
+<a name="wp1087297"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1020035"> </a><p class="pBody">
+Create a new message, and populate it with data.
+</p>
+<a name="wp1087772"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1020037"> </a><p class="pBody">
+This function allocates storage for the new message. The program owns the message, and must destroy it to reclaim the storage. That is, each call to this function must be paired with a call to <a  href="rv_c_ref39.htm#wp1010184"><code class="cCode">tibrvMsg_Destroy()</code> </a>.
+</p>
+<a name="wp1020041"> </a><p class="pBody">
+This function copies the bytes into the new message.
+</p>
+<a name="wp1058217"> </a><p class="pBody">
+Programs can add address information to the message using <a  href="rv_c_ref63.htm#wp1005928"><code class="cCode">tibrvMsg_SetSendSubject()</code> </a>, and <a  href="rv_c_ref35.htm#wp1064802"><code class="cCode">tibrvMsg_ConvertToString()</code> </a>.
+</p>
+<a name="wp1020055"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1020044"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1020046"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1020048"> </a><div class="pCellBody">
+<code class="cCode">message</code>
+</div>
+</td>
+    <td><a name="wp1020050"> </a><div class="pCellBody">
+The program supplies a location for the new message. The function creates a new message and stores a pointer to it in that location.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1020052"> </a><div class="pCellBody">
+<code class="cCode">bytes</code>
+</div>
+</td>
+    <td><a name="wp1020054"> </a><div class="pCellBody">
+Fill the new message with this data. This data buffer represents the message in Rendezvous wire format, as produced by <a  href="rv_c_ref42.htm#wp1067310"><code class="cCode">tibrvMsg_GetAsBytes()</code></a> or <a  href="rv_c_ref43.htm#wp1067373"><code class="cCode">tibrvMsg_GetAsBytesCopy()</code></a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1088162"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1020061"> </a><p class="pBody">
+<a  href="rv_c_ref42.htm#wp1067310"><code class="cCode">tibrvMsg_GetAsBytes()</code> </a>
+</p>
+<a name="wp1046205"> </a><p class="pBody">
+<a  href="rv_c_ref43.htm#wp1067373"><code class="cCode">tibrvMsg_GetAsBytesCopy()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

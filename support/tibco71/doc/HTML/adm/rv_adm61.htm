@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Limiting Access</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;6	 Secure Daemons (rvsd and rvsrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1144447"> </a><h2 class="pNewHTMLPage">
+Limiting Access
+</h2>
+<hr />
+<a name="wp1162295"> </a><p class="pBody">
+A secure daemon controls user access to local communications. Administrators can limit access at two levels of granularity:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1162300"> </a><div class="pSmartList1"><li >Network and service</li></div>
+
+<a name="wp1162301"> </a><div class="pSmartList1"><li >Subject</li></div>
+
+</ul></div>
+
+<a name="wp1162302"> </a><h3 class="pHeading2">
+Network and Service Authorization
+</h3>
+<a name="wp1162311"> </a><p class="pBody">
+Each secure daemon allows its users to communicate over a set of local networks. Two parameters together define a local network:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1242047"> </a><div class="pSmartList1"><li >Network Specification</li></div>
+
+<a name="wp1242051"> </a><p class="pBodyRelative">
+For details, see <a  href="rv_adm16.htm#wp1034613">Constructing the Network Parameter</a>.
+</p>
+<a name="wp1162523"> </a><div class="pSmartList1"><li >UDP or PGM Service</li></div>
+
+<a name="wp1162527"> </a><p class="pBodyRelative">
+For details, see <a  href="rv_adm15.htm#wp1288869">Specifying the UDP or PGM Service</a>.
+</p>
+</ul></div>
+
+<a name="wp1162557"> </a><p class="pBody">
+You must explicitly authorize each local network by specifying these two parameters. To authorize a local network, see <a  href="rv_adm71.htm#wp1159720">Authorize Network and Service Pairs</a>.
+</p>
+<a name="wp1162722"> </a><p class="pBody">
+Users can communicate <em class="cEmphasis">only</em> on the local networks that you authorize. A user program cannot create a client transport that specifies an unauthorized local network (the transport create call produces an error status code).
+</p>
+<a name="wp1162737"> </a><h4 class="pHeading3">
+Default Local Network
+</h4>
+<a name="wp1162793"> </a><p class="pBody">
+You can designate a <em class="cEmphasis">default</em> local network. A client transport that does not specify particular network and service parameters automatically communicates over this default local network; see <a  href="rv_adm69.htm#wp1155416">Default Network and Service</a>.
+</p>
+<a name="wp1141224"> </a><h3 class="pHeading2">
+Subject Authorization
+</h3>
+<a name="wp1162848"> </a><p class="pBody">
+Each secure daemon allows its users to communicate using a set of Rendezvous subject names.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1162877"> </a><div class="pSmartList1"><li >Subjects authorized for <em class="cEmphasis">sending</em> can flow from client transports out to local networks.</li></div>
+
+<a name="wp1162911"> </a><p class="pBodyRelative">
+A client transport that sends a message with an unauthorized subject does not receive any error indication; instead, the secure daemon silently discards the message.
+</p>
+<a name="wp1162838"> </a><div class="pSmartList1"><li >Subjects authorized for <em class="cEmphasis">listening</em> can flow to client transports from local networks.</li></div>
+
+<a name="wp1162916"> </a><p class="pBodyRelative">
+A client transport that creates a listener with an unauthorized subject does not receive any error indication&#151;but the resulting listener object never receives any messages.
+</p>
+</ul></div>
+
+<a name="wp1141225"> </a><p class="pBody">
+Subject authorization applies equally to all users and all local networks.
+</p>
+<a name="wp1261898"> </a><p class="pBody">
+All <code class="cCode">_INBOX</code> subjects are implicitly authorized. It is not necessary to explicitly authorize <code class="cCode">_INBOX</code> subjects.
+</p>
+<a name="wp1162904"> </a><p class="pBody">
+To authorize secure daemon subjects, see <a  href="rv_adm72.htm#wp1160129">Authorize Subjects</a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

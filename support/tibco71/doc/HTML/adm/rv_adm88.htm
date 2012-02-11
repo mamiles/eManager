@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Chapter&#160;10	Performance Assessment (rvperf)</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;10	 Performance Assessment (rvperf)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1068799"> </a><h2 class="pNewHTMLPageSetChapterTitle">
+Chapter&#160;10	Performance Assessment (rvperf)
+</h2>
+<hr />
+<a name="wp1070556"> </a><p class="pBody">
+Performance assessment software can help you gauge and improve Rendezvous network performance, plan hardware purchases and software deployment, and test network configurations.
+</p>
+<a name="wp1068801"> </a><h4 class="pHeading3">
+Topics
+</h4>
+<div class="pSmartList1"><ul>
+<a name="wp1068806"> </a><div class="pSmartList1"><li ><a  href="rv_adm89.htm#wp1069656"><em class="cEmphasis">Overview</em></a></li></div>
+
+<a name="wp1070773"> </a><div class="pSmartList1"><li ><a  href="rv_adm90.htm#wp1068857"><em class="cEmphasis">Principles of Operation</em></a></li></div>
+
+<a name="wp1070783"> </a><div class="pSmartList1"><li ><a  href="rv_adm91.htm#wp1068880"><em class="cEmphasis">Single Mode and Automatic Mode</em></a></li></div>
+
+<a name="wp1070788"> </a><div class="pSmartList1"><li ><a  href="rv_adm92.htm#wp1068892"><em class="cEmphasis">Automatic Mode&#151;Binary Search</em></a></li></div>
+
+<a name="wp1086762"> </a><div class="pSmartList1"><li ><a  href="rv_adm93.htm#wp1068903"><em class="cEmphasis">Dataloss Advisory</em></a></li></div>
+
+<a name="wp1070797"> </a><div class="pSmartList1"><li ><a  href="rv_adm94.htm#wp1281741"><em class="cEmphasis">Multicast, Broadcast, Point-to-Point and Direct</em></a></li></div>
+
+<a name="wp1070802"> </a><div class="pSmartList1"><li ><a  href="rv_adm95.htm#wp1068972"><em class="cEmphasis">Before You Test</em></a></li></div>
+
+<a name="wp1070854"> </a><div class="pSmartList1"><li ><a  href="rv_adm96.htm#wp1068989"><em class="cEmphasis">rvperfm</em></a></li></div>
+
+<a name="wp1070867"> </a><div class="pSmartList1"><li ><a  href="rv_adm97.htm#wp1069148"><em class="cEmphasis">rvperfs</em></a></li></div>
+
+<a name="wp1070864"> </a><div class="pSmartList1"><li ><a  href="rv_adm98.htm#wp1069245"><em class="cEmphasis">Interpreting the Report</em></a></li></div>
+
+<a name="wp1070812"> </a><div class="pSmartList1"><li ><a  href="rv_adm99.htm#wp1069338"><em class="cEmphasis">Usage and Examples</em></a></li></div>
+
+<a name="wp1070817"> </a><div class="pSmartList1"><li ><a  href="rv_adm100.htm#wp1069354"><em class="cEmphasis">Hardware Capabilities</em></a></li></div>
+
+<a name="wp1070822"> </a><div class="pSmartList1"><li ><a  href="rv_adm101.htm#wp1069423"><em class="cEmphasis">Wide Area Networks</em></a></li></div>
+
+<a name="wp1070827"> </a><div class="pSmartList1"><li ><a  href="rv_adm102.htm#wp1069445"><em class="cEmphasis">Certified Message Delivery</em></a></li></div>
+
+<a name="wp1070832"> </a><div class="pSmartList1"><li ><a  href="rv_adm103.htm#wp1069463"><em class="cEmphasis">Very Large Messages</em></a></li></div>
+
+<a name="wp1070836"> </a><div class="pSmartList1"><li ><a  href="rv_adm104.htm#wp1069479"><em class="cEmphasis">Sufficiency and Effects</em></a></li></div>
+
+<a name="wp1070841"> </a><div class="pSmartList1"><li ><a  href="rv_adm105.htm#wp1069495"><em class="cEmphasis">Locating Performance Obstacles</em></a></li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvMsg_GetByteSize()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;3	 Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1074127"> </a><h2 class="pNewHTMLPage">
+tibrvMsg_GetByteSize()
+</h2>
+<hr />
+<a name="wp1074131"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1086854"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvMsg_GetByteSize</code>(<a name="wp1076561"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;message,<a name="wp1076563"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128803"><code class="cCode">tibrv_u32</code></a>*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;byteSize);<a name="wp1076564"> </a>
+</pre></div>
+<a name="wp1087325"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1074138"> </a><p class="pBody">
+Return the size of a message (in bytes).
+</p>
+<a name="wp1087800"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1074140"> </a><p class="pBody">
+This measurement accounts for the actual space that the message occupies (in wire format), including its header and its fields. It does not include storage that is allocated but unused. It does not include address information, such as the subject or reply subject.
+</p>
+<a name="wp1074141"> </a><p class="pBody">
+Programs can use this function as part of these tasks:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1074142"> </a><div class="pSmartList1"><li >Measure the size of message before allocating space to store a copy&#151;as with <a  href="rv_c_ref43.htm#wp1067373"><code class="cCode">tibrvMsg_GetAsBytesCopy()</code></a>.</li></div>
+
+<a name="wp1074146"> </a><div class="pSmartList1"><li >Assess throughput rates.</li></div>
+
+<a name="wp1074147"> </a><div class="pSmartList1"><li >Limit output rates (also called <em class="cEmphasis">throttling</em>).</li></div>
+
+</ul></div>
+
+<a name="wp1143757"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1074150"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1074152"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1074154"> </a><div class="pCellBody">
+<code class="cCode">message</code>
+</div>
+</td>
+    <td><a name="wp1074156"> </a><div class="pCellBody">
+Return the size of this message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1074158"> </a><div class="pCellBody">
+<code class="cCode">byteSize</code>
+</div>
+</td>
+    <td><a name="wp1074160"> </a><div class="pCellBody">
+The program supplies a location. The function stores the message size (in bytes) in that location.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1088190"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1074168"> </a><p class="pBody">
+<a  href="rv_c_ref42.htm#wp1067310"><code class="cCode">tibrvMsg_GetAsBytes()</code> </a>
+</p>
+<a name="wp1074172"> </a><p class="pBody">
+<a  href="rv_c_ref43.htm#wp1067373"><code class="cCode">tibrvMsg_GetAsBytesCopy()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

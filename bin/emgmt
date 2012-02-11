@@ -1,0 +1,263 @@
+#!/bin/ksh -p
+
+#####################################################
+# Items that the installer need to configure
+#
+export EM_HOME=EMANAGER_HOME
+#####################################################
+. $EM_HOME/bin/emenv.ksh
+. $EM_HOME/bin/wdscript.lib
+
+#####################################################
+
+###########################################################
+appType=eManager
+appInst=app
+###########################################################
+
+##
+## Start Sybase function
+##
+function start_sybase {
+
+    run=`ps -ef |grep dbsrv8 | grep $DBNAME | grep -v grep |wc -l`
+    if [ $run -eq 0 ]
+    then
+	echo "Starting dbsrv8 $DBNAME"
+	cd ${ASANY8}
+	create_sybase
+        if [ -n "$DBPORT" ]; then
+          DBOPT=";SERVERPORT=$DBPORT"
+        fi
+	# echo "$ASANY8/bin/dbsrv8 -n $DBNAME -x 'tcpip{DOBROADCAST=NO$DBOPT}' -ud -gk 'all' -gd 'all' $DBDATADIR/$DBNAME "
+	# $ASANY8/bin/dbsrv8 -n $DBNAME -ud -gk "all" -gd "all" $DBDATADIR/$DBNAME
+	$ASANY8/bin/dbsrv8 -n "$DBHOSTNAME" -ud -gk "all" -gd "all" -ti "0" $DBDATADIR/$DBNAME.db -n "$DBNAME"
+    else
+	echo "sybase $DBNAME already running"
+    fi
+}
+
+function create_sybase {
+
+    if [ ! -f $DBDATADIR/$DBNAME.db ]; then
+	echo "Creating Sybase database $DBDATADIR/$DBNAME.db"
+	echo "$ASANY8/bin/dbinit -t $DBLOGDIR/$DBNAME.log $DBDATADIR/$DBNAME"
+	$ASANY8/bin/dbinit -t $DBLOGDIR/$DBNAME.log $DBDATADIR/$DBNAME.db
+    fi
+}
+
+function shutdown_sybase {
+
+    $ASANY8/bin/dbstop -y "$DBHOSTNAME"
+}
+
+function initialize_sybase {
+
+    get_db_status
+
+    if [ $DB_STATUS = "not-initialized" ]; then
+
+	echo "Initializing database . . . "
+
+	start_sybase
+
+	echo
+	echo "Database started . . .  Now starting to initialize and create database schema"
+	echo
+
+	sleep 5
+
+	# echo "${ASANY8}/bin/dbisqlc -nogui -q -c 'uid=$DBUSER;pwd=$DBPASSWD;eng=$DBNAME' $ASANYSH8/jConnect-5_5/sp/sql_asa.sql"
+	${ASANY8}/bin/dbisqlc -nogui -q -c "uid=$DBUSER;pwd=$DBPASSWD;dbn=$DBNAME;eng=$DBHOSTNAME" $ASANYSH8/jConnect-5_5/sp/sql_asa.sql
+	if [ $? -ne 0 ]; then
+		echo "There was an error initializing the database while running sql_asa.sql"
+		echo "Terminating"
+		shutdown_sybase
+		exit 1
+	fi
+
+	echo "connect database \"$DBNAME\" user $DBUSER identified by $DBPASSWD;" > /tmp/eManager.db.schema.$$
+	cat $EM_HOME/config/db/emanagerDbDefinition.ddl >> /tmp/eManager.db.schema.$$
+
+	# echo "${ASANY8}/bin/dbisqlc -nogui -q  -c 'uid=$DBUSER;pwd=$DBPASSWD;eng=$DBNAME' /tmp/eManager.db.schema.$$"
+	${ASANY8}/bin/dbisqlc -nogui -q  -c "uid=$DBUSER;pwd=$DBPASSWD;dbn=$DBNAME;eng=$DBHOSTNAME" /tmp/eManager.db.schema.$$
+	if [ $? -ne 0 ]; then
+		echo "There was an error creating the database schema"
+		echo "Terminating"
+		shutdown_sybase
+		exit 1
+	fi
+
+	rm -f /tmp/eManager.db.schema.$$
+
+	shutdown_sybase
+
+	sed -e "s!DBNAME!$DBNAME!g" \
+	    -e "s!DBDATADIR!$DBDATADIR!g" \
+	    $EM_HOME/config/processSequencer/eManager.app.properties > /tmp/eManager.app.properties.$$
+	mv /tmp/eManager.app.properties.$$ $EM_HOME/config/processSequencer/eManager.app.properties
+
+
+	sed -e "/DB_STATUS=/d" $EM_HOME/config/.db_status >/tmp/db_status
+	mv /tmp/db_status $EM_HOME/config/.db_status
+	echo "DB_STATUS=initialized" >>$EM_HOME/config/.db_status
+
+    fi
+}
+
+function get_db_status {
+	if [ -f $EM_HOME/config/.db_status ]; then
+		DB_STATUS=`cat $EM_HOME/config/.db_status | /usr/bin/grep DB_STATUS= | /usr/bin/awk 'BEGIN { FS = "=" } { print $2 }'`
+	else
+		echo "# Sybase Status " 							>  $EM_HOME/config/.db_status
+		echo "#"									>> $EM_HOME/config/.db_status
+		echo "# This variable determines if the database needs to be initialized" 	>> $EM_HOME/config/.db_status
+		echo "# Valid values are initialized and not-initialized"			>> $EM_HOME/config/.db_status
+		echo "DB_STATUS=not-initialized"						>> $EM_HOME/config/.db_status
+		DB_STATUS="not-initialized"
+	fi
+
+}
+
+function get_pid_of_rvrd {
+    /usr/ucb/ps auxww | grep -v "grep " | grep rvrd | grep $1 | awk '{print $2}'
+}
+
+function get_pid_of {
+    /usr/bin/ps -ef | grep -v "grep " | grep $1 | awk '{print $2}'
+}
+
+function start_rvrd {
+	RVRD7500=`get_pid_of_rvrd 7500`
+	if [ "$RVRD7500" = "" ]; then
+		$RV_ROOT/bin/rvrd -store $EM_HOME/tmp/rvrd.7500.store -listen tcp:7500 -logfile $EM_HOME/logs/rvrd.7500.log
+	fi
+	RVRD7474=`get_pid_of_rvrd 7474`
+	if [ "$RVRD7474" = "" ]; then
+		$RV_ROOT/bin/rvrd -store $EM_HOME/tmp/rvrd.7474.store -listen tcp:7474 -logfile $EM_HOME/logs/rvrd.7474.log
+	fi
+	NOHUP="nohup"
+	HAWKHMA=`get_pid_of tibhawkhma`
+	if [ "$HAWKHMA" = "" ]; then
+        	if [ -x $HAWK_ROOT/bin/tibhawkhma ]; then
+           		if [ -z "$NOHUP" ]; then
+               			$HAWK_ROOT/bin/starthma
+           		else
+               			$NOHUP $HAWK_ROOT/bin/starthma &
+           		fi
+        	fi
+        else
+        	# kill $HAWKHMA
+        	if [ -x $HAWK_ROOT/bin/tibhawkhma ]; then
+           		if [ -z "$NOHUP" ]; then
+               			$HAWK_ROOT/bin/starthma
+           		else
+               			$NOHUP $HAWK_ROOT/bin/starthma &
+           		fi
+        	fi
+        fi
+        HAWKAGENT=`get_pid_of TIBHawk=agent`
+	if [ "$HAWKAGENT" = "" ]; then
+        	if [ -x $HAWK_ROOT/bin/startagent ]; then
+           		$HAWK_ROOT/bin/startagent -file $EM_HOME/config/hawkagent.cfg
+        	fi
+	else
+		kill $HAWKAGENT
+		if [ -x $HAWK_ROOT/bin/startagent ]; then
+			$HAWK_ROOT/bin/startagent -file $EM_HOME/config/hawkagent.cfg
+		fi
+        fi
+}
+
+start_rmi() {
+	PIDRMI=`get_pid_of rmiregistry`
+	if [ "$PIDRMI" = "" ]; then
+		SAVE_CLASSPATH=$CLASSPATH
+		unset CLASSPATH
+		if [ ! -d $EM_HOME/tomcat/webapps/emanager/WEB-INF/classes ]; then
+			cd $EM_HOME/tomcat/webapps
+			mkdir emanager
+			cd emanager
+			$JAVA_HOME/bin/jar -xf ../emanager.war
+		fi
+		cd $EM_HOME/tomcat/webapps/emanager/WEB-INF/classes
+		$JRE_ROOT/bin/rmiregistry &
+		export CLASSPATH=$SAVE_CLASSPATH
+	else
+		kill $PIDRMI
+		SAVE_CLASSPATH=$CLASSPATH
+		unset CLASSPATH
+		if [ ! -d $EM_HOME/tomcat/webapps/emanager/WEB-INF/classes ]; then
+			cd $EM_HOME/tomcat/webapps
+			mkdir emanager
+			cd emanager
+			$JAVA_HOME/bin/jar -xf ../emanager.war
+		fi
+		cd $EM_HOME/tomcat/webapps/emanager/WEB-INF/classes
+		$JRE_ROOT/bin/rmiregistry &
+		export CLASSPATH=$SAVE_CLASSPATH
+	fi
+}
+
+stop_rmi() {
+	PIDRMI=`get_pid_of rmiregistry`
+	if [ "$PIDRMI" != "" ]; then
+		kill $PIDRMI
+	fi
+}
+
+check_status() {
+	$EM_HOME/bin/cmd -a eManager -i app status
+	exit $?
+}
+
+case "$1" in
+    start)
+    	initialize_sybase
+    	start_rvrd
+	start_rmi
+	$EM_HOME/bin/startwd $appType $appInst
+	;;
+
+    stop)
+    	stop_rmi
+    	echo "Shutting down eManager. . . "
+	$EM_HOME/bin/stopwd $appType $appInst
+	;;
+
+    status)
+	check_status
+	;;
+
+    cmd)
+    	$EM_HOME/bin/cmd -a eManager -i app
+    	;;
+
+    about)
+	version=`cat $EM_HOME/config/.version`
+	echo
+	echo "***************************************************************************"
+	echo "***************************************************************************"
+	echo
+	echo "                       eManager Application"
+	echo
+	echo "                 $version"
+	echo
+	echo "***************************************************************************"
+	echo "***************************************************************************"
+	;;
+
+    *)
+
+	echo
+	echo "usage: $0 [start] [stop] [status] [about]"
+	echo
+	echo "	start			Start the system"
+	echo "	stop			Stop the system"
+	echo "	status			Show the status of each process"
+	echo "	about			Show the version"
+	exit 1
+	;;
+esac
+
+exit 0

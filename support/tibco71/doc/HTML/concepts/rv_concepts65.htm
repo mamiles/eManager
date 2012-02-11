@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Listener Event Semantics</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;7	 Events";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1023671"> </a><h2 class="pNewHTMLPage">
+Listener Event Semantics
+</h2>
+<hr />
+<a name="wp1024923"> </a><p class="pBody">
+The arrival of an inbound message is an important event for most Rendezvous programs. It is also an instructive exemplar of an asynchronous event&#151;the receiving program cannot know in advance when a particular message might arrive in the queue. To receive messages, programs create listener events, define callback functions to process the inbound messages, and dispatch events in a loop.
+</p>
+<a name="wp1030538"> </a><p class="pBody">
+While a program is listening for messages, the event driver queues the listener event each time a message arrives with a matching subject name. Each appearance of the event in the queue leads to a separate invocation of its callback function. At any moment in time, an event queue can contain several references to the same listener event object&#151;each reference paired with a different inbound message.
+</p>
+<a name="wp1024963"> </a><p class="pBody">
+Each time the callback function runs, it receives an inbound message as an argument. The callback function must process the message in an appropriate application-specific fashion.
+</p>
+<a name="wp1030054"> </a><h3 class="pHeading2">
+Listening for Messages
+</h3>
+<a name="wp1030056"> </a><p class="pBody">
+Programs <em class="cEmphasis">listen</em> for messages by creating <em class="cEmphasis">listener events</em>. Each listener event object signifies that a specific transport is listening for messages that match a specific subject name (which may contain wildcards). The transport continues listening until the program destroys the listener object.
+</p>
+<a name="wp1030057"> </a><p class="pBody">
+Receiving programs must define callback functions to process inbound messages. When a message arrives, Rendezvous software places the listening event on an event queue. The program dispatches the event to the listener&#8217;s callback function.
+</p>
+<a name="wp1030093"> </a><p class="pBody">
+One listener can cause many invocations of its callback function, since many inbound messages can match the desired subject name.
+</p>
+<a name="wp1030094"> </a><p class="pBody">
+Programs can listen several times on the same subject and transport. Each listener can specify the same callback function or different callback functions. If a program creates two listeners with the same subject and transport, each matching inbound message causes two events (and two callback invocations to process them).
+</p>
+<a name="wp1049450"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1064928"> </a><div class="pTableTitle">
+Table&#160;19   Listener Creation (Sheet 1 of 2)
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1064932"> </a><div class="pCellBody">
+C
+</div>
+</td>
+    <td><a name="wp1064937"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref79.htm#wp1030177');" onMouseOver="WWHShowPopup('e', 'rv_c_ref79.htm#wp1030177', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvEvent_CreateListener()</code></a>
+</div>
+<a name="wp1064941"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref178.htm#wp1147227');" onMouseOver="WWHShowPopup('e', 'rv_c_ref178.htm#wp1147227', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvcmEvent_CreateListener()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1064943"> </a><div class="pCellBody">
+C++
+</div>
+</td>
+    <td><a name="wp1064945"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref103.htm#wp1149259');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref103.htm#wp1149259', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvListener::create()</code></a>
+</div>
+<a name="wp1072124"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref220.htm#wp1139060');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref220.htm#wp1139060', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code style="font-style: normal" class="cCode">TibrvCmListener::create()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1064947"> </a><div class="pCellBody">
+Java
+</div>
+</td>
+    <td><a name="wp1064952"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref83.htm#wp1033788');" onMouseOver="WWHShowPopup('g', 'rv_java_ref83.htm#wp1033788', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvListener()</code></a>
+</div>
+<a name="wp1064956"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref186.htm#wp1213777');" onMouseOver="WWHShowPopup('g', 'rv_java_ref186.htm#wp1213777', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmListener()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1064958"> </a><div class="pCellBody">
+COM
+</div>
+</td>
+    <td><a name="wp1064960"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref82.htm#wp1033788');" onMouseOver="WWHShowPopup('h', 'rv_com_ref82.htm#wp1033788', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvListener.create</code></a>
+</div>
+<a name="wp1073146"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref170.htm#wp1096047');" onMouseOver="WWHShowPopup('h', 'rv_com_ref170.htm#wp1096047', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmListener.create</code></a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1052200"> </a><h4 class="pHeading3">
+Activation and Dispatch
+</h4>
+<a name="wp1052201"> </a><p class="pBody">
+Inbound messages on the transport that match the subject trigger the event.
+</p>
+<a name="wp1052202"> </a><p class="pBody">
+Creating a listener event object automatically <em class="cEmphasis">activates</em> the event&#151;that is, the transport begins listening for all inbound messages with matching subjects. When a message arrives, Rendezvous software places the event object and message on the event queue. Dispatch removes the event object from the queue, and runs the callback function to process the message. (To stop receiving inbound messages on the subject, destroy the event object; this action cancels all messages already queued for the listener event.)
+</p>
+<a name="wp1052215"> </a><p class="pBody">
+<a  href="rv_concepts65.htm#wp1052220">Figure&#160;10</a> illustrates that Rendezvous software does <em class="cEmphasis">not</em> deactivate the listener when it places new message events on the queue (in contrast to timer and I/O events, which are temporarily deactivated). Consequently, several messages can accumulate in the queue while the callback function is processing.
+</p>
+<a name="wp1052220"> </a><div class="pFigureTitle">
+Figure&#160;10   Listener Activation and Dispatch</div><div align="center"><img src="images/rv_conceptsa8.gif" height="454" width="538" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1063614"> </a><p class="pBody">
+When the callback function is I/O-bound, messages can arrive faster than the callback function can process them, and the queue can grow unacceptably long. In applications where a delay in processing messages is unacceptable, consider dispatching from several threads to process messages concurrently.
+</p>
+<a name="wp1063615"> </a><h3 class="pHeading2">
+Destroying a Listener
+</h3>
+<a name="wp1030096"> </a><p class="pBody">
+A listening transport continues receiving inbound messages indefinitely, until the program destroys the listener event (or its supporting objects).
+</p>
+<a name="wp1030353"> </a><p class="pBody">
+Destroying a listener&#8217;s transport or event queue invalidates the listener event; inbound messages specified by the event no longer arrive. An invalid listener cannot be repaired; the program must destroy and re-create it.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvQueue.poll()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1037260"> </a><h2 class="pNewHTMLPage">
+TibrvQueue.poll()
+</h2>
+<hr />
+<a name="wp1037261"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1037262"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+boolean <code class="cCodeBold">poll</code>()<a name="wp1037263"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a>, java.lang.InterruptedException<a name="wp1037264"> </a>
+</pre></div>
+<a name="wp1037266"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1037304"> </a><p class="pBody">
+Dispatch an event, if possible.
+</p>
+<a name="wp1037269"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1037308"> </a><p class="pBody">
+If the queue is not empty, then this call dispatches the event at the head of the queue, and then returns. If the queue is empty, then this call returns immediately.
+</p>
+<a name="wp1037271"> </a><p class="pBody">
+When the call dispatches an event, it returns <code class="cCode">true</code>. When the call does not dispatch an event, it returns <code class="cCode">false</code>.
+</p>
+<a name="wp1037372"> </a><p class="pBody">
+This call is equivalent to <code class="cCode">timedDispatch(0)</code>.
+</p>
+<a name="wp1081340"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1037283"> </a><p class="pBody">
+<a  href="rv_java_ref4.htm#wp1107485">Interrupting Event Dispatch Threads</a>
+</p>
+<a name="wp1059991"> </a><p class="pBody">
+<a  href="rv_java_ref94.htm#wp1059389"><code class="cCode">TibrvDispatchable</code> </a>
+</p>
+<a name="wp1059995"> </a><p class="pBody">
+<a  href="rv_java_ref96.htm#wp1113816"><code class="cCode">TibrvDispatchable.poll()</code> </a>
+</p>
+<a name="wp1037287"> </a><p class="pBody">
+<a  href="rv_java_ref101.htm#wp1037052"><code class="cCode">TibrvQueue.dispatch()</code> </a>
+</p>
+<a name="wp1059945"> </a><p class="pBody">
+<a  href="rv_java_ref114.htm#wp1037150"><code class="cCode">TibrvQueue.timedDispatch()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

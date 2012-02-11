@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvEventOnComplete::onComplete()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1126041"> </a><h2 class="pNewHTMLPage">
+TibrvEventOnComplete::onComplete()
+</h2>
+<hr />
+<a name="wp1125909"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1125910"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+virtual void <code class="cCodeBold">onComplete</code>(<a name="wp1125911"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_cpp_ref88.htm#wp1047420"><code class="cCode">TibrvEvent</code></a>* destroyedEvent) = 0;<a name="wp1144422"> </a>
+</pre></div>
+<a name="wp1125914"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1125916"> </a><p class="pBody">
+A program can destroy an event object even when its callback method is running in one or more threads. Multi-threaded programs can define methods of this type to discover when all callback methods in progress have completed.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1125926"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1125928"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1125930"> </a><div class="pCellBody">
+<code class="cCode">destroyedEvent</code>
+</div>
+</td>
+    <td><a name="wp1125932"> </a><div class="pCellBody">
+This parameter receives the event object. This object is identical to the object that the program created to express event interest.
+</div>
+<a name="wp1125933"> </a><div class="pCellBody">
+However, by the time this method runs, the event is already destroyed; this method cannot use the event object in Rendezvous calls.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1125942"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1125943"> </a><p class="pBody">
+This type of method is important in two situations:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1125947"> </a><div class="pSmartList1"><li >An event callback method calls <a  href="rv_cpp_ref89.htm#wp1068928"><code class="cCode">TibrvEvent::destroy()</code></a> to destroy its event, and the program must do additional processing <em class="cEmphasis">after</em> the rest of the callback method has completed.</li></div>
+
+<a name="wp1125948"> </a><div class="pSmartList1"><li >Several threads dispatch an event (so the event callback method can be running in several threads) and the program must do additional processing after the callback method has completed <em class="cEmphasis">in all threads</em>.</li></div>
+
+</ul></div>
+
+<a name="wp1125952"> </a><p class="pBody">
+Upon return from <a  href="rv_cpp_ref89.htm#wp1068928"><code class="cCode">TibrvEvent::destroy()</code></a>, the destroyed event&#8217;s callback method can no longer begin to run. However, in each thread where the callback method is already in progress, that callback method does continue to run until complete.
+</p>
+<a name="wp1162342"> </a><p class="pBody">
+The completion callback can still extract closure data from the event, even though the event is already destroyed.
+</p>
+<a name="wp1125956"> </a><p class="pBody">
+<a  href="rv_cpp_ref89.htm#wp1068928"><code class="cCode">TibrvEvent::destroy()</code></a> accepts an argument of type <a  href="rv_cpp_ref100.htm#wp1125908"><code class="cCode">TibrvEventOnComplete</code></a>. Rendezvous software ensures that the completion method runs when the last callback-in-progress has completed.
+</p>
+<a name="wp1125963"> </a><h4 class="pHeading3">
+Timing and Context
+</h4>
+<a name="wp1125964"> </a><p class="pBody">
+This completion method can run in two situations:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1125968"> </a><div class="pSmartList1"><li ><a  href="rv_cpp_ref101.htm#wp1126004">Figure&#160;6</a> illustrates a situation in which the program calls <a  href="rv_cpp_ref89.htm#wp1068928"><code class="cCode">TibrvEvent::destroy()</code></a> while callback methods of the destroyed event are in progress. When the last of those callback methods completes, Rendezvous software runs the completion method immediately, in the same thread as the callback method that completes last.</li></div>
+
+<a name="wp1125978"> </a><div class="pSmartList1"><li ><a  href="rv_cpp_ref101.htm#wp1126009">Figure&#160;7</a> illustrates a situation in which the program calls <a  href="rv_cpp_ref89.htm#wp1068928"><code class="cCode">TibrvEvent::destroy()</code></a> when the destroyed event&#8217;s callback method is not running in any thread. In this case, <a  href="rv_cpp_ref89.htm#wp1068928"><code class="cCode">TibrvEvent::destroy()</code></a> calls the completion method before returning.</li></div>
+
+<a name="wp1125985"> </a><p class="pBodyRelative">
+Notice that in this situation, the completion method runs in the program context, instead of the usual context of a callback method. In rare instances, deadlock can occur, resulting from unintended interactions between mutex operations in the program context before the destroy call, and mutex operations in the program&#8217;s completion method code.
+</p>
+<a name="wp1125986"> </a><p class="pBodyRelative">
+To protect against this type of deadlock, programmers can use a straightforward thought-experiment as a preventive test. Expand the completion method code immediately after the call to <a  href="rv_cpp_ref89.htm#wp1068928"><code class="cCode">TibrvEvent::destroy()</code></a>&#151;as it would run when the destroyed event&#8217;s callback method is not running in any thread. Trace mutex locking activity within this context to determine whether the resulting code could violate established rules for proper use of mutex locks.
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;&#160;&#160;&#160;...<a name="wp1125990"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;<code class="cCodeItalic">&lt;mutex lock operations&gt;</code><a name="wp1125991"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;...<a name="wp1125992"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;<code class="cCode">myEvent::destoy()</code><a name="wp1125996"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;<code class="cCodeItalic">&lt;expand completion method code here, and check for violations of mutex rules&gt;</code><a name="wp1125997"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;...<a name="wp1125998"> </a>
+<a name="wp1125999"> </a><p class="pBodyRelative">
+Potential violations and conflicts usually become apparent during this exercise. Remember, it is the programmer&#8217;s responsibility to prevent deadlock.
+</p>
+</pre></div>
+</ul></div>
+
+<a name="wp1126004"> </a><div class="pFigureTitle">
+Figure&#160;6   Completion when Callback Methods are in Progress</div><div align="center"><img src="images/rv_cpp_refa7.gif" height="338" width="528" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1126009"> </a><div class="pFigureTitle">
+Figure&#160;7   Completion when Callback Methods are Not in Progress</div><div align="center"><img src="images/rv_cpp_refa8.gif" height="220" width="528" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1126010"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1126014"> </a><p class="pBody">
+<a  href="rv_cpp_ref115.htm#wp1129107"><code class="cCode">TibrvIOEvent::create()</code> </a>
+</p>
+<a name="wp1126018"> </a><p class="pBody">
+<a  href="rv_cpp_ref103.htm#wp1149259"><code class="cCode">TibrvListener::create()</code> </a>
+</p>
+<a name="wp1126022"> </a><p class="pBody">
+<a  href="rv_cpp_ref109.htm#wp1128172"><code class="cCode">TibrvTimer::create()</code> </a>
+</p>
+<a name="wp1126026"> </a><p class="pBody">
+<a  href="rv_cpp_ref89.htm#wp1068928"><code class="cCode">TibrvEvent::destroy()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

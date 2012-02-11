@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:10:06" />
+  <title>Before You Install</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Installation";
+    var ChapterTitle = "Chapter&#160;2	 UNIX";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp344872"> </a><h2 class="pNewHTMLPage">
+Before You Install
+</h2>
+<hr />
+<a name="wp346650"> </a><p class="pBody">
+Please consider these items before you install Rendezvous software on one or more UNIX platforms.
+</p>
+<a name="wp345031"> </a><h3 class="pHeading2">
+Running rvd with Increased Scheduling Priority
+</h3>
+<a name="wp345032"> </a><p class="pBody">
+You can improve performance by running the Rendezvous daemon (<code class="cCode">rvd</code>) with increased scheduling priority.
+</p>
+<a name="wp345033"> </a><p class="pBody">
+To arrange for increased priority, log in as <code class="cCode">root</code> before running the <code class="cCode">rvinstal</code> program; when <code class="cCode">rvinstal</code> asks if you wish to run the Rendezvous daemon as setuid root, answer <code class="cCodeBold">y</code> (yes).
+</p>
+<a name="wp348753"> </a><p class="pBody">
+If you have already installed the Rendezvous software and want to change its scheduling priority, use the UNIX <code class="cCode">chown</code> and <code class="cCode">chmod</code> commands to set the Rendezvous daemon (<code class="cCode">rvd</code>) to run as root.
+</p>
+<a name="wp345037"> </a><p class="pBody">
+Certain UNIX platforms let you set privileges (and hence, scheduling priority) based on groups. That approach also works well for the Rendezvous daemon.
+</p>
+<a name="wp348860"> </a><p class="pBody">
+When <code class="cCode">rvd</code> runs as root, it raises its scheduling priority, and then restores normal user privileges (before executing any calls). File access does <em class="cEmphasis">not</em> occur while running with special privileges.
+</p>
+<a name="wp578060"> </a><h3 class="pHeading2">
+Size and Time to Install
+</h3>
+<a name="wp344914"> </a><p class="pBody">
+Rendezvous software requires approximately 6 megabytes of storage and takes less than 10 minutes to install. Instructions for installation follow.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Installation <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

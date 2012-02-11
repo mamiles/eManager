@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Events</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;7	 Events";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1024343"> </a><h2 class="pNewHTMLPage">
+Events
+</h2>
+<hr />
+<a name="wp1023626"> </a><p class="pBody">
+As a data object, an event has two roles:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1024797"> </a><div class="pSmartList1"><li >Programs create event objects to register interest in the set of matching event occurrences. Each event object represents the program&#8217;s interest in a set of events, and the event&#8217;s parameters specify that set.</li></div>
+
+<a name="wp1024802"> </a><div class="pSmartList1"><li >Rendezvous presents the event object to the appropriate callback function whenever an event occurs. In this context, the event object signifies the actual event that occurred.</li></div>
+
+</ul></div>
+
+<a name="wp1024474"> </a><h3 class="pHeading2">
+Event Parameters
+</h3>
+<a name="wp1024504"> </a><p class="pBody">
+These parameters are common to <em class="cEmphasis">all</em> event creation calls. Additional parameters are specific to each type of event.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1024477"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1024479"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1024481"> </a><div class="pCellBody">
+<code class="cCode">queue</code>
+</div>
+</td>
+    <td><a name="wp1024483"> </a><div class="pCellBody">
+For each occurrence of the event, place the event object on this event queue.
+</div>
+<a name="wp1024487"> </a><div class="pCellBody">
+See <a  href="rv_concepts63.htm#wp1024535">Event Queues</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1024489"> </a><div class="pCellBody">
+<code class="cCode">callback</code>
+</div>
+</td>
+    <td><a name="wp1024491"> </a><div class="pCellBody">
+Upon dispatch, process the event with this callback function.
+</div>
+<a name="wp1024495"> </a><div class="pCellBody">
+See <a  href="rv_concepts64.htm#wp1025782">Callback Functions</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1024497"> </a><div class="pCellBody">
+<code class="cCode">closure</code>
+</div>
+</td>
+    <td><a name="wp1024499"> </a><div class="pCellBody">
+Store this closure data in the event object.
+</div>
+<a name="wp1024503"> </a><div class="pCellBody">
+See <a  href="rv_concepts64.htm#wp1050548">Closure Data</a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1024511"> </a><h3 class="pHeading2">
+Event Classes
+</h3>
+<a name="wp1024532"> </a><p class="pBody">
+Rendezvous software recognizes three classes of events.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1024517"> </a><div class="pTableTitle">
+Table&#160;17   Event Classes&#160;
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1024521"> </a><div class="pCellBody">
+Message
+</div>
+</td>
+    <td><a name="wp1051323"> </a><div class="pCellBody">
+An inbound message has arrived. Additional creation parameters specify the subject name and transport. See also, <a  href="rv_concepts65.htm#wp1023671">Listener Event Semantics</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1024525"> </a><div class="pCellBody">
+Timer
+</div>
+</td>
+    <td><a name="wp1027991"> </a><div class="pCellBody">
+A timer interval has elapsed. An additional creation parameter specifies the interval. See also, <a  href="rv_concepts67.htm#wp1024765">Timer Event Semantics</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1024529"> </a><div class="pCellBody">
+I/O
+</div>
+</td>
+    <td><a name="wp1052188"> </a><div class="pCellBody">
+An I/O socket is ready. Additional creation parameters specify the socket, and the I/O condition. See also, <a  href="rv_concepts66.htm#wp1030356">I/O Event Semantics</a>.
+</div>
+<a name="wp1052184"> </a><div class="pCellBody">
+The Rendezvous Java and COM APIs do <em class="cEmphasis">not</em> support this kind of event.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1024110"> </a><h4 class="pHeading3">
+Signals
+</h4>
+<a name="wp1101437"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/obsolete.gif" border="0" /></td>
+    <td><a name="wp1245778"> </a><p class="pBody">
+Earlier releases supported UNIX operating system signals as Rendezvous events. This feature is obsolete starting in release 6.
+</p>
+<a name="wp1245769"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+</tr>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1245785"> </a><p class="pBody">
+Programmers may use <code class="cCode">signal()</code> calls, if the operating system supports them. We recommend caution and extensive testing, since the semantics of <code class="cCode">signal()</code> in a multi-threaded environment can vary.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

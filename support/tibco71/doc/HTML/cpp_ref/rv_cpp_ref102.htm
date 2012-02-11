@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvListener</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;5	 Events and Queues";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1031628"> </a><h2 class="pNewHTMLPage">
+TibrvListener
+</h2>
+<hr />
+<a name="wp1031919"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1146792"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+class <code class="cCodeBold">TibrvListener</code> : public <a  href="rv_cpp_ref88.htm#wp1047420"><code class="cCode">TibrvEvent</code></a><a name="wp1146796"> </a>
+&#160;&#160;&#160;&#160;TibrvListener();&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;// Construct empty.<a name="wp1146802"> </a>
+&#160;&#160;&#160;&#160;virtual ~TibrvListener();&#160;&#160;&#160;&#160;// Destroy and reclaim storage.<a name="wp1146797"> </a>
+</pre></div>
+<a name="wp1146798"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1031923"> </a><p class="pBody">
+Listen for inbound messages.
+</p>
+<a name="wp1031924"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1077783"> </a><p class="pBody">
+A listener object continues listening for messages until the program destroys it.
+</p>
+<a name="wp1147147"> </a><p class="pBody">
+The constructor creates a hollow object; the <code class="cCode">create</code> method makes it operational.
+</p>
+<a name="wp1158623"> </a><p class="pBody">
+The destructor calls the <code class="cCode">destroy</code> method, unless the C object is already destroyed.
+</p>
+<a name="wp1147155"> </a><p class="pBody">
+Destroying the queue or transport of a listener event automatically invalidates the listener as well.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1190127"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1190129"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1190131"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1190136"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref103.htm#wp1149259"><code class="cCode">TibrvListener::create()</code></a>
+</div>
+</td>
+    <td><a name="wp1190141"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref103.htm#wp1126722">Listen for inbound messages.</a>
+</div>
+</td>
+    <td><a name="wp1190146"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref103.htm#wp1149259">140</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1190151"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref104.htm#wp1127343"><code class="cCode">TibrvListener::getSubject()</code></a>
+</div>
+</td>
+    <td><a name="wp1190155"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref104.htm#wp1034324">Extract the subject from a listener event object.</a>
+</div>
+</td>
+    <td><a name="wp1190161"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref104.htm#wp1127343">141</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1190166"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref105.htm#wp1034332"><code class="cCode">TibrvListener::getTransport()</code></a>
+</div>
+</td>
+    <td><a name="wp1190170"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref105.htm#wp1034353">Extract the transport from a listener event object.</a>
+</div>
+</td>
+    <td><a name="wp1190176"> </a><div class="pCellBody">
+<a  href="rv_cpp_ref105.htm#wp1034332">142</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1126619"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1190532"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1190554"> </a><p class="pBody">
+<a  href="rv_cpp_ref89.htm#wp1068928"><code class="cCode">TibrvEvent::destroy()</code></a>
+</p>
+<a name="wp1190558"> </a><p class="pBody">
+<a  href="rv_cpp_ref90.htm#wp1033576"><code class="cCode">TibrvEvent::getClosure()</code></a>
+</p>
+<a name="wp1190562"> </a><p class="pBody">
+<a  href="rv_cpp_ref91.htm#wp1161898"><code class="cCode">TibrvEvent::getHandle()</code></a>
+</p>
+<a name="wp1190566"> </a><p class="pBody">
+<a  href="rv_cpp_ref92.htm#wp1161920"><code class="cCode">TibrvEvent::getType()</code></a>
+</p>
+<a name="wp1190570"> </a><p class="pBody">
+<a  href="rv_cpp_ref93.htm#wp1033600"><code class="cCode">TibrvEvent::getQueue()</code></a>
+</p>
+<a name="wp1190574"> </a><p class="pBody">
+<a  href="rv_cpp_ref97.htm#wp1158019"><code class="cCode">TibrvEvent::isValid()</code></a>
+</p>
+<a name="wp1190578"> </a><p class="pBody">
+<a  href="rv_cpp_ref95.htm#wp1154430"><code class="cCode">TibrvEvent::isListener()</code></a>
+</p>
+<a name="wp1190582"> </a><p class="pBody">
+<a  href="rv_cpp_ref96.htm#wp1144031"><code class="cCode">TibrvEvent::isTimer()</code></a>
+</p>
+<a name="wp1190586"> </a><p class="pBody">
+<a  href="rv_cpp_ref94.htm#wp1158043"><code class="cCode">TibrvEvent::isIOEvent()</code></a>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1162362"> </a><h4 class="pHeading3">
+Activation and Dispatch
+</h4>
+<a name="wp1162363"> </a><p class="pBody">
+When an inbound message on the transport has a destination subject that matches the listener subject, then the message triggers the event.
+</p>
+<a name="wp1162367"> </a><p class="pBody">
+The method <a  href="rv_cpp_ref103.htm#wp1149259"><code class="cCode">TibrvListener::create()</code></a> creates a C listener event object, and <em class="cEmphasis">activates</em> the event&#151;that is, it begins listening for all inbound messages with matching subjects. When a message arrives, Rendezvous software places the event object and message on its event queue. Dispatch removes the event object from the queue, and runs the callback method to process the message. (To stop receiving inbound messages on the subject, destroy the event object; this action cancels all messages already queued for the listener event; see <a  href="rv_cpp_ref89.htm#wp1068928"><code class="cCode">TibrvEvent::destroy()</code> </a>.)
+</p>
+<a name="wp1087746"> </a><p class="pBody">
+<a  href="rv_cpp_ref102.htm#wp1087751">Figure&#160;8</a> illustrates that Rendezvous software does <em class="cEmphasis">not</em> deactivate the listener when it places new message events on the queue (in contrast to I/O events, which are temporarily deactivated). Consequently, several messages can accumulate in the queue while the callback method is processing.
+</p>
+<a name="wp1087751"> </a><div class="pFigureTitle">
+Figure&#160;8   Listener Activation and Dispatch</div><div align="center"><img src="images/rv_cpp_refa2.gif" height="438" width="538" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1087752"> </a><p class="pBody">
+When the callback method is I/O-bound, messages can arrive faster than the callback method can process them, and the queue can grow unacceptably long. In programs where a delay in processing messages is unacceptable, consider dispatching from several threads to process messages concurrently.
+</p>
+<a name="wp1190060"> </a><h4 class="pHeading3">
+Related Classes
+</h4>
+<a name="wp1190068"> </a><p class="pBody">
+<a  href="rv_cpp_ref88.htm#wp1047420"><code class="cCode">TibrvEvent</code> </a>
+</p>
+<a name="wp1219477"> </a><p class="pBody">
+<a  href="rv_cpp_ref218.htm#wp1138427"><code class="cCode">TibrvCmListener</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

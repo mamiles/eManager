@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Chinh Do (Cisco Systems, Inc.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="eventMgrMsg">
+		<xs:annotation>
+			<xs:documentation>Event Mgr request messages</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="acknowledgeEvent" type="AcknowledgeEvent"/>
+				<xs:element name="unacknowledgeEvent" type="EventId"/>
+				<xs:element name="getEventDetails" type="EventId"/>
+				<xs:element name="retrieveEvents"/>
+				<xs:element name="deleteEvents"/>
+				<xs:element name="registerSNMPClient" type="SnmpClient"/>
+				<xs:element name="unregisterSNMPClient" type="SnmpClient"/>
+				<xs:element name="eventAcknowledgementNotification"/>
+				<xs:element name="eventUnAcknowledgementNotification"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="eventMgrResp">
+		<xs:annotation>
+			<xs:documentation>Event Mgr response messages</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="eventResp" type="xs:anySimpleType"/>
+				<xs:element name="getEventDetailsResp" type="EmanagerEventDetails"/>
+				<xs:element name="retrieveEventsResp"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="AcknowledgeEvent">
+		<xs:sequence>
+			<xs:element name="eventId" type="xs:int"/>
+			<xs:element name="comments" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SnmpClient">
+		<xs:sequence>
+			<xs:element name="host" type="xs:string"/>
+			<xs:element name="community" type="xs:string"/>
+			<xs:element name="port" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="EventId">
+		<xs:restriction base="xs:int"/>
+	</xs:simpleType>
+	<xs:complexType name="EmanagerEventDetails">
+		<xs:annotation>
+			<xs:documentation>Event Details</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="eventId" type="EventId"/>
+			<xs:element name="postTime" type="xs:dateTime"/>
+			<xs:element name="clearTime" type="xs:dateTime"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,81 @@
+package com.cisco.eManager.eManager.database;
+
+import java.util.Date;
+
+import com.cisco.eManager.common.database.EmanagerDatabaseException;
+
+import com.cisco.eManager.common.event.AbstractEventMessage;
+import com.cisco.eManager.common.event.EventType;
+import com.cisco.eManager.common.event.EventSeverity;
+import com.cisco.eManager.common.event.EmanagerEventMessage;
+
+import com.cisco.eManager.eManager.event.TibcoEventMessage;
+
+import com.cisco.eManager.common.inventory.ManagedObjectId;
+
+import com.cisco.eManager.eManager.database.DatabaseInterface;
+
+public class TestDriver
+{
+    public TestDriver ()
+    {
+
+    }
+/*
+    public void run()
+    {
+        AbstractEventMessage eventMessage = null;
+
+        try {
+            DatabaseInterface.instance().heartbeat();
+            DatabaseInterface.instance().heartbeat();
+            DatabaseInterface.instance().heartbeat();
+        }
+        catch (EmanagerDatabaseException e) {
+
+        }
+
+	eventMessage = new TibcoEventMessage (EventType.PostType,
+					      new Date(),
+					      EventSeverity.Low,
+					      1,
+					      null,
+					      new ManagedObjectId (ManagedObjectId.ApplicationInstanceType, 1),
+					      new ManagedObjectId (ManagedObjectId.MgmtPolicyType, 1),
+					      null,
+					      "Rule text",
+					      "Test (a > b)",
+					      "Tibco error message");
+
+        try {
+            DatabaseInterface.instance().createNewEvent(eventMessage);
+        }
+        catch (EmanagerDatabaseException e) {
+
+        }
+
+	eventMessage = new EmanagerEventMessage (EventType.PostType,
+						 new ManagedObjectId (ManagedObjectId.ApplicationInstanceType, 1),
+						 new Date(),
+						 0,
+						 EventSeverity.Low,
+						 "Sample error event.");
+
+        try {
+            DatabaseInterface.instance().createNewEvent(eventMessage);
+        }
+        catch (EmanagerDatabaseException e) {
+
+        }
+    }
+
+    public static void main (String args[])
+    {
+        TestDriver driver;
+
+        driver = new TestDriver();
+
+        driver.run();
+    }
+*/
+}

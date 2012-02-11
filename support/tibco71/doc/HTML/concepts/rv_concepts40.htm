@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>The Rendezvous Environment</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;3	 Fundamentals";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1049256"> </a><h2 class="pNewHTMLPage">
+The Rendezvous Environment
+</h2>
+<hr />
+<a name="wp1049266"> </a><p class="pBody">
+Before using Rendezvous communications, programs must open the Rendezvous environment. Opening the environment initializes crucial global resources. All communication and event operations depend on this step; the only operations that do not require it as a precondition are message operations.
+</p>
+<a name="wp1065460"> </a><p class="pBody">
+The open call creates a default event queue, an intra-process transport, an event driver, and other resources within the program. Closing the environment destroys these resources.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1065466"> </a><div class="pTableTitle">
+Table&#160;7   Environment Calls&#160;
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1065470"> </a><div class="pCellBody">
+C
+</div>
+</td>
+    <td><a name="wp1065475"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref8.htm#wp1057434');" onMouseOver="WWHShowPopup('e', 'rv_c_ref8.htm#wp1057434', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrv_Open()</code></a>
+</div>
+<a name="wp1065479"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref7.htm#wp1057420');" onMouseOver="WWHShowPopup('e', 'rv_c_ref7.htm#wp1057420', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrv_Close()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065481"> </a><div class="pCellBody">
+C++
+</div>
+</td>
+    <td><a name="wp1072085"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref15.htm#wp1119220');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref15.htm#wp1119220', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">Tibrv::open()</code></a>
+</div>
+<a name="wp1072089"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref13.htm#wp1051787');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref13.htm#wp1051787', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">Tibrv::close()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065485"> </a><div class="pCellBody">
+Java
+</div>
+</td>
+    <td><a name="wp1065490"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref21.htm#wp1020167');" onMouseOver="WWHShowPopup('g', 'rv_java_ref21.htm#wp1020167', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">Tibrv.open()</code></a>
+</div>
+<a name="wp1065494"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref15.htm#wp1051787');" onMouseOver="WWHShowPopup('g', 'rv_java_ref15.htm#wp1051787', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">Tibrv.close()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065496"> </a><div class="pCellBody">
+COM
+</div>
+</td>
+    <td><a name="wp1073122"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref23.htm#wp1129476');" onMouseOver="WWHShowPopup('h', 'rv_com_ref23.htm#wp1129476', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">Tibrv.open</code></a>
+</div>
+<a name="wp1073126"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref17.htm#wp1051787');" onMouseOver="WWHShowPopup('h', 'rv_com_ref17.htm#wp1051787', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">Tibrv.close</code></a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

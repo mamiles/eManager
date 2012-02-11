@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Reassigning Tasks in Exceptional Situations</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;12	 Distributed Queue";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1056944"> </a><h2 class="pNewHTMLPage">
+Reassigning Tasks in Exceptional Situations
+</h2>
+<hr />
+<a name="wp1056945"> </a><p class="pBody">
+Under normal operating conditions, distributed queue software arranges for exactly one worker to process each task. This section describes three <em class="cEmphasis">exceptional conditions</em> that require different semantics:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1056946"> </a><div class="pSmartList1"><li >A worker exits or loses network communication before completing an assigned task. The scheduler reassigns the task to another worker.</li></div>
+
+<a name="wp1056947"> </a><div class="pSmartList1"><li >A worker processes tasks more slowly than expected. The scheduler uses its complete time parameter to determine whether to reassign the task to another worker. Duplicate processing can occur.</li></div>
+
+<a name="wp1056948"> </a><div class="pSmartList1"><li >Scheduler replacement&#151;the scheduler exits or loses network communication, so another member replaces it as the active scheduler. The new scheduler reassigns incomplete tasks, guided by its complete time parameter. Duplicate processing can occur.</li></div>
+
+</ul></div>
+
+<a name="wp1056949"> </a><p class="pBody">
+
+</p>
+<a name="wp1056950"> </a><p class="pBody">
+Two factors can affect behavior in exceptional situations:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1056951"> </a><div class="pSmartList1"><li >When the sender and scheduler have a certified delivery agreement, behavior differs from when they do not.</li></div>
+
+<a name="wp1056952"> </a><div class="pSmartList1"><li >Behavior differs depending on the scheduler&#8217;s complete time parameter.</li></div>
+
+</ul></div>
+
+<a name="wp1056953"> </a><h3 class="pHeading2">
+Worker Exit
+</h3>
+<a name="wp1056954"> </a><p class="pBody">
+When a worker exits or loses network communication, the scheduler detects its absence and reassigns all of that worker&#8217;s incomplete tasks to other workers.
+</p>
+<a name="wp1056955"> </a><p class="pBody">
+This behavior applies when the task source is an ordinary sender, and it also applies when the sender and scheduler have a certified delivery agreement. This behavior applies for any setting of the scheduler&#8217;s complete time parameter.
+</p>
+<a name="wp1056956"> </a><h3 class="pHeading2">
+Slow Worker
+</h3>
+<a name="wp1056957"> </a><p class="pBody">
+When a worker processes tasks more slowly than expected, the scheduler detects slow operation using timers controlled by the scheduler&#8217;s complete time parameter.</p><div align="left">
+<table border="0">
+  <caption></caption>
+  <tr align="left" valign="top">    <td><a name="wp1067737"> </a><div class="pCellBody">
+Complete Time = 0
+</div>
+</td>
+    <td><a name="wp1067739"> </a><div class="pCellBody">
+Scheduler reassigns a task when the assigned worker does not accept it. Once a worker accepts, the scheduler waits indefinitely for completion.
+</div>
+<a name="wp1067740"> </a><div class="pCellBody">
+Potential duplication of tasks.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1067742"> </a><div class="pCellBody">
+Complete Time &gt; 0
+</div>
+</td>
+    <td><a name="wp1067744"> </a><div class="pCellBody">
+Scheduler reassigns a task when the assigned worker does not accept it, or does not complete it in time.
+</div>
+<a name="wp1067745"> </a><div class="pCellBody">
+Potential duplication of tasks.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1090367"> </a><p class="pBody">
+This behavior applies <em class="cEmphasis">only</em> when the sender and scheduler have a certified delivery agreement. When no certified delivery agreement is in effect, the scheduler does not reassign tasks based on delayed completion.
+</p>
+<a name="wp1056962"> </a><p class="pBody">
+The main concern in this situation is to ensure that all certified tasks complete in a timely fashion. When a slow worker hinders this goal, then the scheduler reassigns its task&#151;selecting speed over unduplicated processing. However, if the complete time parameter is zero, then the scheduler selects unduplicated processing over speed (but see also, <a  href="rv_concepts123.htm#wp1057004">Scheduler Replacement</a>).
+</p>
+<a name="wp1057004"> </a><h3 class="pHeading2">
+Scheduler Replacement
+</h3>
+<a name="wp1090373"> </a><p class="pBody">
+When the scheduler exits or loses network communication, another member replaces it as the active scheduler.</p><div align="left">
+<table border="0">
+  <caption></caption>
+  <tr align="left" valign="top">    <td><a name="wp1090376"> </a><div class="pCellBody">
+Complete Time = 0
+</div>
+</td>
+    <td><a name="wp1090378"> </a><div class="pCellBody">
+The new scheduler immediately reassigns all incomplete tasks.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1090381"> </a><div class="pCellBody">
+Complete Time &gt; 0
+</div>
+</td>
+    <td><a name="wp1090383"> </a><div class="pCellBody">
+The new scheduler immediately reassigns all unaccepted tasks. It also sets a timer to elapse after the complete time; when the timer expires, the new scheduler reassigns all incomplete tasks.
+</div>
+<a name="wp1090384"> </a><div class="pCellBody">
+This case presents the lowest probability of task duplication, but duplication is still possible for slow workers.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1090386"> </a><p class="pBody">
+This behavior applies <em class="cEmphasis">only</em> when the sender and scheduler have a certified delivery agreement. When no certified delivery agreement is in effect, the new scheduler does not reassign tasks.
+</p>
+<a name="wp1057010"> </a><p class="pBody">
+The main concern in this situation is to ensure that all certified tasks complete <em class="cEmphasis">at least once</em> (that is, no certified task remains unprocessed). The new scheduler reassigns all tasks that are at risk (for example, the assigned worker might have exited during scheduler replacement). In achieving this goal, the probability of duplicate processing is high. However, the lowest probability of duplicates is the case in which the complete time parameter is non-zero; in this case, the scheduler uses the extra information to reduce duplication.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvException</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;11	 Exceptions and Errors";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1098751"> </a><h2 class="pNewHTMLPage">
+TibrvException
+</h2>
+<hr />
+<a name="wp1098954"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1098955"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+class com.tibco.tibrv.<code class="cCodeBold">TibrvException</code><a name="wp1098956"> </a>
+&#160;&#160;extends java.lang.Exception<a name="wp1280517"> </a>
+</pre></div>
+<a name="wp1098957"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1098961"> </a><p class="pBody">
+Rendezvous software throws exceptions of this class.
+</p>
+<a name="wp1098962"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1098966"> </a><p class="pBody">
+Rendezvous software also throws exceptions defined as part of the Java language.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1098969"> </a><div class="pCellHeading">
+Field
+</div>
+</th>
+    <th><a name="wp1098971"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1098973"> </a><div class="pCellBody">
+<code class="cCode">error</code>
+</div>
+</td>
+    <td><a name="wp1098975"> </a><div class="pCellBody">
+An error or status code, indicating the reason for the exception; see <a  href="rv_java_ref234.htm#wp1126268"><code class="cCode">TibrvStatus</code> </a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1098980"> </a><div class="pCellBody">
+<code class="cCode">internal</code>
+</div>
+</td>
+    <td><a name="wp1098982"> </a><div class="pCellBody">
+In some cases this field contains a Java exception, which can yield additional information. When no further information is available, this field is <code class="cCode">null</code>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1099007"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1098987"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1098989"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1098991"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1098996"> </a><div class="pCellBody">
+<a  href="rv_java_ref233.htm#wp1099036"><code class="cCode">TibrvException.printStackTrace()</code></a>
+</div>
+</td>
+    <td><a name="wp1099000"> </a><div class="pCellBody">
+<a  href="rv_java_ref233.htm#wp1099046">Print stack trace of this exception, and of the internal exception (if it is set).</a>
+</div>
+</td>
+    <td><a name="wp1099006"> </a><div class="pCellBody">
+<a  href="rv_java_ref233.htm#wp1099036">313</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1222223"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1222102"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1222468"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.fillInStackTrace</code>
+</p>
+<a name="wp1222469"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.getLocalizedMessage</code>
+</p>
+<a name="wp1222470"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.getMessage</code>
+</p>
+<a name="wp1273066"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.printStackTrace</code> (override)
+</p>
+<a name="wp1273070"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.toString</code> (override)
+</p>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1222216"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.equals</code>
+</p>
+<a name="wp1222217"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.getClass</code>
+</p>
+<a name="wp1222218"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.hashCode</code>
+</p>
+<a name="wp1222219"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notify</code>
+</p>
+<a name="wp1222458"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notifyAll</code>
+</p>
+<a name="wp1222222"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.wait</code>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1099030"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1099034"> </a><p class="pBody">
+<a  href="rv_java_ref234.htm#wp1126268"><code class="cCode">TibrvStatus</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

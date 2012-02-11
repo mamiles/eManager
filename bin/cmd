@@ -1,0 +1,23 @@
+#!/bin/ksh -p
+
+#####################################################
+# Items that the installer need to configure
+#
+export EM_HOME=EMANAGER_HOME
+#####################################################
+. $EM_HOME/bin/emenv.ksh
+. $EM_HOME/bin/wdscript.lib
+
+#####################################################
+
+function get_pid_of_processSeq {
+    /usr/ucb/ps auxww | grep -v "grep " | grep ProcessSequencer | awk '{print $2}'
+}
+
+PSPID=`get_pid_of_processSeq`
+if [ "$PSPID" = "" ]; then
+	echo "eManager does not seem to be running."
+	exit 1
+fi
+
+$JRE_HOME/bin/java -cp $CLASSPATH -DEMANAGER_ROOT=$EM_HOME  com.cisco.eManager.eManager.process.CommandLine $@

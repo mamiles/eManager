@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>TibrvCmListener.create</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;9	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1096047"> </a><h2 class="pNewHTMLPage">
+TibrvCmListener.create
+</h2>
+<hr />
+<a name="wp1087300"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1087301"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+TibrvCmListener.<code class="cCodeBold">create</code> queue, cmTransport, subject, closure<a name="wp1087472"> </a>
+</pre></div>
+<a name="wp1087309"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1087311"> </a><p class="pBody">
+Listen for messages that match the subject, and request certified delivery when available.
+</p>
+<a name="wp1139578"> </a><p class="pBody">
+Starting a listener requires three steps:
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1139579"> </a><div class="pSmartList1"><li value="1">Declare a variable for the listener.</li></div>
+
+<a name="wp1139583"> </a><p class="pBodyRelative">
+<code class="cCode">Dim WithEvents myCmListener as </code><a  href="rv_com_ref168.htm#wp1083717"><code class="cCode">TibrvCmListener</code></a>
+</p>
+<a name="wp1139584"> </a><p class="pBodyRelative">
+This declaration triggers VB to automatically define a private subroutine callback stub named <code class="cCode">myCmListener_OnCmMsg</code>. The program must complete this method for each listener object.
+</p>
+<a name="wp1139585"> </a><div class="pSmartList1"><li value="2">Create the VB object, and assign it to that variable.</li></div>
+
+<a name="wp1139589"> </a><p class="pBodyRelative">
+<code class="cCode">set myCmListener = New </code><a  href="rv_com_ref168.htm#wp1083717"><code class="cCode">TibrvCmListener</code></a>
+</p>
+<a name="wp1139590"> </a><div class="pSmartList1"><li value="3">Create the internal implementation object to begin listening.</li></div>
+
+<a name="wp1139591"> </a><p class="pBodyRelative">
+<code class="cCode">myCmListener.create ...</code>
+</p>
+</ol></div>
+
+<a name="wp1155760"> </a><p class="pBody">
+Calling this method on a valid object yields the error <a  href="rv_com_ref218.htm#wp1189013"><code class="cCode">TIBRVCOM_ALREADY_INITIALIZED</code></a>.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1115787"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1087314"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1087316"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1087324"> </a><div class="pCellBody">
+<code class="cCode">queue</code>
+</div>
+</td>
+    <td><a name="wp1087326"> </a><div class="pCellBody">
+<a  href="rv_com_ref99.htm#wp1035245"><code class="cCode">TibrvQueue</code></a>
+</div>
+<a name="wp1130724"> </a><div class="pCellBody">
+For each inbound message, place the listener event on this event queue.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1087332"> </a><div class="pCellBody">
+<code class="cCode">cmTransport</code>
+</div>
+</td>
+    <td><a name="wp1087334"> </a><div class="pCellBody">
+<a  href="rv_com_ref179.htm#wp1084243"><code class="cCode">TibrvCmTransport</code></a>
+</div>
+<a name="wp1130728"> </a><div class="pCellBody">
+Listen for inbound messages on this certified delivery transport.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1087336"> </a><div class="pCellBody">
+<code class="cCode">subject</code>
+</div>
+</td>
+    <td><a name="wp1087338"> </a><div class="pCellBody">
+<code class="cCode">String</code>
+</div>
+<a name="wp1130729"> </a><div class="pCellBody">
+Listen for inbound messages with subjects that match this specification. Wildcard subjects are permitted. The empty string is <em class="cEmphasis">not</em> a legal subject name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1087340"> </a><div class="pCellBody">
+<code class="cCode">closure</code>
+</div>
+</td>
+    <td><a name="wp1087342"> </a><div class="pCellBody">
+<code class="cCode">Variant</code>
+</div>
+<a name="wp1130730"> </a><div class="pCellBody">
+Store this closure data in the event object.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1087614"> </a><h4 class="pHeading3">
+Activation and Dispatch
+</h4>
+<a name="wp1087345"> </a><p class="pBody">
+Details of listener event semantics are identical to those for ordinary listeners; see <a  href="rv_com_ref81.htm#wp1087731">Activation and Dispatch</a>.
+</p>
+<a name="wp1087349"> </a><h4 class="pHeading3">
+Inbox Listener
+</h4>
+<a name="wp1087350"> </a><p class="pBody">
+To receive unicast (point-to-point) messages, listen to a unique inbox subject name. First call <a  href="rv_com_ref127.htm#wp1040342"><code class="cCode">TibrvTransport.createInbox()</code></a> to create the unique inbox name; then call <a  href="rv_com_ref170.htm#wp1096047"><code class="cCode">TibrvCmListener.create</code></a> to begin listening. Remember that other programs have no information about an inbox until the listening program uses it as a reply subject in an outbound message.
+</p>
+<a name="wp1087357"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1087361"> </a><p class="pBody">
+<a  href="rv_com_ref168.htm#wp1083717"><code class="cCode">TibrvCmListener</code> </a>
+</p>
+<a name="wp1139612"> </a><p class="pBody">
+<a  href="rv_com_ref177.htm#wp1145678"><code class="cCode">TibrvCmListener_onCmMsg</code> </a>
+</p>
+<a name="wp1098020"> </a><p class="pBody">
+<a  href="rv_com_ref184.htm#wp1084655"><code class="cCode">TibrvCmTransport.destroy</code> </a>
+</p>
+<a name="wp1098061"> </a><p class="pBody">
+<a  href="rv_com_ref86.htm#wp1034287"><code class="cCode">TibrvListener.getSubject()</code> </a>
+</p>
+<a name="wp1098065"> </a><p class="pBody">
+<a  href="rv_com_ref127.htm#wp1040342"><code class="cCode">TibrvTransport.createInbox()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

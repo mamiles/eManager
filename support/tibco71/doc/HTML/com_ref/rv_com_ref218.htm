@@ -1,0 +1,426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>Component Error Codes</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;11	 Errors";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1140983"> </a><h2 class="pNewHTMLPage">
+Component Error Codes
+</h2>
+<hr />
+<a name="wp1143278"> </a><p class="pBody">
+<code class="cCode">TIBRVCOM</code> component error codes are 32-bit integers, with hex representations 0x80040<code class="cCodeItalic">nnn</code>. The type library defines these error code constants.
+</p>
+<a name="wp1154246"> </a><p class="pBody">
+These constants correspond to string resources&#151;when the constant <code class="cCode">TIBRVCOM_</code><code class="cCodeItalic">&lt;name&gt;</code> has the value 0x80040<code class="cCodeItalic">nnn</code>, the resource <code class="cCode">IDS_E_</code><code class="cCodeItalic">&lt;name&gt;</code> has the value <code class="cCodeItalic">nnn</code>.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1188960"> </a><div class="pTableTitle">
+Table&#160;6   TIBRVCOM HRESULT Error Codes (Sheet 1 of 3)
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1188964"> </a><div class="pCellHeading">
+Constant
+</div>
+<a name="wp1188965"> </a><div class="pCellHeading">
+Hex Code
+</div>
+</th>
+    <th><a name="wp1188967"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1188970"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_TIBRV_NOT_OPEN</code>
+</div>
+<a name="wp1188971"> </a><div class="pCellBody">
+<code class="cCode">0x80040200</code>
+</div>
+</td>
+    <td><a name="wp1188976"> </a><div class="pCellBody">
+Operation requires that <a  href="rv_com_ref16.htm#wp1019706"><code class="cCode">Tibrv</code></a> be open.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1188978"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_INVALID_MSG_OBJECT</code>
+</div>
+<a name="wp1188979"> </a><div class="pCellBody">
+<code class="cCode">0x80040201</code>
+</div>
+</td>
+    <td><a name="wp1188984"> </a><div class="pCellBody">
+<a  href="rv_com_ref34.htm#wp1055151"><code class="cCode">TibrvMsg</code></a> has no internal structure.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1188986"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_BAD_POINTER_ARG</code>
+</div>
+<a name="wp1188987"> </a><div class="pCellBody">
+<code class="cCode">0x80040202</code>
+</div>
+</td>
+    <td><a name="wp1188989"> </a><div class="pCellBody">
+Argument must be a pointer to existing storage.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1188991"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_INVALID_ARRAY</code>
+</div>
+<a name="wp1188992"> </a><div class="pCellBody">
+<code class="cCode">0x80040203</code>
+</div>
+</td>
+    <td><a name="wp1188994"> </a><div class="pCellBody">
+Arrays must be one-dimensional.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1188996"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_INVALID_DATATYPE</code>
+</div>
+<a name="wp1188997"> </a><div class="pCellBody">
+<code class="cCode">0x80040204</code>
+</div>
+</td>
+    <td><a name="wp1188999"> </a><div class="pCellBody">
+Datatype not supported for this operation.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189001"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_INVALID_QUEUE_OBJECT</code>
+</div>
+<a name="wp1189002"> </a><div class="pCellBody">
+<code class="cCode">0x80040205</code>
+</div>
+</td>
+    <td><a name="wp1189004"> </a><div class="pCellBody">
+Queue object has no internal structure.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189007"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_INVALID_TRANSPORT_OBJECT</code>
+</div>
+<a name="wp1189008"> </a><div class="pCellBody">
+<code class="cCode">0x80040206</code>
+</div>
+</td>
+    <td><a name="wp1189010"> </a><div class="pCellBody">
+Transport object has no internal structure.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189013"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_ALREADY_INITIALIZED</code>
+</div>
+<a name="wp1189014"> </a><div class="pCellBody">
+<code class="cCode">0x80040207</code>
+</div>
+</td>
+    <td><a name="wp1189016"> </a><div class="pCellBody">
+Object is already created or initialized.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189018"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_CREATE_WINDOW_FAILED</code>
+</div>
+<a name="wp1189019"> </a><div class="pCellBody">
+<code class="cCode">0x80040208</code>
+</div>
+</td>
+    <td><a name="wp1189021"> </a><div class="pCellBody">
+Unable to create hidden window for automatic dispatch.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189023"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_INVALID_FIELD_ID</code>
+</div>
+<a name="wp1189024"> </a><div class="pCellBody">
+<code class="cCode">0x80040209</code>
+</div>
+</td>
+    <td><a name="wp1189026"> </a><div class="pCellBody">
+Invalid field id&#151;range is 0 to 65535.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189028"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_DATA_CONVERSION_RANGE</code>
+</div>
+<a name="wp1189029"> </a><div class="pCellBody">
+<code class="cCode">0x8004020a</code>
+</div>
+</td>
+    <td><a name="wp1189031"> </a><div class="pCellBody">
+Data out of range for conversion to target type.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189033"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_NOT_CREATED</code>
+</div>
+<a name="wp1189034"> </a><div class="pCellBody">
+<code class="cCode">0x8004020b</code>
+</div>
+</td>
+    <td><a name="wp1189036"> </a><div class="pCellBody">
+Unable to create object.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189038"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_OUT_OF_MEMORY</code>
+</div>
+<a name="wp1189039"> </a><div class="pCellBody">
+<code class="cCode">0x8004020c</code>
+</div>
+</td>
+    <td><a name="wp1189041"> </a><div class="pCellBody">
+Insufficient memory for operation.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189043"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_INVALID_VALUE</code>
+</div>
+<a name="wp1189044"> </a><div class="pCellBody">
+<code class="cCode">0x8004020d</code>
+</div>
+</td>
+    <td><a name="wp1189046"> </a><div class="pCellBody">
+Invalid value of data argument.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189048"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_NULL_NAME</code>
+</div>
+<a name="wp1189049"> </a><div class="pCellBody">
+<code class="cCode">0x8004020e</code>
+</div>
+</td>
+    <td><a name="wp1189051"> </a><div class="pCellBody">
+Null name parameter is illegal.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189053"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_MSG_NOT_CREATED</code>
+</div>
+<a name="wp1189054"> </a><div class="pCellBody">
+<code class="cCode">0x8004020f</code>
+</div>
+</td>
+    <td><a name="wp1189056"> </a><div class="pCellBody">
+Unable to create message object.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189058"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_NULL_SUBJECT</code>
+</div>
+<a name="wp1189059"> </a><div class="pCellBody">
+<code class="cCode">0x80040210</code>
+</div>
+</td>
+    <td><a name="wp1189061"> </a><div class="pCellBody">
+Null subject is illegal.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189064"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_CONVERSION_NOT_SUPPORTED</code>
+</div>
+<a name="wp1189065"> </a><div class="pCellBody">
+<code class="cCode">0x80040211</code>
+</div>
+</td>
+    <td><a name="wp1189067"> </a><div class="pCellBody">
+Data conversion between these types is not supported.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189070"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_DATA_CONVERSION_FAILED</code>
+</div>
+<a name="wp1189071"> </a><div class="pCellBody">
+<code class="cCode">0x80040212</code>
+</div>
+</td>
+    <td><a name="wp1189073"> </a><div class="pCellBody">
+Data conversion failed<span style="font-weight: bold">.</span>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189076"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_CANNOT_RETRIEVE</code>
+</div>
+<a name="wp1189077"> </a><div class="pCellBody">
+<code class="cCode">0x80040213</code>
+</div>
+</td>
+    <td><a name="wp1189079"> </a><div class="pCellBody">
+Cannot retrieve the requested information.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189081"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_INVALID_PROPERTY_REQUEST</code>
+</div>
+<a name="wp1189082"> </a><div class="pCellBody">
+<code class="cCode">0x80040214</code>
+</div>
+</td>
+    <td><a name="wp1189084"> </a><div class="pCellBody">
+No property with that name exists.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189086"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_INVALID_PROPERTY_VALUE</code>
+</div>
+<a name="wp1189087"> </a><div class="pCellBody">
+<code class="cCode">0x80040215</code>
+</div>
+</td>
+    <td><a name="wp1189089"> </a><div class="pCellBody">
+Property value data type is incorrect
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189092"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_NOT_DISTRIBUTED_TRANSPORT</code>
+</div>
+<a name="wp1189093"> </a><div class="pCellBody">
+<code class="cCode">0x80040216</code>
+</div>
+</td>
+    <td><a name="wp1189095"> </a><div class="pCellBody">
+Operation is valid only for distributed CM transport.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189098"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_NOT_FOR_DISTRIBUTED_TRANSPORT</code>
+</div>
+<a name="wp1189099"> </a><div class="pCellBody">
+<code class="cCode">0x80040217</code>
+</div>
+</td>
+    <td><a name="wp1189101"> </a><div class="pCellBody">
+Operation is not allowed for distributed CM transport.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189104"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_EVENT_CALLBACK_ACTIVE</code>
+</div>
+<a name="wp1189105"> </a><div class="pCellBody">
+<code class="cCode">0x80040218</code>
+</div>
+</td>
+    <td><a name="wp1189107"> </a><div class="pCellBody">
+Dispatching a queue from a callback is not allowed
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189110"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_OBJECT_NOT_INITIALIZED</code>
+</div>
+<a name="wp1189111"> </a><div class="pCellBody">
+<code class="cCode">0x80040219</code>
+</div>
+</td>
+    <td><a name="wp1189113"> </a><div class="pCellBody">
+The object&#8217;s internal structure has not been created (or has already been destroyed).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189116"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_UNABLE</code>
+</div>
+<a name="wp1189117"> </a><div class="pCellBody">
+<code class="cCode">0x8004021a</code>
+</div>
+</td>
+    <td><a name="wp1189119"> </a><div class="pCellBody">
+Object cannot complete the requested operation.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1189121"> </a><div class="pCellBody">
+<code class="cCode">TIBRVCOM_INVALID_CLOSURE</code>
+</div>
+<a name="wp1189122"> </a><div class="pCellBody">
+<code class="cCode">0x8004021b</code>
+</div>
+</td>
+    <td><a name="wp1189124"> </a><div class="pCellBody">
+Invalid closure argument.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

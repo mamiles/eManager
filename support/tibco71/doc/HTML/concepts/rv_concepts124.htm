@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Case Studies-Complete Time</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;12	 Distributed Queue";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1057042"> </a><h2 class="pNewHTMLPage">
+Case Studies&#151;Complete Time
+</h2>
+<hr />
+<a name="wp1057043"> </a><p class="pBody">
+The appropriate value for complete time depends upon the goals of the program, and on its operating environment. These case studies illustrate the criteria for selecting the value for this parameter.
+</p>
+<a name="wp1057044"> </a><h3 class="pHeading2">
+Mandelbrot Set
+</h3>
+<a name="wp1057045"> </a><p class="pBody">
+Because it generates beautiful displays, the Mandelbrot set is a popular visual symbol of fractal phenomena. Consider an example application that computes a Mandelbrot display, using a distributed queue of servers to compute the display data.
+</p>
+<a name="wp1057046"> </a><p class="pBody">
+A display component divides the display region into small chunks (tasks), and sends each chunk to the server group for concurrent processing. Within the group, the scheduler assigns each chunk to an available worker. The worker computes the data for its chunk, and sends the results to the display component, which reassembles and displays them.
+</p>
+<a name="wp1057047"> </a><p class="pBody">
+Mandelbrot computations are characterized by many small chunks of processing, each of which completes in a short time&#151;estimate under 0.1&#160;seconds. Estimate the network travel time for each task at a few milliseconds. Duplicate processing does no harm (other than wasted effort). The main priority is fast response, since the user is waiting for the display.
+</p>
+<a name="wp1057048"> </a><p class="pBody">
+For programs with these criteria, consider a complete time of 0.5&#160;seconds. Any task that is still incomplete after 0.5&#160;seconds is reassigned, so the display user perceives only minimal delay, even in exceptional situations. Yet 0.5&#160;seconds is sufficiently high to prevent thrashing in the event of several slow workers; use empirical data to fine tune this parameter.
+</p>
+<a name="wp1057049"> </a><h3 class="pHeading2">
+Fax Confirmation
+</h3>
+<a name="wp1057050"> </a><p class="pBody">
+Consider a business that relies on telephone transactions between customers and service representatives. At the conclusion of each call, the customer receives a one-page summary and confirmation by fax.
+</p>
+<a name="wp1057051"> </a><p class="pBody">
+A large number of service representatives all send certified tasks to a distributed queue of fax servers. When a fax server receives a task, it transmits the fax and notes the result in the customer&#8217;s database record.
+</p>
+<a name="wp1057052"> </a><p class="pBody">
+Each fax task could take several minutes&#151;including redials and other delays. Estimate the network travel time for each task at a few milliseconds. Speed is not critical; the customer is satisfied as long as the fax arrives within 10 minutes. The highest priority is that each task completes (that is, no task is lost). However, duplicated tasks are undesirable&#151;customers prefer to receive only one fax summary.
+</p>
+<a name="wp1057053"> </a><p class="pBody">
+For programs with these criteria, consider a complete time of 300&#160;seconds (5 minutes). If a task remains incomplete for 5 minutes, the scheduler reassigns the task to another server.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

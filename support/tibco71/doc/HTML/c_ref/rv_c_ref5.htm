@@ -1,0 +1,719 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>Link These Library Files</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;1	 Programmer&#8217;s Checklist";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1138797"> </a><h2 class="pNewHTMLPage">
+Link These Library Files
+</h2>
+<hr />
+<a name="wp1138801"> </a><p class="pBody">
+Rendezvous C programs must link the appropriate library files. Choose from the appropriate table based on operating system platform.
+</p>
+<a name="wp1210730"> </a><h3 class="pHeading2">
+32-Bit UNIX
+</h3>
+<a name="wp1210731"> </a><p class="pBody">
+In 32-bit UNIX environments, both shared and static libraries are available. We recommend shared libraries to ease forward migration.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1210737"> </a><div class="pTableTitle">
+Table&#160;2   Linker Flags for 32-Bit UNIX (Sheet 1 of 2)
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1210741"> </a><div class="pCellHeading">
+Linker Flag
+</div>
+</th>
+    <th><a name="wp1210743"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1237979"> </a><div class="pMinorHead">
+Communications, Data and Event Manager
+</div>
+<a name="wp1237980"> </a><div class="pCellBody">
+<b class="cBold">All programs</b> must link this library.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1237967"> </a><div class="pCellBody">
+<code class="cCode">-ltibrv</code>
+</div>
+</td>
+    <td><a name="wp1238011"> </a><div class="pCellBody">
+Programs that connect to ordinary daemons (rvd, <code class="cCode">rvrd</code>) must link using this library flag.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1275846"> </a><div class="pMinorHead">
+Secure Daemon
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+-ltibrvsd<a name="wp1238152"> </a>
+-lssl<a name="wp1275864"> </a>
+-lcrypto<a name="wp1275869"> </a>
+</pre></div>
+</td>
+    <td><a name="wp1275829"> </a><div class="pCellBody">
+Programs that connect to secure daemons (rvsd, <code class="cCode">rvsrd</code>) must also link using these three flags.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1237992"> </a><div class="pMinorHead">
+Certified Message Delivery, Fault Tolerance, and Distributed Queues
+</div>
+<a name="wp1237993"> </a><div class="pCellBody">
+Programs may also link one or more of these libraries as needed.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1210749"> </a><div class="pCellBody">
+<code class="cCode">-ltibrvcm</code>
+</div>
+</td>
+    <td><a name="wp1210751"> </a><div class="pCellBody">
+Programs that use <b class="cBold">certified message delivery</b> must link using this library flag.
+</div>
+<a name="wp1210752"> </a><div class="pCellBody">
+Programs that use <b class="cBold">distributed queues</b> must link using this library flag.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1210754"> </a><div class="pCellBody">
+<code class="cCode">-ltibrvft</code>
+</div>
+</td>
+    <td><a name="wp1210756"> </a><div class="pCellBody">
+Programs that use <b class="cBold">fault tolerance</b> features must link using this library flag.
+</div>
+<a name="wp1210757"> </a><div class="pCellBody">
+Programs that use <b class="cBold">distributed queues</b> must link using this library flag.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1210759"> </a><div class="pCellBody">
+<code class="cCode">-ltibrvcmq</code>
+</div>
+</td>
+    <td><a name="wp1210761"> </a><div class="pCellBody">
+Programs that use <b class="cBold">distributed queues</b> must link using this library flag.
+</div>
+<a name="wp1210762"> </a><div class="pCellBody">
+In addition, distributed queue programs also use communications, certified message delivery, and fault tolerance libraries; they must link with appropriate flags from those groups.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1139424"> </a><h3 class="pHeading2">
+64-Bit UNIX
+</h3>
+<a name="wp1139455"> </a><p class="pBody">
+In 64-bit UNIX environments, both shared and static libraries are available. We recommend shared libraries to ease forward migration. In this release, 64-bit libraries are available on HP-UX, Solaris and AIX platforms.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1139430"> </a><div class="pTableTitle">
+Table&#160;3   Linker Flags for 64-Bit UNIX (Sheet 1 of 2)
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1139434"> </a><div class="pCellHeading">
+Linker Flag
+</div>
+</th>
+    <th><a name="wp1139436"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1238057"> </a><div class="pMinorHead">
+Communications, Data and Event Manager
+</div>
+<a name="wp1238058"> </a><div class="pCellBody">
+<b class="cBold">All programs</b> must link this library.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1238062"> </a><div class="pCellBody">
+<code class="cCode">-ltibrv64</code>
+</div>
+</td>
+    <td><a name="wp1238064"> </a><div class="pCellBody">
+Programs that connect to ordinary daemons (rvd, <code class="cCode">rvrd</code>) must link using this library flag.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1275878"> </a><div class="pMinorHead">
+Secure Daemon
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1275884"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+    <td><a name="wp1275886"> </a><div class="pCellBody">
+64-bit UNIX does not support secure daemons (rvsd, <code class="cCode">rvsrd</code>) in this release.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1238070"> </a><div class="pMinorHead">
+Certified Message Delivery, Fault Tolerance, and Distributed Queues
+</div>
+<a name="wp1238071"> </a><div class="pCellBody">
+Programs may also link one or more of these libraries as needed.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1139442"> </a><div class="pCellBody">
+<code class="cCode">-ltibrvcm64</code>
+</div>
+</td>
+    <td><a name="wp1139444"> </a><div class="pCellBody">
+Programs that use <b class="cBold">certified message delivery</b> must link using this library flag.
+</div>
+<a name="wp1139445"> </a><div class="pCellBody">
+Programs that use <b class="cBold">distributed queues</b> must link using this library flag.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1139447"> </a><div class="pCellBody">
+<code class="cCode">-ltibrvft64</code>
+</div>
+</td>
+    <td><a name="wp1145516"> </a><div class="pCellBody">
+Programs that use <b class="cBold">fault tolerance</b> features must link using this library flag.
+</div>
+<a name="wp1139450"> </a><div class="pCellBody">
+Programs that use <b class="cBold">distributed queues</b> must link using this library flag.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1139452"> </a><div class="pCellBody">
+<code class="cCode">-ltibrvcmq64</code>
+</div>
+</td>
+    <td><a name="wp1139454"> </a><div class="pCellBody">
+Programs that use <b class="cBold">distributed queues</b> must link using this library flag.
+</div>
+<a name="wp1139879"> </a><div class="pCellBody">
+In addition, distributed queue programs also use communications, certified message delivery, and fault tolerance libraries; they must link with appropriate flags from those groups.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1139616"> </a><h3 class="pHeading2">
+Microsoft Windows
+</h3>
+<a name="wp1139630"> </a><p class="pBody">
+Release 7.1 supports Microsoft Windows 95, 98, 2000, NT and XP. Both DLLs and static libraries are available. We recommend DLLs to ease forward migration.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1277097"> </a><div class="pTableTitle">
+Table&#160;4   Library Files for Microsoft Windows (Sheet 1 of 3)
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1277101"> </a><div class="pCellHeading">
+Library File
+</div>
+</th>
+    <th><a name="wp1277103"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1277105"> </a><div class="pMinorHead">
+Communications, Data and Event Manager
+</div>
+<a name="wp1277106"> </a><div class="pCellBody">
+<b class="cBold">All programs</b> must link <em class="cEmphasis">only one</em> of these libraries.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277110"> </a><div class="pCellBody">
+<code class="cCode">tibrv.lib</code>
+</div>
+</td>
+    <td><a name="wp1277115"> </a><div class="pCellBody">
+Rendezvous C library.
+</div>
+<a name="wp1277116"> </a><div class="pCellBody">
+DLL (import library).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277118"> </a><div class="pCellBody">
+<code class="cCode">libtibrv.lib</code>
+</div>
+</td>
+    <td><a name="wp1277123"> </a><div class="pCellBody">
+Rendezvous C library.
+</div>
+<a name="wp1277124"> </a><div class="pCellBody">
+Static library, for use with the <code class="cCode">/MT</code> compiler option.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277126"> </a><div class="pCellBody">
+<code class="cCode">libtibrvmd.lib</code>
+</div>
+</td>
+    <td><a name="wp1277131"> </a><div class="pCellBody">
+Rendezvous C library.
+</div>
+<a name="wp1277132"> </a><div class="pCellBody">
+Static library, for use with the <code class="cCode">/MD</code> compiler option.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1277134"> </a><div class="pMinorHead">
+Secure Daemon
+</div>
+<a name="wp1277135"> </a><div class="pCellBody">
+Programs that connect to <b class="cBold">secure daemons</b> (rvsd, <code class="cCode">rvsrd</code>) must link only one of these <em class="cEmphasis">sets</em> of libraries.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+tibrvsd.lib<a name="wp1277139"> </a>
+&#160;libeay32.lib<a name="wp1277140"> </a>
+&#160;ssleay32.lib<a name="wp1277141"> </a>
+</pre></div>
+</td>
+    <td><a name="wp1277143"> </a><div class="pCellBody">
+Secure daemon additions.
+</div>
+<a name="wp1277144"> </a><div class="pCellBody">
+DLL (import library).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">libtibrvsd.lib</code><a name="wp1277146"> </a>
+&#160;libeay32.lib<a name="wp1277147"> </a>
+&#160;ssleay32.lib<a name="wp1277148"> </a>
+</pre></div>
+</td>
+    <td><a name="wp1277150"> </a><div class="pCellBody">
+Secure daemon additions.
+</div>
+<a name="wp1277151"> </a><div class="pCellBody">
+Static library, for use with the <code class="cCode">/MT</code> compiler option.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">libtibrvsdmd.lib</code><a name="wp1277153"> </a>
+&#160;libeay32.lib<a name="wp1277154"> </a>
+&#160;ssleay32.lib<a name="wp1277155"> </a>
+</pre></div>
+</td>
+    <td><a name="wp1277157"> </a><div class="pCellBody">
+Secure daemon additions.
+</div>
+<a name="wp1277158"> </a><div class="pCellBody">
+Static library, for use with the <code class="cCode">/MD</code> compiler option.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1277160"> </a><div class="pMinorHead">
+Certified Message Delivery
+</div>
+<a name="wp1277161"> </a><div class="pCellBody">
+Programs that use <b class="cBold">certified message delivery</b> must link <em class="cEmphasis">only one</em> of these libraries.
+</div>
+<a name="wp1277162"> </a><div class="pCellBody">
+Programs that use <b class="cBold">distributed queues</b> must link <em class="cEmphasis">only one</em> of these libraries.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277166"> </a><div class="pCellBody">
+<code class="cCode">tibrvcm.lib</code>
+</div>
+</td>
+    <td><a name="wp1277171"> </a><div class="pCellBody">
+Rendezvous certified message delivery software.
+</div>
+<a name="wp1277172"> </a><div class="pCellBody">
+DLL (import library).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277174"> </a><div class="pCellBody">
+<code class="cCode">libtibrvcm.lib</code>
+</div>
+</td>
+    <td><a name="wp1277179"> </a><div class="pCellBody">
+Rendezvous certified message delivery software.
+</div>
+<a name="wp1277180"> </a><div class="pCellBody">
+Static library, for use with the <code class="cCode">/MT</code> compiler option.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277182"> </a><div class="pCellBody">
+<code class="cCode">libtibrvcmmd.lib</code>
+</div>
+</td>
+    <td><a name="wp1277187"> </a><div class="pCellBody">
+Rendezvous certified message delivery software.
+</div>
+<a name="wp1277188"> </a><div class="pCellBody">
+Static library, for use with the <code class="cCode">/MD</code> compiler option.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1277190"> </a><div class="pMinorHead">
+Fault Tolerance
+</div>
+<a name="wp1277191"> </a><div class="pCellBody">
+Programs that use <b class="cBold">fault tolerance</b> must link <em class="cEmphasis">only one</em> of these libraries.
+</div>
+<a name="wp1277192"> </a><div class="pCellBody">
+Programs that use <b class="cBold">distributed queues</b> must link <em class="cEmphasis">only one</em> of these libraries.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277196"> </a><div class="pCellBody">
+<code class="cCode">tibrvft.lib</code>
+</div>
+</td>
+    <td><a name="wp1277201"> </a><div class="pCellBody">
+Rendezvous fault tolerance software.
+</div>
+<a name="wp1277202"> </a><div class="pCellBody">
+DLL (import library).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277204"> </a><div class="pCellBody">
+<code class="cCode">libtibrvft.lib</code>
+</div>
+</td>
+    <td><a name="wp1277209"> </a><div class="pCellBody">
+Rendezvous fault tolerance software.
+</div>
+<a name="wp1277210"> </a><div class="pCellBody">
+Static library, for use with the <code class="cCode">/MT</code> compiler option.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277212"> </a><div class="pCellBody">
+<code class="cCode">libtibrvftmd.lib</code>
+</div>
+</td>
+    <td><a name="wp1277217"> </a><div class="pCellBody">
+Rendezvous fault tolerance software.
+</div>
+<a name="wp1277218"> </a><div class="pCellBody">
+Static library, for use with the <code class="cCode">/MD</code> compiler option.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1277220"> </a><div class="pMinorHead">
+Distributed Queue
+</div>
+<a name="wp1277221"> </a><div class="pCellBody">
+Programs that use <b class="cBold">distributed queues</b> must link <em class="cEmphasis">only one</em> of these libraries.
+</div>
+<a name="wp1277222"> </a><div class="pCellBody">
+In addition, distributed queue programs also use certified message delivery, and fault tolerance libraries; they must link appropriate libraries from those groups.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277226"> </a><div class="pCellBody">
+<code class="cCode">tibrvcmq.lib</code>
+</div>
+</td>
+    <td><a name="wp1277231"> </a><div class="pCellBody">
+Rendezvous distributed queue software.
+</div>
+<a name="wp1277232"> </a><div class="pCellBody">
+DLL (import library).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277234"> </a><div class="pCellBody">
+<code class="cCode">libtibrvcmq.lib</code>
+</div>
+</td>
+    <td><a name="wp1277239"> </a><div class="pCellBody">
+Rendezvous distributed queue software.
+</div>
+<a name="wp1277240"> </a><div class="pCellBody">
+Static library, for use with the <code class="cCode">/MT</code> compiler option.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277242"> </a><div class="pCellBody">
+<code class="cCode">libtibrvcmqmd.lib</code>
+</div>
+</td>
+    <td><a name="wp1277247"> </a><div class="pCellBody">
+Rendezvous distributed queue software.
+</div>
+<a name="wp1277248"> </a><div class="pCellBody">
+Static library, for use with the <code class="cCode">/MD</code> compiler option.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody"> 
+</p>
+<a name="wp1139216"> </a><h3 class="pHeading2">
+VMS
+</h3>
+<a name="wp1139319"> </a><p class="pBody">
+In VMS environments, both shared and static libraries are available. We recommend shared libraries to ease forward migration.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1277311"> </a><div class="pTableTitle">
+Table&#160;5   Library Files for VMS (Sheet 1 of 3)
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1277315"> </a><div class="pCellHeading">
+Library File
+</div>
+</th>
+    <th><a name="wp1277317"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1277319"> </a><div class="pMinorHead">
+Communications, Data and Event Manager
+</div>
+<a name="wp1277320"> </a><div class="pCellBody">
+<b class="cBold">All programs</b> must link <em class="cEmphasis">only one</em> of these libraries.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277324"> </a><div class="pCellBody">
+<code class="cCode">libtibrv.olb</code>
+</div>
+</td>
+    <td><a name="wp1277329"> </a><div class="pCellBody">
+Rendezvous C library.
+</div>
+<a name="wp1277330"> </a><div class="pCellBody">
+Static library.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277332"> </a><div class="pCellBody">
+<code class="cCode">libtibrvshr.exe</code>
+</div>
+</td>
+    <td><a name="wp1277337"> </a><div class="pCellBody">
+Rendezvous C library.
+</div>
+<a name="wp1277338"> </a><div class="pCellBody">
+VMS sharable image.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1277340"> </a><div class="pMinorHead">
+Secure Daemon
+</div>
+<a name="wp1277341"> </a><div class="pCellBody">
+Programs that connect to <b class="cBold">secure daemons</b> (rvsd, <code class="cCode">rvsrd</code>) must link only one of these <em class="cEmphasis">sets</em> of libraries.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+libtibrvsd.olb<a name="wp1277345"> </a>
+&#160;libcrypto.olb<a name="wp1277346"> </a>
+&#160;libssl.olb<a name="wp1277347"> </a>
+</pre></div>
+</td>
+    <td><a name="wp1277349"> </a><div class="pCellBody">
+Secure daemon additions.
+</div>
+<a name="wp1277350"> </a><div class="pCellBody">
+Static library.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+libtibrvsdshr.exe<a name="wp1277352"> </a>
+&#160;libcrypto.olb<a name="wp1277353"> </a>
+&#160;libssl.olb<a name="wp1277354"> </a>
+</pre></div>
+</td>
+    <td><a name="wp1277356"> </a><div class="pCellBody">
+Secure daemon additions.
+</div>
+<a name="wp1277357"> </a><div class="pCellBody">
+VMS sharable image.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1277359"> </a><div class="pMinorHead">
+Certified Message Delivery
+</div>
+<a name="wp1277360"> </a><div class="pCellBody">
+Programs that use <b class="cBold">certified message delivery</b> must link <em class="cEmphasis">only one</em> of these libraries.
+</div>
+<a name="wp1277361"> </a><div class="pCellBody">
+Programs that use <b class="cBold">distributed queues</b> must link <em class="cEmphasis">only one</em> of these libraries.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277365"> </a><div class="pCellBody">
+<code class="cCode">libtibrvcm.olb</code>
+</div>
+</td>
+    <td><a name="wp1277370"> </a><div class="pCellBody">
+Rendezvous certified message delivery software.
+</div>
+<a name="wp1277371"> </a><div class="pCellBody">
+Static library.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277373"> </a><div class="pCellBody">
+<code class="cCode">libtibrvcmshr.exe</code>
+</div>
+</td>
+    <td><a name="wp1277378"> </a><div class="pCellBody">
+Rendezvous certified message delivery software.
+</div>
+<a name="wp1277379"> </a><div class="pCellBody">
+VMS sharable image.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1277381"> </a><div class="pMinorHead">
+Fault Tolerance
+</div>
+<a name="wp1277382"> </a><div class="pCellBody">
+Programs that use <b class="cBold">fault tolerance</b> must link <em class="cEmphasis">only one</em> of these libraries.
+</div>
+<a name="wp1277383"> </a><div class="pCellBody">
+Programs that use <b class="cBold">distributed queues</b> must link <em class="cEmphasis">only one</em> of these libraries.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277387"> </a><div class="pCellBody">
+<code class="cCode">libtibrvft.lib</code>
+</div>
+</td>
+    <td><a name="wp1277392"> </a><div class="pCellBody">
+Rendezvous fault tolerance software.
+</div>
+<a name="wp1277393"> </a><div class="pCellBody">
+Static library.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277395"> </a><div class="pCellBody">
+<code class="cCode">libtibrvftshr.exe</code>
+</div>
+</td>
+    <td><a name="wp1277400"> </a><div class="pCellBody">
+Rendezvous fault tolerance software.
+</div>
+<a name="wp1277401"> </a><div class="pCellBody">
+VMS sharable image.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td  bgcolor="#CCE6FF"  colspan="2" rowspan="1"><a name="wp1277403"> </a><div class="pMinorHead">
+Distributed Queue
+</div>
+<a name="wp1277404"> </a><div class="pCellBody">
+Programs that use <b class="cBold">distributed queues</b> must link <em class="cEmphasis">only one</em> of these libraries.
+</div>
+<a name="wp1277405"> </a><div class="pCellBody">
+In addition, distributed queue programs also use certified message delivery, and fault tolerance libraries; they must link appropriate libraries from those groups.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277409"> </a><div class="pCellBody">
+<code class="cCode">libtibrvcmq.lib</code>
+</div>
+</td>
+    <td><a name="wp1277414"> </a><div class="pCellBody">
+Rendezvous distributed queue software.
+</div>
+<a name="wp1277415"> </a><div class="pCellBody">
+Static library.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1277417"> </a><div class="pCellBody">
+<code class="cCode">libtibrvcmqshr.exe</code>
+</div>
+</td>
+    <td><a name="wp1277422"> </a><div class="pCellBody">
+Rendezvous distributed queue software.
+</div>
+<a name="wp1277423"> </a><div class="pCellBody">
+VMS sharable image.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

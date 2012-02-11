@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Member File Access</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;14	 Fault Tolerance Programming";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1058047"> </a><h2 class="pNewHTMLPage">
+Member File Access
+</h2>
+<hr />
+<a name="wp1058048"> </a><p class="pBody">
+When members of a fault tolerance group depend on file access, it is crucial that each member use a private copy of every relevant file. In particular, consider these two guidelines.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1058049"> </a><div class="pSmartList1"><li >Do not share files.</li></div>
+
+<a name="wp1058050"> </a><p class="pBodyRelative">
+Ensure that two members never modify the same file. Sharing a file can corrupt the data in that file (even when the members do not write to it simultaneously). Using local files prevents this kind of corruption.
+</p>
+<a name="wp1058051"> </a><div class="pSmartList1"><li >Store files on the local host computer, not across the network on a file server&#151;and especially not on a separate network or segment.</li></div>
+
+<a name="wp1058052"> </a><p class="pBodyRelative">
+In situations where network disconnect causes a member to activate, that same disconnect can separate the activating backup member from network-mounted files. Using local files keeps the data where it is needed.
+</p>
+</ul></div>
+
+<a name="wp1058054"> </a><h3 class="pHeading2">
+Copying Context Files
+</h3>
+<a name="wp1058055"> </a><p class="pBody">
+In some programs, an activating member must establish its operating context by reading files left by a previously active member that has failed. When using this technique, be sure to make a local, private copy of the file.
+</p>
+<a name="wp1058056"> </a><p class="pBody">
+When the content of the context files changes frequently, inactive members can periodically copy the context files, so that a network disconnect does not preclude access when it is needed.
+</p>
+<a name="wp1058057"> </a><h3 class="pHeading2">
+Upgrading Versions
+</h3>
+<a name="wp1058058"> </a><p class="pBody">
+When upgrading a program to a new version, it is sometimes important that old and new versions run simultaneously. Be sure that the two process instances do not reference the same file. Instead, make a local copy of the file for the new version to use.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

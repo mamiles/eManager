@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Passive Monitor</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;13	 Fault Tolerance Concepts";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1057631"> </a><h2 class="pNewHTMLPage">
+Passive Monitor
+</h2>
+<hr />
+<a name="wp1057632"> </a><p class="pBody">
+A program can passively track the number of active members of a group using a fault tolerance <em class="cEmphasis">monitor</em>. That program need not be a member of the fault tolerance group it monitors.
+</p>
+<a name="wp1057633"> </a><p class="pBody">
+Monitors are <em class="cEmphasis">passive</em> in that they do not affect the members of the monitored group in any way. Members do not detect that a monitor exists.
+</p>
+<a name="wp1057634"> </a><p class="pBody">
+Programs that passively monitor a group detect the same number of active members as do members of the group they monitor.
+</p>
+<a name="wp1057636"> </a><h3 class="pHeading2">
+Monitor Callback Function
+</h3>
+<a name="wp1057637"> </a><p class="pBody">
+When a program starts monitoring (by creating a monitor event), it must specify a <em class="cEmphasis">monitor callback function</em> as a parameter. The callback function must be defined by the program. When Rendezvous fault tolerance software detects any change in the number of active members, it calls the callback function&#151;which receives the number of active members as an argument.
+</p>
+<a name="wp1057641"> </a><h3 class="pHeading2">
+Monitors in Action
+</h3>
+<a name="wp1057645"> </a><p class="pBody">
+Monitors give Rendezvous programs limited capability to determine the health of the fault-tolerant programs upon which they depend. In the most common scenario, a client program monitors a critical service, and adapts its own behavior accordingly. Consider these examples.
+</p>
+<a name="wp1057646"> </a><h4 class="pHeading3">
+Example: Monitor for Data Quality
+</h4>
+<a name="wp1057647"> </a><p class="pBody">
+A data display program receives many items of time-critical information from several groups of fault-tolerant broadcast producers (one group for each kind of information). The display updates every time new information arrives. The end user must be confident that the displayed information is current. The display program monitors the health of each producer group, and displays each information item with a color code indicating the quality of the information (based on the health of the corresponding producer).
+</p>
+<a name="wp1057648"> </a><p class="pBody">
+For example, if a producer group has an active member (normal operation), then all information from that producer appears on a white background. If the producer has no active member (a catastrophic failure), then the display marks all information from that producer with a yellow background, to signal the end user that the information might be obsolete. When the producer group once again has an active member, the display changes the background of each new item to white, to show that it represents current information.
+</p>
+<a name="wp1057649"> </a><h4 class="pHeading3">
+Example: Monitor for Available Service
+</h4>
+<a name="wp1057650"> </a><p class="pBody">
+A group of query servers responds to requests from numerous client programs. Before submitting a query, a client program checks the number of active servers. If no servers are active, the client program informs the end user that it cannot submit the query. If many servers are active, the client submits the query. If only a few servers are active, the client submits the query, and informs the end user that the response may be delayed.
+</p>
+<a name="wp1057651"> </a><h4 class="pHeading3">
+Example: Monitor to Ascertain Complete Response
+</h4>
+<a name="wp1057652"> </a><p class="pBody">
+Some programs use redundancy to cross-check results. Each member in a fault tolerance group computes the same information&#151;but each uses a different program, coded by a different programming team, running on a different kind of computer hardware platform. A client program receives, collates and compares the results of their computations, and reports to an end user.
+</p>
+<a name="wp1057653"> </a><p class="pBody">
+The collator must report as soon as it receives a response from all the active members; it must not delay while waiting for a response from a member that has terminated unexpectedly. The collator monitors the group to determine the number of active members. When the number of responses equals the number of active members, the collator reports the combined results.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

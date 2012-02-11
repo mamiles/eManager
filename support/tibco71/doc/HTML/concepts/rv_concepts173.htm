@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>RVCM Advisory Subject Names</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Appendix&#160;B	 Certified Message Delivery (RVCM) Advisory Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1039025"> </a><h2 class="pNewHTMLPage">
+RVCM Advisory Subject Names
+</h2>
+<hr />
+<a name="wp1039029"> </a><p class="pBody">
+Rendezvous certified message delivery software constructs the subject names of advisory messages using these templates:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;&#160;_RV.<code class="cCodeItalic">&lt;class&gt;</code>.RVCM.<code class="cCodeItalic">&lt;category&gt;</code>.<code class="cCodeItalic">&lt;condition&gt;</code>.<code class="cCodeItalic">&lt;subject&gt;</code><a name="wp1039030"> </a>
+&#160;&#160;&#160;&#160;_RV.<code class="cCodeItalic">&lt;class&gt;</code>.RVCM.<code class="cCodeItalic">&lt;category&gt;</code>.<code class="cCodeItalic">&lt;condition&gt;</code>.<code class="cCodeItalic">&lt;name&gt;</code><a name="wp1039031"> </a>
+</pre></div>
+<a name="wp1039032"> </a><p class="pBody">
+Distributed queue software constructs the subject names of advisory messages using this template:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;&#160;_RV.<code class="cCodeItalic">&lt;class&gt;</code>.RVCM.<code class="cCodeItalic">&lt;category&gt;</code>.<code class="cCodeItalic">&lt;role&gt;</code>.<code class="cCodeItalic">&lt;condition&gt;</code>.<code class="cCodeItalic">&lt;name&gt;</code><a name="wp1039033"> </a>
+<a name="wp1096896"> </a>
+</pre></div>
+<a name="wp1039083"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1039041"> </a><div class="pTableTitle">
+Table&#160;44   RVCM Advisory Subject Name Elements (Sheet 1 of 2)
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1039045"> </a><div class="pCellHeading">
+Element
+</div>
+</th>
+    <th><a name="wp1039047"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1039049"> </a><div class="pCellBody">
+<code class="cCodeItalic">&lt;class&gt;</code>
+</div>
+</td>
+    <td><a name="wp1039051"> </a><div class="pCellBody">
+The <code class="cCodeItalic">&lt;class&gt;</code> element denotes the severity of the situation:
+</div>
+<div class="pSmartList1"><ul>
+<a name="wp1039052"> </a><div class="pSmartList1"><li ><code class="cCode">ERROR</code> indicates either a problem that precludes certified delivery, or a situation in which delivery did not complete.</li></div>
+
+<a name="wp1039053"> </a><div class="pSmartList1"><li ><code class="cCode">WARN</code> indicates an anomalous situation that might jeopardize certified message delivery.</li></div>
+
+<a name="wp1039054"> </a><div class="pSmartList1"><li ><code class="cCode">INFO</code> indicates an interesting event in the normal operation of certified message delivery.</li></div>
+
+</ul></div>
+
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1039056"> </a><div class="pCellBody">
+<code class="cCodeItalic">&lt;source&gt;</code>
+</div>
+</td>
+    <td><a name="wp1039058"> </a><div class="pCellBody">
+The <code class="cCodeItalic">&lt;source&gt;</code> element is <code class="cCode">RVCM</code> for all advisories from certified message delivery software.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1039060"> </a><div class="pCellBody">
+<code class="cCodeItalic">&lt;category&gt;</code>
+</div>
+</td>
+    <td><a name="wp1039062"> </a><div class="pCellBody">
+The <code class="cCodeItalic">&lt;category&gt;</code> element indicates the general category of the situation that the advisory describes:
+</div>
+<div class="pSmartList1"><ul>
+<a name="wp1039063"> </a><div class="pSmartList1"><li ><code class="cCode">DELIVERY</code> pertains to the tracking and delivery of specific messages. </li></div>
+
+<a name="wp1039064"> </a><div class="pSmartList1"><li ><code class="cCode">REGISTRATION</code> pertains to the administration of certified delivery service.</li></div>
+
+<a name="wp1039065"> </a><div class="pSmartList1"><li ><code class="cCode">RELAY</code> pertains to relay agents.</li></div>
+
+<a name="wp1039066"> </a><div class="pSmartList1"><li ><code class="cCode">QUEUE</code> pertains to distributed queues.</li></div>
+
+</ul></div>
+
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1039068"> </a><div class="pCellBody">
+<code class="cCodeItalic">&lt;condition&gt;</code>
+</div>
+</td>
+    <td><a name="wp1039070"> </a><div class="pCellBody">
+The <code class="cCodeItalic">&lt;condition&gt;</code> element indicates the specific situation that the advisory reports.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1039072"> </a><div class="pCellBody">
+<code class="cCodeItalic">&lt;role&gt;</code>
+</div>
+</td>
+    <td><a name="wp1039074"> </a><div class="pCellBody">
+The <code class="cCodeItalic">&lt;role&gt;</code> element of <code class="cCode">QUEUE</code> advisories indicates whether the advisory pertains to the member in the <code class="cCode">LISTENER</code> (worker) role or the <code class="cCode">SCHEDULER</code> role.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1039076"> </a><div class="pCellBody">
+<code class="cCodeItalic">&lt;subject&gt;</code>
+</div>
+</td>
+    <td><a name="wp1039078"> </a><div class="pCellBody">
+The <code class="cCodeItalic">&lt;subject&gt;</code> element contains the subject name to which the advisory pertains. These names often consist of several elements, so the wildcard character <code class="cCode">&quot;&gt;&quot;</code> (rather than <code class="cCode">&quot;*&quot;</code>) is the correct way to match all names in this position.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1039080"> </a><div class="pCellBody">
+<code class="cCodeItalic">&lt;name&gt;</code>
+</div>
+</td>
+    <td><a name="wp1039082"> </a><div class="pCellBody">
+The <code class="cCodeItalic">&lt;name&gt;</code> element contains the reusable name to which the advisory pertains. These names may consist of several elements, so the wildcard character <code class="cCode">&quot;&gt;&quot;</code> (rather than <code class="cCode">&quot;*&quot;</code>) is the correct way to match all names in this position.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

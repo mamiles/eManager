@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>DaemonManager.getDaemonProxy()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;2	 Daemon Manager";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1949789"> </a><h2 class="pNewHTMLPage">
+DaemonManager.getDaemonProxy()
+</h2>
+<hr />
+<a name="wp1949790"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1949791"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_config12.htm#wp1949843"><code class="cCode">DaemonProxy</code></a><code class="cCode"> </code><code class="cCodeBold">getDaemonProxy</code><code class="cCode">()</code><a name="wp1949795"> </a>
+&#160;&#160;<code class="cCode">throws </code><a  href="rv_config267.htm#wp1963961"><code class="cCode">ConfigurationException</code></a><a name="wp1949799"> </a>
+</pre></div>
+<a name="wp1949800"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1949802"> </a><p class="pBody">
+Return the proxy instance representing the daemon process.
+</p>
+<a name="wp1949803"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1949807"> </a><p class="pBody">
+The constructor <a  href="rv_config9.htm#wp1949738"><code class="cCode">DaemonManager()</code></a> automatically creates an appropriate proxy instance for the daemon component. Programs use this proxy instance to configure the daemon. A variety of proxy interfaces allow programs to access parameter values of the daemon. Each proxy interface defines a set of methods related to a specific aspect of daemon behavior.
+</p>
+<a name="wp2016936"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/tip.gif" border="0" /></td>
+    <td><a name="wp2016943"> </a><p class="pBody">
+Programs cast the proxy instance to an appropriate proxy interface, then call methods of the interface.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1949813"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1949817"> </a><p class="pBody">
+<a  href="rv_config12.htm#wp1949843"><code class="cCode">DaemonProxy</code> </a>
+</p>
+<a name="wp1949821"> </a><p class="pBody">
+<a  href="rv_config19.htm#wp1950120"><code class="cCode">RvdProxy</code> </a>
+</p>
+<a name="wp1949825"> </a><p class="pBody">
+<a  href="rv_config52.htm#wp1951492"><code class="cCode">RvrdProxy</code> </a>
+</p>
+<a name="wp1949829"> </a><p class="pBody">
+<a  href="rv_config107.htm#wp1955023"><code class="cCode">SecurityProxy</code> </a>
+</p>
+<a name="wp1949833"> </a><p class="pBody">
+<a  href="rv_config123.htm#wp1956040"><code class="cCode">SecureDaemonProxy</code> </a>
+</p>
+<a name="wp1949837"> </a><p class="pBody">
+<a  href="rv_config167.htm#wp1959123"><code class="cCode">RvaProxy</code> </a>
+</p>
+<a name="wp1949841"> </a><p class="pBody">
+<a  href="rv_config201.htm#wp1960914"><code class="cCode">RvcacheProxy</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

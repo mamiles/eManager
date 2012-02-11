@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:09:01" />
+  <title>VB Error Codes</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous COM Reference";
+    var ChapterTitle = "Chapter&#160;11	 Errors";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1151540"> </a><h2 class="pNewHTMLPage">
+VB Error Codes
+</h2>
+<hr />
+<a name="wp1144421"> </a><p class="pBody">
+Programs can receive errors that seem related to Rendezvous software, but really originate from the VB language implementation. While it is difficult to give complete advice to application programmers regarding these errors, <a  href="rv_com_ref219.htm#wp1144255">Table&#160;7</a> summarizes some of the common errors in this group.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1144255"> </a><div class="pTableTitle">
+Table&#160;7   VB Errors (Sheet 1 of 2)
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1144259"> </a><div class="pCellHeading">
+Error
+</div>
+</th>
+    <th><a name="wp1144261"> </a><div class="pCellHeading">
+Error Text String and Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1150718"> </a><div class="pCellBody">
+91
+</div>
+</td>
+    <td><a name="wp1150734"> </a><div class="pCellBody">
+Object variable or With block variable not set
+</div>
+<a name="wp1189178"> </a><div class="pCellBody">
+VB cannot apply a method because the variable does not contain an appropriate object.
+</div>
+<a name="wp1189179"> </a><div class="pCellBody">
+This error can indicate that an object has not yet been assigned to the variable, or was once present but has been set to <code class="cCode">Nothing</code>.
+</div>
+<a name="wp1189180"> </a><div class="pCellBody">
+This error can also stem from incorrect assignment syntax. Remember that you must use <code class="cCode">set</code> to assign an object; for example:
+</div>
+<a name="wp1189182"> </a><div class="pCellBody">
+Right:
+</div>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#8217;in General (Global) Declarations<a name="wp1189183"> </a>
+&#160;&#160;&#160;&#160;dim q as TibrvQueue<a name="wp1189184"> </a>
+&#160;<a name="wp1189185"> </a>
+&#160;&#160;&#8217;in a Subroutine<a name="wp1189186"> </a>
+&#160;&#160;&#160;&#160;<code class="cCodeBold">set</code> q = tibrv.getDefaultQueue<a name="wp1189187"> </a>
+&#160;<a name="wp1189188"> </a>
+&#160;<a name="wp1189189"> </a>
+</pre></div>
+<a name="wp1189190"> </a><div class="pCellBody">
+Wrong:
+</div>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#8217;in General (Global) Declarations<a name="wp1189191"> </a>
+&#160;&#160;&#160;&#160;dim q as New TibrvQueue<a name="wp1189192"> </a>
+&#160;<a name="wp1189193"> </a>
+&#160;&#160;&#8217;in a Subroutine<a name="wp1189194"> </a>
+&#160;&#160;&#160;&#160;q = tibrv.getDefaultQueue<a name="wp1189195"> </a>
+</pre></div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1144263"> </a><div class="pCellBody">
+429
+</div>
+</td>
+    <td><a name="wp1189169"> </a><div class="pCellBody">
+COM rejected a call to <code class="cCode">CreateObject()</code>.
+</div>
+<a name="wp1189170"> </a><div class="pCellBody">
+Check spelling of object name.
+</div>
+<a name="wp1189171"> </a><div class="pCellBody">
+Check that the component is registered.
+</div>
+<a name="wp1189172"> </a><div class="pCellBody">
+Check memory usage.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1144307"> </a><div class="pCellBody">
+438
+</div>
+</td>
+    <td><a name="wp1144278"> </a><div class="pCellBody">
+Object doesn&#8217;t support this property or method
+</div>
+<a name="wp1189209"> </a><div class="pCellBody">
+Check spelling of method name and its arguments.
+</div>
+<a name="wp1189210"> </a><div class="pCellBody">
+Check that the component is registered.
+</div>
+<a name="wp1189211"> </a><div class="pCellBody">
+This error also indicates incorrect assignment syntax. Remember that you must use <code class="cCode">set</code> to assign an object; for example:
+</div>
+<a name="wp1189213"> </a><div class="pCellBody">
+Right:
+</div>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#8217;in General (Global) Declarations<a name="wp1189214"> </a>
+&#160;&#160;&#160;&#160;dim q as TibrvQueue<a name="wp1189215"> </a>
+&#160;<a name="wp1189216"> </a>
+&#160;&#160;&#8217;in a Subroutine<a name="wp1189217"> </a>
+&#160;&#160;&#160;&#160;<code class="cCodeBold">set</code> q = tibrv.getDefaultQueue<a name="wp1189218"> </a>
+&#160;<a name="wp1189219"> </a>
+&#160;<a name="wp1189220"> </a>
+</pre></div>
+<a name="wp1189221"> </a><div class="pCellBody">
+Wrong:
+</div>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#8217;in General (Global) Declarations<a name="wp1189222"> </a>
+&#160;&#160;&#160;&#160;dim q as TibrvQueue<a name="wp1189223"> </a>
+&#160;<a name="wp1189224"> </a>
+&#160;&#160;&#8217;in a Subroutine<a name="wp1189225"> </a>
+&#160;&#160;&#160;&#160;q = tibrv.getDefaultQueue<a name="wp1189226"> </a>
+</pre></div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous COM Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

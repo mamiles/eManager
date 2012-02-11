@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>Add DateTime</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1121817"> </a><h2 class="pNewHTMLPage">
+Add DateTime
+</h2>
+<hr />
+<a name="wp1121818"> </a><p class="pSyntaxType">
+Convenience Method
+</p>
+<a name="wp1121833"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">addDateTime</code>(<a name="wp1122034"> </a>
+&#160;&#160;&#160;&#160;const char*&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;fieldName,<a name="wp1122035"> </a>
+&#160;&#160;&#160;&#160;const <a  href="rv_cpp_ref84.htm#wp1044828"><code class="cCode">TibrvMsgDateTime</code></a>&amp;&#160;&#160;&#160;&#160;value,<a name="wp1122036"> </a>
+&#160;&#160;&#160;&#160;tibrv_u16&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;fieldId=0);<a name="wp1122038"> </a>
+</pre></div>
+<a name="wp1121834"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1121838"> </a><p class="pBody">
+Add a field containing a Rendezvous datetime value.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1121848"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1121850"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1121856"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1121858"> </a><div class="pCellBody">
+Create the new field with this name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1121860"> </a><div class="pCellBody">
+<code class="cCode">value</code>
+</div>
+</td>
+    <td><a name="wp1121862"> </a><div class="pCellBody">
+Add a new field that contains this datetime value.
+</div>
+<a name="wp1121863"> </a><div class="pCellBody">
+The method <em class="cEmphasis">copies</em> the data into the new message field.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1121865"> </a><div class="pCellBody">
+<code class="cCode">fieldId</code>
+</div>
+</td>
+    <td><a name="wp1121867"> </a><div class="pCellBody">
+Create the new field with this identifier. Zero is a special value that signifies no field identifier. All non-zero field identifiers must be unique within each message. 
+</div>
+<a name="wp1121868"> </a><div class="pCellBody">
+It is illegal to add a field that has both a <code class="cCode">NULL</code> field name, and a non-zero field identifier.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1121870"> </a><h4 class="pHeading3">
+Example
+</h4>
+<a name="wp1159273"> </a><p class="pBody">
+This example code converts a <code class="cCode">time_t</code> value to a datetime value, and adds the datetime to a message field. Programs can adapt this example as appropriate. (For corresponding code to extract a datetime value from a message field, and convert it to a <code class="cCode">time_t</code> value, see the example at <a  href="rv_cpp_ref53.htm#wp1122758">Get DateTime</a>.)
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+#include &lt;limits.h&gt;<a name="wp1164034"> </a>
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> addAsTimeT(<a name="wp1164035"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a  href="rv_cpp_ref26.htm#wp1055151"><code class="cCode">TibrvMsg</code></a>&amp; msg,<a name="wp1164039"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;const char* field, <a name="wp1159285"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;time_t value)<a name="wp1159286"> </a>
+{<a name="wp1159287"> </a>
+&#160;&#160;&#160;&#160;examples/c/ d;<a name="wp1159288"> </a>
+&#160;&#160;&#160;&#160;d.sec = (tibrv_i64)value;<a name="wp1159289"> </a>
+&#160;&#160;&#160;&#160;return msg.addDateTime(field,d);<a name="wp1159290"> </a>
+}<a name="wp1159291"> </a>
+<a name="wp1159277"> </a>
+</pre></div>
+<a name="wp1121890"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1121894"> </a><p class="pBody">
+<a  href="rv_cpp_ref84.htm#wp1044828"><code class="cCode">TibrvMsgDateTime</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

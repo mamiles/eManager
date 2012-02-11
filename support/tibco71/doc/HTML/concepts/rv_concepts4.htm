@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Simplifying Distributed System Development</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;1	 Product Overview";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1019078"> </a><h2 class="pNewHTMLPage">
+Simplifying Distributed System Development
+</h2>
+<hr />
+<a name="wp1020026"> </a><p class="pBody">
+Rendezvous software eases distributed system development in these ways:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1020030"> </a><div class="pSmartList1"><li ><a  href="rv_concepts4.htm#wp1070333">Decoupling and Data Independence</a></li></div>
+
+<a name="wp1019090"> </a><div class="pSmartList1"><li ><a  href="rv_concepts4.htm#wp1019132">Location Transparency</a></li></div>
+
+<a name="wp1020230"> </a><div class="pSmartList1"><li ><a  href="rv_concepts4.htm#wp1020093">Architectural Emphasis on Information Sources and Destinations</a></li></div>
+
+<a name="wp1020234"> </a><div class="pSmartList1"><li ><a  href="rv_concepts4.htm#wp1020214">Reliable Delivery of Whole Messages</a></li></div>
+
+<a name="wp1068309"> </a><div class="pSmartList1"><li ><a  href="rv_concepts97.htm#wp1055521">Certified Message Delivery</a></li></div>
+
+<a name="wp1070329"> </a><div class="pSmartList1"><li ><a  href="rv_concepts117.htm#wp1056801">Distributed Queue</a>s</li></div>
+
+<a name="wp1070330"> </a><div class="pSmartList1"><li >Fault Tolerance (see <a  href="rv_concepts126.htm#wp1057063">Fault Tolerance Concepts</a>)</li></div>
+
+</ul></div>
+
+<a name="wp1070333"> </a><h3 class="pHeading2">
+Decoupling and Data Independence
+</h3>
+<a name="wp1019121"> </a><p class="pBody">
+Distributed systems can be difficult to develop, maintain and port. One reason for this difficulty is that components running on networked hosts are often tightly coupled&#151;components must agree on network connections, the low-level format for data transfer, and other details. Rendezvous software allows looser coupling between the components of a distributed system. Loose coupling decreases costs for development, operation and maintenance, and increases system longevity.
+</p>
+<a name="wp1019130"> </a><p class="pBody">
+Rendezvous self-describing data messages promote data independence; producers and consumers of data can communicate even if they do not share the same internal representations for data. Communicating programs can run on different hardware architectures, even though they use different bit order, byte alignment or numeric representations.
+</p>
+<a name="wp1019131"> </a><p class="pBody">
+Data independence also eases program evolution. Producers can gracefully add new content fields to their messages without invalidating legacy receivers.
+</p>
+<a name="wp1019132"> </a><h3 class="pHeading2">
+Location Transparency
+</h3>
+<a name="wp1019136"> </a><p class="pBody">
+Rendezvous software uses <em class="cEmphasis">subject-based addressing</em>&#8482; technology to direct messages to their destinations, so program processes can communicate without knowing the details of network addresses or connections. Subject-based addressing conventions define a uniform name space for messages and their destinations. 
+</p>
+<a name="wp1019137"> </a><p class="pBody">
+The locations of component processes become entirely transparent; any application component can run on any network host without modification, recompilation or reconfiguration. Application programs migrate easily among host computers. You can dynamically add, remove and modify components of a distributed system without affecting other components.
+</p>
+<a name="wp1020093"> </a><h3 class="pHeading2">
+Architectural Emphasis on Information Sources and Destinations
+</h3>
+<a name="wp1020094"> </a><p class="pBody">
+Decoupling distributed components eliminates much of the complexity traditionally associated with network programming. Rendezvous software frees you to devote more resources to solving application problems.
+</p>
+<a name="wp1019144"> </a><p class="pBody">
+In the past, network programming was so complex that programmers often structured systems and individual component programs to minimize that complexity&#151;even if the resulting architecture did not fit the application domain as well as it could. Rendezvous software lets you think about distributed system architecture in new ways. You can divide the system into modules along natural boundaries implied by the application&#8217;s information content.
+</p>
+<a name="wp1019148"> </a><p class="pBody">
+The first step in developing a distributed system is to identify sources and destinations of information. For example, sources of information include news-wire services, data entry stations, point-of-sale stations, sensors and measuring devices. Destinations of information include data displays and visualization stations, device controllers, statistical analyzers, and personal wireless devices. Components such as databases, schedulers, materials trackers and decision support interfaces can often be both sources and destinations of information within a larger system. Analyzing a distributed application problem in these terms very often suggests the most natural, efficient and flexible solution.
+</p>
+<a name="wp1020214"> </a><h3 class="pHeading2">
+Reliable Delivery of Whole Messages
+</h3>
+<a name="wp1020218"> </a><p class="pBody">
+Rendezvous software provides reliable communications between programs, while hiding the burdensome details of network communication and packet transfer from the programmer. Rendezvous software takes care of segmenting and recombining large messages, acknowledging packet receipt, retransmitting lost packets, and arranging packets in the correct order. You can concentrate on whole messages, rather than packets.
+</p>
+<a name="wp1071376"> </a><p class="pBody">
+While some conventional network APIs guarantee reliable delivery of point-to-point messages, most do not guarantee reliable receipt of multicast (or broadcast) messages. Multicast messages can often be lost when some of the intended recipients experience transient network failures. Rendezvous software uses proprietary reliable multicast protocols to deliver messages despite brief network glitches.
+</p>
+<a name="wp1020175"> </a><p class="pBody">
+For programs that require even stronger guarantees, see <a  href="rv_concepts97.htm#wp1055521">Certified Message Delivery</a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

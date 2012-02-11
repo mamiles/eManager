@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvCmTransport::createInbox()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;9	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1162793"> </a><h2 class="pNewHTMLPage">
+TibrvCmTransport::createInbox()
+</h2>
+<hr />
+<a name="wp1162794"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1162795"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">createInbox</code>(<a name="wp1162799"> </a>
+&#160;&#160;&#160;&#160;char* subjectString,<a name="wp1162800"> </a>
+&#160;&#160;&#160;&#160;tibrv_u32 subjectLimit) const;<a name="wp1162801"> </a>
+</pre></div>
+<a name="wp1162802"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1162804"> </a><p class="pBody">
+Create a unique inbox subject name.
+</p>
+<a name="wp1162805"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1162872"> </a><p class="pBody">
+This convenience method extracts the network transport, and then calls <a  href="rv_cpp_ref164.htm#wp1040342"><code class="cCode">TibrvTransport::createInbox()</code></a>. For details, see the documentation for that method.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1162834"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1162836"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1162838"> </a><div class="pCellBody">
+<code class="cCode">subjectString</code>
+</div>
+</td>
+    <td><a name="wp1162840"> </a><div class="pCellBody">
+The program supplies a string buffer, and the method stores the new inbox subject string in that buffer.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1162843"> </a><div class="pCellBody">
+<code class="cCode">subjectLimit</code>
+</div>
+</td>
+    <td><a name="wp1162845"> </a><div class="pCellBody">
+The number of bytes that the program has allocated to receive the new inbox subject string.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1162847"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1162851"> </a><p class="pBody">
+<a  href="rv_cpp_ref66.htm#wp1107851"><code class="cCode">TibrvMsg::setReplySubject()</code> </a>
+</p>
+<a name="wp1162882"> </a><p class="pBody">
+<a  href="rv_cpp_ref164.htm#wp1040342"><code class="cCode">TibrvTransport::createInbox()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

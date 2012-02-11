@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Canceling Certified Delivery</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1056313"> </a><h2 class="pNewHTMLPage">
+Canceling Certified Delivery
+</h2>
+<hr />
+<a name="wp1056314"> </a><p class="pBody">
+Either a listening or a sending program can cancel a certified delivery agreement.
+</p>
+<a name="wp1056315"> </a><p class="pBody">
+A listening program can cancel agreements when destroying the CM listener <em class="cEmphasis">event</em> object, using a cancel agreements parameter of the calls in <a  href="rv_concepts111.htm#wp1056330">Table&#160;32</a>. All sending CM transports that had certified delivery agreements to the destroyed listener present <a  href="rv_concepts183.htm#wp1039506"><code class="cCode">REGISTRATION.CLOSED</code></a> advisories.
+</p>
+<a name="wp1056322"> </a><p class="pBody">
+Notice that destroying the CM transport object in the listening program implicitly invalidates all its listener events, but does not cancel their certified delivery agreements; the sender continues to store outbound messages in its ledger.
+</p>
+<a name="wp1056362"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1056330"> </a><div class="pTableTitle">
+Table&#160;32   Close Listener Calls&#160;
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1056334"> </a><div class="pCellBody">
+C
+</div>
+</td>
+    <td><a name="wp1056339"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref179.htm#wp1092103');" onMouseOver="WWHShowPopup('e', 'rv_c_ref179.htm#wp1092103', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvcmEvent_Destroy()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056341"> </a><div class="pCellBody">
+C++
+</div>
+</td>
+    <td><a name="wp1060385"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref221.htm#wp1158275');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref221.htm#wp1158275', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmListener::destroy()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056349"> </a><div class="pCellBody">
+Java
+</div>
+</td>
+    <td><a name="wp1056354"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref187.htm#wp1098068');" onMouseOver="WWHShowPopup('g', 'rv_java_ref187.htm#wp1098068', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmListener.destroy()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056356"> </a><div class="pCellBody">
+COM
+</div>
+</td>
+    <td><a name="wp1056361"> </a><div class="pCellBody">
+Delete the CM listener event object (or <a  href="javascript:WWHClickedPopup('h', 'rv_com_ref171.htm#wp1131439');" onMouseOver="WWHShowPopup('h', 'rv_com_ref171.htm#wp1131439', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmListener.destroy</code></a>)
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1056364"> </a><p class="pBody">
+A certified sender transport can cancel certified delivery of a specific subject to a specific CM listening transport, using calls in <a  href="rv_concepts111.htm#wp1056383">Table&#160;33</a>. The sender transport deletes from its ledger all information about delivery of the subject to the listening transport. The sender presents a <a  href="rv_concepts183.htm#wp1039506"><code class="cCode">REGISTRATION.CLOSED</code></a> advisory. If the listening correspondent is available (that is, its program is running and reachable), it presents a <a  href="rv_concepts181.htm#wp1039415"><code class="cCode">REGISTRATION.NOT_CERTIFIED</code></a> advisory. (Unlike the disallow listener calls in <a  href="rv_concepts112.htm#wp1056437">Table&#160;34</a>, these calls do not cause denial of subsequent registration requests.)</p><div align="left">
+<table border="1">
+  <caption><a name="wp1056383"> </a><div class="pTableTitle">
+Table&#160;33   Remove Listener Calls&#160;
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1056387"> </a><div class="pCellBody">
+C
+</div>
+</td>
+    <td><a name="wp1056392"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('e', 'rv_c_ref199.htm#wp1089656');" onMouseOver="WWHShowPopup('e', 'rv_c_ref199.htm#wp1089656', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">tibrvcmTransport_RemoveListener()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056394"> </a><div class="pCellBody">
+C++
+</div>
+</td>
+    <td><a name="wp1056399"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('f', 'rv_cpp_ref242.htm#wp1085087');" onMouseOver="WWHShowPopup('f', 'rv_cpp_ref242.htm#wp1085087', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport::removeListener()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056402"> </a><div class="pCellBody">
+Java
+</div>
+</td>
+    <td><a name="wp1056407"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('g', 'rv_java_ref206.htm#wp1085087');" onMouseOver="WWHShowPopup('g', 'rv_java_ref206.htm#wp1085087', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport.removeListener()</code></a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1056409"> </a><div class="pCellBody">
+COM
+</div>
+</td>
+    <td><a name="wp1056414"> </a><div class="pCellBody">
+<a  href="javascript:WWHClickedPopup('h', 'rv_com_ref196.htm#wp1085087');" onMouseOver="WWHShowPopup('h', 'rv_com_ref196.htm#wp1085087', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();"><code class="cCode">TibrvCmTransport.removeListener</code></a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

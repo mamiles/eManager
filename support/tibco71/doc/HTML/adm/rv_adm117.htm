@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Point-to-Point Statistics</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;11	 Protocol Monitor (rvtrace)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1107861"> </a><h2 class="pNewHTMLPage">
+Point-to-Point Statistics
+</h2>
+<hr />
+<a name="wp1108187"> </a><p class="pBody">
+<a  href="rv_adm117.htm#wp1108195">Figure&#160;53</a> shows a point-to-point (PTP) table (from <code class="cCode">rvtrace -addrinfo -ptp</code>). The text below introduces important concepts. <a  href="rv_adm117.htm#wp1108472">Table&#160;11</a> describes the columns in detail.
+</p>
+<a name="wp1303179"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/warning.gif" border="0" /></td>
+    <td><a name="wp1303186"> </a><p class="pBody">
+In switched ethernet environments point-to-point packets remain invisible to <code class="cCode">rvtrace</code>&#151;except for packets addressed specifically to the <code class="cCode">rvtrace</code> host computer. Since this fact severely limits the usefulness of reporting point-to-point statistics, <code class="cCode">rvtrace</code> <em class="cEmphasis">omits</em> them from its output unless you specify the <code class="cCode">-ptp</code> command line option.
+</p>
+<a name="wp1303187"> </a><p class="pBody">
+In some switched networks, you can disable switching behavior&#151;for example, by setting one port to diagnostic mode, or by using a diagnostic utility. This tactic can yield the full stream of point-to-point packets in a limited portion of the network; run <code class="cCode">rvtrace</code> in that portion.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1108195"> </a><div class="pFigureTitle">
+Figure&#160;53   Point-to-Point Statistics</div><div align="center"><img src="images/rv_adma13.gif" height="146" width="599" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+<a name="wp1108196"> </a><h4 class="pHeading3">
+Network Total Row
+</h4>
+<a name="wp1108197"> </a><p class="pBody">
+The first row (immediately after the table and column headings) is a <em class="cEmphasis">network total row;</em> the word <code class="cCode">Totals</code> in the <code class="cCode">Address</code> column is a visual cue. This row shows the grand total of packets related to retransmission detected on the network during the interval.
+</p>
+<a name="wp1108198"> </a><p class="pBody">
+The remaining rows display more fine-grained information about those packets&#151;grouping them by UDP service, and destination or source IP address.
+</p>
+<a name="wp1108199"> </a><h4 class="pHeading3">
+Port Subtotal Row
+</h4>
+<a name="wp1108203"> </a><p class="pBody">
+The second row in <a  href="rv_adm117.htm#wp1108195">Figure&#160;53</a> is a <em class="cEmphasis">port subtotal row</em>&#151;its columns subtotal the statistics over the subsequent destination and source rows which it governs (until the next port subtotal row).
+</p>
+<a name="wp1108207"> </a><p class="pBody">
+A number in the <a  href="rv_adm115.htm#wp1128365"><code class="cCode">Port</code></a> column indicates the UDP service for its row, and the group of rows that follow it. A blank in this column means that the row has the same port as the row above, and is part of the same subtotal group. Notice how the pattern of numbers and blanks in the <a  href="rv_adm115.htm#wp1128365"><code class="cCode">Port</code></a> column visually indicates the subtotal groups.
+</p>
+<a name="wp1108211"> </a><h4 class="pHeading3">
+Destination and Source Rows
+</h4>
+<a name="wp1108212"> </a><p class="pBody">
+For each IP address with point-to-point data packet activity, this table contains a destination row and a source row&#151;always paired in that order. An <code class="cCode">*</code> and an IP address (in the <a  href="rv_adm116.htm#wp1107811"><code class="cCode">Address</code></a> column) flags a row as a <em class="cEmphasis">destination row</em>. A blank (space characters) flags a row as a <em class="cEmphasis">source</em> row. The address in the destination row also applies to the source row that immediately follows it.
+</p>
+<a name="wp1108216"> </a><h4 class="pHeading3">
+Counting Packets
+</h4>
+<a name="wp1108217"> </a><p class="pBody">
+This table displays each packet twice&#151;once in a destination row, and once in a source row.
+</p>
+<a name="wp1108218"> </a><p class="pBody">
+In each statistical column, the number in the port subtotal row is equal to the sum of the values in the destination rows, which is also equal to the sum of the values in the source rows.
+</p>
+<a name="wp1108219"> </a><p class="pBody">
+In many networks it is possible to match the numbers in the source row for one IP address against the numbers in the destination row for another IP address. From this information you can deduce which Rendezvous daemons are exchanging point-to-point data packets and requesting retransmissions.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1108472"> </a><div class="pTableTitle">
+Table&#160;11   Point-to-Point Statistics&#151;Column Headings (Sheet 1 of 2)
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1108476"> </a><div class="pCellHeading">
+Column
+</div>
+</th>
+    <th><a name="wp1108478"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1108481"> </a><div class="pCellBody">
+<code class="cCode">Port</code>
+</div>
+</td>
+    <td><a name="wp1108483"> </a><div class="pCellBody">
+In <em class="cEmphasis">port subtotal rows,</em> this column contains a UDP port number indicating the Rendezvous service for the group of rows that it begins.
+</div>
+<a name="wp1108487"> </a><div class="pCellBody">
+In destination and source rows this column is blank; the service in the nearest preceding port subtotal row governs the destination and source rows below it.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1108489"> </a><div class="pCellBody">
+*
+</div>
+</td>
+    <td><a name="wp1108491"> </a><div class="pCellBody">
+Asterisk (<code class="cCode">*</code>) in this unlabeled column indicates a destination row.
+</div>
+<a name="wp1108492"> </a><div class="pCellBody">
+Blank in this column indicates a source row.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1108496"> </a><div class="pCellBody">
+<code class="cCode">Address</code>
+</div>
+</td>
+    <td><a name="wp1108498"> </a><div class="pCellBody">
+In <em class="cEmphasis">destination rows</em> this column shows the destination IP address of retransmission request packets (that is, the Rendezvous daemon that originally sent data packets).
+</div>
+<a name="wp1108502"> </a><div class="pCellBody">
+In <em class="cEmphasis">source rows</em> this column shows the IP address from which retransmission request or rejection packets originate (that is, the Rendezvous daemon that missed receiving data packets).
+</div>
+<a name="wp1108506"> </a><div class="pCellBody">
+In <em class="cEmphasis">network total rows</em>, this column contains the word <code class="cCode">Totals</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1109148"> </a><div class="pCellBody">
+<code class="cCode">Data</code>
+</div>
+</td>
+    <td><a name="wp1109150"> </a><div class="pCellBody">
+Point-to-point data packets.
+</div>
+<a name="wp1109151"> </a><div class="pCellBody">
+This column shows the number of point-to-point data packets.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1109154"> </a><div class="pCellBody">
+<code class="cCode">Bytes</code>
+</div>
+</td>
+    <td><a name="wp1109156"> </a><div class="pCellBody">
+Point-to-point data bytes.
+</div>
+<a name="wp1109157"> </a><div class="pCellBody">
+This column sums the number of payload bytes over the point-to-point data packets (as counted in the <a  href="rv_adm117.htm#wp1109148"><code class="cCode">Data</code></a> column).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1109762"> </a><div class="pCellBody">
+<code class="cCode">AckR</code>
+</div>
+</td>
+    <td><a name="wp1109767"> </a><div class="pCellBody">
+Acknowledgement request packets.
+</div>
+<a name="wp1109779"> </a><div class="pCellBody">
+Sending Rendezvous daemons explicitly request positive acknowledgment for groups of point-to-point data packets. This column shows the number of packets containing acknowledgment requests for point-to-point data packets.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1109770"> </a><div class="pCellBody">
+<code class="cCode">Ack</code>
+</div>
+</td>
+    <td><a name="wp1109775"> </a><div class="pCellBody">
+Acknowledgement packets.
+</div>
+<a name="wp1109783"> </a><div class="pCellBody">
+Receiving Rendezvous daemons explicitly acknowledge groups of point-to-point data packets upon request from sending daemons. This column shows the number of packets containing acknowledgments for point-to-point data packets.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1109163"> </a><div class="pCellBody">
+<code class="cCode">Nak</code>
+</div>
+</td>
+    <td><a name="wp1109168"> </a><div class="pCellBody">
+Negative acknowledgement packets.
+</div>
+<a name="wp1109807"> </a><div class="pCellBody">
+Receiving Rendezvous daemons use negative acknowledgments to request retransmission of missing data point-to-point packets. This column displays the number of packets containing retransmission requests for point-to-point data packets.
+</div>
+<a name="wp1109172"> </a><div class="pCellBody">
+For more information, see <a  href="rv_adm117.htm#wp1114762">Nak Diagnoses</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1108540"> </a><div class="pCellBody">
+<code class="cCode">Bad</code>
+</div>
+</td>
+    <td><a name="wp1128687"> </a><div class="pCellBody">
+Bad packets.
+</div>
+<a name="wp1128688"> </a><div class="pCellBody">
+This column shows the number of packets that lack UDP checksums, or are corrupt in some other way.
+</div>
+<img src="images/warning.gif" border="0" /><a name="wp1128690"> </a><div class="pCellBody">
+<em class="cEmphasis">Any</em> non-zero value in this column reflects a severe misconfiguration or network problem. Remedy the situation immediately.
+</div>
+<a name="wp1128694"> </a><div class="pCellBody">
+<b class="cBold">Note: </b>Checksums are crucial to correct operation of Rendezvous software; see <a  href="rv_adm6.htm#wp1059798">Enable Packet Checksums</a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1114762"> </a><h3 class="pHeading2">
+Nak Diagnoses
+</h3>
+<a name="wp1114766"> </a><p class="pBody">
+<a  href="rv_adm117.htm#wp1109163"><code class="cCode">Nak</code></a> measures the number of point-to-point packets that request retransmission of point-to-point data.
+</p>
+<a name="wp1114770"> </a><p class="pBody">
+Non-zero <a  href="rv_adm117.htm#wp1109163"><code class="cCode">Nak</code></a> values to or from a specific address usually indicates one of these problems:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1114771"> </a><div class="pSmartList1"><li >A faulty network interface card at a specific computer.</li></div>
+
+<a name="wp1114772"> </a><div class="pSmartList1"><li >A faulty or overloaded network infrastructure component (for example, switching or router hardware).</li></div>
+
+<a name="wp1114773"> </a><div class="pSmartList1"><li >A fast sender is overwhelming a slower receiver with point-to-point packets.</li></div>
+
+<a name="wp1114774"> </a><div class="pSmartList1"><li >A sender on a fast network is overwhelming a network infrastructure component by sending point-to-point packets to a receiver on a slower network.</li></div>
+
+</ul></div>
+
+<a name="wp1114776"> </a><p class="pBody">
+Begin by checking the specific interface card, and widen the investigation to other components until you can resolve the difficulty.
+</p>
+<a name="wp1133336"> </a><p class="pBody">
+<a  href="rv_adm117.htm#wp1114791">Figure&#160;54</a> displays example output with this pattern.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1133235"> </a><div class="pSmartList1"><li >The computer at address <code class="cCode">10.101.3.246</code> is sending point-to-point data to <code class="cCode">10.101.3.237</code>.</li></div>
+
+<a name="wp1133237"> </a><div class="pSmartList1"><li >The <a  href="rv_adm117.htm#wp1109762"><code class="cCode">AckR</code></a> column shows that <code class="cCode">10.101.3.237</code> received 68 requests for acknowledgement to <code class="cCode">10.101.3.246</code>.</li></div>
+
+<a name="wp1133270"> </a><div class="pSmartList1"><li >The <a  href="rv_adm117.htm#wp1109163"><code class="cCode">Nak</code></a> column shows that <code class="cCode">10.101.3.237</code> did not receive all the packets correctly, and sent 23 <code class="cCode">NAK</code>s back to <code class="cCode">10.101.3.246</code>. These <code class="cCode">NAK</code>s constitute retransmission requests for the missed point-to-point packets.</li></div>
+
+<a name="wp1133313"> </a><div class="pSmartList1"><li >The <a  href="rv_adm117.htm#wp1109770"><code class="cCode">Ack</code></a> column shows that eventually, <code class="cCode">10.101.3.237</code> did receive all 68 retransmitted packets correctly, recovering from the problem.</li></div>
+
+<a name="wp1133324"> </a><div class="pSmartList1"><li >This particular example report does not contain sufficient information to determine the locus of the problem&#151;it could be either at the sender or the receiver.</li></div>
+
+</ul></div>
+
+<a name="wp1114791"> </a><div class="pFigureTitle">
+Figure&#160;54   Nak Indicates Faulty Network Card or Infrastructure Component</div><div align="center"><img src="images/rv_adma17.gif" height="145" width="599" border="0" hspace="0" vspace="0"/>
+</div><div class="pFigureTitle">
+</div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

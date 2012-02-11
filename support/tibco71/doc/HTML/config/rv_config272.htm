@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>tibrvcfg</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;11	 Command Line Tool&#151;tibrvcfg";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1964131"> </a><h2 class="pNewHTMLPage">
+tibrvcfg
+</h2>
+<hr />
+<a name="wp1964133"> </a><p class="pSyntaxType">
+Command
+</p>
+<a name="wp1964134"> </a><h4 class="pHeading3">
+Syntax
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+tibrvcfg&#160;[-http-only<code class="cCode">]</code><a name="wp1964135"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-login <code class="cCodeItalic">&lt;name&gt;</code><code class="cCode">:</code><code class="cCodeItalic">&lt;password&gt; </code><code class="cCode">]</code><a name="wp1964136"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[-url <code class="cCodeItalic">&lt;base_url&gt; </code><code class="cCode">]</code><a name="wp1964138"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<code class="cCodeItalic">&lt;command&gt; &lt;arg1&gt; &lt;arg2&gt; ...</code><a name="wp1964139"> </a>
+</pre></div>
+<a name="wp1964140"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1964141"> </a><p class="pBody">
+Connect to a daemon component and run one configuration command.
+</p>
+<a name="wp1964142"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1964143"> </a><p class="pBody">
+This tool lets you send one configuration command to a component. The set of configuration commands parallels the methods of the configuration API. For details about any command, see page in this book that documents the corresponding method. For XML commands, see <a  href="rv_config272.htm#wp2017636">XML Commands</a>.
+</p>
+<a name="wp2018109"> </a><p class="pBody">
+The script <code class="cCode">tibrvcfg</code> resides in the <code class="cCode">bin</code> directory under <code class="cCode">TIBRV_HOME</code>.
+</p>
+<a name="wp1964190"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1964151"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1964155"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1964157"> </a><div class="pCellHeading">
+Description	
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1964159"> </a><div class="pCellBody">
+<code class="cCode">-http-only</code>
+</div>
+</td>
+    <td><a name="wp1964161"> </a><div class="pCellBody">
+When present, the configuration tool uses non-secure HTTP protocols to connect to the component, instead of secure HTTPS protocols.
+</div>
+<a name="wp1964162"> </a><div class="pCellBody">
+You must specify <code class="cCode">-no-http</code> to <code class="cCode">tibrvcfg</code> if and only if the component command line specified <code class="cCode">-no-http</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1964164"> </a><div class="pCellBody">
+<code class="cCode">-login </code><code class="cCodeItalic">&lt;name&gt;</code><code class="cCode">:</code><code class="cCodeItalic">&lt;password&gt;</code>
+</div>
+</td>
+    <td><a name="wp1964166"> </a><div class="pCellBody">
+When present, the configuration tool supplies this administrator name and password when the component requests them. For more information, see <a  href="rv_config113.htm#wp1955532"><code class="cCode">SecurityProxy.useCredentials()</code> </a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1964180"> </a><div class="pCellBody">
+<code class="cCode">-url </code><code class="cCodeItalic">&lt;base_url&gt;</code>
+</div>
+</td>
+    <td><a name="wp1972123"> </a><div class="pCellBody">
+When present, the configuration tool connects to the browser administration interface of the component at this URL. When loading an XML file, this parameter (if present) overrides the URL in the XML file.
+</div>
+<a name="wp1964183"> </a><div class="pCellBody">
+When absent, the configuration tool seeks the component at the default URL, <code class="cCode">http://localhost:7580</code>, which is appropriate for <code class="cCode">rvd</code>, <code class="cCode">rvrd</code>, <code class="cCode">rvsd</code> or <code class="cCode">rvsrd</code>, running on the same computer as the configuration tool.
+</div>
+<a name="wp1964184"> </a><div class="pCellBody">
+Construct the URL from the IP address of the daemon&#8217;s host computer, and its HTTP port.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1964186"> </a><div class="pCellBody">
+<code class="cCodeItalic">&lt;command&gt; &lt;arg1&gt; &lt;arg2&gt; ...</code>
+</div>
+</td>
+    <td><a name="wp1964188"> </a><div class="pCellBody">
+The remaining parameters specify the command to the component, and its arguments.
+</div>
+<a name="wp1964189"> </a><div class="pCellBody">
+If you omit the command, or supply an invalid command, the configuration tool outputs a lengthy help message that lists all valid commands.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp2018126"> </a><h4 class="pHeading3">
+Execution as a Java Object
+</h4>
+<a name="wp2018127"> </a><p class="pBody">
+The <code class="cCode">tibrvcfg</code> script is the most convenient way to use this tool, because it automatically arranges the environment properly. However, you can bypass the script, executing the tool as a Java object; for example:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;java com.tibco.tibrv.config.tools.TibrvCfg <code class="cCodeItalic">...</code><a name="wp2018128"> </a>
+</pre></div>
+<a name="wp2017636"> </a><h4 class="pHeading3">
+XML Commands
+</h4>
+<a name="wp2017625"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp2017071"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp2017075"> </a><div class="pCellHeading">
+Command
+</div>
+</th>
+    <th><a name="wp2017077"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp2017108"> </a><div class="pCellBody">
+<code class="cCode">dumpXML [ </code><code class="cCodeItalic">&lt;output_filename&gt;</code><code class="cCode"> ]</code>
+</div>
+</td>
+    <td><a name="wp2017297"> </a><div class="pCellBody">
+<code class="cCode">dumpXML</code> gets current configuration data from a component, and builds an XML document incorporating that data.
+</div>
+<a name="wp2017115"> </a><div class="pCellBody">
+When <code class="cCodeItalic">&lt;output_filename&gt;</code> is present, <code class="cCode">dumpXML</code> directs the XML document to the specified file. The file is suitable as input for the <code class="cCode">mergeXML</code> or <code class="cCode">matchXML</code> command. When <code class="cCodeItalic">&lt;output_filename&gt;</code> absent, the default is <code class="cCode">stdio</code>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp2017710"> </a><div class="pCellBody">
+<code class="cCode">mergeXML </code><code class="cCodeItalic">&lt;xml_file&gt;</code>
+</div>
+</td>
+    <td><a name="wp2017713"> </a><div class="pCellBody">
+<code class="cCode">mergeXML</code> reads an XML document, and builds a set of commands to update the component with configuration in the XML document&#151;overlaying the existing configuration with changes specified in the XML file. Where the two configurations conflict, the XML document overrides the existing configuration. Elements of the existing configuration that do not conflict with the XML specification remain in force.
+</div>
+<a name="wp2017719"> </a><div class="pCellBody">
+The parameter <code class="cCodeItalic">&lt;xml_file&gt;</code> must contain an XML document appropriate for configuring the component (its syntax must conform to the DTD specification).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp2017555"> </a><div class="pCellBody">
+<code class="cCode">matchXML </code><code class="cCodeItalic">&lt;xml_file&gt;</code>
+</div>
+</td>
+    <td><a name="wp2017561"> </a><div class="pCellBody">
+<code class="cCode">matchXML</code> reads an XML document, and builds a set of commands that force the component to conform to the XML document&#151;removing elements of the existing configuration that are absent from the XML specification.
+</div>
+<a name="wp2017444"> </a><div class="pCellBody">
+The parameter <code class="cCodeItalic">&lt;xml_file&gt;</code> must contain an XML document appropriate for configuring the component (its syntax must conform to the DTD specification).
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp2017802"> </a><h4 class="pHeading3">
+Merge vs. Match
+</h4>
+<a name="wp2017808"> </a><p class="pBody">
+To illustrate the difference between <code class="cCode">mergeXML</code> and <code class="cCode">matchXML</code>, consider an example in which the existing configuration of <code class="cCode">rvrd</code> has two routers, R1 and R2; the XML document specifies a change to R2 and a new router R3:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp2017803"> </a><div class="pSmartList1"><li >With <code class="cCode">mergeXML</code>, R1 remains unchanged, R2 is modified, and R3 is added.</li></div>
+
+<a name="wp2017804"> </a><div class="pSmartList1"><li >With <code class="cCode">matchXML</code>, R1 is removed, R2 is modified, and R3 is added.</li></div>
+
+</ul></div>
+
+<a name="wp2017805"> </a><h4 class="pHeading3">
+Creating XML Input
+</h4>
+<a name="wp2017814"> </a><p class="pBody">
+You may edit the XML output of <code class="cCode">dumpXML</code>, and supply the edited file as input to <code class="cCode">mergeXML</code> or <code class="cCode">matchXML</code>. The edited file must conform to the DTD.
+</p>
+<a name="wp2017858"> </a><h4 class="pHeading3">
+Component State
+</h4>
+<a name="wp2017859"> </a><p class="pBody">
+Some configuration commands interact with that the component&#8217;s state (idle or running). For example, <code class="cCode">rva</code> lets you change its network parameters at any time, but the changes take effect only upon state transition from idle to running; see also <a  href="rv_config181.htm#wp1976686"><code class="cCode">RvaProxy.setNetworkParams()</code> </a>.
+</p>
+<a name="wp2017863"> </a><p class="pBody">
+Two XML attributes let you manipulate the component&#8217;s state before and after executing configuration commands generated by the XML document. For example:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">&#160;&#160;&lt;rva-parameters in-state=&quot;idle&quot; out-state=&quot;running&quot;&gt;</code><a name="wp2017864"> </a>
+<a name="wp2017865"> </a>
+</pre></div>
+<a name="wp2017866"> </a><p class="pBody">
+The attributes in this example guarantee a state transition to put new network parameters into effect.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

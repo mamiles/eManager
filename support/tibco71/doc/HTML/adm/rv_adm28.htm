@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Routing Daemon Overview</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;5	 Routing Daemon (rvrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1034470"> </a><h2 class="pNewHTMLPage">
+Routing Daemon Overview
+</h2>
+<hr />
+<a name="wp1034474"> </a><p class="pBody">
+Rendezvous daemons (<code class="cCode">rvd</code>) deliver messages to programs on computers <em class="cEmphasis">within</em> a single network. Delivering messages <em class="cEmphasis">beyond</em> network boundaries requires an additional software component&#151;Rendezvous routing daemons (<code class="cCode">rvrd</code>).
+</p>
+<a name="wp1020251"> </a><p class="pBody">
+Routing daemons efficiently connect Rendezvous programs on separate IP networks, so that messages flow between them as if on a single network. Communicating programs remain decoupled from internetwork addresses and other details.
+</p>
+<a name="wp1043999"> </a><p class="pBody">
+The routing daemons forward Rendezvous messages between networks. When routing daemons are present, Rendezvous programs on one network can listen for subject names and receive messages from other networks <em class="cEmphasis">transparently</em>&#151;neither the sending nor the receiving programs require any code changes. Administrators retain control over the subject names that can flow in or out of each network.
+</p>
+<a name="wp1044007"> </a><h4 class="pHeading3">
+Situations
+</h4>
+<a name="wp1020252"> </a><p class="pBody">
+Use the routing daemon in situations where <em class="cEmphasis">one or more</em> of these conditions apply:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1020253"> </a><div class="pSmartList1"><li >Participating networks lie in distant geographic areas.</li></div>
+
+<a name="wp1020254"> </a><div class="pSmartList1"><li >Participating networks lie in nearby geographic areas, but are not connected by multicast routing hardware.</li></div>
+
+<a name="wp1020255"> </a><div class="pSmartList1"><li >Participating networks are separated by a firewall.</li></div>
+
+<a name="wp1020256"> </a><div class="pSmartList1"><li >Messages must traverse expensive or slow WAN links.</li></div>
+
+</ul></div>
+
+<a name="wp1054468"> </a><h4 class="pHeading3">
+Subsumes Rendezvous Daemon
+</h4>
+<a name="wp1054472"> </a><p class="pBody">
+In addition to routing Rendezvous messages to and from other networks, a routing daemon process also serves its host computer as a Rendezvous daemon (<code class="cCode">rvd</code>). It is not necessary to run a separate <code class="cCode">rvd</code> on a computer that is already running an <code class="cCode">rvrd</code> process.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

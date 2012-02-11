@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>License Ticket File</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;2	 Licensing Information";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1032672"> </a><h2 class="pNewHTMLPage">
+License Ticket File
+</h2>
+<hr />
+<a name="wp1032671"> </a><p class="pBody">
+Each host computer must keep a license ticket file. The file <code class="cCode">tibrv.tkt</code> must contain a ticket for each daemon component that runs on that computer.
+</p>
+<a name="wp1032789"> </a><p class="pBody">
+To put new license tickets into effect, stop and restart the licensed components.
+</p>
+<a name="wp1032715"> </a><h3 class="pHeading2">
+Ticket File Syntax
+</h3>
+<div class="pSmartList1"><ul>
+<a name="wp1032703"> </a><div class="pSmartList1"><li >Each line in the ticket file represents one license ticket.</li></div>
+
+<a name="wp1032736"> </a><div class="pSmartList1"><li >A license ticket consists of four fields, delimited by whitespace.</li></div>
+
+<a name="wp1032737"> </a><div class="pSmartList1"><li >The first field is the component or product name, such as <code class="cCode">rvd</code>, or <code class="cCode">rvrd</code>.</li></div>
+
+<a name="wp1032750"> </a><div class="pSmartList1"><li >The second field is the serial number of the license.</li></div>
+
+<a name="wp1032751"> </a><div class="pSmartList1"><li >The third field specifies the expiration of the license, in one of these formats:</li></div>
+
+<div class="pSmartList2"><ul>
+<a name="wp1032757"> </a><div class="pSmartList2"><li ><code class="cCode">never</code> (license never expires)</li></div>
+<a name="wp1032758"> </a><div class="pSmartList2"><li ><code class="cCode">2005-11-01</code> (license expires on a specific date; in this example, November 1, 2005)</li></div>
+<a name="wp1032759"> </a><div class="pSmartList2"><li ><code class="cCode">start+60</code> (license expires 60 minutes after start time)</li></div>
+</ul></div>
+
+<a name="wp1032760"> </a><div class="pSmartList1"><li >The fourth field is a digital signature that validates the license.</li></div>
+
+<a name="wp1032761"> </a><div class="pSmartList1"><li >Programs that read the license ticket file ignore empty lines, extra whitespace, and anything to the right of a <code class="cCode">#</code> character (comments).</li></div>
+
+<a name="wp1032769"> </a><div class="pSmartList1"><li >All fields are case sensitive.</li></div>
+
+</ul></div>
+
+<a name="wp1019058"> </a><h3 class="pHeading2">
+Finding the License Ticket File
+</h3>
+<a name="wp1019062"> </a><p class="pBody">
+The license ticket file <em class="cEmphasis">must</em> be accessible by all Rendezvous daemon components. Ensure that the execution path of each user includes the directory that contains the license ticket file.
+</p>
+<a name="wp1064758"> </a><p class="pBody">
+If a component cannot find an appropriate license ticket, the component runs for no more than 10 minutes.
+</p>
+<a name="wp1028911"> </a><h4 class="pHeading3">
+UNIX Platforms
+</h4>
+<a name="wp1019066"> </a><p class="pBody">
+On UNIX platforms, the Rendezvous daemon searches for the license ticket file (<code class="cCode">tibrv.tkt</code>) in the directories listed in the <code class="cCode">PATH</code> environment variable. The Rendezvous installation procedure places the file <code class="cCode">tibrv.tkt</code> (containing temporary license tickets) in the <code class="cCode">bin</code> subdirectory of the Rendezvous directory. However, it does not overwrite an existing license ticket file. You must add that directory to the <code class="cCode">PATH</code> variable manually (unless it is already present).
+</p>
+<a name="wp1028917"> </a><h4 class="pHeading3">
+Windows Platforms
+</h4>
+<a name="wp1019076"> </a><p class="pBody">
+On Microsoft Windows platforms, the Rendezvous daemon searches for the license ticket file (<code class="cCode">tibrv.tkt</code>) in the directories listed in the <code class="cCode">PATH</code> environment variable. The Rendezvous installation procedure places the file <code class="cCode">tibrv.tkt</code> (containing temporary license tickets) in the <code class="cCode">bin</code> subdirectory of the Rendezvous directory, and adds that directory to the <code class="cCode">PATH</code> variable. However, it does not overwrite an existing license ticket file.
+</p>
+<a name="wp1028921"> </a><h4 class="pHeading3">
+VMS Platforms
+</h4>
+<a name="wp1065472"> </a><p class="pBody">
+On VMS platforms, the Rendezvous daemon searches for the license ticket file (<code class="cCode">tibrv.tkt</code>) in two ways.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1065878"> </a><div class="pSmartList1"><li >If you do not define a <code class="cCode">PATH</code> specifier, then the daemon searches for the ticket file in the current default directory. When a Rendezvous client program starts the daemon automatically, or when the system startup file starts the daemon, then the default directory is <code class="cCode">TIBRV:[BIN]</code>.</li></div>
+
+<a name="wp1065879"> </a><div class="pSmartList1"><li >If you do define a <code class="cCode">PATH</code> specifier, then the daemon searches in that directory.</li></div>
+
+</ul></div>
+
+<a name="wp1065792"> </a><p class="pBody">
+VMS searches for a <code class="cCode">PATH</code> specifier in this order&#151;first as a logical name, then as a local DCL symbol, then as a global DCL symbol. Consider these examples.</p><div align="left">
+<table border="0">
+  <caption></caption>
+  <tr align="left" valign="top">    <td><a name="wp1065779"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+    <td><a name="wp1065724"> </a><div class="pCellBody">
+<code class="cCode">define PATH tibrv:[bin]</code>
+</div>
+</td>
+    <td><a name="wp1065726"> </a><div class="pCellBody">
+As a logical name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065781"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+    <td><a name="wp1065703"> </a><div class="pCellBody">
+<code class="cCode">PATH := tibrv:[bin]</code>
+</div>
+</td>
+    <td><a name="wp1065681"> </a><div class="pCellBody">
+As a local DCL symbol.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065783"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+    <td><a name="wp1065709"> </a><div class="pCellBody">
+<code class="cCode">PATH :== dka300:[tibco.tibrv.bin]</code>
+</div>
+</td>
+    <td><a name="wp1065685"> </a><div class="pCellBody">
+As a global DCL symbol.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065785"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+    <td><a name="wp1065739"> </a><div class="pCellBody">
+<code class="cCode">PATH := &quot;/tibrv/bin/&quot;</code>
+</div>
+</td>
+    <td><a name="wp1065741"> </a><div class="pCellBody">
+Using UNIX syntax.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1065787"> </a><div class="pCellBody">
+&#160;
+</div>
+</td>
+    <td><a name="wp1065730"> </a><div class="pCellBody">
+<code class="cCode">PATH := &quot;/dka300/tibco/tibrv/bin/&quot;</code>
+</div>
+</td>
+    <td><a name="wp1065760"> </a><div class="pCellBody">
+Using UNIX syntax.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1065769"> </a><p class="pBody">
+Installing Rendezvous creates the logical name <code class="cCode">TIBRV</code>; the first and fourth of these examples use that logical name.
+</p>
+<a name="wp1065457"> </a><p class="pBody">
+When using UNIX syntax, the path must terminate with a slash, and must be enclosed in quotes, as in the fourth and fifth examples.
+</p>
+<a name="wp1065611"> </a><p class="pBody">
+The Rendezvous installation procedure for VMS places a sample license ticket file in the <code class="cCode">tibrv:[bin]</code> directory as <code class="cCode">tibrvtkt.smp</code>. If the computer does not already have a license ticket file, you can copy this sample to <code class="cCode">tibrv.tkt</code> to use temporary licenses. Installation does not create a <code class="cCode">tibrv.tkt</code> file.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

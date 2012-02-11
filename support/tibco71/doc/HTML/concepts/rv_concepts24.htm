@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>Multi-Threading Changes</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;2	 Architecture";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1240968"> </a><h2 class="pNewHTMLPage">
+Multi-Threading Changes
+</h2>
+<hr />
+<a name="wp1051737"> </a><p class="pBody">
+The session-centered architecture of release 5 (and earlier releases) was an essentially single-threaded program model. Multi-threading was possible, but difficult.
+</p>
+<a name="wp1051738"> </a><p class="pBody">
+Release 6 (and later) uses a multi-threaded programming model from the start. It is both thread-safe and thread-aware. (However, messages are not thread-aware objects; a program that accesses the same message simultaneously in separate threads must protect the message with an explicit locking mechanism. We expect this situation to occur only rarely.)
+</p>
+<a name="wp1051779"> </a><p class="pBody">
+Release 6 (and later) requires operating system support for multi-threading.
+</p>
+<a name="wp1078429"> </a><p class="pBody">
+Nonetheless, release 6 (and later) does support single-threaded programs. For example, a program can run as a single thread that dispatches events.
+</p>
+<a name="wp1078431"> </a><h3 class="pHeading2">
+Event Manager Contexts and Related Restrictions
+</h3>
+<a name="wp1103786"> </a><p class="pBody">
+</p><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/obsolete.gif" border="0" /></td>
+    <td><a name="wp1246060"> </a><p class="pBody">
+In eliminating sessions, Release 6 also eliminated the concept of event manager contexts, along with all the related restrictions on their use in multi-threaded programs.
+</p>
+<a name="wp1246061"> </a><div class="pCellBody">
+Any program thread can create events that use any queue; any program thread can dispatch any queue&#151;even queues created in other threads. Several threads can all dispatch events from the same queues; the callback function runs in the thread that dispatches the event.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvftMonitor_Destroy()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;10	 Fault Tolerance";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1080627"> </a><h2 class="pNewHTMLPage">
+tibrvftMonitor_Destroy()
+</h2>
+<hr />
+<a name="wp1080628"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1087202"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvftMonitor_Destroy</code>(<a name="wp1110418"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref163.htm#wp1133673"><code class="cCode">tibrvftMonitor</code></a>&#160;&#160;&#160;monitor);<a name="wp1110419"> </a>
+<a name="wp1080665"> </a>
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvftMonitor_DestroyEx</code>(<a name="wp1110422"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref163.htm#wp1133673"><code class="cCode">tibrvftMonitor</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;monitor,<a name="wp1080667"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref165.htm#wp1110284"><code class="cCode">tibrvftMonitorOnComplete</code></a>&#160;&#160;&#160;completionFunction);<a name="wp1110423"> </a>
+</pre></div>
+<a name="wp1087697"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1080633"> </a><p class="pBody">
+Stop monitoring a fault tolerance group, and free associated resources.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1080642"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1080647"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1080649"> </a><div class="pCellBody">
+<code class="cCode">monitor</code>
+</div>
+</td>
+    <td><a name="wp1080651"> </a><div class="pCellBody">
+Destroy this monitor object.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1110429"> </a><div class="pCellBody">
+<code class="cCode">completionFunction</code>
+</div>
+</td>
+    <td><a name="wp1110434"> </a><div class="pCellBody">
+Rendezvous software runs this function immediately after all instances of the monitor&#8217;s callback function (and internal callback functions) have completed. If callback functions are not running when the monitor is destroyed, the destroy call runs it before returning.
+</div>
+<a name="wp1110435"> </a><div class="pCellBody">
+If this parameter is <code class="cCode">NULL</code>, <code class="cCode">tibrvftMonitor_DestroyEx()</code> does not run a completion function; instead, its behavior is the same as <a  href="rv_c_ref167.htm#wp1080627"><code class="cCode">tibrvftMonitor_Destroy()</code></a>.
+</div>
+<a name="wp1110442"> </a><div class="pCellBody">
+See <a  href="rv_c_ref165.htm#wp1110284"><code class="cCode">tibrvftMonitorOnComplete</code> </a>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1110457"> </a><h4 class="pHeading3">
+Extended Function
+</h4>
+<a name="wp1110458"> </a><p class="pBody">
+Although <code class="cCode">tibrvftMonitor_DestroyEx()</code> prevents future dispatch calls from running the destroyed monitor&#8217;s callback function, a callback function might be already running in one or more threads that dispatch events from the same queue. In each thread where the callback function is already in progress, that callback function does continue to run until complete. Rendezvous software ensures that the completion function runs when the last callback-in-progress has completed; for important details, see <a  href="rv_c_ref165.htm#wp1110284"><code class="cCode">tibrvftMonitorOnComplete</code> </a>.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>Get DateTime</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;3	 Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1074372"> </a><h2 class="pNewHTMLPage">
+Get DateTime
+</h2>
+<hr />
+<a name="wp1074373"> </a><p class="pSyntaxType">
+Convenience Function
+</p>
+<a name="wp1086886"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvMsg_GetDateTime</code>(<a name="wp1162846"> </a>
+&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;message,<a name="wp1162850"> </a>
+&#160;&#160;&#160;const char* &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;fieldName,<a name="wp1162851"> </a>
+&#160;&#160;&#160;<a  href="rv_c_ref24.htm#wp1119060"><code class="cCode">tibrvMsgDateTime</code></a>* &#160;&#160;&#160;value);<a name="wp1162855"> </a>
+<a name="wp1162860"> </a>
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvMsg_GetDateTimeEx</code>(<a name="wp1162866"> </a>
+&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;message,<a name="wp1162870"> </a>
+&#160;&#160;&#160;const char* &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;fieldName,<a name="wp1162871"> </a>
+&#160;&#160;&#160;<a  href="rv_c_ref24.htm#wp1119060"><code class="cCode">tibrvMsgDateTime</code></a>* &#160;&#160;&#160;value,<a name="wp1162875"> </a>
+&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128797"><code class="cCode">tibrv_u16</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;fieldId);<a name="wp1162879"> </a>
+</pre></div>
+<a name="wp1087357"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1074309"> </a><p class="pBody">
+Get the value of a field as a Rendezvous datetime value.
+</p>
+<a name="wp1087832"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1074311"> </a><p class="pBody">
+This convenience function retrieves a field and extracts its data.
+</p>
+<a name="wp1074312"> </a><p class="pBody">
+Since it is not possible to convert any other datatype to a datetime value, the field must already contain a datetime. Otherwise, the function returns <a  href="rv_c_ref227.htm#wp1129183"><code class="cCode">TIBRV_CONVERSION_FAILED</code></a>.
+</p>
+<a name="wp1074320"> </a><p class="pBody">
+Pointer data extracted from the field remain valid until the message is destroyed; that is, even removing the field or updating the field&#8217;s value does <em class="cEmphasis">not</em> invalidate pointer data.
+</p>
+<a name="wp1074323"> </a><p class="pBody">
+This function produces values that are <em class="cEmphasis">read-only snapshots</em> of the field data (see <a  href="rv_c_ref19.htm#wp1092306">Pointer Snapshot</a>). Programs must not modify the datetime value.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1074327"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1074329"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1074331"> </a><div class="pCellBody">
+<code class="cCode">message</code>
+</div>
+</td>
+    <td><a name="wp1074333"> </a><div class="pCellBody">
+Get the specified field of this message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1074335"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1074337"> </a><div class="pCellBody">
+Get a field with this name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1074343"> </a><div class="pCellBody">
+<code class="cCode">value</code>
+</div>
+</td>
+    <td><a name="wp1074345"> </a><div class="pCellBody">
+The program supplies a location in this parameter, and the function stores a <em class="cEmphasis">pointer</em> to the field value in that location.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1109269"> </a><div class="pCellBody">
+<code class="cCode">fieldId</code>
+</div>
+</td>
+    <td><a name="wp1109271"> </a><div class="pCellBody">
+Get the field with this identifier. Zero is a special value that signifies no field identifier. All non-zero field identifiers must be unique within each message.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1074696"> </a><h4 class="pHeading3">
+Example
+</h4>
+<a name="wp1118089"> </a><p class="pBody">
+This example code extracts a datetime value from a message field, and converts it to a <code class="cCode">time_t</code> value. Programs can adapt this code as appropriate. (For corresponding code to convert a <code class="cCode">time_t</code> value to a datetime value, and add the datetime to a message field, see the example at <a  href="rv_c_ref33.htm#wp1074223">Add DateTime</a>.)
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a name="wp1074634"> </a>
+<a name="wp1176499"> </a>
+#include &lt;limits.h&gt;<a name="wp1176500"> </a>
+<a name="wp1074635"> </a>
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a><a name="wp1074636"> </a>
+getAsTimeT(<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a> msg,<a name="wp1074637"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;const char * field,<a name="wp1074638"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;time_t * value)<a name="wp1074639"> </a>
+{<a name="wp1074640"> </a>
+&#160;&#160;&#160;&#160;tibrvMsgDateTime d;<a name="wp1074641"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> err;<a name="wp1074643"> </a>
+<a name="wp1074644"> </a>
+&#160;&#160;&#160;&#160;err = tibrvMsg_GetDateTime(msg, field, &amp;d);<a name="wp1074645"> </a>
+&#160;&#160;&#160;&#160;if( err != TIBRV_OK )<a name="wp1074646"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;return err;<a name="wp1074647"> </a>
+<a name="wp1074648"> </a>
+&#160;&#160;&#160;&#160;if( d.sec &gt; INT_MAX || d.sec &lt; INT_MIN )<a name="wp1074649"> </a>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;return TIBRV_CONVERSION_FAILED;<a name="wp1112637"> </a>
+&#160;&#160;&#160;&#160;*value = (time_t) d.sec;<a name="wp1074651"> </a>
+<a name="wp1074652"> </a>
+&#160;&#160;&#160;&#160;return TIBRV_OK;<a name="wp1074654"> </a>
+}<a name="wp1074655"> </a>
+</pre></div>
+<a name="wp1088222"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1083378"> </a><p class="pBody">
+<a  href="rv_c_ref19.htm#wp1041091">Validity of Data Extracted From Message Fields</a>
+</p>
+<a name="wp1083382"> </a><p class="pBody">
+<a  href="rv_c_ref20.htm#wp1062225">Field Names and Field Identifiers</a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,9 @@
+#!/bin/ksh -p
+
+. ../../../../bin/emenv.ksh
+
+CLASSPATH=$CLASSPATH:$EM_HOME/sdk/client/tibco
+export CLASSPATH
+
+
+$JRE_HOME/bin/java -cp $CLASSPATH eMgrClientSender -service 7500 -network "" -daemon tcp:7500 cisco.mgmt.emanager.inventory.appRegistration $1

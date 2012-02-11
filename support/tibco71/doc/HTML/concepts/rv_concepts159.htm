@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>System Advisory Subject Names</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Appendix&#160;A	 System Advisory Messages";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1048806"> </a><h2 class="pNewHTMLPage">
+System Advisory Subject Names
+</h2>
+<hr />
+<a name="wp1038217"> </a><p class="pBody">
+Rendezvous software constructs the subject names of system advisory messages using this template:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;&#160;_RV.<code class="cCodeItalic">&lt;class&gt;</code>.SYSTEM.<code class="cCodeItalic">&lt;name&gt;</code><a name="wp1038218"> </a>
+</pre></div>
+<a name="wp1047070"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1047033"> </a><div class="pTableTitle">
+Table&#160;42   SYSTEM Advisory Subject Name Elements&#160;
+</div>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1047037"> </a><div class="pCellHeading">
+Element
+</div>
+</th>
+    <th><a name="wp1047039"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1047041"> </a><div class="pCellBody">
+<code class="cCodeItalic">&lt;class&gt;</code>
+</div>
+</td>
+    <td><a name="wp1047043"> </a><div class="pCellBody">
+The <code class="cCodeItalic">&lt;class&gt;</code> element denotes the severity of the situation:
+</div>
+<div class="pSmartList1"><ul>
+<a name="wp1047044"> </a><div class="pSmartList1"><li >The class <code class="cCode">ERROR</code> indicates either a problem that requires immediate action, or a situation in which Rendezvous software could not complete its task properly.</li></div>
+
+<a name="wp1047048"> </a><div class="pSmartList1"><li >The class <code class="cCode">WARN</code> indicates an anomalous situation that is not yet critical. In many cases Rendezvous software can rectify the situation by itself.</li></div>
+
+<a name="wp1047052"> </a><div class="pSmartList1"><li >The class <code class="cCode">INFO</code> indicates an interesting event in the normal operation of Rendezvous software.</li></div>
+
+</ul></div>
+
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1047057"> </a><div class="pCellBody">
+<code class="cCodeItalic">&lt;source&gt;</code>
+</div>
+</td>
+    <td><a name="wp1047062"> </a><div class="pCellBody">
+The <code class="cCodeItalic">&lt;source&gt;</code> element is <code class="cCode">SYSTEM</code> for all advisories from Rendezvous communications software and the Rendezvous daemon.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1047067"> </a><div class="pCellBody">
+<code class="cCodeItalic">&lt;name&gt;</code>
+</div>
+</td>
+    <td><a name="wp1047069"> </a><p class="pBody">
+The <code class="cCodeItalic">&lt;name&gt;</code> element describes the situation that the advisory reports. This element can actually consist of several elements, so the wildcard character <code class="cCode">&gt;</code> (rather than <code class="cCode">*</code>) is the correct way to match all names in this position.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

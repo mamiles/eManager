@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:56:24" />
+  <title>TibrvCmQueueTransport::setCompleteTime()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C++ Reference";
+    var ChapterTitle = "Chapter&#160;10	 Distributed Queue";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1111703"> </a><h2 class="pNewHTMLPage">
+TibrvCmQueueTransport::setCompleteTime()
+</h2>
+<hr />
+<a name="wp1086402"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1086403"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_cpp_ref272.htm#wp1156714"><code class="cCode">TibrvStatus</code></a> <code class="cCodeBold">setCompleteTime</code>(<a name="wp1142205"> </a>
+&#160;&#160;&#160;&#160;tibrv_f64  completeTime);<a name="wp1142217"> </a>
+</pre></div>
+<a name="wp1086407"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1086409"> </a><p class="pBody">
+Set the worker complete time limit of a distributed queue member.
+</p>
+<a name="wp1086410"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1086411"> </a><p class="pBody">
+If the complete time is non-zero, the scheduler waits for a worker member to complete an assigned task. If the complete time elapses before the scheduler receives completion from the worker member, the scheduler reassigns the task to another worker member.
+</p>
+<a name="wp1086412"> </a><p class="pBody">
+Zero is a special value, which specifies no limit on the completion time&#151;that is, the scheduler does not set a timer, and does not reassign tasks when task completion is lacking. All members implicitly begin with a default complete time value of zero; programs can change this parameter using this method.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1086415"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1086417"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1086423"> </a><div class="pCellBody">
+<code class="cCode">completeTime</code>
+</div>
+</td>
+    <td><a name="wp1086425"> </a><div class="pCellBody">
+Use this complete time (in seconds). The time must be non-negative.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1086427"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1086434"> </a><p class="pBody">
+<a  href="javascript:WWHClickedPopup('a', 'rv_concepts117.htm#wp1056801');" onMouseOver="WWHShowPopup('a', 'rv_concepts117.htm#wp1056801', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Distributed Queue</a>, in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>
+</p>
+<a name="wp1086438"> </a><p class="pBody">
+<a  href="rv_cpp_ref263.htm#wp1086227"><code class="cCode">TibrvCmQueueTransport::getCompleteTime()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C++ Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

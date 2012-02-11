@@ -1,0 +1,817 @@
+<html>
+<head>
+<!-- /*
+ * NAME
+ *      $RCSfile: Contents.html,v $
+ * DESCRIPTION
+ *      [given below]
+ * DELTA
+ *      $Revision: 1.7 $
+ *      $Author: birgit $
+ * CREATED
+ *      $Date: 2002/11/11 13:43:09 $
+ * COPYRIGHT
+ *      Westhawk Ltd
+ * TO DO
+ *
+ */ -->
+<title>
+Usage of Westhawk's SNMP stack
+</title>
+</head>
+
+<body>
+<a name="top">
+<h1>Usage of Westhawk's SNMP stack</h1>
+
+<a name="introduction"> <h1>Introduction</h1>
+<p>
+This document describes the delivery of this stack and how the stack 
+can be used for SNMPv1, SNMPv2c and SNMPv3. 
+The stack supports traps, authentication and privacy. 
+As authentication protocols the stack offers MD5 and SHA1. 
+</p>
+<p>
+This document does not explain SNMP (Simple Network Management Protocol) 
+itself. The reader is assumed to have basic knowledge of the protocol. 
+If you want to learn more, see the <a href="#reading">Reading</a>
+section.
+</p>
+<p>
+The target applications are <em>small</em> applets, for that reason the
+stack has remained tiny. We wanted something lighter that we could just
+pop in a (Netscape) frame and leave there all day. It has no MIB
+(Management Information Base)
+browsing capabilities, you have to know the OID (Object Identifier) of what you want to
+monitor. There are <em>many</em> other packages that do MIB browsing and
+general network management.
+</p>
+
+<p>
+The Westhawk Java SNMP stack comes with generated (javadoc)
+<a href="./javadoc/index.html" target="outside">documentation</a>. 
+Check that documentation for the description of all
+methods that are not mentioned in this document or for the description
+of the method parameters.
+</p>
+
+<a name="delivery"> <h1>The delivery</h1>
+<p>
+The file <code>snmp&lt;version&gt;.zip</code> contains the SNMP stack. 
+The distribution can be downloaded from the 
+<a href="http://www.westhawk.co.uk/resources/snmp/index.html"
+target="outside">
+Westhawk's SNMP</a> page.
+The contents of the zip file is:
+<dl>
+<dt>snmp&lt;version&gt;.jar
+<dd>The jar file with the core of the SNMP stack classes. It contains the 
+precompiled <code>uk.westhawk.snmp.X</code> packages. 
+This jar file does <em>not</em> contain any examples or beans.
+<dt>javadoc/
+<dd>The directory with the <a href="./javadoc/index.html"
+target="outside">javadoc</a> files.
+<dt>stubs/
+<dd>The directory with experimental software to auto generate a Java 
+source file of a PDU or bean out off a MIB file, using smidump 
+(<a href="http://www.ibr.cs.tu-bs.de/projects/libsmi/">libsmi</a>)
+
+<dt>uk/co/westhawk/
+<dd>The source of the SNMP stack
+
+<dt>uk/co/westhawk/examplev1/
+<dd>The directory with the source of 
+<a href="#example">examples</a> how to use the stack for SNMPv1. 
+
+<dt>uk/co/westhawk/examplev2c/
+<dd>The directory with the source of 
+<a href="#example">examples</a> how to use the stack for SNMPv2c. 
+
+<dt>uk/co/westhawk/examplev3/
+<dd>The directory with the source of 
+<a href="#example">examples</a> how to use the stack for SNMPv3. 
+
+<dt>uk/co/westhawk/nothread/
+<dd>The directory with the source of 
+<a href="./uk/co/westhawk/nothread/notes.html">example</a>
+how to use the stack in environments where thread creation is unwanted, 
+e.g. database JVMs such as Oracle &trade; JServer. 
+
+<dt>uk/co/westhawk/snmp/beans/
+<dd>The directory with the source of the different 
+<a href="#beans">beans</a> 
+that come with the stack. 
+
+<dt>uk/co/westhawk/snmp/pdu/
+<dd>The directory with the source of the different 
+<a href="#pdus">PDUs</a> 
+(among other things the 
+<a href="#blocking calls">BlockPdu</a>) that come with the stack. 
+
+<dt>uk/co/westhawk/snmp/stack/
+<dd>The directory with the source of the <a href="#context">context</a> 
+and ASN functionality of the stack.
+</dl>
+</p>
+
+<a name="usage"> <h1>The usage</h1>
+<p>
+The stack can be used in a number of ways:
+<ul>
+<li>Using the <a href="#beans">beans</a></li>
+<li>Using the <a href="#pdus">PDUs</a></li>
+<li>Using the <a href="#blocking calls">blocking calls</a></li>
+</ul>
+</p>
+
+<a name="beans"> <h2>Using the beans</h2>
+<p>
+The package <code>uk.co.westhawk.snmp.beans</code> 
+contains all the beans in the stack. 
+Except for the <code>UsmDiscoveryBean</code> they all (still) relate to
+SNMPv1. 
+</p>
+<p>
+The beans form a bridge between the <code>uk.co.westhawk.snmp.pdu</code> (and
+<code>uk.co.westhawk.snmp.stack</code>) package(s) and any applet 
+or application you may want to write.
+</p>
+<p>
+The beans work via the (asynchronous)
+<code>java.beans.PropertyChange</code> mechanism. 
+If you are using Swing, don't forget to use
+<code>javax.swing.SwingUtilities.invokeLater(java.lang.Runnable)</code> 
+if you want to do any screen updates from the
+<code>propertyChange</code> method.</li>
+</p>
+<p>
+Our beans gather specific MIB information, i.e. the OID (Object
+Identifier) is hard coded. The beans should be easy enough to
+understand, and with little effort you can write a bean for your own purpose.
+The beans <code>SNMPBean</code> and <code>SNMPRunBean</code>
+contain some general information about the beans as well.
+The coding <a href="#example">examples</a> will show you how to use the
+beans as well.
+</p>
+
+<a name="pdus"> <h2>Using the PDUs</h2>
+<p>
+The package
+<code>uk.co.westhawk.snmp.pdu</code> contains all the public accessible
+PDUs.
+All the Pdus (well, except for the <a href="#blocking calls">BlockPdu</a>) 
+extend abstract
+<code>uk.co.westhawk.snmp.stack.Pdu</code>. 
+The PDUs are non blocking and work via the
+<code>java.util.Observer/java.util.Observable</code> mechanism. 
+</p>
+<p>
+The idea is that for each class of problem you should subclass the
+abstract <code>uk.co.westhawk.snmp.stack.Pdu</code> class. You will have
+to implement the <code>protected void new_value(int n, varbind
+res)</code> and the <code>protected void tell_them()</code> methods.
+As example look at the <code>uk.co.westhawk.snmp.pdu.OneIntPdu</code>
+class or any other class in that package.
+</p>
+<p>
+In order to use a PDU do the following:
+<ol>
+<li>Create a <a href="#context">context</a>, giving it the host name and 
+port number of your SNMP agent. If this is run in an applet then you can only 
+connect back to that server! </li>
+<li>Create a PDU, passing it the context; <code>OneGetPdu pdu = new
+OneGetPdu(context)</code>. </li>
+<li>Add the OIDs you are interested in with 
+<code>pdu.add_oid(oid)</code>.  </li>
+<li>Add an observer with <code>pdu.addObserver(observer)</code>. The argument is the
+object that wishes to be notified when the new value arrives. 
+It must implement
+<code>java.util.Observer</code>, that is it must have a
+<code>public void update(java.util.Observable obs, java.lang.Object obj)</code>
+method. This method will get called when the value arrives. 
+If you are using Swing, don't forget to use
+<code>javax.swing.SwingUtilities.invokeLater(java.lang.Runnable)</code> 
+if you want to do any screen updates.</li>
+<li>Call <code>pdu.send()</code>.</li>
+<li>Sleep, or do something else. Your <code>update</code> method will get 
+called automatically when the data has arrived. Both the context and PDU
+objects spawn their own threads, so there is nothing further to do.</li>
+</ol>
+</p>
+Since traps do not get a reply, you can omit adding an
+<code>observer</code> (step 4)
+and implementing <code>update</code> (the last step) when sending one.
+When sending traps with SNMPv3, please read the
+section about the
+<a href="#authoritative engine">authoritative engine</a>.
+<p>
+The coding <a href="#example">examples</a> will show you how to use the
+PDUs as well.
+</p>
+
+<a name="blocking calls"> <h2>Using the blocking calls</h2>
+<p>
+The class <code>uk.co.westhawk.snmp.pdu.BlockPdu</code> is a wrapper
+class around the traditional (non blocking) Pdu. It allows the user to
+send either a Set request, a Get request, a GetNext request or a GetBulk
+request by
+specifying the type of request, see the <code>setPduType</code> method. The 
+caller has to add the necessary OIDs with the method <code>addOid</code>.
+</p>
+<p>
+As the title suggests, the BlockPdu sends the request and waits for the
+response. 
+We suggest that you only use this class if you have to;
+Because the pdu blocks, you can not do anything else on
+that thread while it is waiting for a reply. If that thread is driving a
+UI, then the user may see a sluggish interface. 
+If you can, use the <a href="#beans">beans</a> or the <a
+href="#pdus">PDUs</a>.
+</p>
+
+<p>
+There are four methods that send the request, wait for the response and
+return the variables or variable bindings. They throw the
+<code>uk.co.westhawk.snmp.stack.PduException</code> exception:
+<ul>
+<li>AsnObject getResponseVariable()</li>
+<li>AsnObject [ ] getResponseVariables()</li>
+<li>varbind getResponseVariableBinding()</li>
+<li>varbind [ ] getResponseVariableBindings()</li>
+</ul>
+</p>
+
+<p>
+The OIDs that are added via <code>addOid</code> method for the request
+will not be replaced by the OIDs from the response. This means that
+every request will result in the same answer and that the GetNext does
+not <em>walk</em> the MIB
+</p>
+
+<a name="context"> <h1>The context</h1>
+<p>
+Every Pdu that is created needs a context. The same context can be used for
+a number of Pdus. 
+</p>
+
+<a name="context SNMPv1"> <h3>the context for SNMPv1</h3>
+<p>
+For SNMPv1 the context is built out of the following parameters:
+<ul>
+<li>The name of the host to which the Pdu is sent</li>
+<li>The port number on that host</li>
+<li>The community name that is used, by default <em>public</em></li>
+<li>The type of socket that is used, by default <em>Standard</em> </li>
+</ul>
+</p>
+
+<p>
+The <a href="#socket type">next section</a> explains the use of the type of socket.
+</p>
+
+<p>
+This SNMP stack provides three contexts for SNMPv1:
+<ul>
+<li>uk.co.westhawk.snmp.stack.SnmpContext</li>
+<li>uk.co.westhawk.snmp.stack.SnmpContextPool</li>
+<li>uk.co.westhawk.snmp.stack.PassiveSnmpContext</li>
+</ul>
+</p>
+
+<p>
+The <code>SnmpContextPool</code> contains a pool of
+<code>SnmpContext</code> and will share any context that it can share.
+This results in a reduced number of threads and other resources.
+</p>
+
+<p>
+The <code>PassiveSnmpContextPool</code> contains the SNMP v1
+context that is needed by a Pdu to send a SNMP v1 request in
+environments where thread creation is unwanted, see the 
+<a href="./uk/co/westhawk/nothread/notes.html">nothread</a>
+notes. 
+</p>
+
+<a name="context SNMPv2c"> <h3>the context for SNMPv2c</h3>
+<p>
+The context for SNMPv2c is very similar to the SNMPv1 context. 
+It is built out of the following parameters:
+<ul>
+<li>The name of the host to which the Pdu is sent</li>
+<li>The port number on that host</li>
+<li>The community name that is used, by default <em>public</em></li>
+<li>The type of socket that is used, by default <em>Standard</em> </li>
+</ul>
+</p>
+
+<p>
+The <a href="#socket type">next section</a> explains the use of the type of socket.
+</p>
+
+<p>
+This SNMP stack provides three contexts for SNMPv2c:
+<ul>
+<li>uk.co.westhawk.snmp.stack.SnmpContextv2c</li>
+<li>uk.co.westhawk.snmp.stack.SnmpContextv2cPool</li>
+<li>uk.co.westhawk.snmp.stack.PassiveSnmpContextv2c</li>
+</ul>
+</p>
+
+<p>
+The <code>SnmpContextv2cPool</code> contains a pool of
+<code>SnmpContextv2c</code> and will share any context that it can share.
+This results in a reduced number of threads and other resources.
+</p>
+
+<p>
+The <code>PassiveSnmpContextv2c</code> contains the SNMP v2c
+context that is needed by a Pdu to send a SNMP v2c request in
+environments where thread creation is unwanted, see the 
+<a href="./uk/co/westhawk/nothread/notes.html">nothread</a>
+notes. 
+</p>
+
+<a name="context SNMPv3"> <h3>the context for SNMPv3</h3>
+<p>
+For SNMPv3 the context is built out of the following parameters. 
+<ul>
+<li>The name of the host to which the Pdu is sent</li>
+<li>The port number on that host</li>
+<li>The type of socket that is used, by default <em>Standard</em> </li>
+<li>The user name of the SNMP principle, by default <em>initial</em></li>
+<li>Whether the user wants to use authentication or not, by default
+<em>false</em></li>
+<li>The user authentication password</li>
+<li>The authentication protocol the user wants to use, by default <em>MD5</em></li>
+<li>Whether the user wants to use privacy or not, by default
+<em>false</em></li>
+<li>The user privacy password</li>
+<li>The context engine id of the host</li>
+<li>The context name of the host, by default the <em>empty</em> string</li>
+</ul>
+</p>
+
+<p>
+This SNMP stack provides two contexts for SNMPv3:
+<ul>
+<li>uk.co.westhawk.snmp.stack.SnmpContextv3</li>
+<li>uk.co.westhawk.snmp.stack.SnmpContextv3Pool</li>
+</ul>
+</p>
+
+</p>
+The <code>SnmpContextv3Pool</code> contains a pool of
+<code>SnmpContextv3</code> and will share any context that it can share.
+This results in a reduced number of threads and other resources.
+<p>
+
+<a name="socket type"> <h1>The socket type</h1>
+<p>
+At the moment two types of sockets can be used:
+<ul>
+<li>The standard socket, defined by
+<code>SnmpContextFace.STANDARD_SOCKET</code></li>
+<li>The Netscape socket, defined by
+<code>SnmpContextFace.NETSCAPE_SOCKET</code></li>
+</ul>
+</p>
+
+<p>
+By default the standard socket will be used. The Netscape socket
+provides extra functionality for the Netscape capabilities classes. 
+</p>
+
+<p>
+The caller needs to use the NETSCAPE_SOCKET socket type when this stack
+is used in an applet that is running in Netscape 4.X and when the jar
+files needs to be signed.
+For more documentation on this subject see
+<a
+href="http://developer.netscape.com/docs/manuals/signedobj/capabilities/index.html"
+target="outside">Introduction
+to the capabilities classes</a>.
+</p>
+
+<a name="authoritative engine"><h1>The authoritative engine</h1>
+<p>
+When sending traps the stack becomes
+an agent, or an <em>authoritative</em> engine as it is called in SNMPv3, rather
+than a manager, or a <em>non-authoritative</em> engine as it is called in
+SNMPv3.
+</p>
+<p>
+In SNMPv3 the User-Based Security Model (USM) timeliness mechanism 
+is different for authoritative and non-authoritative SNMP engines:
+<ul>
+<li>a non-authoritative engine must remain loosely
+synchronised with an authoritative engine</li>
+<li>an authoritative engine must maintain it snmpEngineBoots and
+snmpEngineTime</li>
+</ul>
+This distinction does not apply to SNMPv1 or SNMPv2c.
+</p>
+
+<p>
+Since the stack is not a <em>real</em> agent, it cannot provide all the
+USM synchronisation parameters. For that reason the user has to provide
+an implementation of the interface 
+<code>uk.co.westhawk.snmp.stack.UsmAgent</code>. This interface provides
+the stack with the following information of its authoritative engine:
+<ul>
+<li><code>Engine ID</code> - The authoritative SNMP Engine ID, which (at
+least within an administrative domain) uniquely and unambiguously
+identifies the SNMP engine</li>
+<li><code>Engine Boots</code> - The authoritative SNMP Engine Boots,
+which is a count of the number of times the SNMP engine has
+re-booted/re-initialized since snmpEngineID was last configured</li> 
+<li><code>Engine Time</code> - The authoritative SNMP Engine Time, which is the number of seconds since the snmpEngineBoots counter was last incremented</li>
+</ul>
+</p>
+
+<a name="receiving traps"> <h1>Receiving traps</h1>
+<p>
+There are different ways to receive traps.
+Any combination of these ways can be used at the same time:
+<ul>
+<li>Receive <a href="#all traps">traps for all hosts</a></li>
+<li>Receive <a href="#specific host trap">traps from a specific host</a></li>
+<li>Receive <a href="#unhandled traps">unhandled traps</a></li>
+</ul>
+The conventional and default port to listen for traps is <em>162</em>.
+Since on UNIX and Linux systems only the <code>root</code> user is allowed to open that
+port, you will have to run as <code>root</code> in order to listen for
+traps on that port.
+</p>
+
+<a name="all traps"> <h3>Receiving traps from all hosts</h3>
+<p>
+The class <code>uk.co.westhawk.snmp.stack.DefaultTrapContext</code>
+forms the base to receiving traps:
+<ul>
+<li>Get the instance of the class with <code>DefaultTrapContext trapContext
+= DefaultTrapContext.getInstance(port, typeSocket)</code></li>
+<li>Add a trap listener with
+<code>trapContext.addTrapListener(listener)</code>. 
+The argument is the
+object that wishes to be notified when the traps arrives. 
+It must implement
+<code>uk.co.westhawk.snmp.event.TrapListener</code>, that is it must have a
+<code>public void trapReceived(uk.co.westhawk.snmp.event.TrapEvent evt)</code>
+method. This method will get called when the trap is received.</li>
+</ul>
+The <code>DefaultTrapContext</code> fires 
+<a href="#undecoded trap event">undecoded</a>
+trap events.
+</p>
+
+<a name="specific host trap"> <h3>Receiving traps from a specific host</h3>
+<p>
+To receive traps from a specific host do the following:
+<ul>
+<li>Create or reuse a <a href="#context">context</a> with the host name and 
+parameters of your SNMP agent. The port number will be ignored in this
+case.</li>
+<li>Add a trap listener with
+<code>context.addTrapListener(listener)</code>. 
+The argument is the
+object that wishes to be notified when the traps arrives. 
+It must implement
+<code>uk.co.westhawk.snmp.event.TrapListener</code>, that is it must have a
+<code>public void trapReceived(uk.co.westhawk.snmp.event.TrapEvent evt)</code>
+method. This method will get called when the trap is received.</li>
+</ul>
+The <code>SnmpContext</code> classes fires 
+<a href="#decoded trap event">decoded</a> trap events. 
+</p>
+
+<a name="unhandled traps"> <h3>Receiving unhandled traps</h3>
+<p>
+Unhandled traps are traps that are received (see 
+<a href="#all traps">traps for all hosts</a>)
+but do not match any of the contexts (see
+<a href="#specific host trap">traps from a specific host</a>):
+<ul>
+<li>Get the instance of the class with <code>DefaultTrapContext trapContext
+= DefaultTrapContext.getInstance(port, typeSocket)</code></li>
+<li>Add a trap listener with
+<code>trapContext.addUnhandledTrapListener(listener)</code>. 
+The argument is the
+object that wishes to be notified when unhandled traps are received. 
+It must implement
+<code>uk.co.westhawk.snmp.event.TrapListener</code>, that is it must have a
+<code>public void trapReceived(uk.co.westhawk.snmp.event.TrapEvent evt)</code>
+method. This method will get called when the trap is received and
+remains unhandled.</li>
+</ul>
+The <code>DefaultTrapContext</code> fires 
+<a href="#undecoded trap event">undecoded</a>
+trap events.
+</p>
+
+<a name="trap event"> <h1>The trap event</h1>
+<p>
+There are two types of trap events:
+<ul>
+<li>The <a href="#decoded trap event">decoded trap event</a> where a trap pdu is passed</li>
+<li>The <a href="#undecoded trap event">undecoded trap event</a> where
+the raw bytes of the message are passed</li>
+</ul>
+</p>
+
+<a name="decoded trap event"> <h3>The decoded trap event</h3>
+<p>
+Decoded trap events are fired by the <code>SnmpContext</code> classes
+when receiving <a href="#specific host trap">traps from a specific host</a>.
+In this case the <code>uk.co.westhawk.snmp.event.TrapEvent</code> 
+will contain one of the two trap PDUs:
+<ul>
+<li><code>uk.co.westhawk.snmp.stack.TrapPduv1</code> - The Trap PDU for
+SNMPv1</li>
+<li><code>uk.co.westhawk.snmp.stack.TrapPduv2</code> - The Trap PDU for
+SNMPv2c and SNMPv3</li>
+</ul>
+</p>
+
+<a name="undecoded trap event"> <h3>The undecoded trap event</h3>
+<p>
+Undecoded trap events are fired by the <code>DefaultTrapContext</code> class
+when receiving <a href="#all traps">traps for all hosts</a> and/or
+receiving <a href="#unhandled traps">unhandled traps</a>.
+In this case the <code>uk.co.westhawk.snmp.event.TrapEvent</code> 
+will contain the following:
+<ul>
+<li><code>version</code> - The SNMP version number of the trap</li>
+<li><code>host address</code> - The IP host address of the host where the
+trap came from</li>
+<li><code>message</code> - The trap in bytes</li>
+</ul>
+</p>
+
+<p>
+To decode an undecoded trap event, you create a 
+<a href="#context">context</a> on the fly and call 
+<code>Pdu trapPdu = context.processIncomingTrap(byte[ ] message)</code>.
+The context should contain all the parameters needed to decode the
+message. For SNMPv3 this is not so obvious.
+</p>
+
+<a name="example"> <h1>Coding example</h1>
+<p>
+The stack contains a lot of examples in the form of 
+applications in the package <code>uk.co.westhawk.examplev1</code>. 
+The package <code>uk.co.westhawk.examplev2c</code> contains a few examples
+for SNMPv2c.
+The package <code>uk.co.westhawk.examplev3</code> contains a few examples
+for SNMPv3.
+These packages show you how to use the PDUs and beans. Note that because
+we implemented SNMPv3 before SNMPv2c, there are more examples for the
+first one.
+</p>
+<p>
+The scripts to run these examples are explained in the 
+<a href="#run">next</a> section. 
+If this example is not sufficient, check if the other examples do what you
+are looking for.
+</p>
+
+<p>
+This example requests sysContact with the BlockPdu. The complete example 
+can be found in 
+<code>uk.co.westhawk.examplev1.OneBlockOperation</code>
+<pre>
+private void createContext(String host, int port, String comm, 
+      String socketType)
+{
+    if (context != null)
+    {
+        context.destroy();
+    }
+    try
+    {
+        context = new SnmpContextPool(host, port, socketType);
+        context.setCommunity(comm);
+    }
+    catch (java.io.IOException exc)
+    {
+        // give the user feedback
+        exc.printStackTrace();
+    }
+}
+
+
+private void sendGetRequest(String oid)
+{
+    pdu = new BlockPdu(context);
+    pdu.setPduType(BlockPdu.GET);
+    pdu.addOid(oid);
+    sendRequest(pdu);
+}
+
+private void sendRequest(BlockPdu pdu)
+{
+    try
+    {
+        varbind var = pdu.getResponseVariableBinding();
+        AsnObjectId oid = var.getOid();
+        AsnObject res = var.getValue();
+        if (res != null)
+        {
+            // print or display the answer
+        }
+        else
+        {
+            // Received no answer
+        }
+    }
+    catch (PduException exc)
+    {
+        // give the user feedback
+        exc.printStackTrace();
+    }
+    catch (java.io.IOException exc)
+    {
+        // give the user feedback
+        exc.printStackTrace();
+    }
+}
+</pre>
+</p>
+
+<a name="run"> <h1>Running the examples</h1>
+<p>
+The <code> uk.co.westhawk.examplev1</code>, 
+<code> uk.co.westhawk.examplev2c</code> and 
+<code> uk.co.westhawk.examplev3</code> 
+directories contain scripts
+that, after some configuration, will run the applications in
+this directory on the commandline:
+<ul>
+<li><code>runapplication.bat</code> - MSDOS batch script to run an application</li>
+<li><code>runapplication.sh</code> - Bourne shell script to run an application</li>
+</ul>
+</p>
+
+<p>
+To run the scripts on the commandline, the applications have
+to use the STANDARD socket type. The SNMP jar file only contains the
+actual SNMP stack, i.e. examples are <em>not</em> included and need to
+be compiled.
+</p>
+
+<p>
+There are two scripts that contain the general environment settings:
+<ul>
+<li><code>setenv.bat</code> - MSDOS batch script with settings </li>
+<li><code>setenv.sh</code> - Bourne shell script with settings</li>
+</ul>
+They contain the following parameters:
+<ul>
+<li><code>TABLE</code> - The tablelayout zip or jar file, this file comes with the stack</li>
+<li><code>SOURCE</code> - The root dir where the application source live</li>
+<li><code>SNMPJAR</code> - The snmp jar file. Leave empty (or comment
+out) when you use the source under SOURCE. 
+SNMPJAR has priority over SOURCE</li>
+</ul>
+</p>
+
+<p>
+You only need to customise the following parameter in the
+runapplication.* scripts:
+<ul>
+<li><code>JAVA_HOME</code> - The root dir where Java lives</li>
+</ul>
+</p>
+
+<p>
+You have to pass the name of the class file as argument to the
+application script. You have to omit the package name, like
+<code>'uk.co.westhawk.examplev1.'</code>, since 
+that is already filled in in the script:
+<pre>
+C:\&gt; cd &lt;to where the applications live&gt;
+C:\&gt; runapplication OneBlockOperation
+</pre>
+<pre>
+% cd &lt;to where the applications live&gt;
+% ./runapplication.sh OneBlockOperation
+</pre>
+</p>
+
+<p>
+Most of the applications will accept a properties file as first argument. 
+A properties file has the extension <code>.properties</code> and contains 
+the initialisation parameters such as the hostname and the port number.
+When the argument is missing, the application will look for the 
+file <code>&lt;classname&gt;.properties</code> in the current directory.
+</p>
+
+<p>
+The commands
+<pre>
+% cd &lt;to where the applications live&gt;
+% ./runapplication.sh OneBlockOperation
+</pre>
+and
+<pre>
+% cd &lt;to where the applications live&gt;
+% ./runapplication.sh OneBlockOperation OneBlockOperation.properties
+</pre>
+will both use <code>OneBlockOperation.properties</code> if that file
+exists.
+</p>
+
+
+<a name="reading"> <h1>Reading</h1>
+<p>
+Our article on Simple Times (issue Dec 2001) explains the 
+<a href="http://www.simple-times.org/pub/simple-times/issues/9-1.html#tools">
+history and design decisions</a> 
+of the stack.
+</p>
+
+<p>
+The <a href="http://www.simpleweb.org/">SimpleWeb</a> provides links and 
+information on network management, including software, RFCs and tutorials. 
+The focus is on SNMP and Internet management.
+</p>
+
+<p>
+For more background on SNMP we recommend the following books:
+<ul>
+<li>The Simple Book by Marshall T. Rose (Prentice Hall, 1994)</li>
+<li>SNMP, SNMPv2, SNMPv3 and RMON 1 and 2 
+by William Stallings (Addison-Wesley, 1999), 
+ISBN 0-201-48534-6
+</li>
+</ul>
+</p>
+
+
+<a name="3rd party"> <h1>Third party packages</h1>
+<p>
+All the jar files that are needed for the <em>core</em> stack are
+delivered with the stack. A few jar files are used in other packages 
+that do not come with the stack: 
+<ul>
+<li><a href="http://alphaworks.ibm.com/tech/xml4j" target="outside">XML
+parser</a> for Java from IBM</li>
+<li><a href="http://xml.apache.org/xalan-j" target="outside">Xalan XSLT</a> 
+from Apache</li>
+<li><a href="http://java.sun.com/products/servlet/download.html"
+target="outside">Java
+Servlets</a> from Sun Microsystems</li>
+</ul>
+</p>
+<p>
+<a href="http://www.ibr.cs.tu-bs.de/projects/libsmi" target="outside">libsmi</a> is used in the stubs directory. It is available for Linux, Win, Mac.
+</p>
+
+<a name="copyright"> 
+<h1>Copyright &amp; License</h1>
+<p>
+The stack is freeware.
+The license (see the header of each file) means that you can do whatever you like with it without
+cost, except
+<ol>
+<li>blame us when it does/doesn't work</li>
+<li>remove our copyright</li>
+</ol>
+</p>
+
+<p>
+Strictly the license requires that
+you acknowledge our code, by mentioning its origin in the documentation of
+any product that uses it (in some cases there may be no documentation).
+</p>
+
+<p>
+There are no commercial license fees, nor do we have any GPL-style
+open-source requirements on our stack.
+</p>
+
+<p>
+If you want software written that uses the stack or modifications to it
+to better suit your project, we would be happy to quote you for the work.
+</p>
+
+<p>
+We also offer commercial support for organisations who want it.
+</p>
+
+<hr>
+<small>
+<p>
+11 Nov 2002
+</p>
+
+<a name="contact"> 
+<p>
+Contact the
+<a href="mailto:snmp@westhawk.co.uk">snmp group</a>
+at
+<a href="http://www.westhawk.co.uk" target="outside">Westhawk Ltd</a>
+</p>
+</small>
+
+</body>
+</html>

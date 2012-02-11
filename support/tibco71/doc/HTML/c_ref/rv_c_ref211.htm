@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvMsg_SetCMTimeLimit()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;11	 Certified Message Delivery";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1101841"> </a><h2 class="pNewHTMLPage">
+tibrvMsg_SetCMTimeLimit()
+</h2>
+<hr />
+<a name="wp1093831"> </a><p class="pSyntaxType">
+Function
+</p>
+<a name="wp1093833"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_c_ref227.htm#wp1193732"><code class="cCode">tibrv_status</code></a> <code class="cCodeBold">tibrvMsg_SetCMTimeLimit</code>(<a name="wp1093834"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref23.htm#wp1069469"><code class="cCode">tibrvMsg</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;message,<a name="wp1093835"> </a>
+&#160;&#160;&#160;&#160;<a  href="rv_c_ref224.htm#wp1128761"><code class="cCode">tibrv_f64</code></a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;timeLimit);<a name="wp1093836"> </a>
+</pre></div>
+<a name="wp1093837"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1093838"> </a><p class="pBody">
+Set the message time limit of a certified message.
+</p>
+<a name="wp1093839"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1103329"> </a><p class="pBody">
+Every labeled message has a time limit, after which the sender no longer certifies delivery.
+</p>
+<a name="wp1103335"> </a><p class="pBody">
+Sending programs can explicitly set the message time limit using this function. If a time limit is not already set for the outbound message, <a  href="rv_c_ref203.htm#wp1086494"><code class="cCode">tibrvcmTransport_Send()</code></a> sets it to the transport&#8217;s default time limit (see <a  href="rv_c_ref206.htm#wp1093092"><code class="cCode">tibrvcmTransport_SetDefaultCMTimeLimit()</code> </a>); if that default is not set for the transport, the default time limit is zero (no time limit).
+</p>
+<a name="wp1110999"> </a><p class="pBody">
+Time limits represent the minimum time that certified delivery is in effect.
+</p>
+<a name="wp1103351"> </a><p class="pBody">
+It is meaningless for receiving programs to call this function.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1143453"> </a><h4 class="pHeading3">
+Parameters&#160;
+</h4>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1093845"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1093847"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1093849"> </a><div class="pCellBody">
+<code class="cCode">message</code>
+</div>
+</td>
+    <td><a name="wp1093851"> </a><div class="pCellBody">
+Set the time limit of this message.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1093853"> </a><div class="pCellBody">
+<code class="cCode">timeLimit</code>
+</div>
+</td>
+    <td><a name="wp1093855"> </a><div class="pCellBody">
+Use this time limit (in whole seconds) for the message. The time limit must be non-negative.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1093857"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1111140"> </a><p class="pBody">
+<a  href="rv_c_ref192.htm#wp1111037"><code class="cCode">tibrvcmTransport_GetDefaultCMTimeLimit()</code> </a>
+</p>
+<a name="wp1101848"> </a><p class="pBody">
+<a  href="rv_c_ref206.htm#wp1093092"><code class="cCode">tibrvcmTransport_SetDefaultCMTimeLimit()</code> </a>
+</p>
+<a name="wp1101852"> </a><p class="pBody">
+<a  href="rv_c_ref210.htm#wp1160570"><code class="cCode">tibrvMsg_GetCMTimeLimit()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

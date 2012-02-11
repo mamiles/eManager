@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Service Selection</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;3	 Network Details";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1019269"> </a><h2 class="pNewHTMLPage">
+Service Selection
+</h2>
+<hr />
+<a name="wp1019273"> </a><p class="pBody">
+Rendezvous daemon (<code class="cCode">rvd</code>) processes communicate using UDP or PGM services. The <code class="cCode">service</code> parameter instructs the Rendezvous daemon to use this service whenever it does network communications on behalf of this transport.
+</p>
+<a name="wp1019277"> </a><p class="pBody">
+As a direct result, services divide the network into logical partitions. Each transport communicates over a single service; a transport can communicate only with other transports on the same service. To communicate with more than one service, a program must create more than one transport.
+</p>
+<a name="wp1019285"> </a><h3 class="pHeading2">
+Interaction between Service and Network Parameters
+</h3>
+<a name="wp1019289"> </a><p class="pBody">
+Within each Rendezvous daemon, all the transports that use a specific service must also use the same network parameter. That is, if the <code class="cCode">service</code> parameters resolve to the same UDP or PGM port, then the <code class="cCode">network</code> parameter must also be identical. (This restriction extends also to routing daemons.)
+</p>
+<a name="wp1019290"> </a><p class="pBody">
+For example, suppose that the program <code class="cCode">foo</code>, on the computer named <code class="cCode">orange</code>, has a transport that communicates on the service <code class="cCode">svc1</code> over the network <code class="cCode">lan1</code>. It is illegal for <em class="cEmphasis">any</em> program to subsequently create a transport to that <code class="cCode">rvd</code> on <code class="cCode">orange</code> to communicate on <code class="cCode">svc1</code> over any other network&#151;such as <code class="cCode">lan2</code>. Once <code class="cCode">rvd</code> binds <code class="cCode">svc1</code> to <code class="cCode">lan1</code>, that service cannot send outbound broadcast messages to any other network. Attempting to illegally rebind a service to a new network fails; the transport creation call produces the status code <code class="cCode">TIBRV_INIT_FAILURE</code>.
+</p>
+<a name="wp1019291"> </a><p class="pBody">
+To work around this limitation, use a separate service for each network.
+</p>
+<a name="wp1019292"> </a><p class="pBody">
+The limitation is not as severe as it might seem at first, because it only affects <em class="cEmphasis">outbound broadcast</em> messages. 
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1019293"> </a><div class="pSmartList1"><li ><em class="cEmphasis">Point-to-point</em> messages on the transport&#8217;s service travel on the appropriate network (as determined by the operating system) irrespective of the transport&#8217;s <code class="cCode">network</code> parameter.</li></div>
+
+<a name="wp1288864"> </a><div class="pSmartList1"><li ><em class="cEmphasis">Inbound</em> broadcast messages on the transport&#8217;s service can arrive from any network, irrespective of the transport&#8217;s <code class="cCode">network</code> parameter.</li></div>
+
+</ul></div>
+
+<a name="wp1288869"> </a><h3 class="pHeading2">
+Specifying the UDP or PGM Service
+</h3>
+<a name="wp1288870"> </a><p class="pBody">
+Programs can specify the service in one of several ways, listed in order of preference in <a  href="rv_adm15.htm#wp1288883">Table&#160;1</a>.</p><div align="left">
+<table border="1">
+  <caption><a name="wp1288883"> </a><div class="pTableTitle">
+Table&#160;1   Specify UDP or PGM Service&#160;
+</div>
+</caption>
+  <tr align="left" valign="top">    <td><a name="wp1288887"> </a><div class="pCellBody">
+Port number
+</div>
+</td>
+    <td><a name="wp1288893"> </a><div class="pCellBody">
+When a program specifies a UDP or PGM port number, it must be a string representing a decimal integer. For example:
+</div>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">&#160;&#160;&#160;&quot;7890&quot;</code><a name="wp1288894"> </a>
+</pre></div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1288896"> </a><div class="pCellBody">
+Service name
+</div>
+</td>
+    <td><a name="wp1288898"> </a><div class="pCellBody">
+When a program specifies a service name, the transport creation function searches the network database using <code class="cCode">getservbyname()</code>, which searches a network database such as NIS, DNS or a flat file such as <code class="cCode">/etc/services</code> (in some versions of UNIX).
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1288900"> </a><div class="pCellBody">
+Default
+</div>
+</td>
+    <td><a name="wp1288902"> </a><div class="pCellBody">
+If a program does not specify a service, or it specifies null, the transport creation function searches for the service name <code class="cCode">rendezvous</code>.
+</div>
+<a name="wp1288906"> </a><div class="pCellBody">
+If <code class="cCode">getservbyname()</code> does not find <code class="cCode">rendezvous</code>, the Rendezvous daemon instructs the transport creation function to use a hard default:
+</div>
+<div class="pSmartList1"><ul>
+<a name="wp1288907"> </a><div class="pSmartList1"><li >The TRDP daemon offers the default service <code class="cCode">7500</code>.</li></div>
+
+<a name="wp1288908"> </a><div class="pSmartList1"><li >The PGM daemon offers the default service <code class="cCode">7550</code>.</li></div>
+
+</ul></div>
+
+<a name="wp1288910"> </a><div class="pCellBody">
+We strongly recommend that administrators define <code class="cCode">rendezvous</code> as a service, especially if either the of ports <code class="cCode">7500</code> or <code class="cCode">7550</code> is already in use.
+</div>
+<a name="wp1288911"> </a><div class="pCellBody">
+For example, network administrators might add the following service entry to the network database (where <code class="cCode">7500</code> is the port number):
+</div>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;&#160;&#160;rendezvous 7500/udp<a name="wp1288912"> </a>
+</pre></div>
+<a name="wp1288913"> </a><div class="pCellBody">
+Once this entry is in the network database, programmers can conveniently specify <code class="cCode">NULL</code> or the empty string as the <code class="cCode">service</code> argument to create a transport that uses the default Rendezvous service.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1288918"> </a><div class="pCellBody">
+Direct Communication
+</div>
+</td>
+    <td><a name="wp1288920"> </a><div class="pCellBody">
+To enable direct communication, specify two parts separated by a colon:
+</div>
+<div class="pSmartList1"><ul>
+<a name="wp1288924"> </a><div class="pSmartList1"><li >UDP or PGM service for regular communication</li></div>
+
+<a name="wp1288928"> </a><div class="pSmartList1"><li >UDP service for direct communication (<a  href="javascript:WWHClickedPopup('a', 'rv_concepts14.htm#wp1206788');" onMouseOver="WWHShowPopup('a', 'rv_concepts14.htm#wp1206788', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">RPTP</a>)</li></div>
+
+</ul></div>
+
+<a name="wp1288930"> </a><div class="pCellBody">
+You may specify both parts either as a service name or a port number.
+</div>
+<a name="wp1288931"> </a><div class="pCellBody">
+Direct communication is not available when connecting to a remote daemon.
+</div>
+<a name="wp1288937"> </a><div class="pCellBody">
+For a general overview, see <a  href="javascript:WWHClickedPopup('a', 'rv_concepts78.htm#wp1144571');" onMouseOver="WWHShowPopup('a', 'rv_concepts78.htm#wp1144571', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Direct Communication</a> in <em class="cEmphasis">TIBCO Rendezvous Concepts</em>.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1266559"> </a><h4 class="pHeading3">
+PGM and TRDP
+</h4>
+<a name="wp1266560"> </a><p class="pBody">
+The TRDP and PGM variants of <code class="cCode">rvd</code> interpret the service specification differently:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1266561"> </a><div class="pSmartList1"><li >The TRDP variant interprets it as a UDP service.</li></div>
+
+<a name="wp1266562"> </a><div class="pSmartList1"><li >The PGM variant interprets it as a <em class="cEmphasis">pair</em> of services with the same port number&#151;a PGM service for multicast communication, and a UDP service for point-to-point communication. Even though these twin services share the same port number, data does not cross from one to the other.</li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

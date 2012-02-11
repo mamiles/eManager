@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>SecurityProxy</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;5	 Security";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1955023"> </a><h2 class="pNewHTMLPage">
+SecurityProxy
+</h2>
+<hr />
+<a name="wp1955024"> </a><p class="pSyntaxType">
+Interface
+</p>
+<a name="wp1955025"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">interface com.tibco.tibrv.config.</code><code class="cCodeBold">SecurityProxy</code><a name="wp1955026"> </a>
+<code class="cCode">&#160;&#160;extends </code><a  href="rv_config12.htm#wp1949843"><code class="cCode">DaemonProxy</code></a><code class="cCode"></code><a name="wp1955030"> </a>
+</pre></div>
+<a name="wp1955031"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1955032"> </a><p class="pBody">
+Define methods for components that require passwords or certificates for security.
+</p>
+<a name="wp1955067"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1955035"> </a><div class="pCellHeading">
+Constant
+</div>
+</th>
+    <th><a name="wp1955037"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td colspan="2" rowspan="1"><a name="wp1955039"> </a><div class="pCellBody">
+These constants correspond to positions in the certificate usage bit vector; see <a  href="rv_config110.htm#wp1955351"><code class="cCode">SecurityProxy.getValidUses()</code> </a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1955050"> </a><div class="pCellBody">
+<a  href="rv_config107.htm#wp1955023"><code class="cCode">SecurityProxy</code></a><code class="cCode">.HTTPS</code>
+</div>
+</td>
+    <td><a name="wp1955052"> </a><div class="pCellBody">
+Represents usage of certificates in HTTPS protocols.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1955057"> </a><div class="pCellBody">
+<a  href="rv_config107.htm#wp1955023"><code class="cCode">SecurityProxy</code></a><code class="cCode">.ROUTER_TO_ROUTER</code>
+</div>
+</td>
+    <td><a name="wp1955059"> </a><div class="pCellBody">
+Represents usage of certificates in SSL protocols among routing daemons.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1955064"> </a><div class="pCellBody">
+<a  href="rv_config107.htm#wp1955023"><code class="cCode">SecurityProxy</code></a><code class="cCode">.DAEMON_TO_CLIENTS</code>
+</div>
+</td>
+    <td><a name="wp1955066"> </a><div class="pCellBody">
+Represents usage of certificates in SSL protocols with client transports of the daemon.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1955178"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1955073"> </a><p class="pBody">
+&#160;
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1955079"> </a><div class="pCellHeading">
+Method
+</div>
+</th>
+    <th><a name="wp1955081"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+    <th><a name="wp1955083"> </a><div class="pCellHeading">
+Page
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1955088"> </a><div class="pCellBody">
+<a  href="rv_config108.htm#wp1955253"><code class="cCode">SecurityProxy.getAdministratorName()</code></a>
+</div>
+</td>
+    <td><a name="wp1955093"> </a><div class="pCellBody">
+<a  href="rv_config108.htm#wp1955263">Get the administrator name.</a>
+</div>
+</td>
+    <td><a name="wp1955098"> </a><div class="pCellBody">
+<a  href="rv_config108.htm#wp1955253">124</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1955103"> </a><div class="pCellBody">
+<a  href="rv_config109.htm#wp1955285"><code class="cCode">SecurityProxy.getCertificateSlot()</code></a>
+</div>
+<a name="wp1955107"> </a><div class="pCellBody">
+<a  href="rv_config109.htm#wp1955289"><code class="cCode">SecurityProxy.getCertificateSlots()</code></a>
+</div>
+</td>
+    <td><a name="wp1955112"> </a><div class="pCellBody">
+<a  href="rv_config109.htm#wp1955311">Get daemon certificate slots.</a>
+</div>
+</td>
+    <td><a name="wp1955117"> </a><div class="pCellBody">
+<a  href="rv_config109.htm#wp1955285">125</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1955122"> </a><div class="pCellBody">
+<a  href="rv_config110.htm#wp1955351"><code class="cCode">SecurityProxy.getValidUses()</code></a>
+</div>
+</td>
+    <td><a name="wp1955126"> </a><div class="pCellBody">
+<a  href="rv_config110.htm#wp1955361">Get the valid uses of certificates for this daemon.</a>
+</div>
+</td>
+    <td><a name="wp1955132"> </a><div class="pCellBody">
+<a  href="rv_config110.htm#wp1955351">126</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1955137"> </a><div class="pCellBody">
+<a  href="rv_config111.htm#wp1955404"><code class="cCode">SecurityProxy.setCertificateUses()</code></a>
+</div>
+</td>
+    <td><a name="wp1955141"> </a><div class="pCellBody">
+<a  href="rv_config111.htm#wp1955420">Assign certificates to each valid use for this daemon.</a>
+</div>
+</td>
+    <td><a name="wp1955147"> </a><div class="pCellBody">
+<a  href="rv_config111.htm#wp1955404">127</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1955152"> </a><div class="pCellBody">
+<a  href="rv_config112.htm#wp1955476"><code class="cCode">SecurityProxy.setCredentials()</code></a>
+</div>
+</td>
+    <td><a name="wp1955156"> </a><div class="pCellBody">
+<a  href="rv_config112.htm#wp1955491">Set administrator identification for the component.</a>
+</div>
+</td>
+    <td><a name="wp1955162"> </a><div class="pCellBody">
+<a  href="rv_config112.htm#wp1955476">128</a>
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1955167"> </a><div class="pCellBody">
+<a  href="rv_config113.htm#wp1955532"><code class="cCode">SecurityProxy.useCredentials()</code></a>
+</div>
+</td>
+    <td><a name="wp1955171"> </a><div class="pCellBody">
+<a  href="rv_config113.htm#wp1955544">Record administrator identification for the configuration program.</a>
+</div>
+</td>
+    <td><a name="wp1955177"> </a><div class="pCellBody">
+<a  href="rv_config113.htm#wp1955532">129</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1955205"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1955184"> </a><p class="pBody">
+&#160;
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1955186"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1955191"> </a><p class="pBody">
+<a  href="rv_config13.htm#wp1949946"><code class="cCode">DaemonProxy.getComponentName()</code></a>
+</p>
+<a name="wp1955195"> </a><p class="pBody">
+<a  href="rv_config14.htm#wp1949960"><code class="cCode">DaemonProxy.getComponentInformation()</code></a>
+</p>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1955200"> </a><p class="pBody">
+<a  href="rv_config16.htm#wp1950057"><code class="cCode">XmlSerializable.printXml()</code></a>
+</p>
+<a name="wp1955204"> </a><p class="pBody">
+<a  href="rv_config17.htm#wp1950083"><code class="cCode">XmlSerializable.toXml()</code></a>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1955206"> </a><h4 class="pHeading3">
+Components
+</h4>
+<a name="wp1955207"> </a><p class="pBody">
+These components support this interface:
+</p>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+&#160;rvrd<a name="wp1955208"> </a>
+&#160;rvsd<a name="wp1955209"> </a>
+&#160;rvsrd<a name="wp1955210"> </a>
+&#160;rva<a name="wp1955211"> </a>
+&#160;rvcache<a name="wp1955212"> </a>
+</pre></div>
+<a name="wp1955213"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1955214"> </a><p class="pBody">
+For information about the parameters that this interface can access, see these sections:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1955220"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('c', 'rv_adm57.htm#wp1139429');" onMouseOver="WWHShowPopup('c', 'rv_adm57.htm#wp1139429', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Secure Daemons (rvsd and rvsrd)</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em></li></div>
+
+<a name="wp1955227"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('c', 'rv_adm46.htm#wp1151056');" onMouseOver="WWHShowPopup('c', 'rv_adm46.htm#wp1151056', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Browser Administration Interface&#151;rvrd</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em></li></div>
+
+<a name="wp1955234"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('c', 'rv_adm66.htm#wp1142416');" onMouseOver="WWHShowPopup('c', 'rv_adm66.htm#wp1142416', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Browser Administration Interface&#151;rvsd and rvsrd</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em></li></div>
+
+<a name="wp1955242"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('c', 'rv_adm76.htm#wp1054163');" onMouseOver="WWHShowPopup('c', 'rv_adm76.htm#wp1054163', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Rendezvous Agent (rva)</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em></li></div>
+
+<a name="wp1955249"> </a><div class="pSmartList1"><li ><a  href="javascript:WWHClickedPopup('c', 'rv_adm80.htm#wp1024412');" onMouseOver="WWHShowPopup('c', 'rv_adm80.htm#wp1024412', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">Current Value Cache</a> in <em class="cEmphasis">TIBCO Rendezvous Administration</em></li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

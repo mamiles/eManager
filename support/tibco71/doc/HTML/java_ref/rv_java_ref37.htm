@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>Get Scalar</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1026074"> </a><h2 class="pNewHTMLPage">
+Get Scalar
+</h2>
+<hr />
+<a name="wp1026075"> </a><p class="pSyntaxType">
+Convenience Methods
+</p>
+<a name="wp1026076"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCodeItalic">&lt;scalar_type&gt;</code> <code class="cCodeBold">get</code><code class="cCodeItalic">&lt;Scalar_type&gt;</code>(<a name="wp1125161"> </a>
+&#160;&#160;&#160;&#160;java.lang.String fieldName,<a name="wp1125162"> </a>
+&#160;&#160;&#160;&#160;int fieldId)<a name="wp1125163"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125167"> </a>
+<a name="wp1125157"> </a>
+<code class="cCodeItalic">&lt;scalar_type&gt;</code> <code class="cCodeBold">getAs</code><code class="cCodeItalic">&lt;Scalar_type&gt;</code>(<a name="wp1125171"> </a>
+&#160;&#160;&#160;&#160;java.lang.String fieldName,<a name="wp1125172"> </a>
+&#160;&#160;&#160;&#160;int fieldId)<a name="wp1125173"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125177"> </a>
+</pre></div>
+<a name="wp1026081"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1113643"> </a><p class="pBody">
+Get the value of a field as a scalar value.
+</p>
+<a name="wp1113644"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1113645"> </a><p class="pBody">
+Each convenience method in this family retrieves a field and extracts its data. If the field&#8217;s type (as it exists) does not match the type of the convenience method, then the <code class="cCodeBold">get</code><code class="cCodeItalic">&lt;type&gt; </code>method throws an exception; in contrast, the <code class="cCodeBold">getAs</code><code class="cCodeItalic">&lt;type&gt; </code>method attempts to convert the data (see <a  href="rv_java_ref36.htm#wp1024860">Decoding and Type Conversion</a>, and <a  href="rv_java_ref36.htm#wp1067615">Wire Format to Java Datatype Conversion Matrix</a>). If conversion is not possible, the method throws an exception with status code <a  href="rv_java_ref234.htm#wp1238209"><code class="cCode">TibrvStatus.CONVERSION_FAILED</code></a>.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1073952"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1073954"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1073956"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1073958"> </a><div class="pCellBody">
+Get a field with this name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1073960"> </a><div class="pCellBody">
+<code class="cCode">fieldId</code>
+</div>
+</td>
+    <td><a name="wp1073962"> </a><div class="pCellBody">
+Get the field with this identifier.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1026171"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1115455"> </a><p class="pBody">
+ (Sheet 1 of 2)
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1026094"> </a><div class="pCellHeading">
+Method Name
+</div>
+</th>
+    <th><a name="wp1026307"> </a><div class="pCellHeading">
+Field Type
+</div>
+</th>
+    <th><a name="wp1026096"> </a><div class="pCellHeading">
+Java Type
+</div>
+</th>
+    <th><a name="wp1026098"> </a><div class="pCellHeading">
+Type Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1026100"> </a><div class="pCellBody">
+<code class="cCode">get</code><code class="cCodeBold">Boolean</code>
+</div>
+<a name="wp1026480"> </a><div class="pCellBody">
+<code class="cCode">getAs</code><code class="cCodeBold">Boolean</code>
+</div>
+</td>
+    <td><a name="wp1026309"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.</code><code class="cCodeBold">BOOL</code>
+</div>
+</td>
+    <td><a name="wp1026102"> </a><div class="pCellBody">
+<code class="cCode">boolean</code>
+</div>
+</td>
+    <td><a name="wp1026104"> </a><div class="pCellBody">
+boolean
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1026106"> </a><div class="pCellBody">
+<code class="cCode">get</code><code class="cCodeBold">Float</code>
+</div>
+<a name="wp1026485"> </a><div class="pCellBody">
+<code class="cCode">getAs</code><code class="cCodeBold">Float</code>
+</div>
+</td>
+    <td><a name="wp1026311"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.</code><code class="cCodeBold">F32</code>
+</div>
+</td>
+    <td><a name="wp1026108"> </a><div class="pCellBody">
+<code class="cCode">float</code>
+</div>
+</td>
+    <td><a name="wp1026110"> </a><div class="pCellBody">
+32-bit floating point
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1026112"> </a><div class="pCellBody">
+<code class="cCode">get</code><code class="cCodeBold">Double</code>
+</div>
+<a name="wp1026490"> </a><div class="pCellBody">
+<code class="cCode">getAs</code><code class="cCodeBold">Double</code>
+</div>
+</td>
+    <td><a name="wp1026313"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.</code><code class="cCodeBold">F64</code>
+</div>
+</td>
+    <td><a name="wp1026114"> </a><div class="pCellBody">
+<code class="cCode">double</code>
+</div>
+</td>
+    <td><a name="wp1026116"> </a><div class="pCellBody">
+64-bit floating point
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1026118"> </a><div class="pCellBody">
+<code class="cCode">get</code><code class="cCodeBold">Byte</code>
+</div>
+<a name="wp1026495"> </a><div class="pCellBody">
+<code class="cCode">getAs</code><code class="cCodeBold">Byte</code>
+</div>
+</td>
+    <td><a name="wp1026315"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.</code><code class="cCodeBold">I8</code>
+</div>
+</td>
+    <td><a name="wp1026120"> </a><div class="pCellBody">
+<code class="cCode">byte</code>
+</div>
+</td>
+    <td><a name="wp1026122"> </a><div class="pCellBody">
+8-bit integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1026124"> </a><div class="pCellBody">
+<code class="cCode">get</code><code class="cCodeBold">Short</code>
+</div>
+<a name="wp1026500"> </a><div class="pCellBody">
+<code class="cCode">getAs</code><code class="cCodeBold">Short</code>
+</div>
+</td>
+    <td><a name="wp1026317"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.</code><code class="cCodeBold">I16</code>
+</div>
+</td>
+    <td><a name="wp1026126"> </a><div class="pCellBody">
+<code class="cCode">short</code>
+</div>
+</td>
+    <td><a name="wp1026128"> </a><div class="pCellBody">
+16-bit integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1026372"> </a><div class="pCellBody">
+<code class="cCode">get</code><code class="cCodeBold">Int</code>
+</div>
+<a name="wp1026505"> </a><div class="pCellBody">
+<code class="cCode">getAs</code><code class="cCodeBold">Int</code>
+</div>
+</td>
+    <td><a name="wp1026374"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.</code><code class="cCodeBold">I32</code>
+</div>
+</td>
+    <td><a name="wp1026376"> </a><div class="pCellBody">
+<code class="cCode">int</code>
+</div>
+</td>
+    <td><a name="wp1026378"> </a><div class="pCellBody">
+32-bit integer
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1026390"> </a><div class="pCellBody">
+<code class="cCode">get</code><code class="cCodeBold">Long</code>
+</div>
+<a name="wp1026510"> </a><div class="pCellBody">
+<code class="cCode">getAs</code><code class="cCodeBold">Long</code>
+</div>
+</td>
+    <td><a name="wp1026392"> </a><div class="pCellBody">
+<code class="cCode">TibrvMsg.</code><code class="cCodeBold">I64</code>
+</div>
+</td>
+    <td><a name="wp1026394"> </a><div class="pCellBody">
+<code class="cCode">long</code>
+</div>
+</td>
+    <td><a name="wp1026396"> </a><div class="pCellBody">
+64-bit integer
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

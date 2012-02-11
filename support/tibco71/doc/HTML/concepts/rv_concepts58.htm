@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:17:14" />
+  <title>DateTime Format</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Concepts";
+    var ChapterTitle = "Chapter&#160;6	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1066287"> </a><h2 class="pNewHTMLPage">
+DateTime Format
+</h2>
+<hr />
+<a name="wp1066294"> </a><p class="pBody">
+The Rendezvous datatype <a  href="rv_concepts54.htm#wp1084143"><code class="cCode">TIBRVMSG_DATETIME</code></a> indicates a value in DateTime format.
+</p>
+<a name="wp1066299"> </a><p class="pBody">
+Rendezvous DateTime format encodes the time with microsecond accuracy. The total time range is approximately 17432 years on each side of the epoch (midnight, zero seconds into January 1, 1970).
+</p>
+<a name="wp1066300"> </a><p class="pBody">
+In wire format, DateTime values are 8 bytes:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1066301"> </a><div class="pSmartList1"><li >40 signed bits representing seconds (zero denotes the UNIX epoch, namely, 12:00am, January 1, 1970).</li></div>
+
+<a name="wp1066302"> </a><div class="pSmartList1"><li >24 unsigned bits representing microseconds <em class="cEmphasis">after</em> the seconds value.</li></div>
+
+</ul></div>
+
+<a name="wp1066488"> </a><p class="pBody">
+Although the program representations of DateTime values can be significantly larger than these 64 bits, the excess is unused at this time.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Concepts <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

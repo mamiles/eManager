@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>Custom Datatype Checklist</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Appendix&#160;A	 Custom Datatypes";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1153754"> </a><h2 class="pNewHTMLPage">
+Custom Datatype Checklist
+</h2>
+<hr />
+<a name="wp1152957"> </a><p class="pBody">
+We recommend modeling your custom datatype implementation on our example code; see the file <code class="cCode">examples/usertypes.c</code>.
+</p>
+<a name="wp1152930"> </a><p class="pBody">
+
+</p>
+<a name="wp1152960"> </a><p class="pBody">
+To define a custom datatype, a program must do these steps:
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1152750"> </a><div class="pSmartList1"><li value="1">Define the C representation of the new type. This representation is often a C struct.</li></div>
+
+<a name="wp1152759"> </a><div class="pSmartList1"><li value="2">Assign a code number to represent the new type. The new type must be in the range <code class="cCode">[</code><a  href="rv_c_ref223.htm#wp1193547"><code class="cCode">TIBRVMSG_USER_FIRST</code></a><code class="cCode">, </code><a  href="rv_c_ref223.htm#wp1193557"><code class="cCode">TIBRVMSG_USER_LAST</code></a><code class="cCode">]</code>. All other codes are reserved.</li></div>
+
+<a name="wp1152710"> </a><div class="pSmartList1"><li value="3">Define an encoder function to transfer the new type from a field object into a message&#8217;s wire buffer. See <a  href="rv_c_ref241.htm#wp1148962"><code class="cCode">tibrvMsgData_Encoder</code> </a>.</li></div>
+
+<a name="wp1152870"> </a><div class="pSmartList1"><li value="4">Define a decoder function to transfer the new type from a message&#8217;s wire buffer into t field object. See <a  href="rv_c_ref240.htm#wp1150007"><code class="cCode">tibrvMsgData_Decoder</code> </a>.</li></div>
+
+<a name="wp1152874"> </a><div class="pSmartList1"><li value="5">Define a converter function to convert the new type to other datatypes. See <a  href="rv_c_ref238.htm#wp1148872"><code class="cCode">tibrvMsgData_Converter</code> </a>.</li></div>
+
+<a name="wp1152769"> </a><div class="pSmartList1"><li value="6">Register the encoder, decoder and converter functions. See <a  href="rv_c_ref235.htm#wp1150065"><code class="cCode">tibrvMsg_SetHandlers()</code> </a>.</li></div>
+
+<a name="wp1152711"> </a><div class="pSmartList1"><li value="7">Optional: define convenience functions to add, get and update message fields with data of the new type. See <a  href="rv_c_ref234.htm#wp1152820">Convenience Functions</a>.</li></div>
+
+</ol></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

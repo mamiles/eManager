@@ -1,0 +1,90 @@
+cmlistener.java
+
+  Simple CM listener. Listens and confirms certified messages.
+  
+cmqmember.java
+
+  Simple certified message queue (CMQ) example.  Program will
+  listen for any number of certified messages on a specified
+  set of subjects and print out informative messages as data
+  is received.  Can be used together with cmsender example to 
+  demonstrate how certified message queues (also known as 
+  distributed message queues (DQ)) work.  The best demonstration 
+  is seen by running 3 or more instances of this program and 
+  using the cmsender to publish data to the queue.
+
+cmsender.java
+
+  Simple sender of certified messages. It can be run in conjunction
+  with the cmlistener example or the cmqmember example. cmsender
+  sends a number of messages and verifies they have been
+  confirmed.
+
+dispatcher.java
+
+  Dispatcher, queue and process transport example. Sets up single
+  publisher, single listener and two dispatchers to process multiple 
+  messages placed in a single queue.
+
+priority.java
+
+  Queue group and process transport example. Sets up two member 
+  queue group with different queue priorities, publishes multiple 
+  messages to two listeners and starts a dispatcher to process 
+  the message events.
+
+sendobject.java
+
+  Demonstrates how to send and receive arbitrary Java objects
+  supporting Serializable interface.  
+
+tibrvclient.java
+
+  Client portion of client-server programming example.
+  For server portion, see tibrvserver.java
+
+tibrvftmon.java
+
+  Simple fault tolerant monitor example.  Prints message whenever
+  there is a change in the number of members in a fault tolerant group.
+
+tibrvfttime.java
+
+  Simple fault tolerant application example.  Publishes time 
+  every ten seconds and is designed to be run as a fault
+  tolerant group member to generate a continuous timestamp.
+ 
+tibrvlisten.java
+
+  Simple listener example. Listens for all messages on specified
+  list of subjects.
+
+tibrvmultisend.java
+
+  Simple multi-field sender example.  Command line arguments allow the user
+  to create and send a message containing one or more fields, using any of
+  several different RV scalar datatypes.
+   
+tibrvsend.java
+
+  Simple sender example. Sends one or more messages on a specified
+  subject.
+
+tibrvserver.java
+
+  Server portion of client-server programming example.
+  For client portion, see tibrvclient.java
+
+usertypes.java
+
+  Simple program which demonstrates how to encode, decode, and
+  convert custom data types for TibrvMsg.
+
+AuthenticationFilter.java
+
+  Simple program that shows how Java applications based on the Rendezvous API for Java can
+  pass authentication intermediaries. Specifically, AuthenticationFilter can be used when
+  an authenticaticating HTTP proxy server is present between a client application and rva.
+  AuthenticationFilter simply acts as a minimal proxy, which solely adds any required
+  credentials to requests sent by Java applications using HTTP tunneling.
+  This implementation is minimal, but can be developed to support both GET and POST requests.

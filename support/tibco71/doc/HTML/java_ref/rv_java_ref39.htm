@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvMsg.getField()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1025655"> </a><h2 class="pNewHTMLPage">
+TibrvMsg.getField()
+</h2>
+<hr />
+<a name="wp1025656"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1025658"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<a  href="rv_java_ref56.htm#wp1028876"><code class="cCode">TibrvMsgField</code></a> <code class="cCodeBold">getField</code>(<a name="wp1125191"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;fieldName)<a name="wp1125192"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125196"> </a>
+<a name="wp1125183"> </a>
+<a  href="rv_java_ref56.htm#wp1028876"><code class="cCode">TibrvMsgField</code></a> <code class="cCodeBold">getField</code>(<a name="wp1125203"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;fieldId)<a name="wp1125204"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125208"> </a>
+<a name="wp1125184"> </a>
+<a  href="rv_java_ref56.htm#wp1028876"><code class="cCode">TibrvMsgField</code></a> <code class="cCodeBold">getField</code>(<a name="wp1125215"> </a>
+&#160;&#160;&#160;&#160;java.lang.String&#160;&#160;fieldName,<a name="wp1125216"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;fieldId)<a name="wp1125217"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125221"> </a>
+</pre></div>
+<a name="wp1025660"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1025737"> </a><p class="pBody">
+Get a specified field from a message.
+</p>
+<a name="wp1025662"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1025743"> </a><p class="pBody">
+Programs specify the field to retrieve using the <code class="cCode">fieldName</code> and <code class="cCode">fieldId</code> parameters.
+</p>
+<a name="wp1025747"> </a><p class="pBody">
+The method takes a snapshot of the field, and returns that information as a field object.
+</p>
+<a name="wp1025749"> </a><p class="pBody">
+Programs can use a related method to loop through all the fields of a message; to retrieve each field by its integer index number, see <a  href="rv_java_ref40.htm#wp1025852"><code class="cCode">TibrvMsg.getFieldByIndex()</code> </a>.</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1025779"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1025781"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1025783"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1025785"> </a><div class="pCellBody">
+Get a field with this name.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1025787"> </a><div class="pCellBody">
+<code class="cCode">fieldId</code>
+</div>
+</td>
+    <td><a name="wp1025789"> </a><div class="pCellBody">
+Get the field with this identifier.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1025791"> </a><h4 class="pHeading3">
+Method Forms
+</h4>
+<a name="wp1025792"> </a><p class="pBody">
+With only a field name, find the field by name. If the field name is not present in the message, return <code class="cCode">null</code>. If several fields with that name are present in the message, this method returns the first one that it finds. 
+</p>
+<a name="wp1025793"> </a><p class="pBody">
+With only a field identifier, find the field with that identifier (since identifiers are unique, the message can contain at most one such field). If the identifier is not present in the message, return <code class="cCode">null</code>.
+</p>
+<a name="wp1025794"> </a><p class="pBody">
+With both a field name and a field identifier, search first by identifier, and then by field name. If neither are present in the message, return <code class="cCode">null</code>.
+</p>
+<a name="wp1025674"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1025675"> </a><p class="pBody">
+<a  href="rv_java_ref36.htm#wp1024668"><code class="cCode">TibrvMsg.get()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

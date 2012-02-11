@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:42:10" />
+  <title>tibrvEvent</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous C Reference";
+    var ChapterTitle = "Chapter&#160;4	 Events";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1157970"> </a><h2 class="pNewHTMLPage">
+tibrvEvent
+</h2>
+<hr />
+<a name="wp1157971"> </a><p class="pSyntaxType">
+Type
+</p>
+<a name="wp1157982"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+typedef tibrvId <code class="cCodeBold">tibrvEvent</code>;<a name="wp1157983"> </a>
+</pre></div>
+<a name="wp1157984"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1106914"> </a><p class="pBody">
+Event objects represent program interest in events, and event occurrences.
+</p>
+<a name="wp1106915"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1041682"> </a><p class="pBody">
+Each call to a Rendezvous event creation function results in a new event object, which represents your program&#8217;s interest in a class of events. Rendezvous software uses the same event object to signal each occurrence of such an event.
+</p>
+<a name="wp1041595"> </a><p class="pBody">
+Programs use the event object as a token; they cannot view or modify the object, except using accessor functions.
+</p>
+<a name="wp1041840"> </a><p class="pBody">
+Programs must explicitly destroy each event object. Destroying an event object cancels the program&#8217;s interest in that event, and frees its storage.
+</p>
+<a name="wp1088290"> </a><h4 class="pHeading3">
+See Also
+</h4>
+<a name="wp1041837"> </a><p class="pBody">
+<a  href="rv_c_ref81.htm#wp1030625"><code class="cCode">tibrvEvent_Destroy()</code> </a>
+</p>
+<a name="wp1041613"> </a><h4 class="pHeading3">
+Event Creation Functions
+</h4>
+<a name="wp1041709"> </a><p class="pBody">
+<a  href="rv_c_ref78.htm#wp1071513"><code class="cCode">tibrvEvent_CreateIO()</code> </a>
+</p>
+<a name="wp1041713"> </a><p class="pBody">
+<a  href="rv_c_ref79.htm#wp1030177"><code class="cCode">tibrvEvent_CreateListener()</code> </a>
+</p>
+<a name="wp1041717"> </a><p class="pBody">
+<a  href="rv_c_ref80.htm#wp1030234"><code class="cCode">tibrvEvent_CreateTimer()</code> </a>
+</p>
+<a name="wp1041783"> </a><h4 class="pHeading3">
+Event Accessor Functions
+</h4>
+<a name="wp1041725"> </a><p class="pBody">
+<a  href="rv_c_ref83.htm#wp1063613"><code class="cCode">tibrvEvent_GetIOSource()</code> </a>
+</p>
+<a name="wp1041729"> </a><p class="pBody">
+<a  href="rv_c_ref84.htm#wp1114302"><code class="cCode">tibrvEvent_GetIOType()</code> </a>
+</p>
+<a name="wp1041737"> </a><p class="pBody">
+<a  href="rv_c_ref85.htm#wp1063506"><code class="cCode">tibrvEvent_GetListenerSubject()</code> </a>
+</p>
+<a name="wp1041741"> </a><p class="pBody">
+<a  href="rv_c_ref86.htm#wp1063540"><code class="cCode">tibrvEvent_GetListenerTransport()</code> </a>
+</p>
+<a name="wp1041745"> </a><p class="pBody">
+<a  href="rv_c_ref87.htm#wp1063574"><code class="cCode">tibrvEvent_GetTimerInterval()</code> </a>
+</p>
+<a name="wp1041749"> </a><p class="pBody">
+<a  href="rv_c_ref88.htm#wp1063279"><code class="cCode">tibrvEvent_GetType()</code> </a>
+</p>
+<a name="wp1118101"> </a><p class="pBody">
+<a  href="rv_c_ref89.htm#wp1063372"><code class="cCode">tibrvEvent_GetQueue()</code> </a>
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous C Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

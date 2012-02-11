@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 13:23:03" />
+  <title>TibrvMsg.update()</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Java Reference";
+    var ChapterTitle = "Chapter&#160;4	 Data";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1028315"> </a><h2 class="pNewHTMLPage">
+TibrvMsg.update()
+</h2>
+<hr />
+<a name="wp1028316"> </a><p class="pSyntaxType">
+Method
+</p>
+<a name="wp1028317"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+void <code class="cCodeBold">update</code>(<a name="wp1125260"> </a>
+&#160;&#160;&#160;&#160;java.lang.String fieldName,<a name="wp1125261"> </a>
+&#160;&#160;&#160;&#160;java.lang.Object data)<a name="wp1125262"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125266"> </a>
+<a name="wp1125255"> </a>
+void <code class="cCodeBold">update</code>(<a name="wp1125270"> </a>
+&#160;&#160;&#160;&#160;java.lang.String fieldName,<a name="wp1125271"> </a>
+&#160;&#160;&#160;&#160;java.lang.Object data,<a name="wp1125272"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;fieldId)<a name="wp1125273"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125277"> </a>
+<a name="wp1125256"> </a>
+void <code class="cCodeBold">update</code>(<a name="wp1125281"> </a>
+&#160;&#160;&#160;&#160;java.lang.String fieldName,<a name="wp1125282"> </a>
+&#160;&#160;&#160;&#160;java.lang.Object data,<a name="wp1125283"> </a>
+&#160;&#160;&#160;&#160;short&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;type)<a name="wp1125284"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125288"> </a>
+<a name="wp1125257"> </a>
+void <code class="cCodeBold">update</code>(<a name="wp1125293"> </a>
+&#160;&#160;&#160;&#160;java.lang.String fieldName,<a name="wp1125294"> </a>
+&#160;&#160;&#160;&#160;java.lang.Object data,<a name="wp1125295"> </a>
+&#160;&#160;&#160;&#160;short&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;type,<a name="wp1125296"> </a>
+&#160;&#160;&#160;&#160;int&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;fieldId)<a name="wp1125297"> </a>
+&#160;&#160;throws <a  href="rv_java_ref232.htm#wp1098751"><code class="cCode">TibrvException</code></a><a name="wp1125301"> </a>
+</pre></div>
+<a name="wp1028346"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1028651"> </a><p class="pBody">
+Update a field within a message.
+</p>
+<a name="wp1028348"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1028349"> </a><p class="pBody">
+This method copies the new data into the message field. All related convenience methods behave similarly.
+</p>
+<a name="wp1028660"> </a><p class="pBody">
+This method locates a field within the message by matching the <code class="cCode">fieldName</code> and <code class="cCode">fieldId</code> arguments. Then it updates the message field using the <code class="cCode">data</code> argument. (Notice that only the value and count of the message field can change.)
+</p>
+<a name="wp1028661"> </a><p class="pBody">
+If no existing field matches the specifications in the <code class="cCode">fieldName</code> and <code class="cCode">fieldId</code> arguments, then this method adds a new field to the message. Update convenience methods also add a field if it is not present.
+</p>
+<a name="wp1078605"> </a><p class="pBody">
+The type of the existing message field and the type of the updating <code class="cCode">field</code> argument must be identical; otherwise, the method throws an exception with the error status code <a  href="rv_java_ref234.htm#wp1238180"><code class="cCode">TibrvStatus.INVALID_TYPE</code></a>. However, when updating array or vector fields, the count (number of elements) can change.
+</p>
+<a name="wp1233362"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption><a name="wp1139728"> </a><p class="pBody">
+&#160;
+</p>
+</caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1139732"> </a><div class="pCellHeading">
+Parameter
+</div>
+</th>
+    <th><a name="wp1139734"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1139736"> </a><div class="pCellBody">
+<code class="cCode">fieldName</code>
+</div>
+</td>
+    <td><a name="wp1139738"> </a><div class="pCellBody">
+Update a field with this name.
+</div>
+<a name="wp1139739"> </a><div class="pCellBody">
+When absent, locate the field by identifier only.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1139741"> </a><div class="pCellBody">
+<code class="cCode">data</code>
+</div>
+</td>
+    <td><a name="wp1139743"> </a><div class="pCellBody">
+Update a field using this data value.
+</div>
+<a name="wp1139744"> </a><p class="pBody">
+It is illegal to add or update a field with <code class="cCode">null</code> data. To remove a field, use <a  href="rv_java_ref47.htm#wp1111370"><code class="cCode">TibrvMsg.removeField()</code> </a>.
+</p>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1139749"> </a><div class="pCellBody">
+<code class="cCode">type</code>
+</div>
+</td>
+    <td><a name="wp1139751"> </a><div class="pCellBody">
+Update a field with this type.
+</div>
+<a name="wp1139752"> </a><div class="pCellBody">
+When absent, determine the field&#8217;s type from the type of the data.
+</div>
+<a name="wp1139753"> </a><div class="pCellBody">
+Default encodings and possible conversions are identical to methods that add fields; see <a  href="rv_java_ref33.htm#wp1054848">Figure&#160;5</a>.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1139758"> </a><div class="pCellBody">
+<code class="cCode">fieldId</code>
+</div>
+</td>
+    <td><a name="wp1139760"> </a><p class="pBody">
+Update a field with this identifier. All field identifiers must be unique within each message.
+</p>
+<a name="wp1139761"> </a><div class="pCellBody">
+Zero is a special value, indicating no identifier. It is illegal to add a field that has both a <code class="cCode">null</code> field name, and a non-zero field identifier.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1078466"> </a><h4 class="pHeading3">
+Field Search Algorithm
+</h4>
+<a name="wp1078467"> </a><p class="pBody">
+This method, and related methods that <em class="cEmphasis">update</em> message fields, all use this algorithm to find and update a field within a message, as specified by a field identifier and a field name.
+</p>
+<div class="pSmartList1"><ol type="1">
+<a name="wp1078529"> </a><div class="pSmartList1"><li value="1">If the program supplied zero as the identifier, or omitted any identifier, then begin at step 3.</li></div>
+
+<a name="wp1078530"> </a><p class="pBodyRelative">
+If the program supplied a <em class="cEmphasis">non-zero</em> field identifier, then search for the field with that identifier. 
+</p>
+<a name="wp1078538"> </a><p class="pBodyRelative">
+If the search succeeds, then update that field.
+</p>
+<a name="wp1078532"> </a><p class="pBodyRelative">
+On failure, continue to step 2.
+</p>
+<a name="wp1078546"> </a><div class="pSmartList1"><li value="2">If the identifier search (in step 1) fails, and the program supplied a non-<code class="cCode">null</code> field name, then search for a field with that name.</li></div>
+
+<a name="wp1078550"> </a><p class="pBodyRelative">
+If the search succeeds, then update that field.
+</p>
+<a name="wp1078556"> </a><p class="pBodyRelative">
+If the name search succeeds, but the actual identifier in the field is non-<code class="cCode">null</code> (so it does not match the identifier supplied) then throw an exception with the status code <a  href="rv_java_ref234.htm#wp1238204"><code class="cCode">TibrvStatus.ID_CONFLICT</code></a>.
+</p>
+<a name="wp1078578"> </a><p class="pBodyRelative">
+If the search fails, <em class="cEmphasis">add</em> the field as specified (with name and identifier).
+</p>
+<a name="wp1078579"> </a><p class="pBodyRelative">
+However, if the program supplied <code class="cCode">null</code> as the field name, then do not search for the field name; instead, throw an exception with the status code <a  href="rv_java_ref234.htm#wp1238194"><code class="cCode">TibrvStatus.NOT_FOUND</code></a>.
+</p>
+<a name="wp1078593"> </a><div class="pSmartList1"><li value="3">When the program supplied zero as the identifier, or omitted any identifier, then begin here.</li></div>
+
+<a name="wp1078481"> </a><p class="pBodyRelative">
+Search for a field with the specified name&#151;even if that name is <code class="cCode">null</code>.
+</p>
+<a name="wp1078482"> </a><p class="pBodyRelative">
+If the search fails, <em class="cEmphasis">add</em> the field as specified (with name and identifier).
+</p>
+</ol></div>
+
+<a name="wp1109427"> </a><p class="pBody">
+If a message contains several fields with the same name, searching by name finds the first instance of the field with that name.
+</p>
+<a name="wp1108256"> </a><h4 class="pHeading3">
+Nested Message
+</h4>
+<a name="wp1108257"> </a><p class="pBody">
+When the new value is a message object, this method uses only the data portion of the nested message (<code class="cCode">data</code>); it does not include any address information or certified delivery information.
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Java Reference <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Security Factors</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;6	 Secure Daemons (rvsd and rvsrd)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1304588"> </a><h2 class="pNewHTMLPage">
+Security Factors
+</h2>
+<hr />
+<a name="wp1304595"> </a><h3 class="pHeading2">
+Store Files</h3><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/security.gif" border="0" /></td>
+    <td><a name="wp1304594"> </a><div class="pCellBody">
+The secure daemon store file contains very sensitive information. Store it on the local file system of the secure daemon&#8217;s host computer, with tight file access, in a physically secure environment. Ensure timely backup to secure media.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<h3 class="pHeading2">
+</h3>
+<a name="wp1304605"> </a><h3 class="pHeading2">
+Core-Dump Files</h3><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/security.gif" border="0" /></td>
+    <td><a name="wp1304600"> </a><div class="pCellBody">
+Secure daemon process storage contains sensitive information in unencrypted form. Similarly, user program storage can contain passwords or private key data. It is essential to deny access to these processes and their core image files. We strongly recommend arranging operating system parameters to prevent creation of core files.
+</div>
+<a name="wp1304601"> </a><p class="pBody">
+To guard against attacks, take these precautions:
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1304602"> </a><div class="pSmartList1"><li >Configure the operating environment to avoid making core dumps.</li></div>
+
+<a name="wp1304603"> </a><div class="pSmartList1"><li >Configure the operating environment to prevent access to process memory (if possible).</li></div>
+
+<a name="wp1304604"> </a><div class="pSmartList1"><li >Ensure that file system storage is secure.</li></div>
+
+</ul></div>
+
+</td>
+</tr>
+</table>
+</div>
+<h3 class="pHeading2">
+</h3>
+<a name="wp1271792"> </a><h3 class="pHeading2">
+Daemon Certificates</h3><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/security.gif" border="0" /></td>
+    <td><a name="wp1301020"> </a><p class="pBody">
+Administrators must implement a secure mechanism to distribute the secure daemon&#8217;s public certificate to users (that is, either programmers of client programs or end users).
+</p>
+<a name="wp1301021"> </a><p class="pBody">
+Ensure that users verify daemon certificates before using them with client programs. Ensure that users keep daemon certificates in files that a secure from unauthorized modification or tampering. Remember, a false certificate can give a rogue daemon access to user passwords.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<h3 class="pHeading2">
+</h3>
+<a name="wp1271812"> </a><h3 class="pHeading2">
+Passwords</h3><div>
+<table border="0">
+  <caption></caption>
+  <tr bgcolor="#EEEEEE" align="left" valign="top">    <td><img src="images/security.gif" border="0" /></td>
+    <td><a name="wp1301028"> </a><p class="pBody">
+Private key files use password-encryption for security. Nonetheless, these files are important points of vulnerability.
+</p>
+<a name="wp1301029"> </a><p class="pBody">
+To guard against attacks, ensure that file system storage is secure, and keep all passwords secure.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1301030"> </a><div class="pSmartList1"><li >Do not store passwords in non-secure files or on non-secure file systems.</li></div>
+
+<a name="wp1301031"> </a><div class="pSmartList1"><li >Control access to sensitive files&#151;even when those files are password-encrypted.</li></div>
+
+<a name="wp1301032"> </a><div class="pSmartList1"><li >Never hard-code passwords in application programs, nor accept them as command line parameters.</li></div>
+
+<a name="wp1301033"> </a><div class="pSmartList1"><li >Code programs to erase passwords from process storage before exiting.</li></div>
+
+<a name="wp1301034"> </a><div class="pSmartList1"><li >Never write passwords in convenient locations.</li></div>
+
+<a name="wp1301035"> </a><div class="pSmartList1"><li >Never send passwords in plaintext messages.</li></div>
+
+<a name="wp1301036"> </a><div class="pSmartList1"><li >Choose passwords carefully.</li></div>
+
+</ul></div>
+
+</td>
+</tr>
+</table>
+</div>
+<h3 class="pHeading2">
+</h3>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

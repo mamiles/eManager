@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 11:57:48" />
+  <title>FatalConfigurationException</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Configuration Tools";
+    var ChapterTitle = "Chapter&#160;10	 Exceptions";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1963994"> </a><h2 class="pNewHTMLPage">
+FatalConfigurationException
+</h2>
+<hr />
+<a name="wp1963995"> </a><p class="pSyntaxType">
+Class
+</p>
+<a name="wp1963996"> </a><h4 class="pHeading3">
+Declaration
+</h4>
+<div class="pPreformattedRelative"><pre class="pPreformattedRelative">
+<code class="cCode">class com.tibco.tibrv.config.</code><code class="cCodeBold">FatalConfigurationException</code><a name="wp1963997"> </a>
+<code class="cCode">&#160;&#160;extends ConfigurationException</code><a name="wp1963998"> </a>
+</pre></div>
+<a name="wp1963999"> </a><h4 class="pHeading3">
+Purpose
+</h4>
+<a name="wp1964000"> </a><p class="pBody">
+Encapsulate fatal errors.
+</p>
+<a name="wp1964001"> </a><h4 class="pHeading3">
+Remarks
+</h4>
+<a name="wp1964002"> </a><p class="pBody">
+Configuration methods throw this class of exceptions when a problem prevents continued execution.
+</p>
+<a name="wp1964003"> </a><p class="pBody">
+To handle these exceptions, we recommend that programs print a stack trace and exit.
+</p>
+<a name="wp1964029"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1964006"> </a><div class="pCellHeading">
+Constant
+</div>
+</th>
+    <th><a name="wp1964008"> </a><div class="pCellHeading">
+Description
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1964010"> </a><div class="pCellBody">
+<code class="cCode">CORRUPTED_PACKAGE</code>
+</div>
+</td>
+    <td><a name="wp1964012"> </a><div class="pCellBody">
+One of the Java configuration classes is missing or invalid.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1964014"> </a><div class="pCellBody">
+<code class="cCode">INVALID_ANSWER</code>
+</div>
+</td>
+    <td><a name="wp1964016"> </a><div class="pCellBody">
+The component could not answer a request from a method of the configuration API.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1964018"> </a><div class="pCellBody">
+<code class="cCode">UNAUTHORIZED</code>
+</div>
+</td>
+    <td><a name="wp1964020"> </a><div class="pCellBody">
+The configuration program lacks correct administrator credentials.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1964022"> </a><div class="pCellBody">
+<code class="cCode">UNEXPECTED_ANSWER</code>
+</div>
+</td>
+    <td><a name="wp1964024"> </a><div class="pCellBody">
+The configuration API method could not parse an answer from the component.
+</div>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1964026"> </a><div class="pCellBody">
+<code class="cCode">UNKNOWN_COMPONENT</code>
+</div>
+</td>
+    <td><a name="wp1964028"> </a><div class="pCellBody">
+The daemon or component does not support the configuration interface.
+</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+<a name="wp1964051"> </a><p class="pBody">
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr bgcolor="#006DA9" align="center" valign="top">    <th><a name="wp1964033"> </a><div class="pCellHeading">
+Inherited Methods
+</div>
+</th>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1964035"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.fillInStackTrace()</code>
+</p>
+<a name="wp1964036"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.getCause()</code>
+</p>
+<a name="wp1964037"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.getLocalizedMessage()</code>
+</p>
+<a name="wp1964038"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.getMessage()</code>
+</p>
+<a name="wp1964039"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.getStackTrace()</code>
+</p>
+<a name="wp1964040"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.initCause</code>
+</p>
+<a name="wp1964041"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.printStackTrace()</code>
+</p>
+<a name="wp1964042"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.setStackTrace()</code>
+</p>
+<a name="wp1964043"> </a><p class="pBody">
+<code class="cCode">java.lang.Throwable.toString()</code>
+</p>
+</td>
+</tr>
+  <tr align="left" valign="top">    <td><a name="wp1964045"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.equals()</code>
+</p>
+<a name="wp1964046"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.getClass()</code>
+</p>
+<a name="wp1964047"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.hashCode()</code>
+</p>
+<a name="wp1964048"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notify()</code>
+</p>
+<a name="wp1964049"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.notifyAll()</code>
+</p>
+<a name="wp1964050"> </a><p class="pBody">
+<code class="cCode">java.lang.Object.wait()</code>
+</p>
+</td>
+</tr>
+</table>
+</div>
+<p class="pBody">
+</p>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Configuration Tools <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

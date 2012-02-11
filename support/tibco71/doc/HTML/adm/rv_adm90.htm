@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="GENERATOR" content="Quadralay WebWorks Publisher Professional Edition 7.0.4" />
+  <meta name="TEMPLATEBASE" content="TIBCO Software Inc. Template 3.3.2" />
+  <meta name="LASTUPDATED" content="10/22/02 12:29:41" />
+  <title>Principles of Operation</title>
+  <link rel="StyleSheet" href="document.css" type="text/css" />
+  <link rel="StyleSheet" href="catalog.css" type="text/css" />
+<script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+  <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+
+  <script type="text/javascript" language="JavaScript1.2">
+   <!--
+    // Set reference to top level help frame
+    //
+var  WWHFrame = WWHGetWWHFrame("");
+
+    var BookName = "TIBCO Rendezvous Administration";
+    var ChapterTitle = "Chapter&#160;10	 Performance Assessment (rvperf)";
+   // -->
+  </script>
+ </head>
+
+ <body  onLoad="WWHUpdate();WWHFrame.WWHContentFrame.WWHPageNavFrame.WWHTitleFrame.location.reload();">
+
+
+<a name="wp1068857"> </a><h2 class="pNewHTMLPage">
+Principles of Operation
+</h2>
+<hr />
+<a name="wp1068861"> </a><p class="pBody">
+In our experience, Rendezvous distributed applications achieve optimal network performance when senders transmit messages in short batches, pausing briefly between batches. This observation is the foundation for the performance assessment tool.
+</p>
+<a name="wp1070241"> </a><p class="pBody">
+Performance assessment software measures network performance by sending runs of messages, and compiling statistics. You can experiment by varying parameters such as message size, run length, batch size, pause interval&#151;which affect the network data rate.
+</p>
+<a name="wp1070242"> </a><p class="pBody">
+Each message contains <em class="cEmphasis">s</em> bytes of payload data (plus message headers and packet overhead).
+</p>
+<a name="wp1068864"> </a><p class="pBody">
+<code class="cCode">rvperfm</code> sends one or more sequences (or runs) of <em class="cEmphasis">m</em> messages to the network.
+</p>
+<a name="wp1071378"> </a><p class="pBody">
+Instead of sending a continuous stream of messages, <code class="cCode">rvperfm</code> groups them into batches of <em class="cEmphasis">b</em> messages, pausing for an interval of <em class="cEmphasis">i</em> seconds between the end of one batch and the start of the next batch.
+</p>
+<a name="wp1071774"> </a><p class="pBody">
+While <code class="cCode">rvperfm</code> is sending messages, zero or more process instances of <code class="cCode">rvperfs</code> are listening for those messages and compiling statistics. At the end of each run, the <code class="cCode">rvperfs</code> processes report back to <code class="cCode">rvperfm</code>, which outputs the statistics.
+</p>
+<a name="wp1068875"> </a><h3 class="pHeading2">
+Listeners
+</h3>
+<a name="wp1068876"> </a><p class="pBody">
+<code class="cCode">rvperfm</code> can send messages to the network whether or not any <code class="cCode">rvperfs</code> processes are listening to receive those messages.
+</p>
+<div class="pSmartList1"><ul>
+<a name="wp1068877"> </a><div class="pSmartList1"><li >When <code class="cCode">rvperfs</code> listeners are present, the performance assessment tool measures their capacity to receive messages as part of overall network performance.</li></div>
+
+<a name="wp1068878"> </a><div class="pSmartList1"><li >In the absence of <code class="cCode">rvperfs</code> listeners, the performance assessment tool measures the network performance of the sending computer only.</li></div>
+
+</ul></div>
+
+
+ <hr />
+
+
+    <table align="right" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">
+        <span style="font-size: 10px">
+TIBCO Rendezvous Administration <br />
+          
+Software Release 7.1,  
+October 2002<br />
+        <em>Copyright &#169; TIBCO Software Inc. All rights reserved</em><br />
+        <a href="http://www.tibco.com" target="_top">www.tibco.com</a><br />
+        </span>
+        </td>
+      </tr>
+    </table>
+
+
+<script type="text/javascript" language="JavaScript1.2">
+   <!--
+    document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag());
+   // -->
+  </script>
+
+ </body>
+</html>

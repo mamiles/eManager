@@ -1,0 +1,84 @@
+#!/bin/sh
+# $Revision: 22 $
+# Program: starthma
+# Copyright 1994-2000 TIBCO Software, Inc.
+# ALL RIGHTS RESERVED
+
+if [ $# != 0 -a $# != 2 ]
+then
+        echo "\nUsage: starthma [-file <config file name>]\n"
+        exit 1
+fi
+if [ $# != 0 -a "$1" != "-file" ]
+then
+        echo "\nUsage: starthma [-file <config file name>]\n"
+        exit 1
+fi
+
+
+# Insure that RV_ROOT has been set.
+if [ -z "$RV_ROOT" ]; then
+ echo "\nPlease set RV_ROOT environment variable to point to TIBCO Rendezvous installation.\n"
+  exit 1
+fi
+
+# Insure that HAWK_ROOT has been set.
+if [ -z "$HAWK_ROOT" ]; then
+  echo "\nPlease set HAWK_ROOT environment variable to point to TIBCO HAWK installation. \n"
+  exit 1
+fi
+
+CDCMD=cd
+
+# Make sure there is only one copy running
+OS_TYPE=`uname -a | awk '{print $1}'`
+case $OS_TYPE in
+
+  'Linux')
+          hma=`/bin/ps ac | /bin/fgrep 'tibhawkh' | wc -l`
+           ;;
+
+   'OSF1')
+          hma=`/bin/ps -e | /bin/grep 'tibhawkh' |grep -v grep| wc -l`
+           ;;
+
+  * )
+          hma=`/usr/bin/ps -e | /usr/bin/grep tibhawkh | wc -l`
+           ;;
+esac
+if [ "$hma" -gt 0 ]; then
+   echo "Unable to start TIBCO Hawk MicroAgent because an instance is already running."
+   exit 1
+fi
+
+# Add RV and Hawk to PATH.
+PATH=$RV_ROOT/bin:$HAWK_ROOT/bin:$PATH
+export PATH
+
+# Add RV to LD_LIBRARY_PATH and SHLIB_PATH.
+LD_LIBRARY_PATH=$RV_ROOT/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH
+SHLIB_PATH=$RV_ROOT/lib:$SHLIB_PATH
+export SHLIB_PATH
+LIBPATH=$RV_ROOT/lib:$LIBPATH
+export LIBPATH
+
+if [ $# = 0 ]; then
+  switches="-file ${HAWK_ROOT}/bin/hawkhma.cfg"
+else
+for arg
+do
+  case "$arg" in
+    *  ) switches="$switches $arg" ;;
+  esac
+done
+fi
+
+# Start hma process
+$CDCMD $HAWK_ROOT
+if [ -z "$HAWK_TWO" ]; then
+    $HAWK_ROOT/bin/tibhawkhma $switches &
+else
+    $HAWK_ROOT/bin/tibhawkhma $switches >/tmp/tibhawkhma.log 2>&1 &
+fi
+
